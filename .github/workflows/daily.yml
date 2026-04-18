@@ -1,0 +1,40 @@
+name: Daily AI Security News
+
+on:
+  schedule:
+    - cron: '0 23 * * *'  # 毎日08:00 JST (UTC 23:00前日)
+  workflow_dispatch:       # 手動実行ボタンも有効
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests feedparser google-generativeai python-dateutil
+
+      - name: Fetch and summarize news
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/fetch_and_summarize.py
+
+      - name: Build website
+        run: python scripts/build_site.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "Daily update: $(date '+%Y-%m-%d')"
+          git push
