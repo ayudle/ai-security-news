@@ -123,7 +123,7 @@ def summarize_with_gemini(articles: list[dict]) -> list[dict]:
         raise ValueError("GEMINI_API_KEY が設定されていません")
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    model = genai.GenerativeModel("gemini-2.0-flash")
 
     # 全記事をまとめて1回のAPIコールで処理（コスト最小化）
     articles_text = "\n\n".join([
