@@ -250,7 +250,7 @@ a{color:inherit;text-decoration:none}
 </footer>
 
 <script>
-const ANA = {"main_30": [], "main_7": [], "sub_7": [], "spikes": [], "total_articles": 0, "total_days": 0};
+const ANA = {"main_30": [], "main_7": [], "sub_7": [], "spikes": [], "imp_list": [], "total_articles": 0, "total_days": 0};
 const TAX = {"attack": {"label": "攻撃・脅威", "subs": ["ランサムウェア", "フィッシング", "APT", "マルウェア", "DDoS", "サプライチェーン攻撃", "ソーシャルエンジニアリング", "クレデンシャル窃取"]}, "vuln": {"label": "脆弱性", "subs": ["ゼロデイ", "CVE", "エクスプロイト", "パッチ未適用", "設定ミス", "認証バイパス"]}, "ai_sec": {"label": "AI×セキュリティ", "subs": ["プロンプトインジェクション", "モデル汚染", "敵対的攻撃", "LLMセキュリティ", "AIを使った防御", "AIを使った攻撃", "モデル逆転攻撃"]}, "ai_risk": {"label": "AIリスク", "subs": ["ハルシネーション", "バイアス・差別", "プライバシー侵害", "誤情報生成", "著作権", "安全性評価", "アライメント"]}, "policy": {"label": "規制・政策", "subs": ["EU AI法", "NIST", "CISA勧告", "国内規制", "国際連携", "コンプライアンス", "標準化"]}, "incident": {"label": "インシデント", "subs": ["データ侵害", "サービス停止", "情報漏洩", "金融被害", "個人情報流出"]}, "biz_tech": {"label": "ビジネス・技術動向", "subs": ["資金調達", "M&A", "製品リリース", "市場トレンド", "研究・論文", "スタートアップ"]}};
 const IMP_COLORS = {"高":"#E24B4A","中":"#BA7517","低":"#639922"};
 const MAIN_COLORS = {"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai_risk":"#7F77DD","policy":"#1D9E75","incident":"#D85A30","biz_tech":"#639922"};
@@ -276,7 +276,11 @@ function renderBars(containerId, data, colorFn, maxOverride) {
   }).join('');
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// 重要度を履歴から集計
+const impCount = {"高":0,"中":0,"低":0};
+(ANA.imp_list||[]).forEach(([imp,cnt]) => { if(impCount[imp]!==undefined) impCount[imp]=cnt; });
+
+function initDashboard() {
   document.getElementById('s-total').textContent = ANA.total_articles;
   document.getElementById('s-days').textContent  = ANA.total_days;
   document.getElementById('s-spike').textContent = ANA.spikes.length;
@@ -298,12 +302,11 @@ document.addEventListener('DOMContentLoaded', function() {
     label => { const k = ANA.main_7.find(([_,__,l])=>l===label)?.[0]; return MAIN_COLORS[k]||'#378ADD'; }
   );
 
-  renderBars('imp-bars',
-    [["高", ANA.main_30.reduce((s,[k])=>s,0)], ["中",0],["低",0]].filter(x=>x),
-    label => IMP_COLORS[label] || '#888'
-  );
+  // 重要度バー
+  const impData = [["高", impCount["高"]], ["中", impCount["中"]], ["低", impCount["低"]]].filter(([,v])=>v>0);
+  renderBars('imp-bars', impData, label => IMP_COLORS[label]||'#888');
 
-  // 大項目フィルター
+  // 大項目フィルターボタン生成
   const filterEl = document.getElementById('main-filter');
   const mainKeys = [...new Set(ANA.main_7.map(([k])=>k))];
   if (!mainKeys.length) {
@@ -313,12 +316,14 @@ document.addEventListener('DOMContentLoaded', function() {
   filterEl.innerHTML = mainKeys.map((k,i) => {
     const label = TAX[k]?.label || k;
     const color = MAIN_COLORS[k] || '#378ADD';
-    return `<button class="sf-btn${i===0?' on':''}" data-key="${k}"
-      style="${i===0?`border-color:${color};color:${color};background:${color}22`:''}"
-      onclick="selectMain('${k}',this,${JSON.stringify(color)})">${label}</button>`;
+    const style = i===0 ? `border-color:${color};color:${color};background:${color}22` : '';
+    return `<button class="sf-btn${i===0?' on':''}" data-key="${k}" style="${style}"
+      onclick="selectMain('${k}',this,'${color}')">${label}</button>`;
   }).join('');
   selectMain(mainKeys[0], filterEl.querySelector('.sf-btn.on'), MAIN_COLORS[mainKeys[0]]||'#378ADD');
-});
+}
+
+document.addEventListener('DOMContentLoaded', initDashboard);
 
 function selectMain(key, el, color) {
   document.querySelectorAll('.sf-btn').forEach(b => {
