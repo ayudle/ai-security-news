@@ -2,7 +2,7 @@ name: Daily AI Security News
 
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 23 * * *'  # 毎日08:00 JST
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests feedparser google-generativeai python-dateutil
+        run: pip install requests feedparser google-genai python-dateutil
 
       - name: Fetch and summarize news
         env:
@@ -38,9 +38,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
-          git stash
-          git pull --rebase origin main
-          git stash pop
-          git diff --cached --quiet && echo "No changes" && exit 0
+          git diff --cached --quiet && echo "変更なし" && exit 0
           git commit -m "Daily update: $(date '+%Y-%m-%d')"
-          git push
+          git push --force-with-lease

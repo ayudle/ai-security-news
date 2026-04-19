@@ -1,11 +1,12 @@
 """
-fetch_and_summarize.py - RSSからニュース収集 → Gemini APIで日本語要約・示唆抽出
+fetch_and_summarize.py
+RSSからニュース収集 → Gemini APIで日本語要約・示唆抽出
 """
 
 import os, json, hashlib, feedparser
 from datetime import datetime, timezone, timedelta
 from dateutil import parser as dateparser
-import google.generativeai as genai
+from google import genai
 
 SOURCES = [
     {"name": "CISA",              "tier": "A", "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",       "category": "公的機関"},
@@ -32,7 +33,7 @@ AI_KEYWORDS = [
     "data breach", "zero-day", "exploit", "phishing", "threat intelligence",
 ]
 
-MAX_ARTICLES = 5   # 1日最大5件
+MAX_ARTICLES = 5
 OUTPUT_PATH  = "docs/data/latest.json"
 JST          = timezone(timedelta(hours=9))
 
@@ -62,27 +63,26 @@ def fetch_rss(source):
             summary = getattr(entry, "summary", getattr(entry, "description", ""))
             link    = getattr(entry, "link", "")
             combined = (title + " " + summary).lower()
-            if not any(kw.lower() in combined for kw in AI_KEYWORDS):
+            if not any(kw in combined for kw in AI_KEYWORDS):
                 continue
             articles.append({
-                "id":           hashlib.md5(link.encode()).hexdigest()[:12],
-                "title":        title,
-                "summary":      summary[:500],
-                "url":          link,
-                "source_name":  source["name"],
-                "source_tier":  source["tier"],
-                "category":     source["category"],
-                "published":    pub.astimezone(JST).isoformat(),
+                "id":          hashlib.md5(link.encode()).hexdigest()[:12],
+                "title":       title,
+                "summary":     summary[:500],
+                "url":         link,
+                "source_name": source["name"],
+                "source_tier": source["tier"],
+                "category":    source["category"],
+                "published":   pub.astimezone(JST).isoformat(),
             })
     except Exception as e:
-        print(f"[WARN] {source['name']}: {e}")
+        print(f"  [WARN] {source['name']}: {e}")
     return articles
 
 
 def deduplicate(articles):
     seen, unique = set(), []
-    tier_order = {"A": 0, "B": 1, "C": 2}
-    for a in sorted(articles, key=lambda x: tier_order.get(x["source_tier"], 9)):
+    for a in sorted(articles, key=lambda x: {"A":0,"B":1,"C":2}.get(x["source_tier"], 9)):
         if a["id"] not in seen:
             seen.add(a["id"])
             unique.append(a)
@@ -92,25 +92,24 @@ def deduplicate(articles):
 def summarize_with_gemini(articles):
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        raise ValueError("GEMINI_API_KEY が設定されていません")
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-2.0-flash")
+        raise ValueError("GEMINI_API_KEY が未設定です")
+
+    client = genai.Client(api_key=api_key)
 
     articles_text = "\n\n".join([
-        f"[{i+1}] タイトル: {a['title']}\n概要: {a['summary']}\nURL: {a['url']}\nソース: {a['source_name']}（{a['category']}）"
+        f"[{i+1}] タイトル: {a['title']}\n概要: {a['summary']}\nURL: {a['url']}\nソース: {a['source_name']}"
         for i, a in enumerate(articles)
     ])
 
     prompt = f"""以下のサイバーセキュリティ×AI分野のニュース記事を日本語で分析してください。
-
-各記事について以下のJSON形式のみを返してください（前置き・説明文・コードブロック記号は不要）:
+JSONのみを返してください。前置き・説明文・コードブロック記号（```）は不要です。
 
 [
   {{
     "index": 1,
     "title_ja": "日本語タイトル",
-    "summary_ja": "3〜4文の日本語要約。背景・内容・影響の順で記述",
-    "insight": "この記事から得られる重要な示唆や学び。セキュリティ実務者・研究者視点で1〜2文",
+    "summary_ja": "3〜4文の日本語要約。背景・内容・影響の順で記述してください",
+    "insight": "この記事から得られる重要な示唆や学び。セキュリティ実務者視点で1〜2文",
     "importance": "高 | 中 | 低",
     "tags": ["AI for Security", "Security for AI", "脆弱性", "脅威インテル", "規制・政策", "研究・学術"],
     "keywords": ["キーワード1", "キーワード2", "キーワード3"]
@@ -120,12 +119,21 @@ def summarize_with_gemini(articles):
 記事一覧:
 {articles_text}
 """
+
     try:
-        response = model.generate_content(prompt)
-        text = response.text.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
-        summaries = json.loads(text)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash-lite",
+            contents=prompt
+        )
+        text = response.text.strip()
+        # コードブロック除去
+        if "```" in text:
+            text = text.split("```")[1]
+            if text.startswith("json"):
+                text = text[4:]
+        summaries = json.loads(text.strip())
     except Exception as e:
-        print(f"[ERROR] Gemini API: {e}")
+        print(f"  [ERROR] Gemini API: {e}")
         summaries = [{"index": i+1, "title_ja": a["title"], "summary_ja": a["summary"][:200],
                       "insight": "", "importance": "中", "tags": [a["category"]], "keywords": []}
                      for i, a in enumerate(articles)]
@@ -149,6 +157,7 @@ def summarize_with_gemini(articles):
 
 def main():
     print(f"[{datetime.now(JST).strftime('%Y-%m-%d %H:%M')} JST] ニュース収集開始")
+
     all_articles = []
     for source in SOURCES:
         items = fetch_rss(source)
@@ -163,6 +172,7 @@ def main():
         print("[WARN] 該当記事なし。スキップ。")
         return
 
+    print("Gemini APIで要約中...")
     enriched = summarize_with_gemini(selected)
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
@@ -172,23 +182,19 @@ def main():
             with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
                 old = json.load(f)
                 history = old.get("history", [])
-                # 過去のviews数を引き継ぐ
-                views_map = {a["id"]: a.get("views", 0) for day in history for a in day.get("articles", [])}
-                for a in enriched:
-                    a["views"] = views_map.get(a["id"], 0)
         except Exception:
             pass
 
     today_str = datetime.now(JST).strftime("%Y-%m-%d")
     history = [h for h in history if h.get("date") != today_str]
     history.insert(0, {"date": today_str, "articles": enriched})
-    history = history[:90]  # 90日分保持
+    history = history[:90]
 
     output = {
-        "updated": datetime.now(JST).isoformat(),
-        "today":   today_str,
+        "updated":  datetime.now(JST).isoformat(),
+        "today":    today_str,
         "articles": enriched,
-        "history": history,
+        "history":  history,
     }
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
