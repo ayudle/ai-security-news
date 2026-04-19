@@ -320,7 +320,7 @@ function initDashboard() {
     const label = TAX[k]?.label || k;
     const color = MAIN_COLORS[k] || '#378ADD';
     const style = i===0 ? `border-color:${color};color:${color};background:${color}22` : '';
-    return '<button class="sf-btn'+(i===0?' on':'')+'" data-key="'+k+'" style="'+style+'" onclick="selectMain(''+k+'',this,''+color+'')">'+label+'</button>';
+    return '<button class="sf-btn'+(i===0?' on':'')+'" data-key="'+k+'" style="'+style+'" onclick="selectMain(\x27'+k+'\x27,this,\x27'+color+'\x27)">'+label+'</button>';
   }).join('');
   selectMain(mainKeys[0], filterEl.querySelector('.sf-btn.on'), MAIN_COLORS[mainKeys[0]]||'#378ADD');
 }
