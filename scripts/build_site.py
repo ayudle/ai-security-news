@@ -248,6 +248,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   <div class="tab"     onclick="switchTab('popular',this)">人気記事</div>
   <div class="tab"     onclick="switchTab('archive',this)">アーカイブ</div>
   <div class="tab"     onclick="switchTab('trend',this)">トレンド分析</div>
+  <a href="about.html" class="tab">About</a>
 </div>
 
 <div class="pane on" id="pane-today">
