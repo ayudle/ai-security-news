@@ -458,8 +458,25 @@ def main():
     for day in data.get("history",[]):
         d = day.get("date","")
         arc = {**data, "today":d, "articles":day.get("articles",[]), "history":[]}
+        arc_html = build_html(arc)
+        arc_html = arc_html.replace(
+            "onclick=\"switchTab('today',this)\">本日のニュース",
+            "onclick=\"location.href='/ai-security-news/#today'\">本日のニュース"
+        ).replace(
+            "onclick=\"switchTab('popular',this)\">人気記事",
+            "onclick=\"location.href='/ai-security-news/#popular'\">人気記事"
+        ).replace(
+            "onclick=\"switchTab('archive',this)\">アーカイブ",
+            "onclick=\"location.href='/ai-security-news/#archive'\">アーカイブ"
+        ).replace(
+            "onclick=\"switchTab('trend',this)\">トレンド分析",
+            "onclick=\"location.href='/ai-security-news/#trend'\">トレンド分析"
+        ).replace(
+            '<a href="about.html" class="tab"',
+            '<a href="/ai-security-news/about.html" class="tab"'
+        )
         with open(f"docs/archive/{d}.html","w",encoding="utf-8") as f:
-            f.write(build_html(arc))
+            f.write(arc_html)
     print(f"アーカイブ: {len(data.get('history',[]))}日分")
 
 if __name__ == "__main__":

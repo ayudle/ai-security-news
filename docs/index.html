@@ -379,16 +379,6 @@ function countView(id) {
     if (el) el.textContent = '👁 ' + cnt;
   });
 })();
-
-// URLハッシュでタブを自動切替
-(function(){
-  const hash = location.hash.replace('#','');
-  const map = {today:'today',popular:'popular',archive:'archive',trend:'trend'};
-  if(map[hash]){
-    const tab = document.querySelector('.tab[onclick*="' + hash + '"]');
-    if(tab) switchTab(hash, tab);
-  }
-})();
 </script>
 </body>
 </html>
