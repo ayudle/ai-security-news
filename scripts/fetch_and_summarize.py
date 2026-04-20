@@ -179,7 +179,7 @@ def summarize_with_gemini(articles):
 
     try:
         response = client.models.generate_content(
-            model="gemini-2.0-flash-lite",
+            model="gemini-1.5-flash-8b",
             contents=prompt
         )
         text = response.text.strip()
