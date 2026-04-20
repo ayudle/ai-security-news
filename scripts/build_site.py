@@ -318,7 +318,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。</p>
-  <p style="margin-top:4px">Powered by Gemini 2.0 Flash Lite + GitHub Actions（完全無料）</p>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
 </footer>
 
 <script>
