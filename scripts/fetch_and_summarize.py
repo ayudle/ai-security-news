@@ -71,15 +71,26 @@ def build_tag_reference():
         lines.append(f'  大項目: "{val["label"]}" (id: {key}) → 中項目の選択肢: {subs}')
     return "\n".join(lines)
 
-KEYWORDS = [
+# AI関連キーワード（必須・これが含まれる記事を優先）
+AI_KEYWORDS = [
     "artificial intelligence","machine learning","deep learning","neural network",
     "large language model","llm","gpt","generative ai","ai model","ai system",
     "ai security","ai threat","ai attack","ai defense","ai vulnerability",
     "adversarial","prompt injection","model poisoning","ai governance","ai risk",
     "chatgpt","claude","gemini","llama","foundation model","openai","anthropic",
-    "cybersecurity","cyber attack","ransomware","malware","vulnerability",
-    "data breach","zero-day","exploit","phishing","threat intelligence",
+    "ai agent","agentic","mcp","model context protocol","ai compliance",
+    "ai regulation","ai act","ai framework","ai observability","ai safety",
+    "security for ai","ai for security","ai risk management",
 ]
+
+# セキュリティキーワード（AIが含まれない場合のフォールバック・件数が少ない時のみ使用）
+SECURITY_KEYWORDS = [
+    "cybersecurity","cyber attack","ransomware","malware",
+    "data breach","zero-day","threat intelligence",
+]
+
+# フィルター用（両方まとめたもの）
+KEYWORDS = AI_KEYWORDS + SECURITY_KEYWORDS
 
 MAX_ARTICLES = 5
 OUTPUT_PATH  = "docs/data/latest.json"
@@ -110,8 +121,13 @@ def fetch_rss(source):
             title   = getattr(entry, "title", "")
             summary = getattr(entry, "summary", getattr(entry, "description", ""))
             link    = getattr(entry, "link", "")
-            if not any(kw in (title + " " + summary).lower() for kw in KEYWORDS):
+            combined = (title + " " + summary).lower()
+            has_ai = any(kw in combined for kw in AI_KEYWORDS)
+            has_sec = any(kw in combined for kw in SECURITY_KEYWORDS)
+            if not has_ai and not has_sec:
                 continue
+            # AI関連記事にスコアを付与（ソート用）
+            ai_score = 2 if has_ai else 1
             articles.append({
                 "id":          hashlib.md5(link.encode()).hexdigest()[:12],
                 "title":       title,
