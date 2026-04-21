@@ -272,10 +272,17 @@ def main():
         "history":    history,
         "taxonomy":   TAG_TAXONOMY,
     }
+    # 要約が全て英語のままの場合はJSONを更新しない（LLM失敗時の保護）
+    japanese_count = sum(1 for a in enriched if a.get("summary_ja") and
+                        any(ord(c) > 0x3000 for c in a.get("summary_ja","")))
+    if japanese_count == 0 and len(enriched) > 0:
+        print("[SKIP] 全記事の要約が英語のままです。LLMエラーの可能性があるためJSONを更新しません。")
+        return
+
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"完了: {len(enriched)}件保存")
+    print(f"完了: {len(enriched)}件保存（うち日本語要約: {japanese_count}件）")
 
 
 if __name__ == "__main__":
