@@ -440,7 +440,7 @@ function countView(id) {{
     if (el) el.textContent = '👁 ' + cnt;
   }});
 }})();
-</script>
+
 </body>
 </html>"""
 
