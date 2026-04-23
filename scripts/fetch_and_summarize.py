@@ -211,11 +211,31 @@ def summarize_with_gemini(articles):
 {articles_text}
 """
 
+    # 503/429エラーに対する指数バックオフリトライ（最大5回）
+    import time
+    response = None
+    last_error = None
+    for attempt in range(5):
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt
+            )
+            break
+        except Exception as e:
+            last_error = e
+            err_str = str(e)
+            if '503' in err_str or 'UNAVAILABLE' in err_str or '429' in err_str:
+                wait = (2 ** attempt) * 5  # 5s, 10s, 20s, 40s, 80s
+                print(f"  [RETRY {attempt+1}/5] {err_str[:80]}... wait {wait}s")
+                time.sleep(wait)
+            else:
+                raise
+
+    if response is None:
+        raise last_error or Exception("All retries failed")
+
     try:
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt
-        )
         text = response.text.strip()
         if "```" in text:
             parts = text.split("```")

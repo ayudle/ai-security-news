@@ -2,7 +2,9 @@ name: Daily AI Security News
 
 on:
   schedule:
-    - cron: '0 22 * * *'  # 毎日07:00 JST
+    - cron: '23 22 * * *'  # 07:23 JST メイン実行
+    - cron: '37 0 * * *'   # 09:37 JST バックアップ1
+    - cron: '51 3 * * *'   # 12:51 JST バックアップ2
   workflow_dispatch:
 
 jobs:
@@ -17,27 +19,61 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check if today's articles already exist
+        id: check_today
+        run: |
+          TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          if [ -f "docs/data/latest.json" ]; then
+            TODAY_COUNT=$(python3 -c "
+          import json
+          with open('docs/data/latest.json','r') as f:
+              d = json.load(f)
+          today = '$TODAY'
+          for day in d.get('history', []):
+              if day.get('date') == today:
+                  # 日本語要約が入っているかチェック
+                  arts = day.get('articles', [])
+                  if any(a.get('summary_ja') and any(ord(c) > 0x3000 for c in a.get('summary_ja','')) for a in arts):
+                      print(len(arts))
+                      exit()
+          print(0)
+          ")
+            echo "today_count=$TODAY_COUNT" >> $GITHUB_OUTPUT
+            echo "Today's articles: $TODAY_COUNT"
+          else
+            echo "today_count=0" >> $GITHUB_OUTPUT
+          fi
+
       - name: Set up Python
+        if: steps.check_today.outputs.today_count == '0'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
+        if: steps.check_today.outputs.today_count == '0'
         run: pip install requests feedparser google-genai python-dateutil
 
       - name: Fetch and summarize news
+        if: steps.check_today.outputs.today_count == '0'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python scripts/fetch_and_summarize.py
 
       - name: Build website
+        if: steps.check_today.outputs.today_count == '0'
         run: python scripts/build_site.py
 
       - name: Commit and push
+        if: steps.check_today.outputs.today_count == '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
           git diff --cached --quiet && echo "変更なし" && exit 0
-          git commit -m "Daily update: $(date '+%Y-%m-%d')"
+          git commit -m "Daily update: $(TZ=Asia/Tokyo date '+%Y-%m-%d')"
           git push --force-with-lease
+
+      - name: Skip message
+        if: steps.check_today.outputs.today_count != '0'
+        run: echo "Today's articles already exist, skipping."
