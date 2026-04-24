@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIエージェント向けSNSでの大規模データ侵害：APIキー漏洩の危険性 | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="AIエージェント向けソーシャルネットワーク「Moltbook」のデータベースが公開状態となり、35,000件のメールアドレスと150万件のAIエージェントAPIトークンが露出する大規模なデータ侵害が発生した。さらに深刻なのは、プライベートメ">
+<meta property="og:title" content="AIエージェント向けSNSでの大規模データ侵害：APIキー漏洩の危険性">
+<meta property="og:description" content="AIエージェント向けソーシャルネットワーク「Moltbook」のデータベースが公開状態となり、35,000件のメールアドレスと150万件のAIエージェントAPIトークンが露出する大規模なデータ侵害が発生した。さらに深刻なのは、プライベートメ">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/fcaacd282388.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700}
+.meta-top{font-size:11px;color:var(--dim)}
+.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+.ap{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.ap-head{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:24px}
+.ap-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--dim);margin-bottom:12px}
+.ap-tier{display:inline-block;padding:2px 8px;border-radius:4px;background:var(--card);color:var(--accent);font-weight:600}
+.ap-src{color:var(--text)}
+.ap-title{font-size:26px;font-weight:700;color:#fff;margin:8px 0;line-height:1.4}
+.ap-section{margin-bottom:32px}
+.ap-sec-title{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.ap-body{font-size:15px;line-height:1.85;color:var(--text)}
+.insight-box{background:var(--insight-bg);border-left:3px solid var(--insight-border);padding:16px 20px;border-radius:4px;margin-top:12px}
+.insight-lbl{display:block;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}
+.imp-box{padding:12px 16px;background:var(--card);border-radius:4px;margin-top:12px;font-size:13px;color:var(--dim)}
+.tags-box{display:flex;flex-wrap:wrap;gap:6px}
+.tag-main{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600}
+.tag-sub{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;background:var(--card);color:var(--text);border:1px solid var(--border)}
+.orig-box{background:var(--card);padding:16px;border-radius:4px;font-size:13px}
+.orig-box > div{margin-bottom:6px}
+.orig-box .lbl{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.orig-en{font-style:italic;color:var(--dim);margin-top:8px;font-size:12px;line-height:1.6}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{opacity:.9}
+.btn-secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--accent)}
+.rel-list{display:flex;flex-direction:column;gap:8px}
+.rel-item{display:block;background:var(--card);padding:12px 16px;border-radius:4px;text-decoration:none;color:inherit;border:1px solid transparent;transition:border-color .15s}
+.rel-item:hover{border-color:var(--accent)}
+.rel-meta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--dim);margin-bottom:4px}
+.rel-date{color:var(--dim)}
+.rel-src{color:var(--text)}
+.rel-title{font-size:14px;font-weight:500;line-height:1.5;color:var(--text)}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">AI×セキュリティ ニュース日報</div>
+</header>
+
+<a href="../#today" class="back">← 本日のニュースに戻る</a>
+
+<article class="ap">
+  <div class="ap-head">
+    <div class="ap-meta">
+      <span class="ap-tier">専門メディア</span>
+      <span class="ap-src">The Hacker News</span>
+      <span>2026-04-22</span>
+      <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span>
+    </div>
+    <h1 class="ap-title">AIエージェント向けSNSでの大規模データ侵害：APIキー漏洩の危険性</h1>
+  </div>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">要約</h3>
+    <div class="ap-body">AIエージェント向けソーシャルネットワーク「Moltbook」のデータベースが公開状態となり、35,000件のメールアドレスと150万件のAIエージェントAPIトークンが露出する大規模なデータ侵害が発生した。さらに深刻なのは、プライベートメッセージ内にOpenAI APIキーを含む第三者サービスの認証情報が平文で共有されていたことである。このインシデントは、AIエージェントが利用するサービス間連携におけるセキュリティ設定の不備と、機密情報の不適切な取り扱いが引き起こす深刻な情報漏洩リスクを浮き彫りにした。</div>
+  </section>
+
+  <section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span>自社が利用・開発するAIエージェントや連携システムにおいて、第三者APIキーや機密情報の取り扱いに関する厳格なポリシーを策定し、実装フェーズでのセキュリティレビューを強化する必要がある。特に、APIキーの平文保存や不適切な共有は絶対的に避けるべきであり、シークレット管理ツールの導入、アクセス権限の最小化、そして定期的なセキュリティ監査を通じて、類似のデータ侵害リスクを徹底的に排除すべきである。AIエージェントの利便性とセキュリティリスクのバランスを経営レベルで議論し、適切なガバナンスを確立することが急務です。</div></section>
+
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントの普及に伴う新たな脅威であり、APIキー漏洩は直接的なビジネス影響やさらなる侵害を引き起こす可能性が高いため、警鐘を鳴らす重要なインシデントであるため。</div></section>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">タグ</h3>
+    <div class="tags-box">
+      <span class="tag-main" style="background:#993C1D20;color:#993C1D;border-color:#993C1D44">インシデント</span>
+      <span class="tag-sub">データ侵害</span><span class="tag-sub">情報漏洩</span><span class="tag-sub">個人情報流出</span>
+    </div>
+  </section>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">元記事情報</h3>
+    <div class="orig-box">
+      <div class="lbl">原題</div>
+      <div>Toxic Combinations: When Cross-App Permissions Stack into Risk</div>
+      <div class="lbl" style="margin-top:10px">ソース・公開日</div>
+      <div>The Hacker News / 2026-04-22</div>
+      <div class="orig-en">On January 31, 2026, researchers disclosed that Moltbook, a social network built for AI agents, had left its database wide open, exposing 35,000 email addresses and 1.5 million agent API tokens across 770,000 active agents.
+The more worrying part sat inside the private messages. Some of those conver</div>
+    </div>
+    <div class="actions">
+      <a href="https://thehackernews.com/2026/04/toxic-combinations-when-cross-app.html" target="_blank" rel="noopener" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
+      <a href="https://twitter.com/intent/tweet?text=AIエージェント向けSNSでの大規模データ侵害：APIキー漏洩の危険性 | AI×セキュリティ ニュース日報&url=https://ayudle.github.io/ai-security-news/article/fcaacd282388.html" target="_blank" rel="noopener" class="btn btn-secondary">𝕏 でシェア</a>
+      <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/fcaacd282388.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
+    </div>
+  </section>
+
+  
+</article>
+
+<footer>
+  各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+</footer>
+
+</body>
+</html>
