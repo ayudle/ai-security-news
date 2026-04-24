@@ -57,7 +57,7 @@ def article_card(a, rank=None):
     {imp_badge(a.get('importance','中'))}{reason_html}
     <span class="vw" id="v-{a.get('id','')}">👁 {views}</span>
   </div>
-  <h2 class="ct"><a href="{a.get('url','#')}" target="_blank" rel="noopener">{a.get('title_ja') or a.get('title','')}</a></h2>
+  <h2 class="ct"><a href="article/{a.get('id','')}.html">{a.get('title_ja') or a.get('title','')}</a></h2>
   <p class="cs">{a.get('summary_ja') or a.get('summary','')}</p>
   {insight_html}
   <div class="tags">
@@ -508,6 +508,182 @@ function countView(id) {{
 </html>"""
 
 
+def build_article_page(article, all_articles, taxonomy):
+    """記事個別ページのHTMLを生成する"""
+    a = article
+    aid = a.get("id","")
+    title_ja = a.get("title_ja") or a.get("title","")
+    title_en = a.get("title","")
+    summary_ja = a.get("summary_ja") or a.get("summary","")
+    summary_en = a.get("summary","")
+    insight = a.get("insight","")
+    imp = a.get("importance","中")
+    imp_reason = a.get("importance_reason","")
+    pub = a.get("published","")[:10]
+    url = a.get("url","#")
+    source_name = a.get("source_name","")
+    source_tier = a.get("source_tier","B")
+    main_id = a.get("tag_main_id","attack")
+    main_label = a.get("tag_main_label","攻撃・脅威")
+    subs = a.get("tag_subs",[])
+
+    # 同じ大項目の関連記事を日付の新しい順に最大3件
+    related = []
+    for other in all_articles:
+        if other.get("id") == aid:
+            continue
+        if other.get("tag_main_id") == main_id:
+            related.append(other)
+    related.sort(key=lambda x: x.get("published",""), reverse=True)
+    related = related[:3]
+
+    related_html = ""
+    if related:
+        related_items = []
+        for r in related:
+            r_pub = r.get("published","")[:10]
+            r_title = r.get("title_ja") or r.get("title","")
+            r_imp = r.get("importance","中")
+            r_src = r.get("source_name","")
+            r_id = r.get("id","")
+            related_items.append(
+                f'<a href="{r_id}.html" class="rel-item">'
+                f'<div class="rel-meta"><span class="rel-date">{r_pub}</span>'
+                f'{imp_badge(r_imp)}<span class="rel-src">{r_src}</span></div>'
+                f'<div class="rel-title">{r_title}</div></a>'
+            )
+        related_html = f"""<section class="ap-section">
+  <h3 class="ap-sec-title">関連記事：同じ「{main_label}」の最近の記事</h3>
+  <div class="rel-list">{"".join(related_items)}</div>
+</section>"""
+
+    subs_html = "".join(tag_sub_badge(s) for s in subs)
+
+    # シェアURL
+    site_url = f"https://ayudle.github.io/ai-security-news/article/{aid}.html"
+    share_text = f"{title_ja} | AI×セキュリティ ニュース日報"
+    twitter_url = f"https://twitter.com/intent/tweet?text={share_text}&url={site_url}"
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title_ja} | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="{summary_ja[:120]}">
+<meta property="og:title" content="{title_ja}">
+<meta property="og:description" content="{summary_ja[:120]}">
+<meta property="og:url" content="{site_url}">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:,">
+<style>
+:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}}
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}}
+header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}}
+.logo{{font-size:18px;font-weight:700}}
+.meta-top{{font-size:11px;color:var(--dim)}}
+.back{{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
+.back:hover{{text-decoration:underline}}
+.ap{{max-width:720px;margin:0 auto;padding:16px 24px 60px}}
+.ap-head{{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:24px}}
+.ap-meta{{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--dim);margin-bottom:12px}}
+.ap-tier{{display:inline-block;padding:2px 8px;border-radius:4px;background:var(--card);color:var(--accent);font-weight:600}}
+.ap-src{{color:var(--text)}}
+.ap-title{{font-size:26px;font-weight:700;color:#fff;margin:8px 0;line-height:1.4}}
+.ap-section{{margin-bottom:32px}}
+.ap-sec-title{{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
+.ap-body{{font-size:15px;line-height:1.85;color:var(--text)}}
+.insight-box{{background:var(--insight-bg);border-left:3px solid var(--insight-border);padding:16px 20px;border-radius:4px;margin-top:12px}}
+.insight-lbl{{display:block;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}}
+.imp-box{{padding:12px 16px;background:var(--card);border-radius:4px;margin-top:12px;font-size:13px;color:var(--dim)}}
+.tags-box{{display:flex;flex-wrap:wrap;gap:6px}}
+.tag-main{{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600}}
+.tag-sub{{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;background:var(--card);color:var(--text);border:1px solid var(--border)}}
+.orig-box{{background:var(--card);padding:16px;border-radius:4px;font-size:13px}}
+.orig-box > div{{margin-bottom:6px}}
+.orig-box .lbl{{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}}
+.orig-en{{font-style:italic;color:var(--dim);margin-top:8px;font-size:12px;line-height:1.6}}
+.actions{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}}
+.btn{{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit}}
+.btn-primary{{background:var(--accent);color:#fff}}
+.btn-primary:hover{{opacity:.9}}
+.btn-secondary{{background:var(--card);color:var(--text);border:1px solid var(--border)}}
+.btn-secondary:hover{{border-color:var(--accent)}}
+.rel-list{{display:flex;flex-direction:column;gap:8px}}
+.rel-item{{display:block;background:var(--card);padding:12px 16px;border-radius:4px;text-decoration:none;color:inherit;border:1px solid transparent;transition:border-color .15s}}
+.rel-item:hover{{border-color:var(--accent)}}
+.rel-meta{{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--dim);margin-bottom:4px}}
+.rel-date{{color:var(--dim)}}
+.rel-src{{color:var(--text)}}
+.rel-title{{font-size:14px;font-weight:500;line-height:1.5;color:var(--text)}}
+footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">AI×セキュリティ ニュース日報</div>
+</header>
+
+<a href="../#today" class="back">← 本日のニュースに戻る</a>
+
+<article class="ap">
+  <div class="ap-head">
+    <div class="ap-meta">
+      <span class="ap-tier">{tier_label(source_tier)}</span>
+      <span class="ap-src">{source_name}</span>
+      <span>{pub}</span>
+      {imp_badge(imp)}
+    </div>
+    <h1 class="ap-title">{title_ja}</h1>
+  </div>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">要約</h3>
+    <div class="ap-body">{summary_ja}</div>
+  </section>
+
+  {"<section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span>" + insight + "</div></section>" if insight else ""}
+
+  {"<section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>" + imp_reason + "</div></section>" if imp_reason else ""}
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">タグ</h3>
+    <div class="tags-box">
+      {tag_main_badge(main_id, main_label)}
+      {subs_html}
+    </div>
+  </section>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">元記事情報</h3>
+    <div class="orig-box">
+      <div class="lbl">原題</div>
+      <div>{title_en}</div>
+      <div class="lbl" style="margin-top:10px">ソース・公開日</div>
+      <div>{source_name} / {pub}</div>
+      <div class="orig-en">{summary_en[:300]}</div>
+    </div>
+    <div class="actions">
+      <a href="{url}" target="_blank" rel="noopener" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
+      <a href="{twitter_url}" target="_blank" rel="noopener" class="btn btn-secondary">𝕏 でシェア</a>
+      <button onclick="navigator.clipboard.writeText('{site_url}').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
+    </div>
+  </section>
+
+  {related_html}
+</article>
+
+<footer>
+  各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+</footer>
+
+</body>
+</html>"""
+
+
 def main():
     if not os.path.exists(DATA_PATH):
         print(f"[ERROR] {DATA_PATH} なし"); return
@@ -541,6 +717,32 @@ def main():
         with open(f"docs/archive/{d}.html","w",encoding="utf-8") as f:
             f.write(arc_html)
     print(f"アーカイブ: {len(data.get('history',[]))}日分")
+
+    # 記事個別ページ生成（全履歴の記事 + 本日の記事）
+    os.makedirs("docs/article", exist_ok=True)
+    all_articles = list(data.get("articles", []))
+    for day in data.get("history", []):
+        all_articles.extend(day.get("articles", []))
+    # 重複除去（id基準）
+    seen_ids = set()
+    unique_articles = []
+    for a in all_articles:
+        aid = a.get("id")
+        if aid and aid not in seen_ids:
+            seen_ids.add(aid)
+            unique_articles.append(a)
+
+    taxonomy = data.get("taxonomy", {})
+    article_count = 0
+    for a in unique_articles:
+        aid = a.get("id")
+        if not aid:
+            continue
+        html = build_article_page(a, unique_articles, taxonomy)
+        with open(f"docs/article/{aid}.html", "w", encoding="utf-8") as f:
+            f.write(html)
+        article_count += 1
+    print(f"個別記事ページ: {article_count}件")
 
     # 月別アーカイブJSON生成
     from collections import defaultdict
