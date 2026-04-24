@@ -40,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/archive/
+          git add docs/index.html docs/archive/ docs/article/
           git diff --cached --quiet && echo "No HTML changes" && exit 0
           git commit -m "Rebuild site: $(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M')"
           git push
