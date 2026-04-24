@@ -162,7 +162,33 @@ def build_html(data):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI×セキュリティ ニュース日報 | {today}</title>
-<meta name="description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。示唆・学び・トレンド分析付き。">
+<meta name="description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。CISO視点での示唆・学び付き。">
+<meta property="og:title" content="AI×セキュリティ ニュース日報">
+<meta property="og:description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。CISO視点での示唆・学び付き。">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI×セキュリティ ニュース日報">
+<meta name="twitter:description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。CISO視点での示唆・学び付き。">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">
+{{{{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI×セキュリティ ニュース日報",
+  "url": "https://ayudle.github.io/ai-security-news/",
+  "description": "サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約",
+  "publisher": {{{{
+    "@type": "Organization",
+    "name": "AI×セキュリティ ニュース日報",
+    "url": "https://ayudle.github.io/ai-security-news/"
+  }}}}
+}}}}
+</script>
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
 :root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--r:10px}}
