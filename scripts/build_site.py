@@ -627,10 +627,28 @@ def build_article_page(article, all_articles, taxonomy):
             extra_tags.append(HASHTAG_MAP[s])
         if len(extra_tags) >= 2:
             break
-    if not extra_tags:
-        extra_tags = ["AIエージェント"]
 
-    hashtags_str = " ".join(["#AIセキュリティ"] + [f"#{t}" for t in extra_tags])
+    # 主軸ハッシュタグを記事タイプに応じて切り替え
+    PRIMARY_TAG_BY_MAIN = {
+        "ai_sec": ["AIセキュリティ"],
+        "ai_risk": ["AIリスク", "AIガバナンス"],
+        "vuln": ["脆弱性", "サイバーセキュリティ"],
+        "attack": ["サイバー攻撃", "サイバーセキュリティ"],
+        "incident": ["セキュリティインシデント", "サイバーセキュリティ"],
+        "policy": ["セキュリティ規制", "サイバーセキュリティ"],
+        "biz_tech": ["セキュリティ業界", "サイバーセキュリティ"],
+    }
+    primary_tags = PRIMARY_TAG_BY_MAIN.get(main_id, ["サイバーセキュリティ"])
+
+    # 重複を避けつつ最大3個に絞る
+    all_tags = []
+    for tag in primary_tags + extra_tags:
+        if tag not in all_tags:
+            all_tags.append(tag)
+        if len(all_tags) >= 3:
+            break
+
+    hashtags_str = " ".join([f"#{t}" for t in all_tags])
 
     share_text_raw = f"【AI×セキュリティ速報】\n\n{title_ja}\n\n{hashtags_str}"
     share_text_encoded = quote(share_text_raw, safe='')
