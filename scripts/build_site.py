@@ -113,6 +113,8 @@ def build_analytics(history, taxonomy):
         for a in day.get("articles",[]):
             imp_all[a.get("importance","中")] += 1
 
+    today_implication = history[0].get("today_implication", "") if history else ""
+
     return {
         "main_30":  [(k, v, taxonomy.get(k,{}).get("label",k)) for k,v in main_30.most_common()],
         "main_7":   [(k, v, taxonomy.get(k,{}).get("label",k)) for k,v in main_7.most_common()],
@@ -121,6 +123,7 @@ def build_analytics(history, taxonomy):
         "imp_list": imp_all.most_common(),
         "total_articles": sum(len(d.get("articles",[])) for d in history),
         "total_days":     len(history),
+        "today_implication": today_implication,
     }
 
 
@@ -464,6 +467,12 @@ const impCount = {{"高":0,"中":0,"低":0}};
 (ANA.imp_list||[]).forEach(([imp,cnt]) => {{ if(impCount[imp]!==undefined) impCount[imp]=cnt; }});
 
 function initDashboard() {{
+  if (ANA.today_implication) {{
+    document.getElementById('today-implication-text').innerHTML =
+      ANA.today_implication.replace(/\n/g, '<br>');
+    document.getElementById('today-implication-box').style.display = '';
+  }}
+
   document.getElementById('s-total').textContent = ANA.total_articles;
   document.getElementById('s-days').textContent  = ANA.total_days;
   document.getElementById('s-spike').textContent = ANA.spikes.length;

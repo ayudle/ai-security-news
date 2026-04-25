@@ -374,7 +374,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 </footer>
 
 <script>
-const ANA = {"main_30": [], "main_7": [], "sub_7": [], "spikes": [], "imp_list": [], "total_articles": 0, "total_days": 0};
+const ANA = {"main_30": [], "main_7": [], "sub_7": [], "spikes": [], "imp_list": [], "total_articles": 0, "total_days": 0, "today_implication": ""};
 const TAX = {"attack": {"label": "攻撃・脅威", "subs": ["ランサムウェア", "フィッシング", "APT", "マルウェア", "DDoS", "サプライチェーン攻撃", "ソーシャルエンジニアリング", "クレデンシャル窃取"]}, "vuln": {"label": "脆弱性", "subs": ["ゼロデイ", "CVE", "エクスプロイト", "パッチ未適用", "設定ミス", "認証バイパス"]}, "ai_sec": {"label": "AI×セキュリティ", "subs": ["プロンプトインジェクション", "モデル汚染", "敵対的攻撃", "LLMセキュリティ", "AIを使った防御", "AIを使った攻撃", "モデル逆転攻撃"]}, "ai_risk": {"label": "AIリスク", "subs": ["ハルシネーション", "バイアス・差別", "プライバシー侵害", "誤情報生成", "著作権", "安全性評価", "アライメント"]}, "policy": {"label": "規制・政策", "subs": ["EU AI法", "NIST", "CISA勧告", "国内規制", "国際連携", "コンプライアンス", "標準化"]}, "incident": {"label": "インシデント", "subs": ["データ侵害", "サービス停止", "情報漏洩", "金融被害", "個人情報流出"]}, "biz_tech": {"label": "ビジネス・技術動向", "subs": ["資金調達", "M&A", "製品リリース", "市場トレンド", "研究・論文", "スタートアップ"]}};
 const IMP_COLORS = {"高":"#E24B4A","中":"#BA7517","低":"#639922"};
 const MAIN_COLORS = {"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai_risk":"#7F77DD","policy":"#1D9E75","incident":"#D85A30","biz_tech":"#639922"};
@@ -426,6 +426,13 @@ const impCount = {"高":0,"中":0,"低":0};
 (ANA.imp_list||[]).forEach(([imp,cnt]) => { if(impCount[imp]!==undefined) impCount[imp]=cnt; });
 
 function initDashboard() {
+  if (ANA.today_implication) {
+    document.getElementById('today-implication-text').innerHTML =
+      ANA.today_implication.replace(/
+/g, '<br>');
+    document.getElementById('today-implication-box').style.display = '';
+  }
+
   document.getElementById('s-total').textContent = ANA.total_articles;
   document.getElementById('s-days').textContent  = ANA.total_days;
   document.getElementById('s-spike').textContent = ANA.spikes.length;
