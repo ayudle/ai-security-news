@@ -798,21 +798,22 @@ def main():
         d = day.get("date","")
         arc = {**data, "today":d, "articles":day.get("articles",[]), "history":[]}
         arc_html = build_html(arc)
+        # アーカイブページのタブリンクを絶対パスに（トップページに戻るように）
         arc_html = arc_html.replace(
-            "onclick=\"switchTab('today',this)\">本日のニュース",
-            "onclick=\"location.href='/ai-security-news/#today'\">本日のニュース"
+            '<a href="#today"   class="tab">',
+            '<a href="/ai-security-news/#today" class="tab">'
         ).replace(
-            "onclick=\"switchTab('popular',this)\">人気記事",
-            "onclick=\"location.href='/ai-security-news/#popular'\">人気記事"
+            '<a href="#popular" class="tab">',
+            '<a href="/ai-security-news/#popular" class="tab">'
         ).replace(
-            "onclick=\"switchTab('archive',this)\">アーカイブ",
-            "onclick=\"location.href='/ai-security-news/#archive'\">アーカイブ"
+            '<a href="#archive" class="tab">',
+            '<a href="/ai-security-news/#archive" class="tab">'
         ).replace(
-            "onclick=\"switchTab('trend',this)\">トレンド分析",
-            "onclick=\"location.href='/ai-security-news/#trend'\">トレンド分析"
+            '<a href="#trend"   class="tab">',
+            '<a href="/ai-security-news/#trend" class="tab">'
         ).replace(
-            '<a href="about.html" class="tab"',
-            '<a href="/ai-security-news/about.html" class="tab"'
+            '<a href="#about"   class="tab">',
+            '<a href="/ai-security-news/#about" class="tab">'
         )
         with open(f"docs/archive/{d}.html","w",encoding="utf-8") as f:
             f.write(arc_html)
