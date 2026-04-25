@@ -602,7 +602,7 @@ def build_article_page(article, all_articles, taxonomy):
     site_url = f"https://ayudle.github.io/ai-security-news/article/{aid}.html"
 
     # tag_subs から動的にハッシュタグを選定
-    HASHTAG_MAP = {{
+    HASHTAG_MAP = {
         "プロンプトインジェクション": "プロンプトインジェクション",
         "LLMセキュリティ": "LLMセキュリティ",
         "モデル汚染": "モデル汚染",
@@ -621,7 +621,7 @@ def build_article_page(article, all_articles, taxonomy):
         "バイアス・差別": "AIバイアス",
         "誤情報生成": "AI誤情報",
         "著作権": "AI著作権",
-    }}
+    }
     extra_tags = []
     for s in subs:
         if s in HASHTAG_MAP and HASHTAG_MAP[s] not in extra_tags:
@@ -636,7 +636,7 @@ def build_article_page(article, all_articles, taxonomy):
     share_text_raw = f"【AI×セキュリティ速報】\n\n{{title_ja}}\n\n{{hashtags_str}}"
     share_text_encoded = quote(share_text_raw, safe='')
     site_url_encoded = quote(site_url, safe='')
-    twitter_url = f"https://x.com/intent/post?text={{share_text_encoded}}&url={{site_url_encoded}}"
+    twitter_url = f"https://x.com/intent/post?text={share_text_encoded}&url={site_url_encoded}"
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
