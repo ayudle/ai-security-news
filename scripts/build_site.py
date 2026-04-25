@@ -597,10 +597,13 @@ def build_article_page(article, all_articles, taxonomy):
 
     subs_html = "".join(tag_sub_badge(s) for s in subs)
 
-    # シェアURL
+    # シェアURL（URLエンコード対応）
+    from urllib.parse import quote
     site_url = f"https://ayudle.github.io/ai-security-news/article/{aid}.html"
-    share_text = f"{title_ja} | AI×セキュリティ ニュース日報"
-    twitter_url = f"https://x.com/intent/post?text={share_text}&url={site_url}"
+    share_text_raw = f"{title_ja} | AI×セキュリティ ニュース日報"
+    share_text_encoded = quote(share_text_raw, safe='')
+    site_url_encoded = quote(site_url, safe='')
+    twitter_url = f"https://x.com/intent/post?text={share_text_encoded}&url={site_url_encoded}"
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
