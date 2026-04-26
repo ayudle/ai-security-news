@@ -82,12 +82,14 @@ def build_analytics(history, taxonomy):
     now = datetime.now(JST)
 
     # 日付ごとの中項目カウント（スパイク検出用）
-    daily_sub = defaultdict(lambda: defaultdict(int))   # date -> sub -> count
-    main_30   = Counter()
-    sub_30    = Counter()
-    main_7    = Counter()
-    sub_7     = Counter()
-    layer_7   = Counter()
+    daily_sub   = defaultdict(lambda: defaultdict(int))   # date -> sub -> count
+    layer_daily = defaultdict(lambda: defaultdict(int))   # date -> layer -> count
+    main_30  = Counter()
+    sub_30   = Counter()
+    main_7   = Counter()
+    sub_7    = Counter()
+    layer_7  = Counter()
+    kw_7     = Counter()
 
     for day in history[:30]:
         d = day.get("date","")
@@ -110,6 +112,11 @@ def build_analytics(history, taxonomy):
                     sub_7[s] += 1
                 for l in a.get("affected_layers", []):
                     layer_7[l] += 1
+                    layer_daily[d][l] += 1
+                for kw in a.get("related_keywords", []):
+                    kw_norm = kw.strip()
+                    if kw_norm:
+                        kw_7[kw_norm] += 1
 
     # スパイク検出: 過去7日で2件以上かつ過去30日平均の2倍以上
     spikes = []
@@ -128,6 +135,18 @@ def build_analytics(history, taxonomy):
 
     today_implication = history[0].get("today_implication", "") if history else ""
 
+    _layers_order = ["デバイス/エッジ", "ネットワーク", "クラウド/サーバー", "アプリ/API", "データ/AI", "ガバナンス/規制"]
+    _dates_7  = [(now - timedelta(days=6-i)) for i in range(7)]
+    _date_keys = [dt.strftime("%Y-%m-%d") for dt in _dates_7]
+    _date_lbls = [dt.strftime("%m/%d")     for dt in _dates_7]
+    layer_heatmap = {
+        "dates": _date_lbls,
+        "rows": [
+            {"layer": layer, "counts": [layer_daily[dk].get(layer, 0) for dk in _date_keys]}
+            for layer in _layers_order
+        ],
+    }
+
     return {
         "main_30":  [(k, v, taxonomy.get(k,{}).get("label",k)) for k,v in main_30.most_common()],
         "main_7":   [(k, v, taxonomy.get(k,{}).get("label",k)) for k,v in main_7.most_common()],
@@ -137,7 +156,9 @@ def build_analytics(history, taxonomy):
         "total_articles": sum(len(d.get("articles",[])) for d in history),
         "total_days":     len(history),
         "today_implication": today_implication,
-        "layer_7": layer_7.most_common(),
+        "layer_7":       layer_7.most_common(),
+        "kw_7":          kw_7.most_common(30),
+        "layer_heatmap": layer_heatmap,
     }
 
 
@@ -272,6 +293,15 @@ a{{color:inherit;text-decoration:none}}
 .sf-btn{{font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;transition:all .15s}}
 .sf-btn.on{{border-color:var(--accent);color:var(--accent);background:#0d1e36}}
 .imp-note{{font-size:11px;color:var(--dim);background:var(--card);border-radius:8px;padding:10px 12px;line-height:1.6;margin-bottom:12px;border-left:3px solid #BA751755}}
+.kw-cloud{{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;padding:2px 0}}
+.kw-tag{{color:var(--accent);font-weight:500;cursor:default;transition:opacity .1s;white-space:nowrap}}
+.kw-tag:hover{{opacity:1!important}}
+.hm-grid{{display:grid;grid-template-columns:88px repeat(7,1fr);gap:3px;align-items:center}}
+.hm-th{{font-size:9px;color:var(--dim);text-align:center;padding-bottom:2px}}
+.hm-lb{{font-size:10px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:4px}}
+.hm-cell{{height:22px;border-radius:3px;cursor:default;transition:filter .1s}}
+.hm-cell:hover{{filter:brightness(1.4)}}
+@media(max-width:600px){{.hm-grid{{grid-template-columns:64px repeat(7,1fr);gap:2px}}.hm-lb{{font-size:9px}}.hm-cell{{height:16px}}}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
 <script>
@@ -376,6 +406,18 @@ gtag('config', 'G-KV7Q7SQKZX');
       <div id="layer-bars"></div>
     </div>
 
+    <div class="dc" style="grid-column:1/-1">
+      <div class="dc-title">キーワードクラウド（過去7日）</div>
+      <div class="dc-sub">頻出キーワードをフォントサイズで表現（大きいほど多出現）</div>
+      <div class="kw-cloud" id="kw-cloud"></div>
+    </div>
+
+    <div class="dc" style="grid-column:1/-1">
+      <div class="dc-title">6階層ヒートマップ（過去7日）</div>
+      <div class="dc-sub">日付×インフラ階層の記事件数（色が濃いほど多い）</div>
+      <div id="layer-heatmap"></div>
+    </div>
+
   </div>
 </div>
 
@@ -472,6 +514,46 @@ if (document.readyState === 'loading') {{
   initTab();
 }}
 
+function renderKwCloud(containerId, data) {{
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  if (!data || !data.length) {{ el.innerHTML='<p class="empty">データ蓄積中...</p>'; return; }}
+  const max = data[0][1] || 1;
+  el.innerHTML = data.map(([kw, cnt]) => {{
+    const t   = Math.sqrt(cnt / max);
+    const sz  = Math.round(12 + t * 10);
+    const op  = (0.5 + t * 0.5).toFixed(2);
+    return `<span class="kw-tag" style="font-size:${{sz}}px;opacity:${{op}}" title="${{cnt}}件">${{kw}}</span>`;
+  }}).join('');
+}}
+
+function hexToRgb(hex) {{
+  return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)];
+}}
+
+function renderHeatmap(containerId, data) {{
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  if (!data || !data.rows || !data.rows.length) {{ el.innerHTML='<p class="empty">データ蓄積中...</p>'; return; }}
+  const allCounts = data.rows.flatMap(r => r.counts);
+  const max = Math.max(...allCounts, 1);
+  let html = '<div class="hm-grid">';
+  html += '<div class="hm-th"></div>';
+  data.dates.forEach(d => {{ html += `<div class="hm-th">${{d}}</div>`; }});
+  data.rows.forEach(row => {{
+    const color = LAYER_COLORS[row.layer] || '#378ADD';
+    const [r,g,b] = hexToRgb(color);
+    html += `<div class="hm-lb" title="${{row.layer}}">${{row.layer}}</div>`;
+    row.counts.forEach(cnt => {{
+      const bg  = cnt === 0 ? '#1e1e1c' : `rgba(${{r}},${{g}},${{b}},${{Math.max(0.18, cnt/max).toFixed(2)}})`;
+      const tip = cnt > 0 ? cnt + '件' : 'なし';
+      html += `<div class="hm-cell" style="background:${{bg}}" title="${{tip}}"></div>`;
+    }});
+  }});
+  html += '</div>';
+  el.innerHTML = html;
+}}
+
 function renderBars(containerId, data, colorFn, maxOverride) {{
   const el = document.getElementById(containerId);
   if (!el || !data.length) {{ if(el) el.innerHTML='<p class="empty">データ蓄積中...</p>'; return; }}
@@ -527,6 +609,12 @@ function initDashboard() {{
     (ANA.layer_7||[]),
     label => LAYER_COLORS[label]||'#378ADD'
   );
+
+  // キーワードクラウド
+  renderKwCloud('kw-cloud', ANA.kw_7||[]);
+
+  // 6階層ヒートマップ
+  renderHeatmap('layer-heatmap', ANA.layer_heatmap||null);
 
   // 大項目フィルターボタン生成
   const filterEl = document.getElementById('main-filter');
