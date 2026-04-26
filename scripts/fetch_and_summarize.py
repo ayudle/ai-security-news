@@ -12,18 +12,23 @@ from google import genai
 # ソース定義
 # ============================================================
 SOURCES = [
-    {"name": "CISA",              "tier": "A", "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",       "category": "公的機関"},
-    {"name": "NIST",              "tier": "A", "url": "https://csrc.nist.gov/feeds/all",                             "category": "公的機関"},
-    {"name": "Krebs on Security", "tier": "B", "url": "https://krebsonsecurity.com/feed/",                           "category": "専門メディア"},
-    {"name": "Dark Reading",      "tier": "B", "url": "https://www.darkreading.com/rss.xml",                         "category": "専門メディア"},
-    {"name": "SecurityWeek",      "tier": "B", "url": "https://feeds.feedburner.com/Securityweek",                   "category": "専門メディア"},
-    {"name": "The Hacker News",   "tier": "B", "url": "https://feeds.feedburner.com/TheHackersNews",                 "category": "専門メディア"},
-    {"name": "Bleeping Computer", "tier": "B", "url": "https://www.bleepingcomputer.com/feed/",                      "category": "専門メディア"},
-    {"name": "Wired Security",    "tier": "B", "url": "https://www.wired.com/feed/category/security/latest/rss",     "category": "Techメディア"},
-    {"name": "Ars Technica",      "tier": "B", "url": "https://feeds.arstechnica.com/arstechnica/security",          "category": "Techメディア"},
-    {"name": "MIT Tech Review",   "tier": "B", "url": "https://www.technologyreview.com/feed/",                      "category": "Techメディア"},
-    {"name": "arXiv cs.CR",       "tier": "C", "url": "https://rss.arxiv.org/rss/cs.CR",                            "category": "学術・研究"},
-    {"name": "arXiv cs.AI",       "tier": "C", "url": "https://rss.arxiv.org/rss/cs.AI",                            "category": "学術・研究"},
+    {"name": "CISA",                  "tier": "A", "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",       "category": "公的機関"},
+    {"name": "NIST",                  "tier": "A", "url": "https://csrc.nist.gov/feeds/all",                             "category": "公的機関"},
+    {"name": "OWASP GenAI",           "tier": "A", "url": "https://genai.owasp.org/feed/",                               "category": "公的機関"},
+    {"name": "Google Security Blog",  "tier": "A", "url": "https://security.googleblog.com/feeds/posts/default",         "category": "Techメディア"},
+    {"name": "Palo Alto Unit 42",     "tier": "A", "url": "https://unit42.paloaltonetworks.com/feed/",                   "category": "専門メディア"},
+    {"name": "Krebs on Security",     "tier": "B", "url": "https://krebsonsecurity.com/feed/",                           "category": "専門メディア"},
+    {"name": "Dark Reading",          "tier": "B", "url": "https://www.darkreading.com/rss.xml",                         "category": "専門メディア"},
+    {"name": "SecurityWeek",          "tier": "B", "url": "https://feeds.feedburner.com/Securityweek",                   "category": "専門メディア"},
+    {"name": "The Hacker News",       "tier": "B", "url": "https://feeds.feedburner.com/TheHackersNews",                 "category": "専門メディア"},
+    {"name": "Bleeping Computer",     "tier": "B", "url": "https://www.bleepingcomputer.com/feed/",                      "category": "専門メディア"},
+    {"name": "Embrace The Red",       "tier": "B", "url": "https://embracethered.com/blog/index.xml",                    "category": "AI×セキュリティ研究"},
+    {"name": "Simon Willison",        "tier": "B", "url": "https://simonwillison.net/atom/everything/",                  "category": "AI研究"},
+    {"name": "Wired Security",        "tier": "B", "url": "https://www.wired.com/feed/category/security/latest/rss",     "category": "Techメディア"},
+    {"name": "Ars Technica",          "tier": "B", "url": "https://feeds.arstechnica.com/arstechnica/security",          "category": "Techメディア"},
+    {"name": "MIT Tech Review",       "tier": "B", "url": "https://www.technologyreview.com/feed/",                      "category": "Techメディア"},
+    {"name": "arXiv cs.CR",           "tier": "C", "url": "https://rss.arxiv.org/rss/cs.CR",                            "category": "学術・研究"},
+    {"name": "arXiv cs.AI",           "tier": "C", "url": "https://rss.arxiv.org/rss/cs.AI",                            "category": "学術・研究"},
 ]
 
 # ============================================================
