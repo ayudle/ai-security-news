@@ -99,9 +99,15 @@ a{color:inherit;text-decoration:none}
 .sf-btn{font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;transition:all .15s}
 .sf-btn.on{border-color:var(--accent);color:var(--accent);background:#0d1e36}
 .imp-note{font-size:11px;color:var(--dim);background:var(--card);border-radius:8px;padding:10px 12px;line-height:1.6;margin-bottom:12px;border-left:3px solid #BA751755}
-.kw-cloud{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline;padding:2px 0}
-.kw-tag{color:var(--accent);font-weight:500;cursor:default;transition:opacity .1s;white-space:nowrap}
-.kw-tag:hover{opacity:1!important}
+.kw-cloud{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:4px 0}
+.kw-bubble{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:default;text-align:center;padding:6px;line-height:1.25;word-break:break-word;overflow:hidden;transition:opacity .15s;flex-shrink:0}
+.kw-bubble:hover{opacity:.75}
+.kw-bubble-word{color:#fff;font-weight:600}
+.kw-bubble-cnt{color:rgba(255,255,255,.6);font-size:8px;margin-top:1px}
+.hm-legend{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.hm-lg-lbl{font-size:10px;color:var(--dim);font-weight:700;letter-spacing:.05em}
+.hm-lg-item{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--dim)}
+.hm-lg-cell{width:14px;height:14px;border-radius:3px;display:inline-block;flex-shrink:0}
 .hm-grid{display:grid;grid-template-columns:88px repeat(7,1fr);gap:3px;align-items:center}
 .hm-th{font-size:9px;color:var(--dim);text-align:center;padding-bottom:2px}
 .hm-lb{font-size:10px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:4px}
@@ -309,7 +315,15 @@ gtag('config', 'G-KV7Q7SQKZX');
 
     <div class="dc" style="grid-column:1/-1">
       <div class="dc-title">6階層ヒートマップ（過去7日）</div>
-      <div class="dc-sub">日付×インフラ階層の記事件数（色が濃いほど多い）</div>
+      <div class="dc-sub">日付×インフラ階層の記事件数</div>
+      <div class="hm-legend">
+        <span class="hm-lg-lbl">凡例</span>
+        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:#1e1e1c"></span>0件</span>
+        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.2)"></span>少</span>
+        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.55)"></span>中</span>
+        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.9)"></span>多</span>
+        <span class="hm-lg-item" style="margin-left:4px;font-size:10px;color:var(--dim)">※各層の固有色で表示</span>
+      </div>
       <div id="layer-heatmap"></div>
     </div>
 
@@ -413,12 +427,16 @@ function renderKwCloud(containerId, data) {
   const el = document.getElementById(containerId);
   if (!el) return;
   if (!data || !data.length) { el.innerHTML='<p class="empty">データ蓄積中...</p>'; return; }
-  const max = data[0][1] || 1;
-  el.innerHTML = data.map(([kw, cnt]) => {
-    const t   = Math.sqrt(cnt / max);
-    const sz  = Math.round(12 + t * 10);
-    const op  = (0.5 + t * 0.5).toFixed(2);
-    return `<span class="kw-tag" style="font-size:${sz}px;opacity:${op}" title="${cnt}件">${kw}</span>`;
+  const top = data.slice(0, 15);
+  const max = top[0][1] || 1;
+  el.innerHTML = top.map(([kw, cnt]) => {
+    const t    = Math.sqrt(cnt / max);
+    const size = Math.round(52 + t * 36);
+    const bgOp = (0.2 + t * 0.65).toFixed(2);
+    const fs   = kw.length > 8 ? 9 : kw.length > 5 ? 10 : 11;
+    return `<div class="kw-bubble" style="width:${size}px;height:${size}px;background:rgba(55,138,221,${bgOp});font-size:${fs}px" title="${cnt}件">` +
+           `<span class="kw-bubble-word">${kw}</span>` +
+           `<span class="kw-bubble-cnt">${cnt}件</span></div>`;
   }).join('');
 }
 
