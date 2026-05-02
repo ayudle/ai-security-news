@@ -48,16 +48,31 @@ def article_card(a, rank=None):
     views        = a.get("views", 0)
     insight      = a.get("insight","")
     imp_reason   = a.get("importance_reason","")
-    insight_html = f'<div class="insight"><span class="ins-lbl">示唆・学び</span>{insight}</div>' if insight else ""
     reason_html  = f'<span class="imp-reason" title="{imp_reason}">?</span>' if imp_reason else ""
     main_id      = a.get("tag_main_id","attack")
     main_label   = a.get("tag_main_label","攻撃・脅威")
     subs_html    = "".join(tag_sub_badge(s) for s in a.get("tag_subs",[]))
     layers_html  = "".join(tag_layer_badge(l) for l in a.get("affected_layers",[]))
     kws_html     = "".join(tag_kw_badge(k) for k in a.get("related_keywords",[])[:5])
-    meta_row     = f'<div class="tags tags-meta">{layers_html}{kws_html}</div>' if (layers_html or kws_html) else ""
+    summary      = a.get("summary_ja") or a.get("summary", "")
+    preview_txt  = (summary[:80] + "…") if len(summary) > 80 else summary
+    preview_html = f'<div class="article-preview">{preview_txt}</div>' if preview_txt else ""
+    # 示唆スニペット（タイトル直下1〜2行）
+    insight_snippet = ""
+    if insight:
+        itxt = (insight[:80] + "…") if len(insight) > 80 else insight
+        insight_snippet = f'<div class="insight-snippet">{itxt}</div>'
+    # レイヤーは常時表示、related_keywordsは折りたたみ
+    layers_row = f'<div class="tags tags-meta">{layers_html}</div>' if layers_html else ""
+    kw_section = ""
+    if kws_html:
+        kid = f"kw-{a.get('id','')}"
+        kw_section = (f'<div class="kw-fold">'
+                      f'<div class="tags tags-meta" id="{kid}" style="display:none">{kws_html}</div>'
+                      f'<button class="kw-btn" onclick="toggleKw(\'{kid}\',this);event.stopPropagation()">タグを表示</button>'
+                      f'</div>')
 
-    return f"""<article class="card" data-id="{a.get('id','')}" data-main="{main_id}" onclick="countView('{a.get('id','')}')">
+    return f"""<article class="card" data-id="{a.get('id','')}" data-main="{main_id}" onclick="navigateCard('{a.get('id','')}')">
   <div class="cm">
     {rank_html}
     <span class="tier">{tier_label(a.get('source_tier','B'))}</span>
@@ -66,13 +81,16 @@ def article_card(a, rank=None):
     {imp_badge(a.get('importance','中'))}{reason_html}
     <span class="vw" id="v-{a.get('id','')}">👁 {views}</span>
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/{a.get('id','')}.html">{a.get('title_ja') or a.get('title','')}</a></h2>
+  <h2 class="ct"><a href="/ai-security-news/article/{a.get('id','')}.html" onclick="event.stopPropagation()">{a.get('title_ja') or a.get('title','')}</a></h2>
+  {insight_snippet}
+  {preview_html}
   <div class="tags">
     {tag_main_badge(main_id, main_label)}
     {subs_html}
   </div>
-  {meta_row}
-  <div class="cf">出典: <a href="{a.get('url','#')}" target="_blank" rel="noopener">{a.get('source_name','')}</a>
+  {layers_row}
+  {kw_section}
+  <div class="cf">出典: <a href="{a.get('url','#')}" target="_blank" rel="noopener" onclick="event.stopPropagation()">{a.get('source_name','')}</a>
   <em class="orig">"{a.get('title','')}"</em></div>
 </article>"""
 
@@ -308,6 +326,13 @@ a{{color:inherit;text-decoration:none}}
 .hm-cell{{height:22px;border-radius:3px;cursor:default;transition:filter .1s}}
 .hm-cell:hover{{filter:brightness(1.4)}}
 @media(max-width:600px){{.hm-grid{{grid-template-columns:64px repeat(7,1fr);gap:2px}}.hm-lb{{font-size:9px}}.hm-cell{{height:16px}}}}
+.article-preview{{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:6px}}
+.insight-snippet{{font-size:12px;color:#9ca3af;line-height:1.55;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+.kw-fold{{margin-top:2px}}
+.kw-btn{{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}}
+.kw-btn:hover{{color:var(--muted);border-color:#3a3a38}}
+.hidden{{display:none}}
+@media(max-width:600px){{.article-preview{{display:none}}}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
 <script>
@@ -333,6 +358,11 @@ gtag('config', 'G-KV7Q7SQKZX');
 </div>
 
 <div class="pane" id="pane-today">
+  <div id="today-impl-box" style="display:none;background:#0d1b2e;border-left:3px solid #378ADD;border-radius:4px;padding:12px 16px;margin-bottom:16px">
+    <div style="font-size:10px;font-weight:700;color:#378ADD;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
+    <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#c0beb6"></div>
+    <a href="#trend" style="display:inline-block;font-size:11px;color:#378ADD;margin-top:8px;text-decoration:none">→ トレンド分析で詳しく見る</a>
+  </div>
   <p class="plabel">{today} のニュース（{len(articles)}件）</p>
   {today_html}
 </div>
@@ -366,7 +396,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   <div id="today-implication-box" style="display:none;background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;margin-bottom:18px">
     <div style="font-size:11px;font-weight:700;color:#378ADD;letter-spacing:.05em;margin-bottom:6px">本日の示唆</div>
     <div id="today-implication-text" style="font-size:13px;line-height:1.8;color:#e6e4dc"></div>
-    <div style="font-size:10px;color:#6a6860;margin-top:8px">CISO/経営視点 + CDCサービス設計視点</div>
+    <div style="font-size:10px;color:#6a6860;margin-top:8px">AI for Security / Security for AI / CDC・SOCへの示唆</div>
   </div>
 
   <div class="stat-row">
@@ -406,19 +436,19 @@ gtag('config', 'G-KV7Q7SQKZX');
       <div id="imp-bars"></div>
     </div>
 
-    <div class="dc" style="grid-column:1/-1">
+    <div class="dc" id="dc-layer" style="grid-column:1/-1">
       <div class="dc-title">影響レイヤー分布（過去7日）</div>
       <div class="dc-sub">各記事が影響するインフラ・ガバナンス層の内訳</div>
       <div id="layer-bars"></div>
     </div>
 
-    <div class="dc" style="grid-column:1/-1">
+    <div class="dc" id="dc-kw" style="grid-column:1/-1">
       <div class="dc-title">キーワードクラウド（過去7日）</div>
       <div class="dc-sub">頻出キーワードをフォントサイズで表現（大きいほど多出現）</div>
       <div class="kw-cloud" id="kw-cloud"></div>
     </div>
 
-    <div class="dc" style="grid-column:1/-1">
+    <div class="dc" id="dc-heatmap" style="grid-column:1/-1">
       <div class="dc-title">6階層ヒートマップ（過去7日）</div>
       <div class="dc-sub">日付×インフラ階層の記事件数</div>
       <div class="hm-legend">
@@ -590,11 +620,24 @@ function renderBars(containerId, data, colorFn, maxOverride) {{
 const impCount = {{"高":0,"中":0,"低":0}};
 (ANA.imp_list||[]).forEach(([imp,cnt]) => {{ if(impCount[imp]!==undefined) impCount[imp]=cnt; }});
 
+function renderImplication(text, textElId, boxElId, hd) {{
+  var el = document.getElementById(textElId);
+  var box = document.getElementById(boxElId);
+  if (!el || !box) return;
+  var fs = hd ? '10px' : '11px';
+  var mt = hd ? '10px' : '14px';
+  el.innerHTML = text
+    .replace(/★[^\\n]*/g, '')
+    .replace(/【([^】]+)】\\n?/g,
+      '<span style="display:block;font-size:'+fs+';font-weight:700;color:#378ADD;letter-spacing:.04em;margin-top:'+mt+';margin-bottom:2px">【$1】</span>')
+    .replace(/\\n/g, '<br>');
+  box.style.display = '';
+}}
+
 function initDashboard() {{
   if (ANA.today_implication) {{
-    document.getElementById('today-implication-text').innerHTML =
-      ANA.today_implication.replace(/\\n/g, '<br>');
-    document.getElementById('today-implication-box').style.display = '';
+    renderImplication(ANA.today_implication, 'today-implication-text', 'today-implication-box', false);
+    renderImplication(ANA.today_implication, 'today-impl-text', 'today-impl-box', true);
   }}
 
   document.getElementById('s-total').textContent = ANA.total_articles;
@@ -623,16 +666,30 @@ function initDashboard() {{
   renderBars('imp-bars', impData, label => IMP_COLORS[label]||'#888');
 
   // 影響レイヤーバー
-  renderBars('layer-bars',
-    (ANA.layer_7||[]),
-    label => LAYER_COLORS[label]||'#378ADD'
-  );
+  if (ANA.layer_7 && ANA.layer_7.length) {{
+    renderBars('layer-bars', ANA.layer_7, label => LAYER_COLORS[label]||'#378ADD');
+  }} else {{
+    const dcLayer = document.getElementById('dc-layer');
+    if (dcLayer) dcLayer.classList.add('hidden');
+  }}
 
   // キーワードクラウド
-  renderKwCloud('kw-cloud', ANA.kw_7||[]);
+  if (ANA.kw_7 && ANA.kw_7.length) {{
+    renderKwCloud('kw-cloud', ANA.kw_7);
+  }} else {{
+    const dcKw = document.getElementById('dc-kw');
+    if (dcKw) dcKw.classList.add('hidden');
+  }}
 
   // 6階層ヒートマップ
-  renderHeatmap('layer-heatmap', ANA.layer_heatmap||null);
+  const hmData = ANA.layer_heatmap || null;
+  const hmAllZero = !hmData || !hmData.rows || hmData.rows.every(r => r.counts.every(c => c === 0));
+  if (!hmAllZero) {{
+    renderHeatmap('layer-heatmap', hmData);
+  }} else {{
+    const dcHm = document.getElementById('dc-heatmap');
+    if (dcHm) dcHm.classList.add('hidden');
+  }}
 
   // 大項目フィルターボタン生成
   const filterEl = document.getElementById('main-filter');
@@ -688,6 +745,19 @@ function countView(id) {{
   localStorage.setItem(VK, JSON.stringify(v));
   const el = document.getElementById('v-' + id);
   if (el) el.textContent = '👁 ' + v[id];
+}}
+function navigateCard(id) {{
+  if (!id) return;
+  countView(id);
+  location.href = '/ai-security-news/article/' + id + '.html';
+}}
+function toggleKw(id, btn) {{
+  var el = document.getElementById(id);
+  if (!el) return;
+  var open = btn.dataset.open === '1';
+  el.style.display = open ? 'none' : '';
+  btn.dataset.open = open ? '0' : '1';
+  btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }}
 (function() {{
   const v = loadViews();
@@ -959,6 +1029,116 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 </html>"""
 
 
+def build_archive_page(day_data, date):
+    """アーカイブページ（記事一覧のみ）を生成する"""
+    articles = day_data.get("articles", [])
+    n = len(articles)
+    articles_html = "\n".join(article_card(a) for a in articles) if articles \
+                    else '<p class="empty">この日の記事はありませんでした。</p>'
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{date} のニュース | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="{date} のAI×セキュリティニュース（{n}件）">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<style>
+*,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
+:root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--r:10px}}
+body{{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}}
+a{{color:inherit;text-decoration:none}}
+.hdr{{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}}
+.ht{{font-size:15px;font-weight:700;color:#fff}}
+.back{{display:inline-block;padding:8px 16px;margin:12px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
+.back:hover{{text-decoration:underline}}
+.content{{max-width:860px;margin:0 auto;padding:16px 24px}}
+.plabel{{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}}
+.card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}}
+.card:hover{{border-color:#3a3a38}}
+.cm{{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:8px}}
+.tier{{background:#0c2a4a;color:#85b7eb;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}}
+.src,.dt{{font-size:10px;color:var(--dim)}}
+.dt{{margin-left:auto}}
+.imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
+.imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}}
+.vw{{font-size:10px;color:var(--dim)}}
+.ct{{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}}
+.ct a:hover{{color:var(--accent)}}
+.article-preview{{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:6px}}
+.tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}}
+.tag-main{{font-size:10px;padding:2px 8px;border-radius:99px;border:1px solid;font-weight:600}}
+.tag-sub{{font-size:10px;padding:2px 7px;border-radius:99px;background:#222220;border:1px solid #333330;color:var(--muted)}}
+.tags-meta{{margin-top:3px}}
+.tag-layer{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0d2233;border:1px solid #1a4060;color:#6aabdd}}
+.tag-kw{{font-size:9px;padding:1px 5px;border-radius:99px;background:#1e1e1c;border:1px solid #2e2e2c;color:#6a6860}}
+.cf{{font-size:10px;color:var(--dim)}}
+.cf a{{color:var(--accent)}}
+.orig{{font-style:italic;margin-left:4px}}
+.empty{{font-size:12px;color:var(--dim);padding:1rem 0}}
+.insight{{background:#0d1e36;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:8px;font-size:11px;color:#85b7eb;line-height:1.55}}
+.ins-lbl{{display:block;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:2px;text-transform:uppercase}}
+.insight-snippet{{font-size:12px;color:#9ca3af;line-height:1.55;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+.kw-fold{{margin-top:2px}}
+.kw-btn{{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}}
+.kw-btn:hover{{color:var(--muted);border-color:#3a3a38}}
+@media(max-width:600px){{.article-preview{{display:none}}}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <span class="ht">AI×セキュリティ ニュース日報</span>
+</header>
+
+<a href="/ai-security-news/#today" class="back">← トップページに戻る</a>
+
+<div class="content">
+  <p class="plabel">{date} のニュース（{n}件）</p>
+  {articles_html}
+</div>
+
+<footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
+  <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+
+<script>
+const VK = 'aisc_v3';
+function loadViews() {{ try {{ return JSON.parse(localStorage.getItem(VK)||'{{}}'); }} catch {{ return {{}}; }} }}
+function countView(id) {{
+  const v = loadViews(); v[id] = (v[id]||0) + 1;
+  localStorage.setItem(VK, JSON.stringify(v));
+  const el = document.getElementById('v-' + id);
+  if (el) el.textContent = '👁 ' + v[id];
+}}
+function navigateCard(id) {{
+  if (!id) return;
+  countView(id);
+  location.href = '/ai-security-news/article/' + id + '.html';
+}}
+function toggleKw(id, btn) {{
+  var el = document.getElementById(id);
+  if (!el) return;
+  var open = btn.dataset.open === '1';
+  el.style.display = open ? 'none' : '';
+  btn.dataset.open = open ? '0' : '1';
+  btn.textContent = open ? 'タグを表示' : 'タグを隠す';
+}}
+(function() {{
+  const v = loadViews();
+  Object.entries(v).forEach(([id,cnt]) => {{
+    const el = document.getElementById('v-' + id);
+    if (el) el.textContent = '👁 ' + cnt;
+  }});
+}})();
+</script>
+
+</body>
+</html>"""
+
+
 def main():
     if not os.path.exists(DATA_PATH):
         print(f"[ERROR] {DATA_PATH} なし"); return
@@ -971,25 +1151,7 @@ def main():
     os.makedirs("docs/archive", exist_ok=True)
     for day in data.get("history",[]):
         d = day.get("date","")
-        arc = {**data, "today":d, "articles":day.get("articles",[]), "history":[]}
-        arc_html = build_html(arc)
-        # アーカイブページのタブリンクを絶対パスに（トップページに戻るように）
-        arc_html = arc_html.replace(
-            '<a href="#today"   class="tab">',
-            '<a href="/ai-security-news/#today" class="tab">'
-        ).replace(
-            '<a href="#popular" class="tab">',
-            '<a href="/ai-security-news/#popular" class="tab">'
-        ).replace(
-            '<a href="#archive" class="tab">',
-            '<a href="/ai-security-news/#archive" class="tab">'
-        ).replace(
-            '<a href="#trend"   class="tab">',
-            '<a href="/ai-security-news/#trend" class="tab">'
-        ).replace(
-            '<a href="#about"   class="tab">',
-            '<a href="/ai-security-news/#about" class="tab">'
-        )
+        arc_html = build_archive_page(day, d)
         with open(f"docs/archive/{d}.html","w",encoding="utf-8") as f:
             f.write(arc_html)
     print(f"アーカイブ: {len(data.get('history',[]))}日分")
