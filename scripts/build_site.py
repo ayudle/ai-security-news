@@ -394,6 +394,10 @@ a{{color:inherit;text-decoration:none}}
 .kw-btn{{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}}
 .kw-btn:hover{{color:var(--muted);border-color:#3a3a38}}
 .hidden{{display:none}}
+.imp-detail{{margin-top:8px}}
+.imp-detail-toggle{{cursor:pointer;display:block;font-size:11px;color:#378ADD;padding:4px 0;user-select:none;outline:none;list-style:none}}
+.imp-detail-toggle::-webkit-details-marker{{display:none}}
+.imp-detail-toggle::marker{{display:none}}
 @media(max-width:600px){{.article-preview{{display:none}}}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
@@ -681,11 +685,33 @@ function renderImplication(text, textElId, boxElId, hd) {{
   if (!el || !box) return;
   var fs = hd ? '10px' : '11px';
   var mt = hd ? '10px' : '14px';
-  el.innerHTML = text
-    .replace(/★[^\\n]*/g, '')
-    .replace(/【([^】]+)】\\n?/g,
-      '<span style="display:block;font-size:'+fs+';font-weight:700;color:#378ADD;letter-spacing:.04em;margin-top:'+mt+';margin-bottom:2px">【$1】</span>')
-    .replace(/\\n/g, '<br>');
+  var cleaned = text.replace(/★[^\\n]*/g, '').trim();
+  var sections = cleaned.split(/(?=【[^】]+】)/);
+  var summary = '';
+  var rest = [];
+  sections.forEach(function(sec) {{
+    sec = sec.trim();
+    if (!sec) return;
+    if (sec.indexOf('【今日の結論】') === 0) {{ summary = sec; }}
+    else {{ rest.push(sec); }}
+  }});
+  if (!summary && sections.length > 0) {{
+    summary = sections[0].trim();
+    rest = sections.slice(1).map(function(s) {{ return s.trim(); }}).filter(Boolean);
+  }}
+  function renderSec(s) {{
+    return s
+      .replace(/【([^】]+)】\\n?/g,
+        '<span style="display:block;font-size:'+fs+';font-weight:700;color:#378ADD;letter-spacing:.04em;margin-top:'+mt+';margin-bottom:2px">【$1】</span>')
+      .replace(/\\n/g, '<br>');
+  }}
+  var html = renderSec(summary);
+  if (rest.length > 0) {{
+    html += '<details class="imp-detail"><summary class="imp-detail-toggle">▶ 全文を読む...</summary>'
+      + rest.map(renderSec).join('<br>')
+      + '</details>';
+  }}
+  el.innerHTML = html;
   box.style.display = '';
 }}
 
