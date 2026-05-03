@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>週次レポート 04/26〜05/03 | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="AI×セキュリティ週次レポート（04/26〜05/03）。53件の記事を分析したCISO向けダイジェスト。">
+<meta property="og:title" content="AI×セキュリティ 週次レポート 04/26〜05/03">
+<meta property="og:description" content="今週はAIエージェントの急速な普及と、それに伴う新たなサイバー攻撃の脅威が顕著でした。シャドーAIやエージェントの権限委譲によるリスクが表面化し、AIエージェントの誤動作が本番環境に影響を及ぼす事例も報告されています。同時に、LiteLLM">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/weekly/2026-05-03.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/weekly/2026-05-03.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700}
+.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+.wp{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.wp-head{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:24px}
+.wp-period{font-size:12px;color:var(--dim);margin-bottom:6px}
+.wp-title{font-size:22px;font-weight:700;color:#fff;line-height:1.4}
+.wp-meta{font-size:11px;color:var(--dim);margin-top:8px}
+.sec{margin-bottom:32px}
+.sec-title{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit;background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn:hover{border-color:var(--accent)}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+</style>
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">AI×セキュリティ ニュース日報</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#weekly" class="back">← 週次レポート一覧に戻る</a>
+
+<div class="wp">
+  <div class="wp-head">
+    <div class="wp-period">週次レポート</div>
+    <h1 class="wp-title">AI×セキュリティ 週次ダイジェスト</h1>
+    <div class="wp-meta">04/26〜05/03（53件の記事を分析）</div>
+  </div>
+
+  <section class="sec">
+    <h3 class="sec-title">エグゼクティブサマリー</h3>
+    <div style="background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#e6e4dc">今週はAIエージェントの急速な普及と、それに伴う新たなサイバー攻撃の脅威が顕著でした。シャドーAIやエージェントの権限委譲によるリスクが表面化し、AIエージェントの誤動作が本番環境に影響を及ぼす事例も報告されています。同時に、LiteLLMやGemini CLIといったAI関連コンポーネントの深刻な脆弱性が悪用され、AIサプライチェーン全体への攻撃が現実のものとなりました。これらのAI駆動型攻撃に対抗するため、「AI対AI」戦略による防御の自動化・高度化が急務であり、CISAのガイドラインに基づくAIガバナンスの確立が不可欠です。</div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">今週の重要トピック TOP3</h3>
+    <div style="background:#1a1a18;border:1px solid #2a2a28;border-radius:10px;padding:14px 16px;margin-bottom:10px"><div style="font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px">AIエージェントのリスクと統制</div><div style="font-size:13px;color:#98968e;line-height:1.7;margin-bottom:8px">AIエージェントの自律性向上に伴い、シャドーAI、権限濫用、本番環境での誤動作、特権昇格脆弱性といった新たなリスクが顕在化しています。CISOは、AIエージェントの導入にあたり、CISAのガイダンスに基づいた包括的なAIガバナンス体制の確立と、推論と実行の分離による安全確保が喫緊の課題です。</div><div><a href="../article/4f85be66c605.html" style="font-size:10px;color:#378ADD;text-decoration:none">[4f85be66]</a> <a href="../article/cd4e35641d1d.html" style="font-size:10px;color:#378ADD;text-decoration:none">[cd4e3564]</a> <a href="../article/a2214001719d.html" style="font-size:10px;color:#378ADD;text-decoration:none">[a2214001]</a> <a href="../article/d9f531c5f8e3.html" style="font-size:10px;color:#378ADD;text-decoration:none">[d9f531c5]</a> <a href="../article/2134f9b62e27.html" style="font-size:10px;color:#378ADD;text-decoration:none">[2134f9b6]</a> <a href="../article/a200fd0dbe43.html" style="font-size:10px;color:#378ADD;text-decoration:none">[a200fd0d]</a> <a href="../article/3378ecae1c6b.html" style="font-size:10px;color:#378ADD;text-decoration:none">[3378ecae]</a></div></div><div style="background:#1a1a18;border:1px solid #2a2a28;border-radius:10px;padding:14px 16px;margin-bottom:10px"><div style="font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px">AI関連コンポーネント脆弱性</div><div style="font-size:13px;color:#98968e;line-height:1.7;margin-bottom:8px">LiteLLMゲートウェイやGemini CLIなど、AIシステム構築の基盤となるコンポーネントに深刻な脆弱性が多発し、公開直後に悪用される事例が確認されました。これらはサプライチェーン攻撃の新たな経路となるため、AI関連システムのサプライチェーンセキュリティを最優先で強化し、迅速な脆弱性管理とパッチ適用体制を構築すべきです。</div><div><a href="../article/6c5515697d6f.html" style="font-size:10px;color:#378ADD;text-decoration:none">[6c551569]</a> <a href="../article/59441bcffbee.html" style="font-size:10px;color:#378ADD;text-decoration:none">[59441bcf]</a> <a href="../article/30bcb429b454.html" style="font-size:10px;color:#378ADD;text-decoration:none">[30bcb429]</a> <a href="../article/fb05cfeec068.html" style="font-size:10px;color:#378ADD;text-decoration:none">[fb05cfee]</a> <a href="../article/493f2e36937b.html" style="font-size:10px;color:#378ADD;text-decoration:none">[493f2e36]</a></div></div><div style="background:#1a1a18;border:1px solid #2a2a28;border-radius:10px;padding:14px 16px;margin-bottom:10px"><div style="font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px">AI駆動型攻撃と防御の進化</div><div style="font-size:13px;color:#98968e;line-height:1.7;margin-bottom:8px">Anthropic MythosやGPT-5.5のような高性能AIモデルが脆弱性発見や詐欺の手口を高度化させ、サイバー攻撃の速度と自律性を劇的に向上させています。これに対抗するため、企業は従来の防御パラダイムから脱却し、AIを活用した脅威検知、インシデント対応、脆弱性管理の自動化を進める「AI対AI」戦略への投資が必須となります。</div><div><a href="../article/292e0d01a29b.html" style="font-size:10px;color:#378ADD;text-decoration:none">[292e0d01]</a> <a href="../article/5e81c46560ba.html" style="font-size:10px;color:#378ADD;text-decoration:none">[5e81c465]</a> <a href="../article/79d4541e64c3.html" style="font-size:10px;color:#378ADD;text-decoration:none">[79d4541e]</a> <a href="../article/2ecfe9509a47.html" style="font-size:10px;color:#378ADD;text-decoration:none">[2ecfe950]</a> <a href="../article/db0d8d1ec99e.html" style="font-size:10px;color:#378ADD;text-decoration:none">[db0d8d1e]</a> <a href="../article/2d3ae8c7a209.html" style="font-size:10px;color:#378ADD;text-decoration:none">[2d3ae8c7]</a> <a href="../article/db9e89a819b3.html" style="font-size:10px;color:#378ADD;text-decoration:none">[db9e89a8]</a> <a href="../article/1d42f5881de5.html" style="font-size:10px;color:#378ADD;text-decoration:none">[1d42f588]</a></div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">6階層別 今週のトレンド</h3>
+    <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#639922;padding-top:2px;flex-shrink:0">デバイス/エッジ</div><div style="font-size:13px;color:#98968e;line-height:1.65">Microsoft Teamsのような広く利用されるアプリケーションが悪用される攻撃が継続しており、エンドポイントの脅威検知強化が求められます。AIエージェントの個人レベルでの利用も進んでおり、シャドーAI/ITのリスクを増加させています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#378ADD;padding-top:2px;flex-shrink:0">ネットワーク</div><div style="font-size:13px;color:#98968e;line-height:1.65">AIによる高速な攻撃に対抗するため、ネットワークトラフィックのリアルタイム検知と分析を行うNDR（Network Detection and Response）の重要性が高まっています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#1D9E75;padding-top:2px;flex-shrink:0">クラウド/サーバー</div><div style="font-size:13px;color:#98968e;line-height:1.65">LLMゲートウェイやAI開発CLIツールなど、クラウド上で稼働するAI関連コンポーネントに深刻な脆弱性が多発し、サプライチェーン攻撃の経路となっています。クラウドID管理におけるAIエージェントの権限設定にも注意が必要です。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#BA7517;padding-top:2px;flex-shrink:0">アプリ/API</div><div style="font-size:13px;color:#98968e;line-height:1.65">AIエージェントがアプリケーションやAPIを介して動作する際の権限管理と振る舞い監視が重要であり、プロンプトインジェクション攻撃への対策も喫緊の課題です。防御側でもAIを活用したアプリ/APIセキュリティが進化しています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#7F77DD;padding-top:2px;flex-shrink:0">データ/AI</div><div style="font-size:13px;color:#98968e;line-height:1.65">AIモデルの信頼性、出力の安全性（ハルシネーション）、AIエージェントによるデータ操作リスクが顕在化しています。セキュアなデータ基盤の再構築、AIモデルの来歴管理、推論と実行の分離によるデータ保護が重要課題です。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#98968e;padding-top:2px;flex-shrink:0">ガバナンス/規制</div><div style="font-size:13px;color:#98968e;line-height:1.65">地政学的リスクを背景としたAI技術利用規制が強化されており、企業はAIサプライヤーのガバナンスリスクも考慮すべきです。CISAのガイダンス発表により、AIエージェントの安全な導入に向けた包括的なAIガバナンス体制の確立が急務となっています。</div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">キーワード変動（先週比）</h3>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">AIエージェント</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+8件(+800%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週8件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Claude Mythos</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:62%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+5件(+500%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週5件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">オープンソース</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:50%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+4件(+400%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週4件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">LiteLLM</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週3件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">AI攻撃</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週3件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">iNaturalist</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週3件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Mythos</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週3件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">LLMセキュリティ</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週3件</div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">来週の注目ポイント</h3>
+    <div style="background:#0d1b2e;border-left:3px solid #378ADD55;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#c0beb6">来週もAIエージェントの進化とそれに伴うセキュリティリスク、そして防御側でのAI活用に関する動向が注目されるでしょう。特に、AIモデルの脆弱性悪用事例はさらに増加し、AIサプライチェーンセキュリティへの関心が高まると予測されます。CISAのような規制当局からのさらなるガイダンスや、主要AIプロバイダーの動向も注視が必要です。</div>
+  </section>
+
+  <div class="actions">
+    <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%E9%80%B1%E6%AC%A1%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%2004%2F26%E3%80%9C05%2F03%E3%80%91%0A%E4%BB%8A%E9%80%B1%E3%81%AFAI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E6%80%A5%E9%80%9F%E3%81%AA%E6%99%AE%E5%8F%8A%E3%81%A8%E3%80%81%E3%81%9D%E3%82%8C%E3%81%AB%E4%BC%B4%E3%81%86%E6%96%B0%E3%81%9F%E3%81%AA%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E6%94%BB%E6%92%83%E3%81%AE%E8%84%85%E5%A8%81%E3%81%8C%E9%A1%95%E8%91%97%E3%81%A7%E3%81%97%E3%81%9F%E3%80%82%E3%82%B7%E3%83%A3%E3%83%89%E3%83%BCAI%E3%82%84%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E6%A8%A9%E9%99%90%E5%A7%94%E8%AD%B2%E3%81%AB%E3%82%88%E3%82%8B%E3%83%AA%E3%82%B9%E3%82%AF%E3%81%8C%E8%A1%A8%E9%9D%A2%E5%8C%96%E3%81%97%E3%80%81AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E8%AA%A4%E5%8B%95%E4%BD%9C%E3%81%8C%E6%9C%AC%E7%95%AA%E7%92%B0%E5%A2%83%E3%81%AB%E5%BD%B1%E9%9F%BF%E3%82%92%E5%8F%8A%E3%81%BC%E3%81%99%E4%BA%8B%E4%BE%8B%E3%82%82%E2%80%A6%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23CISO&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Fweekly%2F2026-05-03.html" target="_blank" rel="noopener" class="btn">Xでシェア</a>
+    <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/weekly/2026-05-03.html').then(function(){alert('URLをコピーしました')})" class="btn">📋 URLをコピー</button>
+  </div>
+</div>
+
+<footer>
+  各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
+  日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+
+</body>
+</html>
