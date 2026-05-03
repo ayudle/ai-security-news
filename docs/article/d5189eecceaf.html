@@ -57,7 +57,11 @@ header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;just
 .ap-body{font-size:15px;line-height:1.85;color:var(--text)}
 .insight-box{background:var(--insight-bg);border-left:3px solid var(--insight-border);padding:16px 20px;border-radius:4px;margin-top:12px}
 .insight-lbl{display:block;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}
+.insight-body{font-size:14px;line-height:1.75;color:var(--text)}
 .imp-box{padding:12px 16px;background:var(--card);border-radius:4px;margin-top:12px;font-size:13px;color:var(--dim)}
+.cdc-box{padding:12px 16px;background:#0a2820;border:1px solid #1a5040;border-radius:4px;margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cdc-rel-lbl{font-size:11px;font-weight:700;color:#4db896;margin-right:4px}
+.cdc-badge-ap{font-size:11px;padding:2px 8px;border-radius:4px;background:#0f3828;border:1px solid #1a5040;color:#4db896}
 .tags-box{display:flex;flex-wrap:wrap;gap:6px}
 .tag-main{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600}
 .tag-sub{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;background:var(--card);color:var(--text);border:1px solid var(--border)}
@@ -104,7 +108,7 @@ footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top
     <div class="ap-body">米サイバーセキュリティ・インフラセキュリティ庁（CISA）は、複数のLinuxディストリビューションに影響を与えるローカル権限昇格の脆弱性CVE-2026-31431をKnown Exploited Vulnerabilities (KEV) カタログに追加した。この脆弱性（CVSSスコア: 7.8）は既に実環境で悪用が確認されており、緊急の対応が求められる。CISAのKEVリストへの追加は、この脆弱性が早急なパッチ適用と対応を必要とする「既知の悪用済み脆弱性」であることを明確に示す。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span>CISA KEVリストに掲載された脆弱性は、組織にとって最優先で対策すべき脅威であり、即座のパッチ適用と影響範囲の特定、および検出・対応策の確認が不可欠だ。特に、広範なシステムで利用されるLinuxにおける権限昇格の脆弱性は、攻撃を受けた際の被害が甚大になる可能性が高いため、緊急の脆弱性管理プロセスを活性化すべきである。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span><div class='insight-body'>CISA KEVリストに掲載された脆弱性は、組織にとって最優先で対策すべき脅威であり、即座のパッチ適用と影響範囲の特定、および検出・対応策の確認が不可欠だ。特に、広範なシステムで利用されるLinuxにおける権限昇格の脆弱性は、攻撃を受けた際の被害が甚大になる可能性が高いため、緊急の脆弱性管理プロセスを活性化すべきである。</div></div></section>
 
   <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>CISA KEVリストへの追加は、国家レベルでの脅威認識を示し、実環境での悪用が確認されているため、多くの組織で緊急の対応が求められるため。</div></section>
 
@@ -115,6 +119,8 @@ footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top
       <span class="tag-sub">ゼロデイ</span><span class="tag-sub">CVE</span><span class="tag-sub">エクスプロイト</span>
     </div>
   </section>
+
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Exposure管理</span><span class='cdc-badge-ap'>MDR/MSSP設計</span></div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">元記事情報</h3>

@@ -45,7 +45,6 @@ def tag_kw_badge(kw):
 def article_card(a, rank=None):
     rank_html    = f'<span class="rank">#{rank}</span>' if rank else ""
     pub          = a.get("published","")[:10]
-    views        = a.get("views", 0)
     insight      = a.get("insight","")
     imp_reason   = a.get("importance_reason","")
     reason_html  = f'<span class="imp-reason" title="{imp_reason}">?</span>' if imp_reason else ""
@@ -62,6 +61,12 @@ def article_card(a, rank=None):
     if insight:
         itxt = (insight[:80] + "…") if len(insight) > 80 else insight
         insight_snippet = f'<div class="insight-snippet">{itxt}</div>'
+    # CDC観点バッジ（cdc_context が存在する記事のみ・最大3個）
+    cdc_html = ""
+    cdc_contexts = a.get("cdc_context", [])[:3]
+    if cdc_contexts:
+        badges = "".join(f'<span class="cdc-badge">{ctx}</span>' for ctx in cdc_contexts)
+        cdc_html = f'<div class="cdc-badges"><span class="cdc-lbl">CDC観点</span>{badges}</div>'
     # レイヤーは常時表示、related_keywordsは折りたたみ
     layers_row = f'<div class="tags tags-meta">{layers_html}</div>' if layers_html else ""
     kw_section = ""
@@ -79,10 +84,10 @@ def article_card(a, rank=None):
     <span class="src">{a.get('source_name','')}</span>
     <span class="dt">{pub}</span>
     {imp_badge(a.get('importance','中'))}{reason_html}
-    <span class="vw" id="v-{a.get('id','')}">👁 {views}</span>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/{a.get('id','')}.html" onclick="event.stopPropagation()">{a.get('title_ja') or a.get('title','')}</a></h2>
   {insight_snippet}
+  {cdc_html}
   {preview_html}
   <div class="tags">
     {tag_main_badge(main_id, main_label)}
@@ -188,12 +193,6 @@ def build_html(data, weekly_list=None):
     history   = data.get("history", [])
     taxonomy  = data.get("taxonomy", {})
 
-    # 過去7日の人気記事（views降順）
-    cutoff_7  = (datetime.now(JST) - timedelta(days=7)).strftime("%Y-%m-%d")
-    week_arts = [a for day in history if day.get("date","") >= cutoff_7
-                 for a in day.get("articles",[]) if "source_tier" in a]
-    popular   = sorted(week_arts, key=lambda x: x.get("views",0), reverse=True)[:5]
-
     # アーカイブ
     archive_rows = ""
     for day in history[:30]:
@@ -270,8 +269,6 @@ def build_html(data, weekly_list=None):
 
     today_html   = "\n".join(article_card(a) for a in articles) if articles \
                    else '<p class="empty">本日は該当記事がありませんでした。</p>'
-    popular_html = "\n".join(article_card(a, rank=i+1) for i,a in enumerate(popular)) if popular \
-                   else '<p class="empty">データ蓄積中（クリックで記録されます）</p>'
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -330,8 +327,10 @@ a{{color:inherit;text-decoration:none}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
 .imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}}
-.vw{{font-size:10px;color:var(--dim)}}
 .rank{{font-size:13px;font-weight:700;color:var(--accent);min-width:22px}}
+.cdc-badges{{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}}
+.cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
+.cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}}
 .ct{{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}}
 .ct a:hover{{color:var(--accent)}}
 .cs{{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:8px}}
@@ -414,7 +413,6 @@ gtag('config', 'G-KV7Q7SQKZX');
 
 <div class="tab-bar">
   <a href="#today"   class="tab">本日のニュース</a>
-  <a href="#popular" class="tab">人気記事</a>
   <a href="#archive" class="tab">アーカイブ</a>
   <a href="#trend"   class="tab">トレンド分析</a>
   <a href="#weekly"  class="tab">週次レポート</a>
@@ -432,18 +430,6 @@ gtag('config', 'G-KV7Q7SQKZX');
   </div>
   <p class="plabel">{today} のニュース（{len(articles)}件）</p>
   {today_html}
-</div>
-
-<div class="pane" id="pane-popular">
-  <p class="plabel">人気記事 — 過去7日間 <span style="display:inline-block;padding:2px 8px;margin-left:8px;font-size:10px;font-weight:700;background:#BA7517;color:#0f0f0e;border-radius:4px;letter-spacing:.05em">BETA</span></p>
-  <div style="background:#1a1a18;border-left:3px solid #BA7517;padding:12px 16px;border-radius:4px;margin-bottom:16px">
-    <p style="font-size:12px;color:#e6e4dc;line-height:1.7;margin:0">
-      <strong style="color:#BA7517">Beta機能</strong><br>
-      この一覧は<strong>あなたがこの端末で閲覧した記事</strong>を回数順に表示しています。他の方の閲覧情報は含まれていません。<br>
-      端末を変えると一覧はリセットされます。今後、より便利な機能に進化させていく予定です。
-    </p>
-  </div>
-  {popular_html}
 </div>
 
 <div class="pane" id="pane-archive">
@@ -600,8 +586,8 @@ const MAIN_COLORS = {{"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai
 const LAYER_COLORS = {{"デバイス/エッジ":"#639922","ネットワーク":"#378ADD","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#98968e"}};
 
 function showTab(id) {{
-  var valid = ['today','popular','archive','trend','weekly','about'];
-  if (valid.indexOf(id) < 0) id = 'today';
+  var valid = ['today','archive','trend','weekly','about'];
+  if (id === 'popular' || valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) {{ p.classList.remove('on'); }});
   document.querySelectorAll('.tab-bar .tab').forEach(function(t) {{ t.classList.remove('on'); }});
   var pane = document.getElementById('pane-' + id);
@@ -807,17 +793,8 @@ function selectMain(key, el, color) {{
   renderBars('sub-bars', subData, () => color, Math.max(...subData.map(([,v])=>v)));
 }}
 
-const VK = 'aisc_v3';
-function loadViews() {{ try {{ return JSON.parse(localStorage.getItem(VK)||'{{}}'); }} catch {{ return {{}}; }} }}
-function countView(id) {{
-  const v = loadViews(); v[id] = (v[id]||0) + 1;
-  localStorage.setItem(VK, JSON.stringify(v));
-  const el = document.getElementById('v-' + id);
-  if (el) el.textContent = '👁 ' + v[id];
-}}
 function navigateCard(id) {{
   if (!id) return;
-  countView(id);
   location.href = '/ai-security-news/article/' + id + '.html';
 }}
 function toggleKw(id, btn) {{
@@ -828,13 +805,6 @@ function toggleKw(id, btn) {{
   btn.dataset.open = open ? '0' : '1';
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }}
-(function() {{
-  const v = loadViews();
-  Object.entries(v).forEach(([id,cnt]) => {{
-    const el = document.getElementById('v-' + id);
-    if (el) el.textContent = '👁 ' + cnt;
-  }});
-}})();
 </script>
 
 </body>
@@ -859,6 +829,12 @@ def build_article_page(article, all_articles, taxonomy):
     main_id = a.get("tag_main_id","attack")
     main_label = a.get("tag_main_label","攻撃・脅威")
     subs = a.get("tag_subs",[])
+    cdc_contexts = a.get("cdc_context", [])[:3]
+    try:
+        cdc_relevance = max(0, min(3, int(a.get("cdc_relevance", 0))))
+    except (ValueError, TypeError):
+        cdc_relevance = 0
+    cdc_rel_label = {1: "低", 2: "中", 3: "高"}.get(cdc_relevance, "")
 
     # 同じ大項目の関連記事を日付の新しい順に最大3件
     related = []
@@ -1012,6 +988,9 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .insight-lbl{{display:block;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}}
 .insight-body{{font-size:14px;line-height:1.75;color:var(--text)}}
 .imp-box{{padding:12px 16px;background:var(--card);border-radius:4px;margin-top:12px;font-size:13px;color:var(--dim)}}
+.cdc-box{{padding:12px 16px;background:#0a2820;border:1px solid #1a5040;border-radius:4px;margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}}
+.cdc-rel-lbl{{font-size:11px;font-weight:700;color:#4db896;margin-right:4px}}
+.cdc-badge-ap{{font-size:11px;padding:2px 8px;border-radius:4px;background:#0f3828;border:1px solid #1a5040;color:#4db896}}
 .tags-box{{display:flex;flex-wrap:wrap;gap:6px}}
 .tag-main{{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600}}
 .tag-sub{{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;background:var(--card);color:var(--text);border:1px solid var(--border)}}
@@ -1069,6 +1048,8 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
       {subs_html}
     </div>
   </section>
+
+  {"<section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'>" + (f"<span class='cdc-rel-lbl'>CDC関連度：{cdc_rel_label}</span>" if cdc_rel_label else "") + "".join(f"<span class='cdc-badge-ap'>{ctx}</span>" for ctx in cdc_contexts) + "</div></section>" if cdc_relevance >= 1 and cdc_contexts else ""}
 
   <section class="ap-section">
     <h3 class="ap-sec-title">元記事情報</h3>
@@ -1133,7 +1114,6 @@ a{{color:inherit;text-decoration:none}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
 .imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}}
-.vw{{font-size:10px;color:var(--dim)}}
 .ct{{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}}
 .ct a:hover{{color:var(--accent)}}
 .article-preview{{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:6px}}
@@ -1150,6 +1130,9 @@ a{{color:inherit;text-decoration:none}}
 .insight{{background:#0d1e36;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:8px;font-size:11px;color:#85b7eb;line-height:1.55}}
 .ins-lbl{{display:block;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:2px;text-transform:uppercase}}
 .insight-snippet{{font-size:12px;color:#9ca3af;line-height:1.55;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+.cdc-badges{{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}}
+.cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
+.cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}}
 .kw-fold{{margin-top:2px}}
 .kw-btn{{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}}
 .kw-btn:hover{{color:var(--muted);border-color:#3a3a38}}
@@ -1175,17 +1158,8 @@ a{{color:inherit;text-decoration:none}}
 </footer>
 
 <script>
-const VK = 'aisc_v3';
-function loadViews() {{ try {{ return JSON.parse(localStorage.getItem(VK)||'{{}}'); }} catch {{ return {{}}; }} }}
-function countView(id) {{
-  const v = loadViews(); v[id] = (v[id]||0) + 1;
-  localStorage.setItem(VK, JSON.stringify(v));
-  const el = document.getElementById('v-' + id);
-  if (el) el.textContent = '👁 ' + v[id];
-}}
 function navigateCard(id) {{
   if (!id) return;
-  countView(id);
   location.href = '/ai-security-news/article/' + id + '.html';
 }}
 function toggleKw(id, btn) {{
@@ -1196,13 +1170,6 @@ function toggleKw(id, btn) {{
   btn.dataset.open = open ? '0' : '1';
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }}
-(function() {{
-  const v = loadViews();
-  Object.entries(v).forEach(([id,cnt]) => {{
-    const el = document.getElementById('v-' + id);
-    if (el) el.textContent = '👁 ' + cnt;
-  }});
-}})();
 </script>
 
 </body>
