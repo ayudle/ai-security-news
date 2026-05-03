@@ -1,0 +1,44 @@
+name: Weekly AI Security Digest
+
+on:
+  schedule:
+    - cron: '0 22 * * 0'  # 月曜 07:00 JST（日曜 22:00 UTC）
+  workflow_dispatch:
+
+jobs:
+  generate-weekly:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests feedparser google-genai python-dateutil
+
+      - name: Generate weekly digest
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/generate_weekly.py
+
+      - name: Build website
+        run: python scripts/build_site.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --cached --quiet && echo "変更なし" && exit 0
+          WEEK_END=$(TZ=Asia/Tokyo date -d 'last sunday' '+%Y-%m-%d' 2>/dev/null || TZ=Asia/Tokyo date -v-sun '+%Y-%m-%d')
+          git commit -m "Weekly digest: ${WEEK_END}"
+          git push --force-with-lease

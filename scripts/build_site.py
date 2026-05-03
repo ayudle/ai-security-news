@@ -180,7 +180,8 @@ def build_analytics(history, taxonomy):
     }
 
 
-def build_html(data):
+def build_html(data, weekly_list=None):
+    weekly_list = weekly_list or []
     articles  = data.get("articles", [])
     today     = data.get("today", "")
     updated   = data.get("updated","")[:16].replace("T"," ")
@@ -199,6 +200,68 @@ def build_html(data):
         d = day.get("date","")
         n = len(day.get("articles",[]))
         archive_rows += f'<div class="arc-row"><a href="archive/{d}.html" class="arc-link">{d}</a><span class="arc-n">{n}件</span></div>\n'
+
+    # 週次レポートリンク（#todayペイン内・示唆ボックス直下）
+    weekly_today_link = ""
+    if weekly_list:
+        latest_w = weekly_list[0]
+        wp = latest_w.get("period", {})
+        wps = wp.get("start", ""); wpe = wp.get("end", "")
+        wps_s = wps[5:].replace("-", "/") if len(wps) >= 10 else wps
+        wpe_s = wpe[5:].replace("-", "/") if len(wpe) >= 10 else wpe
+        weekly_today_link = (
+            f'<a href="weekly/{wpe}.html" '
+            f'style="display:inline-block;font-size:11px;color:#378ADD;'
+            f'text-decoration:none;margin-top:8px">'
+            f'&#x1F4CA; 先週のレポート（{wps_s}〜{wpe_s}）を読む →</a>'
+        )
+
+    # #weeklyペイン HTML
+    if not weekly_list:
+        weekly_pane_html = (
+            '<div class="pane" id="pane-weekly">\n'
+            '  <p class="plabel">週次レポート</p>\n'
+            '  <p class="empty">週次レポートはまだありません。毎週月曜日に自動生成されます。</p>\n'
+            '</div>'
+        )
+    else:
+        latest_w = weekly_list[0]
+        wp = latest_w.get("period", {})
+        wps = wp.get("start", ""); wpe = wp.get("end", "")
+        wps_s = wps[5:].replace("-", "/") if len(wps) >= 10 else wps
+        wpe_s = wpe[5:].replace("-", "/") if len(wpe) >= 10 else wpe
+        w_summary = latest_w.get("executive_summary", "")
+        w_summary_short = (w_summary[:200] + "…") if len(w_summary) > 200 else w_summary
+        latest_card = (
+            f'<div style="background:#14243a;border-left:3px solid #378ADD;'
+            f'padding:14px 18px;border-radius:4px;margin-bottom:18px">'
+            f'<div style="font-size:11px;font-weight:700;color:#378ADD;'
+            f'letter-spacing:.05em;margin-bottom:6px">最新レポート（{wps_s}〜{wpe_s}）</div>'
+            f'<div style="font-size:13px;line-height:1.8;color:#e6e4dc;margin-bottom:10px">'
+            f'{w_summary_short}</div>'
+            f'<a href="weekly/{wpe}.html" style="font-size:12px;color:#378ADD">'
+            f'全文を読む →</a></div>'
+        )
+        past_rows = ""
+        for w in weekly_list:
+            wp2 = w.get("period", {})
+            wps2 = wp2.get("start", ""); wpe2 = wp2.get("end", "")
+            wps2_s = wps2[5:].replace("-", "/") if len(wps2) >= 10 else wps2
+            wpe2_s = wpe2[5:].replace("-", "/") if len(wpe2) >= 10 else wpe2
+            wn = w.get("total_articles", "?")
+            past_rows += (
+                f'<div class="arc-row">'
+                f'<a href="weekly/{wpe2}.html" class="arc-link">{wps2_s}〜{wpe2_s}</a>'
+                f'<span class="arc-n">{wn}件</span></div>\n'
+            )
+        weekly_pane_html = (
+            '<div class="pane" id="pane-weekly">\n'
+            '  <p class="plabel">週次レポート</p>\n'
+            f'  {latest_card}\n'
+            '  <p class="plabel" style="margin-top:16px">過去のレポート</p>\n'
+            f'  <div style="margin-top:8px">{past_rows}</div>\n'
+            '</div>'
+        )
 
     # 分析データ
     analytics   = build_analytics(history, taxonomy)
@@ -354,6 +417,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   <a href="#popular" class="tab">人気記事</a>
   <a href="#archive" class="tab">アーカイブ</a>
   <a href="#trend"   class="tab">トレンド分析</a>
+  <a href="#weekly"  class="tab">週次レポート</a>
   <a href="#about"   class="tab">About</a>
 </div>
 
@@ -361,7 +425,10 @@ gtag('config', 'G-KV7Q7SQKZX');
   <div id="today-impl-box" style="display:none;background:#0d1b2e;border-left:3px solid #378ADD;border-radius:4px;padding:12px 16px;margin-bottom:16px">
     <div style="font-size:10px;font-weight:700;color:#378ADD;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
     <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#c0beb6"></div>
-    <a href="#trend" style="display:inline-block;font-size:11px;color:#378ADD;margin-top:8px;text-decoration:none">→ トレンド分析で詳しく見る</a>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px">
+      <a href="#trend" style="font-size:11px;color:#378ADD;text-decoration:none">→ トレンド分析で詳しく見る</a>
+      {weekly_today_link}
+    </div>
   </div>
   <p class="plabel">{today} のニュース（{len(articles)}件）</p>
   {today_html}
@@ -466,6 +533,8 @@ gtag('config', 'G-KV7Q7SQKZX');
 </div>
 
 
+{weekly_pane_html}
+
 <div class="pane" id="pane-about">
   <p class="plabel">About</p>
   <div style="max-width:720px;margin:0 auto;padding:1rem 0">
@@ -531,7 +600,7 @@ const MAIN_COLORS = {{"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai
 const LAYER_COLORS = {{"デバイス/エッジ":"#639922","ネットワーク":"#378ADD","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#98968e"}};
 
 function showTab(id) {{
-  var valid = ['today','popular','archive','trend','about'];
+  var valid = ['today','popular','archive','trend','weekly','about'];
   if (valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) {{ p.classList.remove('on'); }});
   document.querySelectorAll('.tab-bar .tab').forEach(function(t) {{ t.classList.remove('on'); }});
@@ -1139,14 +1208,226 @@ function toggleKw(id, btn) {{
 </html>"""
 
 
+LAYER_COLORS_WEEKLY = {
+    "デバイス/エッジ":   "#639922",
+    "ネットワーク":       "#378ADD",
+    "クラウド/サーバー": "#1D9E75",
+    "アプリ/API":         "#BA7517",
+    "データ/AI":          "#7F77DD",
+    "ガバナンス/規制":   "#98968e",
+}
+
+
+def load_weekly_list():
+    """docs/weekly/*.json を読み込み、新しい順にリストを返す"""
+    wdir = "docs/weekly"
+    if not os.path.exists(wdir):
+        return []
+    result = []
+    for fname in sorted(os.listdir(wdir), reverse=True):
+        if not fname.endswith(".json"):
+            continue
+        try:
+            with open(f"{wdir}/{fname}", "r", encoding="utf-8") as f:
+                w = json.load(f)
+            result.append({
+                "date":              fname[:-5],
+                "period":            w.get("period", {}),
+                "executive_summary": w.get("executive_summary", ""),
+                "total_articles":    w.get("total_articles", 0),
+            })
+        except Exception:
+            continue
+    return result
+
+
+def build_weekly_html(weekly_data):
+    """週次レポートの standalone HTML ページを生成する"""
+    from urllib.parse import quote
+
+    ps  = weekly_data.get("period", {}).get("start", "")
+    pe  = weekly_data.get("period", {}).get("end", "")
+    pss = ps[5:].replace("-", "/") if len(ps) >= 10 else ps
+    pes = pe[5:].replace("-", "/") if len(pe) >= 10 else pe
+    total       = weekly_data.get("total_articles", 0)
+    exec_sum    = weekly_data.get("executive_summary", "")
+    top_topics  = weekly_data.get("top_topics", [])
+    layer_trends = weekly_data.get("layer_trends", [])
+    kw_changes  = weekly_data.get("keyword_changes", [])
+    next_week   = weekly_data.get("next_week_outlook", "")
+
+    site_url = f"https://ayudle.github.io/ai-security-news/weekly/{pe}.html"
+    share_text = f"【AI×セキュリティ 週次レポート {pss}〜{pes}】\n{exec_sum[:100]}…\n#AIセキュリティ #CISO"
+    twitter_url = f"https://x.com/intent/post?text={quote(share_text, safe='')}&url={quote(site_url, safe='')}"
+
+    # 重要トピック HTML
+    topics_html = ""
+    for t in top_topics:
+        title   = t.get("title", "")
+        summary = t.get("summary", "")
+        aids    = t.get("article_ids", [])
+        links   = " ".join(
+            f'<a href="../article/{aid}.html" '
+            f'style="font-size:10px;color:#378ADD;text-decoration:none">[{aid[:8]}]</a>'
+            for aid in aids
+        )
+        topics_html += (
+            f'<div style="background:#1a1a18;border:1px solid #2a2a28;'
+            f'border-radius:10px;padding:14px 16px;margin-bottom:10px">'
+            f'<div style="font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px">{title}</div>'
+            f'<div style="font-size:13px;color:#98968e;line-height:1.7;margin-bottom:8px">{summary}</div>'
+            f'<div>{links}</div></div>'
+        )
+    if not topics_html:
+        topics_html = '<p style="font-size:12px;color:#6a6860">データなし</p>'
+
+    # 6階層トレンド HTML
+    layers_html = ""
+    for l in layer_trends:
+        lname  = l.get("layer_name", "")
+        ltext  = l.get("trend_text", "")
+        lcolor = LAYER_COLORS_WEEKLY.get(lname, "#378ADD")
+        layers_html += (
+            f'<div style="display:flex;gap:12px;padding:10px 0;'
+            f'border-bottom:1px solid #2a2a28;align-items:flex-start">'
+            f'<div style="min-width:90px;font-size:11px;font-weight:700;'
+            f'color:{lcolor};padding-top:2px;flex-shrink:0">{lname}</div>'
+            f'<div style="font-size:13px;color:#98968e;line-height:1.65">{ltext}</div></div>'
+        )
+    if not layers_html:
+        layers_html = '<p style="font-size:12px;color:#6a6860">データなし</p>'
+
+    # キーワード変動 HTML
+    kw_html = ""
+    if kw_changes:
+        max_abs = max((abs(k.get("change", 0)) for k in kw_changes), default=1)
+        for k in kw_changes[:8]:
+            kw      = k.get("keyword", "")
+            this_w  = k.get("this_week_count", 0)
+            last_w  = k.get("last_week_count", 0)
+            change  = k.get("change", 0)
+            bar_pct = round(abs(change) / max(max_abs, 1) * 100)
+            pct_abs = abs(round(change / max(last_w, 1) * 100))
+            color   = "#E24B4A" if change > 0 else "#6a6860"
+            sign    = "+" if change >= 0 else ""
+            kw_html += (
+                f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">'
+                f'<div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;'
+                f'overflow:hidden;text-overflow:ellipsis">{kw}</div>'
+                f'<div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden">'
+                f'<div style="width:{bar_pct}%;height:100%;background:{color};border-radius:3px"></div></div>'
+                f'<div style="font-size:10px;color:{color};width:55px;text-align:right">'
+                f'{sign}{change}件({sign}{pct_abs}%)</div>'
+                f'<div style="font-size:10px;color:#6a6860;width:40px;text-align:right">'
+                f'今週{this_w}件</div></div>'
+            )
+    else:
+        kw_html = '<p style="font-size:12px;color:#6a6860">先週比データがまだありません</p>'
+
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>週次レポート {pss}〜{pes} | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="AI×セキュリティ週次レポート（{pss}〜{pes}）。{total}件の記事を分析したCISO向けダイジェスト。">
+<meta property="og:title" content="AI×セキュリティ 週次レポート {pss}〜{pes}">
+<meta property="og:description" content="{exec_sum[:120]}">
+<meta property="og:url" content="{site_url}">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="{site_url}">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}}
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}}
+header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}}
+.logo{{font-size:18px;font-weight:700}}
+.back{{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
+.back:hover{{text-decoration:underline}}
+.wp{{max-width:720px;margin:0 auto;padding:16px 24px 60px}}
+.wp-head{{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:24px}}
+.wp-period{{font-size:12px;color:var(--dim);margin-bottom:6px}}
+.wp-title{{font-size:22px;font-weight:700;color:#fff;line-height:1.4}}
+.wp-meta{{font-size:11px;color:var(--dim);margin-top:8px}}
+.sec{{margin-bottom:32px}}
+.sec-title{{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
+.actions{{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}}
+.btn{{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit;background:var(--card);color:var(--text);border:1px solid var(--border)}}
+.btn:hover{{border-color:var(--accent)}}
+footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">AI×セキュリティ ニュース日報</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#weekly" class="back">← 週次レポート一覧に戻る</a>
+
+<div class="wp">
+  <div class="wp-head">
+    <div class="wp-period">週次レポート</div>
+    <h1 class="wp-title">AI×セキュリティ 週次ダイジェスト</h1>
+    <div class="wp-meta">{pss}〜{pes}（{total}件の記事を分析）</div>
+  </div>
+
+  <section class="sec">
+    <h3 class="sec-title">エグゼクティブサマリー</h3>
+    <div style="background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#e6e4dc">{exec_sum}</div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">今週の重要トピック TOP3</h3>
+    {topics_html}
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">6階層別 今週のトレンド</h3>
+    {layers_html}
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">キーワード変動（先週比）</h3>
+    {kw_html}
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">来週の注目ポイント</h3>
+    <div style="background:#0d1b2e;border-left:3px solid #378ADD55;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#c0beb6">{next_week}</div>
+  </section>
+
+  <div class="actions">
+    <a href="{twitter_url}" target="_blank" rel="noopener" class="btn">Xでシェア</a>
+    <button onclick="navigator.clipboard.writeText('{site_url}').then(function(){{alert('URLをコピーしました')}})" class="btn">📋 URLをコピー</button>
+  </div>
+</div>
+
+<footer>
+  各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
+  日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+
+</body>
+</html>"""
+
+
 def main():
     if not os.path.exists(DATA_PATH):
         print(f"[ERROR] {DATA_PATH} なし"); return
     with open(DATA_PATH,"r",encoding="utf-8") as f:
         data = json.load(f)
+    weekly_list = load_weekly_list()
     os.makedirs("docs", exist_ok=True)
     with open(OUT_PATH,"w",encoding="utf-8") as f:
-        f.write(build_html(data))
+        f.write(build_html(data, weekly_list))
     print(f"生成完了: {OUT_PATH} ({len(data.get('articles',[]))}件)")
     os.makedirs("docs/archive", exist_ok=True)
     for day in data.get("history",[]):
@@ -1202,6 +1483,20 @@ def main():
 
     print(f'月別アーカイブ: {len(monthly)}ヶ月分')
 
+    # 週次レポートHTML生成
+    os.makedirs("docs/weekly", exist_ok=True)
+    for w in weekly_list:
+        wdate = w["date"]
+        wjson = f"docs/weekly/{wdate}.json"
+        whtml = f"docs/weekly/{wdate}.html"
+        if not os.path.exists(wjson):
+            continue
+        with open(wjson, "r", encoding="utf-8") as f:
+            wd = json.load(f)
+        with open(whtml, "w", encoding="utf-8") as f:
+            f.write(build_weekly_html(wd))
+    print(f'週次レポート: {len(weekly_list)}件')
+
     # sitemap.xml 生成
     site_url = 'https://ayudle.github.io/ai-security-news'
     sitemap_urls = [
@@ -1227,6 +1522,16 @@ def main():
                 'priority': '0.6',
                 'changefreq': 'monthly',
                 'lastmod': d
+            })
+    # 週次レポート
+    for w in weekly_list:
+        wpe = w.get("period", {}).get("end", "")
+        if wpe:
+            sitemap_urls.append({
+                'loc': f'{site_url}/weekly/{w["date"]}.html',
+                'priority': '0.7',
+                'changefreq': 'monthly',
+                'lastmod': wpe,
             })
 
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

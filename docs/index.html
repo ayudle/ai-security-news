@@ -142,6 +142,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   <a href="#popular" class="tab">人気記事</a>
   <a href="#archive" class="tab">アーカイブ</a>
   <a href="#trend"   class="tab">トレンド分析</a>
+  <a href="#weekly"  class="tab">週次レポート</a>
   <a href="#about"   class="tab">About</a>
 </div>
 
@@ -149,7 +150,10 @@ gtag('config', 'G-KV7Q7SQKZX');
   <div id="today-impl-box" style="display:none;background:#0d1b2e;border-left:3px solid #378ADD;border-radius:4px;padding:12px 16px;margin-bottom:16px">
     <div style="font-size:10px;font-weight:700;color:#378ADD;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
     <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#c0beb6"></div>
-    <a href="#trend" style="display:inline-block;font-size:11px;color:#378ADD;margin-top:8px;text-decoration:none">→ トレンド分析で詳しく見る</a>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px">
+      <a href="#trend" style="font-size:11px;color:#378ADD;text-decoration:none">→ トレンド分析で詳しく見る</a>
+      
+    </div>
   </div>
   <p class="plabel">2026-05-03 のニュース（7件）</p>
   <article class="card" data-id="a200fd0dbe43" data-main="policy" onclick="navigateCard('a200fd0dbe43')">
@@ -515,6 +519,11 @@ gtag('config', 'G-KV7Q7SQKZX');
 </div>
 
 
+<div class="pane" id="pane-weekly">
+  <p class="plabel">週次レポート</p>
+  <p class="empty">週次レポートはまだありません。毎週月曜日に自動生成されます。</p>
+</div>
+
 <div class="pane" id="pane-about">
   <p class="plabel">About</p>
   <div style="max-width:720px;margin:0 auto;padding:1rem 0">
@@ -580,7 +589,7 @@ const MAIN_COLORS = {"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai_
 const LAYER_COLORS = {"デバイス/エッジ":"#639922","ネットワーク":"#378ADD","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#98968e"};
 
 function showTab(id) {
-  var valid = ['today','popular','archive','trend','about'];
+  var valid = ['today','popular','archive','trend','weekly','about'];
   if (valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
   document.querySelectorAll('.tab-bar .tab').forEach(function(t) { t.classList.remove('on'); });
