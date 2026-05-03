@@ -1241,7 +1241,7 @@ def load_weekly_list():
     return result
 
 
-def build_weekly_html(weekly_data):
+def build_weekly_html(weekly_data, article_lookup=None):
     """週次レポートの standalone HTML ページを生成する"""
     from urllib.parse import quote
 
@@ -1261,22 +1261,43 @@ def build_weekly_html(weekly_data):
     twitter_url = f"https://x.com/intent/post?text={quote(share_text, safe='')}&url={quote(site_url, safe='')}"
 
     # 重要トピック HTML
+    lookup = article_lookup or {}
     topics_html = ""
     for t in top_topics:
         title   = t.get("title", "")
         summary = t.get("summary", "")
         aids    = t.get("article_ids", [])
-        links   = " ".join(
-            f'<a href="../article/{aid}.html" '
-            f'style="font-size:10px;color:#378ADD;text-decoration:none">[{aid[:8]}]</a>'
-            for aid in aids
-        )
+        links_html = ""
+        if aids:
+            items = []
+            for aid in aids:
+                a_data = lookup.get(aid)
+                if a_data:
+                    a_title = a_data.get("title_ja") or a_data.get("title", "")
+                    a_src   = a_data.get("source_name", "")
+                    a_pub   = a_data.get("published", "")[:10]
+                    meta    = " / ".join(filter(None, [a_src, a_pub]))
+                    items.append(
+                        f'<a href="../article/{aid}.html" '
+                        f'style="display:block;text-decoration:none;padding:5px 0;'
+                        f'border-top:1px solid #2a2a28">'
+                        f'<span style="font-size:12px;color:#378ADD">→ {a_title}</span>'
+                        f'<span style="font-size:10px;color:#6a6860;margin-left:8px">'
+                        f'{meta}</span></a>'
+                    )
+                else:
+                    items.append(
+                        f'<a href="../article/{aid}.html" '
+                        f'style="font-size:10px;color:#378ADD;text-decoration:none">'
+                        f'[{aid[:8]}]</a>'
+                    )
+            links_html = f'<div style="margin-top:10px">{"".join(items)}</div>'
         topics_html += (
             f'<div style="background:#1a1a18;border:1px solid #2a2a28;'
             f'border-radius:10px;padding:14px 16px;margin-bottom:10px">'
             f'<div style="font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px">{title}</div>'
-            f'<div style="font-size:13px;color:#98968e;line-height:1.7;margin-bottom:8px">{summary}</div>'
-            f'<div>{links}</div></div>'
+            f'<div style="font-size:13px;color:#98968e;line-height:1.7;margin-bottom:4px">{summary}</div>'
+            f'{links_html}</div>'
         )
     if not topics_html:
         topics_html = '<p style="font-size:12px;color:#6a6860">データなし</p>'
@@ -1369,6 +1390,13 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 </header>
 
 <a href="/ai-security-news/#weekly" class="back">← 週次レポート一覧に戻る</a>
+
+<nav style="padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
+  <a href="/ai-security-news/#today"   style="color:#378ADD;text-decoration:none">本日のニュース</a>
+  <a href="/ai-security-news/#trend"   style="color:#378ADD;text-decoration:none">トレンド分析</a>
+  <a href="/ai-security-news/#archive" style="color:#378ADD;text-decoration:none">アーカイブ</a>
+  <a href="/ai-security-news/#weekly"  style="color:#378ADD;text-decoration:none">週次レポート一覧</a>
+</nav>
 
 <div class="wp">
   <div class="wp-head">
@@ -1484,6 +1512,7 @@ def main():
     print(f'月別アーカイブ: {len(monthly)}ヶ月分')
 
     # 週次レポートHTML生成
+    article_lookup = {a["id"]: a for a in unique_articles if a.get("id")}
     os.makedirs("docs/weekly", exist_ok=True)
     for w in weekly_list:
         wdate = w["date"]
@@ -1494,7 +1523,7 @@ def main():
         with open(wjson, "r", encoding="utf-8") as f:
             wd = json.load(f)
         with open(whtml, "w", encoding="utf-8") as f:
-            f.write(build_weekly_html(wd))
+            f.write(build_weekly_html(wd, article_lookup))
     print(f'週次レポート: {len(weekly_list)}件')
 
     # sitemap.xml 生成
