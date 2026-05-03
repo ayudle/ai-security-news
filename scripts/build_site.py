@@ -1010,6 +1010,7 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .ap-body{{font-size:15px;line-height:1.85;color:var(--text)}}
 .insight-box{{background:var(--insight-bg);border-left:3px solid var(--insight-border);padding:16px 20px;border-radius:4px;margin-top:12px}}
 .insight-lbl{{display:block;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}}
+.insight-body{{font-size:14px;line-height:1.75;color:var(--text)}}
 .imp-box{{padding:12px 16px;background:var(--card);border-radius:4px;margin-top:12px;font-size:13px;color:var(--dim)}}
 .tags-box{{display:flex;flex-wrap:wrap;gap:6px}}
 .tag-main{{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600}}
@@ -1057,7 +1058,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     <div class="ap-body">{summary_ja}</div>
   </section>
 
-  {"<section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span>" + insight + "</div></section>" if insight else ""}
+  {"<section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span><div class='insight-body'>" + insight + "</div></div></section>" if insight else ""}
 
   {"<section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>" + imp_reason + "</div></section>" if imp_reason else ""}
 
