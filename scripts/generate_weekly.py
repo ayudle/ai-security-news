@@ -13,6 +13,15 @@ JST        = timezone(timedelta(hours=9))
 DATA_PATH  = "docs/data/latest.json"
 WEEKLY_DIR = "docs/weekly"
 
+_NOISE_KW = {
+    "inaturalist", "simon willison", "photo", "photography",
+    "disneyland", "personal blog", "bird", "birds", "cli tool",
+}
+
+def _is_noise_kw(kw):
+    kl = kw.strip().lower()
+    return kl in _NOISE_KW or any(n in kl for n in _NOISE_KW)
+
 
 def compute_keyword_changes(history):
     """過去7日と8〜14日のキーワード件数を比較して変動リストを返す"""
@@ -29,7 +38,7 @@ def compute_keyword_changes(history):
         for a in day.get("articles", []):
             for kw in a.get("related_keywords", []):
                 kw = kw.strip()
-                if not kw:
+                if not kw or _is_noise_kw(kw):
                     continue
                 if age <= 7:
                     kw_this[kw] += 1

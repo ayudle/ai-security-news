@@ -12,6 +12,16 @@ DATA_PATH = "docs/data/latest.json"
 OUT_PATH  = "docs/index.html"
 
 IMP_COLOR = {"高": "#E24B4A", "中": "#BA7517", "低": "#639922"}
+
+_NOISE_KW = {
+    "inaturalist", "simon willison", "photo", "photography",
+    "disneyland", "personal blog", "bird", "birds", "cli tool",
+}
+
+def _is_noise_kw(kw):
+    kl = kw.strip().lower()
+    return kl in _NOISE_KW or any(n in kl for n in _NOISE_KW)
+
 MAIN_COLOR = {
     "attack":   "#E24B4A",
     "vuln":     "#BA7517",
@@ -134,7 +144,7 @@ def build_analytics(history, taxonomy):
                     layer_daily[d][l] += 1
                 for kw in a.get("related_keywords", []):
                     kw_norm = kw.strip()
-                    if kw_norm:
+                    if kw_norm and not _is_noise_kw(kw_norm):
                         kw_7[kw_norm] += 1
 
     # スパイク検出: 過去7日で2件以上かつ過去30日平均の2倍以上
@@ -1308,6 +1318,7 @@ def build_weekly_html(weekly_data, article_lookup=None):
 
     # キーワード変動 HTML
     kw_html = ""
+    kw_changes = [k for k in kw_changes if not _is_noise_kw(k.get("keyword", ""))]
     if kw_changes:
         max_abs = max((abs(k.get("change", 0)) for k in kw_changes), default=1)
         for k in kw_changes[:8]:
