@@ -407,6 +407,20 @@ def build_html(data, weekly_list=None, columns=None):
             f'&#x1F4CA; 先週のレポート（{wps_s}〜{wpe_s}）を読む →</a>'
         )
 
+    # 関連コラムリンク（#todayペイン内・示唆ボックス直下）
+    related_column_link = ""
+    if columns:
+        latest_col = columns[0]
+        ctitle = latest_col.get('title', '')
+        cslug  = latest_col.get('slug', '')
+        ctitle_short = (ctitle[:38] + "…") if len(ctitle) > 38 else ctitle
+        related_column_link = (
+            f'<a href="columns/{cslug}.html" '
+            f'style="display:inline-block;font-size:11px;color:#6add8a;'
+            f'text-decoration:none;margin-top:8px">'
+            f'&#x270D; 関連コラム：{html_escape(ctitle_short)} →</a>'
+        )
+
     # #weeklyペイン HTML
     if not weekly_list:
         weekly_pane_html = (
@@ -668,6 +682,7 @@ gtag('config', 'G-KV7Q7SQKZX');
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px">
       <a href="#trend" style="font-size:11px;color:#378ADD;text-decoration:none">→ トレンド分析で詳しく見る</a>
       {weekly_today_link}
+      {related_column_link}
     </div>
   </div>
   <p class="plabel">{today} のニュース（{len(articles)}件）</p>
