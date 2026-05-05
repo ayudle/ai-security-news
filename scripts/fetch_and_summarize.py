@@ -13,23 +13,29 @@ from google import genai
 # ソース定義
 # ============================================================
 SOURCES = [
+    # 公的機関・標準化（strict_filter なし：セキュリティ記事は無条件で収集）
     {"name": "CISA",                  "tier": "A", "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml",       "category": "公的機関"},
     {"name": "NIST",                  "tier": "A", "url": "https://csrc.nist.gov/feeds/all",                             "category": "公的機関"},
-    {"name": "OWASP GenAI",           "tier": "A", "url": "https://genai.owasp.org/feed/",                               "category": "公的機関"},
-    {"name": "Google Security Blog",  "tier": "A", "url": "https://security.googleblog.com/feeds/posts/default",         "category": "Techメディア"},
-    {"name": "Palo Alto Unit 42",     "tier": "A", "url": "https://unit42.paloaltonetworks.com/feed/",                   "category": "専門メディア"},
+    {"name": "OWASP GenAI",           "tier": "A", "url": "https://genai.owasp.org/feed/",                               "category": "標準・コミュニティ"},
+    # ベンダー公式・脅威インテリジェンス（strict_filter なし：テーマが明確なため）
+    {"name": "Google Security Blog",  "tier": "A", "url": "https://security.googleblog.com/feeds/posts/default",         "category": "ベンダー公式"},
+    {"name": "Palo Alto Unit 42",     "tier": "A", "url": "https://unit42.paloaltonetworks.com/feed/",                   "category": "ベンダー脅威インテリジェンス"},
+    # 専門セキュリティメディア（strict_filter なし）
     {"name": "Krebs on Security",     "tier": "B", "url": "https://krebsonsecurity.com/feed/",                           "category": "専門メディア"},
     {"name": "Dark Reading",          "tier": "B", "url": "https://www.darkreading.com/rss.xml",                         "category": "専門メディア"},
     {"name": "SecurityWeek",          "tier": "B", "url": "https://feeds.feedburner.com/Securityweek",                   "category": "専門メディア"},
     {"name": "The Hacker News",       "tier": "B", "url": "https://feeds.feedburner.com/TheHackersNews",                 "category": "専門メディア"},
     {"name": "Bleeping Computer",     "tier": "B", "url": "https://www.bleepingcomputer.com/feed/",                      "category": "専門メディア"},
     {"name": "Embrace The Red",       "tier": "B", "url": "https://embracethered.com/blog/index.xml",                    "category": "AI×セキュリティ研究"},
-    {"name": "Simon Willison",        "tier": "B", "url": "https://simonwillison.net/atom/everything/",                  "category": "AI研究"},
+    # Tech系・セキュリティ寄りだが範囲が広い（strict_filter なし：URLがsecurityフィード限定）
     {"name": "Wired Security",        "tier": "B", "url": "https://www.wired.com/feed/category/security/latest/rss",     "category": "Techメディア"},
     {"name": "Ars Technica",          "tier": "B", "url": "https://feeds.arstechnica.com/arstechnica/security",          "category": "Techメディア"},
-    {"name": "MIT Tech Review",       "tier": "B", "url": "https://www.technologyreview.com/feed/",                      "category": "Techメディア"},
+    # 広すぎるソース（strict_filter=True：AI + Security/CDC の両方が必要）
+    {"name": "Simon Willison",        "tier": "C", "url": "https://simonwillison.net/atom/everything/",                  "category": "AI研究・開発者ブログ", "strict_filter": True},
+    {"name": "MIT Tech Review",       "tier": "C", "url": "https://www.technologyreview.com/feed/",                      "category": "Techメディア",          "strict_filter": True},
+    # 学術（strict_filter なし：cs.CR はセキュリティ専門）
     {"name": "arXiv cs.CR",           "tier": "C", "url": "https://rss.arxiv.org/rss/cs.CR",                            "category": "学術・研究"},
-    {"name": "arXiv cs.AI",           "tier": "C", "url": "https://rss.arxiv.org/rss/cs.AI",                            "category": "学術・研究"},
+    # arXiv cs.AI は AI全般でノイズが多いため削除
 ]
 
 # ============================================================
@@ -95,9 +101,17 @@ AI_KEYWORDS = [
 ]
 
 # セキュリティキーワード（AIが含まれない場合のフォールバック）
+# ※ "identity","iam","incident response","apt","supply chain" は CDC_KEYWORDS にも存在するが、
+#    has_sec と has_cdc は独立して評価されるため重複しても問題ない
 SECURITY_KEYWORDS = [
-    "cybersecurity","cyber attack","ransomware","malware",
-    "data breach","zero-day","threat intelligence",
+    "cybersecurity", "cyber security", "cyberattack", "cyber attack",
+    "ransomware", "malware",
+    "data breach", "breach",
+    "zero-day", "cve", "vulnerability", "exploit",
+    "phishing", "credential", "credentials",
+    "threat intelligence",
+    "incident response", "intrusion", "backdoor", "botnet",
+    "supply chain", "apt", "nation-state", "espionage",
 ]
 
 # CDC/SOC/サービス設計キーワード（pre-scoring用）
@@ -159,8 +173,8 @@ def fetch_rss(source):
             has_sec = any(kw in combined for kw in SECURITY_KEYWORDS)
             has_cdc = any(kw in combined for kw in CDC_KEYWORDS)
 
-            # AI研究/Techメディア: AI + Security/CDC の両方が必要（ノイズ排除）
-            requires_both = source.get("category") in ["AI研究", "Techメディア"]
+            # strict_filter=True のソースは AI + Security/CDC の両方が必要（ノイズ排除）
+            requires_both = source.get("strict_filter", False)
             if requires_both and not (has_ai and (has_sec or has_cdc)):
                 continue
             if not has_ai and not has_sec and not has_cdc:
@@ -190,6 +204,14 @@ def fetch_rss(source):
     return articles
 
 
+def _pub_timestamp(article):
+    """published フィールドをUNIXタイムスタンプに変換（失敗時は0）"""
+    try:
+        return datetime.fromisoformat(article["published"]).timestamp()
+    except Exception:
+        return 0.0
+
+
 def deduplicate(articles):
     """AI関連記事を優先、同一ソースから最大2件まで"""
     from collections import Counter
@@ -197,12 +219,13 @@ def deduplicate(articles):
     source_count = Counter()
     MAX_PER_SOURCE = 2
 
-    # ソート: AI関連記事優先（ai_score降順）→ Tier（A→B→C）
+    # ソート: スコア降順 → Tier（A→B→C）→ 公開日の新しい順
     sorted_articles = sorted(
         articles,
         key=lambda x: (
             -(x.get("ai_score", 1) + x.get("cdc_pre_score", 0)),
-            {"A":0,"B":1,"C":2}.get(x.get("source_tier","B"), 9)
+            {"A":0,"B":1,"C":2}.get(x.get("source_tier","B"), 9),
+            -_pub_timestamp(x),
         )
     )
 

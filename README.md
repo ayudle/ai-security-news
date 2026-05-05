@@ -1,6 +1,7 @@
 # AI×セキュリティ ニュース日報
 
-サイバーセキュリティ×AI分野のニュースを毎日自動収集・日本語要約して公開するWebサイト。
+サイバーセキュリティ×AI分野のニュースを毎日自動収集・日本語要約して公開するWebサイト。  
+MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・SOC/CDC運用変化を重点的にカバーする。
 
 **公開URL:** https://ayudle.github.io/ai-security-news
 
@@ -9,8 +10,10 @@
 ## コンセプト
 
 - **完全無料で動く** — GitHub Actions + Gemini API無料枠 + GitHub Pages
-- **信頼できるソースのみ** — 公的機関・専門メディア・学術機関に厳選
-- **AIが要約＋示唆を生成** — 読むだけでなく「何を学ぶべきか」まで提供
+- **CDC設計者の視点で厳選** — AI×セキュリティ、SOC/MDR/MSSP設計、Identity/Exposureに関連するニュースを優先
+- **信頼できるソース定義** — 公的機関・専門メディア・ベンダー脅威インテリジェンスに厳選（広すぎるソースはAI×セキュリティの同時出現を要求）
+- **AIが要約＋示唆を生成** — 読むだけでなく「CDC/SOCへの示唆」まで提供
+- **人間の考察コラム** — 運営者によるMSSP/CDC設計に関する著者執筆コラムを掲載
 - **自動で毎日更新** — 一度設定すれば手動操作ゼロ
 - **トレンドを可視化** — 何が今週急上昇しているかがひと目でわかる
 
@@ -20,24 +23,44 @@
 
 ### 収集・更新
 - 1日1回（毎朝08:00 JST）GitHub Actionsが自動実行
-- 1回あたり最大5件をピックアップ（注目トップ5）
+- 1回あたり最大10件をピックアップ（スコア・Tier・公開日の新しさで優先順位付け）
 - 過去90日分の記事を保持・アーカイブページ自動生成
 
 ### ソース（信頼性ティア制）
 
-| ティア | ソース |
-|---|---|
-| A（公的機関） | CISA, NIST |
-| B（専門メディア） | Krebs on Security, Dark Reading, SecurityWeek, The Hacker News, Bleeping Computer |
-| B（Techメディア） | Wired Security, Ars Technica, MIT Tech Review |
-| C（学術） | arXiv cs.CR, arXiv cs.AI |
+| ティア | カテゴリ | ソース | strict_filter |
+|---|---|---|---|
+| A | 公的機関 | CISA, NIST | なし（セキュリティ記事を無条件収集） |
+| A | 標準・コミュニティ | OWASP GenAI | なし |
+| A | ベンダー公式 | Google Security Blog | なし |
+| A | ベンダー脅威インテリジェンス | Palo Alto Unit 42 | なし |
+| B | 専門メディア | Krebs on Security, Dark Reading, SecurityWeek, The Hacker News, Bleeping Computer | なし |
+| B | AI×セキュリティ研究 | Embrace The Red | なし |
+| B | Techメディア | Wired Security, Ars Technica | なし（セキュリティフィード限定） |
+| C | AI研究・開発者ブログ | Simon Willison | **あり**（AI＋セキュリティの同時出現必須） |
+| C | Techメディア | MIT Tech Review | **あり**（AI＋セキュリティの同時出現必須） |
+| C | 学術・研究 | arXiv cs.CR | なし |
 
-### AI要約（Gemini 2.0 Flash Lite・無料枠）
+> `strict_filter=True` のソースは、AI関連キーワード＋セキュリティ/CDCキーワードの**両方が含まれる記事のみ**採用。
+
+### フィルタリング設計
+
+| キーワード群 | 役割 |
+|---|---|
+| `AI_KEYWORDS` | LLM/エージェント/プロンプト等・AI関連の一致を判定 |
+| `SECURITY_KEYWORDS` | サイバー攻撃/脆弱性/侵害等・セキュリティ文脈の一致を判定 |
+| `CDC_KEYWORDS` | SOC/MSSP/Identity/Exposure等・CDC設計文脈の一致を判定 |
+
+収集判定：`has_ai OR has_sec OR has_cdc` のいずれかが True の場合に採用（strict_filter ソースは `has_ai AND (has_sec OR has_cdc)` が必要）。
+
+### AI要約（Gemini 2.5 Flash）
 各記事について以下を自動生成：
 - 日本語タイトル・3〜4文の日本語要約
-- **示唆・学び**（セキュリティ実務者視点での気づき）
+- **示唆・学び**（CISO/CDC設計者視点での気づき）
 - 重要度（高／中／低）＋判定理由
 - 大項目タグ（7種）＋中項目タグ（固定リスト・最大3つ）
+- **CDC観点バッジ**（SOC運用変化, Identity/ITDR, Exposure管理, MDR/MSSP設計 等）
+- **本日の示唆**（7セクション構造：今日の結論／攻撃側変化／防御側変化／Security for AI／AI for Security／CDC示唆／今日の問い）
 
 ### タグ体系（事前定義・LLMはリスト外のタグ生成禁止）
 
@@ -51,11 +74,12 @@
 | インシデント | データ侵害, サービス停止, 情報漏洩, 金融被害 |
 | ビジネス・技術動向 | 資金調達, 製品リリース, 市場トレンド, 研究・論文 |
 
-### サイトUI（4タブ構成）
-- **本日のニュース** — 最大5件、示唆・学び付き、全文公開・無料
-- **人気記事** — 過去7日間のクリック数ランキング
+### サイトUI（5タブ構成）
+- **本日のニュース** — 最大10件、CDC観点バッジ・示唆・学び付き
 - **アーカイブ** — 過去90日分、全記事誰でも無料閲覧
-- **トレンド分析** — 急上昇トピック、大項目フィルター×中項目バー、重要度内訳
+- **トレンド分析** — 急上昇トピック、ヒートマップ、重要度内訳
+- **週次レポート** — 毎週月曜に自動生成
+- **コラム** — 運営者による著者執筆の考察（LLM生成ではない）
 
 ---
 
@@ -67,9 +91,13 @@
 ├── scripts/
 │   ├── fetch_and_summarize.py        # RSS収集 + Gemini APIで要約・タグ付け
 │   └── build_site.py                 # HTMLサイト生成（タブUI・ダッシュボード）
+├── columns/                          # 著者執筆コラム（Markdown）
 ├── docs/                             # GitHub Pagesの公開先
 │   ├── index.html                    # 自動生成トップページ
+│   ├── article/                      # 記事個別ページ
 │   ├── archive/YYYY-MM-DD.html       # 日付別アーカイブ
+│   ├── columns/                      # コラム個別ページ
+│   ├── weekly/                       # 週次レポート
 │   └── data/latest.json              # 記事データ（JSON・90日分）
 └── gas/
     └── send_newsletter.gs            # Gmail自動送信（Google Apps Script・オプション）
@@ -97,7 +125,7 @@
 
 | サービス | 使用量 | 無料枠 |
 |---|---|---|
-| Gemini 2.0 Flash Lite | 1回/日・1APIコール | 1,500回/日 |
+| Gemini 2.5 Flash | 1回/日・1APIコール | 500回/日（無料枠） |
 | GitHub Actions | 約5分/日 | 2,000分/月 |
 | GitHub Pages | 静的HTML配信 | 完全無料 |
 
