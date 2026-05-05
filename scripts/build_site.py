@@ -116,6 +116,7 @@ def build_column_page(col):
     tags_html = ''.join(
         f'<span class="col-tag-ap">{html_escape(t)}</span>' for t in tags
     )
+    human_badge = '<span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a;font-weight:600">✍ 著者執筆</span>'
     site_url = f'https://ayudle.github.io/ai-security-news/columns/{slug}.html'
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -181,6 +182,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   <div class="col-head">
     <div class="col-meta">
       <span>{html_escape(date)}</span>
+      {human_badge}
       <div class="col-tags-ap">{tags_html}</div>
     </div>
     <h1 class="col-title">{html_escape(title)}</h1>
@@ -198,8 +200,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 </article>
 
 <footer>
-  日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。<br>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  本コラムは著者が執筆した考察であり、LLMによる自動生成ではありません。<br>
   <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
@@ -771,7 +772,7 @@ gtag('config', 'G-KV7Q7SQKZX');
     <p style="font-size:13px;color:#6a6860;margin-bottom:2.5rem">AI×セキュリティ ニュース日報 運営者</p>
     <div style="margin-bottom:2.5rem">
       <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">Profile</div>
-      <div style="font-size:14px;color:#98968e;line-height:1.85"><p>若手セキュリティエンジニアです。セキュリティ監視・運用の高度化や自動化、AI×セキュリティの検証・サービス開発に携わってきました。AI for SecurityとSecurity for AIの両方に興味を持ち、業界の標準化・研究活動にも関わっています。</p></div>
+      <div style="font-size:14px;color:#98968e;line-height:1.85"><p>セキュリティエンジニアです。セキュリティ監視・運用の高度化や自動化、AI×セキュリティの検証・サービス開発に携わってきました。AI for SecurityとSecurity for AIの両方に興味を持ち、業界の標準化・研究活動にも関わっています。</p></div>
     </div>
     <div style="margin-bottom:2.5rem">
       <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">このサイトを作った理由</div>
