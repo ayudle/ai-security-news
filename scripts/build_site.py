@@ -105,7 +105,7 @@ def load_columns():
     return cols
 
 
-def build_column_page(col):
+def build_column_page(col, all_articles=None):
     """個別コラムページのHTMLを生成する"""
     title = col.get('title', '')
     date  = col.get('date', '')
@@ -117,6 +117,41 @@ def build_column_page(col):
         f'<span class="col-tag-ap">{html_escape(t)}</span>' for t in tags
     )
     human_badge = '<span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a;font-weight:600">✍ 著者執筆</span>'
+
+    # このコラムのCDC contextセットに一致する記事を最大5件抽出
+    col_cdcs = col_cdc_set(tags)
+    related_news_html = ""
+    if col_cdcs and all_articles:
+        matched = [
+            a for a in all_articles
+            if set(a.get("cdc_context", [])) & col_cdcs
+            and int(a.get("cdc_relevance", 0) or 0) >= 1
+        ]
+        matched.sort(key=lambda x: x.get("published", ""), reverse=True)
+        matched = matched[:5]
+        if matched:
+            items = []
+            for a in matched:
+                a_id  = a.get("id", "")
+                a_pub = a.get("published", "")[:10]
+                a_title = a.get("title_ja") or a.get("title", "")
+                a_src = a.get("source_name", "")
+                a_imp = a.get("importance", "中")
+                a_cdcs = [c for c in a.get("cdc_context", []) if c in col_cdcs]
+                badge_html = "".join(f'<span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">{c}</span>' for c in a_cdcs[:2])
+                items.append(
+                    f'<a href="../article/{a_id}.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px">'
+                    f'<div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center">'
+                    f'<span>{a_pub}</span><span>{html_escape(a_src)}</span>{badge_html}</div>'
+                    f'<div style="font-size:13px;color:#e6e4dc;line-height:1.5">{html_escape(a_title)}</div>'
+                    f'</a>'
+                )
+            related_news_html = (
+                '<div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)">'
+                '<div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#4db896;text-transform:uppercase;margin-bottom:14px">このテーマの最近のニュース</div>'
+                + "".join(items) +
+                '</div>'
+            )
     site_url = f'https://ayudle.github.io/ai-security-news/columns/{slug}.html'
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -193,6 +228,8 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 {body}
   </div>
 
+  {related_news_html}
+
   <div class="col-footer">
     <a href="/ai-security-news/#columns" style="font-size:13px;color:var(--accent);text-decoration:none">← コラム一覧に戻る</a>
     <a href="/ai-security-news/#today" style="font-size:13px;color:var(--accent);text-decoration:none">← 本日のニュースに戻る</a>
@@ -237,6 +274,23 @@ def tag_layer_badge(layer):
 
 def tag_kw_badge(kw):
     return f'<span class="tag-kw">{kw}</span>'
+
+# コラムタグ → CDC context の対応表
+COL_TAG_TO_CDC = {
+    "Identity":    ["Identity/ITDR"],
+    "Exposure":    ["Exposure管理"],
+    "MSSP":        ["MDR/MSSP設計", "サービス企画", "顧客課題"],
+    "CDC":         ["MDR/MSSP設計", "SOC運用変化"],
+    "AI Security": ["Security for AI", "AI for Security"],
+}
+
+def col_cdc_set(col_tags):
+    """コラムのタグリストをCDC context語彙のセットに展開する"""
+    result = set()
+    for tag in col_tags:
+        for cdc in COL_TAG_TO_CDC.get(tag, []):
+            result.add(cdc)
+    return result
 
 def article_card(a, rank=None):
     rank_html    = f'<span class="rank">#{rank}</span>' if rank else ""
@@ -1092,7 +1146,7 @@ function toggleKw(id, btn) {{
 </html>"""
 
 
-def build_article_page(article, all_articles, taxonomy):
+def build_article_page(article, all_articles, taxonomy, columns=None):
     """記事個別ページのHTMLを生成する"""
     a = article
     aid = a.get("id","")
@@ -1116,6 +1170,33 @@ def build_article_page(article, all_articles, taxonomy):
     except (ValueError, TypeError):
         cdc_relevance = 0
     cdc_rel_label = {1: "低", 2: "中", 3: "高"}.get(cdc_relevance, "")
+
+    # 記事のCDC contextと一致するコラムを抽出
+    art_cdc_set = set(cdc_contexts)
+    matched_cols = []
+    for col in (columns or []):
+        col_cdcs = col_cdc_set(col.get("tags", []))
+        if col_cdcs & art_cdc_set:
+            matched_cols.append(col)
+    matched_cols_html = ""
+    if matched_cols and cdc_relevance >= 1:
+        col_items = []
+        for col in matched_cols[:2]:
+            cslug = col.get("slug", "")
+            ctitle = col.get("title", "")
+            cdate = col.get("date", "")
+            col_items.append(
+                f'<a href="../columns/{cslug}.html" class="rel-item">'
+                f'<div class="rel-meta"><span class="rel-date">{cdate}</span>'
+                f'<span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div>'
+                f'<div class="rel-title">{html_escape(ctitle)}</div></a>'
+            )
+        matched_cols_html = (
+            f'<section class="ap-section">'
+            f'<h3 class="ap-sec-title">このテーマで書かれたコラム</h3>'
+            f'<div class="rel-list">{"".join(col_items)}</div>'
+            f'</section>'
+        )
 
     # 同じ大項目の関連記事を日付の新しい順に最大3件
     related = []
@@ -1331,6 +1412,8 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   </section>
 
   {"<section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'>" + (f"<span class='cdc-rel-lbl'>CDC関連度：{cdc_rel_label}</span>" if cdc_rel_label else "") + "".join(f"<span class='cdc-badge-ap'>{ctx}</span>" for ctx in cdc_contexts) + "</div></section>" if cdc_relevance >= 1 and cdc_contexts else ""}
+
+  {matched_cols_html}
 
   <section class="ap-section">
     <h3 class="ap-sec-title">元記事情報</h3>
@@ -1734,7 +1817,7 @@ def main():
         aid = a.get("id")
         if not aid:
             continue
-        html = build_article_page(a, unique_articles, taxonomy)
+        html = build_article_page(a, unique_articles, taxonomy, columns=columns)
         with open(f"docs/article/{aid}.html", "w", encoding="utf-8") as f:
             f.write(html)
         article_count += 1
@@ -1781,7 +1864,7 @@ def main():
         cslug = col.get('slug','')
         if not cslug:
             continue
-        col_html = build_column_page(col)
+        col_html = build_column_page(col, all_articles=unique_articles)
         with open(f"docs/columns/{cslug}.html", "w", encoding="utf-8") as f:
             f.write(col_html)
     print(f'コラム: {len(columns)}件')
