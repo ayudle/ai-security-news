@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIエージェント時代に、SOC/CDCは何を守るべきか | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="AIエージェントの普及により、SOC/CDCが守るべき対象がIdentity、Exposure、API、Dataへ広がるという仮説を整理する。">
+<meta property="og:title" content="AIエージェント時代に、SOC/CDCは何を守るべきか">
+<meta property="og:description" content="AIエージェントの普及により、SOC/CDCが守るべき対象がIdentity、Exposure、API、Dataへ広がるという仮説を整理する。">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/columns/ai-agent-soc-cdc.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/columns/ai-agent-soc-cdc.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700}
+.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+nav.col-nav{padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px}
+nav.col-nav a{color:var(--accent);text-decoration:none}
+.col-ap{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.col-head{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}
+.col-meta{font-size:11px;color:var(--dim);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.col-tags-ap{display:flex;flex-wrap:wrap;gap:4px}
+.col-tag-ap{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}
+h1.col-title{font-size:24px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:10px}
+.col-desc{font-size:14px;color:var(--dim);line-height:1.65;margin-top:8px}
+.col-body{font-size:15px;line-height:1.9;color:var(--text)}
+.col-body h1,.col-body h2{font-size:18px;font-weight:700;color:#fff;margin:2em 0 .6em;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.col-body h3{font-size:15px;font-weight:700;color:#c0beb6;margin:1.6em 0 .5em}
+.col-body p{margin-bottom:1.2em}
+.col-body ul{margin:0 0 1.2em 1.4em}
+.col-body li{margin-bottom:.4em}
+.col-body strong{color:#fff;font-weight:700}
+.col-footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+</style>
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">AI×セキュリティ ニュース日報</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#columns" class="back">← コラム一覧に戻る</a>
+
+<nav class="col-nav">
+  <a href="/ai-security-news/#today">本日のニュース</a>
+  <a href="/ai-security-news/#trend">トレンド分析</a>
+  <a href="/ai-security-news/#weekly">週次レポート</a>
+  <a href="/ai-security-news/#columns">コラム一覧</a>
+</nav>
+
+<article class="col-ap">
+  <div class="col-head">
+    <div class="col-meta">
+      <span>2026-05-04</span>
+      <div class="col-tags-ap"><span class="col-tag-ap">AI Security</span><span class="col-tag-ap">CDC</span><span class="col-tag-ap">SOC</span><span class="col-tag-ap">Identity</span><span class="col-tag-ap">Exposure</span></div>
+    </div>
+    <h1 class="col-title">AIエージェント時代に、SOC/CDCは何を守るべきか</h1>
+    <p class="col-desc">AIエージェントの普及により、SOC/CDCが守るべき対象がIdentity、Exposure、API、Dataへ広がるという仮説を整理する。</p>
+  </div>
+
+  <div class="col-body">
+<h2>はじめに</h2>
+<p>AIエージェントが企業の日常業務に入り込んでいる。カスタマーサポートの自動化、コード生成、インシデントの初動調査支援——用途は急速に広がっており、「AIを使うかどうか」という議論は既に過去のものになりつつある。</p>
+<p>問題は、この変化がセキュリティ監視の前提を根本から揺さぶっている点だ。従来のSOCは「人間が操作するシステムを守る」という前提で設計されている。しかしAIエージェントが主体として動く環境では、守るべき対象の性質が変わる。この記事では、その変化を整理し、SOC/CDC（Cyber Defense Center）の設計にどう影響するかを考えてみたい。</p>
+<h2>AI for Security と Security for AI の違い</h2>
+<p>まず概念を分けることが重要だと思っている。</p>
+<p><strong>AI for Security</strong> は、AIをセキュリティ業務の効率化に使うアプローチだ。ログ解析の自動化、アラートのトリアージ支援、脅威ハンティングの高速化がその典型例に当たる。</p>
+<p><strong>Security for AI</strong> は逆に、AIシステムそのものを守ること——プロンプトインジェクション、モデル汚染、権限濫用、エージェントハイジャックといった、AI固有の攻撃面を対象とした防御設計だ。</p>
+<p>この二つは明確に異なる。しかし現場では混同されがちだ。「AI for Securityが進んだから、Security for AIも同時に解決した」という発想は危険だと感じている。AIで効率化したからといって、AIそのものへの攻撃を検知・防御する準備が整ったわけではない。</p>
+<h2>AIエージェントが変える攻撃面</h2>
+<p>AIエージェントが実用化されると、攻撃者が狙える対象が増える。従来の攻撃対象は端末・ネットワーク・サーバー・アプリを中心としていた。AIエージェントが加わると、これに以下が追加される。</p>
+<ul><li><strong>モデルへのプロンプトインジェクション</strong>：外部入力を経由した意図逸脱</li><li><strong>ツール実行層の悪用</strong>：エージェントが呼び出すAPIやコマンドの乗っ取り</li><li><strong>権限の過剰委譲</strong>：エージェントIDに付与された広すぎる権限</li><li><strong>参照データの汚染</strong>：RAGや外部データソースを介したコンテキスト操作</li><li><strong>意思決定ログの欠如</strong>：何を根拠にどう動いたかが追えない状態</li></ul>
+<p>これらは既存のEDR・NDR・SIEMが前提としていない攻撃経路だ。「ふるまい検知」も、AIエージェントの通常動作が多様すぎてベースラインを引きにくい。</p>
+<h2>SOCからCDCへの拡張</h2>
+<p>こうした変化を踏まえると、SOCに求められる監視スコープは変わる。</p>
+<p><strong>Identity</strong> がひとつの核心になる。AIエージェントは「非人間の実行主体」だが、人間と同様にID・権限・認証トークンを持つ。そのIDが侵害されたとき、あるいは過剰な権限を持ち続けているとき、誰も気づかないリスクがある。IAMの対象をAIエージェントIDにまで拡張し、継続的に観測する必要がある。</p>
+<p><strong>Exposure Management</strong> も重要性を増す。エージェントがどのAPIに接続できるか、どのデータを参照できるか——これらの「露出面」を継続的に把握し、攻撃者の視点で評価することだ。エージェントが新しいAPIとの連携を増やすたびに、攻撃パスが広がる可能性がある。</p>
+<p><strong>データ層とAI層の監視</strong> も新たに必要になる。学習データや参照データの改ざん、モデル出力の品質劣化、推論ログの保全——これらは従来のセキュリティ監視では扱ってこなかった対象だ。</p>
+<p>これらを横断して監視・対応する組織がCDCだと考えている。SOCがアラート対応中心の組織だとすれば、CDCはIdentity・Exposure・API・Data・Governanceを一体として見る、より広いスコープを持つセンターだ。これはSOCを置き換えるという話ではなく、拡張であり統合だ。</p>
+<h2>MSSP / MDR / AI SOCサービス設計への示唆</h2>
+<p>サービスとして提供する立場で考えると、顧客への提供価値をどう定義するかが問われる。「AIで効率化しました」は差別化にならない。顧客が本当に知りたいのは、自組織でAIを使うとき、どういうリスクがあり、それをどう設計・監視・説明できるかだと思う。</p>
+<p>具体的には、こういった問いへの回答が求められるようになるはずだ。</p>
+<ul><li>エージェントIDの権限は、最小権限原則に沿っているか？</li><li>エージェントの実行ログは取得・保全・監査できるか？</li><li>プロンプトインジェクション攻撃を検知するルールはあるか？</li><li>インシデント時にAIの「判断経緯」を顧客に説明できるか？</li></ul>
+<p>これを「要件」として整理し、監視ルールと対応プロセスに落とし込む——これがAI時代のMSSP/MDRに求められる設計力だと思っている。</p>
+<h2>まだ残る問い</h2>
+<p>正直なところ、答えの出ていない問いが多い。AIエージェントの「正常な動作」をどう定義するか。ベースラインのないふるまい検知はどう機能するか。意思決定プロセスの透明性をどこまで保証できるか——これらは技術と制度の両面で議論が続いている。</p>
+<p>当面は、「守れていない領域を明示し、リスクとして経営に説明できる組織」が一歩先を行くと思っている。完璧な防御より、可視化と説明責任の方が現実的な第一歩だ。</p>
+<h2>おわりに</h2>
+<p>AIエージェント時代のSOC/CDCをどう設計するかは、まだ標準解がない領域だ。このサイトを通じて、日次ニュースを追いながら自分なりの解像度を上げていくことを続けている。今後も、ニュースから読み取った示唆と、こうした思考記事の両方を蓄積していきたい。</p>
+  </div>
+
+  <div class="col-footer">
+    <a href="/ai-security-news/#columns" style="font-size:13px;color:var(--accent);text-decoration:none">← コラム一覧に戻る</a>
+    <a href="/ai-security-news/#today" style="font-size:13px;color:var(--accent);text-decoration:none">← 本日のニュースに戻る</a>
+  </div>
+</article>
+
+<footer>
+  日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+
+</body>
+</html>

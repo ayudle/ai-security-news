@@ -127,6 +127,16 @@ a{color:inherit;text-decoration:none}
 .imp-detail[open] .imp-detail-toggle::before{content:"▼ 閉じる";font-size:11px}
 .imp-detail-toggle::-webkit-details-marker{display:none}
 .imp-detail-toggle::marker{display:none}
+.col-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:14px}
+.col-card-meta{font-size:10px;color:var(--dim);margin-bottom:6px}
+.col-card-title{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:8px}
+.col-card-title a{color:var(--text)}
+.col-card-title a:hover{color:var(--accent)}
+.col-card-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:8px}
+.col-card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.col-tag{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}
+.col-intro{font-size:12px;color:var(--dim);margin-bottom:16px;line-height:1.65}
+.col-read-link{display:inline-block;font-size:12px;color:var(--accent);padding:4px 0}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
 <script>
@@ -148,6 +158,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   <a href="#archive" class="tab">アーカイブ</a>
   <a href="#trend"   class="tab">トレンド分析</a>
   <a href="#weekly"  class="tab">週次レポート</a>
+  <a href="#columns" class="tab">コラム</a>
   <a href="#about"   class="tab">About</a>
 </div>
 
@@ -472,6 +483,12 @@ gtag('config', 'G-KV7Q7SQKZX');
 </div>
 </div>
 
+<div class="pane" id="pane-columns">
+  <p class="plabel">コラム</p>
+  <p class="col-intro">ニュースの観察から生まれた考察を記録しています。</p>
+<div class="col-card"><div class="col-card-meta">2026-05-04</div><h2 class="col-card-title"><a href="columns/ai-agent-soc-cdc.html">AIエージェント時代に、SOC/CDCは何を守るべきか</a></h2><p class="col-card-desc">AIエージェントの普及により、SOC/CDCが守るべき対象がIdentity、Exposure、API、Dataへ広がるという仮説を整理する。</p><div class="col-card-tags"><span class="col-tag">AI Security</span><span class="col-tag">CDC</span><span class="col-tag">SOC</span><span class="col-tag">Identity</span><span class="col-tag">Exposure</span></div><a href="columns/ai-agent-soc-cdc.html" class="col-read-link">読む →</a></div>
+</div>
+
 <div class="pane" id="pane-about">
   <p class="plabel">About</p>
   <div style="max-width:720px;margin:0 auto;padding:1rem 0">
@@ -537,7 +554,7 @@ const MAIN_COLORS = {"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai_
 const LAYER_COLORS = {"デバイス/エッジ":"#639922","ネットワーク":"#378ADD","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#98968e"};
 
 function showTab(id) {
-  var valid = ['today','archive','trend','weekly','about'];
+  var valid = ['today','archive','trend','weekly','columns','about'];
   if (id === 'popular' || valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
   document.querySelectorAll('.tab-bar .tab').forEach(function(t) { t.classList.remove('on'); });

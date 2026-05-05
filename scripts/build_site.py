@@ -3,7 +3,8 @@ build_site.py v3
 タブUI・トレンドダッシュボード（大項目×中項目スパイク分析）付きHTML生成
 """
 
-import json, os
+import json, os, re, glob
+from html import escape as html_escape
 from datetime import datetime, timezone, timedelta
 from collections import Counter, defaultdict
 
@@ -21,6 +22,190 @@ _NOISE_KW = {
 def _is_noise_kw(kw):
     kl = kw.strip().lower()
     return kl in _NOISE_KW or any(n in kl for n in _NOISE_KW)
+
+# ── コラム機能 ─────────────────────────────────────────────
+
+def parse_frontmatter(text):
+    """Markdownのfrontmatterをパースして (meta_dict, body_text) を返す"""
+    meta = {}
+    body = text
+    if text.startswith('---'):
+        end = text.find('\n---', 3)
+        if end != -1:
+            fm = text[3:end].strip()
+            body = text[end + 4:].strip()
+            last_list_key = None
+            for line in fm.split('\n'):
+                line = line.rstrip()
+                if line.startswith('  - ') or line.startswith('- '):
+                    if last_list_key:
+                        meta[last_list_key].append(line.lstrip('- ').strip())
+                elif ':' in line:
+                    k, _, v = line.partition(':')
+                    k = k.strip(); v = v.strip().strip('"').strip("'")
+                    if v == '':
+                        meta[k] = []; last_list_key = k
+                    else:
+                        meta[k] = v; last_list_key = None
+    return meta, body
+
+
+def _md_inline(text):
+    """インライン要素（太字・イタリック）をHTML化する（エスケープ済みテキストに適用）"""
+    t = html_escape(text)
+    t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
+    t = re.sub(r'\*([^*]+?)\*', r'<em>\1</em>', t)
+    return t
+
+
+def md_to_html(text):
+    """最小限のMarkdown→HTML変換（XSS安全）"""
+    blocks = re.split(r'\n{2,}', text.strip())
+    out = []
+    for block in blocks:
+        lines = block.strip().split('\n')
+        first = lines[0].rstrip()
+        if first.startswith('### '):
+            out.append(f'<h3>{_md_inline(first[4:])}</h3>')
+        elif first.startswith('## '):
+            out.append(f'<h2>{_md_inline(first[3:])}</h2>')
+        elif first.startswith('# '):
+            out.append(f'<h1>{_md_inline(first[2:])}</h1>')
+        elif all(l.rstrip().startswith(('- ', '* ')) or not l.rstrip() for l in lines):
+            items = ''.join(
+                f'<li>{_md_inline(l.rstrip()[2:])}</li>'
+                for l in lines if l.rstrip().startswith(('- ', '* '))
+            )
+            out.append(f'<ul>{items}</ul>')
+        else:
+            content = _md_inline(''.join(l.rstrip() for l in lines))
+            out.append(f'<p>{content}</p>')
+    return '\n'.join(out)
+
+
+def load_columns():
+    """columns/*.md を読み込んでリストを返す（日付降順）"""
+    cols = []
+    if not os.path.isdir('columns'):
+        return cols
+    for path in sorted(glob.glob('columns/*.md'), reverse=True):
+        with open(path, 'r', encoding='utf-8') as f:
+            raw = f.read()
+        meta, body = parse_frontmatter(raw)
+        if not meta.get('slug'):
+            continue
+        cols.append({
+            'title':       meta.get('title', ''),
+            'date':        meta.get('date', ''),
+            'slug':        meta.get('slug', ''),
+            'description': meta.get('description', ''),
+            'tags':        meta.get('tags', []),
+            'body_md':     body,
+        })
+    return cols
+
+
+def build_column_page(col):
+    """個別コラムページのHTMLを生成する"""
+    title = col.get('title', '')
+    date  = col.get('date', '')
+    slug  = col.get('slug', '')
+    desc  = col.get('description', '')
+    tags  = col.get('tags', [])
+    body  = md_to_html(col.get('body_md', ''))
+    tags_html = ''.join(
+        f'<span class="col-tag-ap">{html_escape(t)}</span>' for t in tags
+    )
+    site_url = f'https://ayudle.github.io/ai-security-news/columns/{slug}.html'
+    return f"""<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{html_escape(title)} | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="{html_escape(desc)}">
+<meta property="og:title" content="{html_escape(title)}">
+<meta property="og:description" content="{html_escape(desc)}">
+<meta property="og:url" content="{site_url}">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="{site_url}">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}}
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}}
+header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}}
+.logo{{font-size:18px;font-weight:700}}
+.back{{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
+.back:hover{{text-decoration:underline}}
+nav.col-nav{{padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px}}
+nav.col-nav a{{color:var(--accent);text-decoration:none}}
+.col-ap{{max-width:720px;margin:0 auto;padding:16px 24px 60px}}
+.col-head{{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}}
+.col-meta{{font-size:11px;color:var(--dim);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}}
+.col-tags-ap{{display:flex;flex-wrap:wrap;gap:4px}}
+.col-tag-ap{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}}
+h1.col-title{{font-size:24px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:10px}}
+.col-desc{{font-size:14px;color:var(--dim);line-height:1.65;margin-top:8px}}
+.col-body{{font-size:15px;line-height:1.9;color:var(--text)}}
+.col-body h1,.col-body h2{{font-size:18px;font-weight:700;color:#fff;margin:2em 0 .6em;padding-bottom:6px;border-bottom:1px solid var(--border)}}
+.col-body h3{{font-size:15px;font-weight:700;color:#c0beb6;margin:1.6em 0 .5em}}
+.col-body p{{margin-bottom:1.2em}}
+.col-body ul{{margin:0 0 1.2em 1.4em}}
+.col-body li{{margin-bottom:.4em}}
+.col-body strong{{color:#fff;font-weight:700}}
+.col-footer{{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px}}
+footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">AI×セキュリティ ニュース日報</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#columns" class="back">← コラム一覧に戻る</a>
+
+<nav class="col-nav">
+  <a href="/ai-security-news/#today">本日のニュース</a>
+  <a href="/ai-security-news/#trend">トレンド分析</a>
+  <a href="/ai-security-news/#weekly">週次レポート</a>
+  <a href="/ai-security-news/#columns">コラム一覧</a>
+</nav>
+
+<article class="col-ap">
+  <div class="col-head">
+    <div class="col-meta">
+      <span>{html_escape(date)}</span>
+      <div class="col-tags-ap">{tags_html}</div>
+    </div>
+    <h1 class="col-title">{html_escape(title)}</h1>
+    <p class="col-desc">{html_escape(desc)}</p>
+  </div>
+
+  <div class="col-body">
+{body}
+  </div>
+
+  <div class="col-footer">
+    <a href="/ai-security-news/#columns" style="font-size:13px;color:var(--accent);text-decoration:none">← コラム一覧に戻る</a>
+    <a href="/ai-security-news/#today" style="font-size:13px;color:var(--accent);text-decoration:none">← 本日のニュースに戻る</a>
+  </div>
+</article>
+
+<footer>
+  日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+
+</body>
+</html>"""
+
 
 MAIN_COLOR = {
     "attack":   "#E24B4A",
@@ -191,7 +376,7 @@ def build_analytics(history, taxonomy):
     }
 
 
-def build_html(data, weekly_list=None):
+def build_html(data, weekly_list=None, columns=None):
     weekly_list = weekly_list or []
     articles  = data.get("articles", [])
     today     = data.get("today", "")
@@ -265,6 +450,41 @@ def build_html(data, weekly_list=None):
             f'  {latest_card}\n'
             '  <p class="plabel" style="margin-top:16px">過去のレポート</p>\n'
             f'  <div style="margin-top:8px">{past_rows}</div>\n'
+            '</div>'
+        )
+
+    # コラムペイン HTML
+    columns = columns or []
+    if columns:
+        col_cards_html = ""
+        for col in columns:
+            ctitle = col.get('title','')
+            cdate  = col.get('date','')
+            cslug  = col.get('slug','')
+            cdesc  = col.get('description','')
+            ctags  = col.get('tags',[])
+            ctags_html = "".join(f'<span class="col-tag">{html_escape(t)}</span>' for t in ctags)
+            col_cards_html += (
+                f'<div class="col-card">'
+                f'<div class="col-card-meta">{html_escape(cdate)}</div>'
+                f'<h2 class="col-card-title"><a href="columns/{cslug}.html">{html_escape(ctitle)}</a></h2>'
+                f'<p class="col-card-desc">{html_escape(cdesc)}</p>'
+                f'<div class="col-card-tags">{ctags_html}</div>'
+                f'<a href="columns/{cslug}.html" class="col-read-link">読む →</a>'
+                f'</div>\n'
+            )
+        columns_pane_html = (
+            '<div class="pane" id="pane-columns">\n'
+            '  <p class="plabel">コラム</p>\n'
+            '  <p class="col-intro">ニュースの観察から生まれた考察を記録しています。</p>\n'
+            + col_cards_html +
+            '</div>'
+        )
+    else:
+        columns_pane_html = (
+            '<div class="pane" id="pane-columns">\n'
+            '  <p class="plabel">コラム</p>\n'
+            '  <p class="empty">コラムはまだありません。</p>\n'
             '</div>'
         )
 
@@ -405,6 +625,16 @@ a{{color:inherit;text-decoration:none}}
 .imp-detail[open] .imp-detail-toggle::before{{content:"▼ 閉じる";font-size:11px}}
 .imp-detail-toggle::-webkit-details-marker{{display:none}}
 .imp-detail-toggle::marker{{display:none}}
+.col-card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:14px}}
+.col-card-meta{{font-size:10px;color:var(--dim);margin-bottom:6px}}
+.col-card-title{{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:8px}}
+.col-card-title a{{color:var(--text)}}
+.col-card-title a:hover{{color:var(--accent)}}
+.col-card-desc{{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:8px}}
+.col-card-tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}}
+.col-tag{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}}
+.col-intro{{font-size:12px;color:var(--dim);margin-bottom:16px;line-height:1.65}}
+.col-read-link{{display:inline-block;font-size:12px;color:var(--accent);padding:4px 0}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
 <script>
@@ -426,6 +656,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   <a href="#archive" class="tab">アーカイブ</a>
   <a href="#trend"   class="tab">トレンド分析</a>
   <a href="#weekly"  class="tab">週次レポート</a>
+  <a href="#columns" class="tab">コラム</a>
   <a href="#about"   class="tab">About</a>
 </div>
 
@@ -531,6 +762,8 @@ gtag('config', 'G-KV7Q7SQKZX');
 
 {weekly_pane_html}
 
+{columns_pane_html}
+
 <div class="pane" id="pane-about">
   <p class="plabel">About</p>
   <div style="max-width:720px;margin:0 auto;padding:1rem 0">
@@ -596,7 +829,7 @@ const MAIN_COLORS = {{"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai
 const LAYER_COLORS = {{"デバイス/エッジ":"#639922","ネットワーク":"#378ADD","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#98968e"}};
 
 function showTab(id) {{
-  var valid = ['today','archive','trend','weekly','about'];
+  var valid = ['today','archive','trend','weekly','columns','about'];
   if (id === 'popular' || valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) {{ p.classList.remove('on'); }});
   document.querySelectorAll('.tab-bar .tab').forEach(function(t) {{ t.classList.remove('on'); }});
@@ -1452,9 +1685,10 @@ def main():
     with open(DATA_PATH,"r",encoding="utf-8") as f:
         data = json.load(f)
     weekly_list = load_weekly_list()
+    columns = load_columns()
     os.makedirs("docs", exist_ok=True)
     with open(OUT_PATH,"w",encoding="utf-8") as f:
-        f.write(build_html(data, weekly_list))
+        f.write(build_html(data, weekly_list, columns))
     print(f"生成完了: {OUT_PATH} ({len(data.get('articles',[]))}件)")
     os.makedirs("docs/archive", exist_ok=True)
     for day in data.get("history",[]):
@@ -1525,6 +1759,17 @@ def main():
             f.write(build_weekly_html(wd, article_lookup))
     print(f'週次レポート: {len(weekly_list)}件')
 
+    # コラムページ生成
+    os.makedirs("docs/columns", exist_ok=True)
+    for col in columns:
+        cslug = col.get('slug','')
+        if not cslug:
+            continue
+        col_html = build_column_page(col)
+        with open(f"docs/columns/{cslug}.html", "w", encoding="utf-8") as f:
+            f.write(col_html)
+    print(f'コラム: {len(columns)}件')
+
     # sitemap.xml 生成
     site_url = 'https://ayudle.github.io/ai-security-news'
     sitemap_urls = [
@@ -1560,6 +1805,17 @@ def main():
                 'priority': '0.7',
                 'changefreq': 'monthly',
                 'lastmod': wpe,
+            })
+    # コラム
+    for col in columns:
+        cslug = col.get('slug','')
+        cdate = col.get('date','')
+        if cslug:
+            sitemap_urls.append({
+                'loc': f'{site_url}/columns/{cslug}.html',
+                'priority': '0.7',
+                'changefreq': 'monthly',
+                'lastmod': cdate,
             })
 
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
