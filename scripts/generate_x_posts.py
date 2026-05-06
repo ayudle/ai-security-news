@@ -461,6 +461,46 @@ def _get_account_info() -> tuple[str, str, str]:
     return username, user_id, name
 
 
+# ── X APIエラー解析 ───────────────────────────────────────────────────────
+
+def _log_x_error(resp: "requests.Response") -> str:
+    """
+    X API エラーレスポンスをログに出力し、history 用の短い概要を返す。
+    Secrets・token・署名値はレスポンス本文に含まれないため本文を表示してよい。
+    Authorization ヘッダーは絶対に出力しない。
+    """
+    raw = resp.text[:500] if resp.text else "(empty body)"
+
+    # JSON なら構造化して読みやすく表示
+    try:
+        body = resp.json()
+    except Exception:
+        print(f"[ERROR] response body: {raw}")
+        return raw[:80]
+
+    # X API v2 の標準エラーフィールドを優先表示
+    for key in ("title", "detail", "type", "status"):
+        val = body.get(key)
+        if val:
+            print(f"[ERROR] {key}: {val}")
+
+    # errors 配列がある場合は各要素を展開
+    errors = body.get("errors") or []
+    for err in errors[:3]:
+        if isinstance(err, dict):
+            msg = err.get("message") or err.get("detail") or str(err)
+            code = err.get("code", "")
+            print(f"[ERROR] errors[]: {msg}" + (f" (code={code})" if code else ""))
+        else:
+            print(f"[ERROR] errors[]: {err}")
+
+    # JSONから概要文字列を組み立てて返す（history の error フィールド用）
+    detail = body.get("detail") or body.get("title") or ""
+    if errors and isinstance(errors[0], dict):
+        detail = detail or errors[0].get("message") or errors[0].get("detail") or ""
+    return (detail or raw)[:120]
+
+
 # ── X API投稿 ────────────────────────────────────────────────────────────
 
 def _post_to_x(text: str) -> tuple[bool, str, str]:
@@ -496,8 +536,10 @@ def _post_to_x(text: str) -> tuple[bool, str, str]:
             return False, "", "レスポンスに tweet id が含まれていませんでした"
         return True, tweet_id, ""
 
-    # エラー時はステータスコードのみ記録（レスポンス本文は機密情報を含む可能性があるため省略）
-    return False, "", f"HTTP {resp.status_code}"
+    # エラー詳細をログ出力（Secrets・token・署名値は含まれない応答本文のみ）
+    print(f"[ERROR] X API returned HTTP {resp.status_code}")
+    summary = _log_x_error(resp)
+    return False, "", f"HTTP {resp.status_code}: {summary}"
 
 
 # ── ファイル出力 ──────────────────────────────────────────────────────────
