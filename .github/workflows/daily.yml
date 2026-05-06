@@ -64,6 +64,10 @@ jobs:
         if: steps.check_today.outputs.today_count == '0'
         run: python scripts/build_site.py
 
+      - name: Generate X posts (dry-run)
+        if: steps.check_today.outputs.today_count == '0'
+        run: python scripts/generate_x_posts.py
+
       - name: Commit and push
         if: steps.check_today.outputs.today_count == '0'
         run: |
