@@ -81,12 +81,19 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 - **週次レポート** — 毎週月曜に自動生成
 - **コラム** — 運営者による著者執筆の考察（LLM生成ではない）
 
-### X投稿文生成（Phase 1: dry-run）
-- 毎日、記事個別ページへ誘導するX投稿候補を3本自動生成
+### X投稿文生成（Phase 2: dry-run・スロット別）
 - スコアリング（重要度・CDC関連度・ソースTier・AI関連度）で上位3件を選定
 - 投稿スロット：morning 08:30 / noon 12:30 / evening 19:00（JST）
-- 生成結果は `docs/data/x_posts_daily.json` に保存、GitHub Actionsログで確認可能
-- **現在は dry-run のみ。本番投稿・X API連携は未実装（将来フェーズで追加予定）**
+- `--all` で3本まとめて生成（daily.ymlから実行）、`--slot` でスロット単位1本生成（post_x_dry_run.ymlから実行）
+- スロット別生成時は `docs/data/x_post_history.json` に `date + slot + article_id + text_hash` を記録（重複防止）
+- **現在は dry-run のみ。本番投稿・X API連携は未実装（Phase 3で予定）**
+
+```bash
+# CLIの使い方
+python scripts/generate_x_posts.py             # --all と同じ（3本一覧）
+python scripts/generate_x_posts.py --all       # 3スロット分まとめて生成
+python scripts/generate_x_posts.py --slot morning  # morning の1本だけ生成・履歴記録
+```
 
 ---
 
@@ -94,11 +101,13 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 
 ```
 /
-├── .github/workflows/daily.yml       # GitHub Actions（毎日08:00自動実行）
+├── .github/workflows/
+│   ├── daily.yml                     # GitHub Actions（毎日08:00自動実行）
+│   └── post_x_dry_run.yml            # X投稿文スロット別dry-run生成（1日3回）
 ├── scripts/
 │   ├── fetch_and_summarize.py        # RSS収集 + Gemini APIで要約・タグ付け
 │   ├── build_site.py                 # HTMLサイト生成（タブUI・ダッシュボード）
-│   └── generate_x_posts.py          # X投稿文dry-run生成（Phase 1）
+│   └── generate_x_posts.py          # X投稿文dry-run生成（--all / --slot 対応）
 ├── columns/                          # 著者執筆コラム（Markdown）
 ├── docs/                             # GitHub Pagesの公開先
 │   ├── index.html                    # 自動生成トップページ
@@ -108,7 +117,11 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 │   ├── weekly/                       # 週次レポート
 │   └── data/
 │       ├── latest.json               # 記事データ（JSON・90日分）
-│       └── x_posts_daily.json        # X投稿候補（dry-run・日次更新）
+│       ├── x_posts_daily.json        # X投稿候補3本一覧（--all・日次更新）
+│       ├── x_post_morning.json       # morning スロット投稿文（--slot morning）
+│       ├── x_post_noon.json          # noon スロット投稿文（--slot noon）
+│       ├── x_post_evening.json       # evening スロット投稿文（--slot evening）
+│       └── x_post_history.json       # 投稿履歴（date/slot/article_id/text_hash）
 └── gas/
     └── send_newsletter.gs            # Gmail自動送信（Google Apps Script・オプション）
 ```

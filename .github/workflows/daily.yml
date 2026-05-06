@@ -66,7 +66,7 @@ jobs:
 
       - name: Generate X posts (dry-run)
         if: steps.check_today.outputs.today_count == '0'
-        run: python scripts/generate_x_posts.py
+        run: python scripts/generate_x_posts.py --all --dry-run
 
       - name: Commit and push
         if: steps.check_today.outputs.today_count == '0'
