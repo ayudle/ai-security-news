@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
 """
 generate_x_posts.py
-当日記事からX投稿候補を生成し docs/data/ に保存する。
-Phase 1-2: dry-run only。X API連携・本番投稿は行わない。
+当日記事からX投稿候補を生成し、オプションでXへ本番投稿する。
+Phase 1-3: --post を指定したときのみX APIへ投稿。デフォルトはdry-run。
 
 使い方:
-  python generate_x_posts.py              # --all と同じ
-  python generate_x_posts.py --all        # 3スロット分まとめて生成
-  python generate_x_posts.py --slot morning  # morning の1本だけ生成
-  python generate_x_posts.py --dry-run    # 将来の拡張用フラグ（現在は常にdry-run）
+  python generate_x_posts.py                      # --all と同じ（dry-run）
+  python generate_x_posts.py --all --dry-run      # 3スロット分まとめて生成
+  python generate_x_posts.py --slot morning       # morning の1本生成・履歴記録（dry-run）
+  python generate_x_posts.py --slot morning --post  # morning をX APIへ実際に投稿
+  python generate_x_posts.py --slot morning --post --force  # 投稿済みでも強制再投稿
+
+安全仕様:
+  - --post なしでは絶対にX APIを呼ばない
+  - --all --post は禁止（複数本同時投稿を防ぐ）
+  - --post には --slot が必須
+  - 投稿文が280文字を超える場合は投稿しない
+  - 必要な環境変数が未設定なら投稿しない
+  - 同じ date+slot が既に posted の場合は --force なしでスキップ
 """
 
 import argparse
@@ -23,6 +32,8 @@ OUT_ALL      = "docs/data/x_posts_daily.json"
 OUT_SLOT_TPL = "docs/data/x_post_{slot}.json"
 HISTORY_PATH = "docs/data/x_post_history.json"
 BASE_URL     = "https://ayudle.github.io/ai-security-news/article"
+X_API_URL    = "https://api.x.com/2/tweets"
+X_VERIFY_URL = "https://api.x.com/2/users/me"
 JST          = timezone(timedelta(hours=9))
 
 SLOTS = [
@@ -304,59 +315,248 @@ def _print_post(p: dict) -> None:
 
 # ── 履歴管理 ─────────────────────────────────────────────────────────────
 
+def _load_history() -> dict:
+    if os.path.exists(HISTORY_PATH):
+        with open(HISTORY_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {"history": []}
+
+
+def _save_history(hist: dict) -> None:
+    os.makedirs(os.path.dirname(HISTORY_PATH), exist_ok=True)
+    with open(HISTORY_PATH, "w", encoding="utf-8") as f:
+        json.dump(hist, f, ensure_ascii=False, indent=2)
+
+
+def _text_hash(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
+
+
 def _update_history(post: dict, date_str: str, generated_at: str) -> None:
-    text_hash = hashlib.sha256(post["text"].encode("utf-8")).hexdigest()[:16]
+    """dry-run生成を履歴に追記（重複チェックあり）。"""
     entry = {
         "date":         date_str,
         "slot":         post["slot"],
         "article_id":   post["article_id"],
-        "text_hash":    text_hash,
+        "text_hash":    _text_hash(post["text"]),
         "status":       "dry_run_generated",
         "generated_at": generated_at,
     }
-
-    if os.path.exists(HISTORY_PATH):
-        with open(HISTORY_PATH, "r", encoding="utf-8") as f:
-            hist = json.load(f)
-    else:
-        hist = {"history": []}
-
+    hist  = _load_history()
     dedup = (entry["date"], entry["slot"], entry["article_id"], entry["text_hash"])
     for existing in hist["history"]:
         if (existing.get("date"), existing.get("slot"),
                 existing.get("article_id"), existing.get("text_hash")) == dedup:
             print(f"[HISTORY] 同一エントリが既に存在します。スキップ: {entry['date']} / {entry['slot']}")
             return
-
     hist["history"].append(entry)
-    os.makedirs(os.path.dirname(HISTORY_PATH), exist_ok=True)
-    with open(HISTORY_PATH, "w", encoding="utf-8") as f:
-        json.dump(hist, f, ensure_ascii=False, indent=2)
+    _save_history(hist)
     print(f"[HISTORY] 履歴を追記しました: {entry['date']} / {entry['slot']} / {entry['article_id']}")
+
+
+def _check_already_posted(slot_name: str, date_str: str) -> bool:
+    """同じ date+slot で status==posted のレコードが存在するか確認する。"""
+    hist = _load_history()
+    return any(
+        e.get("date") == date_str
+        and e.get("slot") == slot_name
+        and e.get("status") == "posted"
+        for e in hist["history"]
+    )
+
+
+def _record_posted(
+    post: dict, tweet_id: str, date_str: str, generated_at: str, posted_at: str
+) -> None:
+    entry = {
+        "date":         date_str,
+        "slot":         post["slot"],
+        "article_id":   post["article_id"],
+        "text_hash":    _text_hash(post["text"]),
+        "status":       "posted",
+        "tweet_id":     tweet_id,
+        "posted_at":    posted_at,
+        "generated_at": generated_at,
+    }
+    hist = _load_history()
+    hist["history"].append(entry)
+    _save_history(hist)
+    print(f"[HISTORY] posted を記録しました: tweet_id={tweet_id}")
+
+
+def _record_failed(
+    post: dict, error: str, date_str: str, generated_at: str, failed_at: str
+) -> None:
+    entry = {
+        "date":         date_str,
+        "slot":         post["slot"],
+        "article_id":   post["article_id"],
+        "text_hash":    _text_hash(post["text"]),
+        "status":       "failed",
+        "error":        error,
+        "failed_at":    failed_at,
+        "generated_at": generated_at,
+    }
+    hist = _load_history()
+    hist["history"].append(entry)
+    _save_history(hist)
+    print(f"[HISTORY] failed を記録しました: {error}")
+
+
+# ── X API共通：OAuth認証ヘルパー ─────────────────────────────────────────
+
+def _make_oauth1() -> "OAuth1":
+    """環境変数からOAuth1オブジェクトを生成する。Secrets値はログに出さない。"""
+    try:
+        from requests_oauthlib import OAuth1
+    except ImportError:
+        raise RuntimeError(
+            "requests-oauthlib が未インストールです。"
+            "`pip install requests-oauthlib` を実行してください。"
+        )
+    required_vars = ["X_API_KEY", "X_API_SECRET", "X_ACCESS_TOKEN", "X_ACCESS_SECRET"]
+    missing = [v for v in required_vars if not os.environ.get(v)]
+    if missing:
+        raise RuntimeError(f"環境変数が未設定です: {', '.join(missing)}")
+    return OAuth1(
+        os.environ["X_API_KEY"],
+        os.environ["X_API_SECRET"],
+        os.environ["X_ACCESS_TOKEN"],
+        os.environ["X_ACCESS_SECRET"],
+    )
+
+
+# ── アカウント確認 ────────────────────────────────────────────────────────
+
+def _get_account_info() -> tuple[str, str, str]:
+    """
+    X API v2 (GET /2/users/me) で投稿先アカウント情報を取得する。
+    戻り値: (username, user_id, name)
+    Secrets の値はログに出力しない。
+    """
+    try:
+        import requests
+    except ImportError:
+        raise RuntimeError("requests が未インストールです。")
+
+    try:
+        auth = _make_oauth1()
+    except RuntimeError:
+        raise
+
+    try:
+        resp = requests.get(X_VERIFY_URL, auth=auth, timeout=20)
+    except Exception as e:
+        raise RuntimeError(f"リクエスト例外: {type(e).__name__}")
+
+    if resp.status_code != 200:
+        raise RuntimeError(f"HTTP {resp.status_code}")
+
+    data = resp.json().get("data", {})
+    username = data.get("username", "")
+    user_id  = data.get("id", "")
+    name     = data.get("name", "")
+    if not username:
+        raise RuntimeError("レスポンスに username が含まれていませんでした")
+    return username, user_id, name
+
+
+# ── X API投稿 ────────────────────────────────────────────────────────────
+
+def _post_to_x(text: str) -> tuple[bool, str, str]:
+    """
+    X API v2 (POST /2/tweets) へ OAuth 1.0a で投稿する。
+    戻り値: (success, tweet_id, error_message)
+    APIキーは環境変数から取得。ログに値は出力しない。
+    """
+    try:
+        import requests
+    except ImportError:
+        return False, "", "requests が未インストールです。"
+
+    try:
+        auth = _make_oauth1()
+    except RuntimeError as e:
+        return False, "", str(e)
+
+    try:
+        resp = requests.post(
+            X_API_URL,
+            json={"text": text},
+            auth=auth,
+            timeout=20,
+        )
+    except Exception as e:
+        return False, "", f"リクエスト例外: {type(e).__name__}"
+
+    if resp.status_code == 201:
+        data = resp.json().get("data", {})
+        tweet_id = data.get("id", "")
+        if not tweet_id:
+            return False, "", "レスポンスに tweet id が含まれていませんでした"
+        return True, tweet_id, ""
+
+    # エラー時はステータスコードのみ記録（レスポンス本文は機密情報を含む可能性があるため省略）
+    return False, "", f"HTTP {resp.status_code}"
+
+
+# ── ファイル出力 ──────────────────────────────────────────────────────────
+
+def _write_slot_json(out_path: str, payload: dict) -> None:
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    print(f"[OK] {out_path} 出力完了")
 
 
 # ── CLI引数 ───────────────────────────────────────────────────────────────
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="X投稿文dry-run生成スクリプト（Phase 1-2）"
+        description="X投稿文生成・投稿スクリプト（Phase 3）"
     )
-    group = parser.add_mutually_exclusive_group()
-    group.add_argument(
+    mode_group = parser.add_mutually_exclusive_group()
+    mode_group.add_argument(
         "--all", dest="mode_all", action="store_true",
-        help="3スロット分まとめて生成（デフォルト）"
+        help="3スロット分まとめて生成（dry-runのみ、--post不可）"
     )
-    group.add_argument(
+    mode_group.add_argument(
         "--slot", choices=["morning", "noon", "evening"],
-        help="指定スロット1本を生成し履歴に記録する"
+        help="指定スロット1本を生成する"
     )
     parser.add_argument(
-        "--dry-run", dest="dry_run", action="store_true", default=True,
-        help="dry-runモード（現在は常にdry-run、将来拡張用）"
+        "--post", action="store_true", default=False,
+        help="X APIへ実際に投稿する（--slot と組み合わせて使う。--all と同時使用禁止）"
     )
+    parser.add_argument(
+        "--force", action="store_true", default=False,
+        help="同じ date+slot が already posted でも強制再投稿する（--post と組み合わせて使う）"
+    )
+    parser.add_argument(
+        "--dry-run", dest="dry_run", action="store_true", default=False,
+        help="dry-runモード（--post なしのデフォルト動作と同じ、将来拡張用）"
+    )
+    parser.add_argument(
+        "--verify-account", dest="verify_account", action="store_true", default=False,
+        help="X APIアカウント情報（username/id/name）を表示して終了する（投稿しない）"
+    )
+
     args = parser.parse_args()
+
+    # ── バリデーション ────────────────────────────────────────────────────
+    if args.verify_account and (args.post or args.force or args.slot or args.mode_all):
+        parser.error("--verify-account は単独で使用してください。")
+    if args.post and args.mode_all:
+        parser.error("--all --post は禁止です。--slot morning|noon|evening を指定してください。")
+    if args.post and not args.slot:
+        parser.error("--post には --slot morning|noon|evening が必要です。")
+    if args.force and not args.post:
+        parser.error("--force は --post と組み合わせて使ってください。")
+
+    # デフォルト: --all
     if not args.slot:
         args.mode_all = True
+
     return args
 
 
@@ -364,6 +564,18 @@ def _parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = _parse_args()
+
+    # ── --verify-account: アカウント確認して終了 ──────────────────────────
+    if args.verify_account:
+        print("[VERIFY] X APIアカウント情報を取得します...")
+        try:
+            username, user_id, name = _get_account_info()
+            print(f"[OK] @{username}  (id={user_id}, name={name})")
+            print("     ↑ 本番投稿前にこのアカウントが正しいか確認してください。")
+        except RuntimeError as e:
+            print(f"[ERROR] {e}")
+            sys.exit(1)
+        return
 
     if not os.path.exists(DATA_PATH):
         print(
@@ -381,7 +593,9 @@ def main() -> None:
     generated = now_jst.isoformat()
     ranked    = sorted(articles, key=_sort_key) if articles else []
 
-    # ── --all モード ──────────────────────────────────────────────────────
+    # ──────────────────────────────────────────────────────────────────────
+    # --all モード（dry-runのみ、投稿なし）
+    # ──────────────────────────────────────────────────────────────────────
     if args.mode_all:
         posts = []
         for slot_info, article in zip(SLOTS, ranked[:3]):
@@ -403,7 +617,9 @@ def main() -> None:
             _print_post(p)
         return
 
-    # ── --slot モード ─────────────────────────────────────────────────────
+    # ──────────────────────────────────────────────────────────────────────
+    # --slot モード
+    # ──────────────────────────────────────────────────────────────────────
     slot_name = args.slot
     slot_idx  = SLOT_INDEX[slot_name]
     slot_info = SLOTS[slot_idx]
@@ -414,32 +630,92 @@ def main() -> None:
             f"[WARN] スロット '{slot_name}' に対応する記事がありません"
             f"（記事数: {len(ranked)}）"
         )
-        output: dict = {
+        _write_slot_json(out_path, {
             "date":         date_str,
             "generated_at": generated,
             "mode":         "dry_run",
             "slot":         slot_name,
             "post":         None,
-        }
-    else:
-        article = ranked[slot_idx]
-        post    = _make_post(slot_info, article)
-        output  = {
+        })
+        return
+
+    article = ranked[slot_idx]
+    post    = _make_post(slot_info, article)
+
+    print(f"[{'POST' if args.post else 'DRY-RUN'}] {slot_name} スロット")
+    print()
+    _print_post(post)
+
+    # ── dry-run ───────────────────────────────────────────────────────────
+    if not args.post:
+        _update_history(post, date_str, generated)
+        _write_slot_json(out_path, {
             "date":         date_str,
             "generated_at": generated,
             "mode":         "dry_run",
             "slot":         slot_name,
             "post":         post,
-        }
-        print(f"[OK] {slot_name} スロット生成完了")
-        print()
-        _print_post(post)
-        _update_history(post, date_str, generated)
+        })
+        return
 
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
-    print(f"[OK] {out_path} 出力完了")
+    # ── 本番投稿（--post）────────────────────────────────────────────────
+
+    # 安全チェック 1: 文字数
+    if post["char_count"] > 280:
+        print(
+            f"[ERROR] 投稿文が280文字を超えています（{post['char_count']}字）。"
+            "投稿を中止します。"
+        )
+        sys.exit(1)
+
+    # 安全チェック 2: 二重投稿防止
+    if not args.force and _check_already_posted(slot_name, date_str):
+        print(
+            f"[SKIP] {date_str} / {slot_name} は既に投稿済みです。"
+            "--force を指定すると強制再投稿できます。"
+        )
+        sys.exit(0)
+
+    # 投稿先アカウント確認
+    print("[VERIFY] 投稿先アカウントを確認します...")
+    try:
+        username, user_id, _ = _get_account_info()
+        print(f"[OK] 投稿先: @{username} (id={user_id})")
+    except RuntimeError as e:
+        print(f"[ERROR] アカウント確認に失敗しました: {e}")
+        sys.exit(1)
+
+    # X API 投稿
+    print("[POST] X APIへ投稿します...")
+    success, tweet_id, error = _post_to_x(post["text"])
+    action_at = datetime.now(JST).isoformat()
+
+    if success:
+        print(f"[OK] 投稿成功: tweet_id={tweet_id}")
+        post["status"]   = "posted"
+        post["tweet_id"] = tweet_id
+        _record_posted(post, tweet_id, date_str, generated, action_at)
+        _write_slot_json(out_path, {
+            "date":         date_str,
+            "generated_at": generated,
+            "mode":         "posted",
+            "slot":         slot_name,
+            "post":         post,
+        })
+
+    else:
+        print(f"[ERROR] 投稿失敗: {error}")
+        post["status"] = "failed"
+        post["error"]  = error
+        _record_failed(post, error, date_str, generated, action_at)
+        _write_slot_json(out_path, {
+            "date":         date_str,
+            "generated_at": generated,
+            "mode":         "failed",
+            "slot":         slot_name,
+            "post":         post,
+        })
+        sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -81,19 +81,43 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 - **週次レポート** — 毎週月曜に自動生成
 - **コラム** — 運営者による著者執筆の考察（LLM生成ではない）
 
-### X投稿文生成（Phase 2: dry-run・スロット別）
+### X投稿機能（Phase 3: 本番投稿対応）
 - スコアリング（重要度・CDC関連度・ソースTier・AI関連度）で上位3件を選定
 - 投稿スロット：morning 08:30 / noon 12:30 / evening 19:00（JST）
-- `--all` で3本まとめて生成（daily.ymlから実行）、`--slot` でスロット単位1本生成（post_x_dry_run.ymlから実行）
-- スロット別生成時は `docs/data/x_post_history.json` に `date + slot + article_id + text_hash` を記録（重複防止）
-- **現在は dry-run のみ。本番投稿・X API連携は未実装（Phase 3で予定）**
+- **デフォルトはdry-run**。`--post` を明示指定したときのみX APIへ投稿する
+- `--all --post` は禁止（複数本同時投稿を防ぐため）
+- 同じ `date + slot` が既に投稿済み（`status: posted`）の場合は自動スキップ（`--force` で上書き可）
+- スロット別生成時は `docs/data/x_post_history.json` に履歴を記録
+- 料金・API権限はX Developer Console側の設定に依存する
+- **schedule は未有効**。`post_x.yml` は現在 `workflow_dispatch` 手動実行のみ
 
 ```bash
 # CLIの使い方
-python scripts/generate_x_posts.py             # --all と同じ（3本一覧）
-python scripts/generate_x_posts.py --all       # 3スロット分まとめて生成
-python scripts/generate_x_posts.py --slot morning  # morning の1本だけ生成・履歴記録
+python scripts/generate_x_posts.py --verify-account      # 投稿先アカウントを確認（本番投稿前に必ず実行）
+python scripts/generate_x_posts.py                       # --all と同じ（dry-run）
+python scripts/generate_x_posts.py --all --dry-run       # 3スロット分まとめて生成（投稿なし）
+python scripts/generate_x_posts.py --slot morning        # morning を生成・履歴記録（dry-run）
+python scripts/generate_x_posts.py --slot morning --post  # morning をXへ実際に投稿
+python scripts/generate_x_posts.py --slot morning --post --force  # 投稿済みでも強制再投稿
 ```
+
+> **本番投稿前に必ず `--verify-account` を実行し、想定のアカウントに紐づいていることを確認してください。**  
+> Access Token を別アカウントに切り替えた後は特に注意が必要です。
+
+**必要なGitHub Secrets（本番投稿時のみ）**
+
+| Secret名 | 内容 |
+|---|---|
+| `X_API_KEY` | X Developer Portal のAPI Key |
+| `X_API_SECRET` | API Key Secret |
+| `X_ACCESS_TOKEN` | Access Token（Write権限必須・投稿先アカウントに紐づけること） |
+| `X_ACCESS_SECRET` | Access Token Secret |
+
+**初回の手順：**
+1. `--verify-account` でローカルから投稿先アカウントを確認する
+2. `post_x.yml` を `workflow_dispatch` で1スロットだけ手動実行してテスト
+3. X上でツイートとアカウントを目視確認する
+4. 成功を確認してから schedule のコメントを外して有効化する
 
 ---
 
@@ -103,11 +127,12 @@ python scripts/generate_x_posts.py --slot morning  # morning の1本だけ生成
 /
 ├── .github/workflows/
 │   ├── daily.yml                     # GitHub Actions（毎日08:00自動実行）
-│   └── post_x_dry_run.yml            # X投稿文スロット別dry-run生成（1日3回）
+│   ├── post_x_dry_run.yml            # X投稿文スロット別dry-run生成（1日3回）
+│   └── post_x.yml                   # X本番投稿（初回は workflow_dispatch のみ）
 ├── scripts/
 │   ├── fetch_and_summarize.py        # RSS収集 + Gemini APIで要約・タグ付け
 │   ├── build_site.py                 # HTMLサイト生成（タブUI・ダッシュボード）
-│   └── generate_x_posts.py          # X投稿文dry-run生成（--all / --slot 対応）
+│   └── generate_x_posts.py          # X投稿文生成・投稿（--all / --slot / --post 対応）
 ├── columns/                          # 著者執筆コラム（Markdown）
 ├── docs/                             # GitHub Pagesの公開先
 │   ├── index.html                    # 自動生成トップページ
