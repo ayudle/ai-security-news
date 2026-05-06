@@ -9,11 +9,11 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--r:10px}
+:root{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}
 body{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}
 a{color:inherit;text-decoration:none}
 .hdr{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.ht{font-size:15px;font-weight:700;color:#fff}
+.ht{font-size:15px;font-weight:700;color:#fff;margin:0}
 .back{display:inline-block;padding:8px 16px;margin:12px 24px;color:var(--accent);text-decoration:none;font-size:13px}
 .back:hover{text-decoration:underline}
 .content{max-width:860px;margin:0 auto;padding:16px 24px}
@@ -25,7 +25,8 @@ a{color:inherit;text-decoration:none}
 .src,.dt{font-size:10px;color:var(--dim)}
 .dt{margin-left:auto}
 .imp{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}
-.imp-reason{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}
+.imp-reason{font-size:10px;color:var(--dim);cursor:help;margin-left:1px;background:transparent;border:none;padding:2px;min-width:20px;min-height:20px;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;vertical-align:middle}
+.imp-reason:hover{color:var(--text)}
 .ct{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}
 .ct a:hover{color:var(--accent)}
 .tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
@@ -45,8 +46,9 @@ a{color:inherit;text-decoration:none}
 .cdc-lbl{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}
 .cdc-badge{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}
 .kw-fold{margin-top:2px}
-.kw-btn{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}
-.kw-btn:hover{color:var(--muted);border-color:#3a3a38}
+.kw-btn{font-size:11px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:4px 10px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s;min-height:26px}
+.kw-btn:hover{color:var(--text);border-color:var(--muted)}
+.kw-btn[aria-expanded="true"]{background:var(--card2)}
 </style>
 </head>
 <body>
@@ -64,7 +66,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">公的・大手</span>
     <span class="src">CISA</span>
     <span class="dt">2026-04-23</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="国家レベルの高度な脅威が重要インフラを標的としており、広範囲な影響と即時対応が求められるため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="国家レベルの高度な脅威が重要インフラを標的としており、広範囲な影響と即時対応が求められるため。" aria-label="重要度判定の理由: 国家レベルの高度な脅威が重要インフラを標的としており、広範囲な影響と即時対応が求められるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/447ce5be1e87.html" onclick="event.stopPropagation()">中国関連アクターによる侵害ネットワークからの重要インフラ防御</a></h2>
   <div class="insight-snippet">国家支援型アクターによるAPT攻撃は、単なるデータ窃取に留まらず、重要インフラに対する将来的なサイバー物理攻撃の足がかりとなり得るため、CISOは脅威インテリジ…</div>
@@ -84,7 +86,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">Dark Reading</span>
     <span class="dt">2026-04-25</span>
-    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="imp-reason" title="シャドーAIは新たな市場トレンドであり、組織全体に影響を及ぼす可能性があり、中期的な対応が求められるため。">?</span>
+    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><button type="button" class="imp-reason" title="シャドーAIは新たな市場トレンドであり、組織全体に影響を及ぼす可能性があり、中期的な対応が求められるため。" aria-label="重要度判定の理由: シャドーAIは新たな市場トレンドであり、組織全体に影響を及ぼす可能性があり、中期的な対応が求められるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/4f85be66c605.html" onclick="event.stopPropagation()">シャドーAIとエージェントが新たな攻撃経路に：コード以外のスタックも要監視</a></h2>
   <div class="insight-snippet">AIエージェントやシャドーAIの台頭は、既存のシャドーIT問題に新たなレイヤーを追加するため、CISOはAIエージェントの利用に関する明確なポリシーを策定し、継…</div>
@@ -104,7 +106,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">Dark Reading</span>
     <span class="dt">2026-04-23</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIエージェントの根本的なセキュリティ問題であり、広範囲な影響を及ぼす可能性があり、即時対応が必要とされるため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIエージェントの根本的なセキュリティ問題であり、広範囲な影響を及ぼす可能性があり、即時対応が必要とされるため。" aria-label="重要度判定の理由: AIエージェントの根本的なセキュリティ問題であり、広範囲な影響を及ぼす可能性があり、即時対応が必要とされるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/1ea09723eeb2.html" onclick="event.stopPropagation()">AIエージェントの「記憶」処理に潜む脆弱性リスク</a></h2>
   <div class="insight-snippet">AIエージェントがビジネスプロセスに深く統合されるにつれて、その「記憶」機能が新たなセキュリティリスクを生む。CISOは、AIエージェントが扱うデータのライフサ…</div>
@@ -124,7 +126,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">SecurityWeek</span>
     <span class="dt">2026-04-24</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="地政学的な影響が大きく、国際的な規制動向は経営レベルの判断が必要とされるため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="地政学的な影響が大きく、国際的な規制動向は経営レベルの判断が必要とされるため。" aria-label="重要度判定の理由: 地政学的な影響が大きく、国際的な規制動向は経営レベルの判断が必要とされるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/519528093469.html" onclick="event.stopPropagation()">米国製AIモデル悪用への中国企業取り締まり強化を表明</a></h2>
   <div class="insight-snippet">米国と中国間のAI技術を巡る規制強化は、グローバルに事業を展開する企業にとって重要な経営リスク要因となる。CISOは、自社が使用しているAIモデルやデータの起源…</div>
@@ -144,7 +146,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">SecurityWeek</span>
     <span class="dt">2026-04-24</span>
-    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="imp-reason" title="市場の新しいトレンドを示し、特定分野に影響を与える可能性があり、中期的な戦略検討が求められるため。">?</span>
+    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><button type="button" class="imp-reason" title="市場の新しいトレンドを示し、特定分野に影響を与える可能性があり、中期的な戦略検討が求められるため。" aria-label="重要度判定の理由: 市場の新しいトレンドを示し、特定分野に影響を与える可能性があり、中期的な戦略検討が求められるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/773ff21d101d.html" onclick="event.stopPropagation()">エージェント型クラウドセキュリティプラットフォームのCopperhelmが700万ドルを調達</a></h2>
   <div class="insight-snippet">エージェント型のクラウドセキュリティプラットフォームへの投資は、従来の境界型防御では対応しきれない複雑なクラウド環境におけるセキュリティ需要の増大を示している。…</div>
@@ -164,7 +166,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">The Hacker News</span>
     <span class="dt">2026-04-24</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIエージェントのガバナンスに関する根本的な問題であり、経営レベルの判断が必要で、広範囲に影響を及ぼすため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIエージェントのガバナンスに関する根本的な問題であり、経営レベルの判断が必要で、広範囲に影響を及ぼすため。" aria-label="重要度判定の理由: AIエージェントのガバナンスに関する根本的な問題であり、経営レベルの判断が必要で、広範囲に影響を及ぼすため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/cd4e35641d1d.html" onclick="event.stopPropagation()">AIエージェントの権限ギャップと継続的オブザーバビリティの重要性</a></h2>
   <div class="insight-snippet">AIエージェントの導入は、セキュリティ境界を拡張し、新たな権限管理の課題を提起する。CISOは、AIエージェントの行動をリアルタイムで監視し、異常を検知するため…</div>
@@ -184,7 +186,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">The Hacker News</span>
     <span class="dt">2026-04-24</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="ゼロデイ攻撃に近い速度での悪用は、LLMサプライチェーンに即座に影響を及ぼす可能性があり、即時対応が求められるため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="ゼロデイ攻撃に近い速度での悪用は、LLMサプライチェーンに即座に影響を及ぼす可能性があり、即時対応が求められるため。" aria-label="重要度判定の理由: ゼロデイ攻撃に近い速度での悪用は、LLMサプライチェーンに即座に影響を及ぼす可能性があり、即時対応が求められるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/c6c6339dccbd.html" onclick="event.stopPropagation()">LMDeployのSSRF脆弱性 CVE-2026-33626、公開後13時間で悪用開始</a></h2>
   <div class="insight-snippet">LLM関連のオープンソースツールキットの脆弱性が迅速に悪用される事例は、サプライチェーンにおけるAIコンポーネントのセキュリティリスクの深刻さを示す。CISOは…</div>
@@ -217,6 +219,7 @@ function toggleKw(id, btn) {
   var open = btn.dataset.open === '1';
   el.style.display = open ? 'none' : '';
   btn.dataset.open = open ? '0' : '1';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }
 </script>

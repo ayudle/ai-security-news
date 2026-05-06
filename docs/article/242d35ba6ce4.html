@@ -38,14 +38,18 @@
 }
 </script>
 <style>
-:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}
+:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
-header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
-.logo{font-size:18px;font-weight:700}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700;margin:0;color:#fff}
+.logo-link{text-decoration:none;color:inherit}
+.logo-link:hover .logo{color:var(--accent)}
 .meta-top{font-size:11px;color:var(--dim)}
-.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back{display:inline-block;padding:8px 16px;margin:12px 24px 0;color:var(--accent);text-decoration:none;font-size:13px}
 .back:hover{text-decoration:underline}
+.sub-nav{display:flex;flex-wrap:wrap;gap:16px;padding:10px 24px 12px;border-bottom:1px solid var(--border);font-size:13px}
+.sub-nav a{color:var(--accent)}
 .ap{max-width:720px;margin:0 auto;padding:16px 24px 60px}
 .ap-head{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:24px}
 .ap-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--dim);margin-bottom:12px}
@@ -87,10 +91,16 @@ footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top
 </head>
 <body>
 <header>
-  <div class="logo">AI×セキュリティ ニュース日報</div>
+  <a href="../" class="logo-link"><h1 class="logo">AI×セキュリティ ニュース日報</h1></a>
 </header>
 
 <a href="../#today" class="back">← 本日のニュースに戻る</a>
+<nav class="sub-nav">
+  <a href="../#trend">トレンド分析</a>
+  <a href="../#weekly">週次レポート</a>
+  <a href="../#columns">コラム</a>
+  <a href="../#archive">アーカイブ</a>
+</nav>
 
 <article class="ap">
   <div class="ap-head">

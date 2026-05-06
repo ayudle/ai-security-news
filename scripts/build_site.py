@@ -297,7 +297,7 @@ def article_card(a, rank=None):
     pub          = a.get("published","")[:10]
     insight      = a.get("insight","")
     imp_reason   = a.get("importance_reason","")
-    reason_html  = f'<span class="imp-reason" title="{imp_reason}">?</span>' if imp_reason else ""
+    reason_html  = f'<button type="button" class="imp-reason" title="{imp_reason}" aria-label="重要度判定の理由: {imp_reason}">?</button>' if imp_reason else ""
     main_id      = a.get("tag_main_id","attack")
     main_label   = a.get("tag_main_label","攻撃・脅威")
     subs_html    = "".join(tag_sub_badge(s) for s in a.get("tag_subs",[]))
@@ -601,16 +601,21 @@ def build_html(data, weekly_list=None, columns=None):
 </script>
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-:root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--r:10px}}
+:root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}}
 body{{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}}
 a{{color:inherit;text-decoration:none}}
 .hdr{{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}}
-.ht{{font-size:15px;font-weight:700;color:#fff}}
+.hdr-home{{display:inline-flex;align-items:center;text-decoration:none;color:inherit}}
+.hdr-home:hover .ht{{color:var(--accent)}}
+.ht{{font-size:15px;font-weight:700;color:#fff;margin:0}}
 .hs{{font-size:11px;color:var(--dim)}}
 .hu{{font-size:11px;color:var(--dim);margin-left:auto}}
-.tab-bar{{display:flex;border-bottom:1px solid var(--border);padding:0 24px;overflow-x:auto}}
-.tab{{font-size:12px;padding:10px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}}
-.tab.on{{color:var(--text);border-bottom-color:var(--accent);font-weight:600}}
+.tab-bar{{display:flex;border-bottom:1px solid var(--border);padding:0 24px;overflow-x:auto;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}}
+@media(min-width:768px){{.tab-bar{{-webkit-mask-image:none;mask-image:none}}}}
+.tab{{font-size:12px;padding:10px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s}}
+.tab.on,.tab[aria-current="page"]{{color:var(--text);border-bottom-color:var(--accent);font-weight:600}}
+.tab:hover{{color:var(--text);border-bottom-color:var(--border)}}
+.tab:focus-visible{{outline:2px solid var(--accent);outline-offset:-2px}}
 .pane{{display:none;padding:16px 24px;max-width:860px;margin:0 auto}}
 .pane.on{{display:block}}
 .plabel{{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}}
@@ -621,7 +626,8 @@ a{{color:inherit;text-decoration:none}}
 .src,.dt{{font-size:10px;color:var(--dim)}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
-.imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}}
+.imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px;background:transparent;border:none;padding:2px;min-width:20px;min-height:20px;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;vertical-align:middle}}
+.imp-reason:hover{{color:var(--text)}}
 .rank{{font-size:13px;font-weight:700;color:var(--accent);min-width:22px}}
 .cdc-badges{{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}}
 .cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
@@ -656,7 +662,7 @@ a{{color:inherit;text-decoration:none}}
 .dc-sub{{font-size:10px;color:var(--dim);margin-bottom:8px}}
 .bar-row{{display:flex;align-items:center;gap:6px;margin-bottom:7px;cursor:pointer}}
 .bar-row:hover .bl{{color:var(--text)}}
-.bl{{width:88px;font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;transition:color .1s}}
+.bl{{width:130px;font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;transition:color .1s}}
 .bt{{flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden}}
 .bf{{height:100%;border-radius:3px;transition:width .4s}}
 .bn{{width:18px;text-align:right;font-size:10px;color:var(--dim)}}
@@ -685,8 +691,9 @@ a{{color:inherit;text-decoration:none}}
 @media(max-width:600px){{.hm-grid{{grid-template-columns:64px repeat(7,1fr);gap:2px}}.hm-lb{{font-size:9px}}.hm-cell{{height:16px}}}}
 .insight-snippet{{font-size:12px;color:#9ca3af;line-height:1.55;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
 .kw-fold{{margin-top:2px}}
-.kw-btn{{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}}
-.kw-btn:hover{{color:var(--muted);border-color:#3a3a38}}
+.kw-btn{{font-size:11px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:4px 10px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s;min-height:26px}}
+.kw-btn:hover{{color:var(--text);border-color:var(--muted)}}
+.kw-btn[aria-expanded="true"]{{background:var(--card2)}}
 .hidden{{display:none}}
 .imp-detail{{margin-top:8px}}
 .imp-detail-toggle{{cursor:pointer;display:block;font-size:0;color:#378ADD;padding:4px 0;user-select:none;outline:none;list-style:none}}
@@ -715,8 +722,10 @@ gtag('config', 'G-KV7Q7SQKZX');
 </head>
 <body>
 <header class="hdr">
-  <span class="ht">AI×セキュリティ ニュース日報</span>
-  <span class="hs">信頼できるソースのみ・毎日自動更新・最大10件/日</span>
+  <a href="./" class="hdr-home" aria-label="ホームに戻る">
+    <h1 class="ht">AI×セキュリティ ニュース日報</h1>
+  </a>
+  <span class="hs">AI×セキュリティ / SOC/CDC設計</span>
   <span class="hu">更新: {updated} JST</span>
 </header>
 
@@ -837,7 +846,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 <div class="pane" id="pane-about">
   <p class="plabel">About</p>
   <div style="max-width:720px;margin:0 auto;padding:1rem 0">
-    <h1 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-.01em">Ayudle</h1>
+    <h2 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-.01em">Ayudle</h2>
     <p style="font-size:13px;color:#6a6860;margin-bottom:2.5rem">AI×セキュリティ ニュース日報 運営者</p>
     <div style="margin-bottom:2.5rem">
       <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">Profile</div>
@@ -902,11 +911,14 @@ function showTab(id) {{
   var valid = ['today','archive','trend','weekly','columns','about'];
   if (id === 'popular' || valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) {{ p.classList.remove('on'); }});
-  document.querySelectorAll('.tab-bar .tab').forEach(function(t) {{ t.classList.remove('on'); }});
+  document.querySelectorAll('.tab-bar .tab').forEach(function(t) {{
+    t.classList.remove('on');
+    t.removeAttribute('aria-current');
+  }});
   var pane = document.getElementById('pane-' + id);
   if (pane) pane.classList.add('on');
   var tab = document.querySelector('.tab-bar a[href="#' + id + '"]');
-  if (tab) tab.classList.add('on');
+  if (tab) {{ tab.classList.add('on'); tab.setAttribute('aria-current', 'page'); }}
 }}
 
 function initTab() {{
@@ -1138,6 +1150,7 @@ function toggleKw(id, btn) {{
   var open = btn.dataset.open === '1';
   el.style.display = open ? 'none' : '';
   btn.dataset.open = open ? '0' : '1';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }}
 </script>
@@ -1329,14 +1342,18 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
 }}
 </script>
 <style>
-:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}}
+:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}}
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}}
-header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}}
-.logo{{font-size:18px;font-weight:700}}
+header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}}
+.logo{{font-size:18px;font-weight:700;margin:0;color:#fff}}
+.logo-link{{text-decoration:none;color:inherit}}
+.logo-link:hover .logo{{color:var(--accent)}}
 .meta-top{{font-size:11px;color:var(--dim)}}
-.back{{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
+.back{{display:inline-block;padding:8px 16px;margin:12px 24px 0;color:var(--accent);text-decoration:none;font-size:13px}}
 .back:hover{{text-decoration:underline}}
+.sub-nav{{display:flex;flex-wrap:wrap;gap:16px;padding:10px 24px 12px;border-bottom:1px solid var(--border);font-size:13px}}
+.sub-nav a{{color:var(--accent)}}
 .ap{{max-width:720px;margin:0 auto;padding:16px 24px 60px}}
 .ap-head{{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:24px}}
 .ap-meta{{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--dim);margin-bottom:12px}}
@@ -1378,10 +1395,16 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 </head>
 <body>
 <header>
-  <div class="logo">AI×セキュリティ ニュース日報</div>
+  <a href="../" class="logo-link"><h1 class="logo">AI×セキュリティ ニュース日報</h1></a>
 </header>
 
 <a href="../#today" class="back">← 本日のニュースに戻る</a>
+<nav class="sub-nav">
+  <a href="../#trend">トレンド分析</a>
+  <a href="../#weekly">週次レポート</a>
+  <a href="../#columns">コラム</a>
+  <a href="../#archive">アーカイブ</a>
+</nav>
 
 <article class="ap">
   <div class="ap-head">
@@ -1461,11 +1484,11 @@ def build_archive_page(day_data, date):
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-:root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--r:10px}}
+:root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}}
 body{{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}}
 a{{color:inherit;text-decoration:none}}
 .hdr{{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}}
-.ht{{font-size:15px;font-weight:700;color:#fff}}
+.ht{{font-size:15px;font-weight:700;color:#fff;margin:0}}
 .back{{display:inline-block;padding:8px 16px;margin:12px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
 .back:hover{{text-decoration:underline}}
 .content{{max-width:860px;margin:0 auto;padding:16px 24px}}
@@ -1477,7 +1500,8 @@ a{{color:inherit;text-decoration:none}}
 .src,.dt{{font-size:10px;color:var(--dim)}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
-.imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}}
+.imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px;background:transparent;border:none;padding:2px;min-width:20px;min-height:20px;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;vertical-align:middle}}
+.imp-reason:hover{{color:var(--text)}}
 .ct{{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}}
 .ct a:hover{{color:var(--accent)}}
 .tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}}
@@ -1497,8 +1521,9 @@ a{{color:inherit;text-decoration:none}}
 .cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
 .cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}}
 .kw-fold{{margin-top:2px}}
-.kw-btn{{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}}
-.kw-btn:hover{{color:var(--muted);border-color:#3a3a38}}
+.kw-btn{{font-size:11px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:4px 10px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s;min-height:26px}}
+.kw-btn:hover{{color:var(--text);border-color:var(--muted)}}
+.kw-btn[aria-expanded="true"]{{background:var(--card2)}}
 </style>
 </head>
 <body>
@@ -1530,6 +1555,7 @@ function toggleKw(id, btn) {{
   var open = btn.dataset.open === '1';
   el.style.display = open ? 'none' : '';
   btn.dataset.open = open ? '0' : '1';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }}
 </script>

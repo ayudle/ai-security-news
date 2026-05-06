@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AI×セキュリティ ニュース日報 | 2026-05-06</title>
+<title>AI×セキュリティ ニュース日報 | 2026-05-05</title>
 <meta name="description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。CISO視点での示唆・学び付き。">
 <meta name="google-site-verification" content="m7S3bMP_P0V-BinV3MTpaO9qkk31af-RRKxsQ4_BoQg" />
 <meta property="og:title" content="AI×セキュリティ ニュース日報">
@@ -34,16 +34,21 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--r:10px}
+:root{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}
 body{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}
 a{color:inherit;text-decoration:none}
 .hdr{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.ht{font-size:15px;font-weight:700;color:#fff}
+.hdr-home{display:inline-flex;align-items:center;text-decoration:none;color:inherit}
+.hdr-home:hover .ht{color:var(--accent)}
+.ht{font-size:15px;font-weight:700;color:#fff;margin:0}
 .hs{font-size:11px;color:var(--dim)}
 .hu{font-size:11px;color:var(--dim);margin-left:auto}
-.tab-bar{display:flex;border-bottom:1px solid var(--border);padding:0 24px;overflow-x:auto}
-.tab{font-size:12px;padding:10px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all .15s}
-.tab.on{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
+.tab-bar{display:flex;border-bottom:1px solid var(--border);padding:0 24px;overflow-x:auto;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}
+@media(min-width:768px){.tab-bar{-webkit-mask-image:none;mask-image:none}}
+.tab{font-size:12px;padding:10px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s}
+.tab.on,.tab[aria-current="page"]{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
+.tab:hover{color:var(--text);border-bottom-color:var(--border)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .pane{display:none;padding:16px 24px;max-width:860px;margin:0 auto}
 .pane.on{display:block}
 .plabel{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}
@@ -54,7 +59,8 @@ a{color:inherit;text-decoration:none}
 .src,.dt{font-size:10px;color:var(--dim)}
 .dt{margin-left:auto}
 .imp{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}
-.imp-reason{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}
+.imp-reason{font-size:10px;color:var(--dim);cursor:help;margin-left:1px;background:transparent;border:none;padding:2px;min-width:20px;min-height:20px;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;vertical-align:middle}
+.imp-reason:hover{color:var(--text)}
 .rank{font-size:13px;font-weight:700;color:var(--accent);min-width:22px}
 .cdc-badges{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}
 .cdc-lbl{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}
@@ -89,7 +95,7 @@ a{color:inherit;text-decoration:none}
 .dc-sub{font-size:10px;color:var(--dim);margin-bottom:8px}
 .bar-row{display:flex;align-items:center;gap:6px;margin-bottom:7px;cursor:pointer}
 .bar-row:hover .bl{color:var(--text)}
-.bl{width:88px;font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;transition:color .1s}
+.bl{width:130px;font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;transition:color .1s}
 .bt{flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden}
 .bf{height:100%;border-radius:3px;transition:width .4s}
 .bn{width:18px;text-align:right;font-size:10px;color:var(--dim)}
@@ -118,8 +124,9 @@ a{color:inherit;text-decoration:none}
 @media(max-width:600px){.hm-grid{grid-template-columns:64px repeat(7,1fr);gap:2px}.hm-lb{font-size:9px}.hm-cell{height:16px}}
 .insight-snippet{font-size:12px;color:#9ca3af;line-height:1.55;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .kw-fold{margin-top:2px}
-.kw-btn{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}
-.kw-btn:hover{color:var(--muted);border-color:#3a3a38}
+.kw-btn{font-size:11px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:4px 10px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s;min-height:26px}
+.kw-btn:hover{color:var(--text);border-color:var(--muted)}
+.kw-btn[aria-expanded="true"]{background:var(--card2)}
 .hidden{display:none}
 .imp-detail{margin-top:8px}
 .imp-detail-toggle{cursor:pointer;display:block;font-size:0;color:#378ADD;padding:4px 0;user-select:none;outline:none;list-style:none}
@@ -148,9 +155,11 @@ gtag('config', 'G-KV7Q7SQKZX');
 </head>
 <body>
 <header class="hdr">
-  <span class="ht">AI×セキュリティ ニュース日報</span>
-  <span class="hs">信頼できるソースのみ・毎日自動更新・最大10件/日</span>
-  <span class="hu">更新: 2026-05-06 07:34 JST</span>
+  <a href="./" class="hdr-home" aria-label="ホームに戻る">
+    <h1 class="ht">AI×セキュリティ ニュース日報</h1>
+  </a>
+  <span class="hs">AI×セキュリティ / SOC/CDC設計</span>
+  <span class="hu">更新: 2026-05-05 07:38 JST</span>
 </header>
 
 <div class="tab-bar">
@@ -172,206 +181,206 @@ gtag('config', 'G-KV7Q7SQKZX');
       <a href="columns/ai-agent-soc-cdc.html" style="display:inline-block;font-size:11px;color:#6add8a;text-decoration:none;margin-top:8px">&#x270D; 関連コラム：AIエージェント時代のMSSPは、「AIで効率化しました」では差別化できない →</a>
     </div>
   </div>
-  <p class="plabel">2026-05-06 のニュース（10件）</p>
-  <article class="card" data-id="42640ec80bde" data-main="ai_sec" onclick="navigateCard('42640ec80bde')">
+  <p class="plabel">2026-05-05 のニュース（10件）</p>
+  <article class="card" data-id="d241a1c2f70a" data-main="biz_tech" onclick="navigateCard('d241a1c2f70a')">
   <div class="cm">
     
     <span class="tier">専門メディア</span>
     <span class="src">SecurityWeek</span>
     <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIモデルに対する実践的な攻撃手法が示されており、自社のAIシステムへの直接的な脅威となるため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIエージェントの普及に伴う新たなリスク領域である非人間アイデンティティ管理に対する明確な市場動向と、Ciscoのような大手による戦略的投資を示すため。" aria-label="重要度判定の理由: AIエージェントの普及に伴う新たなリスク領域である非人間アイデンティティ管理に対する明確な市場動向と、Ciscoのような大手による戦略的投資を示すため。">?</button>
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/42640ec80bde.html" onclick="event.stopPropagation()">AIへのハッキング：ジェイルブレイクとデータポイズニングの手法</a></h2>
-  <div class="insight-snippet">自社でAIモデルを導入・開発する際は、開発初期段階からレッドチーム演習や敵対的攻撃テストを必須とし、継続的なモデルのセキュリティ評価を実施すべきです。AIの判断…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">Security for AI</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">サービス企画</span></div>
-  <div class="tags">
-    <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
-    <span class="tag-sub">プロンプトインジェクション</span><span class="tag-sub">モデル汚染</span><span class="tag-sub">敵対的攻撃</span>
-  </div>
-  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-42640ec80bde" style="display:none"><span class="tag-kw">AIレッドチーム</span><span class="tag-kw">ジェイルブレイク</span><span class="tag-kw">データポイズニング</span><span class="tag-kw">機械学習モデル</span><span class="tag-kw">ガードレール</span></div><button class="kw-btn" onclick="toggleKw('kw-42640ec80bde',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://www.securityweek.com/hacker-conversations-joey-melo-on-hacking-ai/" target="_blank" rel="noopener" onclick="event.stopPropagation()">SecurityWeek</a>
-  <em class="orig">"Hacker Conversations: Joey Melo on Hacking AI"</em></div>
-</article>
-<article class="card" data-id="4f348cb070db" data-main="biz_tech" onclick="navigateCard('4f348cb070db')">
-  <div class="cm">
-    
-    <span class="tier">専門メディア</span>
-    <span class="src">Bleeping Computer</span>
-    <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="imp-reason" title="AI技術の進展が脆弱性市場と企業のセキュリティ戦略に与える影響を示しており、中期的な対応計画に含めるべき情報であるため。">?</span>
-  </div>
-  <h2 class="ct"><a href="/ai-security-news/article/4f348cb070db.html" onclick="event.stopPropagation()">Google、Androidエクスプロイト報奨金を最大150万ドルに引き上げ、AI発見脆弱性は減額</a></h2>
-  <div class="insight-snippet">AIを活用した脆弱性発見が効率化されることで、一般的な脆弱性対策はより自動化・標準化されるでしょう。CISOは、人間のセキュリティ専門家を、AIでは発見しにくい…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">AI for Security</span><span class="cdc-badge">Exposure管理</span><span class="cdc-badge">SOC運用変化</span></div>
-  <div class="tags">
-    <span class="tag-main" style="background:#3B6D1120;color:#3B6D11;border-color:#3B6D1144">ビジネス・技術動向</span>
-    <span class="tag-sub">市場トレンド</span>
-  </div>
-  <div class="tags tags-meta"><span class="tag-layer">デバイス/エッジ</span><span class="tag-layer">アプリ/API</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-4f348cb070db" style="display:none"><span class="tag-kw">脆弱性報奨金</span><span class="tag-kw">Android</span><span class="tag-kw">Chrome</span><span class="tag-kw">エクスプロイト</span><span class="tag-kw">AIによる発見</span></div><button class="kw-btn" onclick="toggleKw('kw-4f348cb070db',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://www.bleepingcomputer.com/news/security/google-now-offers-up-to-15-million-for-some-android-exploits/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Bleeping Computer</a>
-  <em class="orig">"Google now offers up to $1.5 million for some Android exploits"</em></div>
-</article>
-<article class="card" data-id="d241a1c2f70a" data-main="biz_tech" onclick="navigateCard('d241a1c2f70a')">
-  <div class="cm">
-    
-    <span class="tier">専門メディア</span>
-    <span class="src">SecurityWeek</span>
-    <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIシステム利用拡大に伴う非人間型ID管理という、新たなセキュリティ課題への市場の動きを示しているため。">?</span>
-  </div>
-  <h2 class="ct"><a href="/ai-security-news/article/d241a1c2f70a.html" onclick="event.stopPropagation()">CiscoがAstrix Securityを買収し、非人間型IDリスクへの対応を強化</a></h2>
-  <div class="insight-snippet">AIエージェントや自動化システムが企業のデジタルインフラに深く組み込まれる中、非人間型IDのライフサイクル管理、認証・認可、権限最小化は不可欠です。CISOは、…</div>
+  <h2 class="ct"><a href="/ai-security-news/article/d241a1c2f70a.html" onclick="event.stopPropagation()">CiscoがAstrix Securityを買収、非人間アイデンティティリスクに対応</a></h2>
+  <div class="insight-snippet">AIエージェントや自動化システムが普及する中で、非人間アイデンティティの管理は喫緊の課題である。CISOは、自社のAIシステムやSaaS連携におけるサービスアカ…</div>
   <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">Identity/ITDR</span><span class="cdc-badge">Security for AI</span><span class="cdc-badge">サービス企画</span></div>
   <div class="tags">
     <span class="tag-main" style="background:#3B6D1120;color:#3B6D11;border-color:#3B6D1144">ビジネス・技術動向</span>
-    <span class="tag-sub">M&A</span><span class="tag-sub">市場トレンド</span>
+    <span class="tag-sub">M&A</span><span class="tag-sub">AIを使った防御</span>
   </div>
-  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span><span class="tag-layer">ガバナンス/規制</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-d241a1c2f70a" style="display:none"><span class="tag-kw">Cisco</span><span class="tag-kw">Astrix Security</span><span class="tag-kw">非人間型ID</span><span class="tag-kw">AIアクセス</span><span class="tag-kw">IDセキュリティ</span></div><button class="kw-btn" onclick="toggleKw('kw-d241a1c2f70a',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="tags tags-meta"><span class="tag-layer">アプリ/API</span><span class="tag-layer">データ/AI</span><span class="tag-layer">ガバナンス/規制</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-d241a1c2f70a" style="display:none"><span class="tag-kw">Cisco</span><span class="tag-kw">Astrix Security</span><span class="tag-kw">非人間アイデンティティ</span><span class="tag-kw">AIエージェント</span><span class="tag-kw">SaaSセキュリティ</span></div><button class="kw-btn" onclick="toggleKw('kw-d241a1c2f70a',this);event.stopPropagation()">タグを表示</button></div>
   <div class="cf">出典: <a href="https://www.securityweek.com/cisco-moves-to-acquire-astrix-security-to-tackle-non-human-identity-risks/" target="_blank" rel="noopener" onclick="event.stopPropagation()">SecurityWeek</a>
   <em class="orig">"Cisco Moves to Acquire Astrix Security to Tackle Non-Human Identity Risks"</em></div>
-</article>
-<article class="card" data-id="162451d1ed19" data-main="ai_sec" onclick="navigateCard('162451d1ed19')">
-  <div class="cm">
-    
-    <span class="tier">学術</span>
-    <span class="src">arXiv cs.CR</span>
-    <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="LLMに対する新たな高度な攻撃手法が発表され、AIシステムの根本的なセキュリティ問題を引き起こす可能性があるため。">?</span>
-  </div>
-  <h2 class="ct"><a href="/ai-security-news/article/162451d1ed19.html" onclick="event.stopPropagation()">自己進化するルール駆動型LLMジェイルブレイク攻撃の脅威</a></h2>
-  <div class="insight-snippet">自社のLLMやAIエージェントシステムは、単なるガードレールや静的な防御策では不十分であり、自己進化するような高度なジェイルブレイク攻撃を想定した対策が必要です…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">Security for AI</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">サービス企画</span></div>
-  <div class="tags">
-    <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
-    <span class="tag-sub">プロンプトインジェクション</span><span class="tag-sub">LLMセキュリティ</span>
-  </div>
-  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-162451d1ed19" style="display:none"><span class="tag-kw">LLM</span><span class="tag-kw">ジェイルブレイク</span><span class="tag-kw">自己進化</span><span class="tag-kw">ルール駆動型</span><span class="tag-kw">有害な挙動</span></div><button class="kw-btn" onclick="toggleKw('kw-162451d1ed19',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://arxiv.org/abs/2605.00974" target="_blank" rel="noopener" onclick="event.stopPropagation()">arXiv cs.CR</a>
-  <em class="orig">"SRTJ: Self-Evolving Rule-Driven Training-Free LLM Jailbreaking"</em></div>
-</article>
-<article class="card" data-id="1f1883db9aaf" data-main="ai_risk" onclick="navigateCard('1f1883db9aaf')">
-  <div class="cm">
-    
-    <span class="tier">学術</span>
-    <span class="src">arXiv cs.CR</span>
-    <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="LLMのハルシネーションがサプライチェーン攻撃という具体的なセキュリティリスクに直結する可能性を示しているため。">?</span>
-  </div>
-  <h2 class="ct"><a href="/ai-security-news/article/1f1883db9aaf.html" onclick="event.stopPropagation()">LLMのハルシネーション抑制とサプライチェーン脆弱性</a></h2>
-  <div class="insight-snippet">AIが生成する情報、特にコードや設定情報には厳格な検証プロセスを組み込む必要があります。CISOは、AI出力が直接的なサプライチェーンリスクに繋がり得ることを認…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">Security for AI</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">顧客課題</span></div>
-  <div class="tags">
-    <span class="tag-main" style="background:#7F77DD20;color:#7F77DD;border-color:#7F77DD44">AIリスク</span>
-    <span class="tag-sub">ハルシネーション</span><span class="tag-sub">誤情報生成</span>
-  </div>
-  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span><span class="tag-layer">アプリ/API</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-1f1883db9aaf" style="display:none"><span class="tag-kw">LLM</span><span class="tag-kw">ハルシネーション</span><span class="tag-kw">コード生成</span><span class="tag-kw">サプライチェーン脆弱性</span><span class="tag-kw">アンラーニング</span></div><button class="kw-btn" onclick="toggleKw('kw-1f1883db9aaf',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://arxiv.org/abs/2605.01047" target="_blank" rel="noopener" onclick="event.stopPropagation()">arXiv cs.CR</a>
-  <em class="orig">"LLM Ghostbusters: Surgical Hallucination Suppression via Adaptive Unlearning"</em></div>
 </article>
 <article class="card" data-id="606262cca6e0" data-main="biz_tech" onclick="navigateCard('606262cca6e0')">
   <div class="cm">
     
-    <span class="tier">学術</span>
+    <span class="tier">専門メディア</span>
     <span class="src">Simon Willison</span>
     <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#639922;border-color:#63992255">重要度 低</span><span class="imp-reason" title="特定のデータベース機能拡張に関する情報であり、広範なセキュリティ上の緊急性はないため。">?</span>
+    <span class="imp" style="color:#639922;border-color:#63992255">重要度 低</span><button type="button" class="imp-reason" title="直接的なサイバーセキュリティやAIリスクに関する言及がなく、基盤技術の機能追加にとどまるため。" aria-label="重要度判定の理由: 直接的なサイバーセキュリティやAIリスクに関する言及がなく、基盤技術の機能追加にとどまるため。">?</button>
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/606262cca6e0.html" onclick="event.stopPropagation()">Redisに新しいデータ型「Arrays」が追加</a></h2>
-  <div class="insight-snippet">新しいデータ型や機能が追加される際は、それらがもたらすセキュリティ上の影響を十分に評価する必要があります。CISOは、新しいデータ構造が潜在的な攻撃面とならない…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">サービス企画</span><span class="cdc-badge">SOC運用変化</span></div>
+  <h2 class="ct"><a href="/ai-security-news/article/606262cca6e0.html" onclick="event.stopPropagation()">Redisに新しいデータ型「配列」が追加</a></h2>
+  <div class="insight-snippet">本記事はRedisの新機能に関するもので、直接的なサイバーセキュリティリスクやAI活用との関連は薄い。しかし、基盤技術の進化は、将来的にアプリケーション層やデー…</div>
+  
   <div class="tags">
     <span class="tag-main" style="background:#3B6D1120;color:#3B6D11;border-color:#3B6D1144">ビジネス・技術動向</span>
     <span class="tag-sub">製品リリース</span>
   </div>
-  <div class="tags tags-meta"><span class="tag-layer">クラウド/サーバー</span><span class="tag-layer">データ/AI</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-606262cca6e0" style="display:none"><span class="tag-kw">Redis</span><span class="tag-kw">Arrays</span><span class="tag-kw">データ型</span><span class="tag-kw">新コマンド</span><span class="tag-kw">インメモリデータストア</span></div><button class="kw-btn" onclick="toggleKw('kw-606262cca6e0',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-606262cca6e0" style="display:none"><span class="tag-kw">Redis</span><span class="tag-kw">配列</span><span class="tag-kw">データ型</span><span class="tag-kw">データベース</span><span class="tag-kw">コマンド</span></div><button class="kw-btn" onclick="toggleKw('kw-606262cca6e0',this);event.stopPropagation()">タグを表示</button></div>
   <div class="cf">出典: <a href="https://simonwillison.net/2026/May/4/redis-array/#atom-everything" target="_blank" rel="noopener" onclick="event.stopPropagation()">Simon Willison</a>
   <em class="orig">"Redis Array Playground"</em></div>
 </article>
-<article class="card" data-id="e9ba2a5cbd40" data-main="vuln" onclick="navigateCard('e9ba2a5cbd40')">
+<article class="card" data-id="5511e67638ab" data-main="ai_sec" onclick="navigateCard('5511e67638ab')">
   <div class="cm">
     
-    <span class="tier">公的・大手</span>
-    <span class="src">CISA</span>
-    <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="産業制御システム (ICS) における認証バイパスの脆弱性であり、OT環境への深刻な影響が懸念されるため。">?</span>
+    <span class="tier">学術</span>
+    <span class="src">arXiv cs.CR</span>
+    <span class="dt">2026-05-04</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIを活用した防御技術の具体的な進展を示し、特に従来手法では困難だった不完全なコードからの脆弱性検出という実用性の高い課題を解決する可能性を秘めているため。" aria-label="重要度判定の理由: AIを活用した防御技術の具体的な進展を示し、特に従来手法では困難だった不完全なコードからの脆弱性検出という実用性の高い課題を解決する可能性を秘めているため。">?</button>
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/e9ba2a5cbd40.html" onclick="event.stopPropagation()">CISA、ABB B&R Automation Studioの認証バイパス脆弱性に関する勧告</a></h2>
-  <div class="insight-snippet">OT環境における認証・なりすまし脆弱性は、生産ラインや重要インフラへの直接的な影響が大きいため、最も優先度の高い脅威の一つです。CISOは、OT資産の脆弱性管理…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">Exposure管理</span><span class="cdc-badge">顧客課題</span></div>
+  <h2 class="ct"><a href="/ai-security-news/article/5511e67638ab.html" onclick="event.stopPropagation()">記号実行とマルチLLMオーケストレーションによるRustメモリ脆弱性検出</a></h2>
+  <div class="insight-snippet">ソフトウェア開発ライフサイクルにおけるセキュリティテストの質を向上させる上で、AIを活用した脆弱性検出は非常に有望なアプローチである。CISOは、DevSecO…</div>
+  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">AI for Security</span><span class="cdc-badge">サービス企画</span><span class="cdc-badge">顧客課題</span></div>
   <div class="tags">
-    <span class="tag-main" style="background:#BA751720;color:#BA7517;border-color:#BA751744">脆弱性</span>
-    <span class="tag-sub">認証バイパス</span>
+    <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
+    <span class="tag-sub">AIを使った防御</span><span class="tag-sub">研究・論文</span>
   </div>
-  <div class="tags tags-meta"><span class="tag-layer">デバイス/エッジ</span><span class="tag-layer">ネットワーク</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-e9ba2a5cbd40" style="display:none"><span class="tag-kw">CISA</span><span class="tag-kw">ABB</span><span class="tag-kw">Automation Studio</span><span class="tag-kw">OTセキュリティ</span><span class="tag-kw">認証バイパス</span></div><button class="kw-btn" onclick="toggleKw('kw-e9ba2a5cbd40',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://www.cisa.gov/news-events/ics-advisories/icsa-26-125-04" target="_blank" rel="noopener" onclick="event.stopPropagation()">CISA</a>
-  <em class="orig">"ABB B&R Automation Studio"</em></div>
+  <div class="tags tags-meta"><span class="tag-layer">アプリ/API</span><span class="tag-layer">データ/AI</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-5511e67638ab" style="display:none"><span class="tag-kw">記号実行</span><span class="tag-kw">マルチLLM</span><span class="tag-kw">Rust</span><span class="tag-kw">メモリ脆弱性</span><span class="tag-kw">CVE</span></div><button class="kw-btn" onclick="toggleKw('kw-5511e67638ab',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://arxiv.org/abs/2605.00034" target="_blank" rel="noopener" onclick="event.stopPropagation()">arXiv cs.CR</a>
+  <em class="orig">"Symbolic Execution Meets Multi-LLM Orchestration: Detecting Memory Vulnerabilities in Incomplete Rust CVE Snippets"</em></div>
 </article>
-<article class="card" data-id="45fda13881b6" data-main="vuln" onclick="navigateCard('45fda13881b6')">
+<article class="card" data-id="658e90d75e81" data-main="ai_risk" onclick="navigateCard('658e90d75e81')">
   <div class="cm">
     
-    <span class="tier">公的・大手</span>
-    <span class="src">CISA</span>
-    <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="産業制御システム (ICS) の可用性を直接脅かす脆弱性であり、事業継続に甚大な影響を与える可能性があるため。">?</span>
+    <span class="tier">学術</span>
+    <span class="src">arXiv cs.CR</span>
+    <span class="dt">2026-05-04</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIエージェントの自律性が高まる中での安全保障上極めて重要な「アライメント問題」に直接対処する研究であり、将来のAIベースのセキュリティシステム設計に不可欠な概念を提示しているため。" aria-label="重要度判定の理由: AIエージェントの自律性が高まる中での安全保障上極めて重要な「アライメント問題」に直接対処する研究であり、将来のAIベースのセキュリティシステム設計に不可欠な概念を提示しているため。">?</button>
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/45fda13881b6.html" onclick="event.stopPropagation()">CISA、ABB B&R Automation Runtimeのサービス停止脆弱性を警告</a></h2>
-  <div class="insight-snippet">OT環境の可用性喪失は、ビジネス継続性に壊滅的な影響を与える可能性があります。CISOは、OT資産の緊急パッチ適用計画に加え、ダウンタイムを最小限に抑えるための…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">Exposure管理</span><span class="cdc-badge">顧客課題</span></div>
+  <h2 class="ct"><a href="/ai-security-news/article/658e90d75e81.html" onclick="event.stopPropagation()">エージェント型セキュリティシステムのアライメント契約</a></h2>
+  <div class="insight-snippet">AIエージェントが自律的に活動するセキュリティシステム、特に攻撃と防御の両方の能力を持つシステムを設計する際には、その挙動が意図した範囲に限定されるよう厳格な制…</div>
+  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">Security for AI</span><span class="cdc-badge">サービス企画</span><span class="cdc-badge">顧客課題</span></div>
   <div class="tags">
-    <span class="tag-main" style="background:#BA751720;color:#BA7517;border-color:#BA751744">脆弱性</span>
-    <span class="tag-sub">設定ミス</span><span class="tag-sub">エクスプロイト</span>
+    <span class="tag-main" style="background:#7F77DD20;color:#7F77DD;border-color:#7F77DD44">AIリスク</span>
+    <span class="tag-sub">アライメント</span><span class="tag-sub">LLMセキュリティ</span><span class="tag-sub">研究・論文</span>
   </div>
-  <div class="tags tags-meta"><span class="tag-layer">デバイス/エッジ</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-45fda13881b6" style="display:none"><span class="tag-kw">CISA</span><span class="tag-kw">ABB</span><span class="tag-kw">Automation Runtime</span><span class="tag-kw">サービス停止</span><span class="tag-kw">OTセキュリティ</span></div><button class="kw-btn" onclick="toggleKw('kw-45fda13881b6',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://www.cisa.gov/news-events/ics-advisories/icsa-26-125-03" target="_blank" rel="noopener" onclick="event.stopPropagation()">CISA</a>
-  <em class="orig">"ABB B&R Automation Runtime"</em></div>
+  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span><span class="tag-layer">ガバナンス/規制</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-658e90d75e81" style="display:none"><span class="tag-kw">AIエージェント</span><span class="tag-kw">アライメント契約</span><span class="tag-kw">LLMプランナー</span><span class="tag-kw">自律的セキュリティシステム</span><span class="tag-kw">形式的検証</span></div><button class="kw-btn" onclick="toggleKw('kw-658e90d75e81',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://arxiv.org/abs/2605.00081" target="_blank" rel="noopener" onclick="event.stopPropagation()">arXiv cs.CR</a>
+  <em class="orig">"Alignment Contracts for Agentic Security Systems"</em></div>
 </article>
-<article class="card" data-id="95b1ba245503" data-main="attack" onclick="navigateCard('95b1ba245503')">
+<article class="card" data-id="9583fb4c357c" data-main="ai_risk" onclick="navigateCard('9583fb4c357c')">
+  <div class="cm">
+    
+    <span class="tier">学術</span>
+    <span class="src">arXiv cs.AI</span>
+    <span class="dt">2026-05-04</span>
+    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><button type="button" class="imp-reason" title="分散型AIエコシステムにおける信頼性評価という、将来的に広範な影響を持つ可能性のある課題を扱っており、AIエージェントのサプライチェーンセキュリティにも関連するため。" aria-label="重要度判定の理由: 分散型AIエコシステムにおける信頼性評価という、将来的に広範な影響を持つ可能性のある課題を扱っており、AIエージェントのサプライチェーンセキュリティにも関連するため。">?</button>
+  </div>
+  <h2 class="ct"><a href="/ai-security-news/article/9583fb4c357c.html" onclick="event.stopPropagation()">AgentReputation: 分散型エージェントAIレピュテーションフレームワーク</a></h2>
+  <div class="insight-snippet">AIエージェントが相互に連携し、サービスを提供する分散型環境では、個々のエージェントの信頼性評価が極めて重要となる。CISOは、組織内で利用されるAIエージェン…</div>
+  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">Security for AI</span><span class="cdc-badge">サービス企画</span><span class="cdc-badge">顧客課題</span></div>
+  <div class="tags">
+    <span class="tag-main" style="background:#7F77DD20;color:#7F77DD;border-color:#7F77DD44">AIリスク</span>
+    <span class="tag-sub">安全性評価</span><span class="tag-sub">市場トレンド</span><span class="tag-sub">研究・論文</span>
+  </div>
+  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span><span class="tag-layer">ガバナンス/規制</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-9583fb4c357c" style="display:none"><span class="tag-kw">分散型AI</span><span class="tag-kw">AIエージェント</span><span class="tag-kw">レピュテーション</span><span class="tag-kw">AIマーケットプレイス</span><span class="tag-kw">信頼性</span></div><button class="kw-btn" onclick="toggleKw('kw-9583fb4c357c',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://arxiv.org/abs/2605.00073" target="_blank" rel="noopener" onclick="event.stopPropagation()">arXiv cs.AI</a>
+  <em class="orig">"AgentReputation: A Decentralized Agentic AI Reputation Framework"</em></div>
+</article>
+<article class="card" data-id="8b6174a8dbe6" data-main="ai_sec" onclick="navigateCard('8b6174a8dbe6')">
+  <div class="cm">
+    
+    <span class="tier">学術</span>
+    <span class="src">arXiv cs.AI</span>
+    <span class="dt">2026-05-04</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="LLMの安全性における根本的な課題であるジェイルブレイク攻撃のメカニズム解明に直接貢献する研究であり、AIセキュリティの最前線に位置するため。" aria-label="重要度判定の理由: LLMの安全性における根本的な課題であるジェイルブレイク攻撃のメカニズム解明に直接貢献する研究であり、AIセキュリティの最前線に位置するため。">?</button>
+  </div>
+  <h2 class="ct"><a href="/ai-security-news/article/8b6174a8dbe6.html" onclick="event.stopPropagation()">LLMジェイルブレイク成功の最小かつ局所的な因果的説明</a></h2>
+  <div class="insight-snippet">LLMのジェイルブレイクは、生成AIの悪用リスクの核心であり、その成功メカニズムを理解することは防御策の構築に不可欠である。CISOは、自社でLLMを導入する際…</div>
+  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">Security for AI</span><span class="cdc-badge">サービス企画</span><span class="cdc-badge">顧客課題</span></div>
+  <div class="tags">
+    <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
+    <span class="tag-sub">プロンプトインジェクション</span><span class="tag-sub">LLMセキュリティ</span><span class="tag-sub">研究・論文</span>
+  </div>
+  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-8b6174a8dbe6" style="display:none"><span class="tag-kw">LLM</span><span class="tag-kw">ジェイルブレイク</span><span class="tag-kw">プロンプトインジェクション</span><span class="tag-kw">安全性学習</span><span class="tag-kw">因果的説明</span></div><button class="kw-btn" onclick="toggleKw('kw-8b6174a8dbe6',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://arxiv.org/abs/2605.00123" target="_blank" rel="noopener" onclick="event.stopPropagation()">arXiv cs.AI</a>
+  <em class="orig">"Minimal, Local, Causal Explanations for Jailbreak Success in Large Language Models"</em></div>
+</article>
+<article class="card" data-id="5f0282436bb5" data-main="attack" onclick="navigateCard('5f0282436bb5')">
+  <div class="cm">
+    
+    <span class="tier">専門メディア</span>
+    <span class="src">Dark Reading</span>
+    <span class="dt">2026-05-04</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="特定の国家支援型APTグループによる大規模かつ継続的な攻撃活動であり、マルウェアや攻撃手法の進化が示されており、組織への直接的な脅威が高いため。" aria-label="重要度判定の理由: 特定の国家支援型APTグループによる大規模かつ継続的な攻撃活動であり、マルウェアや攻撃手法の進化が示されており、組織への直接的な脅威が高いため。">?</button>
+  </div>
+  <h2 class="ct"><a href="/ai-security-news/article/5f0282436bb5.html" onclick="event.stopPropagation()">中国系APTグループ「Silver Fox」がインドとロシアで税務テーマの攻撃</a></h2>
+  <div class="insight-snippet">APTグループによるソーシャルエンジニアリング攻撃は依然として主要な侵入手口であり、特に税務申告など時事性の高いテーマが悪用される。CISOは、従業員への継続的…</div>
+  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">顧客課題</span><span class="cdc-badge">Identity/ITDR</span></div>
+  <div class="tags">
+    <span class="tag-main" style="background:#E24B4A20;color:#E24B4A;border-color:#E24B4A44">攻撃・脅威</span>
+    <span class="tag-sub">APT</span><span class="tag-sub">ソーシャルエンジニアリング</span><span class="tag-sub">マルウェア</span>
+  </div>
+  <div class="tags tags-meta"><span class="tag-layer">ネットワーク</span><span class="tag-layer">デバイス/エッジ</span><span class="tag-layer">データ/AI</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-5f0282436bb5" style="display:none"><span class="tag-kw">APT</span><span class="tag-kw">Silver Fox</span><span class="tag-kw">ソーシャルエンジニアリング</span><span class="tag-kw">マルウェア</span><span class="tag-kw">ABCDoor</span></div><button class="kw-btn" onclick="toggleKw('kw-5f0282436bb5',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://www.darkreading.com/endpoint-security/silver-fox-tax-themed-attacks-india-russia" target="_blank" rel="noopener" onclick="event.stopPropagation()">Dark Reading</a>
+  <em class="orig">"Silver Fox Springs Tax-Themed Attacks on Orgs in India, Russia"</em></div>
+</article>
+<article class="card" data-id="3d485f8e4167" data-main="biz_tech" onclick="navigateCard('3d485f8e4167')">
+  <div class="cm">
+    
+    <span class="tier">専門メディア</span>
+    <span class="src">SecurityWeek</span>
+    <span class="dt">2026-05-04</span>
+    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><button type="button" class="imp-reason" title="サイバーセキュリティ市場全体のトレンドと企業の戦略的な動きを示すものであり、今後のベンダー選択やソリューション導入に影響を与える可能性があるため。" aria-label="重要度判定の理由: サイバーセキュリティ市場全体のトレンドと企業の戦略的な動きを示すものであり、今後のベンダー選択やソリューション導入に影響を与える可能性があるため。">?</button>
+  </div>
+  <h2 class="ct"><a href="/ai-security-news/article/3d485f8e4167.html" onclick="event.stopPropagation()">2026年4月のサイバーセキュリティM&Aまとめ：33件の買収を発表</a></h2>
+  <div class="insight-snippet">サイバーセキュリティ市場は、進化する脅威環境への対応とAI技術の急速な発展を受け、M&Aによる統合と専門化が進んでいる。CISOは、市場動向を注視し、自社のセキ…</div>
+  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">サービス企画</span><span class="cdc-badge">顧客課題</span></div>
+  <div class="tags">
+    <span class="tag-main" style="background:#3B6D1120;color:#3B6D11;border-color:#3B6D1144">ビジネス・技術動向</span>
+    <span class="tag-sub">M&A</span><span class="tag-sub">市場トレンド</span>
+  </div>
+  <div class="tags tags-meta"><span class="tag-layer">ガバナンス/規制</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-3d485f8e4167" style="display:none"><span class="tag-kw">M&A</span><span class="tag-kw">サイバーセキュリティ市場</span><span class="tag-kw">投資</span><span class="tag-kw">業界再編</span><span class="tag-kw">ベンダー戦略</span></div><button class="kw-btn" onclick="toggleKw('kw-3d485f8e4167',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://www.securityweek.com/cybersecurity-ma-roundup-33-deals-announced-in-april-2026/" target="_blank" rel="noopener" onclick="event.stopPropagation()">SecurityWeek</a>
+  <em class="orig">"Cybersecurity M&A Roundup: 33 Deals Announced in April 2026"</em></div>
+</article>
+<article class="card" data-id="f622c9663c5e" data-main="vuln" onclick="navigateCard('f622c9663c5e')">
   <div class="cm">
     
     <span class="tier">専門メディア</span>
     <span class="src">The Hacker News</span>
-    <span class="dt">2026-05-06</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="正規の配布チャネルとデジタル署名が悪用されたサプライチェーン攻撃であり、広範な企業に影響を及ぼす可能性が高いため。">?</span>
+    <span class="dt">2026-05-05</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="広範な企業で使用されるMFTソリューションにおける認証バイパスという重大な脆弱性であり、過去にもMOVEitの脆弱性が大規模なサプライチェーン攻撃に利用された経緯があるため。" aria-label="重要度判定の理由: 広範な企業で使用されるMFTソリューションにおける認証バイパスという重大な脆弱性であり、過去にもMOVEitの脆弱性が大規模なサプライチェーン攻撃に利用された経緯があるため。">?</button>
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/95b1ba245503.html" onclick="event.stopPropagation()">DAEMON Toolsへのサプライチェーン攻撃、正規インストーラーにマルウェア混入</a></h2>
-  <div class="insight-snippet">正規のデジタル署名が悪用されるサプライチェーン攻撃は、最も防衛が困難な脅威の一つです。CISOは、ソフトウェアサプライヤーのリスク評価を厳格化し、ダウンロードし…</div>
+  <h2 class="ct"><a href="/ai-security-news/article/f622c9663c5e.html" onclick="event.stopPropagation()">ProgressがMOVEit Automationの認証バイパス脆弱性をパッチ</a></h2>
+  <div class="insight-snippet">ファイル転送ソリューションのような基幹システムにおける認証バイパス脆弱性は、データ侵害や情報漏洩に直結する深刻なリスクである。CISOは、MFTソリューションを…</div>
   <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">Exposure管理</span><span class="cdc-badge">顧客課題</span></div>
   <div class="tags">
-    <span class="tag-main" style="background:#E24B4A20;color:#E24B4A;border-color:#E24B4A44">攻撃・脅威</span>
-    <span class="tag-sub">サプライチェーン攻撃</span><span class="tag-sub">マルウェア</span>
+    <span class="tag-main" style="background:#BA751720;color:#BA7517;border-color:#BA751744">脆弱性</span>
+    <span class="tag-sub">認証バイパス</span><span class="tag-sub">パッチ未適用</span>
   </div>
-  <div class="tags tags-meta"><span class="tag-layer">デバイス/エッジ</span><span class="tag-layer">アプリ/API</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-95b1ba245503" style="display:none"><span class="tag-kw">DAEMON Tools</span><span class="tag-kw">サプライチェーン攻撃</span><span class="tag-kw">マルウェア</span><span class="tag-kw">デジタル署名</span><span class="tag-kw">公式インストーラー</span></div><button class="kw-btn" onclick="toggleKw('kw-95b1ba245503',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://thehackernews.com/2026/05/daemon-tools-supply-chain-attack.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">The Hacker News</a>
-  <em class="orig">"DAEMON Tools Supply Chain Attack Compromises Official Installers with Malware"</em></div>
+  <div class="tags tags-meta"><span class="tag-layer">アプリ/API</span><span class="tag-layer">クラウド/サーバー</span><span class="tag-layer">データ/AI</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-f622c9663c5e" style="display:none"><span class="tag-kw">MOVEit Automation</span><span class="tag-kw">認証バイパス</span><span class="tag-kw">脆弱性</span><span class="tag-kw">パッチ適用</span><span class="tag-kw">MFT</span></div><button class="kw-btn" onclick="toggleKw('kw-f622c9663c5e',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://thehackernews.com/2026/05/progress-patches-critical-moveit.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">The Hacker News</a>
+  <em class="orig">"Progress Patches Critical MOVEit Automation Bug Enabling Authentication Bypass"</em></div>
 </article>
-<article class="card" data-id="15b48d3461da" data-main="policy" onclick="navigateCard('15b48d3461da')">
+<article class="card" data-id="45b656c21e35" data-main="attack" onclick="navigateCard('45b656c21e35')">
   <div class="cm">
     
     <span class="tier">専門メディア</span>
-    <span class="src">Bleeping Computer</span>
-    <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="imp-reason" title="データプライバシー規制の執行強化を示す事例であり、企業のコンプライアンス体制に影響を及ぼすため。">?</span>
+    <span class="src">The Hacker News</span>
+    <span class="dt">2026-05-04</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIを活用した攻撃の具体例と、攻撃側の戦略シフト（侵入から占拠）という、今日のサイバーセキュリティにおける最も重要な構造変化を示唆しているため。" aria-label="重要度判定の理由: AIを活用した攻撃の具体例と、攻撃側の戦略シフト（侵入から占拠）という、今日のサイバーセキュリティにおける最も重要な構造変化を示唆しているため。">?</button>
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/15b48d3461da.html" onclick="event.stopPropagation()">FTC、データブローカーKochavaに位置情報販売を禁止</a></h2>
-  <div class="insight-snippet">企業のデータ利用におけるプライバシー保護規制は、グローバルで厳格化の一途を辿っています。CISOは、自社のデータ収集・利用・共有ポリシーが最新の規制要件を満たし…</div>
-  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">CISO報告</span></div>
+  <h2 class="ct"><a href="/ai-security-news/article/45b656c21e35.html" onclick="event.stopPropagation()">週刊リキャップ：AI駆動型フィッシング、Androidスパイツール、GitHub RCEなど</a></h2>
+  <div class="insight-snippet">AI駆動型フィッシングなど攻撃手法の高度化、および「侵入から占拠」への攻撃シフトは、従来の境界防御や単一の検知ツールでは対応が困難であることを明確に示している。…</div>
+  <div class="cdc-badges"><span class="cdc-lbl">CDC観点</span><span class="cdc-badge">SOC運用変化</span><span class="cdc-badge">Exposure管理</span><span class="cdc-badge">AI for Security</span></div>
   <div class="tags">
-    <span class="tag-main" style="background:#0F6E5620;color:#0F6E56;border-color:#0F6E5644">規制・政策</span>
-    <span class="tag-sub">プライバシー侵害</span><span class="tag-sub">国内規制</span>
+    <span class="tag-main" style="background:#E24B4A20;color:#E24B4A;border-color:#E24B4A44">攻撃・脅威</span>
+    <span class="tag-sub">フィッシング</span><span class="tag-sub">AIを使った攻撃</span><span class="tag-sub">サプライチェーン攻撃</span>
   </div>
-  <div class="tags tags-meta"><span class="tag-layer">ガバナンス/規制</span></div>
-  <div class="kw-fold"><div class="tags tags-meta" id="kw-15b48d3461da" style="display:none"><span class="tag-kw">FTC</span><span class="tag-kw">Kochava</span><span class="tag-kw">位置情報</span><span class="tag-kw">プライバシー規制</span><span class="tag-kw">同意管理</span></div><button class="kw-btn" onclick="toggleKw('kw-15b48d3461da',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://www.bleepingcomputer.com/news/security/ftc-to-ban-data-broker-kochava-from-selling-americans-location-data/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Bleeping Computer</a>
-  <em class="orig">"FTC to ban data broker Kochava from selling Americans’ location data"</em></div>
+  <div class="tags tags-meta"><span class="tag-layer">データ/AI</span><span class="tag-layer">アプリ/API</span><span class="tag-layer">デバイス/エッジ</span></div>
+  <div class="kw-fold"><div class="tags tags-meta" id="kw-45b656c21e35" style="display:none"><span class="tag-kw">AIフィッシング</span><span class="tag-kw">Androidスパイウェア</span><span class="tag-kw">Linuxエクスプロイト</span><span class="tag-kw">GitHub RCE</span><span class="tag-kw">侵入から占拠</span></div><button class="kw-btn" onclick="toggleKw('kw-45b656c21e35',this);event.stopPropagation()">タグを表示</button></div>
+  <div class="cf">出典: <a href="https://thehackernews.com/2026/05/weekly-recap-ai-powered-phishing.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">The Hacker News</a>
+  <em class="orig">"⚡ Weekly Recap: AI-Powered Phishing, Android Spying Tool, Linux Exploit, GitHub RCE & More"</em></div>
 </article>
 </div>
 
@@ -382,8 +391,7 @@ gtag('config', 'G-KV7Q7SQKZX');
     各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。
   </div>
   <div style="margin-top:12px">
-    <div class="arc-row"><a href="archive/2026-05-06.html" class="arc-link">2026-05-06</a><span class="arc-n">10件</span></div>
-<div class="arc-row"><a href="archive/2026-05-05.html" class="arc-link">2026-05-05</a><span class="arc-n">10件</span></div>
+    <div class="arc-row"><a href="archive/2026-05-05.html" class="arc-link">2026-05-05</a><span class="arc-n">10件</span></div>
 <div class="arc-row"><a href="archive/2026-05-04.html" class="arc-link">2026-05-04</a><span class="arc-n">4件</span></div>
 <div class="arc-row"><a href="archive/2026-05-03.html" class="arc-link">2026-05-03</a><span class="arc-n">7件</span></div>
 <div class="arc-row"><a href="archive/2026-05-02.html" class="arc-link">2026-05-02</a><span class="arc-n">7件</span></div>
@@ -494,7 +502,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 <div class="pane" id="pane-about">
   <p class="plabel">About</p>
   <div style="max-width:720px;margin:0 auto;padding:1rem 0">
-    <h1 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-.01em">Ayudle</h1>
+    <h2 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-.01em">Ayudle</h2>
     <p style="font-size:13px;color:#6a6860;margin-bottom:2.5rem">AI×セキュリティ ニュース日報 運営者</p>
     <div style="margin-bottom:2.5rem">
       <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">Profile</div>
@@ -549,7 +557,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 </footer>
 
 <script>
-const ANA = {"main_30": [["ai_sec", 25, "AI×セキュリティ"], ["biz_tech", 22, "ビジネス・技術動向"], ["vuln", 16, "脆弱性"], ["attack", 12, "攻撃・脅威"], ["ai_risk", 11, "AIリスク"], ["policy", 6, "規制・政策"], ["incident", 4, "インシデント"]], "main_7": [["ai_sec", 15, "AI×セキュリティ"], ["biz_tech", 15, "ビジネス・技術動向"], ["vuln", 10, "脆弱性"], ["ai_risk", 7, "AIリスク"], ["attack", 7, "攻撃・脅威"], ["policy", 4, "規制・政策"], ["incident", 1, "インシデント"]], "sub_7": [["AIを使った防御", 17], ["市場トレンド", 13], ["LLMセキュリティ", 11], ["研究・論文", 11], ["AIを使った攻撃", 11], ["製品リリース", 8], ["エクスプロイト", 7], ["サプライチェーン攻撃", 6], ["安全性評価", 6], ["認証バイパス", 4], ["設定ミス", 4], ["マルウェア", 4], ["CVE", 4], ["プロンプトインジェクション", 3], ["モデル汚染", 3]], "spikes": [{"sub": "AIを使った防御", "cnt_7": 17, "cnt_30": 23}, {"sub": "市場トレンド", "cnt_7": 13, "cnt_30": 19}, {"sub": "LLMセキュリティ", "cnt_7": 11, "cnt_30": 18}, {"sub": "研究・論文", "cnt_7": 11, "cnt_30": 14}, {"sub": "AIを使った攻撃", "cnt_7": 11, "cnt_30": 15}], "imp_list": [["高", 61], ["中", 29], ["低", 6]], "total_articles": 96, "total_days": 14, "today_implication": "【今日の結論】AIの悪用による新たな攻撃手法が確立され、同時にAIシステム固有のセキュリティリスク（非人間型ID管理、ハルシネーション等）が顕在化しています。サプライチェーン全体にわたる脅威とOT環境の脆弱性も依然として高く、これら多岐にわたるリスクに統合的に対応する次世代CDCの必要性が高まっています。\n【攻撃側の変化】AIによる脆弱性発見が効率化され、一般的な脆弱性対応の自動化が進む一方で、LLMに対する自己進化型ジェイルブレイクやハルシネーションを悪用したサプライチェーン攻撃など、AIを悪用した高度で巧妙な攻撃が増加しています。正規のデジタル署名が悪用されるサプライチェーン攻撃も継続しており、防御側はより複雑な脅威に直面しています。\n【防御側の変化】GoogleはAIで発見容易な脆弱性の報奨金を減らし、高度なエクスプロイトにリソースを集中させることで、脅威環境の変化に適応しています。Ciscoによる非人間型IDセキュリティ企業の買収は、AIやマシンアクセスが増加する中で、ID中心のセキュリティ強化が市場トレンドとなっていることを示唆しています。\n【Security for AI】LLMへのプロンプトインジェクション（ジェイルブレイク）、モデル汚染、ハルシネーションによる誤情報生成やサプライチェーンリスクが喫緊の課題です。また、AIシステムが利用する非人間型IDの厳格な認証・認可と、それに伴う権限管理が極めて重要になっています。\n【AI for Security】AIが一般的な脆弱性の発見を効率化することで、CDCはTier1/2業務におけるアラートトリアージや初動対応の自動化を加速させ、人間のアナリストはより高度な脅威分析やAI固有の攻撃への対応に注力できるようになるでしょう。レポーティングやナレッジ検索においてもAI活用は有効です。\n【CDC/SOCへの示唆】監視対象は、AIシステムのプロンプト・出力ログ、API連携挙動、非人間型IDのアクセスログ、OT環境の特有イベント、サプライチェーン関連のファイル整合性やネットワーク通信に拡大する必要があります。検知ルールは、ジェイルブレイクパターン、ハルシネーションに起因する異常出力、非人間型IDの権限昇格や異常アクセス、ICSプロトコルの異常をカバーすべきです。運用プロセスでは、AIシステムのリスク評価を初期設計から組み込み、OT環境との連携を強化し、高度なAI攻撃の調査・対応シナリオを策定することが不可欠です。人の役割は、複雑なAI攻撃の分析、OT環境の専門的判断、法的・倫理的リスク評価、そしてAIガバナンスの策定・監査へとシフトします。\n【今日の問い】自社のAI開発・利用環境において、「AIエージェントリスク6階層モデル」のどのレイヤーから優先的に「Security for AI」対策を強化し、具体的な防御策を講じるべきか？AIによるセキュリティ運用の自動化が進む中で、CDC/SOCのTier1/2アナリストの役割は今後どのように再定義され、どのようなスキルセットを持つ人材が必要となるのか？", "layer_7": [["データ/AI", 48], ["ガバナンス/規制", 31], ["アプリ/API", 20], ["デバイス/エッジ", 10], ["クラウド/サーバー", 9], ["ネットワーク", 6]], "kw_7": [["AIエージェント", 11], ["Cisco", 4], ["CISA", 4], ["サプライチェーン攻撃", 4], ["オープンソース", 4], ["Claude Mythos", 4], ["ジェイルブレイク", 3], ["エクスプロイト", 3], ["LLM", 3], ["APT", 3], ["Anthropic", 3], ["Mythos", 3], ["LiteLLM", 3], ["LLMゲートウェイ", 3], ["Astrix Security", 2], ["Redis", 2], ["データ型", 2], ["ABB", 2], ["OTセキュリティ", 2], ["認証バイパス", 2], ["マルウェア", 2], ["SaaSセキュリティ", 2], ["脆弱性", 2], ["サプライチェーンセキュリティ", 2], ["ゼロデイ", 2], ["リスク管理", 2], ["本番環境", 2], ["データベース削除", 2], ["セキュリティテスト", 2], ["AIモデル", 2]], "layer_heatmap": {"dates": ["04/30", "05/01", "05/02", "05/03", "05/04", "05/05", "05/06"], "rows": [{"layer": "デバイス/エッジ", "counts": [0, 0, 0, 2, 2, 2, 4]}, {"layer": "ネットワーク", "counts": [1, 0, 1, 1, 0, 1, 1]}, {"layer": "クラウド/サーバー", "counts": [0, 2, 1, 1, 2, 1, 1]}, {"layer": "アプリ/API", "counts": [3, 2, 2, 2, 3, 4, 3]}, {"layer": "データ/AI", "counts": [7, 7, 7, 6, 2, 9, 5]}, {"layer": "ガバナンス/規制", "counts": [5, 5, 4, 4, 3, 4, 2]}]}};
+const ANA = {"main_30": [["ai_sec", 23, "AI×セキュリティ"], ["biz_tech", 19, "ビジネス・技術動向"], ["vuln", 14, "脆弱性"], ["attack", 11, "攻撃・脅威"], ["ai_risk", 10, "AIリスク"], ["policy", 5, "規制・政策"], ["incident", 4, "インシデント"]], "main_7": [["ai_sec", 13, "AI×セキュリティ"], ["biz_tech", 12, "ビジネス・技術動向"], ["vuln", 8, "脆弱性"], ["ai_risk", 6, "AIリスク"], ["attack", 6, "攻撃・脅威"], ["policy", 3, "規制・政策"], ["incident", 1, "インシデント"]], "sub_7": [["AIを使った防御", 17], ["研究・論文", 11], ["市場トレンド", 11], ["AIを使った攻撃", 11], ["LLMセキュリティ", 10], ["製品リリース", 7], ["安全性評価", 6], ["エクスプロイト", 6], ["サプライチェーン攻撃", 5], ["CVE", 4], ["APT", 3], ["マルウェア", 3], ["認証バイパス", 3], ["標準化", 3], ["設定ミス", 3]], "spikes": [{"sub": "AIを使った防御", "cnt_7": 17, "cnt_30": 23}, {"sub": "研究・論文", "cnt_7": 11, "cnt_30": 14}, {"sub": "市場トレンド", "cnt_7": 11, "cnt_30": 17}, {"sub": "AIを使った攻撃", "cnt_7": 11, "cnt_30": 15}, {"sub": "LLMセキュリティ", "cnt_7": 10, "cnt_30": 17}], "imp_list": [["高", 54], ["中", 27], ["低", 5]], "total_articles": 86, "total_days": 13, "today_implication": "【今日の結論】\nAIの進化は、サイバーセキュリティの攻撃・防御両面で構造的な変化を加速させている。攻撃側はAIを活用して高度化し、防御側はAIによる自律的なシステム制御と非人間アイデンティティ管理、そしてLLM自身のセキュリティ強化が不可欠となっている。\n【攻撃側の変化】\n記事[7]と[10]は、攻撃側の戦術が高度化し、AIを悪用していることを示唆している。中国系APTグループによる税務テーマのソーシャルエンジニアリング攻撃[7]や、AI駆動型フィッシングの登場[10]は、初期侵入ベクトルの洗練化を意味する。また、攻撃は単なる侵入に留まらず、SaaSセッションの占拠や信頼されたコミットの悪用による「侵入から占拠」へとシフトしている[10]。これはサプライチェーン全体にわたる潜在的な信頼関係の悪用を意味し、従来の境界防御の限界を露呈させている。\n【防御側の変化】\n防御側は、AIによる自律的なシステム制御や非人間アイデンティティ管理への投資を進めている。CiscoによるAstrix Securityの買収[1]は、AIやマシン間のアクセスにおけるアイデンティティ中心のセキュリティ強化の必要性を示唆する。また、AIを活用した脆弱性検出の研究[3]や、AIエージェントの自律性を制御する「アライメント契約」の概念[4]は、AIを防御に活用しつつ、そのリスクを管理する新たなアプローチが模索されていることを示す。\n【Security for AI】\nLLMのジェイルブレイク成功メカニズムの解明[6]は、AIシステムの安全性評価と防御策構築の基礎となる。AIエージェントが自律的に活動する分散型マーケットプレイスにおける信頼性評価[5]や、自律的セキュリティシステムのアライメント契約[4]は、AIエージェントの権限管理、挙動制御、そして責任範囲を明確にするガバナンスの必要性を強く示唆している。CISOは、AIシステム固有のログ・挙動・権限・データ流通を監視対象に含め、リスク階層モデルの各層での対策を検討する必要がある。\n【AI for Security】\nAIは、不完全なコードスニペットからメモリ脆弱性を検出する技術[3]など、従来のツールでは困難だった高度なセキュリティ課題を解決し、Tier2調査・アラート判断・ナレッジ検索・レポート作成・初動判断支援といったCDC業務の効率と精度を飛躍的に向上させる可能性を持つ。これにより、人の役割はAIによる判断根拠の検証や、より複雑な戦略的意思決定、そしてクリティカルなインシデント対応へとシフトする。\n【CDC/SOCへの示唆】\nCDCは、AI駆動型フィッシングや「侵入から占拠」のような高度な攻撃に対応するため、従来の監視対象に加え、AIシステムのログ、API連携の挙動、非人間アイデンティティの権限、SaaSセッションの異常などを統合的に監視する必要がある。AIエージェントを活用した検知・分析・初動対応の自動化を進めつつも、AIの「アライメント」を保証するための厳格な検証プロセスとエスカレーション基準の設計が不可欠となる。これにより、Tier1/2の自動化が進み、人間のアナリストはTier3や脅威ハンティング、AIシステムのガバナンスへと注力することになる。\n【今日の問い】\nAIエージェントが悪意を持って既存のSOCツールやインフラを操作した場合、現在のCDCサービス設計はどのように「AIエージェントの異常」を検知し、制御できるのか？\nAIシステム固有のログデータや行動パターンを、既存SIEM/SOAR環境にどのように統合し、意味のあるセキュリティコンテキストを生成するべきか？", "layer_7": [["データ/AI", 43], ["ガバナンス/規制", 29], ["アプリ/API", 17], ["クラウド/サーバー", 8], ["デバイス/エッジ", 6], ["ネットワーク", 5]], "kw_7": [["AIエージェント", 11], ["オープンソース", 4], ["Claude Mythos", 4], ["Cisco", 3], ["APT", 3], ["サプライチェーン攻撃", 3], ["Anthropic", 3], ["Mythos", 3], ["LiteLLM", 3], ["LLMゲートウェイ", 3], ["SaaSセキュリティ", 2], ["脆弱性", 2], ["サプライチェーンセキュリティ", 2], ["ゼロデイ", 2], ["CISA", 2], ["リスク管理", 2], ["本番環境", 2], ["データベース削除", 2], ["セキュリティテスト", 2], ["AIモデル", 2], ["モデル汚染", 2], ["政府機関", 2], ["スパイ活動", 2], ["Python CLI", 2], ["Anthropic Mythos", 2], ["LLMセキュリティ", 2], ["AIを使った攻撃", 2], ["AI攻撃", 2], ["エクスプロイト", 2], ["AIエージェントセキュリティ", 2]], "layer_heatmap": {"dates": ["04/30", "05/01", "05/02", "05/03", "05/04", "05/05", "05/06"], "rows": [{"layer": "デバイス/エッジ", "counts": [0, 0, 0, 2, 2, 2, 0]}, {"layer": "ネットワーク", "counts": [1, 0, 1, 1, 0, 1, 0]}, {"layer": "クラウド/サーバー", "counts": [0, 2, 1, 1, 2, 1, 0]}, {"layer": "アプリ/API", "counts": [3, 2, 2, 2, 3, 4, 0]}, {"layer": "データ/AI", "counts": [7, 7, 7, 6, 2, 9, 0]}, {"layer": "ガバナンス/規制", "counts": [5, 5, 4, 4, 3, 4, 0]}]}};
 const TAX = {"attack": {"label": "攻撃・脅威", "subs": ["ランサムウェア", "フィッシング", "APT", "マルウェア", "DDoS", "サプライチェーン攻撃", "ソーシャルエンジニアリング", "クレデンシャル窃取"]}, "vuln": {"label": "脆弱性", "subs": ["ゼロデイ", "CVE", "エクスプロイト", "パッチ未適用", "設定ミス", "認証バイパス"]}, "ai_sec": {"label": "AI×セキュリティ", "subs": ["プロンプトインジェクション", "モデル汚染", "敵対的攻撃", "LLMセキュリティ", "AIを使った防御", "AIを使った攻撃", "モデル逆転攻撃"]}, "ai_risk": {"label": "AIリスク", "subs": ["ハルシネーション", "バイアス・差別", "プライバシー侵害", "誤情報生成", "著作権", "安全性評価", "アライメント"]}, "policy": {"label": "規制・政策", "subs": ["EU AI法", "NIST", "CISA勧告", "国内規制", "国際連携", "コンプライアンス", "標準化"]}, "incident": {"label": "インシデント", "subs": ["データ侵害", "サービス停止", "情報漏洩", "金融被害", "個人情報流出"]}, "biz_tech": {"label": "ビジネス・技術動向", "subs": ["資金調達", "M&A", "製品リリース", "市場トレンド", "研究・論文", "スタートアップ"]}};
 const IMP_COLORS = {"高":"#E24B4A","中":"#BA7517","低":"#639922"};
 const MAIN_COLORS = {"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai_risk":"#7F77DD","policy":"#1D9E75","incident":"#D85A30","biz_tech":"#639922"};
@@ -559,11 +567,14 @@ function showTab(id) {
   var valid = ['today','archive','trend','weekly','columns','about'];
   if (id === 'popular' || valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) { p.classList.remove('on'); });
-  document.querySelectorAll('.tab-bar .tab').forEach(function(t) { t.classList.remove('on'); });
+  document.querySelectorAll('.tab-bar .tab').forEach(function(t) {
+    t.classList.remove('on');
+    t.removeAttribute('aria-current');
+  });
   var pane = document.getElementById('pane-' + id);
   if (pane) pane.classList.add('on');
   var tab = document.querySelector('.tab-bar a[href="#' + id + '"]');
-  if (tab) tab.classList.add('on');
+  if (tab) { tab.classList.add('on'); tab.setAttribute('aria-current', 'page'); }
 }
 
 function initTab() {
@@ -795,6 +806,7 @@ function toggleKw(id, btn) {
   var open = btn.dataset.open === '1';
   el.style.display = open ? 'none' : '';
   btn.dataset.open = open ? '0' : '1';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }
 </script>

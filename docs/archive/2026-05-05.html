@@ -9,11 +9,11 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--r:10px}
+:root{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}
 body{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}
 a{color:inherit;text-decoration:none}
 .hdr{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.ht{font-size:15px;font-weight:700;color:#fff}
+.ht{font-size:15px;font-weight:700;color:#fff;margin:0}
 .back{display:inline-block;padding:8px 16px;margin:12px 24px;color:var(--accent);text-decoration:none;font-size:13px}
 .back:hover{text-decoration:underline}
 .content{max-width:860px;margin:0 auto;padding:16px 24px}
@@ -25,7 +25,8 @@ a{color:inherit;text-decoration:none}
 .src,.dt{font-size:10px;color:var(--dim)}
 .dt{margin-left:auto}
 .imp{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}
-.imp-reason{font-size:10px;color:var(--dim);cursor:help;margin-left:1px}
+.imp-reason{font-size:10px;color:var(--dim);cursor:help;margin-left:1px;background:transparent;border:none;padding:2px;min-width:20px;min-height:20px;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;vertical-align:middle}
+.imp-reason:hover{color:var(--text)}
 .ct{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}
 .ct a:hover{color:var(--accent)}
 .tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
@@ -45,8 +46,9 @@ a{color:inherit;text-decoration:none}
 .cdc-lbl{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}
 .cdc-badge{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}
 .kw-fold{margin-top:2px}
-.kw-btn{font-size:9px;background:transparent;border:1px solid var(--border);color:var(--dim);border-radius:99px;padding:2px 8px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s}
-.kw-btn:hover{color:var(--muted);border-color:#3a3a38}
+.kw-btn{font-size:11px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:4px 10px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s;min-height:26px}
+.kw-btn:hover{color:var(--text);border-color:var(--muted)}
+.kw-btn[aria-expanded="true"]{background:var(--card2)}
 </style>
 </head>
 <body>
@@ -64,7 +66,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">SecurityWeek</span>
     <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIエージェントの普及に伴う新たなリスク領域である非人間アイデンティティ管理に対する明確な市場動向と、Ciscoのような大手による戦略的投資を示すため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIエージェントの普及に伴う新たなリスク領域である非人間アイデンティティ管理に対する明確な市場動向と、Ciscoのような大手による戦略的投資を示すため。" aria-label="重要度判定の理由: AIエージェントの普及に伴う新たなリスク領域である非人間アイデンティティ管理に対する明確な市場動向と、Ciscoのような大手による戦略的投資を示すため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/d241a1c2f70a.html" onclick="event.stopPropagation()">CiscoがAstrix Securityを買収、非人間アイデンティティリスクに対応</a></h2>
   <div class="insight-snippet">AIエージェントや自動化システムが普及する中で、非人間アイデンティティの管理は喫緊の課題である。CISOは、自社のAIシステムやSaaS連携におけるサービスアカ…</div>
@@ -84,7 +86,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">Simon Willison</span>
     <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#639922;border-color:#63992255">重要度 低</span><span class="imp-reason" title="直接的なサイバーセキュリティやAIリスクに関する言及がなく、基盤技術の機能追加にとどまるため。">?</span>
+    <span class="imp" style="color:#639922;border-color:#63992255">重要度 低</span><button type="button" class="imp-reason" title="直接的なサイバーセキュリティやAIリスクに関する言及がなく、基盤技術の機能追加にとどまるため。" aria-label="重要度判定の理由: 直接的なサイバーセキュリティやAIリスクに関する言及がなく、基盤技術の機能追加にとどまるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/606262cca6e0.html" onclick="event.stopPropagation()">Redisに新しいデータ型「配列」が追加</a></h2>
   <div class="insight-snippet">本記事はRedisの新機能に関するもので、直接的なサイバーセキュリティリスクやAI活用との関連は薄い。しかし、基盤技術の進化は、将来的にアプリケーション層やデー…</div>
@@ -104,7 +106,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">学術</span>
     <span class="src">arXiv cs.CR</span>
     <span class="dt">2026-05-04</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIを活用した防御技術の具体的な進展を示し、特に従来手法では困難だった不完全なコードからの脆弱性検出という実用性の高い課題を解決する可能性を秘めているため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIを活用した防御技術の具体的な進展を示し、特に従来手法では困難だった不完全なコードからの脆弱性検出という実用性の高い課題を解決する可能性を秘めているため。" aria-label="重要度判定の理由: AIを活用した防御技術の具体的な進展を示し、特に従来手法では困難だった不完全なコードからの脆弱性検出という実用性の高い課題を解決する可能性を秘めているため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/5511e67638ab.html" onclick="event.stopPropagation()">記号実行とマルチLLMオーケストレーションによるRustメモリ脆弱性検出</a></h2>
   <div class="insight-snippet">ソフトウェア開発ライフサイクルにおけるセキュリティテストの質を向上させる上で、AIを活用した脆弱性検出は非常に有望なアプローチである。CISOは、DevSecO…</div>
@@ -124,7 +126,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">学術</span>
     <span class="src">arXiv cs.CR</span>
     <span class="dt">2026-05-04</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIエージェントの自律性が高まる中での安全保障上極めて重要な「アライメント問題」に直接対処する研究であり、将来のAIベースのセキュリティシステム設計に不可欠な概念を提示しているため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIエージェントの自律性が高まる中での安全保障上極めて重要な「アライメント問題」に直接対処する研究であり、将来のAIベースのセキュリティシステム設計に不可欠な概念を提示しているため。" aria-label="重要度判定の理由: AIエージェントの自律性が高まる中での安全保障上極めて重要な「アライメント問題」に直接対処する研究であり、将来のAIベースのセキュリティシステム設計に不可欠な概念を提示しているため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/658e90d75e81.html" onclick="event.stopPropagation()">エージェント型セキュリティシステムのアライメント契約</a></h2>
   <div class="insight-snippet">AIエージェントが自律的に活動するセキュリティシステム、特に攻撃と防御の両方の能力を持つシステムを設計する際には、その挙動が意図した範囲に限定されるよう厳格な制…</div>
@@ -144,7 +146,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">学術</span>
     <span class="src">arXiv cs.AI</span>
     <span class="dt">2026-05-04</span>
-    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="imp-reason" title="分散型AIエコシステムにおける信頼性評価という、将来的に広範な影響を持つ可能性のある課題を扱っており、AIエージェントのサプライチェーンセキュリティにも関連するため。">?</span>
+    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><button type="button" class="imp-reason" title="分散型AIエコシステムにおける信頼性評価という、将来的に広範な影響を持つ可能性のある課題を扱っており、AIエージェントのサプライチェーンセキュリティにも関連するため。" aria-label="重要度判定の理由: 分散型AIエコシステムにおける信頼性評価という、将来的に広範な影響を持つ可能性のある課題を扱っており、AIエージェントのサプライチェーンセキュリティにも関連するため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/9583fb4c357c.html" onclick="event.stopPropagation()">AgentReputation: 分散型エージェントAIレピュテーションフレームワーク</a></h2>
   <div class="insight-snippet">AIエージェントが相互に連携し、サービスを提供する分散型環境では、個々のエージェントの信頼性評価が極めて重要となる。CISOは、組織内で利用されるAIエージェン…</div>
@@ -164,7 +166,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">学術</span>
     <span class="src">arXiv cs.AI</span>
     <span class="dt">2026-05-04</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="LLMの安全性における根本的な課題であるジェイルブレイク攻撃のメカニズム解明に直接貢献する研究であり、AIセキュリティの最前線に位置するため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="LLMの安全性における根本的な課題であるジェイルブレイク攻撃のメカニズム解明に直接貢献する研究であり、AIセキュリティの最前線に位置するため。" aria-label="重要度判定の理由: LLMの安全性における根本的な課題であるジェイルブレイク攻撃のメカニズム解明に直接貢献する研究であり、AIセキュリティの最前線に位置するため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/8b6174a8dbe6.html" onclick="event.stopPropagation()">LLMジェイルブレイク成功の最小かつ局所的な因果的説明</a></h2>
   <div class="insight-snippet">LLMのジェイルブレイクは、生成AIの悪用リスクの核心であり、その成功メカニズムを理解することは防御策の構築に不可欠である。CISOは、自社でLLMを導入する際…</div>
@@ -184,7 +186,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">Dark Reading</span>
     <span class="dt">2026-05-04</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="特定の国家支援型APTグループによる大規模かつ継続的な攻撃活動であり、マルウェアや攻撃手法の進化が示されており、組織への直接的な脅威が高いため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="特定の国家支援型APTグループによる大規模かつ継続的な攻撃活動であり、マルウェアや攻撃手法の進化が示されており、組織への直接的な脅威が高いため。" aria-label="重要度判定の理由: 特定の国家支援型APTグループによる大規模かつ継続的な攻撃活動であり、マルウェアや攻撃手法の進化が示されており、組織への直接的な脅威が高いため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/5f0282436bb5.html" onclick="event.stopPropagation()">中国系APTグループ「Silver Fox」がインドとロシアで税務テーマの攻撃</a></h2>
   <div class="insight-snippet">APTグループによるソーシャルエンジニアリング攻撃は依然として主要な侵入手口であり、特に税務申告など時事性の高いテーマが悪用される。CISOは、従業員への継続的…</div>
@@ -204,7 +206,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">SecurityWeek</span>
     <span class="dt">2026-05-04</span>
-    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="imp-reason" title="サイバーセキュリティ市場全体のトレンドと企業の戦略的な動きを示すものであり、今後のベンダー選択やソリューション導入に影響を与える可能性があるため。">?</span>
+    <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><button type="button" class="imp-reason" title="サイバーセキュリティ市場全体のトレンドと企業の戦略的な動きを示すものであり、今後のベンダー選択やソリューション導入に影響を与える可能性があるため。" aria-label="重要度判定の理由: サイバーセキュリティ市場全体のトレンドと企業の戦略的な動きを示すものであり、今後のベンダー選択やソリューション導入に影響を与える可能性があるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/3d485f8e4167.html" onclick="event.stopPropagation()">2026年4月のサイバーセキュリティM&Aまとめ：33件の買収を発表</a></h2>
   <div class="insight-snippet">サイバーセキュリティ市場は、進化する脅威環境への対応とAI技術の急速な発展を受け、M&Aによる統合と専門化が進んでいる。CISOは、市場動向を注視し、自社のセキ…</div>
@@ -224,7 +226,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">The Hacker News</span>
     <span class="dt">2026-05-05</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="広範な企業で使用されるMFTソリューションにおける認証バイパスという重大な脆弱性であり、過去にもMOVEitの脆弱性が大規模なサプライチェーン攻撃に利用された経緯があるため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="広範な企業で使用されるMFTソリューションにおける認証バイパスという重大な脆弱性であり、過去にもMOVEitの脆弱性が大規模なサプライチェーン攻撃に利用された経緯があるため。" aria-label="重要度判定の理由: 広範な企業で使用されるMFTソリューションにおける認証バイパスという重大な脆弱性であり、過去にもMOVEitの脆弱性が大規模なサプライチェーン攻撃に利用された経緯があるため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/f622c9663c5e.html" onclick="event.stopPropagation()">ProgressがMOVEit Automationの認証バイパス脆弱性をパッチ</a></h2>
   <div class="insight-snippet">ファイル転送ソリューションのような基幹システムにおける認証バイパス脆弱性は、データ侵害や情報漏洩に直結する深刻なリスクである。CISOは、MFTソリューションを…</div>
@@ -244,7 +246,7 @@ a{color:inherit;text-decoration:none}
     <span class="tier">専門メディア</span>
     <span class="src">The Hacker News</span>
     <span class="dt">2026-05-04</span>
-    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="imp-reason" title="AIを活用した攻撃の具体例と、攻撃側の戦略シフト（侵入から占拠）という、今日のサイバーセキュリティにおける最も重要な構造変化を示唆しているため。">?</span>
+    <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><button type="button" class="imp-reason" title="AIを活用した攻撃の具体例と、攻撃側の戦略シフト（侵入から占拠）という、今日のサイバーセキュリティにおける最も重要な構造変化を示唆しているため。" aria-label="重要度判定の理由: AIを活用した攻撃の具体例と、攻撃側の戦略シフト（侵入から占拠）という、今日のサイバーセキュリティにおける最も重要な構造変化を示唆しているため。">?</button>
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/45b656c21e35.html" onclick="event.stopPropagation()">週刊リキャップ：AI駆動型フィッシング、Androidスパイツール、GitHub RCEなど</a></h2>
   <div class="insight-snippet">AI駆動型フィッシングなど攻撃手法の高度化、および「侵入から占拠」への攻撃シフトは、従来の境界防御や単一の検知ツールでは対応が困難であることを明確に示している。…</div>
@@ -277,6 +279,7 @@ function toggleKw(id, btn) {
   var open = btn.dataset.open === '1';
   el.style.display = open ? 'none' : '';
   btn.dataset.open = open ? '0' : '1';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }
 </script>
