@@ -114,10 +114,14 @@ python scripts/generate_x_posts.py --slot morning --post --force  # 投稿済み
 | `X_ACCESS_SECRET` | Access Token Secret |
 
 **初回の手順：**
-1. `--verify-account` でローカルから投稿先アカウントを確認する
-2. `post_x.yml` を `workflow_dispatch` で1スロットだけ手動実行してテスト
-3. X上でツイートとアカウントを目視確認する
-4. 成功を確認してから schedule のコメントを外して有効化する
+1. GitHub Actions → `post_x.yml` → **Run workflow**
+2. `mode=verify` で実行 → ログに表示される username が `ayudle_aisec` であることを確認
+3. 問題なければ `mode=post`・スロットを1つ選んで手動投稿
+4. X上で投稿先アカウントと投稿内容を目視確認
+5. `docs/data/x_post_history.json` に `status: posted` と `tweet_id` が記録されていることを確認
+6. 確認後に schedule のコメントを外して有効化する
+
+> `mode` のデフォルトは `verify`。誤って `post` を押しても slot を空にすればエラーで止まります。
 
 ---
 
