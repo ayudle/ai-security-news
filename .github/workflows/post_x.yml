@@ -40,6 +40,14 @@ on:
         required: false
         default: false
         type: boolean
+      api_base:
+        description: 'X API ベースURL（403切り分け用。通常は変更不要）'
+        required: false
+        default: 'https://api.x.com'
+        type: choice
+        options:
+          - 'https://api.x.com'
+          - 'https://api.twitter.com'
 
 jobs:
   run-x:
@@ -65,10 +73,11 @@ jobs:
       - name: Verify account
         if: inputs.mode == 'verify'
         env:
-          X_API_KEY:       ${{ secrets.X_API_KEY }}
-          X_API_SECRET:    ${{ secrets.X_API_SECRET }}
-          X_ACCESS_TOKEN:  ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          X_API_KEY:        ${{ secrets.X_API_KEY }}
+          X_API_SECRET:     ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN:   ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET:  ${{ secrets.X_ACCESS_SECRET }}
+          X_API_BASE_URL:   ${{ inputs.api_base }}
         run: |
           echo "=== アカウント確認モード ==="
           echo "投稿は行いません。"
@@ -88,10 +97,11 @@ jobs:
       - name: Post to X
         if: inputs.mode == 'post'
         env:
-          X_API_KEY:       ${{ secrets.X_API_KEY }}
-          X_API_SECRET:    ${{ secrets.X_API_SECRET }}
-          X_ACCESS_TOKEN:  ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          X_API_KEY:        ${{ secrets.X_API_KEY }}
+          X_API_SECRET:     ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN:   ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET:  ${{ secrets.X_ACCESS_SECRET }}
+          X_API_BASE_URL:   ${{ inputs.api_base }}
         run: |
           SLOT="${{ inputs.slot }}"
           FORCE="${{ inputs.force }}"

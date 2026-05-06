@@ -31,10 +31,11 @@ DATA_PATH    = "docs/data/latest.json"
 OUT_ALL      = "docs/data/x_posts_daily.json"
 OUT_SLOT_TPL = "docs/data/x_post_{slot}.json"
 HISTORY_PATH = "docs/data/x_post_history.json"
-BASE_URL     = "https://ayudle.github.io/ai-security-news/article"
-X_API_URL    = "https://api.x.com/2/tweets"
-X_VERIFY_URL = "https://api.x.com/2/users/me"
-JST          = timezone(timedelta(hours=9))
+BASE_URL          = "https://ayudle.github.io/ai-security-news/article"
+_X_API_BASE       = os.environ.get("X_API_BASE_URL", "https://api.x.com").rstrip("/")
+X_API_URL         = f"{_X_API_BASE}/2/tweets"
+X_VERIFY_URL      = f"{_X_API_BASE}/2/users/me"
+JST               = timezone(timedelta(hours=9))
 
 SLOTS = [
     {"slot": "morning", "scheduled_time_jst": "08:30"},
@@ -609,7 +610,7 @@ def main() -> None:
 
     # ── --verify-account: アカウント確認して終了 ──────────────────────────
     if args.verify_account:
-        print("[VERIFY] X APIアカウント情報を取得します...")
+        print(f"[VERIFY] X APIアカウント情報を取得します... (base={_X_API_BASE})")
         try:
             username, user_id, name = _get_account_info()
             print(f"[OK] @{username}  (id={user_id}, name={name})")
@@ -719,7 +720,7 @@ def main() -> None:
         sys.exit(0)
 
     # 投稿先アカウント確認
-    print("[VERIFY] 投稿先アカウントを確認します...")
+    print(f"[VERIFY] 投稿先アカウントを確認します... (base={_X_API_BASE})")
     try:
         username, user_id, _ = _get_account_info()
         print(f"[OK] 投稿先: @{username} (id={user_id})")

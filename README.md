@@ -123,6 +123,18 @@ python scripts/generate_x_posts.py --slot morning --post --force  # 投稿済み
 
 > `mode` のデフォルトは `verify`。誤って `post` を押しても slot を空にすればエラーで止まります。
 
+**403 エラーが出たときの切り分け：**
+
+`You are not permitted to perform this action` が出た場合、ベースURLを切り替えて試してください。
+
+```bash
+# ローカルで試す場合
+X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --slot morning --post
+```
+
+GitHub Actions では `Run workflow` → `api_base=https://api.twitter.com` を選択して実行。  
+`X_API_BASE_URL` 未指定時は `https://api.x.com` を使用します。
+
 ---
 
 ## ファイル構成
