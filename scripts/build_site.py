@@ -1619,41 +1619,58 @@ def build_weekly_html(weekly_data, article_lookup=None):
     # 重要トピック HTML
     lookup = article_lookup or {}
     topics_html = ""
-    for t in top_topics:
+    for i, t in enumerate(top_topics):
         title   = t.get("title", "")
         summary = t.get("summary", "")
         aids    = t.get("article_ids", [])
-        links_html = ""
-        if aids:
-            items = []
-            for aid in aids:
-                a_data = lookup.get(aid)
-                if a_data:
-                    a_title = a_data.get("title_ja") or a_data.get("title", "")
-                    a_src   = a_data.get("source_name", "")
-                    a_pub   = a_data.get("published", "")[:10]
-                    meta    = " / ".join(filter(None, [a_src, a_pub]))
-                    items.append(
-                        f'<a href="../article/{aid}.html" '
-                        f'style="display:block;text-decoration:none;padding:5px 0;'
-                        f'border-top:1px solid #2a2a28">'
-                        f'<span style="font-size:12px;color:#378ADD">→ {a_title}</span>'
-                        f'<span style="font-size:10px;color:#6a6860;margin-left:8px">'
-                        f'{meta}</span></a>'
-                    )
-                else:
-                    items.append(
-                        f'<a href="../article/{aid}.html" '
-                        f'style="font-size:10px;color:#378ADD;text-decoration:none">'
-                        f'[{aid[:8]}]</a>'
-                    )
-            links_html = f'<div style="margin-top:10px">{"".join(items)}</div>'
+
+        # deduplicate by title+source+date
+        seen_keys: set = set()
+        items = []
+        for aid in aids:
+            a_data = lookup.get(aid)
+            if a_data:
+                a_title = a_data.get("title_ja") or a_data.get("title", "")
+                a_src   = a_data.get("source_name", "")
+                a_pub   = a_data.get("published", "")[:10]
+                dk = f"{a_title}|{a_src}|{a_pub}"
+                if dk in seen_keys:
+                    continue
+                seen_keys.add(dk)
+                meta = " / ".join(filter(None, [a_src, a_pub]))
+                items.append(
+                    f'<a href="../article/{aid}.html" class="wr-ref">'
+                    f'<span class="wr-ref-title">→ {a_title}</span>'
+                    f'<span class="wr-ref-meta">{meta}</span></a>'
+                )
+            else:
+                if aid in seen_keys:
+                    continue
+                seen_keys.add(aid)
+                items.append(
+                    f'<a href="../article/{aid}.html" class="wr-ref">'
+                    f'<span class="wr-ref-title">[{aid[:8]}]</span></a>'
+                )
+
+        n = len(items)
+        if n == 0:
+            refs_html = ""
+        elif n <= 3:
+            refs_html = f'<div class="wr-refs wr-refs-open">{"".join(items)}</div>'
+        else:
+            list_id    = f"wr-refs-{i}"
+            scroll_sty = ' style="max-height:280px;overflow-y:auto"' if n >= 10 else ""
+            refs_html  = (
+                f'<button class="wr-toggle" aria-expanded="false" '
+                f'aria-controls="{list_id}">関連ニュース {n}件を表示</button>'
+                f'<div class="wr-refs" id="{list_id}" hidden{scroll_sty}>{"".join(items)}</div>'
+            )
+
         topics_html += (
-            f'<div style="background:#1a1a18;border:1px solid #2a2a28;'
-            f'border-radius:10px;padding:14px 16px;margin-bottom:10px">'
-            f'<div style="font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px">{title}</div>'
-            f'<div style="font-size:13px;color:#98968e;line-height:1.7;margin-bottom:4px">{summary}</div>'
-            f'{links_html}</div>'
+            f'<div class="wr-topic">'
+            f'<div class="wr-topic-title">{title}</div>'
+            f'<div class="wr-topic-summary">{summary}</div>'
+            f'{refs_html}</div>'
         )
     if not topics_html:
         topics_html = '<p style="font-size:12px;color:#6a6860">データなし</p>'
@@ -1737,6 +1754,17 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .btn{{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit;background:var(--card);color:var(--text);border:1px solid var(--border)}}
 .btn:hover{{border-color:var(--accent)}}
 footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
+.wr-topic{{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px}}
+.wr-topic-title{{font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px}}
+.wr-topic-summary{{font-size:13px;color:#98968e;line-height:1.7;margin-bottom:4px}}
+.wr-toggle{{display:inline-block;margin-top:10px;padding:5px 10px;background:none;border:1px solid var(--border);border-radius:6px;color:var(--accent);font-size:12px;cursor:pointer;font-family:inherit}}
+.wr-toggle:hover{{border-color:var(--accent)}}
+.wr-toggle:focus-visible{{outline:2px solid var(--accent);outline-offset:2px}}
+.wr-refs{{margin-top:8px}}
+.wr-refs-open{{margin-top:10px}}
+.wr-ref{{display:block;text-decoration:none;padding:5px 0;border-top:1px solid #2a2a28}}
+.wr-ref-title{{font-size:12px;color:#378ADD}}
+.wr-ref-meta{{font-size:10px;color:#8c8a82;margin-left:8px}}
 </style>
 </head>
 <body>
@@ -1799,7 +1827,21 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
   <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
-
+<script>
+document.querySelectorAll('.wr-toggle').forEach(function(btn){{
+  btn.addEventListener('click',function(){{
+    var expanded=btn.getAttribute('aria-expanded')==='true';
+    var list=document.getElementById(btn.getAttribute('aria-controls'));
+    expanded=!expanded;
+    btn.setAttribute('aria-expanded',expanded?'true':'false');
+    list.hidden=!expanded;
+    btn.textContent=btn.textContent.replace(
+      expanded?'を表示':'を非表示',
+      expanded?'を非表示':'を表示'
+    );
+  }});
+}});
+</script>
 </body>
 </html>"""
 
