@@ -1,6 +1,6 @@
 {
-  "updated": "2026-05-09T07:17:01.089370+09:00",
-  "today": "2026-05-09",
+  "updated": "2026-05-10T06:30:49.205894+09:00",
+  "today": "2026-05-10",
   "articles": [
     {
       "id": "948aeaee1408",
@@ -12,33 +12,33 @@
       "source_name": "CISA",
       "source_tier": "A",
       "published": "2026-05-08T21:00:00+09:00",
-      "title_ja": "CISA、BerriAI LiteLLMのSQLインジェクション脆弱性をKEVカタログに追加",
-      "summary_ja": "CISAは、積極的に悪用されている脆弱性（KEV）カタログに、BerriAI LiteLLMのSQLインジェクション脆弱性（CVE-2026-42208）を追加しました。この脆弱性は、LLMが外部データベースと連携する際に悪用される可能性があり、AIシステムのセキュリティにおける新たなリスクを示唆しています。SQLインジェクションは一般的な攻撃手法ですが、LLMの文脈での発生は、AIエージェントのデータ連携層における新たな監視の必要性を浮き彫りにします。",
-      "insight": "LLMをバックエンドに持つシステムやAIエージェントが、外部システムと連携する際のインタフェース層におけるSQLインジェクションリスクを再評価すべきです。特に、AIエージェントがデータベースクエリを生成または実行するシナリオでは、厳格な入力検証とパラメータ化されたクエリの強制を徹底し、AIシステムのデータ連携の安全性を確保する必要があります。",
+      "title_ja": "CISAがLiteLLMのSQLインジェクション脆弱性をKEVカタログに追加",
+      "summary_ja": "CISAは、積極的に悪用されている証拠に基づき、既知の悪用脆弱性（KEV）カタログにLiteLLMのSQLインジェクション脆弱性(CVE-2026-42208)を追加した。この種の脆弱性は頻繁な攻撃ベクトルであり、速やかな対応が求められる。KEV登録は政府機関に対して一定期間内のパッチ適用を義務付けるもので、関連する組織は迅速な対策が必要となる。",
+      "insight": "自社でLiteLLMまたは類似のAI関連ライブラリを使用している場合、このSQLインジェクション脆弱性に対する影響評価とパッチ適用を最優先で実施すべきである。AIシステムは従来のアプリケーションとは異なるデータフローを持つため、脆弱性管理プロセスへのAI固有ライブラリの組み込みを強化する必要がある。",
       "importance": "高",
-      "importance_reason": "AIシステムのデータ連携層における既知の脆弱性の悪用は、広範なAIサービスへの影響可能性があり、即時対応が求められるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "importance_reason": "AI関連ライブラリのSQLインジェクション脆弱性がCISA KEVに登録され、アクティブな悪用が確認されているため、広範なAIシステムに影響を与える可能性がある。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
       "tag_subs": [
-        "LLMセキュリティ",
-        "プロンプトインジェクション"
+        "CVE",
+        "エクスプロイト"
       ],
       "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
+        "データ/AI",
+        "アプリ/API"
       ],
       "related_keywords": [
-        "LiteLLM",
-        "SQLインジェクション",
-        "CISA KEV",
+        "CISA",
+        "KEV",
         "CVE-2026-42208",
-        "AIエージェント"
+        "LiteLLM",
+        "SQLインジェクション"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
         "Security for AI",
-        "サービス企画",
+        "Exposure管理",
         "顧客課題"
       ],
       "views": 0
@@ -53,11 +53,11 @@
       "source_name": "Simon Willison",
       "source_tier": "C",
       "published": "2026-05-09T06:00:11+09:00",
-      "title_ja": "Claude CodeにおけるHTML出力の有効性とその示唆",
-      "summary_ja": "AnthropicのThariq Shihiparは、AI（Claude Code）からの出力フォーマットとしてMarkdownよりもHTMLを推奨する記事を発表しました。HTMLは表現力が豊かで、詳細な構造化データやインタラクティブな要素を含むことができるため、AIの生成するコンテンツの品質と有用性を高める可能性があります。これにより、AIエージェントが生成する情報の多様性と複雑性が増し、その活用範囲が広がることが期待されます。",
-      "insight": "AIエージェントがよりリッチなフォーマット（HTMLなど）で情報を出力するようになると、その出力内容の検証とサニタイズがさらに重要になります。悪意のあるHTMLコンテンツが生成・実行されるリスクを考慮し、AIエージェントの出力に対する厳格なセキュリティポリシーとサンドボックス環境での実行を検討すべきです。",
+      "title_ja": "Claude出力形式としてのHTMLの有効性と活用事例",
+      "summary_ja": "AnthropicのClaude CodeチームのShihipar氏が、Claudeの出力形式としてMarkdownよりもHTMLの利用を提唱している。記事では、HTMLが持つ表現力の豊かさや構造化されたデータの扱いやすさを示唆する多数の興味深い例とプロンプトが紹介されている。これにより、LLMとのインタラクションや出力結果の活用方法に新たな視点を提供している。",
+      "insight": "AIエージェントの出力形式は、単なる見栄えだけでなく、後続の処理や解析の容易さに大きく影響する。CDCにおけるAIエージェントの活用を検討する際、出力データの構造化と連携性を高めるために、HTMLのような表現力豊かなフォーマットの採用を検討することは、自動化やレポート作成の効率向上に繋がる。",
       "importance": "中",
-      "importance_reason": "AIエージェントの出力形式に関する技術的な動向であり、将来的なAIセキュリティ設計に影響を与える可能性があるため。",
+      "importance_reason": "AIエージェントの出力形式の最適化に関する提案であり、AI for Securityの効率化や機能拡張に影響を与える潜在性がある。",
       "tag_main_id": "biz_tech",
       "tag_main_label": "ビジネス・技術動向",
       "tag_subs": [
@@ -69,263 +69,59 @@
         "アプリ/API"
       ],
       "related_keywords": [
-        "Claude Code",
+        "Claude",
         "HTML",
         "Markdown",
-        "プロンプト",
-        "AIエージェント"
+        "LLM出力",
+        "プロンプト"
       ],
-      "cdc_relevance": 1,
+      "cdc_relevance": 2,
       "cdc_context": [
-        "Security for AI",
+        "AI for Security",
         "サービス企画"
       ],
       "views": 0
     },
     {
-      "id": "6fe544c5b970",
-      "title": "Shattering the Echo Chamber: Hidden Safeguards in Manuscripts Against the AI Takeover of Peer Review",
-      "summary": "arXiv:2605.05271v1 Announce Type: new \nAbstract: As LLMs become increasingly capable, editorial boards and program committees are growing concerned about reviewers who fully outsource peer review to commercial chatbots. This concern stems from prior findings that current chatbots lack the independent critical thinking and depth of reasoning required to assess scientific novelty. One promising direction for mitigating this concern is to embed hidden instructions into manuscripts that disrupt or a",
-      "url": "https://arxiv.org/abs/2605.05271",
+      "id": "4c60c8567b7d",
+      "title": "Fake OpenAI repository on Hugging Face pushes infostealer malware",
+      "summary": "A malicious Hugging Face repository that reached the platform's trending list impersonated OpenAI's \"Privacy Filter\" project to deliver information-stealing malware to Windows users. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/fake-openai-repository-on-hugging-face-pushes-infostealer-malware/",
       "ai_score": 3,
-      "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-05-08T13:00:00+09:00",
-      "title_ja": "AIによる査読乗っ取りに対抗する隠された指示の有効性",
-      "summary_ja": "LLMの高性能化に伴い、査読者が商業チャットボットに査読業務を完全に外注する懸念が高まっています。これは、チャットボットが科学的独創性を評価するための独立した批判的思考を欠くという問題意識に基づいています。本論文では、LLMによる査読の乗っ取りを防ぐため、原稿に破壊的または混乱を招く隠れた指示を埋め込むことで、AIの独立した思考を妨げるアプローチを提案しています。",
-      "insight": "AIが生成するコンテンツの信頼性や真正性を確保するための防御的プロンプトエンジニアリングは、今後の重要な研究領域となります。自社の機密情報がAIによって処理される際に、モデル汚染やデータ漏洩を防ぐためのインバンド防御策として、このような技術の応用可能性を評価すべきです。",
-      "importance": "中",
-      "importance_reason": "AIの信頼性・真正性確保に関わる研究であり、今後のAIガバナンスや防御策に影響を与える可能性があるため。",
-      "tag_main_id": "ai_risk",
-      "tag_main_label": "AIリスク",
-      "tag_subs": [
-        "安全性評価",
-        "誤情報生成"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "LLM",
-        "査読",
-        "隠された指示",
-        "プロンプトエンジニアリング",
-        "信頼性"
-      ],
-      "cdc_relevance": 1,
-      "cdc_context": [
-        "Security for AI",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "27717d0c66e2",
-      "title": "Sealing the Audit-Runtime Gap for LLM Skills",
-      "summary": "arXiv:2605.05274v1 Announce Type: new \nAbstract: Large language model (LLM) ecosystems such as Claude Code and ChatGPT increasingly rely on skills: packages of natural-language instructions and executable tools. Once in the LLM's context, skill content cannot be reliably separated from trusted instructions, and a skill's executable side can invoke privileged actions, exposing the skill supply chain to injection, tampering, and rug-pull attacks. Existing defenses are stage-bound: centralized sign",
-      "url": "https://arxiv.org/abs/2605.05274",
-      "ai_score": 3,
-      "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-05-08T13:00:00+09:00",
-      "title_ja": "LLMスキルの監査と実行時セキュリティギャップの解消",
-      "summary_ja": "Claude CodeやChatGPTのようなLLMエコシステムは、自然言語指示と実行可能ツールで構成される「スキル」に依存度を高めています。これらのスキルは、LLMのコンテキスト内で信頼できる指示と分離が難しく、特権的なアクションを呼び出す可能性があるため、インジェクション、改ざん、ラグプル攻撃などのサプライチェーンリスクに晒されます。既存の防御策が不十分であると指摘し、監査時と実行時のセキュリティギャップを埋める必要性を強調しています。",
-      "insight": "AIエージェントの「スキル」や「ツール実行」機能は、組織にとって大きな利便性をもたらす一方で、深刻なセキュリティリスク（AIエージェントリスク6階層モデルの「ツール・実行層」および「アイデンティティ・権限層」）をはらみます。CDCは、AIエージェントが実行するスキルのソース、権限、挙動を厳格に監査し、実行時のセキュリティを確保するための技術的・プロセス的コントロールを早急に確立すべきです。",
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-05-09T23:26:03+09:00",
+      "title_ja": "Hugging Face上の偽OpenAIリポジトリが情報窃取マルウェアを配布",
+      "summary_ja": "悪意のあるHugging FaceリポジトリがOpenAIの「Privacy Filter」プロジェクトを偽装し、情報窃取マルウェアをWindowsユーザーに配布した。このリポジトリはプラットフォームのトレンドリストに載るほど注目され、多くのユーザーが被害に遭う可能性があった。AIモデルやツールを共有するプラットフォームにおけるサプライチェーン攻撃の一種として、AI関連資産への警戒の重要性を示している。",
+      "insight": "AIモデルやツールが公開・共有されるプラットフォームは、新たなサプライチェーン攻撃の温床となり得る。CDCでは、AI開発・利用部門における外部リポジトリからのモデル・ライブラリ取得プロセスを厳格化し、セキュリティスキャンと信頼性検証を必須とすべきである。特に、AIエージェントが外部ツールを実行する際の安全性の確保は喫緊の課題となる。",
       "importance": "高",
-      "importance_reason": "AIエージェントのコア機能であるツール実行における重大なサプライチェーン攻撃リスクと、既存防御策の限界を指摘しているため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "importance_reason": "AI開発エコシステムにおけるサプライチェーン攻撃の具体的な事例であり、AI for SecurityおよびSecurity for AIの両面で広範な影響と対策の必要性を示す。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
       "tag_subs": [
-        "LLMセキュリティ",
-        "プロンプトインジェクション",
-        "AIを使った攻撃"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "LLMスキル",
-        "ツール実行",
         "サプライチェーン攻撃",
-        "インジェクション",
-        "監査"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Security for AI",
-        "サービス企画",
-        "顧客課題",
-        "Identity/ITDR"
-      ],
-      "views": 0
-    },
-    {
-      "id": "7d5ece528e54",
-      "title": "Behind the Scenes Hardening Firefox with Claude Mythos Preview",
-      "summary": "<p><strong><a href=\"https://hacks.mozilla.org/2026/05/behind-the-scenes-hardening-firefox/\">Behind the Scenes Hardening Firefox with Claude Mythos Preview</a></strong></p>\nFascinating, in-depth details on how Mozilla used their access to the Claude Mythos preview to locate and then fix hundreds of vulnerabilities in Firefox:</p>\n<blockquote>\n<p><strong>Suddenly, the bugs are very good</strong></p>\n<p>Just a few months ago, AI-generated security bug reports to open source projects were mostly kno",
-      "url": "https://simonwillison.net/2026/May/7/firefox-claude-mythos/#atom-everything",
-      "ai_score": 3,
-      "cdc_pre_score": 1,
-      "source_name": "Simon Willison",
-      "source_tier": "C",
-      "published": "2026-05-08T02:56:25+09:00",
-      "title_ja": "Mozilla、Claude MythosでFirefoxの脆弱性を数百件修正",
-      "summary_ja": "Mozillaは、Claude Mythosのプレビュー版を活用し、Firefoxブラウザ内で数百もの脆弱性を発見し、修正した詳細な事例を公開しました。AIによって生成されるセキュリティバグレポートはこれまで品質が低いとされてきましたが、この事例はAIがセキュリティテストや脆弱性発見において非常に有効なツールとなり得ることを示しています。これは「AI for Security」の具体的な成功例であり、AIの防御能力向上への貢献が期待されます。",
-      "insight": "AIを活用した脆弱性診断やセキュリティテストは、防御側の効率と発見能力を大幅に向上させる可能性を秘めています。CDCサービス設計においては、AIをTier2調査や定型的な脆弱性評価に組み込むことで、人間のアナリストがより高度な脅威分析やインシデント対応に集中できる体制を構築する機会を探るべきです。",
-      "importance": "高",
-      "importance_reason": "AI for Securityの具体的な成功事例として、セキュリティ運用におけるAI活用の可能性を強く示唆しているため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "AIを使った防御"
+        "マルウェア"
       ],
       "affected_layers": [
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "Firefox",
-        "Claude Mythos",
-        "脆弱性発見",
-        "AI for Security",
-        "セキュリティテスト"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "AI for Security",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "92f4018e87c5",
-      "title": "Vulnerability in Claude Extension for Chrome Exposes AI Agent to Takeover",
-      "summary": "<p>Lax extension permissions and improper trust implementation allow attackers to inject prompts in the Claude Chrome extension.</p>\n<p>The post <a href=\"https://www.securityweek.com/vulnerability-in-claude-extension-for-chrome-exposes-ai-agent-to-takeover/\">Vulnerability in Claude Extension for Chrome Exposes AI Agent to Takeover</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/vulnerability-in-claude-extension-for-chrome-exposes-ai-agent-to-takeover/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-05-08T15:53:36+09:00",
-      "title_ja": "Claude Chrome拡張機能の脆弱性、AIエージェント乗っ取りの可能性",
-      "summary_ja": "ClaudeのChrome拡張機能に脆弱性が発見され、攻撃者がプロンプトをインジェクションしてAIエージェントを乗っ取る可能性があります。これは、拡張機能の権限が緩く、信頼の実装が不適切であったことが原因です。この脆弱性は、AIエージェントがユーザー環境に深く統合されるにつれて、その実行環境やインターフェースのセキュリティが非常に重要になることを示しています。",
-      "insight": "AIエージェントを従業員が利用するPC上のアプリケーションやブラウザ拡張機能として導入する場合、その権限管理と、プロンプトを含む全ての入力に対する厳格な検証が不可欠です。CDCは、AIエージェントの実行環境におけるログ監視、不審な権限昇格やプロンプトインジェクションの検知能力を強化し、AIエージェントのリスク階層モデルにおける「ツール・実行層」と「アイデンティティ・権限層」の防御を優先すべきです。",
-      "importance": "高",
-      "importance_reason": "AIエージェントの乗っ取りは直接的なビジネス影響を及ぼし、AIシステムとその利用環境のセキュリティの重要性を示すため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "プロンプトインジェクション",
-        "LLMセキュリティ",
-        "AIを使った攻撃"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
+        "データ/AI",
         "アプリ/API",
-        "データ/AI"
+        "ガバナンス/規制"
       ],
       "related_keywords": [
-        "Claude拡張機能",
-        "Chrome",
-        "プロンプトインジェクション",
-        "AIエージェント",
-        "権限"
+        "Hugging Face",
+        "OpenAI",
+        "情報窃取マルウェア",
+        "サプライチェーン攻撃",
+        "Privacy Filter"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
         "Security for AI",
-        "サービス企画",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "9a7f4462440d",
-      "title": "Palo Alto Zero-Day Exploited in Campaign Bearing Hallmarks of Chinese State Hacking",
-      "summary": "<p>The cybersecurity firm has not explicitly accused China of being behind the attack, but the evidence suggests it was. </p>\n<p>The post <a href=\"https://www.securityweek.com/palo-alto-zero-day-exploited-in-campaign-bearing-hallmarks-of-chinese-state-hacking/\">Palo Alto Zero-Day Exploited in Campaign Bearing Hallmarks of Chinese State Hacking</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/palo-alto-zero-day-exploited-in-campaign-bearing-hallmarks-of-chinese-state-hacking/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-05-08T00:31:12+09:00",
-      "title_ja": "Palo Altoゼロデイ脆弱性、中国国家関与と見られる攻撃で悪用",
-      "summary_ja": "サイバーセキュリティ企業Palo Alto Networksのゼロデイ脆弱性が、中国国家支援型のハッキングキャンペーンと見られる攻撃で悪用されました。これは、高度な永続的脅威（APT）グループが、広く利用されているセキュリティ製品の脆弱性を標的とすることで、組織の防御を迂回しようとしている現状を示しています。このような攻撃は、企業が導入しているセキュリティインフラ自体の信頼性を揺るがす深刻な脅威となります。",
-      "insight": "主要なセキュリティベンダー製品のゼロデイ脆弱性が国家支援型攻撃に悪用される事例は、サプライチェーン全体のリスク評価と、多層防御の重要性を再認識させます。CDCとしては、自社が利用するセキュリティ製品群の脆弱性情報に対する迅速な対応能力と、万一の場合の代替検知・対応策を事前に計画しておくことが求められます。",
-      "importance": "高",
-      "importance_reason": "国家支援型APTによるゼロデイ脆弱性悪用は、甚大な被害をもたらす可能性が高く、即時対応が不可欠であるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "ゼロデイ",
-        "エクスプロイト"
-      ],
-      "affected_layers": [
-        "ネットワーク",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "Palo Alto Networks",
-        "ゼロデイ",
-        "APT",
-        "国家支援型攻撃",
-        "中国"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
         "SOC運用変化",
         "Exposure管理",
-        "MDR/MSSP設計",
-        "CISO報告"
-      ],
-      "views": 0
-    },
-    {
-      "id": "bc0bb811a906",
-      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
-      "summary": "<p>CISA has added one new vulnerability to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-6973\" target=\"_blank\">CVE-2026-6973</a>&nbsp;Ivanti Endpoint Manager Mobile (EPMM) Improper Input Validation Vulnerability&nbsp;</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for malici",
-      "url": "https://www.cisa.gov/news-events/alerts/2026/05/07/cisa-adds-one-known-exploited-vulnerability-catalog",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "CISA",
-      "source_tier": "A",
-      "published": "2026-05-07T21:00:00+09:00",
-      "title_ja": "CISA、Ivanti EPMMの入力検証不備脆弱性をKEVカタログに追加",
-      "summary_ja": "CISAは、Ivanti Endpoint Manager Mobile (EPMM) の不適切な入力検証脆弱性（CVE-2026-6973）をKnown Exploited Vulnerabilities (KEV) カタログに追加しました。この種の脆弱性は、しばしば悪意のある攻撃ベクトルとして利用され、組織のモバイルデバイス管理環境に深刻な影響を与える可能性があります。CISAは、連邦政府機関に対して、この脆弱性の速やかな修正を求めています。",
-      "insight": "エンドポイント管理システムのような基盤インフラの脆弱性は、組織全体のセキュリティに広範な影響を及ぼします。CISOは、KEVカタログで特定された脆弱性に対し、自社のシステムが該当するかを速やかに確認し、迅速なパッチ適用や回避策の実施を指揮する必要があります。これはCDCが脆弱性管理プロセスを支援する上での重要なタスクとなります。",
-      "importance": "中",
-      "importance_reason": "広く利用されるエンドポイント管理製品の脆弱性であり、攻撃ベクトルとして頻繁に悪用されるため、中期的な対応が求められるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "CVE",
-        "エクスプロイト",
-        "パッチ未適用"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "Ivanti EPMM",
-        "CVE-2026-6973",
-        "入力検証",
-        "CISA KEV",
-        "エンドポイント管理"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Exposure管理",
-        "顧客課題"
+        "顧客課題",
+        "サービス企画"
       ],
       "views": 0
     },
@@ -339,11 +135,11 @@
       "source_name": "Dark Reading",
       "source_tier": "B",
       "published": "2026-05-09T05:08:06+09:00",
-      "title_ja": "ShinyHuntersがInstructureに対する二度目の攻撃を主張、数億人分の個人情報が危険に",
-      "summary_ja": "ハッキンググループShinyHuntersが、教育テクノロジー企業Instructureに対する二度目の攻撃を主張しています。この攻撃により、数億人規模の個人情報（PII）が危険に晒されているとされ、同社はハッカーからのコントロールを取り戻すのに苦慮している模様です。過去のデータ侵害からの学習と防御の継続的な強化ができていなかった可能性を示唆しています。",
-      "insight": "データ侵害の再発は、初回のインシデント対応後の根本原因分析と再発防止策の実施が不十分であった可能性を指摘します。CISOは、特に個人情報を取り扱うシステムにおいて、多層的なセキュリティ対策に加え、インシデント対応後の継続的な改善サイクルと、従業員へのセキュリティ教育の徹底を強化する必要があります。",
+      "title_ja": "ShinyHuntersがInstructureへの二度目の攻撃を主張、数億人規模の個人情報が流出危機",
+      "summary_ja": "脅威アクターグループShinyHuntersが、教育技術企業Instructureに対する2度目の攻撃を主張しており、企業はハッカーからの制御奪還に苦慮している。この攻撃により、数億人分の個人識別情報（PII）が危機に晒されている状況である。過去の侵害からの教訓が活かされなかった可能性や、持続的な脅威アクターによる執拗な攻撃の危険性を示唆する。",
+      "insight": "重大なデータ侵害を経験した企業であっても、同じ脅威アクターからの再攻撃リスクは高い。CDCは、単なるインシデント対応だけでなく、侵害後の対策有効性評価と、脅威インテリジェンスに基づいた再攻撃シナリオの策定・演習を強化する必要がある。特に、PIIを扱う企業はデータ保護のガバナンスを徹底し、経営層への影響報告もより厳格化すべきだ。",
       "importance": "高",
-      "importance_reason": "数億人規模の個人情報漏洩の可能性があり、企業の信頼性とコンプライアンスに甚大な影響を与えるため。",
+      "importance_reason": "大規模な個人情報流出の危機であり、企業におけるセキュリティ対策の継続的な強化とインシデント後の対応が重要であることを示す。",
       "tag_main_id": "incident",
       "tag_main_label": "インシデント",
       "tag_subs": [
@@ -357,16 +153,14 @@
       "related_keywords": [
         "ShinyHunters",
         "Instructure",
+        "PII",
         "データ侵害",
-        "個人情報",
-        "PII"
+        "教育技術"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
-        "SOC運用変化",
         "CISO報告",
-        "顧客課題",
-        "MDR/MSSP設計"
+        "顧客課題"
       ],
       "views": 0
     },
@@ -380,11 +174,11 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-05-09T03:12:00+09:00",
-      "title_ja": "TCLBANKERバンキングトロジャン、WhatsAppとOutlookワームで金融プラットフォームを標的",
-      "summary_ja": "未確認のブラジル製バンキングトロジャン「TCLBANKER」が、WhatsAppおよびOutlookワームを通じて59の銀行、フィンテック、仮想通貨プラットフォームを標的としていることが確認されました。このマルウェアは、以前から知られるMaverickマルウェアの主要なアップデート版と評価されており、ソーシャルエンジニアリングの手法を駆使して拡散し、金融プラットフォームから情報を窃取しようとします。",
-      "insight": "ソーシャルエンジニアリングとワーム機能を組み合わせたマルウェアは、従業員教育とエンドポイントセキュリティの両面で対策を強化する必要性を強調します。CDCは、脅威インテリジェンスを活用してTCLBANKERのような新しいマルウェアの動向を常に監視し、メールセキュリティ、EDR、ネットワーク監視における検知ルールと対応プロセスの見直しを定期的に実施すべきです。",
-      "importance": "中",
-      "importance_reason": "ソーシャルエンジニアリングとマルウェアの組み合わせは広範な被害をもたらす可能性があり、金融機関への直接的な脅威であるため。",
+      "title_ja": "新種バンキングトロイの木馬TCLBANKERがWhatsApp/Outlookワームで金融プラットフォームを標的",
+      "summary_ja": "TCLBANKERと名付けられた未確認のブラジル発バンキングトロイの木馬が、WhatsAppとOutlookのワーム機能を悪用して59の銀行、フィンテック、仮想通貨プラットフォームを標的にしていることが判明した。これは、既知のマルウェアMaverickの主要なアップデート版と評価されており、ソーシャルエンジニアリングとワーム機能を組み合わせた攻撃の巧妙化を示している。金融機関はこれらの新しい攻撃手法に警戒する必要がある。",
+      "insight": "金融機関は、メールやメッセージングアプリを介した新しいソーシャルエンジニアリング攻撃に特に注意を払う必要がある。CDCは、従業員に対するフィッシング・ソーシャルエンジニアリング訓練を定期的に実施し、Eメールゲートウェイ、エンドポイント保護、ネットワーク監視において、既知のワーム活動に加え、不審な外部通信やスクリプト実行を検知するルールを強化する必要がある。",
+      "importance": "高",
+      "importance_reason": "新種のバンキングトロイの木馬が広範な金融プラットフォームを標的にしており、攻撃手法が巧妙化しているため、金融業界全体に即時的な影響がある。",
       "tag_main_id": "attack",
       "tag_main_label": "攻撃・脅威",
       "tag_subs": [
@@ -399,21 +193,561 @@
       ],
       "related_keywords": [
         "TCLBANKER",
-        "バンキングトロジャン",
+        "バンキングトロイの木馬",
         "WhatsApp",
         "Outlookワーム",
-        "フィンテック"
+        "金融プラットフォーム"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
+      "id": "222f76c94d00",
+      "title": "Fake Call History Apps Stole Payments From Users After 7.3 Million Play Store Downloads",
+      "summary": "Cybersecurity researchers have discovered fraudulent apps on the official Google Play Store for Android that falsely claimed to offer access to call histories for any phone number, only to trick users into joining a subscription that provided fake data and incurred financial loss.\nThe 28 apps have collectively racked up more than 7.3 million downloads, with one of them alone accounting for over",
+      "url": "https://thehackernews.com/2026/05/fake-call-history-apps-stole-payments.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-05-09T00:08:00+09:00",
+      "title_ja": "偽通話履歴アプリが730万DL超え、ユーザーから金銭詐取",
+      "summary_ja": "Google Playストアで、任意の電話番号の通話履歴を提供すると偽る詐欺アプリ28種類が発見された。これらのアプリは730万回以上ダウンロードされ、偽のデータを提供しつつ、ユーザーを詐欺的なサブスクリプションに加入させて金銭的損失を負わせた。公式ストアでのアプリ審査の限界と、ユーザーのセキュリティ意識向上の必要性を示す事例である。",
+      "insight": "従業員のモバイルデバイス管理において、公式ストアであっても疑わしいアプリのインストールを防止するポリシーの徹底が重要。CDCは、組織内のモバイルデバイスから不審なアプリの活動や、異常な課金発生の兆候を検知する仕組みを検討すべき。特に、個人所有デバイスの業務利用（BYOD）においては、利用者教育が不可欠となる。",
+      "importance": "中",
+      "importance_reason": "大規模なユーザー層に影響を与えた詐欺アプリの事例であり、モバイルセキュリティとユーザー教育の重要性を再認識させる。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "金融被害",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Google Play Store",
+        "詐欺アプリ",
+        "通話履歴",
+        "サブスクリプション詐欺",
+        "モバイルセキュリティ"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
-        "SOC運用変化",
         "顧客課題",
+        "SOC運用変化",
+        "Identity/ITDR"
+      ],
+      "views": 0
+    },
+    {
+      "id": "c579d9477ce6",
+      "title": "In Other News: Train Hacker Arrested, PamDOORa Linux Backdoor, New CISA Director Frontrunner",
+      "summary": "<p>Other noteworthy stories that might have slipped under the radar: US gov targets 72-hour patch cycles, malware uses Windows Phone Link to steal OTPs, spy operation targets Eurasian drone industry.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-train-hacker-arrested-pamdoora-linux-backdoor-new-cisa-director-frontrunner/\">In Other News: Train Hacker Arrested, PamDOORa Linux Backdoor, New CISA Director Frontrunner</a> appeared first on <a href=\"https://www.securityweek.com\">",
+      "url": "https://www.securityweek.com/in-other-news-train-hacker-arrested-pamdoora-linux-backdoor-new-cisa-director-frontrunner/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-05-08T23:30:00+09:00",
+      "title_ja": "列車ハッカー逮捕、PamDOORa Linuxバックドア、CISA長官候補など複数セキュリティニュース",
+      "summary_ja": "本記事では、列車ハッカー逮捕、PamDOORa Linuxバックドアの発見、新たなCISA長官候補、米国政府による72時間パッチサイクル目標、Windows Phone Linkを悪用したOTP窃取マルウェア、およびユーラシアのドローン産業を標的とするスパイ作戦といった複数の注目すべきセキュリティニュースが報じられている。これらは、多様な攻撃手法と脅威アクターの存在、国家レベルのサイバーセキュリティ戦略の動向を示す。",
+      "insight": "記事は複数の動向を示しており、特に米国政府の「72時間パッチサイクル」目標は、重要インフラを含む組織の脆弱性管理と対応速度のベンチマークとなり得る。CDCは、重要システムのパッチ適用管理を強化し、緊急性の高い脆弱性への対応プロセスを自動化・迅速化する仕組みを構築すべきである。また、LinuxバックドアやOTP窃取マルウェアの多様化は、多層防御と広範な監視の必要性を強調している。",
+      "importance": "中",
+      "importance_reason": "複数の重要なサイバーセキュリティ動向を網羅しており、特に政府のパッチサイクル目標は、多くの組織にとってのベンチマークとなりうる。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "国内規制"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "CISA",
+        "パッチサイクル",
+        "Linuxバックドア",
+        "OTP窃取",
+        "スパイ作戦"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Identity/ITDR",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "66b7b017fa4e",
+      "title": "Why More Analysts Won’t Solve Your SOC’s Alert Problem",
+      "summary": "Attackers move faster than overwhelmed SOC teams can realistically investigate alerts. Prophet Security breaks down how AI can help analysts investigate alerts faster and focus on real threats. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/why-more-analysts-wont-solve-your-socs-alert-problem/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-05-08T23:02:12+09:00",
+      "title_ja": "SOCのアラート過多問題解決にAIが果たす役割",
+      "summary_ja": "SOCにおけるアラート過多問題に対し、より多くのアナリストを投入するだけでは根本的な解決にならないと指摘されている。Prophet Securityは、AIを活用することでアナリストがアラート調査を迅速化し、真の脅威に集中できるようになると解説している。AIは人間の判断を支援し、調査プロセスを効率化することで、SOCの運用能力を向上させる。",
+      "insight": "CDCへの進化において、AIはTier1/2のアラートトリアージや初動判断支援に不可欠な要素となる。AIを活用した自動化により、人間はより高度な脅威ハンティングや戦略的意思決定に集中できるようになるため、現在のSOCのアラート疲弊問題を解決し、限られたリソースで効果的なサイバーディフェンスを実現するためのキーテクノロジーとして位置づけるべきである。",
+      "importance": "高",
+      "importance_reason": "SOC/CDC運用におけるAI活用の核心的な課題と解決策を提示しており、次世代CDCの設計に直接影響する。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "SOC",
+        "CDC",
+        "アラート疲弊",
+        "AI for Security",
+        "Prophet Security"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "df52bbbb76d4",
+      "title": "Polish Security Agency Reports ICS Breaches at Five Water Treatment Plants",
+      "summary": "<p>The hackers gained the ability to modify equipment operational parameters, creating a direct risk to the public water supply.</p>\n<p>The post <a href=\"https://www.securityweek.com/polish-security-agency-reports-ics-breaches-at-five-water-treatment-plants/\">Polish Security Agency Reports ICS Breaches at Five Water Treatment Plants</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/polish-security-agency-reports-ics-breaches-at-five-water-treatment-plants/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-05-08T20:46:06+09:00",
+      "title_ja": "ポーランド水処理施設5か所でICS侵害、公共水供給に直接リスク",
+      "summary_ja": "ポーランドのセキュリティ機関は、国内の5つの水処理施設で産業用制御システム（ICS）への侵害が発生したことを報告した。攻撃者は設備運用パラメータを変更する能力を獲得し、これにより公共の水供給に直接的なリスクが生じた。重要インフラに対するサイバー攻撃の深刻さと、物理的影響をもたらす可能性を示唆する事例である。",
+      "insight": "重要インフラ事業者、特に水処理施設のようなICSを運用する組織は、OT/ICSセキュリティ対策の優先順位を極めて高く設定する必要がある。CDCは、ITだけでなくOT領域の監視とインシデント対応能力を統合し、物理的な影響を伴うサイバー攻撃シナリオに対する訓練を強化すべきである。また、経営層へのリスク説明においても、ビジネス影響だけでなく、公衆安全への影響を明確に伝えることが求められる。",
+      "importance": "高",
+      "importance_reason": "重要インフラへの具体的なICS侵害事例であり、公衆の安全に直接的な脅威をもたらすため、極めて高い緊急性と影響度を持つ。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "APT",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "ICS",
+        "OTセキュリティ",
+        "水処理施設",
+        "重要インフラ",
+        "物理的影響"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "CISO報告",
+        "顧客課題",
+        "SOC運用変化",
         "MDR/MSSP設計"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-05-10",
+      "articles": [
+        {
+          "id": "948aeaee1408",
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "summary": "<p>CISA has added&nbsp;one&nbsp;new vulnerability&nbsp;to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-42208\" target=\"_blank\">CVE-2026-42208</a>&nbsp;BerriAI&nbsp;LiteLLM&nbsp;SQL Injection Vulnerability</li>\n</ul>\n<p>This&nbsp;type&nbsp;of vulnerability is a&nbsp;frequent attack vector&nbsp;for",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/05/08/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-05-08T21:00:00+09:00",
+          "title_ja": "CISAがLiteLLMのSQLインジェクション脆弱性をKEVカタログに追加",
+          "summary_ja": "CISAは、積極的に悪用されている証拠に基づき、既知の悪用脆弱性（KEV）カタログにLiteLLMのSQLインジェクション脆弱性(CVE-2026-42208)を追加した。この種の脆弱性は頻繁な攻撃ベクトルであり、速やかな対応が求められる。KEV登録は政府機関に対して一定期間内のパッチ適用を義務付けるもので、関連する組織は迅速な対策が必要となる。",
+          "insight": "自社でLiteLLMまたは類似のAI関連ライブラリを使用している場合、このSQLインジェクション脆弱性に対する影響評価とパッチ適用を最優先で実施すべきである。AIシステムは従来のアプリケーションとは異なるデータフローを持つため、脆弱性管理プロセスへのAI固有ライブラリの組み込みを強化する必要がある。",
+          "importance": "高",
+          "importance_reason": "AI関連ライブラリのSQLインジェクション脆弱性がCISA KEVに登録され、アクティブな悪用が確認されているため、広範なAIシステムに影響を与える可能性がある。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "CISA",
+            "KEV",
+            "CVE-2026-42208",
+            "LiteLLM",
+            "SQLインジェクション"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "Exposure管理",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "182ffaf8859a",
+          "title": "Using Claude Code: The Unreasonable Effectiveness of HTML",
+          "summary": "<p><strong><a href=\"https://twitter.com/trq212/status/2052809885763747935\">Using Claude Code: The Unreasonable Effectiveness of HTML</a></strong></p>\nThought-provoking piece by Thariq Shihipar (on the Claude Code team at Anthropic) advocating for HTML over Markdown as an output format to request from Claude.</p>\n<p>The article is crammed with interesting examples (collected on <a href=\"https://thariqs.github.io/html-effectiveness/\">this site</a>) and prompt suggestions like this one:</p>\n<blockq",
+          "url": "https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/#atom-everything",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Simon Willison",
+          "source_tier": "C",
+          "published": "2026-05-09T06:00:11+09:00",
+          "title_ja": "Claude出力形式としてのHTMLの有効性と活用事例",
+          "summary_ja": "AnthropicのClaude CodeチームのShihipar氏が、Claudeの出力形式としてMarkdownよりもHTMLの利用を提唱している。記事では、HTMLが持つ表現力の豊かさや構造化されたデータの扱いやすさを示唆する多数の興味深い例とプロンプトが紹介されている。これにより、LLMとのインタラクションや出力結果の活用方法に新たな視点を提供している。",
+          "insight": "AIエージェントの出力形式は、単なる見栄えだけでなく、後続の処理や解析の容易さに大きく影響する。CDCにおけるAIエージェントの活用を検討する際、出力データの構造化と連携性を高めるために、HTMLのような表現力豊かなフォーマットの採用を検討することは、自動化やレポート作成の効率向上に繋がる。",
+          "importance": "中",
+          "importance_reason": "AIエージェントの出力形式の最適化に関する提案であり、AI for Securityの効率化や機能拡張に影響を与える潜在性がある。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "研究・論文",
+            "市場トレンド"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Claude",
+            "HTML",
+            "Markdown",
+            "LLM出力",
+            "プロンプト"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "4c60c8567b7d",
+          "title": "Fake OpenAI repository on Hugging Face pushes infostealer malware",
+          "summary": "A malicious Hugging Face repository that reached the platform's trending list impersonated OpenAI's \"Privacy Filter\" project to deliver information-stealing malware to Windows users. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/fake-openai-repository-on-hugging-face-pushes-infostealer-malware/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-05-09T23:26:03+09:00",
+          "title_ja": "Hugging Face上の偽OpenAIリポジトリが情報窃取マルウェアを配布",
+          "summary_ja": "悪意のあるHugging FaceリポジトリがOpenAIの「Privacy Filter」プロジェクトを偽装し、情報窃取マルウェアをWindowsユーザーに配布した。このリポジトリはプラットフォームのトレンドリストに載るほど注目され、多くのユーザーが被害に遭う可能性があった。AIモデルやツールを共有するプラットフォームにおけるサプライチェーン攻撃の一種として、AI関連資産への警戒の重要性を示している。",
+          "insight": "AIモデルやツールが公開・共有されるプラットフォームは、新たなサプライチェーン攻撃の温床となり得る。CDCでは、AI開発・利用部門における外部リポジトリからのモデル・ライブラリ取得プロセスを厳格化し、セキュリティスキャンと信頼性検証を必須とすべきである。特に、AIエージェントが外部ツールを実行する際の安全性の確保は喫緊の課題となる。",
+          "importance": "高",
+          "importance_reason": "AI開発エコシステムにおけるサプライチェーン攻撃の具体的な事例であり、AI for SecurityおよびSecurity for AIの両面で広範な影響と対策の必要性を示す。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "サプライチェーン攻撃",
+            "マルウェア"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "Hugging Face",
+            "OpenAI",
+            "情報窃取マルウェア",
+            "サプライチェーン攻撃",
+            "Privacy Filter"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Security for AI",
+            "SOC運用変化",
+            "Exposure管理",
+            "顧客課題",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "87f7ad08eb3e",
+          "title": "ShinyHunters Claims Second Attack Against Instructure",
+          "summary": "The edtech company is struggling to wrest control from its hackers. PII belonging to hundreds of millions of people is on the line.",
+          "url": "https://www.darkreading.com/cyberattacks-data-breaches/shinyhunters-second-attack-instructure",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-05-09T05:08:06+09:00",
+          "title_ja": "ShinyHuntersがInstructureへの二度目の攻撃を主張、数億人規模の個人情報が流出危機",
+          "summary_ja": "脅威アクターグループShinyHuntersが、教育技術企業Instructureに対する2度目の攻撃を主張しており、企業はハッカーからの制御奪還に苦慮している。この攻撃により、数億人分の個人識別情報（PII）が危機に晒されている状況である。過去の侵害からの教訓が活かされなかった可能性や、持続的な脅威アクターによる執拗な攻撃の危険性を示唆する。",
+          "insight": "重大なデータ侵害を経験した企業であっても、同じ脅威アクターからの再攻撃リスクは高い。CDCは、単なるインシデント対応だけでなく、侵害後の対策有効性評価と、脅威インテリジェンスに基づいた再攻撃シナリオの策定・演習を強化する必要がある。特に、PIIを扱う企業はデータ保護のガバナンスを徹底し、経営層への影響報告もより厳格化すべきだ。",
+          "importance": "高",
+          "importance_reason": "大規模な個人情報流出の危機であり、企業におけるセキュリティ対策の継続的な強化とインシデント後の対応が重要であることを示す。",
+          "tag_main_id": "incident",
+          "tag_main_label": "インシデント",
+          "tag_subs": [
+            "データ侵害",
+            "個人情報流出"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "ShinyHunters",
+            "Instructure",
+            "PII",
+            "データ侵害",
+            "教育技術"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "CISO報告",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "62dcd344e5e0",
+          "title": "TCLBANKER Banking Trojan Targets Financial Platforms via WhatsApp and Outlook Worms",
+          "summary": "Threat hunters have flagged a previously undocumented Brazilian banking trojan dubbed TCLBANKER that's capable of targeting 59 banking, fintech, and cryptocurrency platforms.\nThe activity is being tracked by Elastic Security Labs under the moniker REF3076. The malware family is assessed to be a major update of the Maverick, which is known to leverage a worm called SORVEPOTEL to spread via",
+          "url": "https://thehackernews.com/2026/05/tclbanker-banking-trojan-targets.html",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-05-09T03:12:00+09:00",
+          "title_ja": "新種バンキングトロイの木馬TCLBANKERがWhatsApp/Outlookワームで金融プラットフォームを標的",
+          "summary_ja": "TCLBANKERと名付けられた未確認のブラジル発バンキングトロイの木馬が、WhatsAppとOutlookのワーム機能を悪用して59の銀行、フィンテック、仮想通貨プラットフォームを標的にしていることが判明した。これは、既知のマルウェアMaverickの主要なアップデート版と評価されており、ソーシャルエンジニアリングとワーム機能を組み合わせた攻撃の巧妙化を示している。金融機関はこれらの新しい攻撃手法に警戒する必要がある。",
+          "insight": "金融機関は、メールやメッセージングアプリを介した新しいソーシャルエンジニアリング攻撃に特に注意を払う必要がある。CDCは、従業員に対するフィッシング・ソーシャルエンジニアリング訓練を定期的に実施し、Eメールゲートウェイ、エンドポイント保護、ネットワーク監視において、既知のワーム活動に加え、不審な外部通信やスクリプト実行を検知するルールを強化する必要がある。",
+          "importance": "高",
+          "importance_reason": "新種のバンキングトロイの木馬が広範な金融プラットフォームを標的にしており、攻撃手法が巧妙化しているため、金融業界全体に即時的な影響がある。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "マルウェア",
+            "フィッシング",
+            "ソーシャルエンジニアリング"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ネットワーク",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "TCLBANKER",
+            "バンキングトロイの木馬",
+            "WhatsApp",
+            "Outlookワーム",
+            "金融プラットフォーム"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "顧客課題",
+            "MDR/MSSP設計"
+          ],
+          "views": 0
+        },
+        {
+          "id": "222f76c94d00",
+          "title": "Fake Call History Apps Stole Payments From Users After 7.3 Million Play Store Downloads",
+          "summary": "Cybersecurity researchers have discovered fraudulent apps on the official Google Play Store for Android that falsely claimed to offer access to call histories for any phone number, only to trick users into joining a subscription that provided fake data and incurred financial loss.\nThe 28 apps have collectively racked up more than 7.3 million downloads, with one of them alone accounting for over",
+          "url": "https://thehackernews.com/2026/05/fake-call-history-apps-stole-payments.html",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-05-09T00:08:00+09:00",
+          "title_ja": "偽通話履歴アプリが730万DL超え、ユーザーから金銭詐取",
+          "summary_ja": "Google Playストアで、任意の電話番号の通話履歴を提供すると偽る詐欺アプリ28種類が発見された。これらのアプリは730万回以上ダウンロードされ、偽のデータを提供しつつ、ユーザーを詐欺的なサブスクリプションに加入させて金銭的損失を負わせた。公式ストアでのアプリ審査の限界と、ユーザーのセキュリティ意識向上の必要性を示す事例である。",
+          "insight": "従業員のモバイルデバイス管理において、公式ストアであっても疑わしいアプリのインストールを防止するポリシーの徹底が重要。CDCは、組織内のモバイルデバイスから不審なアプリの活動や、異常な課金発生の兆候を検知する仕組みを検討すべき。特に、個人所有デバイスの業務利用（BYOD）においては、利用者教育が不可欠となる。",
+          "importance": "中",
+          "importance_reason": "大規模なユーザー層に影響を与えた詐欺アプリの事例であり、モバイルセキュリティとユーザー教育の重要性を再認識させる。",
+          "tag_main_id": "incident",
+          "tag_main_label": "インシデント",
+          "tag_subs": [
+            "金融被害",
+            "データ侵害"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "Google Play Store",
+            "詐欺アプリ",
+            "通話履歴",
+            "サブスクリプション詐欺",
+            "モバイルセキュリティ"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "顧客課題",
+            "SOC運用変化",
+            "Identity/ITDR"
+          ],
+          "views": 0
+        },
+        {
+          "id": "c579d9477ce6",
+          "title": "In Other News: Train Hacker Arrested, PamDOORa Linux Backdoor, New CISA Director Frontrunner",
+          "summary": "<p>Other noteworthy stories that might have slipped under the radar: US gov targets 72-hour patch cycles, malware uses Windows Phone Link to steal OTPs, spy operation targets Eurasian drone industry.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-train-hacker-arrested-pamdoora-linux-backdoor-new-cisa-director-frontrunner/\">In Other News: Train Hacker Arrested, PamDOORa Linux Backdoor, New CISA Director Frontrunner</a> appeared first on <a href=\"https://www.securityweek.com\">",
+          "url": "https://www.securityweek.com/in-other-news-train-hacker-arrested-pamdoora-linux-backdoor-new-cisa-director-frontrunner/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-05-08T23:30:00+09:00",
+          "title_ja": "列車ハッカー逮捕、PamDOORa Linuxバックドア、CISA長官候補など複数セキュリティニュース",
+          "summary_ja": "本記事では、列車ハッカー逮捕、PamDOORa Linuxバックドアの発見、新たなCISA長官候補、米国政府による72時間パッチサイクル目標、Windows Phone Linkを悪用したOTP窃取マルウェア、およびユーラシアのドローン産業を標的とするスパイ作戦といった複数の注目すべきセキュリティニュースが報じられている。これらは、多様な攻撃手法と脅威アクターの存在、国家レベルのサイバーセキュリティ戦略の動向を示す。",
+          "insight": "記事は複数の動向を示しており、特に米国政府の「72時間パッチサイクル」目標は、重要インフラを含む組織の脆弱性管理と対応速度のベンチマークとなり得る。CDCは、重要システムのパッチ適用管理を強化し、緊急性の高い脆弱性への対応プロセスを自動化・迅速化する仕組みを構築すべきである。また、LinuxバックドアやOTP窃取マルウェアの多様化は、多層防御と広範な監視の必要性を強調している。",
+          "importance": "中",
+          "importance_reason": "複数の重要なサイバーセキュリティ動向を網羅しており、特に政府のパッチサイクル目標は、多くの組織にとってのベンチマークとなりうる。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "市場トレンド",
+            "国内規制"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ネットワーク",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "CISA",
+            "パッチサイクル",
+            "Linuxバックドア",
+            "OTP窃取",
+            "スパイ作戦"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理",
+            "Identity/ITDR",
+            "CISO報告"
+          ],
+          "views": 0
+        },
+        {
+          "id": "66b7b017fa4e",
+          "title": "Why More Analysts Won’t Solve Your SOC’s Alert Problem",
+          "summary": "Attackers move faster than overwhelmed SOC teams can realistically investigate alerts. Prophet Security breaks down how AI can help analysts investigate alerts faster and focus on real threats. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/why-more-analysts-wont-solve-your-socs-alert-problem/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-05-08T23:02:12+09:00",
+          "title_ja": "SOCのアラート過多問題解決にAIが果たす役割",
+          "summary_ja": "SOCにおけるアラート過多問題に対し、より多くのアナリストを投入するだけでは根本的な解決にならないと指摘されている。Prophet Securityは、AIを活用することでアナリストがアラート調査を迅速化し、真の脅威に集中できるようになると解説している。AIは人間の判断を支援し、調査プロセスを効率化することで、SOCの運用能力を向上させる。",
+          "insight": "CDCへの進化において、AIはTier1/2のアラートトリアージや初動判断支援に不可欠な要素となる。AIを活用した自動化により、人間はより高度な脅威ハンティングや戦略的意思決定に集中できるようになるため、現在のSOCのアラート疲弊問題を解決し、限られたリソースで効果的なサイバーディフェンスを実現するためのキーテクノロジーとして位置づけるべきである。",
+          "importance": "高",
+          "importance_reason": "SOC/CDC運用におけるAI活用の核心的な課題と解決策を提示しており、次世代CDCの設計に直接影響する。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "SOC",
+            "CDC",
+            "アラート疲弊",
+            "AI for Security",
+            "Prophet Security"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "AI for Security",
+            "サービス企画",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "df52bbbb76d4",
+          "title": "Polish Security Agency Reports ICS Breaches at Five Water Treatment Plants",
+          "summary": "<p>The hackers gained the ability to modify equipment operational parameters, creating a direct risk to the public water supply.</p>\n<p>The post <a href=\"https://www.securityweek.com/polish-security-agency-reports-ics-breaches-at-five-water-treatment-plants/\">Polish Security Agency Reports ICS Breaches at Five Water Treatment Plants</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/polish-security-agency-reports-ics-breaches-at-five-water-treatment-plants/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-05-08T20:46:06+09:00",
+          "title_ja": "ポーランド水処理施設5か所でICS侵害、公共水供給に直接リスク",
+          "summary_ja": "ポーランドのセキュリティ機関は、国内の5つの水処理施設で産業用制御システム（ICS）への侵害が発生したことを報告した。攻撃者は設備運用パラメータを変更する能力を獲得し、これにより公共の水供給に直接的なリスクが生じた。重要インフラに対するサイバー攻撃の深刻さと、物理的影響をもたらす可能性を示唆する事例である。",
+          "insight": "重要インフラ事業者、特に水処理施設のようなICSを運用する組織は、OT/ICSセキュリティ対策の優先順位を極めて高く設定する必要がある。CDCは、ITだけでなくOT領域の監視とインシデント対応能力を統合し、物理的な影響を伴うサイバー攻撃シナリオに対する訓練を強化すべきである。また、経営層へのリスク説明においても、ビジネス影響だけでなく、公衆安全への影響を明確に伝えることが求められる。",
+          "importance": "高",
+          "importance_reason": "重要インフラへの具体的なICS侵害事例であり、公衆の安全に直接的な脅威をもたらすため、極めて高い緊急性と影響度を持つ。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "APT",
+            "マルウェア"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ネットワーク",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "ICS",
+            "OTセキュリティ",
+            "水処理施設",
+            "重要インフラ",
+            "物理的影響"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "CISO報告",
+            "顧客課題",
+            "SOC運用変化",
+            "MDR/MSSP設計"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】複数の記事から、AIシステムそのものが攻撃対象となる「Security for AI」の重要性が増している一方で、「AI for Security」によるSOC/CDC運用の効率化が喫緊の課題であることが明確になった。特に、AI関連の脆弱性悪用や偽リポジトリによるマルウェア配布、重要インフラへのICS攻撃など、従来の境界防御では対応しきれない多角的な脅威が顕在化している。\n【攻撃側の変化】Hugging Face上の偽AIリポジトリによる情報窃取マルウェア配布（記事3）、WhatsAppやOutlookワームを利用する新種バンキングトロイの木馬TCLBANKER（記事5）、そして重要インフラである水処理施設のICSへの侵害（記事9）など、攻撃手法はサプライチェーン、ソーシャルエンジニアリング、OT領域へと多様化・高度化している。AI関連のプラットフォームが悪用の新たな経路となっている点も注目すべきである。\n【防御側の変化】CISAがLiteLLMのSQLインジェクション脆弱性をKEVカタログに追加（記事1）し、米政府が72時間パッチサイクルを目標に掲げる（記事7）など、脆弱性管理と対応の迅速化が求められている。また、SOCのアラート過多問題に対し、AIを活用した効率化・自動化が解決策として提示されている（記事8）。これにより、アナリストはより高度な脅威ハンティングに集中できるとされている。\n【Security for AI】LiteLLMのSQLインジェクション脆弱性（記事1）や、Hugging Face上の偽OpenAIリポジトリによるマルウェア配布（記事3）は、AIシステム固有のセキュリティリスクが現実のものであることを示している。特に、AIモデルやライブラリのサプライチェーンにおける信頼性検証の欠如が、直接的な攻撃経路となり得る。AIエージェントの利用が広がる中で、その基盤となるLLM、ツール実行層、データ層におけるセキュリティ対策が喫緊の課題である。\n【AI for Security】SOCのアラート過多問題に対し、AIがアナリストの調査を加速し、真の脅威に集中させる手段として強く期待されている（記事8）。これは、AIが人を置き換えるのではなく、判断根拠・証跡・再現性を高めるための支援ツールとして機能することを示唆している。また、ClaudeのようなLLMの出力形式をHTMLにすることで、データ構造化と後続処理の効率化が可能となる（記事2）など、AI活用による業務効率化の可能性が示された。\n【CDC/SOCへの示唆】監視対象は従来のITインフラに加え、AI関連ライブラリやAIモデル共有プラットフォーム（Hugging Faceなど）といったAIエコシステム全体に拡大する必要がある。ログはAIシステム固有の挙動、API連携、プロンプト履歴、外部ツール実行ログなどを含めるべきだ。検知ルールはAI関連のサプライチェーン攻撃や、AIエージェントの異常なツール実行を検知するシナリオを追加し、AIによるTier1/2の初動判断支援と自動化を加速させ、人の役割を高度な脅威ハンティングや経営層へのビジネス影響説明にシフトさせる必要がある。\n【今日の問い】AI for SecurityとSecurity for AIの両輪を回す上で、CDCが優先的に取り組むべきAIエージェントによる自動化範囲と、それに伴う新たなリスク管理フレームワークはどのように設計すべきか。\nAIシステムの脆弱性管理において、CISA KEVカタログのような公的情報源だけでなく、AI特有のサプライチェーンリスクを能動的に特定・評価・管理するための仕組みをどのようにCDCに統合できるか。"
+    },
     {
       "date": "2026-05-09",
       "articles": [
