@@ -570,6 +570,12 @@ function initTab() {
 window.addEventListener('hashchange', function() {
   var h = location.hash.replace('#','') || 'today';
   showTab(h);
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'page_view', {
+      page_path: location.pathname + location.hash,
+      page_title: document.title
+    });
+  }
 });
 
 // すぐ実行（load待ちしない）

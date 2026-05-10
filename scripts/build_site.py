@@ -12,6 +12,17 @@ JST       = timezone(timedelta(hours=9))
 DATA_PATH = "docs/data/latest.json"
 OUT_PATH  = "docs/index.html"
 
+GA_ID = "G-KV7Q7SQKZX"
+
+def ga_snippet():
+    return f"""<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('js', new Date());
+gtag('config', '{GA_ID}');
+</script>"""
+
 IMP_COLOR = {"高": "#E24B4A", "中": "#BA7517", "低": "#639922"}
 
 _NOISE_KW = {
@@ -196,6 +207,7 @@ h1.col-title{{font-size:24px;font-weight:700;color:#fff;line-height:1.4;margin-b
 .col-footer{{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px}}
 footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
 </style>
+{ga_snippet()}
 </head>
 <body>
 <header>
@@ -712,13 +724,7 @@ a{{color:inherit;text-decoration:none}}
 .col-intro{{font-size:12px;color:var(--dim);margin-bottom:16px;line-height:1.65}}
 .col-read-link{{display:inline-block;font-size:12px;color:var(--accent);padding:4px 0}}
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){{dataLayer.push(arguments);}}
-gtag('js', new Date());
-gtag('config', 'G-KV7Q7SQKZX');
-</script>
+{ga_snippet()}
 </head>
 <body>
 <header class="hdr">
@@ -929,6 +935,12 @@ function initTab() {{
 window.addEventListener('hashchange', function() {{
   var h = location.hash.replace('#','') || 'today';
   showTab(h);
+  if (typeof gtag !== 'undefined') {{
+    gtag('event', 'page_view', {{
+      page_path: location.pathname + location.hash,
+      page_title: document.title
+    }});
+  }}
 }});
 
 // すぐ実行（load待ちしない）
@@ -1392,6 +1404,7 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .rel-title{{font-size:14px;font-weight:500;line-height:1.5;color:var(--text)}}
 footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
 </style>
+{ga_snippet()}
 </head>
 <body>
 <header>
@@ -1525,6 +1538,7 @@ a{{color:inherit;text-decoration:none}}
 .kw-btn:hover{{color:var(--text);border-color:var(--muted)}}
 .kw-btn[aria-expanded="true"]{{background:var(--card2)}}
 </style>
+{ga_snippet()}
 </head>
 <body>
 <header class="hdr">
@@ -1766,6 +1780,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 .wr-ref-title{{font-size:12px;color:#378ADD}}
 .wr-ref-meta{{font-size:10px;color:#8c8a82;margin-left:8px}}
 </style>
+{ga_snippet()}
 </head>
 <body>
 <header>
