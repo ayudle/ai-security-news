@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI SOCとは、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことである | AI×セキュリティ ニュース日報</title>
-<meta name="description" content="AI SOCの本質は効率化ではなく、監視カバレッジの回復にある。人間中心のSOCが「アラートを捌く組織」になってしまった構造的問題を整理し、AIと人間の役割再設計を考える。">
+<meta name="description" content="SOCはなぜ「攻撃を止める組織」から「アラートを捌く組織」へ変質したのか。AI SOCの本質を効率化ではなく監視カバレッジの回復と捉え直し、AIのBlind spotを監視する人間の役割とCDC的運用への接続を考える。">
 <meta property="og:title" content="AI SOCとは、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことである">
-<meta property="og:description" content="AI SOCの本質は効率化ではなく、監視カバレッジの回復にある。人間中心のSOCが「アラートを捌く組織」になってしまった構造的問題を整理し、AIと人間の役割再設計を考える。">
+<meta property="og:description" content="SOCはなぜ「攻撃を止める組織」から「アラートを捌く組織」へ変質したのか。AI SOCの本質を効率化ではなく監視カバレッジの回復と捉え直し、AIのBlind spotを監視する人間の役割とCDC的運用への接続を考える。">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/columns/ai-soc-stop-attack.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,14 +73,15 @@ gtag('config', 'G-KV7Q7SQKZX');
       <div class="col-tags-ap"><span class="col-tag-ap">CDC</span><span class="col-tag-ap">AI Security</span><span class="col-tag-ap">MSSP</span></div>
     </div>
     <h1 class="col-title">AI SOCとは、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことである</h1>
-    <p class="col-desc">AI SOCの本質は効率化ではなく、監視カバレッジの回復にある。人間中心のSOCが「アラートを捌く組織」になってしまった構造的問題を整理し、AIと人間の役割再設計を考える。</p>
+    <p class="col-desc">SOCはなぜ「攻撃を止める組織」から「アラートを捌く組織」へ変質したのか。AI SOCの本質を効率化ではなく監視カバレッジの回復と捉え直し、AIのBlind spotを監視する人間の役割とCDC的運用への接続を考える。</p>
   </div>
 
   <div class="col-body">
-<h2>はじめに：AI SOCは「効率化ツール」なのか</h2>
-<p>「AIでアラート調査を自動化する」「Tier1を削減する」「SOC運用を効率化する」——こういった訴求をする製品やサービスは、ここ1〜2年で急速に増えました。方向性自体は間違っていないと思っています。ただ、私はここに少し違和感を持っています。</p>
+<h2>はじめに：SOCはいつから「捌く組織」になったのか</h2>
+<p>SOCは、本来「攻撃を止める組織」だったはずです。</p>
+<p>しかし現実には、多くのSOCが「大量のアラートを捌く組織」になりつつあります。クラウド、SaaS、EDR、ID、XDR——監視対象は増え続ける一方で、人間が1日に調査できる件数には限界があります。その結果、本来見るべきLow/Mediumアラートを見切れず、調査を浅くせざるを得ない状況も増えています。</p>
+<p>こうした中で、「AI SOC」が急速に広がっています。「AIでアラート調査を自動化する」「Tier1を削減する」「SOC運用を効率化する」——方向性自体は理解できます。ただ、私はここに少し違和感を持っています。</p>
 <p>AI SOCの本質は、本当に「効率化」だけなのでしょうか。</p>
-<p>より本質的な問いは、「SOCは本来何を目的とした組織だったのか」だと思っています。</p>
 <h2>SOCはいつの間にか「アラートを捌く組織」になった</h2>
 <p>SOCの本来の目的は明確です。インシデントの兆候を発見し、攻撃を止めることです。そのために、ログを監視し、異常を検知し、仮説を立て、調査し、封じ込め、復旧する——という一連の流れを回していきます。</p>
 <p>しかし現実のSOC運用は、いつの間にか別のものになりつつあります。</p>
@@ -110,14 +111,17 @@ gtag('config', 'G-KV7Q7SQKZX');
 <p>「AI SOCでSIEMは不要になるのか」という議論も増えています。私は短期的にはなくならないと考えています。ただし、役割は変わります。</p>
 <p>従来のSIEMは、人間が直接KQLやSPLで調査する前提で設計されていました。しかし今後AIがQuery、Correlation、Context gatheringを担うようになると、人間向け調査UIとしての価値は低下していく可能性があります。</p>
 <p>一方でログ保管、正規化、AIが参照しやすい形でのデータ構造化といった役割は引き続き重要です。SIEMが消えるというより、「人間中心の調査基盤」から「AI中心のデータ基盤」へ変化していくのではないかと考えています。</p>
-<h2>まだ整理されていない問い</h2>
-<p>AI SOCには、まだ課題も多いです。</p>
-<ul><li>Explainabilityをどう担保するか</li><li>コストと費用対効果をどう評価するか</li><li>AIが見えていないBlind spotをどう把握するか</li><li>既存システムとのIntegrationの現実</li><li>Novel attackへの対応能力をどう検証するか</li><li>アナリストの人材育成にどう影響するか</li></ul>
-<p>正直なところ、整理されていない論点が多くあります。それでも「まだ成熟していないから様子を見る」というだけでは、従来型SOCの限界に近づいていく可能性があります。攻撃者は防御の甘い企業を狙い続けるからです。</p>
+<h2>AI SOCを監視するのは誰か</h2>
+<p>特に難しいのは、「AI SOCが見えていない領域を、誰が監視するのか」という問いです。</p>
+<p>AIは高速に調査できます。ただし、AI自身にもBlind spotがあります。</p>
+<p>どのログを参照していないのか。どのContextを持っていないのか。どの仮説を立てられていないのか。</p>
+<p>これを理解せずにAI SOCを導入すると、「見えている範囲だけ高速に調査するSOC」になる可能性があります。アラートの処理速度は上がっても、検知のカバレッジは変わらない——あるいは、AIが自信を持って処理することで、見えていない穴が見えにくくなる可能性すらあります。</p>
+<p>AI SOCでは、AIそのものを監視対象として扱う視点も必要になるのではないかと考えています。それを担うのは、依然として人間です。</p>
 <h2>おわりに</h2>
 <p>AI SOCは、「アナリストを減らすためのツール」として語られがちです。ただ、私はそれだけではないと思っています。</p>
 <p>本質は、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことです。</p>
 <p>AIによって調査とContext収集を広く高速に行い、人間は高度な仮説形成、業務文脈理解、Novel TTPへの対応に集中する。そのような形でAIと人間の役割を再設計しなければ、今後のセキュリティ監視は持続できなくなるのではないか——私はそう考えています。</p>
+<p>さらに今後は、SOC単体ではなく、Identity、Exposure、AI Agent、Explainability、経営報告まで含めた「CDC的な運用」へ広がっていく可能性もあります。AI SOCは、単なるSOC効率化ツールではなく、セキュリティ運用そのものを再設計する入口なのかもしれません。</p>
   </div>
 
   <div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)"><div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#4db896;text-transform:uppercase;margin-bottom:14px">このテーマの最近のニュース</div><a href="../article/4c60c8567b7d.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-09</span><span>Bleeping Computer</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">Security for AI</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">Hugging Face上の偽OpenAIリポジトリが情報窃取マルウェアを配布</div></a><a href="../article/182ffaf8859a.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-09</span><span>Simon Willison</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">AI for Security</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">サービス企画</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">Claude出力形式としてのHTMLの有効性と活用事例</div></a><a href="../article/87f7ad08eb3e.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-09</span><span>Dark Reading</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">顧客課題</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">ShinyHuntersがInstructureへの二度目の攻撃を主張、数億人規模の個人情報が流出危機</div></a><a href="../article/62dcd344e5e0.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-09</span><span>The Hacker News</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">顧客課題</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">新種バンキングトロイの木馬TCLBANKERがWhatsApp/Outlookワームで金融プラットフォームを標的</div></a><a href="../article/222f76c94d00.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-09</span><span>The Hacker News</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">顧客課題</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">偽通話履歴アプリが730万DL超え、ユーザーから金銭詐取</div></a></div>
