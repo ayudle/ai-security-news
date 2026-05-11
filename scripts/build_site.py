@@ -178,7 +178,7 @@ def build_column_page(col, all_articles=None):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html_escape(title)} | AI×セキュリティ ニュース日報</title>
+<title>{html_escape(title)} | Cyber Defense Notes</title>
 <meta name="description" content="{html_escape(desc)}">
 <meta property="og:title" content="{html_escape(title)}">
 <meta property="og:description" content="{html_escape(desc)}">
@@ -221,7 +221,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 <body>
 <header>
   <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
-    <div class="logo">AI×セキュリティ ニュース日報</div>
+    <div class="logo">Cyber Defense Notes</div>
   </a>
 </header>
 
@@ -617,17 +617,17 @@ def build_html(data, weekly_list=None, columns=None):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AI×セキュリティ ニュース日報 | {today}</title>
-<meta name="description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。CISO視点での示唆・学び付き。">
+<title>Cyber Defense Notes | {today}</title>
+<meta name="description" content="AI、LLM、AIエージェントの普及で変わるSOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
 <meta name="google-site-verification" content="m7S3bMP_P0V-BinV3MTpaO9qkk31af-RRKxsQ4_BoQg" />
-<meta property="og:title" content="AI×セキュリティ ニュース日報">
-<meta property="og:description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。CISO視点での示唆・学び付き。">
+<meta property="og:title" content="Cyber Defense Notes">
+<meta property="og:description" content="AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI×セキュリティ ニュース日報">
-<meta name="twitter:description" content="サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約。CISO視点での示唆・学び付き。">
+<meta name="twitter:title" content="Cyber Defense Notes">
+<meta name="twitter:description" content="AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -636,12 +636,12 @@ def build_html(data, weekly_list=None, columns=None):
 {{
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "AI×セキュリティ ニュース日報",
+  "name": "Cyber Defense Notes",
   "url": "https://ayudle.github.io/ai-security-news/",
-  "description": "サイバーセキュリティ×AI分野の最新ニュースを毎日自動収集・日本語要約",
+  "description": "AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤",
   "publisher": {{
     "@type": "Organization",
-    "name": "AI×セキュリティ ニュース日報",
+    "name": "Cyber Defense Notes",
     "url": "https://ayudle.github.io/ai-security-news/"
   }}
 }}
@@ -819,9 +819,9 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <body>
 <header class="hdr">
   <a href="./" class="hdr-home" aria-label="ホームに戻る">
-    <h1 class="ht">AI×セキュリティ ニュース日報</h1>
+    <h1 class="ht">Cyber Defense Notes</h1>
   </a>
-  <span class="hs">AI×セキュリティ / SOC/CDC設計</span>
+  <span class="hs">AI時代のサイバーディフェンス設計ノート</span>
   <span class="hu">更新: {updated} JST</span>
 </header>
 
@@ -978,7 +978,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
     <!-- Hero -->
     <div class="about-hero">
       <div class="about-hero-name">Ayudle</div>
-      <div class="about-hero-role">AI×セキュリティ ニュース日報 — 運営者</div>
+      <div class="about-hero-role">Cyber Defense Notes — 運営者</div>
       <p class="about-hero-lead">SOC/CDCサービス設計に関わる実務者の視点で、AI×セキュリティの動向を読み解き、将来のセキュリティ運用アーキテクチャを考えるための設計ノートです。「何が起きたか」だけでなく、「SOC/MDR/MSSPの設計にどう影響するか」まで整理することを目指しています。</p>
     </div>
 
@@ -1051,6 +1051,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 </div>
 
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
+  <p style="margin-bottom:2px;font-size:11px;font-weight:600;color:var(--dim)">Cyber Defense Notes</p>
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
   <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
@@ -1779,7 +1780,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
         "image": "https://ayudle.github.io/ai-security-news/og-image.png",
         "publisher": {
             "@type": "Organization",
-            "name": "AI×セキュリティ ニュース日報",
+            "name": "Cyber Defense Notes",
             "url": "https://ayudle.github.io/ai-security-news/",
         },
         "author": {
@@ -1798,7 +1799,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{html_escape(title_ja)} | AI×セキュリティ ニュース日報</title>
+<title>{html_escape(title_ja)} | Cyber Defense Notes</title>
 <meta name="description" content="{html_escape(summary_ja[:120])}">
 <meta property="og:title" content="{html_escape(title_ja)}">
 <meta property="og:description" content="{html_escape(summary_ja[:120])}">
@@ -1876,7 +1877,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 </head>
 <body>
 <header>
-  <a href="../" class="logo-link"><h1 class="logo">AI×セキュリティ ニュース日報</h1></a>
+  <a href="../" class="logo-link"><h1 class="logo">Cyber Defense Notes</h1></a>
 </header>
 
 <a href="../#today" class="back">← ニュース一覧に戻る</a>
@@ -1962,8 +1963,8 @@ def build_archive_page(day_data, date):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>{date} のニュース | AI×セキュリティ ニュース日報</title>
-<meta name="description" content="{date} のAI×セキュリティニュース（{n}件）">
+<title>{date} のニュース | Cyber Defense Notes</title>
+<meta name="description" content="{date} のAI×セキュリティ / サイバーディフェンス関連ニュース（{n}件）| Cyber Defense Notes">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
@@ -2013,7 +2014,7 @@ a{{color:inherit;text-decoration:none}}
 </head>
 <body>
 <header class="hdr">
-  <span class="ht">AI×セキュリティ ニュース日報</span>
+  <span class="ht">Cyber Defense Notes</span>
 </header>
 
 <a href="/ai-security-news/#today" class="back">← トップページに戻る</a>
@@ -2098,7 +2099,7 @@ def build_weekly_html(weekly_data, article_lookup=None):
     next_week   = weekly_data.get("next_week_outlook", "")
 
     site_url = f"https://ayudle.github.io/ai-security-news/weekly/{pe}.html"
-    share_text = f"【AI×セキュリティ 週次レポート {pss}〜{pes}】\n{exec_sum[:100]}…\n#AIセキュリティ #CISO"
+    share_text = f"【Cyber Defense Notes 週次レポート {pss}〜{pes}】\n{exec_sum[:100]}…\n#AIセキュリティ #SOC"
     twitter_url = f"https://x.com/intent/post?text={quote(share_text, safe='')}&url={quote(site_url, safe='')}"
 
     # 重要トピック HTML
@@ -2209,9 +2210,9 @@ def build_weekly_html(weekly_data, article_lookup=None):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>週次レポート {pss}〜{pes} | AI×セキュリティ ニュース日報</title>
-<meta name="description" content="AI×セキュリティ週次レポート（{pss}〜{pes}）。{total}件の記事を分析したCISO向けダイジェスト。">
-<meta property="og:title" content="AI×セキュリティ 週次レポート {pss}〜{pes}">
+<title>週次レポート {pss}〜{pes} | Cyber Defense Notes</title>
+<meta name="description" content="Cyber Defense Notes 週次レポート（{pss}〜{pes}）。{total}件の記事を分析したSOC/CDC設計実務者向けダイジェスト。">
+<meta property="og:title" content="Cyber Defense Notes 週次レポート {pss}〜{pes}">
 <meta property="og:description" content="{html_escape(exec_sum[:120])}">
 <meta property="og:url" content="{site_url}">
 <meta property="og:type" content="article">
@@ -2256,7 +2257,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 <body>
 <header>
   <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
-    <div class="logo">AI×セキュリティ ニュース日報</div>
+    <div class="logo">Cyber Defense Notes</div>
   </a>
 </header>
 
@@ -2265,14 +2266,14 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 <nav style="padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
   <a href="/ai-security-news/#today"   style="color:#378ADD;text-decoration:none">本日のニュース</a>
   <a href="/ai-security-news/#trend"   style="color:#378ADD;text-decoration:none">トレンド分析</a>
-  <a href="/ai-security-news/#archive" style="color:#378ADD;text-decoration:none">アーカイブ</a>
+  <a href="/ai-security-news/#archive" style="color:#378ADD;text-decoration:none">記事検索</a>
   <a href="/ai-security-news/#weekly"  style="color:#378ADD;text-decoration:none">週次レポート一覧</a>
 </nav>
 
 <div class="wp">
   <div class="wp-head">
     <div class="wp-period">週次レポート</div>
-    <h1 class="wp-title">AI×セキュリティ 週次ダイジェスト</h1>
+    <h1 class="wp-title">週次ダイジェスト</h1>
     <div class="wp-meta">{pss}〜{pes}（{total}件の記事を分析）</div>
   </div>
 

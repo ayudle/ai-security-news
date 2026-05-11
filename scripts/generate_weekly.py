@@ -82,10 +82,11 @@ def build_prompt(period_start, period_end, articles, implications, keyword_chang
         for k in keyword_changes
     ) or "  （先週比データなし）"
 
-    return f"""あなたはサイバーセキュリティ×AI領域に精通したCISOアドバイザーです。
+    return f"""あなたはサイバーセキュリティ×AI領域に精通した実務家です。SOC/CDC/MSSP/MDRのサービス設計・運用に関わり、AI for SecurityとSecurity for AIを現場視点で追っています。
 
-以下は {period_start} から {period_end} の1週間のAI×セキュリティニュースの記事リストと日次示唆です。
-これらを基に、CISO/セキュリティ責任者向けの週次レポートを日本語で生成してください。
+以下は {period_start} から {period_end} の1週間のAI×セキュリティ関連記事リストと日次示唆です。
+これらを基に、SOC/CDC/MSSP/MDRの設計・運用に関わる実務者向けの週次レポートを日本語で生成してください。
+事実・推論・設計上の問いを混同せず、根拠のない断定と一般論の繰り返しを避けてください。
 
 【対象記事】
 {arts_text}
@@ -99,7 +100,7 @@ def build_prompt(period_start, period_end, articles, implications, keyword_chang
 必ず以下のJSONスキーマのみを返してください。前置き・説明文・```記号は一切不要です。
 
 {{
-  "executive_summary": "今週のAI×セキュリティ動向の総括。3〜5文。CISO/経営層が朝のブリーフィングで読める水準。事実に基づき自組織への示唆を含める。抽象的な定型句は使わない。",
+  "executive_summary": "今週のAI×セキュリティ動向の総括。3〜5文。SOC/CDC/MSSP/MDR設計・運用に関わる実務者が判断・設計に使える水準。事実に基づき記述し、記事群から読み取れる傾向は推論として控えめに添える。抽象的な定型句は使わない。将来の防御アーキテクチャへの意味を慎重に整理する。",
   "top_topics": [
     {{
       "title": "トピックタイトル（20字以内）",

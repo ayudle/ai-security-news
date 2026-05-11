@@ -1,7 +1,9 @@
-# AI×セキュリティ ニュース日報
+# Cyber Defense Notes
 
-サイバーセキュリティ×AI分野のニュースを毎日自動収集・日本語要約して公開するWebサイト。  
-MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・SOC/CDC運用変化を重点的にカバーする。
+**AI時代のサイバーディフェンス設計ノート**
+
+AI、LLM、AIエージェントの普及によって変わるSOC/CDC、MDR/MSSP、Security for AI / AI for Security の論点を整理するナレッジ基盤。  
+SOC/CDCサービス設計に関わる実務者の視点で、毎日自動収集・日本語要約し、「将来の防御アーキテクチャへの意味」まで整理する。
 
 **公開URL:** https://ayudle.github.io/ai-security-news
 
@@ -10,7 +12,7 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 ## コンセプト
 
 - **完全無料で動く** — GitHub Actions + Gemini API無料枠 + GitHub Pages
-- **CDC設計者の視点で厳選** — AI×セキュリティ、SOC/MDR/MSSP設計、Identity/Exposureに関連するニュースを優先
+- **SOC/CDC設計実務者の視点で厳選** — AI×セキュリティ、SOC/MDR/MSSP設計、Identity/Exposureに関連するニュースを優先
 - **信頼できるソース定義** — 公的機関・専門メディア・ベンダー脅威インテリジェンスに厳選（広すぎるソースはAI×セキュリティの同時出現を要求）
 - **AIが要約＋示唆を生成** — 読むだけでなく「CDC/SOCへの示唆」まで提供
 - **人間の考察コラム** — 運営者によるMSSP/CDC設計に関する著者執筆コラムを掲載
