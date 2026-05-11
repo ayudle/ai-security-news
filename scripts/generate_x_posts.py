@@ -121,17 +121,14 @@ DAILY_PICK_HIGH_KW = frozenset([
 DAILY_PICK_MED_KW = frozenset([
     "SOC", "MDR", "CISO", "Exposure", "露出", "攻撃", "インシデント", "ガバナンス",
 ])
-DAILY_PICK_CONTEXT_TAG: dict[str, str] = {
-    "Security for AI": "#生成AIセキュリティ",
-    "AI for Security": "#SOC",
-    "SOC運用変化":     "#SOC",
-    "Identity/ITDR":   "#ITDR",
-    "Exposure管理":    "#脆弱性管理",
-    "MDR/MSSP設計":    "#MSSP",
-    "CISO報告":        "#CISO",
-    "サービス企画":    "#MSSP",
-    "顧客課題":        "#サイバーセキュリティ",
-}
+# 2個目ハッシュタグ選定ルール（記事内容優先・上から順に評価）
+_DAILY_PICK_TAG_RULES: list[tuple[frozenset, str]] = [
+    (frozenset(["CVE", "KEV", "脆弱性", "エクスプロイト", "パッチ", "vulnerability"]), "#脆弱性"),
+    (frozenset(["プロンプトインジェクション", "ジェイルブレイク", "LLMセキュリティ"]),   "#LLMセキュリティ"),
+    (frozenset(["非人間型ID", "Identity", "ITDR", "権限", "認証"]),                    "#ITDR"),
+    (frozenset(["SOC", "MDR", "AI for Security"]),                                    "#SOC"),
+    (frozenset(["CISO", "ガバナンス", "規制"]),                                         "#CISO"),
+]
 _DAILY_PICK_EXEMPT_CTX = frozenset([
     "Security for AI", "AI for Security", "Identity/ITDR", "MDR/MSSP設計",
 ])
@@ -372,15 +369,22 @@ def build_post_text(article: dict, hashtags: list[str]) -> str:
 
 
 def _build_daily_pick_hashtags(article: dict) -> list[str]:
-    """daily-pick用: #AIセキュリティ + context固有タグ（2つ固定）。"""
-    ctx_list = article.get("cdc_context", []) or []
-    second   = "#サイバーセキュリティ"
-    for ctx in ctx_list:
-        candidate = DAILY_PICK_CONTEXT_TAG.get(ctx)
-        if candidate and candidate != "#AIセキュリティ":
-            second = candidate
-            break
-    return ["#AIセキュリティ", second]
+    """daily-pick用: #AIセキュリティ + 記事内容優先の文脈タグ（2つ固定）。
+    tag_subs / title_ja / related_keywords を結合してルール順に評価する。
+    いずれも一致しない場合は #生成AI にフォールバックする。
+    """
+    tag_subs = article.get("tag_subs") or []
+    title    = article.get("title_ja") or article.get("title") or ""
+    rel_kw   = article.get("related_keywords") or []
+    if isinstance(rel_kw, str):
+        rel_kw = [rel_kw]
+    search = " ".join([title] + list(tag_subs) + list(rel_kw))
+
+    for keywords, hashtag in _DAILY_PICK_TAG_RULES:
+        if any(kw in search for kw in keywords):
+            return ["#AIセキュリティ", hashtag]
+
+    return ["#AIセキュリティ", "#生成AI"]
 
 
 def build_daily_pick_text(article: dict, hashtags: list[str]) -> str:
