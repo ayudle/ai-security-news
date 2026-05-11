@@ -1670,6 +1670,51 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
 
     subs_html = "".join(tag_sub_badge(s) for s in subs)
 
+    # 「このテーマをもっと探す」チップ選定（最大5個・20字以内・重複排除）
+    _explore_chips = []  # list of (label, attr_type)
+    _explore_seen = set()
+
+    def _add_explore(label, attr_type):
+        clean = (label or "").strip()
+        if not clean or len(clean) > 20:
+            return
+        norm = clean.lower()
+        if norm in _explore_seen or len(_explore_chips) >= 5:
+            return
+        _explore_seen.add(norm)
+        _explore_chips.append((clean, attr_type))
+
+    for ctx in cdc_contexts:              # 優先1: cdc_context
+        _add_explore(ctx, "context")
+    for s in subs:                        # 優先2: tag_subs
+        _add_explore(s, "tag")
+    _add_explore(main_label, "tag")       # 優先3: tag_main_label
+    for kw in a.get("related_keywords", [])[:6]:  # 優先4: related_keywords
+        _add_explore(kw, "keyword")
+
+    explore_html = ""
+    if _explore_chips:
+        chips_parts = []
+        for label, attr_type in _explore_chips:
+            if attr_type == "context":
+                data_attr = f'data-search-context="{html_escape(label)}"'
+            elif attr_type == "tag":
+                data_attr = f'data-search-tag="{html_escape(label)}"'
+            else:
+                data_attr = f'data-search-keyword="{html_escape(label)}"'
+            chips_parts.append(
+                f'<a href="../#archive" class="explore-chip" {data_attr}>{html_escape(label)}</a>'
+            )
+        explore_html = (
+            f'<section class="ap-section">'
+            f'<h3 class="ap-sec-title">このテーマをもっと探す</h3>'
+            f'<p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。'
+            f'（関連記事は下の「関連記事」セクションで直接読めます）</p>'
+            f'<div class="explore-chips">{"".join(chips_parts)}</div>'
+            f'<a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a>'
+            f'</section>'
+        )
+
     # シェアURL（URLエンコード対応 + 完成形テンプレ + 動的ハッシュタグ）
     from urllib.parse import quote
     site_url = f"https://ayudle.github.io/ai-security-news/article/{aid}.html"
@@ -1819,6 +1864,12 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .rel-date{{color:var(--dim)}}
 .rel-src{{color:var(--text)}}
 .rel-title{{font-size:14px;font-weight:500;line-height:1.5;color:var(--text)}}
+.explore-desc{{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:10px}}
+.explore-chips{{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}}
+.explore-chip{{font-size:11px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);text-decoration:none;transition:border-color .15s,color .15s}}
+.explore-chip:hover{{border-color:var(--accent);color:var(--accent)}}
+.explore-cta{{font-size:13px;color:var(--accent);text-decoration:none;display:inline-block;margin-top:2px}}
+.explore-cta:hover{{text-decoration:underline}}
 footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
 </style>
 {ga_snippet()}
@@ -1834,7 +1885,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   <a href="../#trend">トレンド分析</a>
   <a href="../#weekly">週次レポート</a>
   <a href="../#columns">コラム</a>
-  <a href="../#archive">アーカイブ</a>
+  <a href="../#archive">記事検索</a>
 </nav>
 
 <article class="ap">
@@ -1884,6 +1935,8 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
       <button onclick="navigator.clipboard.writeText('{site_url}').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
+
+  {explore_html}
 
   {related_html}
 </article>
