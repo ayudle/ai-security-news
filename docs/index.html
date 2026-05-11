@@ -404,7 +404,7 @@ gtag('config', 'G-KV7Q7SQKZX');
       <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">SNS</div>
       <div style="font-size:14px;color:#98968e;line-height:1.85">
         <p style="margin-bottom:1rem">X（旧Twitter）で最新ニュースを毎日発信しています。フォローお待ちしています。</p>
-        <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1a1a18;border:1px solid #2a2a28;border-radius:6px;text-decoration:none;color:#e6e4dc;font-size:13px;font-weight:500;transition:border-color .15s" onmouseover="this.style.borderColor='#378ADD'" onmouseout="this.style.borderColor='#2a2a28'">
+        <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1a1a18;border:1px solid #2a2a28;border-radius:6px;text-decoration:none;color:#e6e4dc;font-size:13px;font-weight:500;transition:border-color .15s" onmouseover="this.style.borderColor='#378ADD'" onmouseout="this.style.borderColor='#2a2a28'">
           <span style="font-size:14px;font-weight:700">X</span>
           <span>@ayudle_aisec をフォロー</span>
         </a>
@@ -421,7 +421,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 <script>
@@ -508,11 +508,12 @@ function renderHeatmap(containerId, data) {
   const max = Math.max(...allCounts, 1);
   let html = '<div class="hm-grid">';
   html += '<div class="hm-th"></div>';
-  data.dates.forEach(d => { html += `<div class="hm-th">${d}</div>`; });
+  data.dates.forEach(d => { html += `<div class="hm-th">${escapeHtml(d)}</div>`; });
   data.rows.forEach(row => {
     const color = LAYER_COLORS[row.layer] || '#378ADD';
     const [r,g,b] = hexToRgb(color);
-    html += `<div class="hm-lb" title="${row.layer}">${row.layer}</div>`;
+    const layerEsc = escapeHtml(row.layer);
+    html += `<div class="hm-lb" title="${layerEsc}">${layerEsc}</div>`;
     row.counts.forEach(cnt => {
       const bg  = cnt === 0 ? '#1e1e1c' : `rgba(${r},${g},${b},${Math.max(0.18, cnt/max).toFixed(2)})`;
       const tip = cnt > 0 ? cnt + '件' : 'なし';

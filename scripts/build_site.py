@@ -34,12 +34,14 @@ def _is_noise_kw(kw):
     kl = kw.strip().lower()
     return kl in _NOISE_KW or any(n in kl for n in _NOISE_KW)
 
-_DANGEROUS_SCHEME = re.compile(r'^(?:javascript|data|vbscript)\s*:', re.IGNORECASE)
+_SAFE_URL_SCHEME = re.compile(r'^https?://', re.IGNORECASE)
 
 def _safe_url(url: str) -> str:
-    """RSS由来URLの javascript:/data:/vbscript: スキームを除去する。"""
+    """RSS由来URLを http/https のみ許可する。それ以外は # に置き換える。"""
     u = (url or "").strip().replace("\n", "").replace("\r", "").replace("\t", "")
-    return "#" if _DANGEROUS_SCHEME.match(u) else u
+    if not u or u == "#":
+        return "#"
+    return u if _SAFE_URL_SCHEME.match(u) else "#"
 
 # ── コラム機能 ─────────────────────────────────────────────
 
@@ -257,7 +259,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
 <footer>
   本コラムは著者が執筆した考察であり、LLMによる自動生成ではありません。<br>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 </body>
@@ -343,7 +345,7 @@ def article_card(a, rank=None):
                       f'<button class="kw-btn" onclick="toggleKw(\'{kid}\',this);event.stopPropagation()">タグを表示</button>'
                       f'</div>')
 
-    return f"""<article class="card" data-id="{a.get('id','')}" data-main="{main_id}" onclick="navigateCard('{a.get('id','')}')">
+    return f"""<article class="card" data-id="{a.get('id','')}" data-main="{html_escape(main_id)}" onclick="navigateCard('{a.get('id','')}')">
   <div class="cm">
     {rank_html}
     <span class="tier">{tier_label(a.get('source_tier','B'))}</span>
@@ -893,7 +895,7 @@ a{{color:inherit;text-decoration:none}}
       <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">SNS</div>
       <div style="font-size:14px;color:#98968e;line-height:1.85">
         <p style="margin-bottom:1rem">X（旧Twitter）で最新ニュースを毎日発信しています。フォローお待ちしています。</p>
-        <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1a1a18;border:1px solid #2a2a28;border-radius:6px;text-decoration:none;color:#e6e4dc;font-size:13px;font-weight:500;transition:border-color .15s" onmouseover="this.style.borderColor='#378ADD'" onmouseout="this.style.borderColor='#2a2a28'">
+        <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1a1a18;border:1px solid #2a2a28;border-radius:6px;text-decoration:none;color:#e6e4dc;font-size:13px;font-weight:500;transition:border-color .15s" onmouseover="this.style.borderColor='#378ADD'" onmouseout="this.style.borderColor='#2a2a28'">
           <span style="font-size:14px;font-weight:700">X</span>
           <span>@ayudle_aisec をフォロー</span>
         </a>
@@ -910,7 +912,7 @@ a{{color:inherit;text-decoration:none}}
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 <script>
@@ -997,11 +999,12 @@ function renderHeatmap(containerId, data) {{
   const max = Math.max(...allCounts, 1);
   let html = '<div class="hm-grid">';
   html += '<div class="hm-th"></div>';
-  data.dates.forEach(d => {{ html += `<div class="hm-th">${{d}}</div>`; }});
+  data.dates.forEach(d => {{ html += `<div class="hm-th">${{escapeHtml(d)}}</div>`; }});
   data.rows.forEach(row => {{
     const color = LAYER_COLORS[row.layer] || '#378ADD';
     const [r,g,b] = hexToRgb(color);
-    html += `<div class="hm-lb" title="${{row.layer}}">${{row.layer}}</div>`;
+    const layerEsc = escapeHtml(row.layer);
+    html += `<div class="hm-lb" title="${{layerEsc}}">${{layerEsc}}</div>`;
     row.counts.forEach(cnt => {{
       const bg  = cnt === 0 ? '#1e1e1c' : `rgba(${{r}},${{g}},${{b}},${{Math.max(0.18, cnt/max).toFixed(2)}})`;
       const tip = cnt > 0 ? cnt + '件' : 'なし';
@@ -1232,7 +1235,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
             cdate = col.get("date", "")
             col_items.append(
                 f'<a href="../columns/{cslug}.html" class="rel-item">'
-                f'<div class="rel-meta"><span class="rel-date">{cdate}</span>'
+                f'<div class="rel-meta"><span class="rel-date">{html_escape(cdate)}</span>'
                 f'<span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div>'
                 f'<div class="rel-title">{html_escape(ctitle)}</div></a>'
             )
@@ -1495,7 +1498,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 <footer>
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 </body>
@@ -1577,7 +1580,7 @@ a{{color:inherit;text-decoration:none}}
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 <script>
@@ -1673,10 +1676,10 @@ def build_weekly_html(weekly_data, article_lookup=None):
                 if dk in seen_keys:
                     continue
                 seen_keys.add(dk)
-                meta = " / ".join(filter(None, [a_src, a_pub]))
+                meta = " / ".join(filter(None, [html_escape(a_src), a_pub]))
                 items.append(
                     f'<a href="../article/{aid}.html" class="wr-ref">'
-                    f'<span class="wr-ref-title">→ {a_title}</span>'
+                    f'<span class="wr-ref-title">→ {html_escape(a_title)}</span>'
                     f'<span class="wr-ref-meta">{meta}</span></a>'
                 )
             else:
@@ -1704,8 +1707,8 @@ def build_weekly_html(weekly_data, article_lookup=None):
 
         topics_html += (
             f'<div class="wr-topic">'
-            f'<div class="wr-topic-title">{title}</div>'
-            f'<div class="wr-topic-summary">{summary}</div>'
+            f'<div class="wr-topic-title">{html_escape(title)}</div>'
+            f'<div class="wr-topic-summary">{html_escape(summary)}</div>'
             f'{refs_html}</div>'
         )
     if not topics_html:
@@ -1721,8 +1724,8 @@ def build_weekly_html(weekly_data, article_lookup=None):
             f'<div style="display:flex;gap:12px;padding:10px 0;'
             f'border-bottom:1px solid #2a2a28;align-items:flex-start">'
             f'<div style="min-width:90px;font-size:11px;font-weight:700;'
-            f'color:{lcolor};padding-top:2px;flex-shrink:0">{lname}</div>'
-            f'<div style="font-size:13px;color:#98968e;line-height:1.65">{ltext}</div></div>'
+            f'color:{lcolor};padding-top:2px;flex-shrink:0">{html_escape(lname)}</div>'
+            f'<div style="font-size:13px;color:#98968e;line-height:1.65">{html_escape(ltext)}</div></div>'
         )
     if not layers_html:
         layers_html = '<p style="font-size:12px;color:#6a6860">データなし</p>'
@@ -1744,7 +1747,7 @@ def build_weekly_html(weekly_data, article_lookup=None):
             kw_html += (
                 f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">'
                 f'<div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;'
-                f'overflow:hidden;text-overflow:ellipsis">{kw}</div>'
+                f'overflow:hidden;text-overflow:ellipsis">{html_escape(kw)}</div>'
                 f'<div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden">'
                 f'<div style="width:{bar_pct}%;height:100%;background:{color};border-radius:3px"></div></div>'
                 f'<div style="font-size:10px;color:{color};width:55px;text-align:right">'
@@ -1763,7 +1766,7 @@ def build_weekly_html(weekly_data, article_lookup=None):
 <title>週次レポート {pss}〜{pes} | AI×セキュリティ ニュース日報</title>
 <meta name="description" content="AI×セキュリティ週次レポート（{pss}〜{pes}）。{total}件の記事を分析したCISO向けダイジェスト。">
 <meta property="og:title" content="AI×セキュリティ 週次レポート {pss}〜{pes}">
-<meta property="og:description" content="{exec_sum[:120]}">
+<meta property="og:description" content="{html_escape(exec_sum[:120])}">
 <meta property="og:url" content="{site_url}">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
@@ -1829,7 +1832,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
   <section class="sec">
     <h3 class="sec-title">エグゼクティブサマリー</h3>
-    <div style="background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#e6e4dc">{exec_sum}</div>
+    <div style="background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#e6e4dc">{html_escape(exec_sum)}</div>
   </section>
 
   <section class="sec">
@@ -1849,11 +1852,11 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
   <section class="sec">
     <h3 class="sec-title">来週の注目ポイント</h3>
-    <div style="background:#0d1b2e;border-left:3px solid #378ADD55;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#c0beb6">{next_week}</div>
+    <div style="background:#0d1b2e;border-left:3px solid #378ADD55;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#c0beb6">{html_escape(next_week)}</div>
   </section>
 
   <div class="actions">
-    <a href="{twitter_url}" target="_blank" rel="noopener" class="btn">Xでシェア</a>
+    <a href="{twitter_url}" target="_blank" rel="noopener noreferrer" class="btn">Xでシェア</a>
     <button onclick="navigator.clipboard.writeText('{site_url}').then(function(){{alert('URLをコピーしました')}})" class="btn">📋 URLをコピー</button>
   </div>
 </div>
@@ -1862,7 +1865,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
   日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 <script>
 document.querySelectorAll('.wr-toggle').forEach(function(btn){{
