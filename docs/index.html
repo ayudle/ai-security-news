@@ -199,7 +199,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   </div>
   <div class="tags tags-meta"><span class="tag-layer">アプリ/API</span><span class="tag-layer">データ/AI</span><span class="tag-layer">ガバナンス/規制</span></div>
   <div class="kw-fold"><div class="tags tags-meta" id="kw-1b7ffe155571" style="display:none"><span class="tag-kw">Google Ads</span><span class="tag-kw">Claude.ai</span><span class="tag-kw">マルバタイジング</span><span class="tag-kw">Mac malware</span><span class="tag-kw">AIブランド悪用</span></div><button class="kw-btn" onclick="toggleKw('kw-1b7ffe155571',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://www.bleepingcomputer.com/news/security/hackers-abuse-google-ads-claudeai-chats-to-push-mac-malware/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Bleeping Computer</a>
+  <div class="cf">出典: <a href="https://www.bleepingcomputer.com/news/security/hackers-abuse-google-ads-claudeai-chats-to-push-mac-malware/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Bleeping Computer</a>
   <em class="orig">"Hackers abuse Google ads, Claude.ai chats to push Mac malware"</em></div>
 </article>
 <article class="card" data-id="0799b1d0a43c" data-main="vuln" onclick="navigateCard('0799b1d0a43c')">
@@ -219,7 +219,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   </div>
   <div class="tags tags-meta"><span class="tag-layer">クラウド/サーバー</span><span class="tag-layer">データ/AI</span><span class="tag-layer">ガバナンス/規制</span></div>
   <div class="kw-fold"><div class="tags tags-meta" id="kw-0799b1d0a43c" style="display:none"><span class="tag-kw">Ollama</span><span class="tag-kw">CVE-2026-7482</span><span class="tag-kw">メモリリーク</span><span class="tag-kw">LLMセキュリティ</span><span class="tag-kw">アウトオブバウンズリード</span></div><button class="kw-btn" onclick="toggleKw('kw-0799b1d0a43c',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://thehackernews.com/2026/05/ollama-out-of-bounds-read-vulnerability.html" target="_blank" rel="noopener" onclick="event.stopPropagation()">The Hacker News</a>
+  <div class="cf">出典: <a href="https://thehackernews.com/2026/05/ollama-out-of-bounds-read-vulnerability.html" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">The Hacker News</a>
   <em class="orig">"Ollama Out-of-Bounds Read Vulnerability Allows Remote Process Memory Leak"</em></div>
 </article>
 <article class="card" data-id="4c60c8567b7d" data-main="attack" onclick="navigateCard('4c60c8567b7d')">
@@ -239,7 +239,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   </div>
   <div class="tags tags-meta"><span class="tag-layer">アプリ/API</span><span class="tag-layer">データ/AI</span><span class="tag-layer">ガバナンス/規制</span></div>
   <div class="kw-fold"><div class="tags tags-meta" id="kw-4c60c8567b7d" style="display:none"><span class="tag-kw">Hugging Face</span><span class="tag-kw">OpenAI</span><span class="tag-kw">情報窃取マルウェア</span><span class="tag-kw">サプライチェーン攻撃</span><span class="tag-kw">AI開発エコシステム</span></div><button class="kw-btn" onclick="toggleKw('kw-4c60c8567b7d',this);event.stopPropagation()">タグを表示</button></div>
-  <div class="cf">出典: <a href="https://www.bleepingcomputer.com/news/security/fake-openai-repository-on-hugging-face-pushes-infostealer-malware/" target="_blank" rel="noopener" onclick="event.stopPropagation()">Bleeping Computer</a>
+  <div class="cf">出典: <a href="https://www.bleepingcomputer.com/news/security/fake-openai-repository-on-hugging-face-pushes-infostealer-malware/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Bleeping Computer</a>
   <em class="orig">"Fake OpenAI repository on Hugging Face pushes infostealer malware"</em></div>
 </article>
 </div>
@@ -468,6 +468,16 @@ if (document.readyState === 'loading') {
   initTab();
 }
 
+function escapeHtml(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function renderKwCloud(containerId, data) {
   const el = document.getElementById(containerId);
   if (!el) return;
@@ -475,12 +485,13 @@ function renderKwCloud(containerId, data) {
   const top = data.slice(0, 15);
   const max = top[0][1] || 1;
   el.innerHTML = top.map(([kw, cnt]) => {
+    const esc  = escapeHtml(kw);
     const t    = Math.sqrt(cnt / max);
     const size = Math.round(52 + t * 36);
     const bgOp = (0.2 + t * 0.65).toFixed(2);
     const fs   = kw.length > 8 ? 9 : kw.length > 5 ? 10 : 11;
     return `<div class="kw-bubble" style="width:${size}px;height:${size}px;background:rgba(55,138,221,${bgOp});font-size:${fs}px" title="${cnt}件">` +
-           `<span class="kw-bubble-word">${kw}</span>` +
+           `<span class="kw-bubble-word">${esc}</span>` +
            `<span class="kw-bubble-cnt">${cnt}件</span></div>`;
   }).join('');
 }
@@ -519,8 +530,9 @@ function renderBars(containerId, data, colorFn, maxOverride) {
   el.innerHTML = data.map(([label, count]) => {
     const pct = Math.round(count / max * 100);
     const color = colorFn(label);
+    const esc = escapeHtml(label);
     return `<div class="bar-row">
-      <span class="bl" title="${label}">${label}</span>
+      <span class="bl" title="${esc}">${esc}</span>
       <div class="bt"><div class="bf" style="width:${pct}%;background:${color}"></div></div>
       <span class="bn">${count}</span></div>`;
   }).join('');
@@ -551,6 +563,7 @@ function renderImplication(text, textElId, boxElId, hd) {
     rest = sections.slice(1).map(function(s) { return s.trim(); }).filter(Boolean);
   }
   function renderSec(s) {
+    s = escapeHtml(s);
     return s
       .replace(/【([^】]+)】\n?/g,
         '<span style="display:block;font-size:'+fs+';font-weight:700;color:#378ADD;letter-spacing:.04em;margin-top:'+mt+';margin-bottom:2px">【$1】</span>')
@@ -580,7 +593,7 @@ function initDashboard() {
   if (ANA.spikes.length) {
     spikeEl.innerHTML = ANA.spikes.map(s =>
       `<div class="spike-item">
-        <span class="spike-name">${s.sub}</span>
+        <span class="spike-name">${escapeHtml(s.sub)}</span>
         <span class="spike-badge">今週 ${s.cnt_7}件 急増</span>
       </div>`
     ).join('');

@@ -34,6 +34,13 @@ def _is_noise_kw(kw):
     kl = kw.strip().lower()
     return kl in _NOISE_KW or any(n in kl for n in _NOISE_KW)
 
+_DANGEROUS_SCHEME = re.compile(r'^(?:javascript|data|vbscript)\s*:', re.IGNORECASE)
+
+def _safe_url(url: str) -> str:
+    """RSS由来URLの javascript:/data:/vbscript: スキームを除去する。"""
+    u = (url or "").strip().replace("\n", "").replace("\r", "").replace("\t", "")
+    return "#" if _DANGEROUS_SCHEME.match(u) else u
+
 # ── コラム機能 ─────────────────────────────────────────────
 
 def parse_frontmatter(text):
@@ -272,20 +279,20 @@ def tier_label(tier):
 
 def imp_badge(imp):
     c = IMP_COLOR.get(imp, "#888")
-    return f'<span class="imp" style="color:{c};border-color:{c}55">重要度 {imp}</span>'
+    return f'<span class="imp" style="color:{c};border-color:{c}55">重要度 {html_escape(imp)}</span>'
 
 def tag_main_badge(main_id, main_label):
     c = MAIN_COLOR.get(main_id, "#5F5E5A")
-    return f'<span class="tag-main" style="background:{c}20;color:{c};border-color:{c}44">{main_label}</span>'
+    return f'<span class="tag-main" style="background:{c}20;color:{c};border-color:{c}44">{html_escape(main_label)}</span>'
 
 def tag_sub_badge(sub):
-    return f'<span class="tag-sub">{sub}</span>'
+    return f'<span class="tag-sub">{html_escape(sub)}</span>'
 
 def tag_layer_badge(layer):
-    return f'<span class="tag-layer">{layer}</span>'
+    return f'<span class="tag-layer">{html_escape(layer)}</span>'
 
 def tag_kw_badge(kw):
-    return f'<span class="tag-kw">{kw}</span>'
+    return f'<span class="tag-kw">{html_escape(kw)}</span>'
 
 # コラムタグ → CDC context の対応表
 COL_TAG_TO_CDC = {
@@ -309,7 +316,7 @@ def article_card(a, rank=None):
     pub          = a.get("published","")[:10]
     insight      = a.get("insight","")
     imp_reason   = a.get("importance_reason","")
-    reason_html  = f'<button type="button" class="imp-reason" title="{imp_reason}" aria-label="重要度判定の理由: {imp_reason}">?</button>' if imp_reason else ""
+    reason_html  = f'<button type="button" class="imp-reason" title="{html_escape(imp_reason)}" aria-label="重要度判定の理由: {html_escape(imp_reason)}">?</button>' if imp_reason else ""
     main_id      = a.get("tag_main_id","attack")
     main_label   = a.get("tag_main_label","攻撃・脅威")
     subs_html    = "".join(tag_sub_badge(s) for s in a.get("tag_subs",[]))
@@ -319,12 +326,12 @@ def article_card(a, rank=None):
     insight_snippet = ""
     if insight:
         itxt = (insight[:80] + "…") if len(insight) > 80 else insight
-        insight_snippet = f'<div class="insight-snippet">{itxt}</div>'
+        insight_snippet = f'<div class="insight-snippet">{html_escape(itxt)}</div>'
     # CDC観点バッジ（cdc_context が存在する記事のみ・最大3個）
     cdc_html = ""
     cdc_contexts = a.get("cdc_context", [])[:3]
     if cdc_contexts:
-        badges = "".join(f'<span class="cdc-badge">{ctx}</span>' for ctx in cdc_contexts)
+        badges = "".join(f'<span class="cdc-badge">{html_escape(ctx)}</span>' for ctx in cdc_contexts)
         cdc_html = f'<div class="cdc-badges"><span class="cdc-lbl">CDC観点</span>{badges}</div>'
     # レイヤーは常時表示、related_keywordsは折りたたみ
     layers_row = f'<div class="tags tags-meta">{layers_html}</div>' if layers_html else ""
@@ -340,11 +347,11 @@ def article_card(a, rank=None):
   <div class="cm">
     {rank_html}
     <span class="tier">{tier_label(a.get('source_tier','B'))}</span>
-    <span class="src">{a.get('source_name','')}</span>
+    <span class="src">{html_escape(a.get('source_name',''))}</span>
     <span class="dt">{pub}</span>
     {imp_badge(a.get('importance','中'))}{reason_html}
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/{a.get('id','')}.html" onclick="event.stopPropagation()">{a.get('title_ja') or a.get('title','')}</a></h2>
+  <h2 class="ct"><a href="/ai-security-news/article/{a.get('id','')}.html" onclick="event.stopPropagation()">{html_escape(a.get('title_ja') or a.get('title',''))}</a></h2>
   {insight_snippet}
   {cdc_html}
   <div class="tags">
@@ -353,8 +360,8 @@ def article_card(a, rank=None):
   </div>
   {layers_row}
   {kw_section}
-  <div class="cf">出典: <a href="{a.get('url','#')}" target="_blank" rel="noopener" onclick="event.stopPropagation()">{a.get('source_name','')}</a>
-  <em class="orig">"{a.get('title','')}"</em></div>
+  <div class="cf">出典: <a href="{_safe_url(a.get('url','#'))}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">{html_escape(a.get('source_name',''))}</a>
+  <em class="orig">"{html_escape(a.get('title',''))}"</em></div>
 </article>"""
 
 
@@ -509,7 +516,7 @@ def build_html(data, weekly_list=None, columns=None):
             f'<div style="font-size:11px;font-weight:700;color:#378ADD;'
             f'letter-spacing:.05em;margin-bottom:6px">最新レポート（{wps_s}〜{wpe_s}）</div>'
             f'<div style="font-size:13px;line-height:1.8;color:#e6e4dc;margin-bottom:10px">'
-            f'{w_summary_short}</div>'
+            f'{html_escape(w_summary_short)}</div>'
             f'<a href="weekly/{wpe}.html" style="font-size:12px;color:#378ADD">'
             f'全文を読む →</a></div>'
         )
@@ -571,8 +578,8 @@ def build_html(data, weekly_list=None, columns=None):
 
     # 分析データ
     analytics   = build_analytics(history, taxonomy)
-    ana_json    = json.dumps(analytics, ensure_ascii=False)
-    tax_json    = json.dumps(taxonomy, ensure_ascii=False)
+    ana_json    = json.dumps(analytics, ensure_ascii=False).replace('</', '<\\/')
+    tax_json    = json.dumps(taxonomy, ensure_ascii=False).replace('</', '<\\/')
 
     today_html   = "\n".join(article_card(a) for a in articles) if articles \
                    else '<p class="empty">本日は該当記事がありませんでした。</p>'
@@ -950,6 +957,16 @@ if (document.readyState === 'loading') {{
   initTab();
 }}
 
+function escapeHtml(s) {{
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}}
+
 function renderKwCloud(containerId, data) {{
   const el = document.getElementById(containerId);
   if (!el) return;
@@ -957,12 +974,13 @@ function renderKwCloud(containerId, data) {{
   const top = data.slice(0, 15);
   const max = top[0][1] || 1;
   el.innerHTML = top.map(([kw, cnt]) => {{
+    const esc  = escapeHtml(kw);
     const t    = Math.sqrt(cnt / max);
     const size = Math.round(52 + t * 36);
     const bgOp = (0.2 + t * 0.65).toFixed(2);
     const fs   = kw.length > 8 ? 9 : kw.length > 5 ? 10 : 11;
     return `<div class="kw-bubble" style="width:${{size}}px;height:${{size}}px;background:rgba(55,138,221,${{bgOp}});font-size:${{fs}}px" title="${{cnt}}件">` +
-           `<span class="kw-bubble-word">${{kw}}</span>` +
+           `<span class="kw-bubble-word">${{esc}}</span>` +
            `<span class="kw-bubble-cnt">${{cnt}}件</span></div>`;
   }}).join('');
 }}
@@ -1001,8 +1019,9 @@ function renderBars(containerId, data, colorFn, maxOverride) {{
   el.innerHTML = data.map(([label, count]) => {{
     const pct = Math.round(count / max * 100);
     const color = colorFn(label);
+    const esc = escapeHtml(label);
     return `<div class="bar-row">
-      <span class="bl" title="${{label}}">${{label}}</span>
+      <span class="bl" title="${{esc}}">${{esc}}</span>
       <div class="bt"><div class="bf" style="width:${{pct}}%;background:${{color}}"></div></div>
       <span class="bn">${{count}}</span></div>`;
   }}).join('');
@@ -1033,6 +1052,7 @@ function renderImplication(text, textElId, boxElId, hd) {{
     rest = sections.slice(1).map(function(s) {{ return s.trim(); }}).filter(Boolean);
   }}
   function renderSec(s) {{
+    s = escapeHtml(s);
     return s
       .replace(/【([^】]+)】\\n?/g,
         '<span style="display:block;font-size:'+fs+';font-weight:700;color:#378ADD;letter-spacing:.04em;margin-top:'+mt+';margin-bottom:2px">【$1】</span>')
@@ -1062,7 +1082,7 @@ function initDashboard() {{
   if (ANA.spikes.length) {{
     spikeEl.innerHTML = ANA.spikes.map(s =>
       `<div class="spike-item">
-        <span class="spike-name">${{s.sub}}</span>
+        <span class="spike-name">${{escapeHtml(s.sub)}}</span>
         <span class="spike-badge">今週 ${{s.cnt_7}}件 急増</span>
       </div>`
     ).join('');
@@ -1245,11 +1265,11 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
             related_items.append(
                 f'<a href="{r_id}.html" class="rel-item">'
                 f'<div class="rel-meta"><span class="rel-date">{r_pub}</span>'
-                f'{imp_badge(r_imp)}<span class="rel-src">{r_src}</span></div>'
-                f'<div class="rel-title">{r_title}</div></a>'
+                f'{imp_badge(r_imp)}<span class="rel-src">{html_escape(r_src)}</span></div>'
+                f'<div class="rel-title">{html_escape(r_title)}</div></a>'
             )
         related_html = f"""<section class="ap-section">
-  <h3 class="ap-sec-title">関連記事：同じ「{main_label}」の最近の記事</h3>
+  <h3 class="ap-sec-title">関連記事：同じ「{html_escape(main_label)}」の最近の記事</h3>
   <div class="rel-list">{"".join(related_items)}</div>
 </section>"""
 
@@ -1309,6 +1329,25 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
 
     hashtags_str = " ".join([f"#{t}" for t in all_tags])
 
+    jsonld_str = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": title_ja,
+        "description": summary_ja[:200],
+        "datePublished": pub,
+        "url": site_url,
+        "image": "https://ayudle.github.io/ai-security-news/og-image.png",
+        "publisher": {
+            "@type": "Organization",
+            "name": "AI×セキュリティ ニュース日報",
+            "url": "https://ayudle.github.io/ai-security-news/",
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Ayudle",
+        },
+    }, ensure_ascii=False, indent=2).replace('</', '<\\/')
+
     share_text_raw = f"【AI×セキュリティニュース】\n\n{title_ja}\n\n{hashtags_str}"
     share_text_encoded = quote(share_text_raw, safe='')
     site_url_encoded = quote(site_url, safe='')
@@ -1319,39 +1358,22 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title_ja} | AI×セキュリティ ニュース日報</title>
-<meta name="description" content="{summary_ja[:120]}">
-<meta property="og:title" content="{title_ja}">
-<meta property="og:description" content="{summary_ja[:120]}">
+<title>{html_escape(title_ja)} | AI×セキュリティ ニュース日報</title>
+<meta name="description" content="{html_escape(summary_ja[:120])}">
+<meta property="og:title" content="{html_escape(title_ja)}">
+<meta property="og:description" content="{html_escape(summary_ja[:120])}">
 <meta property="og:url" content="{site_url}">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{title_ja}">
-<meta name="twitter:description" content="{summary_ja[:120]}">
+<meta name="twitter:title" content="{html_escape(title_ja)}">
+<meta name="twitter:description" content="{html_escape(summary_ja[:120])}">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="{site_url}">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "NewsArticle",
-  "headline": "{title_ja}",
-  "description": "{summary_ja[:200]}",
-  "datePublished": "{pub}",
-  "url": "{site_url}",
-  "image": "https://ayudle.github.io/ai-security-news/og-image.png",
-  "publisher": {{
-    "@type": "Organization",
-    "name": "AI×セキュリティ ニュース日報",
-    "url": "https://ayudle.github.io/ai-security-news/"
-  }},
-  "author": {{
-    "@type": "Person",
-    "name": "Ayudle"
-  }}
-}}
+{jsonld_str}
 </script>
 <style>
 :root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}}
@@ -1423,21 +1445,21 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   <div class="ap-head">
     <div class="ap-meta">
       <span class="ap-tier">{tier_label(source_tier)}</span>
-      <span class="ap-src">{source_name}</span>
+      <span class="ap-src">{html_escape(source_name)}</span>
       <span>{pub}</span>
       {imp_badge(imp)}
     </div>
-    <h1 class="ap-title">{title_ja}</h1>
+    <h1 class="ap-title">{html_escape(title_ja)}</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">{summary_ja}</div>
+    <div class="ap-body">{html_escape(summary_ja)}</div>
   </section>
 
-  {"<section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span><div class='insight-body'>" + insight + "</div></div></section>" if insight else ""}
+  {"<section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span><div class='insight-body'>" + html_escape(insight) + "</div></div></section>" if insight else ""}
 
-  {"<section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>" + imp_reason + "</div></section>" if imp_reason else ""}
+  {"<section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>" + html_escape(imp_reason) + "</div></section>" if imp_reason else ""}
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
@@ -1447,7 +1469,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     </div>
   </section>
 
-  {"<section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'>" + (f"<span class='cdc-rel-lbl'>CDC関連度：{cdc_rel_label}</span>" if cdc_rel_label else "") + "".join(f"<span class='cdc-badge-ap'>{ctx}</span>" for ctx in cdc_contexts) + "</div></section>" if cdc_relevance >= 1 and cdc_contexts else ""}
+  {"<section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'>" + (f"<span class='cdc-rel-lbl'>CDC関連度：{cdc_rel_label}</span>" if cdc_rel_label else "") + "".join(f"<span class='cdc-badge-ap'>{html_escape(ctx)}</span>" for ctx in cdc_contexts) + "</div></section>" if cdc_relevance >= 1 and cdc_contexts else ""}
 
   {matched_cols_html}
 
@@ -1455,14 +1477,14 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     <h3 class="ap-sec-title">元記事情報</h3>
     <div class="orig-box">
       <div class="lbl">原題</div>
-      <div>{title_en}</div>
+      <div>{html_escape(title_en)}</div>
       <div class="lbl" style="margin-top:10px">ソース・公開日</div>
-      <div>{source_name} / {pub}</div>
-      <div class="orig-en">{summary_en[:300]}</div>
+      <div>{html_escape(source_name)} / {pub}</div>
+      <div class="orig-en">{html_escape(summary_en[:300])}</div>
     </div>
     <div class="actions">
-      <a href="{url}" target="_blank" rel="noopener" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="{twitter_url}" target="_blank" rel="noopener" class="btn btn-secondary">Xでシェア</a>
+      <a href="{_safe_url(url)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
+      <a href="{twitter_url}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('{site_url}').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
