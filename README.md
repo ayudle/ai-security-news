@@ -179,13 +179,14 @@ X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --test
 ```
 /
 ├── .github/workflows/
-│   ├── daily.yml                     # GitHub Actions（毎日08:00自動実行）
-│   ├── post_x_dry_run.yml            # X投稿文スロット別dry-run生成（1日3回）
-│   └── post_x.yml                   # X本番投稿（初回は workflow_dispatch のみ）
+│   ├── daily.yml                     # RSS収集→要約→サイトビルド（毎朝04:10/06:10/08:10 JST）
+│   ├── weekly.yml                    # 週次ダイジェスト生成（月 07:00 JST）
+│   ├── rebuild.yml                   # HTMLのみ手動再ビルド（APIなし・workflow_dispatch）
+│   └── post_x.yml                   # X投稿（毎日20:30 JST daily-pick自動投稿 + 手動verify/test/post）
 ├── scripts/
 │   ├── fetch_and_summarize.py        # RSS収集 + Gemini APIで要約・タグ付け
 │   ├── build_site.py                 # HTMLサイト生成（タブUI・ダッシュボード）
-│   └── generate_x_posts.py          # X投稿文生成・投稿（--all / --slot / --post 対応）
+│   └── generate_x_posts.py          # X投稿文生成・投稿（--daily-pick / --slot / --post 対応）
 ├── columns/                          # 著者執筆コラム（Markdown）
 ├── docs/                             # GitHub Pagesの公開先
 │   ├── index.html                    # 自動生成トップページ
@@ -195,11 +196,9 @@ X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --test
 │   ├── weekly/                       # 週次レポート
 │   └── data/
 │       ├── latest.json               # 記事データ（JSON・90日分）
-│       ├── x_posts_daily.json        # X投稿候補3本一覧（--all・日次更新）
-│       ├── x_post_morning.json       # morning スロット投稿文（--slot morning）
-│       ├── x_post_noon.json          # noon スロット投稿文（--slot noon）
-│       ├── x_post_evening.json       # evening スロット投稿文（--slot evening）
-│       └── x_post_history.json       # 投稿履歴（date/slot/article_id/text_hash）
+│       ├── x_posts_daily.json        # X投稿候補3本一覧（daily.yml が毎朝生成・参考用）
+│       ├── x_post_daily_pick.json    # daily-pick 選定記事（post_x.yml が毎日更新）
+│       └── x_post_history.json       # 投稿履歴（date/slot/selection_mode/article_id）
 └── gas/
     └── send_newsletter.gs            # Gmail自動送信（Google Apps Script・オプション）
 ```
