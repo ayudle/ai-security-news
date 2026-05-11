@@ -91,6 +91,16 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 - 料金・API権限はX Developer Console側の設定に依存する
 - **schedule は未有効**。`post_x.yml` は現在 `workflow_dispatch` 手動実行のみ
 
+**1日1本運用（`--daily-pick`）**
+
+3スロット運用の代わりに、その日の代表記事1本だけを選定して正午に投稿するモード。
+
+- `imp*3 + cdc*2 + ctx*2 + tier + ai*2` の基本スコア＋キーワードマッチのポスト適性ボーナス（最大+5）で最上位記事を選定
+- `cdc_relevance==0`・タイトル/要約が空・既に投稿済みの記事は除外
+- `biz_tech` カテゴリで AI/Identity/MDR コンテキストを持たない記事は -2 補正
+- ハッシュタグは `#AIセキュリティ` ＋ コンテキスト固有タグ（例: `#ITDR`, `#MSSP`, `#脆弱性管理`）の2つ固定
+- 出力: `docs/data/x_post_daily_pick.json`、履歴: `selection_mode=daily_pick` で `x_post_history.json` に記録
+
 ```bash
 # CLIの使い方
 python scripts/generate_x_posts.py --verify-account           # 投稿先アカウントを確認（本番投稿前に必ず実行）
@@ -99,6 +109,11 @@ python scripts/generate_x_posts.py --all --dry-run            # 3スロット分
 python scripts/generate_x_posts.py --slot morning             # morning を生成・履歴記録（dry-run）
 python scripts/generate_x_posts.py --slot morning --post      # morning をXへ実際に投稿
 python scripts/generate_x_posts.py --slot morning --post --force  # 投稿済みでも強制再投稿
+
+# 1日1本運用
+python scripts/generate_x_posts.py --daily-pick               # 代表記事を選定（dry-run）
+python scripts/generate_x_posts.py --daily-pick --post        # 代表記事をXへ実際に投稿
+python scripts/generate_x_posts.py --daily-pick --post --force  # 投稿済みでも強制再投稿
 
 # テスト投稿（403 切り分け用）
 python scripts/generate_x_posts.py --test-post minimal  --post  # 最小文（URL・ハッシュタグなし）

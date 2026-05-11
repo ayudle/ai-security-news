@@ -30,7 +30,8 @@ from datetime import datetime, timezone, timedelta
 DATA_PATH    = "docs/data/latest.json"
 OUT_ALL      = "docs/data/x_posts_daily.json"
 OUT_SLOT_TPL = "docs/data/x_post_{slot}.json"
-HISTORY_PATH = "docs/data/x_post_history.json"
+HISTORY_PATH   = "docs/data/x_post_history.json"
+OUT_DAILY_PICK = "docs/data/x_post_daily_pick.json"
 BASE_URL          = "https://ayudle.github.io/ai-security-news/article"
 _X_API_BASE       = os.environ.get("X_API_BASE_URL", "https://api.x.com").rstrip("/")
 X_API_URL         = f"{_X_API_BASE}/2/tweets"
@@ -112,6 +113,29 @@ FALLBACK_DEFAULT = "セキュリティ対策の見直しと最新動向の確認
 
 _BAD_ENDING = frozenset("すしをにはがでとのなたらりれるく")
 
+# ── daily-pick スコアリング・フィルタ定数 ─────────────────────────────────
+DAILY_PICK_HIGH_KW = frozenset([
+    "AIエージェント", "LLM", "プロンプトインジェクション", "ジェイルブレイク",
+    "モデル汚染", "データポイズニング", "非人間型ID", "ITDR", "権限", "CVE", "KEV", "脆弱性",
+])
+DAILY_PICK_MED_KW = frozenset([
+    "SOC", "MDR", "CISO", "Exposure", "露出", "攻撃", "インシデント", "ガバナンス",
+])
+DAILY_PICK_CONTEXT_TAG: dict[str, str] = {
+    "Security for AI": "#生成AIセキュリティ",
+    "AI for Security": "#SOC",
+    "SOC運用変化":     "#SOC",
+    "Identity/ITDR":   "#ITDR",
+    "Exposure管理":    "#脆弱性管理",
+    "MDR/MSSP設計":    "#MSSP",
+    "CISO報告":        "#CISO",
+    "サービス企画":    "#MSSP",
+    "顧客課題":        "#サイバーセキュリティ",
+}
+_DAILY_PICK_EXEMPT_CTX = frozenset([
+    "Security for AI", "AI for Security", "Identity/ITDR", "MDR/MSSP設計",
+])
+
 # ── テスト投稿固定文 ──────────────────────────────────────────────────────
 TEST_POST_TEXTS: dict[str, str] = {
     "minimal": "AI×セキュリティ ニュース日報の自動投稿テストです。",
@@ -158,6 +182,40 @@ def _sort_key(article: dict) -> tuple:
         -_pub_ts(article),
         article.get("id", ""),
     )
+
+
+def _post_fitness_bonus(article: dict) -> int:
+    """タイトル・要約のキーワードマッチでポスト適性ボーナスを計算する（最大+5）。"""
+    text = " ".join([
+        article.get("title_ja") or "",
+        article.get("title") or "",
+        article.get("summary_ja") or "",
+    ])
+    bonus = 0
+    for kw in DAILY_PICK_HIGH_KW:
+        if kw in text:
+            bonus += 3
+    for kw in DAILY_PICK_MED_KW:
+        if kw in text:
+            bonus += 2
+    return min(bonus, 5)
+
+
+def _daily_pick_score(article: dict) -> int:
+    imp  = IMPORTANCE_SCORE.get(article.get("importance", ""), 0)
+    tier = TIER_SCORE.get(article.get("source_tier", ""), 0)
+    cdc  = article.get("cdc_relevance", 0)
+    ai   = article.get("ai_score", 0)
+    ctx  = max(
+        (CDC_CONTEXT_PRIORITY.get(c, 0) for c in article.get("cdc_context", [])),
+        default=0,
+    )
+    base = imp * 3 + cdc * 2 + ctx * 2 + tier + ai * 2
+    if article.get("tag_main_id") == "biz_tech":
+        ctx_set = set(article.get("cdc_context", []))
+        if not ctx_set & _DAILY_PICK_EXEMPT_CTX:
+            base -= 2
+    return base + _post_fitness_bonus(article)
 
 
 # ── ハッシュタグ生成 ───────────────────────────────────────────────────────
@@ -254,6 +312,23 @@ def _extract_insight(article: dict, budget: int) -> str:
     return _first_sentence(fallback)
 
 
+def _extract_insight_clean(article: dict, budget: int) -> str:
+    """insight/summary_ja から最大budget字・末尾「。」・「…」なしで抽出する。"""
+    for key in ("insight", "summary_ja", "importance_reason"):
+        raw = (article.get(key) or "").strip()
+        if not raw:
+            continue
+        first = _first_sentence(raw)
+        if first.endswith("。") and len(first) <= budget:
+            return first
+    main_id  = article.get("tag_main_id", "")
+    fallback = FALLBACK_SENTENCES.get(main_id, FALLBACK_DEFAULT)
+    first    = _first_sentence(fallback)
+    if first.endswith("。") and len(first) <= budget:
+        return first
+    return FALLBACK_DEFAULT
+
+
 def build_post_text(article: dict, hashtags: list[str]) -> str:
     title = (article.get("title_ja") or article.get("title") or "").strip()
     url   = f"{BASE_URL}/{article['id']}.html"
@@ -296,6 +371,59 @@ def build_post_text(article: dict, hashtags: list[str]) -> str:
     return text[:277] + "…" if len(text) > MINIMUM else text
 
 
+def _build_daily_pick_hashtags(article: dict) -> list[str]:
+    """daily-pick用: #AIセキュリティ + context固有タグ（2つ固定）。"""
+    ctx_list = article.get("cdc_context", []) or []
+    second   = "#サイバーセキュリティ"
+    for ctx in ctx_list:
+        candidate = DAILY_PICK_CONTEXT_TAG.get(ctx)
+        if candidate and candidate != "#AIセキュリティ":
+            second = candidate
+            break
+    return ["#AIセキュリティ", second]
+
+
+def build_daily_pick_text(article: dict, hashtags: list[str]) -> str:
+    """daily-pick用: insight必須・URL付き・2タグ固定の投稿文を生成する。"""
+    title    = (article.get("title_ja") or article.get("title") or "").strip()
+    url      = f"{BASE_URL}/{article['id']}.html"
+    tags_str = " ".join(hashtags)
+
+    def _overhead(title_str: str) -> int:
+        return (
+            len("【AI×セキュリティ】\n\n")
+            + len(title_str) + len("\n\n")
+            + len("\n\n") + len(url) + len("\n")
+            + len(tags_str)
+        )
+
+    def _compose(title_str: str, insight: str) -> str:
+        return f"【AI×セキュリティ】\n\n{title_str}\n\n{insight}\n\n{url}\n{tags_str}"
+
+    TARGET      = 260
+    MINIMUM     = 280
+    INSIGHT_MAX = 60
+
+    budget = min(INSIGHT_MAX, TARGET - _overhead(title))
+    if budget >= 10:
+        insight = _extract_insight_clean(article, budget)
+        text    = _compose(title, insight)
+        if len(text) <= TARGET:
+            return text
+
+    short_title = _natural_cut(title, 35)
+    budget = min(INSIGHT_MAX, TARGET - _overhead(short_title))
+    if budget >= 10:
+        insight = _extract_insight_clean(article, budget)
+        text    = _compose(short_title, insight)
+        if len(text) <= MINIMUM:
+            return text
+
+    insight = _extract_insight_clean(article, 30)
+    text    = _compose(short_title, insight)
+    return text[:277] + "…" if len(text) > MINIMUM else text
+
+
 # ── 投稿オブジェクト生成 ─────────────────────────────────────────────────
 
 def _make_post(slot_info: dict, article: dict) -> dict:
@@ -312,6 +440,28 @@ def _make_post(slot_info: dict, article: dict) -> dict:
         "importance":         article.get("importance", ""),
         "cdc_relevance":      article.get("cdc_relevance", 0),
         "score":              _score(article),
+        "hashtags":           hashtags,
+        "text":               text,
+        "char_count":         len(text),
+        "status":             "dry_run",
+    }
+
+
+def _make_daily_pick_post(article: dict) -> dict:
+    aid      = article["id"]
+    hashtags = _build_daily_pick_hashtags(article)
+    text     = build_daily_pick_text(article, hashtags)
+    return {
+        "slot":               "noon",
+        "scheduled_time_jst": "12:30",
+        "selection_mode":     "daily_pick",
+        "article_id":         aid,
+        "article_title":      (article.get("title_ja") or article.get("title", "")).strip(),
+        "article_page_url":   f"{BASE_URL}/{aid}.html",
+        "source_name":        article.get("source_name", ""),
+        "importance":         article.get("importance", ""),
+        "cdc_relevance":      article.get("cdc_relevance", 0),
+        "score":              _daily_pick_score(article),
         "hashtags":           hashtags,
         "text":               text,
         "char_count":         len(text),
@@ -454,6 +604,75 @@ def _record_test_failed(
     hist["history"].append(entry)
     _save_history(hist)
     print(f"[HISTORY] test_failed を記録しました: type={test_type} error={error}")
+
+
+def _check_daily_pick_posted(date_str: str) -> bool:
+    """同じ date で selection_mode=daily_pick かつ status=posted のレコードが存在するか確認する。"""
+    hist = _load_history()
+    return any(
+        e.get("date") == date_str
+        and e.get("selection_mode") == "daily_pick"
+        and e.get("status") == "posted"
+        for e in hist["history"]
+    )
+
+
+def _record_daily_pick_posted(
+    post: dict, tweet_id: str, date_str: str, generated_at: str, posted_at: str
+) -> None:
+    entry = {
+        "date":           date_str,
+        "slot":           post["slot"],
+        "selection_mode": "daily_pick",
+        "article_id":     post["article_id"],
+        "text_hash":      _text_hash(post["text"]),
+        "status":         "posted",
+        "tweet_id":       tweet_id,
+        "posted_at":      posted_at,
+        "generated_at":   generated_at,
+    }
+    hist = _load_history()
+    hist["history"].append(entry)
+    _save_history(hist)
+    print(f"[HISTORY] daily_pick posted を記録しました: tweet_id={tweet_id}")
+
+
+def _record_daily_pick_failed(
+    post: dict, error: str, date_str: str, generated_at: str, failed_at: str
+) -> None:
+    entry = {
+        "date":           date_str,
+        "slot":           post["slot"],
+        "selection_mode": "daily_pick",
+        "article_id":     post["article_id"],
+        "text_hash":      _text_hash(post["text"]),
+        "status":         "failed",
+        "error":          error,
+        "failed_at":      failed_at,
+        "generated_at":   generated_at,
+    }
+    hist = _load_history()
+    hist["history"].append(entry)
+    _save_history(hist)
+    print(f"[HISTORY] daily_pick failed を記録しました: {error}")
+
+
+def _filter_for_daily_pick(articles: list[dict], force: bool = False) -> list[dict]:
+    """daily-pick候補フィルタリング。cdc_relevance=0・タイトル/要約空・投稿済み記事を除外する。"""
+    hist = _load_history()
+    posted_ids: set[str] = set()
+    if not force:
+        for e in hist["history"]:
+            if e.get("status") == "posted":
+                posted_ids.add(e.get("article_id", ""))
+
+    return [
+        a for a in articles
+        if a.get("cdc_relevance", 0) != 0
+        and (a.get("title_ja") or "").strip()
+        and (a.get("summary_ja") or "").strip()
+        and a.get("id") not in posted_ids
+    ]
 
 
 # ── X API共通：OAuth認証ヘルパー ─────────────────────────────────────────
@@ -619,9 +838,13 @@ def _parse_args() -> argparse.Namespace:
         "--slot", choices=["morning", "noon", "evening"],
         help="指定スロット1本を生成する"
     )
+    mode_group.add_argument(
+        "--daily-pick", dest="daily_pick", action="store_true",
+        help="1日1本運用：代表記事1本を選定してnoonスロットに投稿（--post と組み合わせて使う）"
+    )
     parser.add_argument(
         "--post", action="store_true", default=False,
-        help="X APIへ実際に投稿する（--slot と組み合わせて使う。--all と同時使用禁止）"
+        help="X APIへ実際に投稿する（--slot / --daily-pick と組み合わせて使う。--all と同時使用禁止）"
     )
     parser.add_argument(
         "--force", action="store_true", default=False,
@@ -648,21 +871,21 @@ def _parse_args() -> argparse.Namespace:
     args = parser.parse_args()
 
     # ── バリデーション ────────────────────────────────────────────────────
-    if args.verify_account and (args.post or args.force or args.slot or args.mode_all):
+    if args.verify_account and (args.post or args.force or args.slot or args.mode_all or args.daily_pick):
         parser.error("--verify-account は単独で使用してください。")
     if args.test_post and not args.post:
         parser.error("--test-post には --post が必要です。")
-    if args.test_post and (args.slot or args.mode_all or args.force):
-        parser.error("--test-post は --slot / --all / --force と同時に使えません。")
+    if args.test_post and (args.slot or args.mode_all or args.force or args.daily_pick):
+        parser.error("--test-post は --slot / --all / --force / --daily-pick と同時に使えません。")
     if args.post and args.mode_all:
         parser.error("--all --post は禁止です。--slot morning|noon|evening を指定してください。")
-    if args.post and not args.slot and not args.test_post:
-        parser.error("--post には --slot morning|noon|evening または --test-post が必要です。")
+    if args.post and not args.slot and not args.test_post and not args.daily_pick:
+        parser.error("--post には --slot morning|noon|evening または --test-post または --daily-pick が必要です。")
     if args.force and not args.post:
         parser.error("--force は --post と組み合わせて使ってください。")
 
-    # デフォルト: --all（--test-post 使用時は除外）
-    if not args.slot and not args.test_post:
+    # デフォルト: --all（--test-post / --daily-pick 使用時は除外）
+    if not args.slot and not args.test_post and not args.daily_pick:
         args.mode_all = True
 
     return args
@@ -737,6 +960,93 @@ def main() -> None:
     date_str  = now_jst.strftime("%Y-%m-%d")
     generated = now_jst.isoformat()
     ranked    = sorted(articles, key=_sort_key) if articles else []
+
+    # ──────────────────────────────────────────────────────────────────────
+    # --daily-pick モード
+    # ──────────────────────────────────────────────────────────────────────
+    if args.daily_pick:
+        candidates = _filter_for_daily_pick(articles, force=args.force)
+        if not candidates:
+            print("[WARN] daily-pick の候補記事がありません。")
+            sys.exit(0)
+
+        ranked_dp = sorted(
+            candidates,
+            key=lambda a: (-_daily_pick_score(a), -_pub_ts(a), a.get("id", "")),
+        )
+        article = ranked_dp[0]
+        post    = _make_daily_pick_post(article)
+
+        print(f"[{'POST' if args.post else 'DRY-RUN'}] daily-pick 選定結果:")
+        print(f"  article_id={post['article_id']}")
+        print(f"  score={post['score']}")
+        print(f"  title={post['article_title']}")
+        print()
+        _print_post(post)
+
+        if not args.post:
+            _write_slot_json(OUT_DAILY_PICK, {
+                "date":            date_str,
+                "generated_at":    generated,
+                "mode":            "dry_run",
+                "selection_mode":  "daily_pick",
+                "post":            post,
+            })
+            return
+
+        # ── 本番投稿（--post）──────────────────────────────────────────
+        if post["char_count"] > 280:
+            print(
+                f"[ERROR] 投稿文が280文字を超えています（{post['char_count']}字）。"
+                "投稿を中止します。"
+            )
+            sys.exit(1)
+
+        if not args.force and _check_daily_pick_posted(date_str):
+            print(
+                f"[SKIP] {date_str} の daily-pick は既に投稿済みです。"
+                "--force を指定すると強制再投稿できます。"
+            )
+            sys.exit(0)
+
+        print(f"[VERIFY] 投稿先アカウントを確認します... (base={_X_API_BASE})")
+        try:
+            username, user_id, _ = _get_account_info()
+            print(f"[OK] 投稿先: @{username} (id={user_id})")
+        except RuntimeError as e:
+            print(f"[ERROR] アカウント確認に失敗しました: {e}")
+            sys.exit(1)
+
+        print("[POST] X APIへ投稿します...")
+        success, tweet_id, error = _post_to_x(post["text"])
+        action_at = datetime.now(JST).isoformat()
+
+        if success:
+            print(f"[OK] 投稿成功: tweet_id={tweet_id}")
+            post["status"]   = "posted"
+            post["tweet_id"] = tweet_id
+            _record_daily_pick_posted(post, tweet_id, date_str, generated, action_at)
+            _write_slot_json(OUT_DAILY_PICK, {
+                "date":           date_str,
+                "generated_at":   generated,
+                "mode":           "posted",
+                "selection_mode": "daily_pick",
+                "post":           post,
+            })
+        else:
+            print(f"[ERROR] 投稿失敗: {error}")
+            post["status"] = "failed"
+            post["error"]  = error
+            _record_daily_pick_failed(post, error, date_str, generated, action_at)
+            _write_slot_json(OUT_DAILY_PICK, {
+                "date":           date_str,
+                "generated_at":   generated,
+                "mode":           "failed",
+                "selection_mode": "daily_pick",
+                "post":           post,
+            })
+            sys.exit(1)
+        return
 
     # ──────────────────────────────────────────────────────────────────────
     # --all モード（dry-runのみ、投稿なし）
