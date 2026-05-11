@@ -979,7 +979,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
     <div class="about-hero">
       <div class="about-hero-name">Ayudle</div>
       <div class="about-hero-role">AI×セキュリティ ニュース日報 — 運営者</div>
-      <p class="about-hero-lead">SOC/CDC設計者の視点で、AI×セキュリティの動向を毎日構造的に読み解くメディアです。「何が起きたか」だけでなく、「SOC/MDR/MSSPの設計にどう影響するか」まで届けることを目指しています。</p>
+      <p class="about-hero-lead">SOC/CDCサービス設計に関わる実務者の視点で、AI×セキュリティの動向を読み解き、将来のセキュリティ運用アーキテクチャを考えるための設計ノートです。「何が起きたか」だけでなく、「SOC/MDR/MSSPの設計にどう影響するか」まで整理することを目指しています。</p>
     </div>
 
     <!-- 3つの観点軸 -->
@@ -1005,8 +1005,8 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
     <div class="about-section">
       <div class="about-section-lbl">Profile</div>
       <div class="about-text">
-        <p style="margin-bottom:1rem">セキュリティエンジニアです。セキュリティ監視・運用の高度化・自動化、AI×セキュリティの検証・サービス開発に携わってきました。MSSP/CDCサービス設計の観点から、AI for SecurityとSecurity for AIの両面を継続的に追っています。</p>
-        <p>業界の標準化・研究活動にも関わりながら、現場のSOC/CDCが「AIとどう共存するか」という問いを軸に情報を整理しています。このサイトはその思考整理の場でもあります。</p>
+        <p style="margin-bottom:1rem">セキュリティエンジニアです。大手SIerのセキュリティ領域で、SOC高度化・SIEM/SOAR構築・MSSP/MDRサービス設計・AI SOCの検証・Agentic AIのリスク評価など、セキュリティ監視運用に関わる幅広い実務に携わってきました。</p>
+        <p>業界動向や研究・標準化の議論も追いながら、現場のSOC/CDCが「AIとどう共存するか」という問いを軸に情報を整理しています。このサイトはその思考整理の場でもあります。</p>
       </div>
     </div>
 
@@ -1014,9 +1014,9 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
     <div class="about-section">
       <div class="about-section-lbl">なぜこのサイトを作ったか</div>
       <div class="about-text">
-        <p style="margin-bottom:1rem">AI×セキュリティの情報は英語・断片的・速度が速い。日本語でSOC/CDC設計者の視点から「今日の動向がSOCにとって何を意味するか」を毎日整理する場所が必要だと感じていました。</p>
-        <p style="margin-bottom:1rem">単なる翻訳ニュースではなく、CDC設計者として「示唆・学び」まで届けることがこのサイトのコンセプトです。Gemini APIとGitHub Actionsで完全自動化しつつ、コラムでは自分の考察を書き続けています。</p>
-        <p>長期的には、AIエージェント時代のSOC/CDCが何を監視すべきかを構造的に可視化するプラットフォームへ育てていく予定です。</p>
+        <p style="margin-bottom:1rem">AI×セキュリティの情報は英語・断片的・速度が速い。日本語でSOC/CDCサービス設計に関わる実務者の視点から「今日の動向がSOCにとって何を意味するか」を毎日整理する場所が必要だと感じていました。</p>
+        <p style="margin-bottom:1rem">単なる翻訳ニュースではなく、SOC/CDCサービス設計に関わる実務者の視点から、「示唆・学び」まで整理することを目指しています。Gemini APIとGitHub Actionsで完全自動化しつつ、コラムでは自分の考察を書き続けています。</p>
+        <p>長期的には、AIエージェント時代のSOC/CDCが何を監視し、どう設計されるべきかを考えるための知識基盤へ育てていきたいと考えています。</p>
       </div>
     </div>
 
