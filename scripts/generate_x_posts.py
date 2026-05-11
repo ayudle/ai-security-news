@@ -135,7 +135,7 @@ _DAILY_PICK_EXEMPT_CTX = frozenset([
 
 # ── テスト投稿固定文 ──────────────────────────────────────────────────────
 TEST_POST_TEXTS: dict[str, str] = {
-    "minimal": "AI×セキュリティ ニュース日報の自動投稿テストです。",
+    "minimal": "Cyber Defense Notes の自動投稿テストです。",
     "no-url": (
         "【AI×セキュリティ】\n\n"
         "本日の注目記事を更新しました。\n"
