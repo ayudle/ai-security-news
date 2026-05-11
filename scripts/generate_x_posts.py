@@ -112,6 +112,23 @@ FALLBACK_DEFAULT = "セキュリティ対策の見直しと最新動向の確認
 
 _BAD_ENDING = frozenset("すしをにはがでとのなたらりれるく")
 
+# ── テスト投稿固定文 ──────────────────────────────────────────────────────
+TEST_POST_TEXTS: dict[str, str] = {
+    "minimal": "AI×セキュリティ ニュース日報の自動投稿テストです。",
+    "no-url": (
+        "【AI×セキュリティ】\n\n"
+        "本日の注目記事を更新しました。\n"
+        "AIシステムの権限管理・監視・セキュリティ評価が重要なテーマになっています。\n\n"
+        "#AIセキュリティ"
+    ),
+    "with-url": (
+        "【AI×セキュリティ】\n\n"
+        "本日の注目記事を更新しました。\n\n"
+        "https://ayudle.github.io/ai-security-news/\n"
+        "#AIセキュリティ"
+    ),
+}
+
 
 # ── スコアリング関数 ───────────────────────────────────────────────────────
 
@@ -252,13 +269,14 @@ def build_post_text(article: dict, hashtags: list[str]) -> str:
     def _compose(title_str: str, insight: str, tags_str: str) -> str:
         return f"【AI×セキュリティ】\n\n{title_str}\n\n{insight}\n\n{url}\n{tags_str}"
 
-    TARGET  = 260
-    MINIMUM = 280
+    TARGET      = 260
+    MINIMUM     = 280
+    INSIGHT_MAX = 60   # 短い一文ルール（当面60字上限）
     tags_full = " ".join(hashtags)
     tags_2    = " ".join(hashtags[:2])
 
     for tags_str in (tags_full, tags_2):
-        budget = TARGET - _overhead(title, tags_str)
+        budget = min(INSIGHT_MAX, TARGET - _overhead(title, tags_str))
         if budget >= 10:
             insight = _extract_insight(article, budget)
             text = _compose(title, insight, tags_str)
@@ -266,7 +284,7 @@ def build_post_text(article: dict, hashtags: list[str]) -> str:
                 return text
 
     short_title = _natural_cut(title, 35)
-    budget = TARGET - _overhead(short_title, tags_2)
+    budget = min(INSIGHT_MAX, TARGET - _overhead(short_title, tags_2))
     if budget >= 10:
         insight = _extract_insight(article, budget)
         text = _compose(short_title, insight, tags_2)
@@ -282,7 +300,7 @@ def build_post_text(article: dict, hashtags: list[str]) -> str:
 
 def _make_post(slot_info: dict, article: dict) -> dict:
     aid      = article["id"]
-    hashtags = build_hashtags(article)
+    hashtags = ["#AIセキュリティ"]          # 当面1タグに絞る（切り分け中）
     text     = build_post_text(article, hashtags)
     return {
         "slot":               slot_info["slot"],
@@ -402,6 +420,40 @@ def _record_failed(
     hist["history"].append(entry)
     _save_history(hist)
     print(f"[HISTORY] failed を記録しました: {error}")
+
+
+def _record_test_posted(
+    test_type: str, text: str, tweet_id: str, date_str: str, posted_at: str
+) -> None:
+    entry = {
+        "date":           date_str,
+        "test_post_type": test_type,
+        "text_hash":      _text_hash(text),
+        "status":         "posted",
+        "tweet_id":       tweet_id,
+        "posted_at":      posted_at,
+    }
+    hist = _load_history()
+    hist["history"].append(entry)
+    _save_history(hist)
+    print(f"[HISTORY] test_posted を記録しました: type={test_type} tweet_id={tweet_id}")
+
+
+def _record_test_failed(
+    test_type: str, text: str, error: str, date_str: str, failed_at: str
+) -> None:
+    entry = {
+        "date":           date_str,
+        "test_post_type": test_type,
+        "text_hash":      _text_hash(text),
+        "status":         "failed",
+        "error":          error,
+        "failed_at":      failed_at,
+    }
+    hist = _load_history()
+    hist["history"].append(entry)
+    _save_history(hist)
+    print(f"[HISTORY] test_failed を記録しました: type={test_type} error={error}")
 
 
 # ── X API共通：OAuth認証ヘルパー ─────────────────────────────────────────
@@ -583,21 +635,34 @@ def _parse_args() -> argparse.Namespace:
         "--verify-account", dest="verify_account", action="store_true", default=False,
         help="X APIアカウント情報（username/id/name）を表示して終了する（投稿しない）"
     )
+    parser.add_argument(
+        "--test-post", dest="test_post",
+        choices=["minimal", "no-url", "with-url"],
+        default=None,
+        help=(
+            "テスト投稿モード。--post と組み合わせて使う（--slot 不要）。"
+            "固定文を投稿して 403 の切り分けに使用する。"
+        ),
+    )
 
     args = parser.parse_args()
 
     # ── バリデーション ────────────────────────────────────────────────────
     if args.verify_account and (args.post or args.force or args.slot or args.mode_all):
         parser.error("--verify-account は単独で使用してください。")
+    if args.test_post and not args.post:
+        parser.error("--test-post には --post が必要です。")
+    if args.test_post and (args.slot or args.mode_all or args.force):
+        parser.error("--test-post は --slot / --all / --force と同時に使えません。")
     if args.post and args.mode_all:
         parser.error("--all --post は禁止です。--slot morning|noon|evening を指定してください。")
-    if args.post and not args.slot:
-        parser.error("--post には --slot morning|noon|evening が必要です。")
+    if args.post and not args.slot and not args.test_post:
+        parser.error("--post には --slot morning|noon|evening または --test-post が必要です。")
     if args.force and not args.post:
         parser.error("--force は --post と組み合わせて使ってください。")
 
-    # デフォルト: --all
-    if not args.slot:
+    # デフォルト: --all（--test-post 使用時は除外）
+    if not args.slot and not args.test_post:
         args.mode_all = True
 
     return args
@@ -607,6 +672,43 @@ def _parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = _parse_args()
+
+    # ── --test-post: テスト投稿して終了 ──────────────────────────────────
+    if args.test_post:
+        test_type = args.test_post
+        text      = TEST_POST_TEXTS[test_type]
+        now_jst   = datetime.now(JST)
+        date_str  = now_jst.strftime("%Y-%m-%d")
+
+        print(f"[TEST-POST] テスト投稿モード: {test_type}")
+        print(f"[TEST-POST] 投稿文（{len(text)}文字）:")
+        print("─" * 60)
+        print(text)
+        print("─" * 60)
+        print()
+
+        # アカウント確認（--verify-account と同じ処理）
+        print(f"[VERIFY] 投稿先アカウントを確認します... (base={_X_API_BASE})")
+        try:
+            username, user_id, _ = _get_account_info()
+            print(f"[OK] 投稿先: @{username} (id={user_id})")
+        except RuntimeError as e:
+            print(f"[ERROR] アカウント確認に失敗しました: {e}")
+            sys.exit(1)
+
+        # X API 投稿
+        print("[POST] X APIへテスト投稿します...")
+        success, tweet_id, error = _post_to_x(text)
+        action_at = datetime.now(JST).isoformat()
+
+        if success:
+            print(f"[OK] テスト投稿成功: tweet_id={tweet_id}")
+            _record_test_posted(test_type, text, tweet_id, date_str, action_at)
+        else:
+            print(f"[ERROR] テスト投稿失敗: {error}")
+            _record_test_failed(test_type, text, error, date_str, action_at)
+            sys.exit(1)
+        return
 
     # ── --verify-account: アカウント確認して終了 ──────────────────────────
     if args.verify_account:

@@ -19,13 +19,14 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: '実行モード（verify=アカウント確認のみ / post=本番投稿）'
+        description: '実行モード（verify=確認のみ / post=本番投稿 / test=テスト投稿）'
         required: true
         default: 'verify'
         type: choice
         options:
           - verify
           - post
+          - test
       slot:
         description: '投稿スロット（mode=post のときのみ有効）'
         required: false
@@ -35,6 +36,15 @@ on:
           - morning
           - noon
           - evening
+      test_post:
+        description: 'テスト投稿の種別（mode=test のときのみ有効）'
+        required: false
+        default: 'minimal'
+        type: choice
+        options:
+          - minimal
+          - no-url
+          - with-url
       force:
         description: '強制再投稿（mode=post かつ既にposted済みでも投稿する）'
         required: false
@@ -82,6 +92,31 @@ jobs:
           echo "=== アカウント確認モード ==="
           echo "投稿は行いません。"
           python scripts/generate_x_posts.py --verify-account
+
+      # ── mode=test ────────────────────────────────────────────────────────
+      - name: Test post to X
+        if: inputs.mode == 'test'
+        env:
+          X_API_KEY:        ${{ secrets.X_API_KEY }}
+          X_API_SECRET:     ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN:   ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET:  ${{ secrets.X_ACCESS_SECRET }}
+          X_API_BASE_URL:   ${{ inputs.api_base }}
+        run: |
+          TEST_POST="${{ inputs.test_post }}"
+          echo "=== テスト投稿モード: $TEST_POST ==="
+          python scripts/generate_x_posts.py --test-post "$TEST_POST" --post
+
+      - name: Commit and push (mode=test)
+        if: inputs.mode == 'test'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          git add docs/data/x_post_history.json
+          git diff --cached --quiet && echo "変更なし（スキップ or 変更なし）" && exit 0
+          git commit -m "X test-post: ${TODAY} ${{ inputs.test_post }}"
+          git push --force-with-lease
 
       # ── mode=post ────────────────────────────────────────────────────────
       - name: Validate slot (mode=post)

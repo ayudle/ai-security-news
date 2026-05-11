@@ -93,12 +93,17 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 
 ```bash
 # CLIの使い方
-python scripts/generate_x_posts.py --verify-account      # 投稿先アカウントを確認（本番投稿前に必ず実行）
-python scripts/generate_x_posts.py                       # --all と同じ（dry-run）
-python scripts/generate_x_posts.py --all --dry-run       # 3スロット分まとめて生成（投稿なし）
-python scripts/generate_x_posts.py --slot morning        # morning を生成・履歴記録（dry-run）
-python scripts/generate_x_posts.py --slot morning --post  # morning をXへ実際に投稿
+python scripts/generate_x_posts.py --verify-account           # 投稿先アカウントを確認（本番投稿前に必ず実行）
+python scripts/generate_x_posts.py                            # --all と同じ（dry-run）
+python scripts/generate_x_posts.py --all --dry-run            # 3スロット分まとめて生成（投稿なし）
+python scripts/generate_x_posts.py --slot morning             # morning を生成・履歴記録（dry-run）
+python scripts/generate_x_posts.py --slot morning --post      # morning をXへ実際に投稿
 python scripts/generate_x_posts.py --slot morning --post --force  # 投稿済みでも強制再投稿
+
+# テスト投稿（403 切り分け用）
+python scripts/generate_x_posts.py --test-post minimal  --post  # 最小文（URL・ハッシュタグなし）
+python scripts/generate_x_posts.py --test-post no-url   --post  # ハッシュタグあり・URLなし
+python scripts/generate_x_posts.py --test-post with-url --post  # URL + ハッシュタグあり
 ```
 
 > **本番投稿前に必ず `--verify-account` を実行し、想定のアカウントに紐づいていることを確認してください。**  
@@ -123,16 +128,28 @@ python scripts/generate_x_posts.py --slot morning --post --force  # 投稿済み
 
 > `mode` のデフォルトは `verify`。誤って `post` を押しても slot を空にすればエラーで止まります。
 
-**403 エラーが出たときの切り分け：**
+**403 エラーの切り分け手順：**
 
-`You are not permitted to perform this action` が出た場合、ベースURLを切り替えて試してください。
+`You are not permitted to perform this action` が出た場合、以下の順番でテスト投稿を試してください。
+
+| ステップ | コマンド / Actions操作 | 成功したら |
+|---------|----------------------|-----------|
+| **1** | `--test-post minimal --post` | ステップ2へ |
+| **2** | `--test-post no-url --post` | ステップ3へ |
+| **3** | `--test-post with-url --post` | 通常投稿へ |
+
+- **minimal から失敗する場合** → X API の POST 権限問題（Developer Portal で "Read and Write" 権限を確認）
+- **with-url だけ失敗する場合** → URL付き投稿・クレジット・API権限の問題
+- **no-url まで成功・with-url 失敗** → URL形式または外部リンク制限の可能性
+
+GitHub Actions では `Run workflow` → `mode=test` → `test_post=minimal` を選択して実行。  
+ベースURL切り替えも併用可能：`api_base=https://api.twitter.com` を選択。
 
 ```bash
 # ローカルで試す場合
-X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --slot morning --post
+X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --test-post minimal --post
 ```
 
-GitHub Actions では `Run workflow` → `api_base=https://api.twitter.com` を選択して実行。  
 `X_API_BASE_URL` 未指定時は `https://api.x.com` を使用します。
 
 ---
