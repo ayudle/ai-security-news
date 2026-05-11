@@ -467,6 +467,32 @@ def build_html(data, weekly_list=None, columns=None):
         n = len(day.get("articles",[]))
         archive_rows += f'<div class="arc-row"><a href="archive/{d}.html" class="arc-link">{d}</a><span class="arc-n">{n}件</span></div>\n'
 
+    # 記事検索用データ（history全件フラット化・id重複排除・日付付与）
+    _srch_seen = set()
+    search_articles = []
+    for _day in history:
+        _d = _day.get("date", "")
+        for _a in _day.get("articles", []):
+            _aid = _a.get("id") or ""
+            if not _aid or _aid in _srch_seen:
+                continue
+            _srch_seen.add(_aid)
+            search_articles.append({
+                "id":            _aid,
+                "date":          _d,
+                "title_ja":      _a.get("title_ja") or _a.get("title", ""),
+                "summary_ja":    (_a.get("summary_ja") or "")[:200],
+                "insight":       (_a.get("insight") or "")[:150],
+                "tag_main_id":   _a.get("tag_main_id", ""),
+                "tag_main_label":_a.get("tag_main_label", ""),
+                "tag_subs":      _a.get("tag_subs", [])[:4],
+                "cdc_context":   _a.get("cdc_context", [])[:4],
+                "cdc_relevance": _a.get("cdc_relevance", 0),
+                "related_keywords": _a.get("related_keywords", [])[:6],
+                "source_name":   _a.get("source_name", ""),
+            })
+    search_json = json.dumps(search_articles, ensure_ascii=False).replace('</', '<\\/')
+
     # 週次レポートリンク（#todayペイン内・示唆ボックス直下）
     weekly_today_link = ""
     if weekly_list:
@@ -732,6 +758,41 @@ a{{color:inherit;text-decoration:none}}
 .col-tag{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}}
 .col-intro{{font-size:12px;color:var(--dim);margin-bottom:16px;line-height:1.65}}
 .col-read-link{{display:inline-block;font-size:12px;color:var(--accent);padding:4px 0}}
+.srch-desc{{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:14px}}
+.srch-input-wrap{{position:relative;margin-bottom:14px}}
+.srch-input{{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:10px 14px 10px 36px;font-size:14px;font-family:inherit;outline:none;transition:border-color .15s}}
+.srch-input:focus{{border-color:var(--accent)}}
+.srch-input-icon{{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:14px;pointer-events:none}}
+.srch-section-lbl{{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:7px}}
+.srch-themes{{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}}
+.srch-theme-btn{{font-size:11px;padding:5px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}}
+.srch-theme-btn:hover{{border-color:var(--accent);color:var(--accent)}}
+.srch-theme-btn.on{{background:#0d1e36;border-color:var(--accent);color:var(--accent);font-weight:600}}
+.srch-filters{{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}}
+.srch-filter-row{{display:flex;flex-wrap:wrap;align-items:center;gap:6px}}
+.srch-filter-lbl{{font-size:10px;font-weight:700;color:var(--dim);letter-spacing:.05em;min-width:60px;flex-shrink:0}}
+.srch-chip{{font-size:11px;padding:3px 10px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}}
+.srch-chip:hover{{border-color:var(--muted);color:var(--text)}}
+.srch-chip.on{{background:#0d1e36;border-color:var(--accent);color:var(--accent)}}
+.srch-meta{{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}}
+.srch-count{{font-size:11px;color:var(--dim)}}
+.srch-clear-btn{{font-size:11px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .15s}}
+.srch-clear-btn:hover{{border-color:var(--muted);color:var(--text)}}
+.srch-card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:border-color .15s;text-decoration:none;display:block}}
+.srch-card:hover{{border-color:#3a3a38}}
+.srch-card-meta{{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:6px}}
+.srch-card-title{{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:5px}}
+.srch-card-summary{{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
+.srch-card-tags{{display:flex;flex-wrap:wrap;gap:4px}}
+.srch-more-btn{{font-size:12px;padding:7px 20px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s}}
+.srch-more-btn:hover{{border-color:var(--accent);color:var(--accent)}}
+.srch-arc-details{{margin-top:28px;border-top:1px solid var(--border);padding-top:16px}}
+.srch-arc-summary{{font-size:11px;color:var(--dim);cursor:pointer;list-style:none;display:flex;align-items:center;gap:6px;padding:4px 0;user-select:none}}
+.srch-arc-summary::-webkit-details-marker{{display:none}}
+.srch-arc-summary::marker{{display:none}}
+.srch-arc-summary::before{{content:"▶";font-size:9px}}
+details[open] .srch-arc-summary::before{{content:"▼"}}
+.srch-empty{{font-size:12px;color:var(--dim);padding:20px 0;text-align:center}}
 </style>
 {ga_snippet()}
 </head>
@@ -749,7 +810,7 @@ a{{color:inherit;text-decoration:none}}
   <a href="#trend"   class="tab">トレンド分析</a>
   <a href="#weekly"  class="tab">週次レポート</a>
   <a href="#columns" class="tab">コラム</a>
-  <a href="#archive" class="tab">アーカイブ</a>
+  <a href="#archive" class="tab">記事検索</a>
   <a href="#about"   class="tab">About</a>
 </div>
 
@@ -768,14 +829,46 @@ a{{color:inherit;text-decoration:none}}
 </div>
 
 <div class="pane" id="pane-archive">
-  <p class="plabel">過去のニュース</p>
-  <div class="arc-note">
-    過去最大90日分のアーカイブを保存しています。毎日自動更新されます。<br>
-    各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。
+  <p class="plabel">記事検索</p>
+  <p class="srch-desc">過去記事をテーマ・文脈・カテゴリから探せます。AI×セキュリティ、SOC/CDC、Security for AI の学習・調査に活用できます。</p>
+  <div class="srch-input-wrap">
+    <span class="srch-input-icon">🔍</span>
+    <input type="search" id="srch-input" class="srch-input" placeholder="キーワードを入力（例：プロンプトインジェクション、CVE、SOC）" autocomplete="off">
   </div>
-  <div style="margin-top:12px">
-    {archive_rows if archive_rows else '<p class="empty">蓄積中...</p>'}
+  <div class="srch-section-lbl">テーマから探す</div>
+  <div class="srch-themes" id="srch-themes"></div>
+  <div class="srch-filters">
+    <div class="srch-filter-row">
+      <span class="srch-filter-lbl">文脈</span>
+      <div id="srch-ctx"></div>
+    </div>
+    <div class="srch-filter-row">
+      <span class="srch-filter-lbl">カテゴリ</span>
+      <div id="srch-cat"></div>
+    </div>
+    <div class="srch-filter-row">
+      <span class="srch-filter-lbl">CDC関連度</span>
+      <div id="srch-cdc"></div>
+    </div>
+    <div class="srch-filter-row">
+      <span class="srch-filter-lbl">期間</span>
+      <div id="srch-period"></div>
+    </div>
   </div>
+  <div class="srch-meta">
+    <span id="srch-count" class="srch-count"></span>
+    <button class="srch-clear-btn" onclick="clearSearch()">条件をクリア</button>
+  </div>
+  <div id="srch-results"></div>
+  <div id="srch-more-wrap" style="display:none;text-align:center;margin:14px 0">
+    <button id="srch-more-btn" class="srch-more-btn">さらに表示</button>
+  </div>
+  <details class="srch-arc-details">
+    <summary class="srch-arc-summary">日付別に見る</summary>
+    <div style="margin-top:12px">
+      {archive_rows if archive_rows else '<p class="empty">蓄積中...</p>'}
+    </div>
+  </details>
 </div>
 
 <div class="pane" id="pane-trend">
@@ -921,6 +1014,7 @@ const TAX = {tax_json};
 const IMP_COLORS = {{"高":"#E24B4A","中":"#BA7517","低":"#639922"}};
 const MAIN_COLORS = {{"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai_risk":"#7F77DD","policy":"#1D9E75","incident":"#D85A30","biz_tech":"#639922"}};
 const LAYER_COLORS = {{"デバイス/エッジ":"#639922","ネットワーク":"#378ADD","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#98968e"}};
+const SEARCH_DATA = {search_json};
 
 function showTab(id) {{
   var valid = ['today','archive','trend','weekly','columns','about'];
@@ -1188,6 +1282,256 @@ function toggleKw(id, btn) {{
   btn.setAttribute('aria-expanded', open ? 'false' : 'true');
   btn.textContent = open ? 'タグを表示' : 'タグを隠す';
 }}
+
+// ── 記事検索 ──────────────────────────────────────────────────
+const SRCH_THEMES = [
+  {{id:'agent',  label:'AIエージェント',  kws:['aiエージェント','agentic','agent','自律','ツール実行','mcp']}},
+  {{id:'llmsec', label:'LLMセキュリティ', kws:['llm','生成ai','プロンプトインジェクション','ジェイルブレイク','モデル汚染','データポイズニング']}},
+  {{id:'s4ai',   label:'Security for AI', kws:['security for ai','aiシステム','rag','mcp','モデル','プロンプト','aiガバナンス','ai権限']}},
+  {{id:'ai4s',   label:'AI for Security', kws:['ai for security','soc','siem','edr','mdr','脅威ハンティング','アラート','インシデント対応']}},
+  {{id:'soc',    label:'SOC/CDC',          kws:['soc','cdc','mdr','mssp','tier','エスカレーション','ciso報告','監査','復旧','サービス企画']}},
+  {{id:'itdr',   label:'Identity/ITDR',   kws:['identity','itdr','id管理','非人間型id','認証','認可','権限','iam','entra','okta','active directory']}},
+  {{id:'vuln',   label:'脆弱性管理',       kws:['脆弱性','cve','kev','エクスプロイト','パッチ','exposure','ctem','攻撃可能状態']}},
+  {{id:'gov',    label:'AIガバナンス',     kws:['aiガバナンス','aiリスク','規制','nist','eu ai法','コンプライアンス','監査']}},
+];
+const SRCH_CTX = [
+  {{id:'all',  label:'すべて',           match:null}},
+  {{id:'s4ai', label:'Security for AI', match:['Security for AI']}},
+  {{id:'ai4s', label:'AI for Security', match:['AI for Security']}},
+  {{id:'soc',  label:'SOC/CDC',          match:['SOC運用変化','MDR/MSSP設計','サービス企画','CISO報告','顧客課題']}},
+  {{id:'itdr', label:'Identity/ITDR',   match:['Identity/ITDR']}},
+  {{id:'exp',  label:'Exposure管理',     match:['Exposure管理']}},
+  {{id:'ciso', label:'CISO報告',         match:['CISO報告']}},
+];
+const SRCH_CAT = [
+  {{id:'all',      label:'すべて'}},
+  {{id:'ai_sec',   label:'AI×セキュリティ'}},
+  {{id:'ai_risk',  label:'AIリスク'}},
+  {{id:'vuln',     label:'脆弱性'}},
+  {{id:'attack',   label:'攻撃・脅威'}},
+  {{id:'incident', label:'インシデント'}},
+  {{id:'policy',   label:'規制・政策'}},
+  {{id:'biz_tech', label:'ビジネス・技術動向'}},
+];
+const SRCH_CDC = [
+  {{id:'all',label:'すべて'}},
+  {{id:'2',  label:'中以上'}},
+  {{id:'3',  label:'高のみ'}},
+];
+const SRCH_PERIOD = [
+  {{id:'all',label:'すべて'}},
+  {{id:'7',  label:'直近7日'}},
+  {{id:'30', label:'直近30日'}},
+  {{id:'90', label:'直近90日'}},
+];
+
+var srchState = {{query:'',theme:null,ctx:'all',cat:'all',cdc:'all',period:'all'}};
+var srchOffset = 0;
+var SRCH_PAGE = 30;
+var srchFiltered = [];
+
+function safeArtHref(id) {{
+  if (!id || !/^[a-zA-Z0-9_-]{{1,64}}$/.test(id)) return '#';
+  return '/ai-security-news/article/' + id + '.html';
+}}
+
+function buildSrchChips(containerId, items, stateKey) {{
+  var el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = items.map(function(item) {{
+    return '<button class="srch-chip' + (item.id==='all'?' on':'') + '" data-val="' + escapeHtml(item.id) + '">' + escapeHtml(item.label) + '</button>';
+  }}).join('');
+  el.querySelectorAll('.srch-chip').forEach(function(btn) {{
+    btn.addEventListener('click', function() {{
+      el.querySelectorAll('.srch-chip').forEach(function(b) {{ b.classList.remove('on'); }});
+      this.classList.add('on');
+      srchState[stateKey] = this.dataset.val;
+      runSearch();
+    }});
+  }});
+}}
+
+function initSearch() {{
+  var themeEl = document.getElementById('srch-themes');
+  if (themeEl) {{
+    themeEl.innerHTML = SRCH_THEMES.map(function(t) {{
+      return '<button class="srch-theme-btn" data-theme="' + escapeHtml(t.id) + '">' + escapeHtml(t.label) + '</button>';
+    }}).join('');
+    themeEl.querySelectorAll('.srch-theme-btn').forEach(function(btn) {{
+      btn.addEventListener('click', function() {{
+        var tid = this.dataset.theme;
+        if (srchState.theme === tid) {{
+          srchState.theme = null;
+          this.classList.remove('on');
+        }} else {{
+          srchState.theme = tid;
+          themeEl.querySelectorAll('.srch-theme-btn').forEach(function(b) {{ b.classList.remove('on'); }});
+          this.classList.add('on');
+        }}
+        runSearch();
+      }});
+    }});
+  }}
+  buildSrchChips('srch-ctx',    SRCH_CTX,    'ctx');
+  buildSrchChips('srch-cat',    SRCH_CAT,    'cat');
+  buildSrchChips('srch-cdc',    SRCH_CDC,    'cdc');
+  buildSrchChips('srch-period', SRCH_PERIOD, 'period');
+  var inputEl = document.getElementById('srch-input');
+  if (inputEl) {{
+    inputEl.addEventListener('input', function() {{
+      srchState.query = this.value;
+      runSearch();
+    }});
+  }}
+  var moreBtn = document.getElementById('srch-more-btn');
+  if (moreBtn) moreBtn.addEventListener('click', showSrchMore);
+  runSearch();
+}}
+
+function runSearch() {{
+  var q = (srchState.query || '').toLowerCase().trim();
+  var activeTheme = srchState.theme
+    ? SRCH_THEMES.find(function(t) {{ return t.id === srchState.theme; }})
+    : null;
+
+  var results = SEARCH_DATA.filter(function(a) {{
+    if (srchState.period !== 'all') {{
+      var cutoff = new Date();
+      cutoff.setDate(cutoff.getDate() - parseInt(srchState.period, 10));
+      if ((a.date || '') < cutoff.toISOString().slice(0, 10)) return false;
+    }}
+    if (srchState.ctx !== 'all') {{
+      var ctxF = SRCH_CTX.find(function(f) {{ return f.id === srchState.ctx; }});
+      if (ctxF && ctxF.match) {{
+        var ctx = a.cdc_context || [];
+        if (!ctxF.match.some(function(m) {{ return ctx.indexOf(m) >= 0; }})) return false;
+      }}
+    }}
+    if (srchState.cat !== 'all' && a.tag_main_id !== srchState.cat) return false;
+    if (srchState.cdc === '2' && (a.cdc_relevance || 0) < 2) return false;
+    if (srchState.cdc === '3' && (a.cdc_relevance || 0) < 3) return false;
+    return true;
+  }});
+
+  if (!q && !activeTheme) {{
+    results.sort(function(a, b) {{ return (b.date || '').localeCompare(a.date || ''); }});
+  }} else {{
+    var scored = results.map(function(a) {{
+      var score = 0;
+      if (q) {{
+        if ((a.title_ja || '').toLowerCase().indexOf(q) >= 0) score += 5;
+        if ((a.related_keywords || []).some(function(k) {{ return k.toLowerCase().indexOf(q) >= 0; }})) score += 4;
+        if ((a.tag_subs || []).some(function(s) {{ return s.toLowerCase().indexOf(q) >= 0; }})) score += 3;
+        if ((a.cdc_context || []).some(function(c) {{ return c.toLowerCase().indexOf(q) >= 0; }})) score += 3;
+        if ((a.tag_main_label || '').toLowerCase().indexOf(q) >= 0) score += 3;
+        if ((a.summary_ja || '').toLowerCase().indexOf(q) >= 0) score += 2;
+        if ((a.insight || '').toLowerCase().indexOf(q) >= 0) score += 1;
+        if ((a.source_name || '').toLowerCase().indexOf(q) >= 0) score += 1;
+      }}
+      if (activeTheme) {{
+        var allText = [
+          a.title_ja, a.summary_ja, a.insight, a.tag_main_label,
+          (a.tag_subs || []).join(' '),
+          (a.cdc_context || []).join(' '),
+          (a.related_keywords || []).join(' ')
+        ].join(' ').toLowerCase();
+        var matches = activeTheme.kws.filter(function(kw) {{ return allText.indexOf(kw) >= 0; }}).length;
+        score += matches * 2;
+      }}
+      score += (a.cdc_relevance || 0) * 0.1;
+      return {{a: a, score: score}};
+    }});
+    results = scored
+      .filter(function(x) {{ return x.score > 0; }})
+      .sort(function(x, y) {{
+        return x.score !== y.score
+          ? y.score - x.score
+          : (y.a.date || '').localeCompare(x.a.date || '');
+      }})
+      .map(function(x) {{ return x.a; }});
+  }}
+
+  srchFiltered = results;
+  srchOffset = 0;
+  renderSrchPage();
+}}
+
+function renderSrchPage() {{
+  var countEl   = document.getElementById('srch-count');
+  var resultsEl = document.getElementById('srch-results');
+  var moreWrap  = document.getElementById('srch-more-wrap');
+  if (!resultsEl) return;
+  var total = srchFiltered.length;
+  if (countEl) countEl.textContent = total + '件';
+  if (total === 0) {{
+    resultsEl.innerHTML = '<p class="srch-empty">該当する記事がありません</p>';
+    if (moreWrap) moreWrap.style.display = 'none';
+    return;
+  }}
+  var page = srchFiltered.slice(0, SRCH_PAGE);
+  resultsEl.innerHTML = page.map(renderSrchCard).join('');
+  srchOffset = page.length;
+  if (moreWrap) moreWrap.style.display = srchFiltered.length > srchOffset ? '' : 'none';
+}}
+
+function showSrchMore() {{
+  var resultsEl = document.getElementById('srch-results');
+  var moreWrap  = document.getElementById('srch-more-wrap');
+  if (!resultsEl) return;
+  var next = srchFiltered.slice(srchOffset, srchOffset + SRCH_PAGE);
+  resultsEl.innerHTML += next.map(renderSrchCard).join('');
+  srchOffset += next.length;
+  if (moreWrap) moreWrap.style.display = srchFiltered.length > srchOffset ? '' : 'none';
+}}
+
+function renderSrchCard(a) {{
+  var href  = safeArtHref(a.id);
+  var title = escapeHtml(a.title_ja || '(タイトルなし)');
+  var smry  = a.summary_ja || '';
+  var smryEsc = escapeHtml(smry.length > 120 ? smry.slice(0, 120) + '…' : smry);
+  var cdcRel   = a.cdc_relevance || 0;
+  var cdcColor = cdcRel >= 3 ? '#E24B4A' : cdcRel >= 2 ? '#BA7517' : '#98968e';
+  var cdcLabel = cdcRel >= 3 ? '高' : cdcRel >= 2 ? '中' : '低';
+  var mc = MAIN_COLORS[a.tag_main_id] || '#378ADD';
+  var ml = escapeHtml(a.tag_main_label || '');
+  var subTags = (a.tag_subs || []).slice(0, 3).map(function(s) {{
+    return '<span class="tag-sub">' + escapeHtml(s) + '</span>';
+  }}).join('');
+  var ctxTags = (a.cdc_context || []).slice(0, 2).map(function(c) {{
+    return '<span class="cdc-badge">' + escapeHtml(c) + '</span>';
+  }}).join('');
+  return '<a href="' + href + '" class="srch-card">' +
+    '<div class="srch-card-meta">' +
+      '<span class="dt">' + escapeHtml(a.date || '') + '</span>' +
+      (a.source_name ? '<span class="src">' + escapeHtml(a.source_name) + '</span>' : '') +
+      '<span class="imp" style="color:' + cdcColor + ';border-color:' + cdcColor + '55">CDC: ' + cdcLabel + '</span>' +
+    '</div>' +
+    '<div class="srch-card-title">' + title + '</div>' +
+    (smryEsc ? '<div class="srch-card-summary">' + smryEsc + '</div>' : '') +
+    '<div class="srch-card-tags">' +
+      (ml ? '<span class="tag-main" style="background:' + mc + '20;color:' + mc + ';border-color:' + mc + '44">' + ml + '</span>' : '') +
+      subTags + ctxTags +
+    '</div>' +
+  '</a>';
+}}
+
+function clearSearch() {{
+  srchState.query  = '';
+  srchState.theme  = null;
+  srchState.ctx    = 'all';
+  srchState.cat    = 'all';
+  srchState.cdc    = 'all';
+  srchState.period = 'all';
+  var inp = document.getElementById('srch-input');
+  if (inp) inp.value = '';
+  document.querySelectorAll('.srch-theme-btn').forEach(function(b) {{ b.classList.remove('on'); }});
+  document.querySelectorAll('.srch-chip').forEach(function(b) {{
+    b.classList.toggle('on', b.dataset.val === 'all');
+  }});
+  runSearch();
+}}
+
+document.addEventListener('DOMContentLoaded', initSearch);
 </script>
 
 </body>
