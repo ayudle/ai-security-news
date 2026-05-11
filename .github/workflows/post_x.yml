@@ -12,11 +12,12 @@ name: X Post (本番投稿)
 #   X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_SECRET
 
 on:
-  # schedule は初回 mode=verify → mode=post の確認後に有効化すること
-  # schedule:
-  #   - cron: '30 23 * * *'  # 08:30 JST (morning)
-  #   - cron: '30 3 * * *'   # 12:30 JST (noon)
-  #   - cron: '0 10 * * *'   # 19:00 JST (evening)
+  schedule:
+    - cron: '30 11 * * *'  # 20:30 JST (daily-pick)
+  # morning / noon / evening の定期投稿は有効化しない
+  # - cron: '30 23 * * *'  # 08:30 JST (morning)
+  # - cron: '30 3 * * *'   # 12:30 JST (noon)
+  # - cron: '0 10 * * *'   # 19:00 JST (evening)
   workflow_dispatch:
     inputs:
       mode:
@@ -80,6 +81,29 @@ jobs:
 
       - name: Install dependencies
         run: pip install requests requests-oauthlib
+
+      # ── schedule（自動実行）: daily-pick を投稿 ───────────────────────────
+      - name: Post daily-pick (scheduled)
+        if: github.event_name == 'schedule'
+        env:
+          X_API_KEY:        ${{ secrets.X_API_KEY }}
+          X_API_SECRET:     ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN:   ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET:  ${{ secrets.X_ACCESS_SECRET }}
+        run: |
+          echo "=== schedule 自動投稿: daily-pick ==="
+          python scripts/generate_x_posts.py --daily-pick --post
+
+      - name: Commit and push (scheduled)
+        if: github.event_name == 'schedule'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          TODAY=$(TZ=Asia/Tokyo date +%Y-%m-%d)
+          git add docs/data/x_post_daily_pick.json docs/data/x_post_history.json
+          git diff --cached --quiet && echo "変更なし（スキップ or 変更なし）" && exit 0
+          git commit -m "X daily-pick: ${TODAY} (scheduled)"
+          git push --force-with-lease
 
       # ── mode=verify ──────────────────────────────────────────────────────
       - name: Verify account

@@ -81,25 +81,30 @@ MSSP/CDCサービス設計者の観点で、AI for Security・Security for AI・
 - **週次レポート** — 毎週月曜に自動生成
 - **コラム** — 運営者による著者執筆の考察（LLM生成ではない）
 
-### X投稿機能（Phase 3: 本番投稿対応）
-- スコアリング（重要度・CDC関連度・ソースTier・AI関連度）で上位3件を選定
-- 投稿スロット：morning 08:30 / noon 12:30 / evening 19:00（JST）
-- **デフォルトはdry-run**。`--post` を明示指定したときのみX APIへ投稿する
-- `--all --post` は禁止（複数本同時投稿を防ぐため）
-- 同じ `date + slot` が既に投稿済み（`status: posted`）の場合は自動スキップ（`--force` で上書き可）
-- スロット別生成時は `docs/data/x_post_history.json` に履歴を記録
-- 料金・API権限はX Developer Console側の設定に依存する
-- **schedule は未有効**。`post_x.yml` は現在 `workflow_dispatch` 手動実行のみ
+### X投稿機能（Phase 3: 本番自動投稿 稼働中）
 
-**1日1本運用（`--daily-pick`）**
+**本番自動投稿: 毎日 20:30 JST（1日1本・daily-pick）**
 
-3スロット運用の代わりに、その日の代表記事1本だけを選定して正午に投稿するモード。
+- GitHub Actions schedule（`cron: '30 11 * * *'`）で毎日20:30 JSTに自動投稿
+- その日の代表記事1本を `--daily-pick` で選定してX APIへ投稿
+- URL付き投稿はX APIのクレジットを消費するため、当面1日1本に限定
+- morning / noon / evening の定期スロット投稿は有効化しない
+- 手動実行（`workflow_dispatch`）は引き続き全モードで可能
 
-- `imp*3 + cdc*2 + ctx*2 + tier + ai*2` の基本スコア＋キーワードマッチのポスト適性ボーナス（最大+5）で最上位記事を選定
+**daily-pick 選定ロジック**
+
+- スコアリング: `imp*3 + cdc*2 + ctx*2 + tier + ai*2` ＋ キーワードマッチのポスト適性ボーナス（最大+5）
 - `cdc_relevance==0`・タイトル/要約が空・既に投稿済みの記事は除外
 - `biz_tech` カテゴリで AI/Identity/MDR コンテキストを持たない記事は -2 補正
-- ハッシュタグは `#AIセキュリティ` ＋ コンテキスト固有タグ（例: `#ITDR`, `#MSSP`, `#脆弱性管理`）の2つ固定
-- 出力: `docs/data/x_post_daily_pick.json`、履歴: `selection_mode=daily_pick` で `x_post_history.json` に記録
+- ハッシュタグ: `#AIセキュリティ` ＋ 記事内容優先の文脈タグ（`#脆弱性` / `#LLMセキュリティ` / `#ITDR` / `#SOC` / `#CISO` / `#生成AI`）の2つ固定
+- 同じ `date + selection_mode=daily_pick` が投稿済みの場合は自動スキップ（`--force` で上書き可）
+- 出力: `docs/data/x_post_daily_pick.json`、履歴: `x_post_history.json` に記録
+
+**その他共通仕様**
+
+- **デフォルトはdry-run**。`--post` を明示指定したときのみX APIへ投稿する
+- `--all --post` は禁止（複数本同時投稿を防ぐため）
+- 料金・API権限はX Developer Console側の設定に依存する
 
 ```bash
 # CLIの使い方
