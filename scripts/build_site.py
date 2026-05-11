@@ -327,7 +327,7 @@ def article_card(a, rank=None):
     # 示唆スニペット（タイトル直下1〜2行）
     insight_snippet = ""
     if insight:
-        itxt = (insight[:80] + "…") if len(insight) > 80 else insight
+        itxt = (insight[:120] + "…") if len(insight) > 120 else insight
         insight_snippet = f'<div class="insight-snippet">{html_escape(itxt)}</div>'
     # CDC観点バッジ（cdc_context が存在する記事のみ・最大3個）
     cdc_html = ""
@@ -746,10 +746,10 @@ a{{color:inherit;text-decoration:none}}
 
 <div class="tab-bar">
   <a href="#today"   class="tab">本日のニュース</a>
-  <a href="#archive" class="tab">アーカイブ</a>
   <a href="#trend"   class="tab">トレンド分析</a>
   <a href="#weekly"  class="tab">週次レポート</a>
   <a href="#columns" class="tab">コラム</a>
+  <a href="#archive" class="tab">アーカイブ</a>
   <a href="#about"   class="tab">About</a>
 </div>
 
@@ -1436,8 +1436,9 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   <a href="../" class="logo-link"><h1 class="logo">AI×セキュリティ ニュース日報</h1></a>
 </header>
 
-<a href="../#today" class="back">← 本日のニュースに戻る</a>
+<a href="../#today" class="back">← ニュース一覧に戻る</a>
 <nav class="sub-nav">
+  <a href="../#today">今日のニュース</a>
   <a href="../#trend">トレンド分析</a>
   <a href="../#weekly">週次レポート</a>
   <a href="../#columns">コラム</a>
