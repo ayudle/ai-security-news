@@ -793,6 +793,26 @@ a{{color:inherit;text-decoration:none}}
 .srch-arc-summary::before{{content:"▶";font-size:9px}}
 details[open] .srch-arc-summary::before{{content:"▼"}}
 .srch-empty{{font-size:12px;color:var(--dim);padding:20px 0;text-align:center}}
+.about-wrap{{max-width:720px;margin:0 auto;padding:1rem 0 3rem}}
+.about-hero{{margin-bottom:2.5rem}}
+.about-hero-name{{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-.01em}}
+.about-hero-role{{font-size:12px;color:var(--dim);margin-bottom:1.2rem;letter-spacing:.03em}}
+.about-hero-lead{{font-size:14px;color:#c0beb6;line-height:1.85;border-left:3px solid var(--accent);padding-left:14px}}
+.about-section{{margin-bottom:2.5rem}}
+.about-section-lbl{{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
+.about-axes{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}}
+@media(max-width:600px){{.about-axes{{grid-template-columns:1fr}}}}
+.about-axis{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}}
+.about-axis-label{{font-size:11px;font-weight:700;margin-bottom:6px}}
+.about-axis-desc{{font-size:11px;color:var(--dim);line-height:1.6}}
+.about-text{{font-size:14px;color:#98968e;line-height:1.85}}
+.about-layers{{display:flex;flex-direction:column;gap:6px;margin:1rem 0}}
+.about-layer{{background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px}}
+.about-layer-n{{font-size:11px;font-weight:700;color:var(--accent);margin-right:6px}}
+.about-layer-name{{font-weight:500;color:#e6e4dc}}
+.about-layer-desc{{font-size:12px;color:var(--dim);margin-top:2px}}
+.about-x-btn{{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:var(--card);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);font-size:13px;font-weight:500;transition:border-color .15s}}
+.about-x-btn:hover{{border-color:var(--accent)}}
 </style>
 {ga_snippet()}
 </head>
@@ -953,52 +973,80 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 
 <div class="pane" id="pane-about">
   <p class="plabel">About</p>
-  <div style="max-width:720px;margin:0 auto;padding:1rem 0">
-    <h2 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-.01em">Ayudle</h2>
-    <p style="font-size:13px;color:#6a6860;margin-bottom:2.5rem">AI×セキュリティ ニュース日報 運営者</p>
-    <div style="margin-bottom:2.5rem">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">Profile</div>
-      <div style="font-size:14px;color:#98968e;line-height:1.85"><p>セキュリティエンジニアです。セキュリティ監視・運用の高度化や自動化、AI×セキュリティの検証・サービス開発に携わってきました。AI for SecurityとSecurity for AIの両方に興味を持ち、業界の標準化・研究活動にも関わっています。</p></div>
+  <div class="about-wrap">
+
+    <!-- Hero -->
+    <div class="about-hero">
+      <div class="about-hero-name">Ayudle</div>
+      <div class="about-hero-role">AI×セキュリティ ニュース日報 — 運営者</div>
+      <p class="about-hero-lead">SOC/CDC設計者の視点で、AI×セキュリティの動向を毎日構造的に読み解くメディアです。「何が起きたか」だけでなく、「SOC/MDR/MSSPの設計にどう影響するか」まで届けることを目指しています。</p>
     </div>
-    <div style="margin-bottom:2.5rem">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">このサイトを作った理由</div>
-      <div style="font-size:14px;color:#98968e;line-height:1.85">
-        <p style="margin-bottom:1rem">AIエージェントが企業のあらゆる業務に浸透していく中で、「AIエージェント自体のリスクをどう管理するか」という問いへの関心が高まっています。</p>
-        <p>私自身、セキュリティ監視運用の現場に携わりながら、この領域が今後どう変わっていくのかを継続的に追いかけたいと考えていました。断片的なニュースを都度追うのではなく、構造的に理解するための情報基盤が欲しい。それがこのサイトを作った理由です。</p>
-      </div>
-    </div>
-    <div style="margin-bottom:2.5rem">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">私が持っている仮説</div>
-      <div style="font-size:14px;color:#98968e;line-height:1.85">
-        <p style="margin-bottom:1rem">AIエージェントのリスクは、以下の6つの層に分けて考えると整理しやすいと思っています。</p>
-        <div style="display:flex;flex-direction:column;gap:6px;margin:1rem 0">
-          <div style="background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px"><span style="font-size:11px;font-weight:700;color:#378ADD;margin-right:6px">①</span><span style="font-weight:500;color:#e6e4dc">モデル・推論層</span><div style="font-size:12px;color:#6a6860;margin-top:2px">プロンプトインジェクション、ハルシネーション、目的逸脱</div></div>
-          <div style="background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px"><span style="font-size:11px;font-weight:700;color:#378ADD;margin-right:6px">②</span><span style="font-weight:500;color:#e6e4dc">ツール・実行層</span><div style="font-size:12px;color:#6a6860;margin-top:2px">権限過剰、ツール誤操作、エージェントハイジャック</div></div>
-          <div style="background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px"><span style="font-size:11px;font-weight:700;color:#378ADD;margin-right:6px">③</span><span style="font-weight:500;color:#e6e4dc">マルチエージェント層</span><div style="font-size:12px;color:#6a6860;margin-top:2px">AI間の誤連携、カスケード障害、攻撃の自動化</div></div>
-          <div style="background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px"><span style="font-size:11px;font-weight:700;color:#378ADD;margin-right:6px">④</span><span style="font-weight:500;color:#e6e4dc">データ・インフラ層</span><div style="font-size:12px;color:#6a6860;margin-top:2px">データ境界の崩壊、シャドーAI、サプライチェーン攻撃</div></div>
-          <div style="background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px"><span style="font-size:11px;font-weight:700;color:#378ADD;margin-right:6px">⑤</span><span style="font-weight:500;color:#e6e4dc">アイデンティティ・権限層</span><div style="font-size:12px;color:#6a6860;margin-top:2px">非人間IDの管理、過剰自律性、Observability欠如</div></div>
-          <div style="background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px"><span style="font-size:11px;font-weight:700;color:#378ADD;margin-right:6px">⑥</span><span style="font-weight:500;color:#e6e4dc">組織・ガバナンス層</span><div style="font-size:12px;color:#6a6860;margin-top:2px">責任所在の不明確さ、automation bias、法規制の未整備</div></div>
+
+    <!-- 3つの観点軸 -->
+    <div class="about-section">
+      <div class="about-section-lbl">このサイトが追う3つの軸</div>
+      <div class="about-axes">
+        <div class="about-axis">
+          <div class="about-axis-label" style="color:#378ADD">AI for Security</div>
+          <div class="about-axis-desc">AIによる脅威検知・調査・対応の自動化がSOC運用をどう変えるか。AI SOC・自律エージェント・LLMによるアナリスト支援。</div>
         </div>
-        <p style="margin-bottom:1rem">これらのリスクをエンドポイント・ネットワーク・サーバー・アプリケーションといったあらゆる領域にわたって、識別・防御・検知・対応・復旧の観点で一元的に監視するセンターが、近い将来必ず必要になると考えています。</p>
-        <p style="margin-bottom:1rem">従来のSOCは人間が操作するシステムを守る前提で設計されています。しかしAIエージェントが主体として動く環境では、監視対象の性質が根本的に変わります。エージェントの判断の異常を検知し、その連鎖を止め、影響を復旧する。そのような機能を持つ組織が、従来のSOCと統合されてより広い範囲をカバーするサイバーディフェンスセンターへと進化していくと見ています。</p>
-        <p>現在の市場では、Observabilityツール・プロンプトセキュリティ・AI権限管理などが個別のソリューションとして存在しています。これらを統合して一元的に可視化・監視するプラットフォームはまだ確立されていません。このサイトは、その空白を埋めていくための知識インフラとして育てていくつもりです。</p>
-      </div>
-    </div>
-    <div style="margin-bottom:2.5rem">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">SNS</div>
-      <div style="font-size:14px;color:#98968e;line-height:1.85">
-        <p style="margin-bottom:1rem">X（旧Twitter）で最新ニュースを毎日発信しています。フォローお待ちしています。</p>
-        <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:#1a1a18;border:1px solid #2a2a28;border-radius:6px;text-decoration:none;color:#e6e4dc;font-size:13px;font-weight:500;transition:border-color .15s" onmouseover="this.style.borderColor='#378ADD'" onmouseout="this.style.borderColor='#2a2a28'">
-          <span style="font-size:14px;font-weight:700">X</span>
-          <span>@ayudle_aisec をフォロー</span>
-        </a>
+        <div class="about-axis">
+          <div class="about-axis-label" style="color:#E24B4A">Security for AI</div>
+          <div class="about-axis-desc">AIシステム・LLM・エージェントへの攻撃と防御。プロンプトインジェクション、モデル汚染、エージェントハイジャック。</div>
+        </div>
+        <div class="about-axis">
+          <div class="about-axis-label" style="color:#1D9E75">SOC/CDC 運用変化</div>
+          <div class="about-axis-desc">AIが浸透する中でのSOC・MDR・MSSPの設計変化。Identity/ITDR、Exposure管理、非人間IDの監視。</div>
+        </div>
       </div>
     </div>
 
-    <div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6a6860;text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2a2a28">このサイトでやっていること</div>
-      <div style="font-size:14px;color:#98968e;line-height:1.85"><p>信頼できるソースからAI×セキュリティの最新ニュースを毎日自動収集・日本語要約して公開しています。単なるニュースの羅列にとどまらず、上記の仮説に基づいた構造的な可視化プラットフォームとして発展させていく予定です。</p></div>
+    <!-- Profile -->
+    <div class="about-section">
+      <div class="about-section-lbl">Profile</div>
+      <div class="about-text">
+        <p style="margin-bottom:1rem">セキュリティエンジニアです。セキュリティ監視・運用の高度化・自動化、AI×セキュリティの検証・サービス開発に携わってきました。MSSP/CDCサービス設計の観点から、AI for SecurityとSecurity for AIの両面を継続的に追っています。</p>
+        <p>業界の標準化・研究活動にも関わりながら、現場のSOC/CDCが「AIとどう共存するか」という問いを軸に情報を整理しています。このサイトはその思考整理の場でもあります。</p>
+      </div>
     </div>
+
+    <!-- なぜこのサイトか -->
+    <div class="about-section">
+      <div class="about-section-lbl">なぜこのサイトを作ったか</div>
+      <div class="about-text">
+        <p style="margin-bottom:1rem">AI×セキュリティの情報は英語・断片的・速度が速い。日本語でSOC/CDC設計者の視点から「今日の動向がSOCにとって何を意味するか」を毎日整理する場所が必要だと感じていました。</p>
+        <p style="margin-bottom:1rem">単なる翻訳ニュースではなく、CDC設計者として「示唆・学び」まで届けることがこのサイトのコンセプトです。Gemini APIとGitHub Actionsで完全自動化しつつ、コラムでは自分の考察を書き続けています。</p>
+        <p>長期的には、AIエージェント時代のSOC/CDCが何を監視すべきかを構造的に可視化するプラットフォームへ育てていく予定です。</p>
+      </div>
+    </div>
+
+    <!-- 仮説: AIエージェントリスクの6層 -->
+    <div class="about-section">
+      <div class="about-section-lbl">私が持っている仮説</div>
+      <div class="about-text">
+        <p style="margin-bottom:1rem">AIエージェントのリスクは、以下の6つの層に分けて考えると整理しやすいと思っています。これらを統合的に監視するCDCが、近い将来必ず必要になると考えています。</p>
+        <div class="about-layers">
+          <div class="about-layer"><span class="about-layer-n">①</span><span class="about-layer-name">モデル・推論層</span><div class="about-layer-desc">プロンプトインジェクション、ハルシネーション、目的逸脱</div></div>
+          <div class="about-layer"><span class="about-layer-n">②</span><span class="about-layer-name">ツール・実行層</span><div class="about-layer-desc">権限過剰、ツール誤操作、エージェントハイジャック</div></div>
+          <div class="about-layer"><span class="about-layer-n">③</span><span class="about-layer-name">マルチエージェント層</span><div class="about-layer-desc">AI間の誤連携、カスケード障害、攻撃の自動化</div></div>
+          <div class="about-layer"><span class="about-layer-n">④</span><span class="about-layer-name">データ・インフラ層</span><div class="about-layer-desc">データ境界の崩壊、シャドーAI、サプライチェーン攻撃</div></div>
+          <div class="about-layer"><span class="about-layer-n">⑤</span><span class="about-layer-name">アイデンティティ・権限層</span><div class="about-layer-desc">非人間IDの管理、過剰自律性、Observability欠如</div></div>
+          <div class="about-layer"><span class="about-layer-n">⑥</span><span class="about-layer-name">組織・ガバナンス層</span><div class="about-layer-desc">責任所在の不明確さ、automation bias、法規制の未整備</div></div>
+        </div>
+        <p>従来のSOCは人間が操作するシステムを守る前提で設計されています。AIエージェントが主体として動く環境では、監視対象の性質が根本的に変わります。このサイトはその変化を追うための知識インフラです。</p>
+      </div>
+    </div>
+
+    <!-- SNS -->
+    <div class="about-section">
+      <div class="about-section-lbl">SNS</div>
+      <div class="about-text" style="margin-bottom:1rem">X（旧Twitter）で最新ニュースを毎日発信しています。</div>
+      <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" class="about-x-btn">
+        <span style="font-size:14px;font-weight:700">𝕏</span>
+        <span>@ayudle_aisec をフォロー</span>
+      </a>
+    </div>
+
   </div>
 </div>
 
