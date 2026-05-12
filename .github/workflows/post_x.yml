@@ -3,10 +3,10 @@ name: X Post (本番投稿)
 # X APIへの確認・投稿を行うワークフロー。
 #
 # 役割分担:
-#   daily.yml          → --all --dry-run（3本候補一覧、投稿なし）
-#   post_x_dry_run.yml → --slot --dry-run（スロット別生成、投稿なし）
-#   post_x.yml         → mode=verify（アカウント確認のみ）/ mode=post（本番投稿）
-#                        / mode=post_daily_pick（1日1本運用）/ mode=test（テスト投稿）
+#   daily.yml  → --all --dry-run（3本候補一覧、投稿なし）
+#   post_x.yml → mode=verify（アカウント確認のみ）/ mode=post（本番投稿）
+#                / mode=post_daily_pick（1日1本運用）/ mode=test（テスト投稿）
+#                schedule による daily-pick 自動投稿（20:30 JST）
 #
 # 必要な GitHub Secrets:
 #   X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_SECRET
