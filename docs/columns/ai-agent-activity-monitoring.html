@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AIエージェントは、誰が監視するのか | Cyber Defense Notes</title>
-<meta name="description" content="AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが人間の操作だけを見ていられなくなる理由と、監視機能として何が必要になるかを考える。">
+<meta name="description" content="AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが従来の監視対象だけでは足りなくなる理由と、AIエージェント時代に必要な監視機能を考える。">
 <meta property="og:title" content="AIエージェントは、誰が監視するのか">
-<meta property="og:description" content="AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが人間の操作だけを見ていられなくなる理由と、監視機能として何が必要になるかを考える。">
+<meta property="og:description" content="AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが従来の監視対象だけでは足りなくなる理由と、AIエージェント時代に必要な監視機能を考える。">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/columns/ai-agent-activity-monitoring.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
@@ -73,7 +73,7 @@ gtag('config', 'G-KV7Q7SQKZX');
       <div class="col-tags-ap"><span class="col-tag-ap">CDC</span><span class="col-tag-ap">AI Security</span><span class="col-tag-ap">Identity</span><span class="col-tag-ap">SOC</span><span class="col-tag-ap">AIエージェント</span></div>
     </div>
     <h1 class="col-title">AIエージェントは、誰が監視するのか</h1>
-    <p class="col-desc">AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが人間の操作だけを見ていられなくなる理由と、監視機能として何が必要になるかを考える。</p>
+    <p class="col-desc">AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが従来の監視対象だけでは足りなくなる理由と、AIエージェント時代に必要な監視機能を考える。</p>
   </div>
 
   <div class="col-body">
@@ -103,7 +103,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 <p><strong>④データ・インフラ層</strong>：エージェントが参照・操作したデータストア。RAGのソース、ベクターDB、メモリストア、セッション履歴。</p>
 <p><strong>⑤アイデンティティ・権限層</strong>：エージェントに付与されているIDの権限スコープ。サービスアカウント、OAuthトークン、APIキーの有効範囲。</p>
 <p><strong>⑥組織・ガバナンス層</strong>：誰がそのエージェントを承認し、どのポリシーの下で動かしているか。変更管理・レビュープロセスがあるか。</p>
-<p>従来のSOC/CDCでも、ツール実行、データアクセス、ID・権限に近いログは一定程度見てきました。しかし、AIエージェントの推論、エージェント間通信、承認・責任分界といった①③⑥の領域は、まだ監視対象として十分に定義されていません。特に③（エージェント間通信）と①（推論の改ざん）は、既存の監視インフラがほぼカバーしていない領域です。</p>
+<p>従来のSOC/CDCでも、ツール実行、データアクセス、ID・権限に近いログは一定程度見てきました。しかし、AIエージェントの推論、エージェント間通信、承認・責任分界といった①③⑥の領域は、まだ監視対象として十分に定義されていません。特にエージェント間通信や推論の改ざんは、既存の監視インフラでは見えにくい領域です。</p>
 <h2>業界に何が起きているか</h2>
 <p>この問題への応答が、複数の方向から同時に出てきています。</p>
 <p>OWASPは2025年12月に「Top 10 for Agentic Applications 2026」を公開しました。Goal Hijack（エージェントの目的の乗っ取り）、Tool Misuse（ツールの不正利用）、Agent Identity &amp; Privilege Abuse（エージェントのID・権限の悪用）が上位に来ています。AIエージェント固有のリスクが、セキュリティ標準として体系化され始めたということです。</p>
@@ -122,7 +122,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 <p>ここで「監視センター」という言葉を使うとき、私が意味しているのは必ずしも新しい組織名を作ることではありません。</p>
 <p>重要なのは、AIエージェントの活動を継続的に把握し、異常を判断し、必要に応じて止め、後から説明できる——という<strong>機能</strong>です。具体的には次のような要素で構成されます。</p>
 <ul><li>エージェントIDの棚卸しと定期的な権限スコープのレビュー</li><li>ツール実行ログの収集と追跡</li><li>プロンプト・判断ログの保全</li><li>データアクセスの可視化</li><li>ポリシー違反の検知</li><li>インシデント発生時の説明責任の担保</li></ul>
-<p>この機能を自社のSOC/CDCが担うのか、既存のMDR/MSSPが拡張して提供するのか、専用サービスとして生まれるのかはまだ決まっていません。しかし機能として必要になる可能性は、かなり高いと思っています。</p>
+<p>この機能を自社のSOC/CDCが担うのか、既存のMDR/MSSPが拡張して提供するのか、専用サービスとして生まれるのかはまだ決まっていません。しかし、機能として必要になる可能性は高いと考えています。</p>
 <h2>おわりに：監視設計の前提を更新すること</h2>
 <p>AIエージェント専用のSOCを今すぐ作れ、という話をしているわけではありません。</p>
 <p>現実的なスタートラインは、もっとシンプルな問いです。「自社でどのAIエージェントが動いているか、一覧を作れるか」。IDが発行されているか。権限スコープは最小限か。ツール実行のログはどこに残っているか。</p>
