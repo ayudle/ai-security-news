@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ollamaにリモートメモリリーク脆弱性 (CVE-2026-7482) を発見 | Cyber Defense Notes</title>
-<meta name="description" content="ローカルLLM実行環境のOllamaに、CVSSスコア9.1の深刻なアウトオブバウンズリード脆弱性 (CVE-2026-7482) が開示された。この脆弱性を悪用することで、認証されていないリモート攻撃者がOllamaのプロセスメモリ全体を">
-<meta property="og:title" content="Ollamaにリモートメモリリーク脆弱性 (CVE-2026-7482) を発見">
-<meta property="og:description" content="ローカルLLM実行環境のOllamaに、CVSSスコア9.1の深刻なアウトオブバウンズリード脆弱性 (CVE-2026-7482) が開示された。この脆弱性を悪用することで、認証されていないリモート攻撃者がOllamaのプロセスメモリ全体を">
+<title>Ollamaにリモートからメモリ漏洩を許す深刻な脆弱性 | Cyber Defense Notes</title>
+<meta name="description" content="サイバーセキュリティ研究者により、LLM実行環境であるOllamaにリモートの認証されていない攻撃者がプロセスメモリ全体を漏洩させることが可能な深刻な境界外読み取りの脆弱性（CVE-2026-7482, CVSSスコア9.1）が公表された。">
+<meta property="og:title" content="Ollamaにリモートからメモリ漏洩を許す深刻な脆弱性">
+<meta property="og:description" content="サイバーセキュリティ研究者により、LLM実行環境であるOllamaにリモートの認証されていない攻撃者がプロセスメモリ全体を漏洩させることが可能な深刻な境界外読み取りの脆弱性（CVE-2026-7482, CVSSスコア9.1）が公表された。">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/0799b1d0a43c.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ollamaにリモートメモリリーク脆弱性 (CVE-2026-7482) を発見">
-<meta name="twitter:description" content="ローカルLLM実行環境のOllamaに、CVSSスコア9.1の深刻なアウトオブバウンズリード脆弱性 (CVE-2026-7482) が開示された。この脆弱性を悪用することで、認証されていないリモート攻撃者がOllamaのプロセスメモリ全体を">
+<meta name="twitter:title" content="Ollamaにリモートからメモリ漏洩を許す深刻な脆弱性">
+<meta name="twitter:description" content="サイバーセキュリティ研究者により、LLM実行環境であるOllamaにリモートの認証されていない攻撃者がプロセスメモリ全体を漏洩させることが可能な深刻な境界外読み取りの脆弱性（CVE-2026-7482, CVSSスコア9.1）が公表された。">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/0799b1d0a43c.html">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "Ollamaにリモートメモリリーク脆弱性 (CVE-2026-7482) を発見",
-  "description": "ローカルLLM実行環境のOllamaに、CVSSスコア9.1の深刻なアウトオブバウンズリード脆弱性 (CVE-2026-7482) が開示された。この脆弱性を悪用することで、認証されていないリモート攻撃者がOllamaのプロセスメモリ全体を漏洩させる可能性がある。世界中で30万以上のサーバーに影響する恐れがあり、LLMの機密データやシステム情報が危険に晒されるリスクがある。",
+  "headline": "Ollamaにリモートからメモリ漏洩を許す深刻な脆弱性",
+  "description": "サイバーセキュリティ研究者により、LLM実行環境であるOllamaにリモートの認証されていない攻撃者がプロセスメモリ全体を漏洩させることが可能な深刻な境界外読み取りの脆弱性（CVE-2026-7482, CVSSスコア9.1）が公表された。この脆弱性は30万台以上のサーバーに影響を与える可能性がある。",
   "datePublished": "2026-05-10",
   "url": "https://ayudle.github.io/ai-security-news/article/0799b1d0a43c.html",
   "image": "https://ayudle.github.io/ai-security-news/og-image.png",
@@ -124,27 +124,27 @@ gtag('config', 'G-KV7Q7SQKZX');
       <span>2026-05-10</span>
       <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span>
     </div>
-    <h1 class="ap-title">Ollamaにリモートメモリリーク脆弱性 (CVE-2026-7482) を発見</h1>
+    <h1 class="ap-title">Ollamaにリモートからメモリ漏洩を許す深刻な脆弱性</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">ローカルLLM実行環境のOllamaに、CVSSスコア9.1の深刻なアウトオブバウンズリード脆弱性 (CVE-2026-7482) が開示された。この脆弱性を悪用することで、認証されていないリモート攻撃者がOllamaのプロセスメモリ全体を漏洩させる可能性がある。世界中で30万以上のサーバーに影響する恐れがあり、LLMの機密データやシステム情報が危険に晒されるリスクがある。</div>
+    <div class="ap-body">サイバーセキュリティ研究者により、LLM実行環境であるOllamaにリモートの認証されていない攻撃者がプロセスメモリ全体を漏洩させることが可能な深刻な境界外読み取りの脆弱性（CVE-2026-7482, CVSSスコア9.1）が公表された。この脆弱性は30万台以上のサーバーに影響を与える可能性がある。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span><div class='insight-body'>AIモデルのオンプレミス運用が拡大する中、LLM実行環境自体の脆弱性が深刻な情報漏洩リスクをもたらすことを明確に示している。自社でOllamaや類似のローカルAIモデルを実行している場合、直ちにパッチ適用と影響範囲の特定、メモリリークの監視体制強化が必要だ。AIシステムの脆弱性管理をサプライチェーン全体で組み込み、継続的な評価と修正プロセスを確立すべきである。</div></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span><div class='insight-body'>AIシステムの基盤となるLLM実行環境に深刻な脆弱性が発見されたことは、Security for AIの重要性を浮き彫りにする。この脆弱性は、AIモデルや推論データ、さらには実行環境そのものへの侵害につながり、機密情報漏洩やモデル汚染のリスクを伴う。SOC/CDCは、自社が利用・提供するAI基盤の脆弱性管理を強化し、AIシステム固有のログ（メモリ使用量、APIアクセスなど）の監視を徹底し、AIエージェントリスクモデルの「モデル・推論層」と「データ・インフラ層」における防御策を優先的に講じる必要がある。</div></div></section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIモデルの実行基盤におけるクリティカルな脆弱性であり、広範な環境に影響を及ぼし、機密情報の漏洩に直結するため。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>LLM実行環境というAI基盤に直接関わる深刻な脆弱性であり、AIシステムを運用する組織にとって直ちに対処すべき課題であるため。</div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
     <div class="tags-box">
       <span class="tag-main" style="background:#BA751720;color:#BA7517;border-color:#BA751744">脆弱性</span>
-      <span class="tag-sub">CVE</span><span class="tag-sub">エクスプロイト</span><span class="tag-sub">LLMセキュリティ</span>
+      <span class="tag-sub">CVE</span><span class="tag-sub">エクスプロイト</span>
     </div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Security for AI</span><span class='cdc-badge-ap'>Exposure管理</span></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Exposure管理</span><span class='cdc-badge-ap'>サービス企画</span></div></section>
 
   <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-soc-stop-attack.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-10</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AI SOCとは、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことである</div></a><a href="../columns/ai-agent-soc-cdc.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-04</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIエージェント時代のMSSPは、「AIで効率化しました」では差別化できない</div></a></div></section>
 
@@ -160,12 +160,12 @@ The out-of-bounds read flaw, which likely impacts over 300,000 servers globally,
     </div>
     <div class="actions">
       <a href="https://thehackernews.com/2026/05/ollama-out-of-bounds-read-vulnerability.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0AOllama%E3%81%AB%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%AF%E8%84%86%E5%BC%B1%E6%80%A7%20%28CVE-2026-7482%29%20%E3%82%92%E7%99%BA%E8%A6%8B%0A%0A%23%E8%84%86%E5%BC%B1%E6%80%A7%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F0799b1d0a43c.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0AOllama%E3%81%AB%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%81%8B%E3%82%89%E3%83%A1%E3%83%A2%E3%83%AA%E6%BC%8F%E6%B4%A9%E3%82%92%E8%A8%B1%E3%81%99%E6%B7%B1%E5%88%BB%E3%81%AA%E8%84%86%E5%BC%B1%E6%80%A7%0A%0A%23%E8%84%86%E5%BC%B1%E6%80%A7%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F0799b1d0a43c.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/0799b1d0a43c.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
 
-  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../#archive" class="explore-chip" data-search-tag="CVE">CVE</a><a href="../#archive" class="explore-chip" data-search-tag="エクスプロイト">エクスプロイト</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../#archive" class="explore-chip" data-search-context="サービス企画">サービス企画</a><a href="../#archive" class="explore-chip" data-search-tag="CVE">CVE</a><a href="../#archive" class="explore-chip" data-search-tag="エクスプロイト">エクスプロイト</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
 
   <section class="ap-section">
   <h3 class="ap-sec-title">関連記事：同じ「脆弱性」の最近の記事</h3>
