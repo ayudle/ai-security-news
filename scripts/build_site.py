@@ -317,8 +317,6 @@ def article_card(a, rank=None):
     rank_html    = f'<span class="rank">#{rank}</span>' if rank else ""
     pub          = a.get("published","")[:10]
     insight      = a.get("insight","")
-    imp_reason   = a.get("importance_reason","")
-    reason_html  = f'<button type="button" class="imp-reason" title="{html_escape(imp_reason)}" aria-label="重要度判定の理由: {html_escape(imp_reason)}">?</button>' if imp_reason else ""
     main_id      = a.get("tag_main_id","attack")
     main_label   = a.get("tag_main_label","攻撃・脅威")
     subs_html    = "".join(tag_sub_badge(s) for s in a.get("tag_subs",[]))
@@ -351,7 +349,7 @@ def article_card(a, rank=None):
     <span class="tier">{tier_label(a.get('source_tier','B'))}</span>
     <span class="src">{html_escape(a.get('source_name',''))}</span>
     <span class="dt">{pub}</span>
-    {imp_badge(a.get('importance','中'))}{reason_html}
+    {imp_badge(a.get('importance','中'))}
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/{a.get('id','')}.html" onclick="event.stopPropagation()">{html_escape(a.get('title_ja') or a.get('title',''))}</a></h2>
   {insight_snippet}
@@ -673,8 +671,6 @@ a{{color:inherit;text-decoration:none}}
 .src,.dt{{font-size:10px;color:var(--dim)}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
-.imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px;background:transparent;border:none;padding:2px;min-width:20px;min-height:20px;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;vertical-align:middle}}
-.imp-reason:hover{{color:var(--text)}}
 .rank{{font-size:13px;font-weight:700;color:var(--accent);min-width:22px}}
 .cdc-badges{{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}}
 .cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
@@ -893,12 +889,6 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 
 <div class="pane" id="pane-trend">
   <p class="plabel">トレンド分析</p>
-
-  <div id="today-implication-box" style="display:none;background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;margin-bottom:18px">
-    <div style="font-size:11px;font-weight:700;color:#378ADD;letter-spacing:.05em;margin-bottom:6px">本日の示唆</div>
-    <div id="today-implication-text" style="font-size:13px;line-height:1.8;color:#e6e4dc"></div>
-    <div style="font-size:10px;color:#6a6860;margin-top:8px">AI for Security / Security for AI / CDC・SOCへの示唆</div>
-  </div>
 
   <div class="stat-row">
     <div class="stat"><div class="stat-n" id="s-total">—</div><div class="stat-l">累計記事数</div></div>
@@ -1216,7 +1206,6 @@ function renderImplication(text, textElId, boxElId, hd) {{
 
 function initDashboard() {{
   if (ANA.today_implication) {{
-    renderImplication(ANA.today_implication, 'today-implication-text', 'today-implication-box', false);
     renderImplication(ANA.today_implication, 'today-impl-text', 'today-impl-box', true);
   }}
 
@@ -1985,8 +1974,6 @@ a{{color:inherit;text-decoration:none}}
 .src,.dt{{font-size:10px;color:var(--dim)}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
-.imp-reason{{font-size:10px;color:var(--dim);cursor:help;margin-left:1px;background:transparent;border:none;padding:2px;min-width:20px;min-height:20px;display:inline-flex;align-items:center;justify-content:center;font-family:inherit;vertical-align:middle}}
-.imp-reason:hover{{color:var(--text)}}
 .ct{{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}}
 .ct a:hover{{color:var(--accent)}}
 .tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}}
