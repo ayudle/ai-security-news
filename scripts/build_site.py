@@ -5,6 +5,7 @@ build_site.py v3
 
 import json, os, re, glob
 from html import escape as html_escape
+from urllib.parse import quote as _url_quote
 from datetime import datetime, timezone, timedelta
 from collections import Counter, defaultdict
 
@@ -847,6 +848,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <div class="pane" id="pane-archive">
   <p class="plabel">記事検索</p>
   <p class="srch-desc">過去記事をテーマ・文脈・カテゴリから探せます。AI×セキュリティ、SOC/CDC、Security for AI の学習・調査に活用できます。</p>
+  <div id="srch-url-notice" style="display:none;font-size:11px;color:var(--accent);padding:5px 10px;background:#0d1e36;border-radius:6px;margin-bottom:10px">適用中の条件：<span id="srch-url-label"></span></div>
   <div class="srch-input-wrap">
     <span class="srch-input-icon">🔍</span>
     <input type="search" id="srch-input" class="srch-input" placeholder="キーワードを入力（例：プロンプトインジェクション、CVE、SOC）" autocomplete="off">
@@ -1368,6 +1370,83 @@ var srchOffset = 0;
 var SRCH_PAGE = 30;
 var srchFiltered = [];
 
+// 記事ページの cdc_context 値 → 記事検索の文脈フィルター ID マッピング
+const CTX_MAP = {{
+  'SOC運用変化':   'soc',
+  'MDR/MSSP設計':  'soc',
+  'サービス企画':   'soc',
+  '顧客課題':       'soc',
+  'CISO報告':      'ciso',
+  'Identity/ITDR': 'itdr',
+  'Exposure管理':  'exp',
+  'Security for AI': 's4ai',
+  'AI for Security': 'ai4s',
+}};
+
+function applyUrlParams() {{
+  var params = new URLSearchParams(location.search);
+  var labels = [];
+
+  var q = params.get('q');
+  if (q) {{
+    srchState.query = q;
+    var inp = document.getElementById('srch-input');
+    if (inp) inp.value = q;
+    labels.push(q);
+  }}
+
+  var ctx = params.get('context');
+  if (ctx) {{
+    var ctxId = CTX_MAP[ctx];
+    if (!ctxId) {{
+      var found = SRCH_CTX.find(function(c) {{ return c.label === ctx; }});
+      if (found) ctxId = found.id;
+    }}
+    if (ctxId && ctxId !== 'all') {{
+      srchState.ctx = ctxId;
+      var ctxEl = document.getElementById('srch-ctx');
+      if (ctxEl) {{
+        ctxEl.querySelectorAll('.srch-chip').forEach(function(b) {{
+          b.classList.toggle('on', b.dataset.val === ctxId);
+        }});
+      }}
+      labels.push(ctx);
+    }}
+  }}
+
+  var tag = params.get('tag');
+  if (tag) {{
+    srchState.query = tag;
+    var inp2 = document.getElementById('srch-input');
+    if (inp2) inp2.value = tag;
+    labels.push(tag);
+  }}
+
+  var theme = params.get('theme');
+  if (theme) {{
+    var themeFound = SRCH_THEMES.find(function(t) {{ return t.id === theme || t.label === theme; }});
+    if (themeFound) {{
+      srchState.theme = themeFound.id;
+      var themeEl = document.getElementById('srch-themes');
+      if (themeEl) {{
+        themeEl.querySelectorAll('.srch-theme-btn').forEach(function(b) {{
+          b.classList.toggle('on', b.dataset.theme === themeFound.id);
+        }});
+      }}
+      labels.push(themeFound.label);
+    }}
+  }}
+
+  if (labels.length > 0) {{
+    var notice = document.getElementById('srch-url-notice');
+    var lbl = document.getElementById('srch-url-label');
+    if (notice && lbl) {{
+      lbl.textContent = labels.join(' ＋ ');
+      notice.style.display = '';
+    }}
+  }}
+}}
+
 function safeArtHref(id) {{
   if (!id || !/^[a-zA-Z0-9_-]{{1,64}}$/.test(id)) return '#';
   return '/ai-security-news/article/' + id + '.html';
@@ -1423,6 +1502,7 @@ function initSearch() {{
   }}
   var moreBtn = document.getElementById('srch-more-btn');
   if (moreBtn) moreBtn.addEventListener('click', showSrchMore);
+  applyUrlParams();
   runSearch();
 }}
 
@@ -1566,6 +1646,9 @@ function clearSearch() {{
   document.querySelectorAll('.srch-chip').forEach(function(b) {{
     b.classList.toggle('on', b.dataset.val === 'all');
   }});
+  var notice = document.getElementById('srch-url-notice');
+  if (notice) notice.style.display = 'none';
+  if (location.search) history.replaceState(null, '', location.pathname + location.hash);
   runSearch();
 }}
 
@@ -1686,14 +1769,18 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
     if _explore_chips:
         chips_parts = []
         for label, attr_type in _explore_chips:
+            enc = _url_quote(label, safe="")
             if attr_type == "context":
+                href = html_escape(f"../?context={enc}#archive")
                 data_attr = f'data-search-context="{html_escape(label)}"'
             elif attr_type == "tag":
+                href = html_escape(f"../?tag={enc}#archive")
                 data_attr = f'data-search-tag="{html_escape(label)}"'
             else:
+                href = html_escape(f"../?q={enc}#archive")
                 data_attr = f'data-search-keyword="{html_escape(label)}"'
             chips_parts.append(
-                f'<a href="../#archive" class="explore-chip" {data_attr}>{html_escape(label)}</a>'
+                f'<a href="{href}" class="explore-chip" {data_attr}>{html_escape(label)}</a>'
             )
         explore_html = (
             f'<section class="ap-section">'
@@ -1706,7 +1793,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
         )
 
     # シェアURL（URLエンコード対応 + 完成形テンプレ + 動的ハッシュタグ）
-    from urllib.parse import quote
+    quote = _url_quote
     site_url = f"https://ayudle.github.io/ai-security-news/article/{aid}.html"
 
     # tag_subs から動的にハッシュタグを選定

@@ -201,7 +201,11 @@ X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --test
 │       ├── latest.json               # 記事データ（JSON・90日分）
 │       ├── x_posts_daily.json        # X投稿候補3本一覧（daily.yml が毎朝生成・参考用）
 │       ├── x_post_daily_pick.json    # daily-pick 選定記事（post_x.yml が毎日更新）
-│       └── x_post_history.json       # 投稿履歴（date/slot/selection_mode/article_id）
+│       ├── x_post_history.json       # 投稿履歴（date/slot/selection_mode/article_id）
+│       │                             #   ※ daily-pick は selection_mode="daily_pick" で識別（slot列は参考値）
+│       ├── x_post_morning.json       # --slot morning 手動実行時の出力（平常時は参照不要）
+│       ├── x_post_noon.json          # --slot noon   手動実行時の出力（平常時は参照不要）
+│       └── x_post_evening.json       # --slot evening 手動実行時の出力（平常時は参照不要）
 └── gas/
     └── send_newsletter.gs            # Gmail自動送信（Google Apps Script・オプション）
 ```
@@ -233,6 +237,42 @@ X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --test
 | GitHub Pages | 静的HTML配信 | 完全無料 |
 
 > **注意**: テスト実行を繰り返すとその日の無料枠を消費します。本番運用では毎朝1回のcron実行のみに留めてください。
+
+---
+
+## 運用観察チェックリスト
+
+### 毎日確認
+- [ ] GitHub Actions → `daily.yml` が正常終了しているか（04:10 JST の1回目が成功していればOK）
+- [ ] `post_x.yml` の 20:30 JST スケジュール実行が成功しているか
+- [ ] X投稿の内容と daily-pick 選定記事が自然か（`docs/data/x_post_daily_pick.json` で確認）
+- [ ] `docs/data/latest.json` の `today` フィールドが当日日付になっているか
+
+### 週1確認
+- [ ] `weekly.yml`（月曜07:00 JST）が正常完了しているか
+- [ ] 週次レポートページが生成されているか（`docs/weekly/YYYY-MM-DD.html`）
+- [ ] `today_implication` の文体が定型化・硬直化していないか
+- [ ] 記事検索のテーマボタンが空振りしすぎていないか（Identity/ITDR・Exposure管理は記事蓄積後に有効化）
+
+### 失敗サイン
+- `x_post_history.json` で `status: skipped` または `status: failed` が連続する
+- `daily.yml` が3回とも失敗する（Gemini API key 切れ・API仕様変更の可能性）
+- `today_implication` フィールドが空になる（LLMレスポンスのスキーマ変化）
+- 記事検索で主要テーマが0件ばかりになる（`cdc_context` フィールド未取得の可能性）
+
+### 次に手を動かす条件
+- 1週間分の X 投稿を見て `daily-pick` 選定に違和感がある
+- `today_implication` の 7 セクション構造が定型的すぎると判断したとき
+- 週次レポートが SOC/CDC 実務者向けになっていないと感じたとき
+- コラム3本目を書く準備ができたとき
+
+---
+
+## 補足メモ
+
+**記事検索タブの `#archive` hash について**  
+表示名は「記事検索」ですが、URL ハッシュは `#archive` のままです。  
+既存リンクとの互換性維持のため変更しません。記事個別ページの「このテーマをもっと探す」チップは `?context=` / `?tag=` / `?q=` パラメータを付加してアクセスし、記事検索側で条件が自動適用されます。
 
 ---
 
