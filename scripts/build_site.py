@@ -1007,7 +1007,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
       <div class="about-section-lbl">なぜこのサイトを作ったか</div>
       <div class="about-text">
         <p style="margin-bottom:1rem">AI×セキュリティの情報は英語・断片的・速度が速い。日本語でSOC/CDCサービス設計に関わる実務者の視点から「今日の動向がSOCにとって何を意味するか」を毎日整理する場所が必要だと感じていました。</p>
-        <p style="margin-bottom:1rem">単なる翻訳ニュースではなく、SOC/CDCサービス設計に関わる実務者の視点から、「示唆・学び」まで整理することを目指しています。Gemini APIとGitHub Actionsで完全自動化しつつ、コラムでは自分の考察を書き続けています。</p>
+        <p style="margin-bottom:1rem">単なる翻訳ニュースではなく、SOC/CDCサービス設計に関わる実務者の視点から、「示唆」まで整理することを目指しています。Gemini APIとGitHub Actionsで完全自動化しつつ、コラムでは自分の考察を書き続けています。</p>
         <p>長期的には、AIエージェント時代のSOC/CDCが何を監視し、どう設計されるべきかを考えるための知識基盤へ育てていきたいと考えています。</p>
       </div>
     </div>
@@ -1981,7 +1981,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     <div class="ap-body">{html_escape(summary_ja)}</div>
   </section>
 
-  {"<section class='ap-section'><h3 class='ap-sec-title'>CISO視点での示唆・学び</h3><div class='insight-box'><span class='insight-lbl'>示唆・学び</span><div class='insight-body'>" + html_escape(insight) + "</div></div></section>" if insight else ""}
+  {"<section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>" + html_escape(insight) + "</div></div></section>" if insight else ""}
 
   {"<section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>" + html_escape(imp_reason) + "</div></section>" if imp_reason else ""}
 
