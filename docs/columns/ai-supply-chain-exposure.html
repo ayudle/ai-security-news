@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理 | Cyber Defense Notes</title>
+<meta name="description" content="AIモデルは外部から調達する「部品」である。偽モデルリポジトリ事例とCISA/G7のSBOM for AIガイダンスを踏まえ、CDCが担うべきAIサプライチェーンのExposure管理を3層モデルで整理する。">
+<meta property="og:title" content="AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理">
+<meta property="og:description" content="AIモデルは外部から調達する「部品」である。偽モデルリポジトリ事例とCISA/G7のSBOM for AIガイダンスを踏まえ、CDCが担うべきAIサプライチェーンのExposure管理を3層モデルで整理する。">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/columns/ai-supply-chain-exposure.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/columns/ai-supply-chain-exposure.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理", "description": "AIモデルは外部から調達する「部品」である。偽モデルリポジトリ事例とCISA/G7のSBOM for AIガイダンスを踏まえ、CDCが担うべきAIサプライチェーンのExposure管理を3層モデルで整理する。", "author": {"@type": "Person", "name": "Ayudle"}, "publisher": {"@type": "Organization", "name": "Cyber Defense Notes", "url": "https://ayudle.github.io/ai-security-news/"}, "datePublished": "2026-05-16", "dateModified": "2026-05-16", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ayudle.github.io/ai-security-news/columns/ai-supply-chain-exposure.html"}, "url": "https://ayudle.github.io/ai-security-news/columns/ai-supply-chain-exposure.html", "image": "https://ayudle.github.io/ai-security-news/og-image.png"}</script>
+<style>
+:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700}
+.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+nav.col-nav{padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px}
+nav.col-nav a{color:var(--accent);text-decoration:none}
+.col-ap{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.col-head{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}
+.col-meta{font-size:11px;color:var(--dim);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.col-tags-ap{display:flex;flex-wrap:wrap;gap:4px}
+.col-tag-ap{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}
+h1.col-title{font-size:24px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:10px}
+.col-desc{font-size:14px;color:var(--dim);line-height:1.65;margin-top:8px}
+.col-body{font-size:15px;line-height:1.9;color:var(--text)}
+.col-body h1,.col-body h2{font-size:18px;font-weight:700;color:#fff;margin:2em 0 .6em;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.col-body h3{font-size:15px;font-weight:700;color:#c0beb6;margin:1.6em 0 .5em}
+.col-body p{margin-bottom:1.2em}
+.col-body ul{margin:0 0 1.2em 1.4em}
+.col-body li{margin-bottom:.4em}
+.col-body strong{color:#fff;font-weight:700}
+.col-footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KV7Q7SQKZX');
+</script>
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">Cyber Defense Notes</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#columns" class="back">← コラム一覧に戻る</a>
+
+<nav class="col-nav">
+  <a href="/ai-security-news/#today">本日のニュース</a>
+  <a href="/ai-security-news/#trend">トレンド分析</a>
+  <a href="/ai-security-news/#weekly">週次レポート</a>
+  <a href="/ai-security-news/#columns">コラム一覧</a>
+</nav>
+
+<article class="col-ap">
+  <div class="col-head">
+    <div class="col-meta">
+      <span>2026-05-16</span>
+      <span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a;font-weight:600">✍ 著者執筆</span>
+      <div class="col-tags-ap"><span class="col-tag-ap">CDC</span><span class="col-tag-ap">Security for AI</span><span class="col-tag-ap">AIサプライチェーン</span><span class="col-tag-ap">SBOM</span><span class="col-tag-ap">モデルセキュリティ</span></div>
+    </div>
+    <h1 class="col-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</h1>
+    <p class="col-desc">AIモデルは外部から調達する「部品」である。偽モデルリポジトリ事例とCISA/G7のSBOM for AIガイダンスを踏まえ、CDCが担うべきAIサプライチェーンのExposure管理を3層モデルで整理する。</p>
+  </div>
+
+  <div class="col-body">
+<h2>はじめに：モデルという「部品」がなぜExposureになるのか</h2>
+<p>AIを活用するシステムが増えるにつれ、組織のインフラにAIモデルが組み込まれる機会が増えています。社内RAGシステムのエンベディングモデル、コード補完や調査自動化の基盤モデル、MDRや脅威インテリジェンス分析に使うLLM——これらの多くは、外部から取得して使われています。</p>
+<p>問いたいのは、そのモデルがどこから来ているかです。</p>
+<p>ソフトウェア開発では、オープンソースのライブラリやサードパーティコンポーネントのセキュリティ確認が運用上の常識になってきました。SBOMの整備、依存関係スキャン、CVEへの対応——これはソフトウェアサプライチェーンのセキュリティです。</p>
+<p>AIモデルは、同じ意味での「部品」です。外部から調達され、検証なしに使われれば、それはExposureになります。しかしこの視点が、ソフトウェアライブラリほどの当たり前さでAIモデルに向けられているかというと、まだそうなっていないと感じています。</p>
+<p>本稿では、実際の事例と3層のExposureモデルを通じて、CDCが担うべきAIサプライチェーンのExposure管理を整理します。</p>
+<h2>事例：信頼されたプラットフォームを悪用する手口</h2>
+<p>2026年5月、Hugging Face上に偽のOpenAI公式リポジトリが確認されました。そのリポジトリには、OpenAIのブランドを模したモデルファイルが公開されており、内部には実行時に外部への接続を試みるコードが含まれていたとされています。</p>
+<p>これを「Hugging Faceが危険」と読むのは正確ではありません。問題は、信頼されたオープンモデルリポジトリが、攻撃者による悪意あるコンテンツの配布経路として悪用され得るという構造です。</p>
+<p>攻撃の形は単純です。名前を模した偽リポジトリを公開する、あるいは正規リポジトリを改ざんする——そこから取得したモデルを、出所確認なしに自組織のシステムに組み込む。これで攻撃者はモデルを経由して実行環境にコードを持ち込めます。</p>
+<p>重要なのは、この種の攻撃が特別な標的型攻撃ではないという点です。攻撃者の関心は「誰かが確認なしにモデルを取得すること」にあります。利用組織が特定されていなくても成立する、サプライチェーン攻撃の構造を持っています。</p>
+<p>ソフトウェアの世界でも、npmやPyPIへの悪意あるパッケージ公開が繰り返されてきました。AIモデルのリポジトリが同様の問題を抱えるのは、構造上の必然です。</p>
+<h2>AIサプライチェーンのExposureを3層で考える</h2>
+<p>この種のリスクを整理するために、私は3層のExposureモデルで考えることにしています。</p>
+<p><strong>Layer 1：調達・モデル層</strong></p>
+<p>どこからモデルを取得しているか、取得したモデルの整合性を確認しているか、ライセンスと利用条件を把握しているかという層です。</p>
+<p>具体的には、モデルのソース（公式か非公式か）、ハッシュ値による改ざん確認、リリース元の確認、更新・変更の追跡が問われます。多くの組織でこの確認が最も薄い層です。「モデルをダウンロードして使う」という感覚が残っている間は、ここに穴が開きやすい。</p>
+<p><strong>Layer 2：実行基盤層</strong></p>
+<p>モデルが動作する環境の権限、隔離、モニタリングに関わる層です。</p>
+<p>どのプロセスでモデルが実行されているか、実行環境がどの程度隔離されているか、ファイルシステムやネットワークへのアクセス範囲、リソース利用の異常を検知できるかが問われます。</p>
+<p>Layer 1のチェックが通り抜けた場合でも、ここで実行時の異常挙動を検知できれば被害を限定できます。実行基盤の設計は、技術的な最終防衛ラインです。</p>
+<p><strong>Layer 3：接続・影響層</strong></p>
+<p>モデルが接続する先——業務システム、データストア、APIキー、OAuthトークン、NHI（Non-Human Identity）——に関わる層です。</p>
+<p>モデルを経由した侵害が最終的にどこまで達するかは、この層の設計次第です。接続先が広いほど、Layer 1・2を突破されたときの影響範囲が大きくなります。</p>
+<p>この層の詳細——NHI管理、MCP経由の接続制御、OAuthスコープの設計——は論点として重要ですが、本稿では「Layer 3という接続・影響の問題が存在する」ことの確認にとどめます。AIエージェントとモデルの利用が重なるこの領域は、次の稿でまとめて扱います。</p>
+<h2>SBOM for AI——監視設計のインプットとして何を期待するか</h2>
+<p>2026年5月、CISAとG7パートナー機関がAIシステム向けのSBOM（Software Bill of Materials）ガイダンスを公開しました。AIシステムを構成する要素——モデル、データセット、依存ライブラリ、学習パラメータ——の記録と管理を求める内容です。</p>
+<p>このガイダンスをどう読むかについて、一点整理しておきたいことがあります。</p>
+<p>SBOM for AIを「組織が整備すべきゴール」として受け取ると、作業のスコープが広がりすぎます。ソフトウェアのSBOMでさえ、実運用での維持には相当のコストがかかります。モデルの学習パラメータやデータセットの系譜まで含めれば、さらに困難です。</p>
+<p>私が有用だと思っているのは、SBOM for AIを<strong>監視設計のインプット</strong>として使う読み方です。</p>
+<p>「何をインベントリしておくべきか」を考える際の整理軸として使う。どのモデルがどの環境で動いているかを記録する際の項目として参照する。調達・取得プロセスに何を追加すべきかを議論する際の出発点にする——こうした使い方は、SBOM for AIの完全な整備が難しい組織でも現実的です。</p>
+<p>CISA/G7ガイダンスが示しているのは、「AIシステムの可視性を持つことが、セキュリティ管理の前提である」という考え方です。その可視性をどのレベルから始めるかは、自組織の状況に合わせて考える余地があります。</p>
+<h2>CDCとしての当面の対応</h2>
+<p>Layer 1・2を中心に、CDCとして今取り組める対応を整理します。</p>
+<p><strong>まず、インベントリを作ること</strong></p>
+<p>自組織でどのAIモデルが、どこで使われているか——この一覧が作れない状態からは始まりません。内製システムで使われているモデル、SaaSや外部サービスが利用しているモデル、開発環境で使われているモデル。分類の仕方はいくつかありますが、「使われているAIモデルの一覧を作れるか」が出発点です。</p>
+<p>SBOM for AIのガイダンスは、このインベントリ作成の項目整理として使えます。全部を一度に埋める必要はなく、まずモデル名・取得元・使用環境・更新状況を押さえることから始めるのが現実的です。</p>
+<p><strong>取得プロセスに確認ステップを入れること</strong></p>
+<p>モデルを取得する際の確認を、運用プロセスに組み込みます。ソース（公式リポジトリか、検証済みソースか）の確認、ハッシュ値による整合性確認、モデルの変更履歴の確認——これをチェックリスト化して、取得・更新の都度確認するだけでも、Layer 1の穴は塞がります。</p>
+<p>「モデルをダウンロードしてそのまま使う」という状態から「確認してから使う」状態への移行が、現時点では最も影響の大きい対応だと考えています。</p>
+<p><strong>実行環境の設計を見直すこと</strong></p>
+<p>モデルがどの権限で動いているか、実行環境が外部ネットワークに無制限にアクセスできる状態になっていないか、異常なプロセス起動やネットワーク接続を検知できる監視が入っているかを確認します。</p>
+<p>既存のEDR・NDRの監視範囲に「AIモデルの実行プロセス」が入っているかどうか、一度確認する価値があります。Layer 2の隔離と監視は、モデル固有の対応というよりも、実行基盤のセキュリティ設計の延長線上にあります。</p>
+<h2>Layer 3という次の問い</h2>
+<p>Layer 3——接続・影響層——への言及を最後にしておきます。</p>
+<p>モデルが業務システムやデータストア、APIキーに接続している場合、モデル経由の侵害の影響範囲は接続先の設計に強く依存します。NHIとして管理されるAPIキーやOAuthトークン、MCPサーバーを介したエージェント連携——これらはLayer 3の具体的な要素です。</p>
+<p>AIエージェントとモデルの利用が重なるこの領域は、前のコラム（「AIエージェントは、誰が監視するのか」）で扱ったNHIやエージェントID管理の議論とも接続します。Layer 3の詳細については、NHI管理・MCP接続制御・OAuthスコープ設計をまとめて扱う次の稿で整理します。</p>
+<h2>おわりに：「部品管理」の視点を持つことから</h2>
+<p>AIモデルは外部から調達する部品です。この認識を持つと、セキュリティ管理の問いが自然に出てきます。どこから来たのか。整合性は確認したか。どの環境で動いているか。何に接続しているか。</p>
+<p>ソフトウェアライブラリのサプライチェーンセキュリティが当然視されてきたように、AIモデルに同じ問いを向けることが、AI活用を進める組織には求められるようになっています。</p>
+<p>CDCが担う役割は、すでに「AIを活用する」側だけでなく「AIを監視・管理する」側にも広がっています。モデルのインベントリ作成、取得プロセスへの確認ステップの組み込み、実行環境の権限設計——ここから始めることは、今日でもできます。</p>
+<p>「部品として持ち込まれるモデルを管理する」という視点を、CDCの設計にどう組み込むか。その問いを持つことが、AIサプライチェーンExposure管理の出発点だと考えています。</p>
+  </div>
+
+  <div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)"><div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#4db896;text-transform:uppercase;margin-bottom:14px">このテーマの最近のニュース</div><a href="../article/3a20f82f0fe0.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-18</span><span>Dark Reading</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">AIエージェントとAI生成コードが新たな脅威、防御側の適応が不可欠</div></a><a href="../article/784162448fe9.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-15</span><span>SecurityWeek</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">Nvidiaデータ侵害、Androidセキュリティ向上、CiscoのAIセキュリティ仕様など</div></a><a href="../article/99e23d8dd967.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-15</span><span>The Hacker News</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">OpenAI、TanStackサプライチェーン攻撃で従業員デバイス侵害</div></a><a href="../article/d369d259b5d2.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-15</span><span>SecurityWeek</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">OpenAI、TanStackサプライチェーン攻撃で従業員デバイスとコードリポジトリが標的に</div></a><a href="../article/dcc67cc3b39e.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span>2026-05-15</span><span>arXiv cs.CR</span><span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">SOC運用変化</span></div><div style="font-size:13px;color:#e6e4dc;line-height:1.5">UAVIDS-2025データセットにおけるXAIを用いた信頼性の高い侵入検知</div></a></div>
+
+  <div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)"><div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6aabdd;text-transform:uppercase;margin-bottom:14px">関連する設計ノート</div><a href="../columns/ai-soc-prerequisites.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px">2026-05-15</div><div style="font-size:13px;color:#e6e4dc;font-weight:600;line-height:1.4;margin-bottom:4px">AI SOCの前に、SOCの現在地を見よ</div><div style="font-size:12px;color:#9ca3af;line-height:1.5">AI SOCが実運用で機能するかどうかは、AIの性能だけで決まらない。プロセス・体制・データという3軸からSOCの現在地を見極めることが、AI SOC導入の本当の出発点である。</div></a><a href="../columns/ai-agent-activity-monitoring.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px">2026-05-13</div><div style="font-size:13px;color:#e6e4dc;font-weight:600;line-height:1.4;margin-bottom:4px">AIエージェントは、誰が監視するのか</div><div style="font-size:12px;color:#9ca3af;line-height:1.5">AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが従来の監視対象だけでは足りなくなる理由と、AIエージェント時代に必要な監視機能を考える。</div></a><a href="../columns/ai-soc-stop-attack.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#6a6860;margin-bottom:4px">2026-05-10</div><div style="font-size:13px;color:#e6e4dc;font-weight:600;line-height:1.4;margin-bottom:4px">AI SOCとは、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことである</div><div style="font-size:12px;color:#9ca3af;line-height:1.5">SOCはなぜ「攻撃を止める組織」から「アラートを捌く組織」へ変質したのか。AI SOCの本質を効率化ではなく監視カバレッジの回復と捉え直し、AIのBlind spotを監視する人間の役割とCDC的運用への接続を考える。</div></a></div>
+
+  <div class="col-footer">
+    <a href="/ai-security-news/#columns" style="font-size:13px;color:var(--accent);text-decoration:none">← コラム一覧に戻る</a>
+    <a href="/ai-security-news/#today" style="font-size:13px;color:var(--accent);text-decoration:none">← 本日のニュースに戻る</a>
+  </div>
+</article>
+
+<footer>
+  本コラムは著者が執筆した考察であり、LLMによる自動生成ではありません。<br>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+
+</body>
+</html>
