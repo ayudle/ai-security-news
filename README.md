@@ -264,7 +264,7 @@ X_API_BASE_URL=https://api.twitter.com python scripts/generate_x_posts.py --test
 - 1週間分の X 投稿を見て `daily-pick` 選定に違和感がある
 - `today_implication` の 7 セクション構造が定型的すぎると判断したとき
 - 週次レポートが SOC/CDC 実務者向けになっていないと感じたとき
-- コラム3本目を書く準備ができたとき
+- 次のコラムを書くとき（`columns/YYYY-MM-DD-slug.md` を追加して `build_site.py` を実行する）
 
 ---
 

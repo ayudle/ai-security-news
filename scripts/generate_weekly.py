@@ -4,7 +4,7 @@ generate_weekly.py
 過去7日間の記事データとtoday_implicationからウィークリーダイジェストJSONをGemini APIで生成する
 """
 
-import json, os, re
+import json, os, re, sys
 from datetime import datetime, timezone, timedelta
 from collections import Counter
 from google import genai
@@ -121,6 +121,7 @@ top_topicsは重要度が高いもの順に最大3件。layer_trendsは6層す�
 
 
 def main():
+    force = "--force" in sys.argv
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise ValueError("GEMINI_API_KEY が未設定です")
@@ -155,8 +156,8 @@ def main():
 
     os.makedirs(WEEKLY_DIR, exist_ok=True)
     out_json = f"{WEEKLY_DIR}/{period_end}.json"
-    if os.path.exists(out_json):
-        print(f"[SKIP] {out_json} は既に存在します"); return
+    if os.path.exists(out_json) and not force:
+        print(f"[SKIP] {out_json} は既に存在します（再生成するには --force を付けてください）"); return
 
     keyword_changes = compute_keyword_changes(history)
 

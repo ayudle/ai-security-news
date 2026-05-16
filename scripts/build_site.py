@@ -36,6 +36,7 @@ def _is_noise_kw(kw):
     return kl in _NOISE_KW or any(n in kl for n in _NOISE_KW)
 
 _SAFE_URL_SCHEME = re.compile(r'^https?://', re.IGNORECASE)
+_SAFE_ID_RE      = re.compile(r'^[a-zA-Z0-9_-]{1,64}$')
 
 def _safe_url(url: str) -> str:
     """RSS由来URLを http/https のみ許可する。それ以外は # に置き換える。"""
@@ -43,6 +44,11 @@ def _safe_url(url: str) -> str:
     if not u or u == "#":
         return "#"
     return u if _SAFE_URL_SCHEME.match(u) else "#"
+
+def safe_article_id(raw_id: str) -> str:
+    """記事IDを検証し、安全なもののみ返す。不正な場合は空文字。"""
+    s = (raw_id or "").strip()
+    return s if _SAFE_ID_RE.match(s) else ""
 
 # ── コラム機能 ─────────────────────────────────────────────
 
@@ -126,7 +132,7 @@ def load_columns():
     return cols
 
 
-def build_column_page(col, all_articles=None):
+def build_column_page(col, all_articles=None, all_columns=None):
     """個別コラムページのHTMLを生成する"""
     title = col.get('title', '')
     date  = col.get('date', '')
@@ -173,7 +179,47 @@ def build_column_page(col, all_articles=None):
                 + "".join(items) +
                 '</div>'
             )
-    site_url = f'https://ayudle.github.io/ai-security-news/columns/{slug}.html'
+    # 関連コラム（自分以外の最大3本）
+    related_cols_html = ""
+    if all_columns:
+        others = [c for c in all_columns if c.get('slug','') != slug][:3]
+        if others:
+            items_c = []
+            for c in others:
+                c_slug  = html_escape(c.get('slug', ''))
+                c_title = html_escape(c.get('title', ''))
+                c_desc  = html_escape(c.get('description', ''))
+                c_date  = html_escape(c.get('date', ''))
+                items_c.append(
+                    f'<a href="../columns/{c_slug}.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px">'
+                    f'<div style="font-size:10px;color:#6a6860;margin-bottom:4px">{c_date}</div>'
+                    f'<div style="font-size:13px;color:#e6e4dc;font-weight:600;line-height:1.4;margin-bottom:4px">{c_title}</div>'
+                    f'<div style="font-size:12px;color:#9ca3af;line-height:1.5">{c_desc}</div>'
+                    f'</a>'
+                )
+            related_cols_html = (
+                '<div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)">'
+                '<div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6aabdd;text-transform:uppercase;margin-bottom:14px">関連する設計ノート</div>'
+                + "".join(items_c) +
+                '</div>'
+            )
+    page_url  = f'https://ayudle.github.io/ai-security-news/columns/{slug}.html'
+    site_url  = page_url  # 後方互換のため両名を維持
+    ogp_image = 'https://ayudle.github.io/ai-security-news/og-image.png'
+    jsonld = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": title,
+        "description": desc,
+        "author": {"@type": "Person", "name": "Ayudle"},
+        "publisher": {"@type": "Organization", "name": "Cyber Defense Notes",
+                      "url": "https://ayudle.github.io/ai-security-news/"},
+        "datePublished": date,
+        "dateModified":  date,
+        "mainEntityOfPage": {"@type": "WebPage", "@id": page_url},
+        "url": page_url,
+        "image": ogp_image,
+    }, ensure_ascii=False).replace('</', '<\\/')
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -183,13 +229,14 @@ def build_column_page(col, all_articles=None):
 <meta name="description" content="{html_escape(desc)}">
 <meta property="og:title" content="{html_escape(title)}">
 <meta property="og:description" content="{html_escape(desc)}">
-<meta property="og:url" content="{site_url}">
+<meta property="og:url" content="{page_url}">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
-<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
-<link rel="canonical" href="{site_url}">
+<meta property="og:image" content="{ogp_image}">
+<meta name="twitter:image" content="{ogp_image}">
+<link rel="canonical" href="{page_url}">
 <link rel="icon" type="image/png" href="../favicon.png">
+<script type="application/ld+json">{jsonld}</script>
 <style>
 :root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}}
 *{{box-sizing:border-box;margin:0;padding:0}}
@@ -251,6 +298,8 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   </div>
 
   {related_news_html}
+
+  {related_cols_html}
 
   <div class="col-footer">
     <a href="/ai-security-news/#columns" style="font-size:13px;color:var(--accent);text-decoration:none">← コラム一覧に戻る</a>
@@ -323,6 +372,8 @@ def article_card(a, rank=None):
     subs_html    = "".join(tag_sub_badge(s) for s in a.get("tag_subs",[]))
     layers_html  = "".join(tag_layer_badge(l) for l in a.get("affected_layers",[]))
     kws_html     = "".join(tag_kw_badge(k) for k in a.get("related_keywords",[])[:5])
+    aid          = safe_article_id(a.get("id", ""))
+    aid_esc      = html_escape(aid)
     # 示唆スニペット（タイトル直下1〜2行）
     insight_snippet = ""
     if insight:
@@ -337,14 +388,14 @@ def article_card(a, rank=None):
     # レイヤーは常時表示、related_keywordsは折りたたみ
     layers_row = f'<div class="tags tags-meta">{layers_html}</div>' if layers_html else ""
     kw_section = ""
-    if kws_html:
-        kid = f"kw-{a.get('id','')}"
+    if kws_html and aid_esc:
+        kid = f"kw-{aid_esc}"
         kw_section = (f'<div class="kw-fold">'
                       f'<div class="tags tags-meta" id="{kid}" style="display:none">{kws_html}</div>'
                       f'<button class="kw-btn" onclick="toggleKw(\'{kid}\',this);event.stopPropagation()">タグを表示</button>'
                       f'</div>')
 
-    return f"""<article class="card" data-id="{a.get('id','')}" data-main="{html_escape(main_id)}" onclick="navigateCard('{a.get('id','')}')">
+    return f"""<article class="card" data-id="{aid_esc}" data-main="{html_escape(main_id)}" onclick="navigateCard('{aid_esc}')">
   <div class="cm">
     {rank_html}
     <span class="tier">{tier_label(a.get('source_tier','B'))}</span>
@@ -352,7 +403,7 @@ def article_card(a, rank=None):
     <span class="dt">{pub}</span>
     {imp_badge(a.get('importance','中'))}
   </div>
-  <h2 class="ct"><a href="/ai-security-news/article/{a.get('id','')}.html" onclick="event.stopPropagation()">{html_escape(a.get('title_ja') or a.get('title',''))}</a></h2>
+  <h2 class="ct"><a href="/ai-security-news/article/{aid_esc}.html" onclick="event.stopPropagation()">{html_escape(a.get('title_ja') or a.get('title',''))}</a></h2>
   {insight_snippet}
   {cdc_html}
   <div class="tags">
@@ -2034,13 +2085,27 @@ def build_archive_page(day_data, date):
     n = len(articles)
     articles_html = "\n".join(article_card(a) for a in articles) if articles \
                     else '<p class="empty">この日の記事はありませんでした。</p>'
+    arc_url   = f'https://ayudle.github.io/ai-security-news/archive/{date}.html'
+    ogp_image = 'https://ayudle.github.io/ai-security-news/og-image.png'
+    arc_title = f'{date} のニュース | Cyber Defense Notes'
+    arc_desc  = f'Cyber Defense Notes の {date} のAI×セキュリティ/SOC/CDC関連記事アーカイブ。'
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>{date} のニュース | Cyber Defense Notes</title>
-<meta name="description" content="{date} のAI×セキュリティ / サイバーディフェンス関連ニュース（{n}件）| Cyber Defense Notes">
+<title>{html_escape(arc_title)}</title>
+<meta name="description" content="{html_escape(arc_desc)}">
+<link rel="canonical" href="{arc_url}">
+<meta property="og:title" content="{html_escape(arc_title)}">
+<meta property="og:description" content="{html_escape(arc_desc)}">
+<meta property="og:url" content="{arc_url}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{ogp_image}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{html_escape(arc_title)}">
+<meta name="twitter:description" content="{html_escape(arc_desc)}">
+<meta name="twitter:image" content="{ogp_image}">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
@@ -2493,7 +2558,7 @@ def main():
         cslug = col.get('slug','')
         if not cslug:
             continue
-        col_html = build_column_page(col, all_articles=unique_articles)
+        col_html = build_column_page(col, all_articles=unique_articles, all_columns=columns)
         with open(f"docs/columns/{cslug}.html", "w", encoding="utf-8") as f:
             f.write(col_html)
     print(f'コラム: {len(columns)}件')
@@ -2503,6 +2568,27 @@ def main():
     sitemap_urls = [
         {'loc': f'{site_url}/', 'priority': '1.0', 'changefreq': 'daily'},
     ]
+    # コラム（著者執筆の独自コンテンツ・最優先）
+    for col in columns:
+        cslug = col.get('slug','')
+        cdate = col.get('date','')
+        if cslug:
+            sitemap_urls.append({
+                'loc': f'{site_url}/columns/{cslug}.html',
+                'priority': '0.9',
+                'changefreq': 'monthly',
+                'lastmod': cdate,
+            })
+    # 週次レポート
+    for w in weekly_list:
+        wpe = w.get("period", {}).get("end", "")
+        if wpe:
+            sitemap_urls.append({
+                'loc': f'{site_url}/weekly/{w["date"]}.html',
+                'priority': '0.8',
+                'changefreq': 'monthly',
+                'lastmod': wpe,
+            })
     # 個別記事ページ
     for a in unique_articles:
         aid = a.get('id')
@@ -2510,7 +2596,7 @@ def main():
         if aid:
             sitemap_urls.append({
                 'loc': f'{site_url}/article/{aid}.html',
-                'priority': '0.8',
+                'priority': '0.7',
                 'changefreq': 'weekly',
                 'lastmod': pub
             })
@@ -2520,30 +2606,9 @@ def main():
         if d:
             sitemap_urls.append({
                 'loc': f'{site_url}/archive/{d}.html',
-                'priority': '0.6',
+                'priority': '0.5',
                 'changefreq': 'monthly',
                 'lastmod': d
-            })
-    # 週次レポート
-    for w in weekly_list:
-        wpe = w.get("period", {}).get("end", "")
-        if wpe:
-            sitemap_urls.append({
-                'loc': f'{site_url}/weekly/{w["date"]}.html',
-                'priority': '0.7',
-                'changefreq': 'monthly',
-                'lastmod': wpe,
-            })
-    # コラム
-    for col in columns:
-        cslug = col.get('slug','')
-        cdate = col.get('date','')
-        if cslug:
-            sitemap_urls.append({
-                'loc': f'{site_url}/columns/{cslug}.html',
-                'priority': '0.7',
-                'changefreq': 'monthly',
-                'lastmod': cdate,
             })
 
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

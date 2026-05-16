@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 22 * * 0'  # 月曜 07:00 JST（日曜 22:00 UTC）
   workflow_dispatch:
+    inputs:
+      force:
+        description: '既存の週次レポートがあっても再生成する（true/false）'
+        required: false
+        default: 'false'
 
 jobs:
   generate-weekly:
@@ -28,7 +33,12 @@ jobs:
       - name: Generate weekly digest
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python scripts/generate_weekly.py
+        run: |
+          FORCE_FLAG=""
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            FORCE_FLAG="--force"
+          fi
+          python scripts/generate_weekly.py $FORCE_FLAG
 
       - name: Build website
         run: python scripts/build_site.py
