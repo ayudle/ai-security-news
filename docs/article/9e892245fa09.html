@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LLMエージェントによるCTF挑戦と攻撃自動化の検証 | Cyber Defense Notes</title>
+<meta name="description" content="LLMエージェントがセキュリティの攻撃タスク自動化に提案されており、Capture-the-Flag (CTF) チャレンジで人間レベルの成功率を達成したという最近の研究報告が再検証されています。複数の複雑なエージェントアーキテクチャを用い">
+<meta property="og:title" content="LLMエージェントによるCTF挑戦と攻撃自動化の検証">
+<meta property="og:description" content="LLMエージェントがセキュリティの攻撃タスク自動化に提案されており、Capture-the-Flag (CTF) チャレンジで人間レベルの成功率を達成したという最近の研究報告が再検証されています。複数の複雑なエージェントアーキテクチャを用い">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/9e892245fa09.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LLMエージェントによるCTF挑戦と攻撃自動化の検証">
+<meta name="twitter:description" content="LLMエージェントがセキュリティの攻撃タスク自動化に提案されており、Capture-the-Flag (CTF) チャレンジで人間レベルの成功率を達成したという最近の研究報告が再検証されています。複数の複雑なエージェントアーキテクチャを用い">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/9e892245fa09.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "LLMエージェントによるCTF挑戦と攻撃自動化の検証",
+  "description": "LLMエージェントがセキュリティの攻撃タスク自動化に提案されており、Capture-the-Flag (CTF) チャレンジで人間レベルの成功率を達成したという最近の研究報告が再検証されています。複数の複雑なエージェントアーキテクチャを用いて、14の脆弱性クラスにわたる30のウェブベースCTF課題でその性能を評価したものです。",
+  "datePublished": "2026-05-22",
+  "url": "https://ayudle.github.io/ai-security-news/article/9e892245fa09.html",
+  "image": "https://ayudle.github.io/ai-security-news/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cyber Defense Notes",
+    "url": "https://ayudle.github.io/ai-security-news/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Ayudle"
+  }
+}
+</script>
+<style>
+:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700;margin:0;color:#fff}
+.logo-link{text-decoration:none;color:inherit}
+.logo-link:hover .logo{color:var(--accent)}
+.meta-top{font-size:11px;color:var(--dim)}
+.back{display:inline-block;padding:8px 16px;margin:12px 24px 0;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+.sub-nav{display:flex;flex-wrap:wrap;gap:16px;padding:10px 24px 12px;border-bottom:1px solid var(--border);font-size:13px}
+.sub-nav a{color:var(--accent)}
+.ap{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.ap-head{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:24px}
+.ap-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--dim);margin-bottom:12px}
+.ap-tier{display:inline-block;padding:2px 8px;border-radius:4px;background:var(--card);color:var(--accent);font-weight:600}
+.ap-src{color:var(--text)}
+.ap-title{font-size:26px;font-weight:700;color:#fff;margin:8px 0;line-height:1.4}
+.ap-section{margin-bottom:32px}
+.ap-sec-title{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.ap-body{font-size:15px;line-height:1.85;color:var(--text)}
+.insight-box{background:var(--insight-bg);border-left:3px solid var(--insight-border);padding:16px 20px;border-radius:4px;margin-top:12px}
+.insight-lbl{display:block;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}
+.insight-body{font-size:14px;line-height:1.75;color:var(--text)}
+.imp-box{padding:12px 16px;background:var(--card);border-radius:4px;margin-top:12px;font-size:13px;color:var(--dim)}
+.cdc-box{padding:12px 16px;background:#0a2820;border:1px solid #1a5040;border-radius:4px;margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cdc-rel-lbl{font-size:11px;font-weight:700;color:#4db896;margin-right:4px}
+.cdc-badge-ap{font-size:11px;padding:2px 8px;border-radius:4px;background:#0f3828;border:1px solid #1a5040;color:#4db896}
+.tags-box{display:flex;flex-wrap:wrap;gap:6px}
+.tag-main{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600}
+.tag-sub{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;background:var(--card);color:var(--text);border:1px solid var(--border)}
+.orig-box{background:var(--card);padding:16px;border-radius:4px;font-size:13px}
+.orig-box > div{margin-bottom:6px}
+.orig-box .lbl{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.orig-en{font-style:italic;color:var(--dim);margin-top:8px;font-size:12px;line-height:1.6}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{opacity:.9}
+.btn-secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--accent)}
+.rel-list{display:flex;flex-direction:column;gap:8px}
+.rel-item{display:block;background:var(--card);padding:12px 16px;border-radius:4px;text-decoration:none;color:inherit;border:1px solid transparent;transition:border-color .15s}
+.rel-item:hover{border-color:var(--accent)}
+.rel-meta{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--dim);margin-bottom:4px}
+.rel-date{color:var(--dim)}
+.rel-src{color:var(--text)}
+.rel-title{font-size:14px;font-weight:500;line-height:1.5;color:var(--text)}
+.explore-desc{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:10px}
+.explore-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.explore-chip{font-size:11px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);text-decoration:none;transition:border-color .15s,color .15s}
+.explore-chip:hover{border-color:var(--accent);color:var(--accent)}
+.explore-cta{font-size:13px;color:var(--accent);text-decoration:none;display:inline-block;margin-top:2px}
+.explore-cta:hover{text-decoration:underline}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KV7Q7SQKZX');
+</script>
+</head>
+<body>
+<header>
+  <a href="../" class="logo-link"><h1 class="logo">Cyber Defense Notes</h1></a>
+</header>
+
+<a href="../#today" class="back">← ニュース一覧に戻る</a>
+<nav class="sub-nav">
+  <a href="../#today">今日のニュース</a>
+  <a href="../#trend">トレンド分析</a>
+  <a href="../#weekly">週次レポート</a>
+  <a href="../#columns">コラム</a>
+  <a href="../#archive">記事検索</a>
+</nav>
+
+<article class="ap">
+  <div class="ap-head">
+    <div class="ap-meta">
+      <span class="ap-tier">学術</span>
+      <span class="ap-src">arXiv cs.CR</span>
+      <span>2026-05-22</span>
+      <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span>
+    </div>
+    <h1 class="ap-title">LLMエージェントによるCTF挑戦と攻撃自動化の検証</h1>
+  </div>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">要約</h3>
+    <div class="ap-body">LLMエージェントがセキュリティの攻撃タスク自動化に提案されており、Capture-the-Flag (CTF) チャレンジで人間レベルの成功率を達成したという最近の研究報告が再検証されています。複数の複雑なエージェントアーキテクチャを用いて、14の脆弱性クラスにわたる30のウェブベースCTF課題でその性能を評価したものです。</div>
+  </section>
+
+  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>LLMエージェントによるCTF成功は、AIが悪用された場合の攻撃自動化能力の進化を示唆しており、SOC/CDCは潜在的な攻撃能力の向上を考慮する必要があります。防御側として、AIエージェントが悪用する可能性のある脆弱性クラスの特定と、それらに対する検知・防御策の強化が求められます。AIエージェントが引き起こすであろう「新しいタイプの攻撃」をどのように早期に検知し、対応できるかという設計上の問いが生じます。</div></div></section>
+
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントによる攻撃の自動化能力の向上は、脅威インテリジェンスと防御戦略に直接的な影響を与えるため。</div></section>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">タグ</h3>
+    <div class="tags-box">
+      <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
+      <span class="tag-sub">AIを使った攻撃</span><span class="tag-sub">LLMセキュリティ</span>
+    </div>
+  </section>
+
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>サービス企画</span><span class='cdc-badge-ap'>Security for AI</span></div></section>
+
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-supply-chain-exposure.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-16</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div></a><a href="../columns/ai-soc-prerequisites.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-15</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AI SOCの前に、SOCの現在地を見よ</div></a></div></section>
+
+  <section class="ap-section">
+    <h3 class="ap-sec-title">元記事情報</h3>
+    <div class="orig-box">
+      <div class="lbl">原題</div>
+      <div>Autonomous LLM Agents &amp; CTFs: A Second Look</div>
+      <div class="lbl" style="margin-top:10px">ソース・公開日</div>
+      <div>arXiv cs.CR / 2026-05-22</div>
+      <div class="orig-en">arXiv:2605.21497v1 Announce Type: new 
+Abstract: Large Language Model (LLM) agents are increasingly proposed to automate offensive security tasks, with recent studies reporting near human-level success rates in Capture-the-Flag (CTF) challenges. We here revisit these results, providing a second look</div>
+    </div>
+    <div class="actions">
+      <a href="https://arxiv.org/abs/2605.21497" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0ALLM%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AB%E3%82%88%E3%82%8BCTF%E6%8C%91%E6%88%A6%E3%81%A8%E6%94%BB%E6%92%83%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%AE%E6%A4%9C%E8%A8%BC%0A%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23AI%E6%94%BB%E6%92%83%20%23LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F9e892245fa09.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/9e892245fa09.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
+    </div>
+  </section>
+
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BC%81%E7%94%BB#archive" class="explore-chip" data-search-context="サービス企画">サービス企画</a><a href="../?context=Security%20for%20AI#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../?tag=AI%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="AIを使った攻撃">AIを使った攻撃</a><a href="../?tag=LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3#archive" class="explore-chip" data-search-tag="LLMセキュリティ">LLMセキュリティ</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+
+  <section class="ap-section">
+  <h3 class="ap-sec-title">関連記事：同じ「AI×セキュリティ」の最近の記事</h3>
+  <div class="rel-list"><a href="0233e8563c94.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-22</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">arXiv cs.CR</span></div><div class="rel-title">閉鎖型MLLMに対する転移可能な敵対的攻撃研究</div></a><a href="de27efd68b1f.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-21</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">arXiv cs.CR</span></div><div class="rel-title">堅牢なLLM脱獄手法に向けた適応型プローブベースステアリングの研究</div></a><a href="5aec1795837b.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-21</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">The Hacker News</span></div><div class="rel-title">MicrosoftがAIエージェント開発向けセキュリティテストツールをオープンソース化</div></a></div>
+</section>
+</article>
+
+<footer>
+  各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+
+</body>
+</html>
