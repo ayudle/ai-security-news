@@ -11,6 +11,251 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-05-23T20:55:35+09:00",
+      "title_ja": "AnthropicのAIが1万件以上の高深刻度脆弱性を発見",
+      "summary_ja": "Anthropicが展開するサイバーセキュリティ防御イニシアチブ「Project Glasswing」において、AI「Claude Mythos」が、この1ヶ月で世界の主要ソフトウェアから10,000件以上の高〜クリティカルな脆弱性を発見したと発表した。この取り組みは、重要インフラを含むグローバルなソフトウェアのセキュリティ強化を目的としている。AIを活用することで、これまで見過ごされていた多数の脆弱性を効率的に洗い出すことが可能になった。",
+      "insight": "AIによる脆弱性発見は、防御側の優位性を高める強力な手段となる。SOC/CDCは、このようなAIを活用した脆弱性スキャンおよび分析結果を、迅速なパッチ適用やリスク評価プロセスに組み込む必要があり、AIが生成する大量のインテリジェンスを処理する運用体制の再設計が求められる。この技術は、Tier2調査における初期スクリーニングや、特定技術領域の脆弱性トレンド分析に応用できる。",
+      "importance": "高",
+      "importance_reason": "AIが大規模な脆弱性発見に成功した防御側の具体例であり、AI for Securityの有効性を示す重要な進展であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "CVE"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Anthropic",
+        "Project Glasswing",
+        "Claude Mythos",
+        "脆弱性発見",
+        "AI for Security"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d089f1278ed8",
+      "title": "Laravel Lang packages hijacked to deploy credential-stealing malware",
+      "summary": "A supply chain attack targeting the Laravel Lang localization packages has exposed developers to a sophisticated credential-stealing malware campaign after attackers abused GitHub version tags to distribute malicious code through Composer packages. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/laravel-lang-packages-hijacked-to-deploy-credential-stealing-malware/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-05-24T05:48:23+09:00",
+      "title_ja": "Laravel Langパッケージが乗っ取られクレデンシャル窃取マルウェア配布",
+      "summary_ja": "Laravel Langのローカリゼーションパッケージがサプライチェーン攻撃の標的となり、攻撃者はGitHubのバージョンタグを悪用してComposerパッケージを通じて悪意のあるコードを配布した。これにより、開発者がクレデンシャル窃取マルウェアにさらされる事態が発生した。この攻撃は、ソフトウェア開発エコシステムにおけるサプライチェーンの脆弱性を浮き彫りにした。",
+      "insight": "ソフトウェアサプライチェーン攻撃が巧妙化し、GitHubのバージョンタグのような信頼されている要素が悪用される事例は、従来のソースコードスキャンだけでは不十分であることを示唆する。SOC/CDCは、開発環境やCI/CDパイプライン、利用するOSSコンポーネントのライフサイクル全体を監視対象とし、不審な更新や挙動を検知する能力を強化する必要がある。特にAI開発にOSSを用いる場合、その依存関係のセキュリティがAIシステムの信頼性に直結する。",
+      "importance": "高",
+      "importance_reason": "GitHubのバージョンタグという信頼された経路を悪用したサプライチェーン攻撃であり、広範な開発環境に影響を与える脅威であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Laravel Lang",
+        "サプライチェーン攻撃",
+        "GitHub",
+        "Composer",
+        "クレデンシャル窃取マルウェア"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "1f5db06f0a1c",
+      "title": "npm Adds 2FA-Gated Publishing and Package Install Controls Against Supply Chain Attacks",
+      "summary": "GitHub has rolled out new controls for npm to improve the security of the software supply chain, giving maintainers the ability to explicitly approve a release prior to the packages becoming publicly available for installation.\n\nCalled staged publishing, the feature is now generally available on npm. It mandates that a human maintainer pass a two-factor authentication (2FA) challenge to approve",
+      "url": "https://thehackernews.com/2026/05/npm-adds-2fa-gated-publishing-and.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-05-24T01:35:10+09:00",
+      "title_ja": "npmが2FA強制公開とパッケージインストール制御を導入しサプライチェーン対策強化",
+      "summary_ja": "GitHubは、npmのソフトウェアサプライチェーンセキュリティを向上させるため、新たな制御機能を導入した。これにより、メンテナーはパッケージが公開される前にリリースを明示的に承認できるようになる。この「staged publishing」機能は一般提供が開始され、人間による多要素認証（2FA）による承認を必須とする。",
+      "insight": "サプライチェーン攻撃への対策として、開発エコシステム自体がセキュリティ強化に動いている具体例である。SOC/CDCは、自社が利用するnpmパッケージの供給元がこのようなセキュリティ対策を導入しているか、あるいは類似の防御策を講じているかを確認すべきである。これにより、悪意のあるパッケージが公開されるリスクを低減し、MDR/MSSPサービスにおけるサプライチェーンリスク管理の提案にも繋がる。",
+      "importance": "中",
+      "importance_reason": "サプライチェーン攻撃に対する具体的な防御策が主要な開発プラットフォームに導入され、業界標準が変化する兆候であるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "npm",
+        "GitHub",
+        "2FA",
+        "staged publishing",
+        "サプライチェーン攻撃対策"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "1112d8cfa260",
+      "title": "Ghost CMS SQL injection flaw exploited in large-scale ClickFix campaign",
+      "summary": "A large-scale campaign is exploiting a critical SQL injection vulnerability (CVE-2026-26980) in Ghost CMS to inject malicious JavaScript code that triggers ClickFix attack flows. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/ghost-cms-sql-injection-flaw-exploited-in-large-scale-clickfix-campaign/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-05-24T23:12:32+09:00",
+      "title_ja": "Ghost CMSのSQLインジェクション脆弱性が大規模ClickFixキャンペーンに悪用",
+      "summary_ja": "Ghost CMSのクリティカルなSQLインジェクション脆弱性（CVE-2026-26980）が悪用され、大規模なClickFixキャンペーンが展開されている。攻撃者はこの脆弱性を突いて悪意のあるJavaScriptコードを注入し、ユーザーをClickFix攻撃フローに誘導している。この事態は、既知の脆弱性に対する迅速な対応の重要性を改めて浮き彫りにしている。",
+      "insight": "既知の重大な脆弱性がエクスプロイトされ、広範囲にわたるキャンペーンに発展する事例は後を絶たない。SOC/CDCは、脆弱性管理プロセスにおいて、発見された脆弱性へのパッチ適用状況を厳格に追跡し、Webアプリケーションへの攻撃を検知・防御するためのWAFやアプリケーションセキュリティ監視の強化が必須となる。Tier2調査では、WebサーバーログやWAFログの異常を迅速に特定し、影響範囲を特定する能力が求められる。",
+      "importance": "高",
+      "importance_reason": "クリティカルな既知の脆弱性が大規模に悪用されており、広範なシステムへの即時的なリスクと対応が必要であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Ghost CMS",
+        "SQLインジェクション",
+        "CVE-2026-26980",
+        "ClickFix",
+        "JavaScriptインジェクション"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f2ebd7895705",
+      "title": "‘Underminr’ Vulnerability Lets Attackers Hide Malicious Connections Behind Trusted Domains",
+      "summary": "<p>The stealthy vulnerability impacts roughly 88 million domains and can be exploited to bypass DNS filtering and hide command-and-control traffic.</p>\n<p>The post <a href=\"https://www.securityweek.com/underminr-vulnerability-lets-attackers-hide-malicious-connections-behind-trusted-domains/\">‘Underminr’ Vulnerability Lets Attackers Hide Malicious Connections Behind Trusted Domains</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/underminr-vulnerability-lets-attackers-hide-malicious-connections-behind-trusted-domains/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-05-23T20:00:00+09:00",
+      "title_ja": "「Underminr」脆弱性が信頼ドメイン背後に悪意のある接続を隠蔽可能に",
+      "summary_ja": "「Underminr」と呼ばれるステルス性の高い脆弱性が約8,800万のドメインに影響を与え、攻撃者がDNSフィルタリングをバイパスし、信頼されたドメインの背後にコマンド＆コントロール（C2）トラフィックを隠蔽できることが明らかになった。この脆弱性は、従来のネットワークセキュリティ対策の限界を突きつけるものとなる。",
+      "insight": "DNSフィルタリングのような既存のセキュリティ制御を回避する新しい技術の登場は、SOC/CDCが単なるシグネチャベースの検知だけでなく、ネットワークトラフィックの挙動分析や異常検知を強化する必要があることを示す。特にC2通信を隠蔽されると、マルウェア感染後の検知が困難になるため、EDRやNDRからのアラートとの相関分析、SIEMでの詳細なログ分析を通じて、ステルス性の高い脅威を早期に発見する体制が求められる。",
+      "importance": "高",
+      "importance_reason": "既存のセキュリティ対策（DNSフィルタリング）を回避する新たな攻撃手法であり、広範なドメインに影響する潜在的な脅威であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Underminr",
+        "DNSフィルタリング",
+        "コマンド＆コントロール",
+        "C2トラフィック",
+        "ステルス攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "Exposure管理"
+      ],
+      "views": 0
+    },
+    {
+      "id": "91da70aac7a8",
+      "title": "The FBI Wants ‘Near Real-Time’ Access to US License Plate Readers",
+      "summary": "Plus: Google publishes a live exploit for an unpatched flaw, the feds arrest two men accused of creating thousands of nonconsensual deepfake nudes, and more.",
+      "url": "https://www.wired.com/story/security-news-this-week-fbi-license-plate-reader-real-time-access/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-05-23T19:30:00+09:00",
+      "title_ja": "FBIがナンバープレートリーダーのリアルタイムアクセスを要求、Googleは未パッチ脆弱性のエクスプロイト公開",
+      "summary_ja": "FBIが米国内のナンバープレートリーダーに対し、リアルタイムに近いアクセスを要求していることが報じられた。また、Googleは未パッチの脆弱性に対するライブエクスプロイトを公開し、ディープフェイクヌードを作成したとして2人の男性が逮捕された。これらのニュースは、プライバシー、ゼロデイ脆弱性、AI悪用に関する多岐にわたるセキュリティ課題を浮き彫りにする。",
+      "insight": "AI技術の悪用（ディープフェイク）と、それに対する規制・法的措置が現実のものとなっている。SOC/CDCの直接的な運用変更への影響は小さいが、CISO報告において、AI技術がもたらすプライバシー侵害や誤情報生成のリスク、未パッチの脆弱性に対する迅速な情報収集とリスク評価の重要性を伝えるべきである。AIガバナンスの観点から、AIシステムが生成するコンテンツの信頼性や悪用リスクについても注意を払う必要がある。",
+      "importance": "中",
+      "importance_reason": "AI悪用の具体的な事例と政府機関による広範な監視要求が示されており、AIリスクおよび規制・政策の動向に影響を与えるため。",
+      "tag_main_id": "policy",
+      "tag_main_label": "規制・政策",
+      "tag_subs": [
+        "国内規制",
+        "プライバシー侵害",
+        "誤情報生成"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "FBI",
+        "ナンバープレートリーダー",
+        "ディープフェイク",
+        "ゼロデイエクスプロイト",
+        "プライバシー"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "CISO報告",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f3df0f1faad5",
+      "title": "Claude Mythos AI Finds 10,000 High-Severity Flaws in Widely Used Software",
+      "summary": "Anthropic on Friday disclosed that Project Glasswing has helped uncover more than 10,000 high- or critical-severity vulnerabilities across some of the most \"systemically\" important software across the world since the cybersecurity initiative went live last month.\n\n Project Glasswing  is a defensive effort launched by the artificial intelligence (AI) company to secure critical global software",
+      "url": "https://thehackernews.com/2026/05/claude-mythos-ai-finds-10000-high.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-05-23T20:55:35+09:00",
       "title_ja": "AnthropicのAI「Project Glasswing」が1万件超の高深刻度脆弱性を発見",
       "summary_ja": "AnthropicがAIを活用したサイバーセキュリティイニシアチブ「Project Glasswing」を展開し、これまで広く利用されているソフトウェアから10,000件以上の高または致命的深刻度の脆弱性を発見しました。このプロジェクトは、重要なグローバルソフトウェアの安全性を高める防御的な取り組みとして位置づけられています。AIがコードベースを分析し、潜在的な弱点を特定する能力を示しました。",
       "insight": "AIが脆弱性発見プロセスを劇的に加速させる事例であり、AI for Securityの具体的な活用フェーズに入ったことを示唆します。SOC/CDCにおいては、このようなAIツールが生成する脆弱性情報を、既存の脆弱性管理プロセスや脅威インテリジェンスにどのように統合し、パッチ適用や設定見直しの優先順位付けに活用するかが問われます。Tier2/3の分析業務において、AIが特定した疑わしいコードパターンや設定ミスを人間が最終確認し、具体的な対策につなげるワークフローの設計が重要です。",
