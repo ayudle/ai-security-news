@@ -1,0 +1,149 @@
+{
+  "executive_summary": "今週は、AIエージェントが「地味な脆弱性」の悪用や高度なサプライチェーン攻撃、MFAバイパスに利用される可能性が顕著となり、攻撃側の効率と規模の向上が示唆されました。一方で、AnthropicのAIが多数の脆弱性を発見するなど、AI for Securityの防御能力向上も具体化しています。SOC/CDC/MDRは、AIシステム固有の脆弱性（Security for AI）への対策として監視対象を拡張し、AI開発ライフサイクルにおけるセキュリティテストや認証情報管理を組み込む必要があります。既存のセキュリティ対策も、既知の脆弱性の即時悪用やステルス性の高い攻撃手法に対応するため、AIによる自動化とアナリストによる高度な分析を統合した設計が求められます。",
+  "top_topics": [
+    {
+      "title": "AIエージェントの脅威と防御",
+      "summary": "AIエージェントが脆弱性を自動発見・悪用したり、メモリ汚染やサンドボックスバイパスといったAIシステム固有の攻撃ベクトルが報告されました。SOC/CDCは、AIエージェントの挙動ログ、ツール実行権限、記憶内容を新たな監視対象とし、AIシステム固有のリスクに対応する検知ルールとインシデント対応プロセスを設計する必要があります。",
+      "article_ids": [
+        "3a20f82f0fe0",
+        "b998b4b05e8f",
+        "fe0e0c718d38",
+        "7700980a126c",
+        "04dae6878b33",
+        "0c6d60020773",
+        "5aec1795837b",
+        "de27efd68b1f",
+        "917e8028b5e8",
+        "9e892245fa09"
+      ]
+    },
+    {
+      "title": "AI活用による防御強化",
+      "summary": "AnthropicのAIが1万件以上の高深刻度脆弱性を発見し、MicrosoftもAIエージェント向けセキュリティテストツールをオープンソース化するなど、AI for Securityの具体的な活用が始まっています。CDCは、これらのAIツールが生成する脆弱性情報や分析結果を既存の脆弱性管理プロセスに統合し、Tier2/3業務の効率化と予防的防御能力の向上に活用する方法を検討すべきです。",
+      "article_ids": [
+        "f3df0f1faad5",
+        "df7ad0cad707",
+        "3fb496c65515",
+        "5aec1795837b"
+      ]
+    },
+    {
+      "title": "サプライチェーン攻撃の高度化",
+      "summary": "GitHubトークン侵害、npmパッケージの乗っ取り、開発者ワークステーションがサプライチェーンの一部となるなど、開発環境を狙う攻撃が継続しています。MDR/MSSPは、CI/CDパイプラインやオープンソースコンポーネントの監視を強化し、ソフトウェア開発ライフサイクル全体におけるサプライチェーンリスク管理の支援をサービスに含める必要があります。",
+      "article_ids": [
+        "8b61cfa21621",
+        "f1d4c08914c2",
+        "1ed6927321d4",
+        "f17c84d5fc4a",
+        "d089f1278ed8",
+        "1f5db06f0a1c",
+        "a625c92def92"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "モバイルデバイスを標的とした大規模な広告詐欺や、OT/ICS環境におけるビルディングコントローラー、ネットワーク機器、ICS製品の脆弱性が継続して報告されました。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "DNSフィルタリングを回避し、信頼済みドメインの背後に悪意のある接続を隠蔽する「Underminr」脆弱性が発見され、ネットワーク監視の高度化が求められています。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "Microsoft 365環境でのデバイスコードフィッシングによるアカウント乗っ取りや、ROADtoolsが悪用されるクラウド環境への国家支援型攻撃が確認されました。Azure脆弱性対応における透明性不足も課題です。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "広く利用されるNGINXやDrupal、Ghost CMSといったミドルウェアやアプリケーションフレームワークの脆弱性が公開直後から悪用され、迅速なパッチ適用と監視の重要性が再認識されました。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIエージェントのメモリ汚染、シャドーAIツールの普及、LLMからの知識蒸留リスクなど、AIシステム固有のセキュリティ脅威が顕在化し、AIガバナンスと監視体制の設計が喫緊の課題となっています。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "シャドーAIツールの管理フレームワークが提唱され、CISA KEVカタログの継続的な更新は、既知の悪用されている脆弱性への迅速な対応を促しています。AI技術の悪用（ディープフェイク）に対する規制や法執行機関の動向も注目されます。"
+    }
+  ],
+  "next_week_outlook": "来週もAIエージェントの攻撃・防御両面での技術進化が継続すると予測されます。特にAIシステムのアイデンティティ管理とアクセス制御は、SOC/CDCにおけるIdentity/ITDRの新たな焦点となるでしょう。また、サプライチェーン攻撃と既知の脆弱性の即時悪用に対応するため、脅威インテリジェンスの活用と自動化された対応プロセスの強化が引き続き求められます。",
+  "period": {
+    "start": "2026-05-18",
+    "end": "2026-05-25"
+  },
+  "total_articles": 73,
+  "keyword_changes": [
+    {
+      "keyword": "OpenAI",
+      "this_week_count": 4,
+      "last_week_count": 8,
+      "change": -4,
+      "change_pct": -50
+    },
+    {
+      "keyword": "AIを使った攻撃",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "GitHub",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "TanStack",
+      "this_week_count": 1,
+      "last_week_count": 5,
+      "change": -4,
+      "change_pct": -80
+    },
+    {
+      "keyword": "認証バイパス",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "SQLインジェクション",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "CVE-2026-9082",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "G7",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "透明性",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "Google I/O",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    }
+  ],
+  "generated_at": "2026-05-25T21:02:21.796717+09:00"
+}
