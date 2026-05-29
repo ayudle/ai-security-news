@@ -11,6 +11,397 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-05-28T22:33:16+09:00",
+      "title_ja": "月間サイバー脅威速報：多角的な攻撃手法が継続、Azure権限昇格やMFAバイパスも",
+      "summary_ja": "最新の脅威情報レポートでは、Azureの権限昇格脆弱性やMFAバイパス、マルウェアを配布するフィッシング詐欺など、広範な攻撃手法が継続していることが示されました。攻撃者は巧妙なソーシャルエンジニアリングや再利用されたインフラを駆使し、防御側のわずかな隙を突いて多岐にわたる脅威を展開しています。これにより、企業は常に新しい攻撃ベクトルに警戒し、既存の対策を継続的に見直す必要に迫られています。",
+      "insight": "SOC/CDCは、既存の多様な攻撃手法が継続していることを前提に、最新のCVEやエクスプロイト手法、認証バイパス技術への迅速な情報収集と検知ルールのアップデートを継続する必要がある。特にクラウド環境の権限昇格やMFAの脆弱性は、重要な資産へのアクセスに直結するため、ITDRと連携した監視・対応体制の強化が不可欠である。これにより、検知精度を維持し、適切な初動判断へと繋げる体制が問われる。",
+      "importance": "高",
+      "importance_reason": "広範な攻撃手法が継続しており、SOC/CDCの日常業務に直接影響を与える脅威情報であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ランサムウェア",
+        "フィッシング",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Azure権限昇格",
+        "MFAバイパス",
+        "マルウェア",
+        "ソーシャルエンジニアリング",
+        "CISA"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理"
+      ],
+      "views": 0
+    },
+    {
+      "id": "310e252e3939",
+      "title": "New AI Usage Report: Enterprise AI Risk Is Heavily Concentrated Among a Small Group of AI \"Power users\"",
+      "summary": "State of AI Usage Report 2026 (full report here) by LayerX Security reveals the extent of the enterprise AI visibility gap and why most organizations still don't understand where their AI exposure is actually coming from. The research shows that enterprise AI risk is not distributed evenly across users or platforms. Instead, it is heavily concentrated among a small group of AI power users and a",
+      "url": "https://thehackernews.com/2026/05/new-ai-usage-report-enterprise-ai-risk.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-05-28T20:30:00+09:00",
+      "title_ja": "企業AIリスク、一部の「パワーユーザー」に集中 - 可視化不足が課題",
+      "summary_ja": "LayerX Securityの最新レポート「State of AI Usage Report 2026」によると、企業におけるAI利用リスクは全ユーザーに均等に分散しているのではなく、少数の「AIパワーユーザー」に強く集中していることが判明しました。多くの組織ではAI利用状況の可視化が不足しており、どこからAI関連リスクが発生しているかを正確に把握できていない現状が浮き彫りになっています。これは、シャドーAI利用や不適切なデータ共有によるプライバシー侵害などの潜在リスクを示唆しています。",
+      "insight": "Security for AIの観点から、企業内でのAI利用状況（特にLLMやAIエージェントの利用）を可視化し、リスクの高いユーザーやプラットフォームを特定する仕組みをSOC/CDCが構築する必要がある。Shadow AI対策として、AI利用に関するポリシー策定と、AIツール利用ログの収集・分析をCDCの監視対象に追加することが、プライバシー侵害や情報漏洩リスクの低減に繋がる。MDR/MSSPは顧客企業へのAIガバナンス支援を検討すべき。",
+      "importance": "高",
+      "importance_reason": "企業におけるAI利用の現状とリスクを具体的に示しており、Security for AIの設計・運用に直接的な示唆を与えるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "プライバシー侵害",
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AI利用状況",
+        "AIパワーユーザー",
+        "シャドーAI",
+        "可視化",
+        "プライバシー"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d3b4cd230b86",
+      "title": "Echoes within the Reasoning: Stealthy and Effective Watermarking via Chain of Thought",
+      "summary": "arXiv:2605.28890v1 Announce Type: new \nAbstract: Large Language Models with Chain-of-Thought reasoning capabilities represent valuable intellectual property, yet existing black-box watermarking methods often trade robustness for reasoning fidelity by perturbing final answers or relying on fragile trigger patterns. We propose BiCoT, a watermarking framework that embeds ownership signals into the internal geometry of reasoning traces by aligning high-saliency structural anchors with a private sign",
+      "url": "https://arxiv.org/abs/2605.28890",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-05-29T13:00:00+09:00",
+      "title_ja": "LLMの推論過程に所有者情報埋め込み：ウォーターマーキング新手法「BiCoT」",
+      "summary_ja": "arXivの論文「Echoes within the Reasoning」では、LLMの思考連鎖（Chain-of-Thought）推論能力を利用し、内部構造に所有者信号を埋め込む新しいウォーターマーキングフレームワーク「BiCoT」が提案されました。既存のウォーターマーキング手法が推論の忠実度を犠牲にすることがあったのに対し、BiCoTは最終回答を摂動させずに堅牢な所有権証明を可能にすることで、LLMの知的財産保護と偽情報対策に貢献することが期待されます。これは、AIモデルの信頼性と出所の透明性を高める上で重要な技術です。",
+      "insight": "AI for SecurityおよびSecurity for AIの観点から、AIモデルの知的財産保護と生成コンテンツの信頼性確保は重要な課題である。BiCoTのような技術は、将来的にAIが生成した調査レポートや初動判断支援における情報の信頼性を担保する根拠となりうる。CDCは、AIを活用したシステムからの情報が本当に信頼できるものか、その真正性をどのように評価・保証するかの議論を開始すべきである。",
+      "importance": "中",
+      "importance_reason": "AI生成コンテンツの信頼性と知的財産保護に関する基礎研究であり、長期的にAI for Securityの信頼性に影響するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "LLM",
+        "ウォーターマーキング",
+        "Chain-of-Thought",
+        "知的財産",
+        "偽情報対策"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9290e6d5cd64",
+      "title": "Quantum-Enhanced Adversarial Robustness in Artificial Intelligence",
+      "summary": "arXiv:2605.28899v1 Announce Type: new \nAbstract: Artificial Intelligence has achieved remarkable success across diverse application domains. However, its vulnerability to adversarial attacks poses significant challenges to reliability, security, and trustworthiness. Adversarial machine learning demonstrates that even highly accurate models can be manipulated through carefully crafted perturbations, raising serious concerns in safety critical systems such as healthcare, finance, and autonomous te",
+      "url": "https://arxiv.org/abs/2605.28899",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-05-29T13:00:00+09:00",
+      "title_ja": "量子技術でAIの敵対的攻撃への耐性を強化する研究",
+      "summary_ja": "arXivの論文「Quantum-Enhanced Adversarial Robustness in Artificial Intelligence」では、人工知能の敵対的攻撃に対する脆弱性が課題となる中、量子技術を活用してAIモデルの堅牢性を高める研究が発表されました。精密に設計された摂動によってモデルが誤動作する現象は、医療や金融などの安全性が重視されるシステムで深刻な懸念を引き起こすため、この研究はAIの信頼性、セキュリティ、そして安全性を向上させることを目指しています。",
+      "insight": "AI for Securityの観点から、AIモデル自身のセキュリティと信頼性向上は、将来的にCDCが利用するAI支援ツールの効果と安全性に直結する。この研究は、AIを防御に活用する際の根本的な課題である「AIの信頼性」に対する重要な方向性を示す。CDCのサービス企画担当者は、将来のAI for Securityツールの選定において、敵対的攻撃への耐性や量子セキュリティ対応といった技術的な堅牢性を評価基準に加えるべきである。",
+      "importance": "中",
+      "importance_reason": "AIモデルの安全性と堅牢性を高める基礎研究であり、AI for Securityの長期的な発展に影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "敵対的攻撃",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "量子技術",
+        "敵対的攻撃",
+        "AIの堅牢性",
+        "モデル信頼性",
+        "安全性"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9831b607919b",
+      "title": "Anthropic's run-rate revenue hits $47 billion",
+      "summary": "<p>The most interesting thing about <a href=\"https://www.anthropic.com/news/series-h\">Anthropic's $65B Series H announcement</a> is this line (emphasis mine):</p>\n<blockquote>\n<p>Since our Series G in February, adoption has continued to grow across global enterprise customers, and our run-rate revenue crossed <strong>$47 billion</strong> earlier this month.</p>\n</blockquote>\n<p>Anthropic have made a bit of a habit of sharing their \"run-rate revenue\" in this kind of announcement, which is an annu",
+      "url": "https://simonwillison.net/2026/May/29/anthropic/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-05-29T10:23:08+09:00",
+      "title_ja": "Anthropicの年間経常収益が470億ドルに到達",
+      "summary_ja": "AnthropicがシリーズHでの650億ドルの資金調達を発表する中で、同社の年間経常収益（ランレートレベニュー）が470億ドルに達したことが明らかになりました。これは、今年2月のシリーズG以降、グローバルなエンタープライズ顧客におけるAI導入が加速していることを示しており、LLM市場の急速な成長とビジネスへの浸透が顕著に進んでいることを裏付けるものです。この収益規模は、生成AIがビジネスインフラの重要な一部になりつつある現状を浮き彫りにしています。",
+      "insight": "LLMベンダーの急速な収益成長は、企業におけるAIの導入と利用が広範囲かつ本格化していることを示す。これは、AIを巡るセキュリティリスク（Security for AI）がもはや一部の先進企業に留まらず、あらゆる業種・規模の企業にとって現実的な課題になっていることを意味する。CDC/MSSPは、顧客のAI導入状況に応じたセキュリティサービスの需要増大を予測し、サービスポートフォリオを強化する必要がある。",
+      "importance": "中",
+      "importance_reason": "LLM市場の急速な拡大を示し、企業のAI利用本格化という市場トレンドがセキュリティリスクに影響するため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "資金調達"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Anthropic",
+        "ランレートレベニュー",
+        "LLM市場",
+        "エンタープライズAI",
+        "ビジネス成長"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "顧客課題",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "8d05463fec45",
+      "title": "Claude Opus 4.8: \"a modest but tangible improvement\"",
+      "summary": "<p>Anthropic shipped <a href=\"https://www.anthropic.com/news/claude-opus-4-8\">Claude Opus 4.8</a> today. My favourite thing about it is this note in the release announcement:</p>\n<blockquote>\n<p>Users will find Opus 4.8 to be a modest but tangible improvement on its predecessor. There’s still more to be done: we’re working on developing and releasing models that provide many of the same capabilities as Opus at a lower cost.</p>\n</blockquote>\n<p>It's so refreshing to see an AI lab honestly descri",
+      "url": "https://simonwillison.net/2026/May/28/claude-opus-4-8/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-05-29T08:59:50+09:00",
+      "title_ja": "AnthropicがClaude Opus 4.8を発表：控えめながらも着実な改善",
+      "summary_ja": "Anthropicが最新モデル「Claude Opus 4.8」をリリースし、その発表では「前バージョンOpus 4.7に比べて控えめながらも明確な改善」がなされたと述べています。また、同社はOpusと同等の機能を持つ低コストモデルの開発にも取り組んでいることを表明しており、AIモデルの性能向上とコスト効率化の両面で継続的な進化を目指している姿勢がうかがえます。これは、AI技術がより広く利用されるための重要なステップとなります。",
+      "insight": "AIモデルの性能が継続的に改善されることは、AI for Security分野における検知・分析支援ツールの精度向上に繋がるが、同時に攻撃側が利用するAIの能力も向上することを意味する。CDCとしては、最新AIモデルの特性を理解し、その進歩をSecurity for AIとAI for Securityの両側面から評価・適応していく柔軟性が必要となる。特に、モデルの「改善」がどのようなリスク変化をもたらすかを継続的に追跡すべきである。",
+      "importance": "低",
+      "importance_reason": "特定のAIモデルのバージョンアップに関する情報であり、直接的なセキュリティ運用への影響は限定的であるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Anthropic",
+        "Claude Opus 4.8",
+        "AIモデル改善",
+        "LLM",
+        "コスト効率化"
+      ],
+      "cdc_relevance": 0,
+      "cdc_context": [],
+      "views": 0
+    },
+    {
+      "id": "7e80ae894b0a",
+      "title": "ChatGPT share links abused to host fake outage pages to deliver malware",
+      "summary": "Threat actors are abusing ChatGPT's content-sharing feature to display fake OpenAI outage pages that direct users to download malware disguised as the ChatGPT desktop application. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/chatgpt-share-links-abused-to-host-fake-outage-pages-to-deliver-malware/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-05-30T03:21:36+09:00",
+      "title_ja": "ChatGPT共有リンク悪用、偽の障害ページでマルウェア拡散",
+      "summary_ja": "脅威アクターがChatGPTのコンテンツ共有機能を悪用し、OpenAIの偽の障害ページをホストしています。ユーザーは、この偽ページから本物のChatGPTデスクトップアプリケーションに見せかけたマルウェアをダウンロードするように誘導されます。この手口は、正規のAIサービスが提供する信頼性の高い共有インフラを悪用し、ソーシャルエンジニアリングとマルウェア配布を組み合わせた新たな攻撃ベクトルとして機能しています。",
+      "insight": "Security for AIの観点から、AIサービスそのものが攻撃者のインフラとして悪用される実態が明確になった。CDCは、AIサービスの利用状況を監視し、不審な共有リンクやダウンロードを検知する能力を強化する必要がある。特に、AIエージェントが外部ツールを実行する際に、悪意のある共有リンクを経由するリスクを考慮し、プロキシログやEDRでの監視を強化すべきである。ユーザー教育も重要となる。",
+      "importance": "高",
+      "importance_reason": "AIサービスが悪用され、マルウェア配布経路となる具体的なインシデントであり、Security for AIおよびSOC運用に直接的な影響を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ChatGPT",
+        "共有リンク",
+        "マルウェア配布",
+        "偽障害ページ",
+        "ソーシャルエンジニアリング"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ea211a7d3587",
+      "title": "GreyVibe hackers use ChatGPT, Gemini to power cyberattacks",
+      "summary": "A likely Russian threat cluster tracked as GreyVibe has been targeting Ukrainian entities with AI-generated lures and a rich set of custom malware tools. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/greyvibe-hackers-use-chatgpt-gemini-to-power-cyberattacks/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-05-29T07:24:49+09:00",
+      "title_ja": "GreyVibeハッカー集団、ChatGPTやGeminiを攻撃に活用",
+      "summary_ja": "ロシアに関連するとされる脅威アクター「GreyVibe」が、ChatGPTやGeminiなどのAIツールを悪用し、AIが生成したLure（誘い文句）を用いてウクライナの組織を標的にしたサイバー攻撃を展開しています。この攻撃集団は、カスタムマルウェアツールと組み合わせることで、攻撃の効率と洗練度を高めており、AIが攻撃者の戦術、技術、手順（TTPs）に深く組み込まれている実態を示しています。",
+      "insight": "AI for Securityの観点からは、攻撃側がAIを使ってソーシャルエンジニアリングや偵察活動を効率化しているため、防御側もAIによる早期検知・分析の重要性が高まる。CDCは、AIが生成した不審なコンテンツやAIサービス利用ログを監視対象に含め、AIが悪用された攻撃を特定・対処するための新しい検知ルールとプレイブックを開発する必要がある。これはTier2調査におけるアラート判断や初動判断支援にも影響する。",
+      "importance": "高",
+      "importance_reason": "AIが攻撃者のTTPsに深く組み込まれている具体的な事例であり、攻撃側の変化としてSOC/CDCの対策に直接的な影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "GreyVibe",
+        "ChatGPT",
+        "Gemini",
+        "AI悪用",
+        "ソーシャルエンジニアリング"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "903f036a98bb",
+      "title": "Russia-Linked ‘GreyVibe’ Attackers Use AI to Supercharge Cyberattacks",
+      "summary": "<p>Researchers warn GreyVibe’s extensive use of ChatGPT, Gemini, and other AI tools offers a glimpse into how future cybercriminal and state-aligned groups will operate.</p>\n<p>The post <a href=\"https://www.securityweek.com/russia-linked-greyvibe-attackers-use-ai-to-supercharge-cyberattacks/\">Russia-Linked ‘GreyVibe’ Attackers Use AI to Supercharge Cyberattacks</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/russia-linked-greyvibe-attackers-use-ai-to-supercharge-cyberattacks/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-05-29T03:50:49+09:00",
+      "title_ja": "ロシア関連「GreyVibe」、AI活用でサイバー攻撃を強化",
+      "summary_ja": "ロシアに関連するサイバー攻撃集団「GreyVibe」が、ChatGPT、Geminiを含む複数のAIツールを積極的に活用してサイバー攻撃を高度化していると研究者が警告しています。この活動は、将来のサイバー犯罪グループや国家支援型グループがAIをどのように運用するかを示す一端を垣間見せるものであり、AIによる攻撃の自動化・効率化がサイバーセキュリティランドスケープに与える影響が懸念されています。AI生成のLureとカスタムマルウェアの組み合わせが確認されています。",
+      "insight": "これはAIが攻撃側のゲームチェンジャーとなりつつある明確な兆候であり、SOC/CDCはAIを使った攻撃に対する防御策を急務で構築する必要がある。特に、AIによって生成されたソーシャルエンジニアリングコンテンツの識別、AIサービス利用ログからの異常検知、そしてAIエージェントが悪意を持って指示を実行する可能性を考慮した監視が求められる。既存のSOARプレイブックでは対応しきれない新たな対応フローの検討が必要である。",
+      "importance": "高",
+      "importance_reason": "AIが攻撃者の主要なツールとして活用され、サイバー攻撃の未来を象徴する具体的な事例であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "GreyVibe",
+        "ChatGPT",
+        "Gemini",
+        "AI悪用",
+        "サイバー攻撃高度化"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "661e9261a92a",
+      "title": "Focus on Cyber Insurance: How Quantifying Risk Is Reshaping Security",
+      "summary": "In this latest installment of the Reporters' Notebook video series, we discuss how cyber insurance is forcing organizations to quantify risk, what's covered (and what's not), and why this could be the best thing to happen to cybersecurity.",
+      "url": "https://www.darkreading.com/cyber-risk/focus-cyber-insurance-quantifying-risk-reshape-security",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-05-28T21:29:58+09:00",
+      "title_ja": "サイバー保険の焦点：リスク定量化がセキュリティを再形成",
+      "summary_ja": "最新のレポートでは、サイバー保険が組織にリスクの定量化を迫っており、これがサイバーセキュリティのあり方を大きく変えていると指摘されています。保険の適用範囲や除外事項を理解することが重要であり、リスクを数値で示す能力が、セキュリティ投資の優先順位付けや経営層への報告において不可欠となりつつあります。このトレンドは、セキュリティ対策の客観的評価と、ビジネス影響を明確にするCDCの役割をさらに強化する可能性を秘めています。",
+      "insight": "CDCの経営報告やサービス企画において、リスクの定量化は極めて重要な要素となる。インシデント発生時のビジネス影響説明だけでなく、予防策や改善活動の投資対効果を定量的に示す能力が、CISOや経営層への説得力を高める。MSSP/MDRは、顧客企業のリスクを定量化し、保険要件を満たすための支援サービスを強化することで、付加価値を高める機会となる。",
+      "importance": "中",
+      "importance_reason": "サイバーリスクの定量化トレンドは、CDCの経営報告やサービス設計に中長期的な影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "コンプライアンス"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "サイバー保険",
+        "リスク定量化",
+        "セキュリティ投資",
+        "CISO報告",
+        "コンプライアンス"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2056855e64fc",
+      "title": "ThreatsDay Bulletin: Claude Security Plugin, Azure Priv-Esc, Kali365 MFA Bypass, FIFA Scams +15 More",
+      "summary": "Every time you think the industry has finally stopped doing some reckless, low-effort crap, somebody spins up a fresh box full of sketchy loaders, fake installers, recycled social-engineering bait, and enough exposed infrastructure to make you wonder if prod is just a public beta now - meanwhile some researcher casually drops a technique that turns a \"minor\" foothold into total account",
+      "url": "https://thehackernews.com/2026/05/threatsday-bulletin-claude-security.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-05-28T22:33:16+09:00",
       "title_ja": "脅威レポート: Azure権限昇格、MFAバイパス、FIFA詐欺など多数",
       "summary_ja": "業界の低品質なセキュリティ慣行が続く中、攻撃者はスケッチーなローダーや偽インストーラ、ソーシャルエンジニアリングの手法を再利用している。Azureの権限昇格、MFAバイパス、FIFA詐欺など多様な脅威が継続的に発生しており、'minor'な足がかりからアカウント全体を乗っ取る技術も報告されている。これは、インフラストラクチャの露出が依然として多く、基本的なセキュリティ対策の不備が続いている現状を示唆している。",
       "insight": "この多様な脅威の報告は、SOC/CDCが単一の攻撃パターンではなく、多岐にわたる攻撃手法への包括的な検知・対応能力を維持する必要があることを示唆する。特にMFAバイパスや権限昇格はIdentity/ITDRの強化、初期アクセスからの横展開を阻止する多層防御の重要性を再確認させる。AI for Securityの観点では、アラートの優先順位付けや関連ナレッジ検索にAIを利用することで、Tier2調査の効率化が期待できる。",
