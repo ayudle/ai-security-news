@@ -1,0 +1,154 @@
+{
+  "executive_summary": "今週はAIシステム自体が新たな主要な攻撃対象かつ攻撃媒介となり、SOC/CDCの監視対象と対応プロセスに構造的な変革を迫っていることが明確になりました。AIエージェントの内部挙動、サプライチェーン、ユーザー利用状況の監視が喫緊の課題として顕在化しています。同時に、防御側もAIによる脆弱性発見やアラート効率化を進めていますが、攻撃側もAIを悪用して攻撃の速度と規模を向上させており、対抗策の検討が急務です。既存のサプライチェーン攻撃やクリティカルな脆弱性の悪用も継続しており、SOC/CDCは多層的な防御能力をAI時代に適応させ、AIシステム固有のリスク管理とAIを活用した防御能力の双方を統合し、将来の防御アーキテクチャを再設計する必要があります。",
+  "top_topics": [
+    {
+      "title": "AIシステムへの複合攻撃",
+      "summary": "AIエージェントのメモリ層やツール実行メカニズムを狙う攻撃、Copilot Coworkからのデータ流出、AIコーディングエージェントのサプライチェーン攻撃悪用、AI開発ツールのRCE脆弱性など、AIが新たな攻撃ベクトルとして深く攻撃チェーンに組み込まれています。SOC/CDCは、AIシステム自体の脆弱性管理と内部挙動の監視を従来の監視対象に加える必要があります。",
+      "article_ids": [
+        "5ddeed04171f",
+        "48fa768d1a33",
+        "17bd39e8f7bc",
+        "95ceb5f47de7",
+        "500e9c55aae0",
+        "696365c25454",
+        "02fa2512d626",
+        "3c404181085b",
+        "6fdbdbea9b3b",
+        "7e80ae894b0a"
+      ]
+    },
+    {
+      "title": "AIエージェント監視要件",
+      "summary": "AIエージェントの普及に伴うデータ流出リスク、認証認可の課題、一部の「パワーユーザー」へのリスク集中が顕著です。従来のゼロトラストを超えた「Beyond Zero」のようなきめ細かい権限管理と、AIエージェント固有のログ・挙動監視、異常検知メカニズムの設計が、CDC/SOCの喫緊の課題であり、MDR/MSSPサービス設計にも不可欠となります。",
+      "article_ids": [
+        "d154166a6a16",
+        "696365c25454",
+        "310e252e3939",
+        "550590970d18",
+        "f2c99417ae24",
+        "3fd648e4b333",
+        "8c9566abc2c1"
+      ]
+    },
+    {
+      "title": "攻撃側のAI活用と既存脅威継続",
+      "summary": "ロシア関連グループがChatGPTやGeminiを攻撃に活用し、ソーシャルエンジニアリングや偵察活動を効率化するなど、攻撃側のAI活用が加速しています。一方で、Palo Alto GlobalProtect VPNやWordPressのような広く利用される既存インフラのクリティカルな脆弱性悪用も継続しており、SOC/CDCはAIを活用した高度な攻撃と従来の広範な脅威の両面に対応する多角的な防御戦略が求められます。",
+      "article_ids": [
+        "903f036a98bb",
+        "ea211a7d3587",
+        "5deaf9976d1e",
+        "1112d8cfa260",
+        "f2ebd7895705",
+        "d089f1278ed8",
+        "5a78d74d437a",
+        "9bcac37103c8",
+        "b5b09c68b9a2"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "ICS/OTデバイスや医療機器におけるサプライチェーン由来の脆弱性管理が継続的な課題であり、大規模ボットネットによる多数のデバイス感染も確認されました。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "Palo Alto NetworksのVPN製品など、境界防御を担うネットワーク機器の認証バイパス脆弱性が攻撃に悪用され、既存のDNSフィルタリングを回避する新しいC2通信技術も出現しました。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "Azure環境におけるMFAバイパスや権限昇格攻撃が継続しており、クラウドサービスのIdentity Threat Detection and Response (ITDR) の重要性が引き続き強調されました。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "Ghost CMSやWordPressプラグイン、AI開発ツールFlowiseといったWebアプリケーションや関連ツールにおいて、RCEや認証バイパスなどのクリティカルな脆弱性が攻撃に悪用されています。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIエージェントのメモリ層やツール実行メカニズムを狙う攻撃、AIを介したデータ流出、AI開発ツールの脆弱性など、AIシステム固有のリスクが顕在化し、Anthropicによるサンドボックス実装公開も行われました。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "AI悪用型攻撃に対する迅速なパッチ適用（12時間以内）の推奨や、AI利用における倫理的・法的議論が活発化しており、サイバー保険がリスク定量化を通じてセキュリティ対策を促進する動きが見られます。"
+    }
+  ],
+  "next_week_outlook": "AIシステムを狙った攻撃や、AIを使った攻撃手法はさらに多様化・高度化する可能性が高いと予測されます。来週は、AIエージェントの安全性確保に向けたベンダー側の技術的取り組みと、それに対する攻撃側の模索が加速するでしょう。SOC/CDCは、AIシステムの監視範囲とAIガバナンスモデルの具体化を継続的に進め、既存の脅威とAI固有の脅威の双方に対応するための運用体制を一層強化する必要があります。",
+  "period": {
+    "start": "2026-05-25",
+    "end": "2026-06-01"
+  },
+  "total_articles": 72,
+  "keyword_changes": [
+    {
+      "keyword": "Anthropic",
+      "this_week_count": 8,
+      "last_week_count": 2,
+      "change": 6,
+      "change_pct": 300
+    },
+    {
+      "keyword": "ChatGPT",
+      "this_week_count": 6,
+      "last_week_count": 0,
+      "change": 6,
+      "change_pct": 600
+    },
+    {
+      "keyword": "データ窃取",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "脆弱性管理",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "APT",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "クラウドセキュリティ",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "ガバナンス",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "Gemini",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "Google I/O",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "アイデンティティ管理",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    }
+  ],
+  "generated_at": "2026-06-01T07:58:52.916723+09:00"
+}
