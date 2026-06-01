@@ -1,286 +1,833 @@
 {
-  "updated": "2026-06-01T05:20:18.507406+09:00",
-  "today": "2026-06-01",
+  "updated": "2026-06-02T07:16:40.258281+09:00",
+  "today": "2026-06-02",
   "articles": [
     {
-      "id": "d7b99d00519b",
-      "title": "I Am Retiring from Tech to Live Offline",
-      "summary": "<p><strong><a href=\"https://openpath.quest/2026/i-am-retiring-from-tech-to-live-offline/\">I Am Retiring from Tech to Live Offline</a></strong></p>\nI've seen a lot of posts on forums from people threatening to quit their careers over AI. This is <em>not</em> one of those: Chad Whitacre is taking concrete steps, starting with this typewritten, scanned letter</p>\n<blockquote>\n<p>I'm retiring from tech. Well, \"retiring\" is euphemistic. I'm stepping away from tech, and that includes Open Source. [...",
-      "url": "https://simonwillison.net/2026/May/30/retiring-from-tech-to-live-offline/#atom-everything",
+      "id": "a3c1407f6b73",
+      "title": "OpenAI Codex Authentication Tokens Stolen in codexui-android npm Supply Chain Attack",
+      "summary": "Cybersecurity researchers have disclosed details of a new malicious supply chain campaign that's targeting developers using OpenAI Codex through a legitimate-looking remote web UI.\n\nThe tool, named codexui-android, is advertised on GitHub and npm as a remote web UI for OpenAI Codex, attracting over 29,000 weekly downloads. The package is still available for download from the repository.\n\nWhat",
+      "url": "https://thehackernews.com/2026/06/openai-codex-authentication-tokens.html",
       "ai_score": 3,
       "cdc_pre_score": 1,
-      "source_name": "Simon Willison",
-      "source_tier": "C",
-      "published": "2026-05-31T04:39:08+09:00",
-      "title_ja": "AIの台頭を受け、テック業界からの引退を宣言する開発者",
-      "summary_ja": "AIの急速な進化を背景に、ある開発者がテック業界およびオープンソース活動から完全に引退し、オフラインでの生活に移行する具体的な意向を示した。これはAIがもたらす技術的・社会的な変化が、個人のキャリア選択や生き方にまで影響を及ぼし始めている一例である。本記事はAIが人の職を奪うという脅威論ではなく、より根源的な技術との関わり方に対する問いかけを示唆している。",
-      "insight": "AIの進化がテック人材のキャリアパスやモチベーションに与える影響の一端を示す事例。直接的なセキュリティ脅威ではないが、SOC/CDCの人材戦略や組織文化形成において、AI導入が従業員の心理にどう影響するかを考慮する必要がある。AIは人を代替するものではなく、判断根拠・証跡・再現性向上に資するという前提のもと、組織内でのAI受容度を高める施策を検討すべきかという問いを提起する。",
-      "importance": "低",
-      "importance_reason": "直接的なサイバーセキュリティ脅威や技術動向ではないため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-01T18:31:15+09:00",
+      "title_ja": "OpenAI Codex認証トークンがnpmサプライチェーン攻撃で窃取",
+      "summary_ja": "開発者向けOpenAI CodexのリモートWeb UIを装った悪意あるnpmパッケージ「codexui-android」が、認証トークンを窃取するサプライチェーン攻撃に利用されていることが判明。このパッケージは29,000回以上ダウンロードされており、現在もnpmリポジトリから入手可能。AI開発環境におけるサプライチェーンリスクとクレデンシャル窃取の深刻化が浮き彫りになっている。",
+      "insight": "AI開発環境のサプライチェーン攻撃は、従来の開発ツールへの攻撃に加え、AIサービス固有の認証トークンを狙う点で新たな脅威となる。CDC/SOCは、AI関連ツール導入時のパッケージの信頼性検証、開発環境の監視強化、特にAIサービスへのアクセスに使用されるトークンの管理と異常利用の検知メカニズムを早急に検討する必要がある。これはAIエージェントリスクモデルの「データ・インフラ層」および「アイデンティティ・権限層」に直接関わる論点である。",
+      "importance": "高",
+      "importance_reason": "AI開発環境を標的としたサプライチェーン攻撃であり、AIサービスの認証トークン窃取という新たな脅威は広範囲に影響を及ぼすため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
       "tag_subs": [
-        "市場トレンド"
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取",
+        "マルウェア"
       ],
       "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "AI影響",
-        "キャリアチェンジ",
-        "テック人材",
-        "オフライン生活"
+        "OpenAI Codex",
+        "npm",
+        "サプライチェーン攻撃",
+        "認証トークン",
+        "codexui-android"
       ],
-      "cdc_relevance": 0,
-      "cdc_context": [],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Security for AI",
+        "顧客課題"
+      ],
       "views": 0
     },
     {
-      "id": "6b2ad650b08f",
-      "title": "How we contain Claude across products",
-      "summary": "<p><strong><a href=\"https://www.anthropic.com/engineering/how-we-contain-claude\">How we contain Claude across products</a></strong></p>\nA complaint I often have about sandboxing products is that they are rarely thoroughly <em>documented</em>, and in the absence of detailed documentation it's hard to know how much I can trust them.</p>\n<p>Anthropic just published a fantastic overview of how their various sandbox techniques work across <a href=\"https://claude.ai/\">Claude.ai</a>, Claude Code, and C",
-      "url": "https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything",
+      "id": "6e5f4717335f",
+      "title": "Escaping the Linearity Trap: Manifold Detours for Black-Box Adversarial Attacks on Singing Audio Deepfake Detection",
+      "summary": "arXiv:2605.30366v1 Announce Type: new \nAbstract: Recent Singing Voice Synthesis (SVS) advances enable highly realistic but potentially malicious AI covers, making singing voice deepfake detection (SVDD) crucial. Self-Supervised Learning (SSL)-based detectors achieve state-of-the-art performance by fine-tuning speech SSL backbones to capture singing-specific spoof artifacts. Existing adversarial attacks often fail against SSL-SVDD, creating a false impression of inherent robustness. We reveal thi",
+      "url": "https://arxiv.org/abs/2605.30366",
       "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "Simon Willison",
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
       "source_tier": "C",
-      "published": "2026-05-31T06:36:24+09:00",
-      "title_ja": "AnthropicがAIモデル「Claude」のサンドボックス実装詳細を公開",
-      "summary_ja": "Anthropicが、自社のAIモデル「Claude」をClaude.aiやClaude Codeなどの異なる製品で安全に運用するためのサンドボックス技術について詳細な解説記事を公開した。これは、AIシステムの外部ツール実行やコード生成におけるセキュリティ対策の透明性を高め、信頼性を確保するための具体的な技術的アプローチを示す。サンドボックス化は、AIモデルの挙動を隔離し、潜在的な悪用リスクを軽減する重要な防御メカニズムである。",
-      "insight": "Security for AIの観点から非常に重要な示唆。AIエージェントが外部ツールを実行したり、コードを生成する際の「ツール・実行層」および「モデル・推論層」のセキュリティ対策のベストプラクティスとして参考になる。SOC/CDC設計者は、AIシステムのサンドボックスがどのように設計され、動作しているかを理解し、その有効性を継続的に検証するプロセスを組み込む必要がある。AIシステムの異常検知においては、サンドボックスのログや挙動監視が重要なインプットとなる。",
-      "importance": "高",
-      "importance_reason": "AIシステムのセキュリティ設計における実践的なベストプラクティスであり、Security for AIの具体的な方向性を示すため。",
+      "published": "2026-06-01T13:00:00+09:00",
+      "title_ja": "歌声ディープフェイク検出に対するブラックボックス敵対的攻撃の進化",
+      "summary_ja": "歌声合成技術の進化により、高精度なAIカバーが生成可能になったことで、歌声ディープフェイク検出（SVDD）の重要性が高まっている。自己教師あり学習（SSL）に基づくSVDD検出器は高性能を示すが、本研究は、既存の敵対的攻撃がなぜSSL-SVDDに対して失敗するのかを解明し、より効果的なブラックボックス敵対的攻撃手法を提案している。これはAIモデルの堅牢性評価における課題を浮き彫りにする。",
+      "insight": "AI for Securityとして導入される検出器（AIを使った防御）も、敵対的攻撃に対して絶対的な堅牢性を持つわけではない。CDC/SOCは、AIを活用した検知システムの導入を検討する際、そのモデルがどのような敵対的攻撃に対して脆弱か、またその検出器を回避する攻撃手法が進化していることを理解し、継続的なモデルの改善と多様な検知アプローチの併用を考慮する必要がある。これは、防御側のAIシステムの脆弱性となりうる。",
+      "importance": "中",
+      "importance_reason": "AIを使った防御システムの限界と、敵対的AI攻撃の進化に関する学術研究であり、将来のAI防御戦略に影響を与えるため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "AIを使った防御",
+        "敵対的攻撃",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ディープフェイク検出",
+        "敵対的攻撃",
+        "ブラックボックス攻撃",
+        "SSL-SVDD",
+        "AIモデル堅牢性"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e893f43ffcff",
+      "title": "The Surface You Test Is Not the Surface That Breaks",
+      "summary": "arXiv:2605.30454v1 Announce Type: new \nAbstract: Tool-augmented LLM agents are vulnerable to prompt injection: a third party who controls part of the agent's context can plant instructions that the agent then executes as if they came from the user. Current evaluations report a single attack success rate per model on one channel, the tool output and treat that number as the model's vulnerability. But tool descriptions, which the agent reads at every turn before any tool is called, are themselves ",
+      "url": "https://arxiv.org/abs/2605.30454",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-01T13:00:00+09:00",
+      "title_ja": "LLMエージェントのプロンプトインジェクション：テストされない攻撃経路",
+      "summary_ja": "ツール拡張型LLMエージェントはプロンプトインジェクションに脆弱であり、第三者がエージェントのコンテキストを操作して意図しない命令を実行させることが可能である。現在の評価手法ではツール出力のみを攻撃経路として扱うことが多いが、本研究はエージェントがツール呼び出し前に読み込むツール説明自体が攻撃経路となり得ることを指摘している。これはプロンプトインジェクションの新たな攻撃ベクトルを示す。",
+      "insight": "LLMエージェントのセキュリティ監視は、ユーザー入力だけでなく、エージェント内部の様々なコンテキスト、特にツール説明やAPI連携部分にまで拡張する必要がある。SOC/CDCは、AIエージェントのログ監視において、プロンプトインジェクションの痕跡を従来のプロンプト層だけでなく、ツール連携層や内部命令の流れまで網羅的に検知する仕組みを設計する必要がある。これはAIエージェントリスクモデルの「モデル・推論層」と「ツール・実行層」にまたがる重要な示唆である。",
+      "importance": "高",
+      "importance_reason": "LLMエージェントにおけるプロンプトインジェクションの新たな攻撃経路を指摘しており、AIセキュリティ対策の根本的な見直しを促すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
         "LLMセキュリティ"
       ],
       "affected_layers": [
         "データ/AI",
-        "アプリ/API"
+        "アプリ/API",
+        "ガバナンス/規制"
       ],
       "related_keywords": [
-        "Anthropic",
-        "Claude",
-        "サンドボックス",
-        "LLMセキュリティ",
-        "AIエージェントセキュリティ"
+        "LLMエージェント",
+        "プロンプトインジェクション",
+        "ツール拡張",
+        "ツール説明",
+        "コンテキスト"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
+        "SOC運用変化",
         "Security for AI",
-        "SOC運用変化",
-        "サービス企画"
+        "サービス企画",
+        "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "e72aef427776",
-      "title": "WP Maps Pro bug exploited to create admin accounts on WordPress sites",
-      "summary": "Hackers are targeting WordPress websites running a vulnerable version of the WP Maps Pro plugin, which allows creating rogue administrator accounts without authentication. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/wp-maps-pro-bug-exploited-to-create-admin-accounts-on-wordpress-sites/",
+      "id": "a1b04c2492ff",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "<p>CISA has added one new vulnerability to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2024-21182\" target=\"_blank\">CVE-2024-21182</a> Oracle WebLogic Server Unspecified Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vectors for malicious cyber actors and poses significan",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/06/01/cisa-adds-one-known-exploited-vulnerability-catalog",
       "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-05-31T23:06:42+09:00",
-      "title_ja": "WordPressプラグイン「WP Maps Pro」の脆弱性が悪用され、管理者アカウントが不正作成される",
-      "summary_ja": "WordPressサイトで広く利用されているWP Maps Proプラグインの脆弱性が悪用され、攻撃者が認証なしに不正な管理者アカウントを作成していることが報告された。この脆弱性は、攻撃者がサイトの完全な制御を奪うことを可能にし、情報漏洩やウェブサイトの改ざんなどの深刻な被害に繋がるリスクがある。WordPressは多数の組織で利用されており、広範な影響が懸念される。",
-      "insight": "Webアプリケーション、特に広く普及しているCMSとそのプラグインにおける認証バイパス脆弱性の深刻性を示す。SOC/CDCは、自社が利用するWebアプリケーションのサプライチェーン、特に外部プラグインの脆弱性情報を迅速に収集し、評価、対応する体制を強化すべき。管理者アカウントの不正作成は、ITDRやIdentity管理の観点からも最優先で検知・対処が必要であり、関連するログ（認証ログ、アカウント作成ログ）の監視と異常検知ルールが重要となる。",
+      "cdc_pre_score": 1,
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-06-01T21:00:00+09:00",
+      "title_ja": "CISAがOracle WebLogic Serverの既知の悪用済み脆弱性をカタログに追加",
+      "summary_ja": "CISAが、アクティブな悪用が確認された脆弱性として「CVE-2024-21182 Oracle WebLogic Serverの特定されていない脆弱性」をKnown Exploited Vulnerabilities (KEV) カタログに追加した。この種の脆弱性は悪意あるサイバーアクターにとって頻繁な攻撃ベクトルとなり、重大なリスクをもたらす。",
+      "insight": "CISAのKEVカタログへの追加は、当該脆弱性への即時対応の必要性を示す明確なシグナルである。CDC/SOCは、自社および顧客環境でOracle WebLogic Serverが稼働しているかを確認し、CVE-2024-21182に対するパッチ適用状況を速やかに評価・対応するプロセスを強化する必要がある。KEVカタログは、既存の脆弱性管理プロセスにおいて、対応優先度を決定する重要な情報源として常に監視すべきである。",
       "importance": "中",
-      "importance_reason": "WordPressの広範な利用と、管理者権限奪取という深刻な攻撃内容のため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "認証バイパス",
-        "エクスプロイト"
-      ],
-      "affected_layers": [
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "WordPress",
-        "WP Maps Pro",
-        "認証バイパス",
-        "管理者アカウント",
-        "脆弱性悪用"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "SOC運用変化",
-        "Exposure管理",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "ccbaea4196db",
-      "title": "Dutch Authorities Dismantle Botnet Linked to 17 Million Infected Devices",
-      "summary": "Dutch authorities have announced the takedown of a botnet that enslaved millions of infected devices, including computers, tablets, smartphones, and IoT devices, to carry out malicious attacks.\n\nThe bot network, per the Dutch Politie and the National Cyber Security Center (NCSC), consisted of at least 17 million infected devices. More than 200 servers located in the Netherlands acted as the",
-      "url": "https://thehackernews.com/2026/05/dutch-authorities-dismantle-botnet.html",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-05-31T21:22:12+09:00",
-      "title_ja": "オランダ当局が1700万台以上のデバイスを感染させた大規模ボットネットを解体",
-      "summary_ja": "オランダ当局は、コンピュータ、タブレット、スマートフォン、IoTデバイスを含む1700万台以上の感染デバイスを支配する大規模なボットネットをテイクダウンしたと発表した。このボットネットは、オランダ国内にある200台以上のサーバーをコマンド＆コントロール（C2）として利用していた。この事例は、様々な種類のデバイスがサイバー犯罪のターゲットとなり、大規模なインフラが攻撃に利用される実態を示している。",
-      "insight": "大規模なボットネットの存在は、DDoS攻撃やマルウェア拡散、情報窃取など、幅広い攻撃のリスクを示唆する。SOC/CDCとしては、ネットワークトラフィックの異常検知、特にC2通信パターンやDDoS攻撃の兆候を継続的に監視する体制が不可欠。また、IoTデバイスのセキュリティが脆弱なエッジデバイスが大規模攻撃の踏み台となり得ることを再認識させ、それらのデバイスを含む広範な資産のExposure管理の重要性を高める。",
-      "importance": "高",
-      "importance_reason": "大規模なマルウェア感染とボットネットの広範な影響、および国際的なテイクダウン連携の重要性を示すため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "マルウェア",
-        "DDoS"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "ネットワーク"
-      ],
-      "related_keywords": [
-        "ボットネット",
-        "マルウェア",
-        "IoTデバイス",
-        "C2サーバー",
-        "当局連携"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Exposure管理",
-        "CISO報告",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "b5b09c68b9a2",
-      "title": "Palo Alto GlobalProtect VPN auth bypass flaw now exploited in attacks",
-      "summary": "Palo Alto Networks is warning that hackers are now exploiting a PAN-OS GlobalProtect authentication bypass flaw, tracked as CVE-2026-0257, in attacks attempting to breach corporate networks. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/palo-alto-globalprotect-vpn-auth-bypass-flaw-now-exploited-in-attacks/",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-05-31T03:02:51+09:00",
-      "title_ja": "Palo Alto GlobalProtect VPNの認証バイパス脆弱性が攻撃で悪用開始",
-      "summary_ja": "Palo Alto Networksが、同社のPAN-OS GlobalProtect VPN製品における認証バイパス脆弱性（CVE-2026-0257）が、実際の攻撃で企業ネットワークへの侵入に悪用されていると警告した。この脆弱性は認証プロセスを迂回し、正規のアクセス権なしに内部ネットワークへの侵入を許す可能性があり、非常に高いリスクを持つ。緊急のパッチ適用と対応が求められる。",
-      "insight": "企業ネットワークの境界防御を担うVPN製品のクリティカルな脆弱性が、ゼロデイ的に攻撃に悪用されている状況は、SOC/CDCにとって最優先の対応課題。即座に自社環境での影響確認、パッチ適用、回避策の導入、およびログ分析による侵入痕跡の調査が必要である。既存のSIEM/SOAR環境では、VPNログの異常パターン、不審な認証試行、および内部ネットワークへの予期せぬアクセスを検知するルールを強化する必要がある。緊急性の高いインシデント対応プロセスとエスカレーション基準の見直しも求められる。",
-      "importance": "高",
-      "importance_reason": "広く利用されるVPN製品の認証バイパス脆弱性が、実際に企業ネットワークへの侵入に悪用されているため。",
+      "importance_reason": "CISAが積極的に悪用されていると認定した脆弱性であり、迅速な対応が求められるため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
         "CVE",
-        "認証バイパス",
         "エクスプロイト"
       ],
       "affected_layers": [
-        "ネットワーク",
+        "アプリ/API",
         "クラウド/サーバー"
       ],
       "related_keywords": [
-        "Palo Alto Networks",
-        "GlobalProtect VPN",
-        "PAN-OS",
-        "認証バイパス",
-        "CVE-2026-0257"
+        "CISA KEV",
+        "CVE-2024-21182",
+        "Oracle WebLogic Server",
+        "既知の悪用済み脆弱性"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
-        "SOC運用変化",
         "Exposure管理",
-        "CISO報告",
+        "SOC運用変化",
+        "MDR/MSSP設計",
         "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "02fa2512d626",
-      "title": "Exploit Code Published for Critical Flowise RCE Vulnerability",
-      "summary": "<p>The one-click vulnerability allows attackers to execute arbitrary code on self-hosted Flowise servers by tricking users into importing a malicious chatflow.</p>\n<p>The post <a href=\"https://www.securityweek.com/exploit-code-published-for-critical-flowise-rce-vulnerability/\">Exploit Code Published for Critical Flowise RCE Vulnerability</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/exploit-code-published-for-critical-flowise-rce-vulnerability/",
+      "id": "dd8bcde21a85",
+      "title": "Red Hat npm packages compromised to steal developer credentials",
+      "summary": "More than 30 npm packages under Red Hat's '@redhat-cloud-services' namespace were compromised in a supply-chain attack that distributed a new variant of the Shai-Hulud credential-stealing malware, dubbed \"Miasma.\" [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/red-hat-npm-packages-compromised-to-steal-developer-credentials/",
       "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
       "source_tier": "B",
-      "published": "2026-05-31T00:55:59+09:00",
-      "title_ja": "LLM開発ツール「Flowise」の深刻なRCE脆弱性のエクスプロイトコードが公開",
-      "summary_ja": "LLMのチャットフロー開発に用いられるオープンソースツール「Flowise」の自社ホスト型サーバーにおいて、悪意のあるチャットフローをインポートさせることで任意のコード実行（RCE）を可能にするクリティカルな脆弱性のエクスプロイトコードが公開された。この脆弱性は、Flowiseを利用している企業や開発者に即時の対策を求めるものであり、AI開発環境のセキュリティリスクを浮き彫りにしている。",
-      "insight": "Security for AIの重要な側面であり、AIシステムのサプライチェーンにおける新たなリスク源。LLMモデル自体だけでなく、その開発・運用環境やツールチェーン（「アプリ/API層」「データ/AI層」）に存在する脆弱性が、コード実行という深刻な結果を招くことを示す。SOC/CDCは、自社が利用するAI関連ツール（LLMフレームワーク、開発環境、APIゲートウェイなど）の脆弱性管理を強化し、これらの環境からのログ（不審なチャットフローのインポート、コード実行試行など）を監視対象に加える必要がある。AIシステム固有の権限管理と、それに紐づくツール実行の妥当性評価が今後の課題となる。",
+      "published": "2026-06-02T06:38:29+09:00",
+      "title_ja": "Red Hat npmパッケージが侵害され開発者クレデンシャルが窃取",
+      "summary_ja": "Red Hatの「@redhat-cloud-services」名前空間下の30以上のnpmパッケージがサプライチェーン攻撃を受け、新種のクレデンシャル窃取マルウェア「Miasma」が配布された。この攻撃は開発者のクレデンシャルを窃取することを目的としている。",
+      "insight": "記事[1]と同様に、著名なベンダーのパッケージを狙ったサプライチェーン攻撃が活発化している。CDC/SOCは、開発環境で使用されるオープンソースパッケージの完全性チェック、依存関係スキャン、および開発者のクレデンシャル管理（特にIdentity Threat Detection and Response: ITDR）を強化する必要がある。AI開発環境だけでなく、一般的なソフトウェア開発環境全般におけるサプライチェーンリスクとクレデンシャル管理の厳格化が求められる。",
       "importance": "高",
-      "importance_reason": "LLM開発環境におけるRCE脆弱性であり、エクスプロイトコードが公開されたことで即時のリスクが生じるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "importance_reason": "著名なベンダーのパッケージを狙ったサプライチェーン攻撃であり、クレデンシャル窃取は広範囲の開発者に影響を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
       "tag_subs": [
-        "LLMセキュリティ",
-        "エクスプロイト"
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取",
+        "マルウェア"
       ],
       "affected_layers": [
-        "データ/AI",
         "アプリ/API",
-        "クラウド/サーバー"
+        "データ/AI",
+        "デバイス/エッジ"
       ],
       "related_keywords": [
-        "Flowise",
-        "RCE脆弱性",
-        "LLM開発ツール",
-        "チャットフロー",
-        "AIシステムセキュリティ"
+        "Red Hat",
+        "npm",
+        "サプライチェーン攻撃",
+        "Miasma",
+        "クレデンシャル窃取"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
-        "Security for AI",
         "SOC運用変化",
+        "Identity/ITDR",
         "Exposure管理",
-        "サービス企画"
+        "MDR/MSSP設計",
+        "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "3db48881348f",
-      "title": "Cybercrime Crew Claims It Hacked Mike Lindell’s MyPillow",
-      "summary": "Plus: A ransomware group is now stealing data in person, BusPatrol wants to hand its license plate surveillance data to the cops, and more.",
-      "url": "https://www.wired.com/story/security-news-this-week-cybercrime-crew-claims-it-hacked-mike-lindells-mypillow/",
-      "ai_score": 1,
+      "id": "4847d9602d00",
+      "title": "Anthropic to Open Mythos AI to EU's ENISA",
+      "summary": "The European security agency's entry to Project Glasswing is the result of &quot;strong bilateral cooperation&quot; between the European Commission and Anthropic.",
+      "url": "https://www.darkreading.com/cyber-risk/anthropic-mythos-ai-eu-enisa",
+      "ai_score": 2,
       "cdc_pre_score": 0,
-      "source_name": "Wired Security",
+      "source_name": "Dark Reading",
       "source_tier": "B",
-      "published": "2026-05-30T19:30:00+09:00",
-      "title_ja": "サイバー犯罪グループがMyPillowへのハッキングを主張、データ窃取の傾向続く",
-      "summary_ja": "あるサイバー犯罪グループが、米国のMyPillow社に対するハッキングとデータ窃取を主張した。この報道は、企業に対するデータ侵害の脅威が継続していること、特にランサムウェア攻撃において身代金支払いを強制するためのデータ窃取が常態化している現状を改めて示唆している。企業は情報漏洩防止とインシデント対応体制の強化が引き続き求められる。",
-      "insight": "データ侵害はビジネスに直接的な影響を与えるインシデントであり、SOC/CDCの主要な監視・対応対象。本件のような主張は、具体的な被害が確定する前に、企業の評判リスクや経営層への報告の必要性を生じさせる。インシデント発生時の検知から対応、復旧、そして経営層へのビジネス影響説明までを統合的に提供するCDCの役割の重要性を再認識させる。データ流出経路の特定、影響範囲の評価、再発防止策は継続的な課題。",
+      "published": "2026-06-02T06:07:48+09:00",
+      "title_ja": "Anthropic、EUのENISAにMythos AIを開放へ",
+      "summary_ja": "AI大手Anthropicが、欧州のセキュリティ機関ENISAに対し、同社のAIシステム「Mythos」へのアクセスを開放する方針を示した。これは欧州委員会とAnthropicの協力強化の一環であり、AIの安全性評価と透明性確保に関する規制当局との連携が深まっていることを示唆する。",
+      "insight": "AIシステムの導入・運用においては、その安全性評価とコンプライアンス対応が喫緊の課題となる。CDC/SOCは、特にEU AI法などの規制動向を注視し、AIシステムのリスク評価、内部監査、ガバナンス体制の構築に積極的に関与する必要がある。AIベンダーが規制当局にシステム内部を開放する動きは、AIの「安全性評価」と「透明性」がビジネスとセキュリティの重要な要素となる中長期的トレンドを示している。",
       "importance": "中",
-      "importance_reason": "データ侵害の継続的な脅威と、ランサムウェア攻撃におけるデータ窃取の一般的傾向を示すため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
+      "importance_reason": "AIの安全性評価と規制遵守における業界の方向性を示す動きであり、中長期的なAIガバナンスに影響を与えるため。",
+      "tag_main_id": "policy",
+      "tag_main_label": "規制・政策",
       "tag_subs": [
-        "データ侵害",
-        "情報漏洩"
+        "EU AI法",
+        "国際連携",
+        "安全性評価"
       ],
       "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
+        "ガバナンス/規制",
+        "データ/AI"
       ],
       "related_keywords": [
-        "MyPillow",
-        "サイバー犯罪",
-        "データ侵害",
-        "ランサムウェア",
-        "データ窃取"
+        "Anthropic",
+        "ENISA",
+        "EU AI法",
+        "Mythos AI",
+        "安全性評価"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
-        "SOC運用変化",
         "CISO報告",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "4f197ff556f9",
+      "title": "Miasma Supply Chain Attack Compromises Red Hat npm Packages with Credential-Stealing Worm",
+      "summary": "A new Mini Shai-Hulud supply chain attack campaign, codenamed Miasma, has compromised @redhat-cloud-services packages to steal credentials and secrets from developer machines and deliver a self-propagating worm.\n\n\"This is effectively a Mini Shai-Hulud campaign: it uses the same core tactics of install-time execution, credential harvesting, CI/CD targeting, encrypted exfiltration, and potential",
+      "url": "https://thehackernews.com/2026/06/miasma-supply-chain-attack-compromises.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-02T02:40:28+09:00",
+      "title_ja": "Miasmaサプライチェーン攻撃がRed Hat npmパッケージを侵害しクレデンシャル窃取ワーム配布",
+      "summary_ja": "「Miasma」と名付けられたMini Shai-Huludサプライチェーン攻撃キャンペーンにより、@redhat-cloud-servicesパッケージが侵害され、開発者マシンからクレデンシャルやシークレットを窃取し、自己増殖型ワームが配布された。この攻撃は、インストール時実行、クレデンシャルハーベスティング、CI/CDターゲット、暗号化されたデータ流出などの複合的な戦術を使用している。",
+      "insight": "記事[5]の詳細情報であり、サプライチェーン攻撃が単なるクレデンシャル窃取に留まらず、CI/CDパイプラインを標的にした自己増殖型ワームを配布するという高度化を示している。CDC/SOCは、開発環境とCI/CD環境のセキュリティを統合的に監視する必要がある。特に、パッケージの整合性チェック、開発者のアクセス権限の厳格化、CI/CDパイプラインにおける異常な実行や外部通信の検知は、AI開発・利用環境を含むサプライチェーンリスク管理の最優先事項となる。",
+      "importance": "高",
+      "importance_reason": "サプライチェーン攻撃が高度化し、CI/CD環境への影響が大きく、クレデンシャル窃取とワームの複合は広範な被害を引き起こす可能性があるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Miasma",
+        "サプライチェーン攻撃",
+        "Red Hat",
+        "npm",
+        "クレデンシャル窃取"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "MDR/MSSP設計",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "52e8abec1a3f",
+      "title": "Webinar tomorrow: From alert to resolution in network incident response",
+      "summary": "Network incidents are often detected quickly, but investigations and coordination can delay resolution. Join our webinar tomorrow to learn how automation and AI-assisted workflows can help IT teams accelerate incident response. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/webinar-tomorrow-from-alert-to-resolution-in-network-incident-response/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-06-01T21:01:09+09:00",
+      "title_ja": "ネットワークインシデント対応の迅速化に向けた自動化とAI活用のウェビナー告知",
+      "summary_ja": "ネットワークインシデントは迅速に検知される一方で、調査と連携に時間を要し、解決が遅れる課題がある。今後のウェビナーでは、自動化とAIアシストワークフローを活用することで、ITチームがインシデント対応を加速し、アラートから解決までのプロセスを効率化する方法が紹介される。",
+      "insight": "この記事は、AI for Securityの具体的な活用機会を示唆している。CDC/SOCは、インシデント対応のTier1/2業務におけるAI活用、例えばアラートの優先順位付け、関連情報の自動収集、ナレッジベース検索、初動判断支援といった領域で、AIアシストワークフローの導入を積極的に検討すべきである。これにより、インシデント解決時間の短縮、アナリストの負荷軽減、およびより高度な脅威分析への人員シフトが可能となる。",
+      "importance": "中",
+      "importance_reason": "SOC/CDC業務におけるAI for Securityの具体的な活用機会を示唆しており、運用効率化に直結するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ネットワークインシデント",
+        "インシデント対応",
+        "自動化",
+        "AIアシストワークフロー",
+        "SOC効率化"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "サービス企画",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0a71d71a6fe9",
+      "title": "Microsoft's Zero-Day Legal Threats Spark Backlash",
+      "summary": "After a disgruntled security researcher published several zero-day exploits in recent weeks, Microsoft seemingly indicated criminal charges were in order.",
+      "url": "https://www.darkreading.com/application-security/microsoft-zero-day-legal-threats-backlash",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-06-02T03:52:26+09:00",
+      "title_ja": "Microsoftのゼロデイ開示に対する法的脅威が反発を招く",
+      "summary_ja": "セキュリティ研究者がゼロデイエクスプロイトを公開した後に、Microsoftが刑事訴追を示唆したとされ、業界内で反発を招いている。これは、ベンダーとセキュリティ研究者の間での脆弱性開示ポリシーと倫理、協力関係のあり方に関する議論を再燃させている。",
+      "insight": "この一件は、脆弱性情報の取り扱いに関するベンダーと研究者コミュニティ間の緊張関係を示している。SOC/CDCの直接的な運用には影響しないものの、脆弱性管理において公開されたゼロデイ情報へのアクセスや、ベンダーからの脆弱性修正の遅延が問題となる状況を理解する上で、背景知識として重要である。将来的にAIシステム固有の脆弱性開示においても同様の課題が発生する可能性も考慮しておくべきである。",
+      "importance": "低",
+      "importance_reason": "セキュリティ研究者コミュニティとベンダーの関係性に関する動向であり、SOC/CDCの直接的な脅威や対応には繋がりにくいため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "ゼロデイ"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Microsoft",
+        "ゼロデイ",
+        "脆弱性開示",
+        "法的脅威",
+        "セキュリティ研究者"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3713b8f13c6a",
+      "title": "WP Maps Pro Vulnerability Exploited to Take Over WordPress Sites",
+      "summary": "<p>The security defect (CVE-2026-8732) allows unauthenticated attackers to create administrative accounts on the affected installations.</p>\n<p>The post <a href=\"https://www.securityweek.com/wp-maps-pro-vulnerability-exploited-to-take-over-wordpress-sites/\">WP Maps Pro Vulnerability Exploited to Take Over WordPress Sites</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/wp-maps-pro-vulnerability-exploited-to-take-over-wordpress-sites/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-06-02T03:19:23+09:00",
+      "title_ja": "WP Maps Proの脆弱性が悪用されWordPressサイトが乗っ取られる",
+      "summary_ja": "WordPressプラグイン「WP Maps Pro」のセキュリティ欠陥（CVE-2026-8732）が悪用され、認証されていない攻撃者が影響を受けるサイトに管理者アカウントを作成し、WordPressサイトを乗っ取ることが可能であることが報告された。これは広く利用されるCMSプラグインの脆弱性が直接的な侵害につながる典型的なケースである。",
+      "insight": "Webアプリケーションやそのプラグインの脆弱性は、引き続き主要な攻撃経路である。CDC/SOCは、Webアプリケーションのスキャン、パッチ管理の徹底、およびCMS環境における管理者アカウント作成などの特権操作に対する厳格な監視を継続する必要がある。特に、認証バイパスや設定ミスによる権限昇格は、即座にサイト乗っ取りにつながるため、これらのリスクに対する検知・対応を優先的に行うべきである。既存のMDR/MSSPサービスでもWebアプリケーションの監視強化が求められる。",
+      "importance": "中",
+      "importance_reason": "広く利用されるCMSプラグインの脆弱性悪用であり、管理者権限奪取は即座にサイト乗っ取りに繋がり、多くの組織に影響を与える可能性があるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "WordPress",
+        "WP Maps Pro",
+        "CVE-2026-8732",
+        "脆弱性悪用",
+        "管理者アカウント"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化",
+        "MDR/MSSP設計",
         "顧客課題"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-06-02",
+      "articles": [
+        {
+          "id": "a3c1407f6b73",
+          "title": "OpenAI Codex Authentication Tokens Stolen in codexui-android npm Supply Chain Attack",
+          "summary": "Cybersecurity researchers have disclosed details of a new malicious supply chain campaign that's targeting developers using OpenAI Codex through a legitimate-looking remote web UI.\n\nThe tool, named codexui-android, is advertised on GitHub and npm as a remote web UI for OpenAI Codex, attracting over 29,000 weekly downloads. The package is still available for download from the repository.\n\nWhat",
+          "url": "https://thehackernews.com/2026/06/openai-codex-authentication-tokens.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-06-01T18:31:15+09:00",
+          "title_ja": "OpenAI Codex認証トークンがnpmサプライチェーン攻撃で窃取",
+          "summary_ja": "開発者向けOpenAI CodexのリモートWeb UIを装った悪意あるnpmパッケージ「codexui-android」が、認証トークンを窃取するサプライチェーン攻撃に利用されていることが判明。このパッケージは29,000回以上ダウンロードされており、現在もnpmリポジトリから入手可能。AI開発環境におけるサプライチェーンリスクとクレデンシャル窃取の深刻化が浮き彫りになっている。",
+          "insight": "AI開発環境のサプライチェーン攻撃は、従来の開発ツールへの攻撃に加え、AIサービス固有の認証トークンを狙う点で新たな脅威となる。CDC/SOCは、AI関連ツール導入時のパッケージの信頼性検証、開発環境の監視強化、特にAIサービスへのアクセスに使用されるトークンの管理と異常利用の検知メカニズムを早急に検討する必要がある。これはAIエージェントリスクモデルの「データ・インフラ層」および「アイデンティティ・権限層」に直接関わる論点である。",
+          "importance": "高",
+          "importance_reason": "AI開発環境を標的としたサプライチェーン攻撃であり、AIサービスの認証トークン窃取という新たな脅威は広範囲に影響を及ぼすため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "サプライチェーン攻撃",
+            "クレデンシャル窃取",
+            "マルウェア"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "OpenAI Codex",
+            "npm",
+            "サプライチェーン攻撃",
+            "認証トークン",
+            "codexui-android"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理",
+            "Security for AI",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "6e5f4717335f",
+          "title": "Escaping the Linearity Trap: Manifold Detours for Black-Box Adversarial Attacks on Singing Audio Deepfake Detection",
+          "summary": "arXiv:2605.30366v1 Announce Type: new \nAbstract: Recent Singing Voice Synthesis (SVS) advances enable highly realistic but potentially malicious AI covers, making singing voice deepfake detection (SVDD) crucial. Self-Supervised Learning (SSL)-based detectors achieve state-of-the-art performance by fine-tuning speech SSL backbones to capture singing-specific spoof artifacts. Existing adversarial attacks often fail against SSL-SVDD, creating a false impression of inherent robustness. We reveal thi",
+          "url": "https://arxiv.org/abs/2605.30366",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-06-01T13:00:00+09:00",
+          "title_ja": "歌声ディープフェイク検出に対するブラックボックス敵対的攻撃の進化",
+          "summary_ja": "歌声合成技術の進化により、高精度なAIカバーが生成可能になったことで、歌声ディープフェイク検出（SVDD）の重要性が高まっている。自己教師あり学習（SSL）に基づくSVDD検出器は高性能を示すが、本研究は、既存の敵対的攻撃がなぜSSL-SVDDに対して失敗するのかを解明し、より効果的なブラックボックス敵対的攻撃手法を提案している。これはAIモデルの堅牢性評価における課題を浮き彫りにする。",
+          "insight": "AI for Securityとして導入される検出器（AIを使った防御）も、敵対的攻撃に対して絶対的な堅牢性を持つわけではない。CDC/SOCは、AIを活用した検知システムの導入を検討する際、そのモデルがどのような敵対的攻撃に対して脆弱か、またその検出器を回避する攻撃手法が進化していることを理解し、継続的なモデルの改善と多様な検知アプローチの併用を考慮する必要がある。これは、防御側のAIシステムの脆弱性となりうる。",
+          "importance": "中",
+          "importance_reason": "AIを使った防御システムの限界と、敵対的AI攻撃の進化に関する学術研究であり、将来のAI防御戦略に影響を与えるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "敵対的攻撃",
+            "AIを使った防御"
+          ],
+          "affected_layers": [
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "ディープフェイク検出",
+            "敵対的攻撃",
+            "ブラックボックス攻撃",
+            "SSL-SVDD",
+            "AIモデル堅牢性"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "AI for Security",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "e893f43ffcff",
+          "title": "The Surface You Test Is Not the Surface That Breaks",
+          "summary": "arXiv:2605.30454v1 Announce Type: new \nAbstract: Tool-augmented LLM agents are vulnerable to prompt injection: a third party who controls part of the agent's context can plant instructions that the agent then executes as if they came from the user. Current evaluations report a single attack success rate per model on one channel, the tool output and treat that number as the model's vulnerability. But tool descriptions, which the agent reads at every turn before any tool is called, are themselves ",
+          "url": "https://arxiv.org/abs/2605.30454",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-06-01T13:00:00+09:00",
+          "title_ja": "LLMエージェントのプロンプトインジェクション：テストされない攻撃経路",
+          "summary_ja": "ツール拡張型LLMエージェントはプロンプトインジェクションに脆弱であり、第三者がエージェントのコンテキストを操作して意図しない命令を実行させることが可能である。現在の評価手法ではツール出力のみを攻撃経路として扱うことが多いが、本研究はエージェントがツール呼び出し前に読み込むツール説明自体が攻撃経路となり得ることを指摘している。これはプロンプトインジェクションの新たな攻撃ベクトルを示す。",
+          "insight": "LLMエージェントのセキュリティ監視は、ユーザー入力だけでなく、エージェント内部の様々なコンテキスト、特にツール説明やAPI連携部分にまで拡張する必要がある。SOC/CDCは、AIエージェントのログ監視において、プロンプトインジェクションの痕跡を従来のプロンプト層だけでなく、ツール連携層や内部命令の流れまで網羅的に検知する仕組みを設計する必要がある。これはAIエージェントリスクモデルの「モデル・推論層」と「ツール・実行層」にまたがる重要な示唆である。",
+          "importance": "高",
+          "importance_reason": "LLMエージェントにおけるプロンプトインジェクションの新たな攻撃経路を指摘しており、AIセキュリティ対策の根本的な見直しを促すため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "LLMエージェント",
+            "プロンプトインジェクション",
+            "ツール拡張",
+            "ツール説明",
+            "コンテキスト"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "サービス企画",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "a1b04c2492ff",
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "summary": "<p>CISA has added one new vulnerability to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2024-21182\" target=\"_blank\">CVE-2024-21182</a> Oracle WebLogic Server Unspecified Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vectors for malicious cyber actors and poses significan",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/06/01/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-06-01T21:00:00+09:00",
+          "title_ja": "CISAがOracle WebLogic Serverの既知の悪用済み脆弱性をカタログに追加",
+          "summary_ja": "CISAが、アクティブな悪用が確認された脆弱性として「CVE-2024-21182 Oracle WebLogic Serverの特定されていない脆弱性」をKnown Exploited Vulnerabilities (KEV) カタログに追加した。この種の脆弱性は悪意あるサイバーアクターにとって頻繁な攻撃ベクトルとなり、重大なリスクをもたらす。",
+          "insight": "CISAのKEVカタログへの追加は、当該脆弱性への即時対応の必要性を示す明確なシグナルである。CDC/SOCは、自社および顧客環境でOracle WebLogic Serverが稼働しているかを確認し、CVE-2024-21182に対するパッチ適用状況を速やかに評価・対応するプロセスを強化する必要がある。KEVカタログは、既存の脆弱性管理プロセスにおいて、対応優先度を決定する重要な情報源として常に監視すべきである。",
+          "importance": "中",
+          "importance_reason": "CISAが積極的に悪用されていると認定した脆弱性であり、迅速な対応が求められるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "CISA KEV",
+            "CVE-2024-21182",
+            "Oracle WebLogic Server",
+            "既知の悪用済み脆弱性"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化",
+            "MDR/MSSP設計",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "dd8bcde21a85",
+          "title": "Red Hat npm packages compromised to steal developer credentials",
+          "summary": "More than 30 npm packages under Red Hat's '@redhat-cloud-services' namespace were compromised in a supply-chain attack that distributed a new variant of the Shai-Hulud credential-stealing malware, dubbed \"Miasma.\" [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/red-hat-npm-packages-compromised-to-steal-developer-credentials/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-06-02T06:38:29+09:00",
+          "title_ja": "Red Hat npmパッケージが侵害され開発者クレデンシャルが窃取",
+          "summary_ja": "Red Hatの「@redhat-cloud-services」名前空間下の30以上のnpmパッケージがサプライチェーン攻撃を受け、新種のクレデンシャル窃取マルウェア「Miasma」が配布された。この攻撃は開発者のクレデンシャルを窃取することを目的としている。",
+          "insight": "記事[1]と同様に、著名なベンダーのパッケージを狙ったサプライチェーン攻撃が活発化している。CDC/SOCは、開発環境で使用されるオープンソースパッケージの完全性チェック、依存関係スキャン、および開発者のクレデンシャル管理（特にIdentity Threat Detection and Response: ITDR）を強化する必要がある。AI開発環境だけでなく、一般的なソフトウェア開発環境全般におけるサプライチェーンリスクとクレデンシャル管理の厳格化が求められる。",
+          "importance": "高",
+          "importance_reason": "著名なベンダーのパッケージを狙ったサプライチェーン攻撃であり、クレデンシャル窃取は広範囲の開発者に影響を与えるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "サプライチェーン攻撃",
+            "クレデンシャル窃取",
+            "マルウェア"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "Red Hat",
+            "npm",
+            "サプライチェーン攻撃",
+            "Miasma",
+            "クレデンシャル窃取"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "Exposure管理",
+            "MDR/MSSP設計",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "4847d9602d00",
+          "title": "Anthropic to Open Mythos AI to EU's ENISA",
+          "summary": "The European security agency's entry to Project Glasswing is the result of &quot;strong bilateral cooperation&quot; between the European Commission and Anthropic.",
+          "url": "https://www.darkreading.com/cyber-risk/anthropic-mythos-ai-eu-enisa",
+          "ai_score": 2,
+          "cdc_pre_score": 0,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-06-02T06:07:48+09:00",
+          "title_ja": "Anthropic、EUのENISAにMythos AIを開放へ",
+          "summary_ja": "AI大手Anthropicが、欧州のセキュリティ機関ENISAに対し、同社のAIシステム「Mythos」へのアクセスを開放する方針を示した。これは欧州委員会とAnthropicの協力強化の一環であり、AIの安全性評価と透明性確保に関する規制当局との連携が深まっていることを示唆する。",
+          "insight": "AIシステムの導入・運用においては、その安全性評価とコンプライアンス対応が喫緊の課題となる。CDC/SOCは、特にEU AI法などの規制動向を注視し、AIシステムのリスク評価、内部監査、ガバナンス体制の構築に積極的に関与する必要がある。AIベンダーが規制当局にシステム内部を開放する動きは、AIの「安全性評価」と「透明性」がビジネスとセキュリティの重要な要素となる中長期的トレンドを示している。",
+          "importance": "中",
+          "importance_reason": "AIの安全性評価と規制遵守における業界の方向性を示す動きであり、中長期的なAIガバナンスに影響を与えるため。",
+          "tag_main_id": "policy",
+          "tag_main_label": "規制・政策",
+          "tag_subs": [
+            "EU AI法",
+            "国際連携",
+            "安全性評価"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "Anthropic",
+            "ENISA",
+            "EU AI法",
+            "Mythos AI",
+            "安全性評価"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "CISO報告",
+            "サービス企画",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "4f197ff556f9",
+          "title": "Miasma Supply Chain Attack Compromises Red Hat npm Packages with Credential-Stealing Worm",
+          "summary": "A new Mini Shai-Hulud supply chain attack campaign, codenamed Miasma, has compromised @redhat-cloud-services packages to steal credentials and secrets from developer machines and deliver a self-propagating worm.\n\n\"This is effectively a Mini Shai-Hulud campaign: it uses the same core tactics of install-time execution, credential harvesting, CI/CD targeting, encrypted exfiltration, and potential",
+          "url": "https://thehackernews.com/2026/06/miasma-supply-chain-attack-compromises.html",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-06-02T02:40:28+09:00",
+          "title_ja": "Miasmaサプライチェーン攻撃がRed Hat npmパッケージを侵害しクレデンシャル窃取ワーム配布",
+          "summary_ja": "「Miasma」と名付けられたMini Shai-Huludサプライチェーン攻撃キャンペーンにより、@redhat-cloud-servicesパッケージが侵害され、開発者マシンからクレデンシャルやシークレットを窃取し、自己増殖型ワームが配布された。この攻撃は、インストール時実行、クレデンシャルハーベスティング、CI/CDターゲット、暗号化されたデータ流出などの複合的な戦術を使用している。",
+          "insight": "記事[5]の詳細情報であり、サプライチェーン攻撃が単なるクレデンシャル窃取に留まらず、CI/CDパイプラインを標的にした自己増殖型ワームを配布するという高度化を示している。CDC/SOCは、開発環境とCI/CD環境のセキュリティを統合的に監視する必要がある。特に、パッケージの整合性チェック、開発者のアクセス権限の厳格化、CI/CDパイプラインにおける異常な実行や外部通信の検知は、AI開発・利用環境を含むサプライチェーンリスク管理の最優先事項となる。",
+          "importance": "高",
+          "importance_reason": "サプライチェーン攻撃が高度化し、CI/CD環境への影響が大きく、クレデンシャル窃取とワームの複合は広範な被害を引き起こす可能性があるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "サプライチェーン攻撃",
+            "クレデンシャル窃取",
+            "マルウェア"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "Miasma",
+            "サプライチェーン攻撃",
+            "Red Hat",
+            "npm",
+            "クレデンシャル窃取"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "Exposure管理",
+            "MDR/MSSP設計",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "52e8abec1a3f",
+          "title": "Webinar tomorrow: From alert to resolution in network incident response",
+          "summary": "Network incidents are often detected quickly, but investigations and coordination can delay resolution. Join our webinar tomorrow to learn how automation and AI-assisted workflows can help IT teams accelerate incident response. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/webinar-tomorrow-from-alert-to-resolution-in-network-incident-response/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-06-01T21:01:09+09:00",
+          "title_ja": "ネットワークインシデント対応の迅速化に向けた自動化とAI活用のウェビナー告知",
+          "summary_ja": "ネットワークインシデントは迅速に検知される一方で、調査と連携に時間を要し、解決が遅れる課題がある。今後のウェビナーでは、自動化とAIアシストワークフローを活用することで、ITチームがインシデント対応を加速し、アラートから解決までのプロセスを効率化する方法が紹介される。",
+          "insight": "この記事は、AI for Securityの具体的な活用機会を示唆している。CDC/SOCは、インシデント対応のTier1/2業務におけるAI活用、例えばアラートの優先順位付け、関連情報の自動収集、ナレッジベース検索、初動判断支援といった領域で、AIアシストワークフローの導入を積極的に検討すべきである。これにより、インシデント解決時間の短縮、アナリストの負荷軽減、およびより高度な脅威分析への人員シフトが可能となる。",
+          "importance": "中",
+          "importance_reason": "SOC/CDC業務におけるAI for Securityの具体的な活用機会を示唆しており、運用効率化に直結するため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "ネットワークインシデント",
+            "インシデント対応",
+            "自動化",
+            "AIアシストワークフロー",
+            "SOC効率化"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "サービス企画",
+            "AI for Security"
+          ],
+          "views": 0
+        },
+        {
+          "id": "0a71d71a6fe9",
+          "title": "Microsoft's Zero-Day Legal Threats Spark Backlash",
+          "summary": "After a disgruntled security researcher published several zero-day exploits in recent weeks, Microsoft seemingly indicated criminal charges were in order.",
+          "url": "https://www.darkreading.com/application-security/microsoft-zero-day-legal-threats-backlash",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-06-02T03:52:26+09:00",
+          "title_ja": "Microsoftのゼロデイ開示に対する法的脅威が反発を招く",
+          "summary_ja": "セキュリティ研究者がゼロデイエクスプロイトを公開した後に、Microsoftが刑事訴追を示唆したとされ、業界内で反発を招いている。これは、ベンダーとセキュリティ研究者の間での脆弱性開示ポリシーと倫理、協力関係のあり方に関する議論を再燃させている。",
+          "insight": "この一件は、脆弱性情報の取り扱いに関するベンダーと研究者コミュニティ間の緊張関係を示している。SOC/CDCの直接的な運用には影響しないものの、脆弱性管理において公開されたゼロデイ情報へのアクセスや、ベンダーからの脆弱性修正の遅延が問題となる状況を理解する上で、背景知識として重要である。将来的にAIシステム固有の脆弱性開示においても同様の課題が発生する可能性も考慮しておくべきである。",
+          "importance": "低",
+          "importance_reason": "セキュリティ研究者コミュニティとベンダーの関係性に関する動向であり、SOC/CDCの直接的な脅威や対応には繋がりにくいため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "ゼロデイ"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "Microsoft",
+            "ゼロデイ",
+            "脆弱性開示",
+            "法的脅威",
+            "セキュリティ研究者"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "3713b8f13c6a",
+          "title": "WP Maps Pro Vulnerability Exploited to Take Over WordPress Sites",
+          "summary": "<p>The security defect (CVE-2026-8732) allows unauthenticated attackers to create administrative accounts on the affected installations.</p>\n<p>The post <a href=\"https://www.securityweek.com/wp-maps-pro-vulnerability-exploited-to-take-over-wordpress-sites/\">WP Maps Pro Vulnerability Exploited to Take Over WordPress Sites</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/wp-maps-pro-vulnerability-exploited-to-take-over-wordpress-sites/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-06-02T03:19:23+09:00",
+          "title_ja": "WP Maps Proの脆弱性が悪用されWordPressサイトが乗っ取られる",
+          "summary_ja": "WordPressプラグイン「WP Maps Pro」のセキュリティ欠陥（CVE-2026-8732）が悪用され、認証されていない攻撃者が影響を受けるサイトに管理者アカウントを作成し、WordPressサイトを乗っ取ることが可能であることが報告された。これは広く利用されるCMSプラグインの脆弱性が直接的な侵害につながる典型的なケースである。",
+          "insight": "Webアプリケーションやそのプラグインの脆弱性は、引き続き主要な攻撃経路である。CDC/SOCは、Webアプリケーションのスキャン、パッチ管理の徹底、およびCMS環境における管理者アカウント作成などの特権操作に対する厳格な監視を継続する必要がある。特に、認証バイパスや設定ミスによる権限昇格は、即座にサイト乗っ取りにつながるため、これらのリスクに対する検知・対応を優先的に行うべきである。既存のMDR/MSSPサービスでもWebアプリケーションの監視強化が求められる。",
+          "importance": "中",
+          "importance_reason": "広く利用されるCMSプラグインの脆弱性悪用であり、管理者権限奪取は即座にサイト乗っ取りに繋がり、多くの組織に影響を与える可能性があるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "エクスプロイト",
+            "認証バイパス"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "WordPress",
+            "WP Maps Pro",
+            "CVE-2026-8732",
+            "脆弱性悪用",
+            "管理者アカウント"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化",
+            "MDR/MSSP設計",
+            "顧客課題"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】AI関連のサプライチェーン攻撃が現実化し、LLMエージェントのプロンプトインジェクションはより複雑な攻撃経路を持つことが明らかになった。同時に、AIを用いた防御側のインシデント対応効率化の動きも見られ、攻撃側と防御側のAI活用競争は激化している。\n【攻撃側の変化】AI開発環境を標的としたサプライチェーン攻撃（記事1, 5, 7）が顕著であり、npmパッケージを介したクレデンシャル窃取マルウェア（Miasma）や、AIサービス（OpenAI Codex）の認証トークンが狙われている。これは従来のサプライチェーン攻撃が開発エコシステム全体に広がり、AI関連の機密情報が新たな標的になっていることを示唆する。LLMエージェントのプロンプトインジェクションも進化し、ツール説明などの内部コンテキストを悪用する新たな攻撃経路（記事3）が指摘されており、単なる入力プロンプトのチェックでは不十分となっている。また、AIを使った検出システムに対する敵対的攻撃の高度化（記事2）も確認されている。\n【防御側の変化】ネットワークインシデント対応において、自動化とAIアシストワークフローによる効率化の動きが見られる（記事8）。これは、SOC/CDCがアラートから解決までの時間を短縮するため、AI for Securityの活用を積極的に模索している現状を示す。CISAによる既知の脆弱性悪用（記事4）やWebアプリケーションの乗っ取り（記事10）に対する対応は継続しており、基礎的な脆弱性管理とインシデント対応の重要性は変わらない。\n【Security for AI】AIシステムの開発・利用環境における認証トークンやAPIキーの窃取、CI/CD環境へのサプライチェーン攻撃（記事1, 5, 7）が喫緊の課題であり、AIエージェントリスクモデルの「データ・インフラ層」「アイデンティティ・権限層」への直接的な脅威となる。LLMエージェントにおいては、ツール説明自体がプロンプトインジェクションの攻撃経路になり得る（記事3）とされ、「モデル・推論層」と「ツール・実行層」の境界にある新たなリスクが浮上している。これにより、AIシステム内部の挙動やデータ流通を、従来のSOC監視に加えて詳細に監視する必要性が高まっている。大手AIベンダーと規制当局の連携（記事6）も、AIシステムの安全性評価と透明性確保がガバナンスレベルで進むことを示唆している。\n【AI for Security】SOC/CDC業務におけるAI活用機会として、インシデント対応の初期段階、特にTier2調査、アラート判断、ナレッジ検索、初動判断支援といった領域でAIアシストワークフローを導入することで、インシデント解決時間の短縮とアナリストの負担軽減が期待できる（記事8）。AIは人間の判断を代替するのではなく、判断根拠や証跡の提供、再現性の向上に寄与するものとして機能すると考えられる。\n【CDC/SOCへの示唆】監視対象は、AI開発環境、CI/CDパイプライン、npm等のパッケージレジストリ、そしてAIシステムの内部ログ（プロンプト、ツール説明、APIコール、トークン利用状況）へと拡張する必要がある。AI固有の脅威（プロンプトインジェクションの多様な経路、AI関連トークンの異常アクセス）に対応するための検知ルールを設計し、Identity Threat Detection and Response (ITDR) の適用範囲をAI/開発環境にまで広げ、厳格な権限管理と異常検知が求められる。AIはインシデント対応の効率化を支援するが、最終判断や複雑な調査、未知の脅威への対応、経営層への報告といった高度な役割は引き続き人間が担う。MDR/MSSPは、AI開発環境の監視やAIシステムのセキュリティ評価をサービスに組み込むことで、顧客の新たな課題に対応する差別化戦略を構築できるだろう。\n【今日の問い】AI開発環境におけるサプライチェーン攻撃に対して、従来のEDR/SIEM/SOARはどこまで有効か、またどのような追加の監視・防御機構が必要か。LLMエージェントのプロンプトインジェクションを多様な攻撃経路から検知・防御するための、AIシステム固有のログ設計と監視プロセスはどのように確立すべきか。"
+    },
     {
       "date": "2026-06-01",
       "articles": [
