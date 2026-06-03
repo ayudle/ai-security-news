@@ -1,87 +1,370 @@
 {
-  "updated": "2026-06-03T07:03:27.127600+09:00",
-  "today": "2026-06-03",
+  "updated": "2026-06-04T07:04:58.566052+09:00",
+  "today": "2026-06-04",
   "articles": [
     {
-      "id": "563bce7be582",
-      "title": "From Frontier to Shadow AI: A Simmering Threat to Assurance and Security in Critical Infrastructure",
-      "summary": "arXiv:2606.00088v1 Announce Type: new \nAbstract: Frontier AI systems, including large language models and emerging agentic AI tools, offer significant operational benefits but present unique challenges to critical infrastructure (CI) environments due to their non-deterministic and emergent properties. While formal adoption is inherently cautious and tightly controlled due to strict regulatory oversight, widespread accessibility has catalysed shadow AI: the unsanctioned use of frontier AI outside",
-      "url": "https://arxiv.org/abs/2606.00088",
+      "id": "39c53e794094",
+      "title": "WhatsApp, Slack Notifications Could Hijack Google Gemini on Android",
+      "summary": "A single poisoned notification from WhatsApp, Slack, SMS, Signal, Instagram, or Messenger could have hijacked Google Gemini's voice assistant on Android and made it open a victim's connected windows, fake a message from their boss, push the phone into a Zoom call, or quietly poison its long-term memory.\n\nNo malicious app on the phone is required. The assistant just had to treat a hostile",
+      "url": "https://thehackernews.com/2026/06/whatsapp-slack-notifications-could.html",
       "ai_score": 3,
       "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-06-02T13:00:00+09:00",
-      "title_ja": "クリティカルインフラにおけるシャドーAIの脅威",
-      "summary_ja": "大規模言語モデルやエージェントAIといったフロンティアAIシステムは、クリティカルインフラ（CI）に大きな運用上の利益をもたらす一方で、その非決定性や創発的特性により固有の課題を提示します。厳格な規制監督下で正式な採用は慎重に進むものの、広範なアクセシビリティがシャドーAI（未承認のAI利用）を促進し、保証とセキュリティに深刻な脅威を与えています。これにより、従来のセキュリティ管理の範囲外で新たなリスクが生まれています。",
-      "insight": "クリティカルインフラにおけるシャドーAIの台頭は、SOC/CDCが従来のIT/OT境界だけでなく、組織内で無許可に利用されるAIエージェントやLLMの監視・ガバナンスを設計する必要性を示唆しています。特にCI環境では非決定性のAIがもたらす未知のリスクが大きく、AIシステム固有のログ収集、挙動分析、異常検知の仕組みを強化し、運用プロセスの変更や経営層へのリスク説明能力の向上も求められます。",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-04T04:11:15+09:00",
+      "title_ja": "Google GeminiがWhatsApp等の通知からハイジャックされる脆弱性",
+      "summary_ja": "Android版Google Gemini音声アシスタントに、WhatsAppやSlackなどの通知に含まれる悪意のあるコマンドによってハイジャックされる脆弱性が発見された。この脆弱性は、悪意のあるアプリのインストールを必要とせず、デバイスの操作やメッセージの偽装、長期記憶の汚染を引き起こす可能性がある。通知内の悪意あるURL処理をトリガーとして、Geminiが本来の機能を逸脱した動作を実行する。",
+      "insight": "AIアシスタントがOSレベルの通知といった通常のコミュニケーション経路を悪用され、デバイス操作やデータ汚染に繋がる事例は、従来のセキュリティ監視の盲点となりうる。SOC/CDCは、AIアシスタントの入力（プロンプト、外部連携）のサニタイズと、異常な実行権限要求やデバイス操作の挙動監視を強化する必要がある。AIエージェントによるツール実行の正当性検証が、インシデント検知の鍵となる。",
       "importance": "高",
-      "importance_reason": "重要インフラにおけるシャドーAIは、従来のセキュリティ管理範囲外の新たな重大な脅威であり、即時的な対策検討が求められるため。",
-      "tag_main_id": "ai_risk",
-      "tag_main_label": "AIリスク",
+      "importance_reason": "AIアシスタントの普及に伴い、日常的な通知が直接的な攻撃ベクトルとなる新たな脅威であり、広範囲のユーザーに影響を与える可能性があるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "プライバシー侵害",
-        "安全性評価",
-        "モデル汚染"
+        "プロンプトインジェクション",
+        "AIを使った攻撃"
       ],
       "affected_layers": [
+        "アプリ/API",
         "データ/AI",
-        "ガバナンス/規制"
+        "デバイス/エッジ"
       ],
       "related_keywords": [
-        "シャドーAI",
-        "フロンティアAI",
-        "クリティカルインフラ",
-        "非決定性",
-        "AIエージェント"
+        "Google Gemini",
+        "プロンプトインジェクション",
+        "通知ハイジャック",
+        "Android",
+        "AIアシスタント"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
-        "CISO報告",
-        "サービス企画",
-        "顧客課題",
-        "Security for AI"
+        "Security for AI",
+        "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "720f9b19a5ce",
-      "title": "XAI-SOH-FL: Enhancing SOH-FL with Adaptive Aggregation and Explainable AI for Intrusion Detection in Heterogeneous IoT",
-      "summary": "arXiv:2606.00134v1 Announce Type: new \nAbstract: Intrusion Detection Systems (IDS) in Internet of Things (IoT) environments face significant challenges due to data heterogeneity, lack of labeled data, and limited model interpretability. Federated Learning (FL) offers a privacy-preserving solution; however, existing approaches such as SOH-FL suffer from two key limitations: reliance on a manually tuned aggregation parameter {\\gamma} and lack of explainability in model predictions. In this paper, ",
-      "url": "https://arxiv.org/abs/2606.00134",
+      "id": "ad2c47930aa5",
+      "title": "Malicious Notifications Could Trick Google Gemini Users",
+      "summary": "A prompt injection flaw in Google Gemini's voice assistant let attackers hide malicious commands in notifications, enabling social engineering and more.",
+      "url": "https://www.darkreading.com/application-security/malicious-notifications-could-trick-google-gemini-users",
       "ai_score": 3,
       "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-06-02T13:00:00+09:00",
-      "title_ja": "IoT侵入検知における説明可能なAIと適応型フェデレーテッドラーニング",
-      "summary_ja": "IoT環境における侵入検知システム（IDS）は、データ異種性、ラベル付けデータ不足、モデル解釈性の課題に直面しています。本研究は、プライバシー保護型のフェデレーテッドラーニング（FL）に、適応型集約と説明可能なAI（XAI）を組み込んだ「XAI-SOH-FL」を提案しています。これにより、既存のSOH-FLにおける手動調整パラメータへの依存を解消し、モデル予測の解釈性を高めることで、効果的な侵入検知を目指します。",
-      "insight": "本研究は、AI for Securityの領域で、将来的にSOC/CDCが直面するIoT環境の複雑な侵入検知課題に対する解決策の可能性を示しています。特にXAIの導入は、AIによるアラート判断の根拠を明確化し、Tier2/3アナリストの調査効率向上や誤検知削減に寄与する設計上の示唆を与えます。説明責任と透明性が求められるSOC/CDC業務において、AI活用時の判断根拠・証跡確保の重要性を再確認できます。",
-      "importance": "中",
-      "importance_reason": "AI for Securityの研究動向として、将来的なSOC/CDCの検知技術に影響を与える可能性が高いため。",
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-06-03T21:01:00+09:00",
+      "title_ja": "Google Geminiに悪意ある通知を隠すプロンプトインジェクション脆弱性",
+      "summary_ja": "Google Geminiの音声アシスタントにおいて、悪意のあるコマンドを通知に隠蔽し、ソーシャルエンジニアリング攻撃やその他の悪用を可能にするプロンプトインジェクションの欠陥が確認された。これにより攻撃者は、ユーザーをだまして意図しない行動を取らせたり、アシスタントの機能を悪用したりすることが可能となる。この脆弱性は、AIモデルが外部入力を適切に検証しないことに起因する。",
+      "insight": "本記事は記事1と類似の事象を異なる観点から報告しており、AIアシスタントに対するプロンプトインジェクションが、通知という日常的な手段を通じて実現されうることを強調している。SOC/CDCは、AIエージェントが受け取る入力ソースと、それに対するAIの解釈・実行プロセスに注目し、意図しないコマンド実行を防ぐためのログ監視と検知ルールを設計すべきである。特に、人間の関与なしにAIが外部ツールを実行する際の安全性が問われる。",
+      "importance": "高",
+      "importance_reason": "AIアシスタントが直接的な攻撃チャネルとなる具体的な手口を示しており、AI for SecurityとSecurity for AIの両面で重要な示唆を与えるため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "AIを使った防御",
-        "研究・論文"
+        "プロンプトインジェクション",
+        "LLMセキュリティ",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Google Gemini",
+        "プロンプトインジェクション",
+        "通知",
+        "ソーシャルエンジニアリング",
+        "音声アシスタント"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0da81bcf31ad",
+      "title": "Google adds Android protection against AI deepfake scam calls",
+      "summary": "Google is introducing a new Android security feature that will detect and flag phone calls in which scammers use artificial intelligence to impersonate a user's personal contacts. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/google-adds-android-protection-against-ai-deepfake-scam-calls/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-06-03T18:02:11+09:00",
+      "title_ja": "Google、AIディープフェイク詐欺電話に対するAndroid保護機能を追加",
+      "summary_ja": "GoogleはAndroidに新しいセキュリティ機能を導入し、詐欺師がAIを使ってユーザーの連絡先を装うディープフェイク詐欺電話を検知し警告する。この機能は、AIが生成した音声や会話パターンを分析し、リアルタイムでユーザーに危険を知らせることで、詐欺被害の防止を目指すものである。AIによる攻撃が増加する中、AIを活用した防御策の具体例として注目される。",
+      "insight": "AIが悪用される脅威が増す一方で、AIによる防御策も進化している。SOC/CDCは、ユーザーデバイスに組み込まれるAIベースの防御機能が、どのように脅威を検知し、ユーザーに通知するかを理解する必要がある。これにより、インシデント発生時の初動対応や証拠収集プロセスを適切に連携させ、AIが防御の最前線で果たす役割を運用に組み込むことができる。",
+      "importance": "中",
+      "importance_reason": "AIを使った攻撃に対するAIを使った防御策の具体例であり、AI for Securityの進化を示す重要な動きであるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
       ],
       "affected_layers": [
         "デバイス/エッジ",
         "データ/AI"
       ],
       "related_keywords": [
-        "IoT",
-        "侵入検知システム",
-        "フェデレーテッドラーニング",
-        "説明可能なAI",
-        "データ異種性"
+        "Google",
+        "Android",
+        "AI",
+        "ディープフェイク",
+        "詐欺電話"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e63d82b94f97",
+      "title": "MultiTurnPSB: Evaluating Multi-Turn Jailbreak Attacks an dClassifier-Based Defenses for Medical AI Safety",
+      "summary": "arXiv:2606.02630v1 Announce Type: new \nAbstract: Patient-facing medical chatbots are commonly evaluated on single-turn prompts, yet real users push back after refusals, add urgency, and invoke authority. We introduce MultiTurnPSB, a four-turn adversarial extension of PatientSafetyBench, and evaluate GPT-4.1-mini under fixed template, template-adaptive, and live adversarial attacks. Unsafe responses rise from 35% to nearly 80% by Turn 4 under live attack. Under the same adversary, GPT-4.1-mini an",
+      "url": "https://arxiv.org/abs/2606.02630",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-03T13:00:00+09:00",
+      "title_ja": "医療AI安全性における多段階ジェイルブレイク攻撃評価",
+      "summary_ja": "arXivの論文「MultiTurnPSB」は、患者向け医療チャットボットに対する多段階（マルチターン）ジェイルブレイク攻撃を評価する新しいベンチマークを導入した。従来の単一ターンプロンプト評価では見過ごされがちな、ユーザーが拒否後も繰り返し介入することで、不安全な応答の割合が大幅に増加することが示された。分類器ベースの防御策も合わせて評価されている。",
+      "insight": "AIシステムの安全性評価において、単一のプロンプトだけでなく、マルチターンの対話における頑健性が極めて重要であることを示している。SOC/CDCは、顧客や社内ユーザーが利用するAIシステム（特にエージェント）が、繰り返しプロンプトされることでセキュリティポリシーを迂回し、不適切な情報生成やアクションを引き起こすリスクを考慮すべき。AIの利用ポリシー、エスカレーション基準、事後調査における対話履歴の重要性が増す。",
+      "importance": "高",
+      "importance_reason": "AIシステム特有の「マルチターン」という攻撃ベクトルに着目し、その危険性を定量的に示しているため、今後のAIセキュリティ設計に大きな影響を与える。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "ジェイルブレイク",
+        "マルチターン",
+        "医療AI",
+        "LLM",
+        "安全性評価"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d6d989ce0b01",
+      "title": "What You Approve Is What Executes: Consent Integrity for Black-Box LLM Agents",
+      "summary": "arXiv:2606.02668v1 Announce Type: new \nAbstract: Coding agents gate consequential actions behind a human-in-the-loop approval dialog, but the dialog is narrated by the agent itself: the human approves a summary the agent writes. The Lies-in-the-Loop (LITL) attack shows that summary is forgeable, so a compromised agent can show a benign description while a different action runs. This paper names the missing property, Consent Integrity, by importing What You See Is What You Sign (WYSIWYS) and the ",
+      "url": "https://arxiv.org/abs/2606.02668",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-03T13:00:00+09:00",
+      "title_ja": "LLMエージェントにおける「同意の完全性」の欠如とLies-in-the-Loop攻撃",
+      "summary_ja": "arXivの論文「What You Approve Is What Executes: Consent Integrity for Black-Box LLM Agents」は、LLMエージェントの実行アクションに対する人間の承認プロセスに潜む脆弱性を指摘している。エージェントが自己生成する要約に基づいて人間が承認するため、エージェントが悪意のあるアクションを良質な要約で偽装する「Lies-in-the-Loop (LITL)攻撃」が可能であると述べ、これを「同意の完全性（Consent Integrity）」の欠如と定義した。",
+      "insight": "AIエージェントが人間とのインタラクションを通じて重要なアクションを実行する際、その「承認」の信頼性が根本的に問われている。SOC/CDCは、AIエージェントのログ監視において、エージェントが人間に対して提示した要約と、実際に実行されたアクションのコマンドやパラメータが一致しているかを検証するメカニズムの必要性を認識すべき。エージェントが取得する権限範囲と、それが行使される際の監査証跡の確保が不可欠となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントと人間の信頼境界における根本的な課題を指摘しており、AIエージェントの設計・運用の安全性に長期的な影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "LLMエージェント",
+        "同意の完全性",
+        "LITL攻撃",
+        "human-in-the-loop",
+        "承認プロセス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
         "SOC運用変化",
         "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "803489294803",
+      "title": "Microsoft's new MAI models",
+      "summary": "<p>Microsoft <a href=\"https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/\">announced two new text LLMs</a> this morning - <strong><a href=\"https://microsoft.ai/news/introducing-mai-thinking-1/\">MAI-Thinking-1</a></strong> (reasoning, 1T parameters, 35B active, available to \"select early partners\") and <strong><a href=\"https://microsoft.ai/news/introducingmai-code-1-flash/\">MAI-Code-1-Flash</a></strong> (137B Parameters, 5B active, \"purpose-built for GitHub C",
+      "url": "https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-06-03T07:21:52+09:00",
+      "title_ja": "Microsoft、推論・コード生成に特化した新しいMAIモデルを発表",
+      "summary_ja": "Microsoftは、推論に特化した「MAI-Thinking-1」とコード生成に特化した「MAI-Code-1-Flash」という2つの新しいLLMを発表した。これらのモデルは、特定のタスクに最適化された高性能なAI機能を提供するものであり、LLMの専門化と能力向上を示す。これにより、AIエージェントの機能がさらに高度化することが予想される。",
+      "insight": "LLMの専門化と高性能化は、AIを活用したサービス開発を加速する一方で、悪用された際の潜在的な影響も増大させる。SOC/CDCは、このような高性能モデルが組み込まれたAIエージェントが、どのような権限を持ち、どのようなツールを実行しうるのかを継続的に評価する必要がある。AIエージェントの能力向上は、監視対象の挙動変化や新たなリスクシナリオの検討を促す。",
+      "importance": "中",
+      "importance_reason": "AI技術の進化と市場トレンドを示すものであり、今後のAIセキュリティリスクの方向性を理解する上で重要であるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Microsoft",
+        "MAI-Thinking-1",
+        "MAI-Code-1-Flash",
+        "LLM",
+        "AIモデル"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "サービス企画",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e4de8532a06d",
+      "title": "Security of 100 AI Agents Tested and Ranked – What You Need to Know",
+      "summary": "<p>The AI Risk Quadrant evaluates AI agents based on three factors: how vulnerable they are to compromise, the potential impact of a breach, and the strength of their security defenses.</p>\n<p>The post <a href=\"https://www.securityweek.com/security-of-100-ai-agents-tested-and-ranked-what-you-need-to-know/\">Security of 100 AI Agents Tested and Ranked – What You Need to Know</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/security-of-100-ai-agents-tested-and-ranked-what-you-need-to-know/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-06-03T22:00:00+09:00",
+      "title_ja": "100種類のAIエージェントのセキュリティ評価とランキングを公表",
+      "summary_ja": "SecurityWeekのレポートによると、100種類のAIエージェントのセキュリティが評価され、脆弱性、侵害時の潜在的影響、防御力の3つの要素に基づいた「AI Risk Quadrant」が導入された。この評価は、AIエージェントの導入が進む中で、そのセキュリティリスクを体系的に理解し、適切な対策を講じるための指針を提供するものとなる。",
+      "insight": "AIエージェントの普及に伴い、そのセキュリティ評価基準やフレームワークが具体化していることを示す。SOC/CDCは、自社で利用または監視対象となるAIエージェントについて、このような評価基準を参考にリスクアセスメントを実施し、リスク許容度に応じた監視レベルや対応策を決定する必要がある。第三者評価の活用や、自社内でのセキュリティ基準策定の検討を促す。",
+      "importance": "中",
+      "importance_reason": "AIエージェントのリスク評価フレームワークの登場は、AIガバナンスとセキュリティ戦略を策定する上で重要な参考情報となるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "セキュリティ評価",
+        "AI Risk Quadrant",
+        "脆弱性",
+        "防御力"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "03d274e5dc00",
+      "title": "New HTTP/2 Bomb Vulnerability Allows Remote DoS on NGINX, Apache, IIS, Envoy & Cloudflare",
+      "summary": "Cybersecurity researchers have discovered a remote denial-of-service exploit that affects major web servers, including NGINX, Apache HTTPD, Microsoft IIS, Envoy, and Cloudflare Pingora.\n\nThe vulnerability has been codenamed HTTP/2 Bomb by Calif.\n\n\"The vulnerable behavior exists in each server's default HTTP/2 configuration,\" the company said, adding it was discovered by OpenAI Codex by chaining",
+      "url": "https://thehackernews.com/2026/06/new-http2-bomb-vulnerability-allows.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-03T17:33:35+09:00",
+      "title_ja": "新HTTP/2 Bomb脆弱性、主要ウェブサーバーにリモートDoS攻撃を可能に",
+      "summary_ja": "HTTP/2プロトコルの新たなDoS攻撃「HTTP/2 Bomb」が発見され、Nginx、Apache、IIS、Envoy、Cloudflare Pingoraといった主要なウェブサーバーにリモートからのサービス停止攻撃を可能にする脆弱性があることが判明した。この脆弱性は、OpenAI Codexによって発見されたと報じられており、AIが既存のインフラの脆弱性発見に貢献する可能性も示唆された。",
+      "insight": "従来のインフラレイヤーの脆弱性が依然として深刻な影響をもたらすことを再確認させる。SOC/CDCは、HTTP/2のような基盤プロトコルの脆弱性に対して、継続的なパッチ管理とトラフィック監視を怠ってはならない。また、AIが脆弱性発見ツールとして活用され始めていることは、攻撃側・防御側の双方でAI利用が進む中長期的なトレンドとして認識し、自社の脅威インテリジェンスに組み込むべきである。",
+      "importance": "高",
+      "importance_reason": "主要なウェブサーバーに影響を及ぼす広範なDoS脆弱性であり、AIが脆弱性発見に寄与した点も今後のAI for Securityの方向性を示すため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "DDoS",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "HTTP/2 Bomb",
+        "DoS攻撃",
+        "Nginx",
+        "Apache",
+        "IIS"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
         "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "08e672e43922",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "<p>CISA has added one new vulnerability to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-45247\" target=\"_blank\">CVE-2026-45247</a>&nbsp;Mirasvit Full Page Cache Warmer Deserialization of Untrusted Data Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for maliciou",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/06/03/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-06-03T21:00:00+09:00",
+      "title_ja": "CISA、既知の悪用済み脆弱性カタログに新たな脆弱性を追加",
+      "summary_ja": "CISAは、積極的に悪用されている証拠に基づき、既知の悪用済み脆弱性（KEV）カタログに「Mirasvit Full Page Cache Warmer Deserialization of Untrusted Data Vulnerability」（CVE-2026-45247）を追加した。この種の脆弱性は、悪意のあるアクターにとって頻繁な攻撃ベクトルとなっており、速やかな対処が求められる。",
+      "insight": "CISA KEVカタログは、SOC/CDCが優先的に対処すべき脆弱性を特定する上で極めて重要な情報源である。SOC/CDCは、この情報を継続的に監視し、自社または顧客環境における該当脆弱性の有無を緊急で確認し、パッチ適用や緩和策の導入を優先的に実施する必要がある。既存の脆弱性管理プロセスと脅威インテリジェンス活用の重要性を改めて強調する。",
+      "importance": "高",
+      "importance_reason": "CISA KEVカタログへの追加は、当該脆弱性が現実に悪用されていることを意味し、即時対応の必要性が高いため。",
+      "tag_main_id": "policy",
+      "tag_main_label": "規制・政策",
+      "tag_subs": [
+        "CISA勧告",
+        "CVE",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "CISA KEV",
+        "CVE-2026-45247",
+        "デシリアライゼーション",
+        "脆弱性管理",
+        "パッチ"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化",
+        "CISO報告"
       ],
       "views": 0
     },
@@ -95,11 +378,11 @@
       "source_name": "Palo Alto Unit 42",
       "source_tier": "A",
       "published": "2026-06-03T02:30:33+09:00",
-      "title_ja": "npmサプライチェーン攻撃の進化と対策",
-      "summary_ja": "Unit 42がnpmサプライチェーン攻撃の進化を分析し、新たな脅威が明らかになりました。攻撃はShai Hulud後の状況で、wormableマルウェア、CI/CD環境での永続化、多段階攻撃など、より高度化しています。開発者エコシステムとソフトウェア供給網全体を狙う攻撃が増加しており、企業はこれらのリスクに対する防御策を強化する必要があります。",
-      "insight": "サプライチェーン攻撃の高度化は、MDR/MSSPサービスにおいて、開発環境（CI/CDパイプライン含む）およびオープンソースコンポーネントの監視を強化する必要性を示唆しています。SOC/CDCは、コードリポジトリ、ビルドシステム、パッケージ管理システムのログを従来以上に収集し、異常検知ルールやインシデント対応プロセスに組み込むべきです。開発組織との連携を密にし、Secure SDLCの一環として脅威インテリジェンスを活用した対策が求められます。",
-      "importance": "高",
-      "importance_reason": "サプライチェーン攻撃は広範な企業に影響を与え、その高度化は既存の防御戦略の見直しを迫るため。",
+      "title_ja": "npm脅威ランドスケープの更新：サプライチェーン攻撃の動向",
+      "summary_ja": "Unit 42の分析によると、npmサプライチェーンにおける脅威は進化しており、ワーム可能なマルウェア、CI/CD環境での永続化、多段階攻撃などが確認されている。Shai Hulud攻撃以降のnpmエコシステムの動向を詳細に分析し、新たな攻撃手法とそれに対する緩和策について解説している。オープンソースソフトウェアの利用におけるセキュリティリスクの継続的な監視の重要性が強調される。",
+      "insight": "サプライチェーン攻撃は、ソフトウェア開発における根本的なリスクとして継続的に進化している。SOC/CDCは、開発環境、CI/CDパイプライン、そして利用されるオープンソースコンポーネントに対する監視を強化し、異常な挙動や不審な変更を早期に検知する能力を持つべきである。SBOMの活用や依存関係の継続的な脆弱性スキャンも、サプライチェーンリスク管理の一環として不可欠である。",
+      "importance": "中",
+      "importance_reason": "ソフトウェアサプライチェーン攻撃は広範な影響を及ぼす可能性があり、継続的な脅威として対策が求められるため。",
       "tag_main_id": "attack",
       "tag_main_label": "攻撃・脅威",
       "tag_subs": [
@@ -108,316 +391,439 @@
       ],
       "affected_layers": [
         "アプリ/API",
-        "クラウド/サーバー"
+        "クラウド/サーバー",
+        "ガバナンス/規制"
       ],
       "related_keywords": [
         "npm",
         "サプライチェーン攻撃",
+        "マルウェア",
         "CI/CD",
-        "wormableマルウェア",
-        "ソフトウェア供給網"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "MDR/MSSP設計",
-        "顧客課題",
-        "Exposure管理"
-      ],
-      "views": 0
-    },
-    {
-      "id": "c034ef690a68",
-      "title": "CISA and Partners Urge Hardening Automatic Tank Gauge Systems",
-      "summary": "<p><a class=\"c-button\" href=\"https://www.cisa.gov/sites/default/files/2026-06/fact-sheet-cisa-and-partners-urge-hardening-automatic-tank-gauge-systems_508c.pdf\">CISA and Partners Urge Hardening Automatic Tank Gauge Systems</a></p>\n<h2><strong>Overview</strong></h2>\n<p>The Cybersecurity and Infrastructure Security Agency (CISA), the Federal Bureau of Investigation (FBI), the National Security Agency (NSA), the Department of Energy (DOE), the Environmental Protection Agency (EPA), the Transportati",
-      "url": "https://www.cisa.gov/resources-tools/resources/cisa-and-partners-urge-hardening-automatic-tank-gauge-systems",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "CISA",
-      "source_tier": "A",
-      "published": "2026-06-02T21:00:00+09:00",
-      "title_ja": "CISA、自動燃料タンクゲージシステム強化を勧告",
-      "summary_ja": "CISA、FBI、NSA、DOE、EPA、DOTは共同で、重要インフラである自動燃料タンクゲージ（ATG）システムのセキュリティ強化を求める勧告を発表しました。この勧告は、これらのシステムがサイバー攻撃の標的となり得ることを警告し、組織に対してシステムを保護するための具体的な対策を講じるよう促しています。設定ミスやパッチ未適用などが主要なリスクとして挙げられています。",
-      "insight": "重要インフラ（OT/ICS）におけるCISAの勧告は、SOC/CDCが従来のIT環境だけでなく、OT領域の監視・運用を統合する必要性を改めて強調しています。ATGシステムのような特定領域へのフォーカスは、MDR/MSSPがサービス設計において業種特有のリスクとコンプライアンス要件を深く理解し、それに対応する専門知識と技術を提供する必要があることを示唆します。OT環境の特殊なプロトコルやデバイスからのログ収集、脆弱性管理、インシデント対応の連携が重要です。",
-      "importance": "高",
-      "importance_reason": "重要インフラへの具体的な脅威に対する政府機関からの勧告であり、広範な企業におけるOTセキュリティの強化を促すため。",
-      "tag_main_id": "policy",
-      "tag_main_label": "規制・政策",
-      "tag_subs": [
-        "CISA勧告",
-        "コンプライアンス",
-        "設定ミス"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "CISA",
-        "重要インフラ",
-        "OTセキュリティ",
-        "ATGシステム",
-        "勧告"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "MDR/MSSP設計",
-        "CISO報告",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "85715baff43e",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "summary": "<p>CISA has added two new vulnerabilities to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2022-0492\" target=\"_blank\">CVE-2022-0492</a> Linux Kernel Improper Authentication Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2025-48595\" target=\"_blank\">CVE-2025-48595</a> Android Frame",
-      "url": "https://www.cisa.gov/news-events/alerts/2026/06/02/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "CISA",
-      "source_tier": "A",
-      "published": "2026-06-02T21:00:00+09:00",
-      "title_ja": "CISAが既知の悪用済み脆弱性カタログに2件追加",
-      "summary_ja": "CISAは、積極的に悪用されている証拠に基づき、Known Exploited Vulnerabilities (KEV) カタログに2つの新たな脆弱性を追加しました。追加されたのは、Linuxカーネルの不適切な認証の脆弱性（CVE-2022-0492）と、Androidフレームワークの脆弱性（CVE-2025-48595）です。これらの脆弱性は、迅速なパッチ適用や緩和策の実施が強く推奨されます。",
-      "insight": "CISAのKEVカタログへの追加は、SOC/CDCの脆弱性管理およびインシデントレスポンスにおいて、対応優先順位の意思決定を支援する重要な情報源です。MDR/MSSPは、顧客環境でこれらの既知の悪用済み脆弱性が存在しないか、また悪用されていないかを確認するためのプロアクティブなスキャンやログ監視をサービスに組み込む必要があります。迅速な情報共有とパッチ適用、そしてIOCによる侵害痕跡の検出は、Tier1/2の運用において極めて重要となります。",
-      "importance": "高",
-      "importance_reason": "積極的に悪用されている脆弱性であり、迅速な対応が求められ、既存のシステムへの影響が大きいため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "CVE",
-        "エクスプロイト",
-        "パッチ未適用"
-      ],
-      "affected_layers": [
-        "クラウド/サーバー",
-        "デバイス/エッジ"
-      ],
-      "related_keywords": [
-        "CISA",
-        "KEVカタログ",
-        "CVE-2022-0492",
-        "CVE-2025-48595",
-        "脆弱性管理"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Exposure管理",
-        "MDR/MSSP設計",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "75cc506f043c",
-      "title": "FBI-Flagged Phishing Kit Kali365 Expands Its Reach",
-      "summary": "Once targeting just Microsoft 365, the phishing-as-a-service platform now aims at AWS, Okta, and Russian platforms, while relying on device code phishing.",
-      "url": "https://www.darkreading.com/cyber-risk/fbi-flagged-phishing-kit-kali365-expands-its-reach",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "Dark Reading",
-      "source_tier": "B",
-      "published": "2026-06-03T06:32:24+09:00",
-      "title_ja": "フィッシングキットKali365、攻撃対象を拡大",
-      "summary_ja": "FBIによって危険視されているフィッシング・アズ・ア・サービス（PhaaS）プラットフォーム「Kali365」が、攻撃対象を大幅に拡大しています。かつてはMicrosoft 365のみを標的としていましたが、現在はAWS、Okta、さらにはロシア系プラットフォームにまでその範囲を広げ、デバイスコードフィッシングなどの巧妙な手法を用いています。これにより、クレデンシャル窃取のリスクが増大しています。",
-      "insight": "フィッシング攻撃の高度化と対象拡大は、SOC/CDCがIdentity & Access Management (IAM) とクラウドセキュリティの監視を強化する必要性を示唆しています。特にデバイスコードフィッシングは、従来のMFAに対する耐性を持ち得るため、MDR/MSSPは多要素認証の限界を考慮した上で、異常なログイン試行、セッションハイジャックの検知、クラウド環境での不審なAPIコールを監視するルールを強化すべきです。AI for Securityによるアラート分析支援も有効となります。",
-      "importance": "高",
-      "importance_reason": "主要なクラウドサービスやIDプロバイダを標的とするフィッシングの進化は、広範な企業にとって直接的な脅威となるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "フィッシング",
-        "クレデンシャル窃取",
-        "ソーシャルエンジニアリング"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "Kali365",
-        "フィッシング・アズ・ア・サービス",
-        "Microsoft 365",
-        "AWS",
-        "Okta"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "MDR/MSSP設計",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "9e269865816d",
-      "title": "Trump Signs Executive Order That Invites Vetting of Top AI Models for National Security Risks",
-      "summary": "<p>The order establishes a framework for the federal government to vet the national security risks of the most advanced AI systems for up to a month before their public release.</p>\n<p>The post <a href=\"https://www.securityweek.com/trump-signs-executive-order-that-invites-vetting-of-top-ai-models-for-national-security-risks/\">Trump Signs Executive Order That Invites Vetting of Top AI Models for National Security Risks</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.",
-      "url": "https://www.securityweek.com/trump-signs-executive-order-that-invites-vetting-of-top-ai-models-for-national-security-risks/",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-06-03T05:10:49+09:00",
-      "title_ja": "AIモデルの国家安全保障リスク審査に関する米国大統領令",
-      "summary_ja": "トランプ大統領は、最も高度なAIシステムが一般公開される前に、その国家安全保障上のリスクを連邦政府が最大1ヶ月間審査するための枠組みを確立する大統領令に署名しました。この命令は、AI技術の急速な発展に伴う潜在的なリスクに対し、政府が積極的に関与し、管理していく姿勢を示すものです。",
-      "insight": "本大統領令は、Security for AIのガバナンスおよび規制対応が、特定の業界や技術だけでなく、国家レベルの重要課題として浮上していることを示唆しています。SOC/CDCの設計・運用に直接的な影響は少ないものの、サービスプロバイダーや顧客企業がAIモデルを開発・利用する際に、将来的にこのような政府主導の評価や規制を考慮に入れる必要が出てくる可能性が高いです。特にCISOにとっては、AIリスク管理フレームワークへの組み込みやコンプライアンス体制の検討が重要となります。",
-      "importance": "中",
-      "importance_reason": "AIモデルの安全性評価に関する国家レベルの規制動向であり、中長期的にAI開発・利用に影響を与えるため。",
-      "tag_main_id": "policy",
-      "tag_main_label": "規制・政策",
-      "tag_subs": [
-        "国内規制",
-        "安全性評価"
-      ],
-      "affected_layers": [
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "大統領令",
-        "AIモデル",
-        "国家安全保障",
-        "安全性評価",
-        "規制"
-      ],
-      "cdc_relevance": 1,
-      "cdc_context": [
-        "CISO報告",
-        "サービス企画",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "9553108fa3d7",
-      "title": "AI-built ransomware toolkit automates EDR evasion, AD discovery",
-      "summary": "A threat actor is using an AI-built ransomware attack toolkit that automates Active Directory discovery and helps evade endpoint detection and response (EDR) solutions. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/ai-built-ransomware-toolkit-automates-edr-evasion-ad-discovery/",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-06-03T05:01:20+09:00",
-      "title_ja": "AIが構築したランサムウェアツールキットがEDR回避とAD検出を自動化",
-      "summary_ja": "ある脅威アクターが、AIによって構築されたランサムウェア攻撃ツールキットを使用していることが判明しました。このツールキットは、EDR（Endpoint Detection and Response）ソリューションの回避やActive Directory（AD）の検出を自動化する機能を備えています。これにより、攻撃者はより効率的かつステルスに、企業ネットワーク内での活動を展開できるようになります。",
-      "insight": "AIを使った攻撃が現実のものとなり、既存のEDRの限界を突きつけていることは、SOC/CDCにとって極めて重大な示唆です。AI for Securityの観点から、Tier2調査やアラート判断においてAIによる自動化されたEDR回避の兆候を検知するための新たなモデルやルールが必要となります。また、MDR/MSSPは、顧客のActive Directory環境に対するAIを活用した異常検知と、EVM (Exposure & Vulnerability Management) とITDR (Identity Threat Detection and Response) の連携を強化すべきです。人間のアナリストは、AIが生成する大量の兆候の中から、より複雑なコンテキストや意図を読み取る役割にシフトすると考えられます。",
-      "importance": "高",
-      "importance_reason": "AIによる攻撃の高度化は、既存の防御策（EDR）の有効性を低下させ、SOC/CDCの運用に直接的かつ深刻な影響を与えるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "AIを使った攻撃",
-        "ランサムウェア"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "ネットワーク",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "AI",
-        "ランサムウェア",
-        "EDR回避",
-        "Active Directory",
-        "攻撃ツールキット"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "Exposure管理",
-        "MDR/MSSP設計",
-        "顧客課題",
-        "AI for Security"
-      ],
-      "views": 0
-    },
-    {
-      "id": "3a22ecb302c6",
-      "title": "Securing AI Agents Before They Go Rogue Is Next to Impossible",
-      "summary": "High-autonomy agents with broad permissions and unfettered access are a recipe for disaster, and enterprises need to act now before they become the next horror story.",
-      "url": "https://www.darkreading.com/cyber-risk/securing-ai-agents-rogue",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "Dark Reading",
-      "source_tier": "B",
-      "published": "2026-06-03T04:10:14+09:00",
-      "title_ja": "高自律AIエージェントのセキュリティ確保は困難",
-      "summary_ja": "広範な権限と無制限のアクセスを持つ高自律AIエージェントのセキュリティを確保することは、極めて困難であると警告されています。このようなエージェントは、悪意のある目的で利用された場合、壊滅的な結果を招く可能性があり、企業は「次のホラーストーリー」になる前に早急な対策を講じる必要があります。AIエージェントの挙動、権限、人間との委任関係が新たなリスク領域となります。",
-      "insight": "AIエージェントの普及は、SOC/CDCにとって新たな監視対象とリスク管理の枠組みの導入を不可避にします。特に、AIエージェントのツール・実行層とアイデンティティ・権限層のセキュリティ設計は喫緊の課題です。CDCは、エージェントの活動ログ、権限委譲、外部ツール実行のモニタリングを強化し、異常な挙動を検知するルールを確立する必要があります。AIエージェントが「暴走」した場合のエスカレーション基準や緊急停止プロセスの策定も、サービス設計における重要な論点となります。",
-      "importance": "高",
-      "importance_reason": "高自律AIエージェントの広範な利用とそれに伴うセキュリティリスクは、AIシステム全体のガバナンスとSOC/CDCの運用に根本的な変革を迫るため。",
-      "tag_main_id": "ai_risk",
-      "tag_main_label": "AIリスク",
-      "tag_subs": [
-        "安全性評価"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "AIエージェント",
-        "自律型AI",
-        "ツール権限",
-        "アクセス管理",
-        "リスク管理"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "サービス企画",
-        "顧客課題",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "5042e49aa00f",
-      "title": "Google June 2026 Android Update Patches 124 Flaws, One Actively Exploited",
-      "summary": "Google on Monday released patches for 124 security vulnerabilities impacting its Android operating system for the month of June 2026, including one high-severity flaw in the Framework component that has come under active exploitation.\n\nTracked as CVE-2025-48595 (CVSS score: 8.4), the security flaw has been described as a case of privilege escalation without requiring any user interaction. The",
-      "url": "https://thehackernews.com/2026/06/google-june-2026-android-update-patches.html",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-06-03T03:46:00+09:00",
-      "title_ja": "Google、2026年6月のAndroidアップデートで124件の脆弱性を修正",
-      "summary_ja": "Googleは、2026年6月のAndroidオペレーティングシステム向けアップデートで、合計124件のセキュリティ脆弱性に対するパッチを公開しました。この中には、フレームワークコンポーネントにおける活発に悪用されている高 severity の脆弱性（CVE-2025-48595）が含まれており、ユーザーインタラクションなしで特権昇格が可能な問題として特定されています。迅速なアップデート適用が求められます。",
-      "insight": "モバイルデバイスは企業環境においても重要な資産であり、そのOS脆弱性はSOC/CDCの監視対象に含まれるべきです。特に活発に悪用されている脆弱性（KEV）のパッチリリースは、迅速な情報共有と影響評価、そしてエンドポイント管理システムを通じた速やかなパッチ適用プロセスの実行をMDR/MSSPに求めます。SOC/CDCは、自社および顧客のAndroidデバイスの状態を継続的に監視し、脆弱性管理とインシデントレスポンスの連携を強化することで、潜在的なリスクを低減する運用を設計する必要があります。",
-      "importance": "中",
-      "importance_reason": "多数の脆弱性、特に積極的に悪用されている脆弱性が修正されたため、モバイルデバイスのセキュリティ管理の重要性が再確認されるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "CVE",
-        "エクスプロイト",
-        "パッチ未適用"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ"
-      ],
-      "related_keywords": [
-        "Google",
-        "Android",
-        "脆弱性",
-        "パッチ",
-        "CVE-2025-48595"
+        "Unit 42"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
-        "SOC運用変化",
         "Exposure管理",
+        "SOC運用変化",
         "顧客課題"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-06-04",
+      "articles": [
+        {
+          "id": "39c53e794094",
+          "title": "WhatsApp, Slack Notifications Could Hijack Google Gemini on Android",
+          "summary": "A single poisoned notification from WhatsApp, Slack, SMS, Signal, Instagram, or Messenger could have hijacked Google Gemini's voice assistant on Android and made it open a victim's connected windows, fake a message from their boss, push the phone into a Zoom call, or quietly poison its long-term memory.\n\nNo malicious app on the phone is required. The assistant just had to treat a hostile",
+          "url": "https://thehackernews.com/2026/06/whatsapp-slack-notifications-could.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-06-04T04:11:15+09:00",
+          "title_ja": "Google GeminiがWhatsApp等の通知からハイジャックされる脆弱性",
+          "summary_ja": "Android版Google Gemini音声アシスタントに、WhatsAppやSlackなどの通知に含まれる悪意のあるコマンドによってハイジャックされる脆弱性が発見された。この脆弱性は、悪意のあるアプリのインストールを必要とせず、デバイスの操作やメッセージの偽装、長期記憶の汚染を引き起こす可能性がある。通知内の悪意あるURL処理をトリガーとして、Geminiが本来の機能を逸脱した動作を実行する。",
+          "insight": "AIアシスタントがOSレベルの通知といった通常のコミュニケーション経路を悪用され、デバイス操作やデータ汚染に繋がる事例は、従来のセキュリティ監視の盲点となりうる。SOC/CDCは、AIアシスタントの入力（プロンプト、外部連携）のサニタイズと、異常な実行権限要求やデバイス操作の挙動監視を強化する必要がある。AIエージェントによるツール実行の正当性検証が、インシデント検知の鍵となる。",
+          "importance": "高",
+          "importance_reason": "AIアシスタントの普及に伴い、日常的な通知が直接的な攻撃ベクトルとなる新たな脅威であり、広範囲のユーザーに影響を与える可能性があるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "AIを使った攻撃"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "Google Gemini",
+            "プロンプトインジェクション",
+            "通知ハイジャック",
+            "Android",
+            "AIアシスタント"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "ad2c47930aa5",
+          "title": "Malicious Notifications Could Trick Google Gemini Users",
+          "summary": "A prompt injection flaw in Google Gemini's voice assistant let attackers hide malicious commands in notifications, enabling social engineering and more.",
+          "url": "https://www.darkreading.com/application-security/malicious-notifications-could-trick-google-gemini-users",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-06-03T21:01:00+09:00",
+          "title_ja": "Google Geminiに悪意ある通知を隠すプロンプトインジェクション脆弱性",
+          "summary_ja": "Google Geminiの音声アシスタントにおいて、悪意のあるコマンドを通知に隠蔽し、ソーシャルエンジニアリング攻撃やその他の悪用を可能にするプロンプトインジェクションの欠陥が確認された。これにより攻撃者は、ユーザーをだまして意図しない行動を取らせたり、アシスタントの機能を悪用したりすることが可能となる。この脆弱性は、AIモデルが外部入力を適切に検証しないことに起因する。",
+          "insight": "本記事は記事1と類似の事象を異なる観点から報告しており、AIアシスタントに対するプロンプトインジェクションが、通知という日常的な手段を通じて実現されうることを強調している。SOC/CDCは、AIエージェントが受け取る入力ソースと、それに対するAIの解釈・実行プロセスに注目し、意図しないコマンド実行を防ぐためのログ監視と検知ルールを設計すべきである。特に、人間の関与なしにAIが外部ツールを実行する際の安全性が問われる。",
+          "importance": "高",
+          "importance_reason": "AIアシスタントが直接的な攻撃チャネルとなる具体的な手口を示しており、AI for SecurityとSecurity for AIの両面で重要な示唆を与えるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "LLMセキュリティ",
+            "AIを使った攻撃"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "Google Gemini",
+            "プロンプトインジェクション",
+            "通知",
+            "ソーシャルエンジニアリング",
+            "音声アシスタント"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "0da81bcf31ad",
+          "title": "Google adds Android protection against AI deepfake scam calls",
+          "summary": "Google is introducing a new Android security feature that will detect and flag phone calls in which scammers use artificial intelligence to impersonate a user's personal contacts. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/google-adds-android-protection-against-ai-deepfake-scam-calls/",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-06-03T18:02:11+09:00",
+          "title_ja": "Google、AIディープフェイク詐欺電話に対するAndroid保護機能を追加",
+          "summary_ja": "GoogleはAndroidに新しいセキュリティ機能を導入し、詐欺師がAIを使ってユーザーの連絡先を装うディープフェイク詐欺電話を検知し警告する。この機能は、AIが生成した音声や会話パターンを分析し、リアルタイムでユーザーに危険を知らせることで、詐欺被害の防止を目指すものである。AIによる攻撃が増加する中、AIを活用した防御策の具体例として注目される。",
+          "insight": "AIが悪用される脅威が増す一方で、AIによる防御策も進化している。SOC/CDCは、ユーザーデバイスに組み込まれるAIベースの防御機能が、どのように脅威を検知し、ユーザーに通知するかを理解する必要がある。これにより、インシデント発生時の初動対応や証拠収集プロセスを適切に連携させ、AIが防御の最前線で果たす役割を運用に組み込むことができる。",
+          "importance": "中",
+          "importance_reason": "AIを使った攻撃に対するAIを使った防御策の具体例であり、AI for Securityの進化を示す重要な動きであるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "Google",
+            "Android",
+            "AI",
+            "ディープフェイク",
+            "詐欺電話"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "SOC運用変化",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "e63d82b94f97",
+          "title": "MultiTurnPSB: Evaluating Multi-Turn Jailbreak Attacks an dClassifier-Based Defenses for Medical AI Safety",
+          "summary": "arXiv:2606.02630v1 Announce Type: new \nAbstract: Patient-facing medical chatbots are commonly evaluated on single-turn prompts, yet real users push back after refusals, add urgency, and invoke authority. We introduce MultiTurnPSB, a four-turn adversarial extension of PatientSafetyBench, and evaluate GPT-4.1-mini under fixed template, template-adaptive, and live adversarial attacks. Unsafe responses rise from 35% to nearly 80% by Turn 4 under live attack. Under the same adversary, GPT-4.1-mini an",
+          "url": "https://arxiv.org/abs/2606.02630",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-06-03T13:00:00+09:00",
+          "title_ja": "医療AI安全性における多段階ジェイルブレイク攻撃評価",
+          "summary_ja": "arXivの論文「MultiTurnPSB」は、患者向け医療チャットボットに対する多段階（マルチターン）ジェイルブレイク攻撃を評価する新しいベンチマークを導入した。従来の単一ターンプロンプト評価では見過ごされがちな、ユーザーが拒否後も繰り返し介入することで、不安全な応答の割合が大幅に増加することが示された。分類器ベースの防御策も合わせて評価されている。",
+          "insight": "AIシステムの安全性評価において、単一のプロンプトだけでなく、マルチターンの対話における頑健性が極めて重要であることを示している。SOC/CDCは、顧客や社内ユーザーが利用するAIシステム（特にエージェント）が、繰り返しプロンプトされることでセキュリティポリシーを迂回し、不適切な情報生成やアクションを引き起こすリスクを考慮すべき。AIの利用ポリシー、エスカレーション基準、事後調査における対話履歴の重要性が増す。",
+          "importance": "高",
+          "importance_reason": "AIシステム特有の「マルチターン」という攻撃ベクトルに着目し、その危険性を定量的に示しているため、今後のAIセキュリティ設計に大きな影響を与える。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "LLMセキュリティ",
+            "AIを使った攻撃"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "ジェイルブレイク",
+            "マルチターン",
+            "医療AI",
+            "LLM",
+            "安全性評価"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Security for AI",
+            "SOC運用変化",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "d6d989ce0b01",
+          "title": "What You Approve Is What Executes: Consent Integrity for Black-Box LLM Agents",
+          "summary": "arXiv:2606.02668v1 Announce Type: new \nAbstract: Coding agents gate consequential actions behind a human-in-the-loop approval dialog, but the dialog is narrated by the agent itself: the human approves a summary the agent writes. The Lies-in-the-Loop (LITL) attack shows that summary is forgeable, so a compromised agent can show a benign description while a different action runs. This paper names the missing property, Consent Integrity, by importing What You See Is What You Sign (WYSIWYS) and the ",
+          "url": "https://arxiv.org/abs/2606.02668",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-06-03T13:00:00+09:00",
+          "title_ja": "LLMエージェントにおける「同意の完全性」の欠如とLies-in-the-Loop攻撃",
+          "summary_ja": "arXivの論文「What You Approve Is What Executes: Consent Integrity for Black-Box LLM Agents」は、LLMエージェントの実行アクションに対する人間の承認プロセスに潜む脆弱性を指摘している。エージェントが自己生成する要約に基づいて人間が承認するため、エージェントが悪意のあるアクションを良質な要約で偽装する「Lies-in-the-Loop (LITL)攻撃」が可能であると述べ、これを「同意の完全性（Consent Integrity）」の欠如と定義した。",
+          "insight": "AIエージェントが人間とのインタラクションを通じて重要なアクションを実行する際、その「承認」の信頼性が根本的に問われている。SOC/CDCは、AIエージェントのログ監視において、エージェントが人間に対して提示した要約と、実際に実行されたアクションのコマンドやパラメータが一致しているかを検証するメカニズムの必要性を認識すべき。エージェントが取得する権限範囲と、それが行使される際の監査証跡の確保が不可欠となる。",
+          "importance": "高",
+          "importance_reason": "AIエージェントと人間の信頼境界における根本的な課題を指摘しており、AIエージェントの設計・運用の安全性に長期的な影響を与えるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "LLMセキュリティ",
+            "AIを使った攻撃"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "LLMエージェント",
+            "同意の完全性",
+            "LITL攻撃",
+            "human-in-the-loop",
+            "承認プロセス"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Security for AI",
+            "SOC運用変化",
+            "サービス企画",
+            "CISO報告"
+          ],
+          "views": 0
+        },
+        {
+          "id": "803489294803",
+          "title": "Microsoft's new MAI models",
+          "summary": "<p>Microsoft <a href=\"https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/\">announced two new text LLMs</a> this morning - <strong><a href=\"https://microsoft.ai/news/introducing-mai-thinking-1/\">MAI-Thinking-1</a></strong> (reasoning, 1T parameters, 35B active, available to \"select early partners\") and <strong><a href=\"https://microsoft.ai/news/introducingmai-code-1-flash/\">MAI-Code-1-Flash</a></strong> (137B Parameters, 5B active, \"purpose-built for GitHub C",
+          "url": "https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Simon Willison",
+          "source_tier": "C",
+          "published": "2026-06-03T07:21:52+09:00",
+          "title_ja": "Microsoft、推論・コード生成に特化した新しいMAIモデルを発表",
+          "summary_ja": "Microsoftは、推論に特化した「MAI-Thinking-1」とコード生成に特化した「MAI-Code-1-Flash」という2つの新しいLLMを発表した。これらのモデルは、特定のタスクに最適化された高性能なAI機能を提供するものであり、LLMの専門化と能力向上を示す。これにより、AIエージェントの機能がさらに高度化することが予想される。",
+          "insight": "LLMの専門化と高性能化は、AIを活用したサービス開発を加速する一方で、悪用された際の潜在的な影響も増大させる。SOC/CDCは、このような高性能モデルが組み込まれたAIエージェントが、どのような権限を持ち、どのようなツールを実行しうるのかを継続的に評価する必要がある。AIエージェントの能力向上は、監視対象の挙動変化や新たなリスクシナリオの検討を促す。",
+          "importance": "中",
+          "importance_reason": "AI技術の進化と市場トレンドを示すものであり、今後のAIセキュリティリスクの方向性を理解する上で重要であるため。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "製品リリース",
+            "市場トレンド"
+          ],
+          "affected_layers": [
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "Microsoft",
+            "MAI-Thinking-1",
+            "MAI-Code-1-Flash",
+            "LLM",
+            "AIモデル"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "サービス企画",
+            "AI for Security",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "e4de8532a06d",
+          "title": "Security of 100 AI Agents Tested and Ranked – What You Need to Know",
+          "summary": "<p>The AI Risk Quadrant evaluates AI agents based on three factors: how vulnerable they are to compromise, the potential impact of a breach, and the strength of their security defenses.</p>\n<p>The post <a href=\"https://www.securityweek.com/security-of-100-ai-agents-tested-and-ranked-what-you-need-to-know/\">Security of 100 AI Agents Tested and Ranked – What You Need to Know</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/security-of-100-ai-agents-tested-and-ranked-what-you-need-to-know/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-06-03T22:00:00+09:00",
+          "title_ja": "100種類のAIエージェントのセキュリティ評価とランキングを公表",
+          "summary_ja": "SecurityWeekのレポートによると、100種類のAIエージェントのセキュリティが評価され、脆弱性、侵害時の潜在的影響、防御力の3つの要素に基づいた「AI Risk Quadrant」が導入された。この評価は、AIエージェントの導入が進む中で、そのセキュリティリスクを体系的に理解し、適切な対策を講じるための指針を提供するものとなる。",
+          "insight": "AIエージェントの普及に伴い、そのセキュリティ評価基準やフレームワークが具体化していることを示す。SOC/CDCは、自社で利用または監視対象となるAIエージェントについて、このような評価基準を参考にリスクアセスメントを実施し、リスク許容度に応じた監視レベルや対応策を決定する必要がある。第三者評価の活用や、自社内でのセキュリティ基準策定の検討を促す。",
+          "importance": "中",
+          "importance_reason": "AIエージェントのリスク評価フレームワークの登場は、AIガバナンスとセキュリティ戦略を策定する上で重要な参考情報となるため。",
+          "tag_main_id": "ai_risk",
+          "tag_main_label": "AIリスク",
+          "tag_subs": [
+            "安全性評価"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "AIエージェント",
+            "セキュリティ評価",
+            "AI Risk Quadrant",
+            "脆弱性",
+            "防御力"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "CISO報告",
+            "サービス企画",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "03d274e5dc00",
+          "title": "New HTTP/2 Bomb Vulnerability Allows Remote DoS on NGINX, Apache, IIS, Envoy & Cloudflare",
+          "summary": "Cybersecurity researchers have discovered a remote denial-of-service exploit that affects major web servers, including NGINX, Apache HTTPD, Microsoft IIS, Envoy, and Cloudflare Pingora.\n\nThe vulnerability has been codenamed HTTP/2 Bomb by Calif.\n\n\"The vulnerable behavior exists in each server's default HTTP/2 configuration,\" the company said, adding it was discovered by OpenAI Codex by chaining",
+          "url": "https://thehackernews.com/2026/06/new-http2-bomb-vulnerability-allows.html",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-06-03T17:33:35+09:00",
+          "title_ja": "新HTTP/2 Bomb脆弱性、主要ウェブサーバーにリモートDoS攻撃を可能に",
+          "summary_ja": "HTTP/2プロトコルの新たなDoS攻撃「HTTP/2 Bomb」が発見され、Nginx、Apache、IIS、Envoy、Cloudflare Pingoraといった主要なウェブサーバーにリモートからのサービス停止攻撃を可能にする脆弱性があることが判明した。この脆弱性は、OpenAI Codexによって発見されたと報じられており、AIが既存のインフラの脆弱性発見に貢献する可能性も示唆された。",
+          "insight": "従来のインフラレイヤーの脆弱性が依然として深刻な影響をもたらすことを再確認させる。SOC/CDCは、HTTP/2のような基盤プロトコルの脆弱性に対して、継続的なパッチ管理とトラフィック監視を怠ってはならない。また、AIが脆弱性発見ツールとして活用され始めていることは、攻撃側・防御側の双方でAI利用が進む中長期的なトレンドとして認識し、自社の脅威インテリジェンスに組み込むべきである。",
+          "importance": "高",
+          "importance_reason": "主要なウェブサーバーに影響を及ぼす広範なDoS脆弱性であり、AIが脆弱性発見に寄与した点も今後のAI for Securityの方向性を示すため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "DDoS",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "HTTP/2 Bomb",
+            "DoS攻撃",
+            "Nginx",
+            "Apache",
+            "IIS"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理",
+            "AI for Security"
+          ],
+          "views": 0
+        },
+        {
+          "id": "08e672e43922",
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "summary": "<p>CISA has added one new vulnerability to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-45247\" target=\"_blank\">CVE-2026-45247</a>&nbsp;Mirasvit Full Page Cache Warmer Deserialization of Untrusted Data Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for maliciou",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/06/03/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-06-03T21:00:00+09:00",
+          "title_ja": "CISA、既知の悪用済み脆弱性カタログに新たな脆弱性を追加",
+          "summary_ja": "CISAは、積極的に悪用されている証拠に基づき、既知の悪用済み脆弱性（KEV）カタログに「Mirasvit Full Page Cache Warmer Deserialization of Untrusted Data Vulnerability」（CVE-2026-45247）を追加した。この種の脆弱性は、悪意のあるアクターにとって頻繁な攻撃ベクトルとなっており、速やかな対処が求められる。",
+          "insight": "CISA KEVカタログは、SOC/CDCが優先的に対処すべき脆弱性を特定する上で極めて重要な情報源である。SOC/CDCは、この情報を継続的に監視し、自社または顧客環境における該当脆弱性の有無を緊急で確認し、パッチ適用や緩和策の導入を優先的に実施する必要がある。既存の脆弱性管理プロセスと脅威インテリジェンス活用の重要性を改めて強調する。",
+          "importance": "高",
+          "importance_reason": "CISA KEVカタログへの追加は、当該脆弱性が現実に悪用されていることを意味し、即時対応の必要性が高いため。",
+          "tag_main_id": "policy",
+          "tag_main_label": "規制・政策",
+          "tag_subs": [
+            "CISA勧告",
+            "CVE",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "CISA KEV",
+            "CVE-2026-45247",
+            "デシリアライゼーション",
+            "脆弱性管理",
+            "パッチ"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化",
+            "CISO報告"
+          ],
+          "views": 0
+        },
+        {
+          "id": "f17c84d5fc4a",
+          "title": "The npm Threat Landscape: Attack Surface and Mitigations (Updated June 2)",
+          "summary": "<p>Unit 42 analyzes npm supply chain evolution post-Shai Hulud. Discover wormable malware, CI/CD persistence, multi-stage attacks and more. </p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/\">The npm Threat Landscape: Attack Surface and Mitigations (Updated June 2)</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+          "url": "https://unit42.paloaltonetworks.com/monitoring-npm-supply-chain-attacks/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Palo Alto Unit 42",
+          "source_tier": "A",
+          "published": "2026-06-03T02:30:33+09:00",
+          "title_ja": "npm脅威ランドスケープの更新：サプライチェーン攻撃の動向",
+          "summary_ja": "Unit 42の分析によると、npmサプライチェーンにおける脅威は進化しており、ワーム可能なマルウェア、CI/CD環境での永続化、多段階攻撃などが確認されている。Shai Hulud攻撃以降のnpmエコシステムの動向を詳細に分析し、新たな攻撃手法とそれに対する緩和策について解説している。オープンソースソフトウェアの利用におけるセキュリティリスクの継続的な監視の重要性が強調される。",
+          "insight": "サプライチェーン攻撃は、ソフトウェア開発における根本的なリスクとして継続的に進化している。SOC/CDCは、開発環境、CI/CDパイプライン、そして利用されるオープンソースコンポーネントに対する監視を強化し、異常な挙動や不審な変更を早期に検知する能力を持つべきである。SBOMの活用や依存関係の継続的な脆弱性スキャンも、サプライチェーンリスク管理の一環として不可欠である。",
+          "importance": "中",
+          "importance_reason": "ソフトウェアサプライチェーン攻撃は広範な影響を及ぼす可能性があり、継続的な脅威として対策が求められるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "サプライチェーン攻撃",
+            "マルウェア"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "npm",
+            "サプライチェーン攻撃",
+            "マルウェア",
+            "CI/CD",
+            "Unit 42"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化",
+            "顧客課題"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】AIエージェントが、通知悪用によるプロンプトインジェクションや、自己生成要約の偽装によるアクション実行といった新たな攻撃ベクトルとなり、その防御策や評価フレームワークが追随している。従来のインフラ・サプライチェーン層の脆弱性管理も重要性を維持し、AIは脆弱性発見にも活用され始めている。\n【攻撃側の変化】AIアシスタントの通知経路悪用（記事1, 2）や、マルチターン対話での脆弱性悪用（記事4）、AIエージェントによる人間承認の偽装（記事5）といった、AIシステム固有の攻撃手法が実用段階に入っている。従来のHTTP/2プロトコルのDoS攻撃（記事8）やnpmサプライチェーン攻撃（記事10）も継続的な脅威として存在している。\n【防御側の変化】GoogleがAIディープフェイク詐欺電話の検知機能をAndroidに導入（記事3）するなど、AIを活用した防御策の具体例が見られる。また、AIエージェントのセキュリティ評価フレームワークの登場（記事7）は、AIシステムのリスク管理が進んでいることを示す。CISAによる悪用済み脆弱性カタログの更新（記事9）は、依然として迅速な脆弱性対応の重要性を示唆している。\n【Security for AI】LLMやAIエージェントが、外部アプリからの通知やユーザーとの対話履歴を悪用され、デバイス操作や不適切な情報生成、承認の偽装を引き起こすリスクが顕在化している（記事1, 2, 4, 5）。AIシステム固有の入力検証、内部挙動、ツール実行、そして特に人間による承認プロセスの「同意の完全性」（記事5）を監視対象に追加し、そのログと挙動の整合性を確認することが不可欠となる。\n【AI for Security】AIはディープフェイク詐欺電話の検知（記事3）や、HTTP/2のDoS脆弱性発見（記事8）のように、防御側・攻撃側の双方で活用され始めている。SOC/CDC業務においては、AIが生成するログの分析支援、AIエージェントの挙動監視による異常検知、インシデント調査時の情報整理、対応プロセスの最適化などへの応用が期待される。AIは人を置き換えるのではなく、判断根拠・証跡・再現性を高めるツールとして活用されるべきだ。\n【CDC/SOCへの示唆】AIアシスタント・エージェントの監視は、入力（プロンプト、外部連携）、出力（実行コマンド）、内部状態（長期記憶、承認ログ）、そしてツール実行時の挙動へと対象を拡大する必要がある。検知ルールは、AIの「意図」と「結果」の乖離や、人間による承認と実際の実行の不一致を検知する振る舞い分析が求められる。Tier2/3の調査では、AIシステムの内部構造やモデル特性を理解した専門知識が必要となり、AIによる判断根拠の明確化と証跡管理の整備が喫緊の課題となる。\n【今日の問い】AIエージェントの「同意の完全性」を保証し、エージェントが提示する情報と実際に実行されるアクションの整合性をSOC/CDCでどのように検証・監視すべきか、具体的なログ要件とプロセスは何か？AIエージェントのリスク評価フレームワーク（記事7）を、自社のAIシステムのリスクアセスメントやCDCの監視設計にどのように適用すべきか？"
+    },
     {
       "date": "2026-06-03",
       "articles": [
