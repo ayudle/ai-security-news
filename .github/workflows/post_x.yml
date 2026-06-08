@@ -12,8 +12,9 @@ name: X Post (本番投稿)
 #   X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_SECRET
 
 on:
-  schedule:
-    - cron: '30 11 * * *'  # 20:30 JST (daily-pick)
+  # 定期実行（schedule / cron）は無効化。手動実行（workflow_dispatch）のみ有効。
+  # schedule:
+  #   - cron: '30 11 * * *'  # 20:30 JST (daily-pick)
   # morning / noon / evening の定期投稿は有効化しない
   # - cron: '30 23 * * *'  # 08:30 JST (morning)
   # - cron: '30 3 * * *'   # 12:30 JST (noon)
