@@ -11,6 +11,418 @@
       "source_name": "CISA",
       "source_tier": "A",
       "published": "2026-06-08T21:00:00+09:00",
+      "title_ja": "CISA、既知の悪用された脆弱性カタログに2件追加",
+      "summary_ja": "CISAは、積極的に悪用されている証拠に基づき、Known Exploited Vulnerabilities (KEV) カタログに2つの脆弱性を追加した。これにはBerriAI LiteLLMのコマンドインジェクション脆弱性（CVE-2026-42271）とCheck Point Security Gatewayの脆弱性が含まれる。特にLiteLLMの脆弱性はAI関連のシステムに対する攻撃が活発化していることを示唆している。これらの脆弱性は、組織が迅速にパッチ適用や緩和策を講じる必要性がある。",
+      "insight": "CISA KEVリストへのAI関連ソフトウェアの脆弱性（LiteLLM）追加は、AIシステムが新たな主要攻撃ベクトルとなっている現状を示す。SOC/CDCは、従来のシステム監視に加え、LLMやAIエージェントに利用されるライブラリ・フレームワークの脆弱性管理と監視を強化し、悪用された場合の対応フローを具体的に設計する必要がある。AIシステム固有のログや挙動異常の検知ルールを既存のSIEM/SOARに統合する準備が求められる。",
+      "importance": "高",
+      "importance_reason": "AI関連ソフトウェアの脆弱性が実際に悪用され、CISA KEVリストに追加されたことは、Security for AIの重要性が喫緊の課題であることを示しているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "CISA",
+        "KEV",
+        "LiteLLM",
+        "CVE-2026-42271",
+        "コマンドインジェクション"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "77537a240fd4",
+      "title": "Will AI Kill the Bug Bounty Industry?",
+      "summary": "<p>Anthropic's Mythos is accelerating vulnerability discovery to machine speed, forcing the bug bounty industry and offensive security teams to adapt to a future where finding flaws is no longer the hard part.</p>\n<p>The post <a href=\"https://www.securityweek.com/will-ai-kill-the-bug-bounty-industry/\">Will AI Kill the Bug Bounty Industry?</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/will-ai-kill-the-bug-bounty-industry/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-06-09T20:00:00+09:00",
+      "title_ja": "AIがバグバウンティ業界を駆逐するか？Anthropic Mythosが脆弱性発見を加速",
+      "summary_ja": "AnthropicのAI「Mythos」が脆弱性発見を機械的速度で加速させており、バグバウンティ業界や攻撃的セキュリティチームはこれに適応することを迫られている。AIの進化により、脆弱性を見つけること自体はもはや困難な部分ではなくなると予測されている。この変化は、セキュリティ評価のパラダイムが根本的に変わりつつあることを示唆している。",
+      "insight": "AIによる脆弱性発見の加速は、防御側の脆弱性管理サイクルとインシデント対応速度の引き上げを要求する。SOC/CDCは、AIによる高速な脆弱性発見を前提とした脅威インテリジェンスの活用、予防的セキュリティ対策（シフトレフト）の強化、そしてAIを活用した自社システムの脆弱性評価の自動化を検討する必要がある。人間のセキュリティアナリストは、AIが発見した脆弱性の優先順位付け、ビジネス影響評価、高度な緩和策立案に焦点を移すことになる。",
+      "importance": "高",
+      "importance_reason": "AIが脆弱性発見の速度と範囲を劇的に変える可能性があり、攻撃と防御のバランスに大きな影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "AIを使った防御",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Anthropic Mythos",
+        "脆弱性発見",
+        "バグバウンティ",
+        "攻撃的セキュリティ",
+        "AI for Security"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "サービス企画",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "fa08e356def0",
+      "title": "Quoting Andrej Karpathy",
+      "summary": "<blockquote cite=\"https://twitter.com/karpathy/status/2064409694761054332\"><p>I feel a lot of things changing as working software increasingly comes out on a tap. The Jevon's paradox kicks in and I feel my own demand for software growing substantially. You can ask for anything - explainers, visualizers, dashboards, bespoke single-use apps (e.g. a full wandb that is hyper-specific just for your project), you can 10X your test suite, auto-optimize code, run giant research projects with custom HTML",
+      "url": "https://simonwillison.net/2026/Jun/9/andrej-karpathy/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-06-10T04:03:10+09:00",
+      "title_ja": "Andrej Karpathyが語る、AIによるソフトウェア開発の変化",
+      "summary_ja": "Andrej Karpathyは、AIがソフトウェアを「蛇口から出てくるように」提供するようになることで、ソフトウェアに対する需要が大幅に増加すると述べている。explainer, visualizer, dashboard, bespoke single-use apps、テストスイートの強化、コード最適化、研究プロジェクトの実行など、あらゆる種類のソフトウェアがAIによって容易に生成・利用されるようになる。これは、開発と利用の双方で新たな時代の到来を示唆する。",
+      "insight": "AIによるソフトウェア開発と利用の民主化・加速は、アプリケーションとAPIのエコシステムを指数関数的に拡大させる。SOC/CDCは、シャドーAI/ITの増大、生成されたアプリケーションのセキュリティ品質のばらつき、そして多種多様なAPI連携が生み出す新たな攻撃ベクトルへの監視と対応の準備が不可欠となる。AI生成コードの脆弱性評価や、AIエージェントによる外部ツール実行のガバナンスも設計上の重要課題となる。",
+      "importance": "中",
+      "importance_reason": "AIがソフトウェア開発のあり方を根本的に変え、セキュリティ監視対象の拡大と複雑化をもたらすため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Andrej Karpathy",
+        "ソフトウェア生成",
+        "AI開発",
+        "シャドーAI",
+        "API連携"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "4f0a7d7a5751",
+      "title": "Detecting Aimbot Cheaters in MOGs",
+      "summary": "arXiv:2606.07650v1 Announce Type: new \nAbstract: Multiplayer Online Games have become a multibillion dollar industry in the entertainment sector. However, the presence of cheaters undermines the experience of honest players and devalues the effort of game developers, as it directly affects player retention, competitive integrity, the legitimacy and trustworthiness of a game, and most importantly the overall revenue streams. Among various cheating techniques, visual aimbots represent an emerging ",
+      "url": "https://arxiv.org/abs/2606.07650",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-09T13:00:00+09:00",
+      "title_ja": "MOGにおけるAimbotチーターの検出",
+      "summary_ja": "マルチプレイヤーオンラインゲーム（MOG）業界において、チーターの存在が正直なプレイヤーの体験を損ない、ゲーム開発者の努力を無駄にしているとされている。Aimbotのようなビジュアルチートツールは、プレイヤー定着率、競争の公平性、ゲームの正当性、そして収益に直接的な悪影響を及ぼす。本論文は、このようなAI悪用型チートの検出に関する研究を扱っている。",
+      "insight": "AIの悪用はゲームチートのようなエンターテイメント分野でも広範囲に及んでおり、今後も様々な業界でAIが悪用される可能性をCDCは考慮すべきである。直接的なエンタープライズセキュリティへの影響は限定的だが、AIによる行動分析や異常検知の技術がチート検出に応用されていることは、AI for Securityの観点から、不正利用やインサイダー脅威検出への応用可能性を示唆する。SOC/CDCはAI悪用の潜在的な広がりを理解する一助とする。",
+      "importance": "低",
+      "importance_reason": "AI悪用の一例として興味深いものの、直接的なエンタープライズセキュリティへの影響は限定的であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Aimbot",
+        "オンラインゲーム",
+        "チート検出",
+        "AI悪用",
+        "異常検知"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "1d67901eb953",
+      "title": "Belief-Space Quantum-Inspired Reinforcement Learning for Partially Observable Autonomous Cyber Defense in the Internet of Vehicles",
+      "summary": "arXiv:2606.07796v1 Announce Type: new \nAbstract: The Internet of Vehicles (IoV) faces a dynamic, adversarial security environment where attackers adapt to defenses. Existing intrusion detection systems rely on static classifiers that fail to capture sequential decision-making, attacker adaptation, and uncertainty. We formulate IoV security as a sequential attacker-defender interaction and model defense as a reinforcement learning problem under partial observability. We propose Quantum Belief-Int",
+      "url": "https://arxiv.org/abs/2606.07796",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-09T13:00:00+09:00",
+      "title_ja": "IoVにおける部分観測可能な自律型サイバー防御のための量子インスパイア強化学習",
+      "summary_ja": "IoV（Internet of Vehicles）は、攻撃者が防御に適応する動的な脅威環境に直面しており、既存の侵入検知システムは静的な分類器に依存し、攻撃者の適応性や不確実性を捉えきれていない。本論文は、IoVセキュリティをシーケンシャルな攻撃者と防御者の相互作用として定式化し、部分観測下での強化学習問題として防御モデルを提案している。量子インスパイア信念空間を用いたアプローチがその核心である。",
+      "insight": "この研究は、AIを用いた自律的防御の高度化、特にIoVのような複雑で動的な環境でのリアルタイム適応能力の必要性を示している。CDCは将来的に、単なる検知・対応に留まらず、強化学習や量子インスパイア技術を用いた予測的・自律的な防御メカニズムの統合を視野に入れるべきである。これは、AIが人間の判断を補強し、最終的には一部の防御タスクを自律的に実行するCDCの進化方向と合致する。",
+      "importance": "中",
+      "importance_reason": "AIを活用した自律的サイバー防御の将来的な方向性を示す研究であり、CDCの進化に長期的な示唆を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "IoV",
+        "サイバー防御",
+        "強化学習",
+        "自律防御",
+        "量子インスパイア"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "baccb7e9d922",
+      "title": "Anthropic Launches Claude Fable 5: Mythos-Class AI With Cybersecurity Guardrails",
+      "summary": "<p>The AI giant also announced that Project Glasswing partners are being given access to the upgraded Mythos 5.</p>\n<p>The post <a href=\"https://www.securityweek.com/anthropic-launches-claude-fable-5-mythos-class-ai-with-cybersecurity-guardrails/\">Anthropic Launches Claude Fable 5: Mythos-Class AI With Cybersecurity Guardrails </a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/anthropic-launches-claude-fable-5-mythos-class-ai-with-cybersecurity-guardrails/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-06-10T02:02:08+09:00",
+      "title_ja": "Anthropic、サイバーセキュリティガードレール付きのClaude Fable 5 (Mythos-Class AI) を発表",
+      "summary_ja": "Anthropicは、サイバーセキュリティガードレールを備えた「Claude Fable 5」を発表し、Project Glasswingパートナーにはアップグレードされた「Mythos 5」へのアクセスが提供されている。これは、AI開発企業がモデルの能力と安全性のバランスを取りながら、サイバーセキュリティ分野でのAI活用を推進していることを示す。特に、より強力なモデルは選ばれたパートナーに限定的に提供される方針が伺える。",
+      "insight": "AIプロバイダーが「サイバーセキュリティガードレール」を組み込んだモデルを提供し、強力なモデルのアクセスを限定することは、AIの悪用リスクに対する業界全体の意識の高まりと自己規制の動きを示す。CDCは、このような安全なAIモデルの評価基準を確立し、自社または顧客のAIシステムに組み込む際のセキュリティ要件を明確にする必要がある。AIシステム自体にセキュリティが組み込まれることは、Security for AIの重要な側面である。",
+      "importance": "高",
+      "importance_reason": "AIプロバイダーがAIモデルの安全性（サイバーセキュリティガードレール）を強化する動きは、AIシステムのセキュリティ設計に直接影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Anthropic",
+        "Claude Fable 5",
+        "Mythos 5",
+        "サイバーセキュリティガードレール",
+        "AI安全性"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "fcd0e573f76e",
+      "title": "Anthropic Offers Mythos Upgrade for Cyber Partners and a ‘Safe’ Version for the Rest of You",
+      "summary": "Anthropic is releasing Claude Mythos 5 to trusted organizations and Claude Fable 5 to the public, a version it says can’t be used for cyberattacks.",
+      "url": "https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-06-10T02:00:46+09:00",
+      "title_ja": "Anthropic、サイバーパートナー向けにMythosアップグレード、一般向けに「安全な」バージョンを提供",
+      "summary_ja": "Anthropicは、信頼できる組織にはClaude Mythos 5を、一般にはサイバー攻撃に利用できないとされるClaude Fable 5をリリースしている。この戦略は、高性能AIの悪用リスクを認識し、その能力を限定的に提供することでセキュリティを確保しようとする試みである。AIの能力を適切に制御し、悪用を防ぐためのプロバイダー側の取り組みが強化されている。",
+      "insight": "AIモデルの能力に応じた異なる提供戦略は、AIのパワーとリスク管理のバランスを取る上での重要なアプローチである。CDC/MSSP/MDRプロバイダーは、顧客が利用するAIモデルがどの程度のセキュリティガードレールを備えているかを評価し、それに応じた監視・防御戦略を策定する必要がある。特に、「サイバー攻撃に利用できない」とされるFable 5のようなモデルの実際の安全性とその検証方法が、Security for AIの観点から重要となる。",
+      "importance": "高",
+      "importance_reason": "AIモデルの提供戦略がセキュリティリスク管理と密接に関連しており、AI導入企業の防御戦略に影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Anthropic",
+        "Claude Mythos 5",
+        "Claude Fable 5",
+        "AI利用制限",
+        "セキュリティ戦略"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "4929fb005f55",
+      "title": "XBOW tests Anthropic's Mythos Preview for offensive security",
+      "summary": "Anthropic's Mythos Preview was highly effective at finding vulnerability candidates, especially when analyzing source code. XBOW explores how the model performed across exploit discovery, reverse engineering, and live-site validation. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/xbow-tests-anthropics-mythos-preview-for-offensive-security/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-06-10T01:16:38+09:00",
+      "title_ja": "XBOW、AnthropicのMythos Previewを攻撃的セキュリティでテスト",
+      "summary_ja": "XBOWがAnthropicのMythos Previewを攻撃的セキュリティ分野でテストした結果、特にソースコード分析において脆弱性候補の発見に非常に効果的であったことが報告された。このテストでは、エクスプロイト発見、リバースエンジニアリング、ライブサイト検証におけるモデルの性能が評価された。AIがペネトレーションテストや脆弱性評価の効率を大幅に向上させる可能性を示唆している。",
+      "insight": "AIによる脆弱性発見能力の高さは、攻撃者だけでなく防御側にとっても大きな機会となる。SOC/CDCは、AI for Securityの一環として、Mythosのようなツールを脆弱性評価、ペネトレーションテスト、脅威ハンティングに活用し、自社および顧客のシステムにおける潜在的な脆弱性を早期に発見する能力を強化すべきである。これにより、予防的な対策を強化し、インシデント発生前のリスクを低減できる。",
+      "importance": "高",
+      "importance_reason": "AIが脆弱性発見において非常に効果的であることが実証され、AI for Securityの具体的な活用機会を示すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "XBOW",
+        "Anthropic Mythos",
+        "攻撃的セキュリティ",
+        "脆弱性発見",
+        "ソースコード分析"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2f4f953504be",
+      "title": "LiteLLM Flaw CVE-2026-42271 Exploited in the Wild, Chains to Unauthenticated RCE",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added a high-severity flaw impacting BerriAI LiteLLM to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.\n\nThe vulnerability, tracked as CVE-2026-42271 (CVSS score: 8.7), is a command injection vulnerability that could allow any authenticated user to run arbitrary commands on the",
+      "url": "https://thehackernews.com/2026/06/litellm-flaw-cve-2026-42271-exploited.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-09T15:26:14+09:00",
+      "title_ja": "LiteLLMの脆弱性CVE-2026-42271、実環境で悪用され認証不要のRCEに連鎖",
+      "summary_ja": "BerriAI LiteLLMに影響を与える高深刻度の脆弱性（CVE-2026-42271、CVSSスコア8.7）がCISAのKEVカタログに追加され、実環境での悪用が確認された。このコマンドインジェクション脆弱性は、認証されたユーザーが悪意のあるコマンドを実行することを可能にし、場合によっては認証なしでリモートコード実行（RCE）に連鎖する可能性がある。これはAI関連インフラのセキュリティリスクの深刻さを示している。",
+      "insight": "AI関連ソフトウェアの脆弱性が現実世界で悪用され、RCEにつながるケースは、AIシステムが主要な攻撃経路となり得ることを明確に示している。CDCは、AIエージェントが利用する基盤モデルやツール連携層における脆弱性（特にCVE-2026-42271のようなクリティカルなもの）に対する迅速な情報収集、影響評価、パッチ適用、そして侵害検知・対応計画の策定を優先すべきである。AIエージェントの「ツール・実行層」および「モデル・推論層」のセキュリティを重点的に強化する必要がある。",
+      "importance": "高",
+      "importance_reason": "AI関連ソフトウェアの具体的な脆弱性がCISA KEVリストに追加され、実環境で悪用されていることが確認されたため、緊急性が高い。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "LiteLLM",
+        "CVE-2026-42271",
+        "コマンドインジェクション",
+        "RCE",
+        "CISA KEV"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "23660805b7f3",
+      "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog",
+      "summary": "<p>CISA has added three new vulnerabilities to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-7473\" target=\"_blank\">CVE-2026-7473</a> Arista Extensible Operating System Incomplete Comparison with Missing Factors Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-11645\" target=\"_blank\">CVE-20",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/06/09/cisa-adds-three-known-exploited-vulnerabilities-catalog",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-06-09T21:00:00+09:00",
+      "title_ja": "CISA、既知の悪用された脆弱性カタログにさらに3件追加",
+      "summary_ja": "CISAは、既知の悪用された脆弱性（KEV）カタログに新たに3件の脆弱性を追加した。これにはArista Extensible Operating Systemの不完全比較脆弱性（CVE-2026-7473）などが含まれる。これらの脆弱性も実際に攻撃者が悪用しているものであり、組織は速やかにこれらの脆弱性に対する対策を講じる必要がある。CISAは継続的に悪用されている脆弱性に関するアラートを発行している。",
+      "insight": "CISA KEVカタログの継続的な更新は、脅威インテリジェンスを基にした即時対応の重要性を改めて示唆する。CDCは、これらの情報に基づき、対象資産の脆弱性スキャン、パッチ管理、SIEM/SOARへの検知ルールの追加を自動化するプロセスを強化する必要がある。特に、AI関連の脆弱性（LiteLLMなど）と並行して、従来のネットワークインフラやOSの脆弱性も依然として悪用されていることを認識し、包括的な脆弱性管理体制を維持する必要がある。",
+      "importance": "中",
+      "importance_reason": "CISA KEVの継続的な更新は、既知の悪用されている脆弱性への迅速な対応が常に求められることを示唆するため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "CISA",
+        "KEV",
+        "CVE-2026-7473",
+        "Arista EOS",
+        "脆弱性管理"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "aa65b11982fd",
+      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
+      "summary": "<p>CISA has added two new vulnerabilities to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-42271\" target=\"_blank\">CVE-2026-42271</a> BerriAI LiteLLM Command Injection Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-50751\" target=\"_blank\">CVE-2026-50751</a> Check Point Security Gateway Im",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/06/08/cisa-adds-two-known-exploited-vulnerabilities-catalog",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-06-08T21:00:00+09:00",
       "title_ja": "CISA、既知の悪用済み脆弱性カタログにAI関連含む2件を追加",
       "summary_ja": "CISAがKnown Exploited Vulnerabilities (KEV) Catalogに、BerriAI LiteLLMのコマンドインジェクション脆弱性(CVE-2026-42271)とCheck Point Security Gatewayの脆弱性(CVE-2026-50751)の2件を追加した。これらは実際に悪用されている証拠に基づいている。LiteLLMの脆弱性はAI/LLM関連ツールがすでに攻撃対象になっている現実を示す。",
       "insight": "AI/LLM関連ライブラリの脆弱性がCISA KEVに追加されたことは、AIシステム自体が新たな攻撃ベクトルとして確立されつつあることを示唆する。SOC/CDCは、自社が利用するAI関連コンポーネントやサードパーティ製AI製品について、脆弱性管理プロセスに組み込み、KEVリストとの継続的な照合と迅速なパッチ適用計画を策定する必要がある。特にAIエージェントやAPI連携が多用される環境では、コマンドインジェクションのリスクがサプライチェーン全体に波及する可能性を考慮し、AIシステムのライフサイクル全体でのセキュリティ確保が求められる。",
