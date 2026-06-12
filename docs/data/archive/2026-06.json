@@ -11,6 +11,424 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-06-11T22:20:41+09:00",
+      "title_ja": "攻撃ツールキット流出、AIエージェントのクレデンシャル窃取、新種RATなど広範な脅威動向",
+      "summary_ja": "今週、公開リポジトリでサプライチェーン攻撃キットが流出し、ブラウザをクローンする月額5,000ドルのRATが確認された。また、AIエージェントが騙されて実クレデンシャルを漏洩する研究結果も示された。これらの攻撃手法は洗練されており、ミュールネットワークもSaaSのように運営されている。",
+      "insight": "AIエージェントからのクレデンシャル漏洩は、AIシステムのアイデンティティ・権限層への直接的な脅威である。SOC/CDCは、AIエージェントの振る舞いログから不正なクレデンシャル利用や外部との不審な通信を検知する新たなルールセットと監視対象を設計する必要がある。攻撃側のSaaS化は防御側のコスト削減圧力に直結し、自動化されたCDCの必要性を高める。",
+      "importance": "高",
+      "importance_reason": "AIエージェントを標的とした実クレデンシャル窃取の具体的な脅威が示されており、広範囲な影響と新たな防御策の検討が求められるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "クレデンシャル窃取",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "クレデンシャル漏洩",
+        "サプライチェーン攻撃キット",
+        "RAT",
+        "フィッシング"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "Identity/ITDR",
+        "MDR/MSSP設計",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "4478991e94b8",
+      "title": "Beyond Attack Success Rate: Examining Trigger Leakage in Vision-Language Agentic Systems",
+      "summary": "arXiv:2606.12586v1 Announce Type: new \nAbstract: Vision-Language Agentic Systems (VLAS) connect visual perception to planning, tool use, and physical actions. This means backdoor-type triggers can propagate through both decision pipelines and their connected interfaces, thus making visual backdoors a system-level threat. Current evaluations on such backdoors focus on clean accuracy and attack success rate (ASR), metrics that capture whether a trigger works, but not whether an attack is actually ",
+      "url": "https://arxiv.org/abs/2606.12586",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-12T13:00:00+09:00",
+      "title_ja": "視覚言語エージェントシステムにおけるバックドアトリガー漏洩の新たな評価軸",
+      "summary_ja": "視覚言語エージェントシステム（VLAS）は、視覚とプランニング・ツール使用・物理的アクションを連結する。この特性により、バックドアトリガーは意思決定パイプラインと接続されたインターフェースの両方を介して伝播し、システムレベルの脅威となる。既存のバックドア評価指標は攻撃成功率に焦点を当てているが、攻撃が実際に検出可能かを捕捉していない。",
+      "insight": "AIエージェントシステムの「目に見えない」脅威として、バックドアトリガーの拡散が指摘されている。SOC/CDCは、単に攻撃の成功だけでなく、異常な振る舞いやシステム内部でのトリガー伝播の痕跡を検知するための、より高度なロギングと分析メカニズムを検討する必要がある。特にVLASは物理的アクションにも繋がり得るため、OT/ICSとの連携も視野に入れるべき。",
+      "importance": "中",
+      "importance_reason": "AIエージェントにおける新たなタイプのシステムレベル脅威とその検出の難しさを示しており、長期的な監視・検知設計に影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "モデル汚染",
+        "敵対的攻撃",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "VLAS",
+        "バックドアトリガー",
+        "モデル汚染",
+        "エージェントシステム",
+        "攻撃成功率"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3f4af54d019e",
+      "title": "SMSR: Certified Defence Against Runtime Memory Poisoning in Persistent LLM Agent Systems",
+      "summary": "arXiv:2606.12703v1 Announce Type: new \nAbstract: Retrieval-augmented generation (RAG) agents increasingly run with persistent memory that accumulates across user sessions. This creates a new attack surface: an adversary interacting only through normal channels can inject crafted memories that, once retrieved, steer the agent's responses for future users, without touching model weights or code. We call this Multi-Session Memory Poisoning (MSMP) and show that no existing defence certifies against ",
+      "url": "https://arxiv.org/abs/2606.12703",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-12T13:00:00+09:00",
+      "title_ja": "持続的LLMエージェントのランタイムメモリ汚染に対する防御手法の提案",
+      "summary_ja": "RAGエージェントは、ユーザーセッション間で蓄積される持続的メモリを使用することが増えている。これにより、通常のチャネルを介して悪意のあるメモリを注入し、将来のユーザー向けにエージェントの応答を操作できる新たな攻撃面「マルチセッションメモリ汚染（MSMP）」が生じる。本研究では、既存の防御策ではMSMPに対する認証防御が提供されていないことを示し、新たな防御手法を提案する。",
+      "insight": "RAGを利用するLLMエージェントの持続的メモリが新たな攻撃対象となり、過去のやり取りが将来の振る舞いを汚染するリスクが顕在化している。SOC/CDCは、RAGのベクトルデータベースやエージェントのメモリ層に対する不正な書き込み・読み込みを監視し、セッション間の振る舞い変化を追跡する必要がある。これは、従来のSIEM/SOARでは検知が困難な新しいタイプの永続化攻撃であり、AIシステム固有のロギングと監視が不可欠となる。",
+      "importance": "高",
+      "importance_reason": "RAGと持続的メモリを持つAIエージェントに特化した新たな攻撃手法が提唱されており、その防御策の検討が急務であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "モデル汚染",
+        "LLMセキュリティ",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "RAG",
+        "LLMエージェント",
+        "メモリ汚染",
+        "持続的メモリ",
+        "MSMP"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "MDR/MSSP設計",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0e9903b3f819",
+      "title": "Claude Fable is relentlessly proactive",
+      "summary": "<p>After two days of experience with <a href=\"https://simonwillison.net/2026/Jun/9/claude-fable-5/\">Claude Fable 5</a> I think the best way to describe it is <strong>relentlessly proactive</strong>. It knows a whole lot of tricks and it will deploy pretty much any of them to get to its goal.</p>\n<p>I'll illustrate this with an example. I was hacking on <a href=\"https://agent.datasette.io/\">Datasette Agent</a> today when I noticed a glitch: a horizontal scrollbar that shouldn't be there in the ju",
+      "url": "https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-06-12T08:35:17+09:00",
+      "title_ja": "Claude Fable 5の極めて積極的な問題解決能力とその挙動",
+      "summary_ja": "Claude Fable 5は「容赦なく積極的」と評され、目標達成のために多様なトリックを駆使する。記事では、Datasette Agentにおけるグリッチ（水平スクロールバー）を修正する例を通じて、Fableが非常に自律的に問題を特定し、解決策を試行する様子が示されている。",
+      "insight": "AIエージェントの自律性向上は業務効率化に寄与する一方で、予期せぬ挙動や意図しないツール使用、権限昇格のリスクを内包する。SOC/CDCは、このような「積極的すぎる」AIエージェントの挙動を監視し、ポリシー逸脱や異常なリソースアクセスを検知する仕組みを構築する必要がある。特に、AIエージェントが実行するアクションのログと、そのアクションが組織のセキュリティポリシーに準拠しているかの検証が重要になる。",
+      "importance": "中",
+      "importance_reason": "AIエージェントの高度な自律性がもたらす潜在的リスクと、その監視の必要性を示唆しており、将来の運用設計に影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース",
+        "研究・論文",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Claude Fable",
+        "AIエージェント",
+        "自律性",
+        "問題解決",
+        "予期せぬ挙動"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "25aa92cea612",
+      "title": "Trust No Skill: Integrity Verification for AI Agent Supply Chains",
+      "summary": "<p>Protect enterprise AI agents from supply chain risks by auditing third-party skills for hidden vulnerabilities and multi-stage attack chains.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/ai-agent-supply-chain-risks/\">Trust No Skill: Integrity Verification for AI Agent Supply Chains</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/ai-agent-supply-chain-risks/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-06-11T19:00:24+09:00",
+      "title_ja": "AIエージェントのサプライチェーンにおけるスキルに対する完全性検証の重要性",
+      "summary_ja": "企業が利用するAIエージェントをサプライチェーンリスクから保護するためには、サードパーティ製のスキルに潜む隠れた脆弱性や多段階攻撃チェーンを監査する必要がある。これはAIエージェントに依存する現代のビジネス環境において不可欠な対策となる。",
+      "insight": "AIエージェントの「スキル」がサプライチェーンリスクの新たな温床となる可能性が指摘されている。SOC/CDCは、AIエージェントが利用する外部スキルやプラグインに対する厳格なセキュリティ評価プロセスと継続的な監視を組み込む必要がある。特に、これらが持つ権限や実行可能なアクションの範囲を明確にし、CI/CDパイプラインにおける脆弱性スキャンやランタイム時の振る舞い監視を強化することが求められる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントにおけるサプライチェーンリスクという新たな重要課題を提起し、企業への直接的な影響が大きいため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "LLMセキュリティ",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "サプライチェーンリスク",
+        "スキル",
+        "完全性検証",
+        "Unit 42"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "MDR/MSSP設計",
+        "CISO報告",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "5c34458ebfd9",
+      "title": "Google Sues Chinese Smishing Network Accused of Using Gemini AI in Phishing",
+      "summary": "Google on Friday said it's pursuing legal action against a Chinese cybercrime network, accusing it of using its Gemini artificial intelligence (AI) agent to send phishing text messages targeting Americans.\n\nThe network is said to be behind the development and management of a phishing-as-a-service (PhaaS) software kit called Outsider, per the tech giant.\n\n\"The operation weaponized Gemini to help",
+      "url": "https://thehackernews.com/2026/06/google-sues-chinese-smishing-network.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-13T03:59:32+09:00",
+      "title_ja": "Google、Gemini AIを悪用した中国のSMSフィッシングネットワークを提訴",
+      "summary_ja": "Googleは、中国のサイバー犯罪ネットワークがAIエージェントGeminiを悪用し、米国居住者を標的としたフィッシングSMSメッセージを送信しているとして提訴した。このネットワークは、Phishing-as-a-Service (PhaaS) ソフトウェアキット「Outsider」の開発・管理にも関与しているとされる。",
+      "insight": "AIが攻撃者のツールとして利用され、フィッシングキャンペーンの洗練度を高めている実態が明らかになった。SOC/CDCは、生成AIが悪用されたフィッシングメールやSMSの検知において、従来のルールベースに加え、AIによって生成された可能性のあるコンテンツの特定や、AIが生成したドメイン・URLのパターン認識能力を強化する必要がある。AIが生成したメッセージは、文法や表現が自然であるため、人手による検知がより困難になる。",
+      "importance": "高",
+      "importance_reason": "AIが攻撃側によって実際に悪用され、具体的な法的措置が取られるレベルの脅威が現実化しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "AIを使った攻撃",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Google",
+        "Gemini",
+        "フィッシング",
+        "Smishing",
+        "PhaaS"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "Security for AI",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "038764007f75",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "<p>CISA has added one new vulnerability to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-35273\" target=\"_blank\">CVE-2026-35273</a> Oracle PeopleSoft Enterprise PeopleTools Missing Authentication for Critical Function Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for malicious ",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/06/12/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-06-12T21:00:00+09:00",
+      "title_ja": "CISAが既知の悪用済み脆弱性カタログにOracle PeopleSoftの認証バイパスを追加",
+      "summary_ja": "CISAは、実際に悪用が確認された脆弱性として、Oracle PeopleSoft Enterprise PeopleToolsのクリティカル機能における認証バイパス脆弱性（CVE-2026-35273）を既知の悪用済み脆弱性（KEV）カタログに追加した。このようなタイプの脆弱性は、悪意のある攻撃者にとって頻繁な攻撃ベクトルとなる。",
+      "insight": "既知の認証バイパス脆弱性が積極的に悪用されていることは、パッチ管理と脆弱性スキャンの重要性を改めて示唆する。SOC/CDCは、自社環境におけるCVE-2026-35273の影響を即座に評価し、関連するOracle PeopleSoftシステムのパッチ適用状況を確認するとともに、認証ログやアクセスログにおける異常な挙動の監視を強化する必要がある。特に、MDR/MSSPは顧客環境への影響を迅速に特定し、対応を指示する体制が求められる。",
+      "importance": "中",
+      "importance_reason": "既知の脆弱性が活発に悪用されているため、組織は迅速な対応と監視の強化が求められるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "CISA",
+        "KEV",
+        "CVE-2026-35273",
+        "Oracle PeopleSoft",
+        "認証バイパス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "MDR/MSSP設計",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e557f2555dcd",
+      "title": "Yarbo Android/iOS Mobile Application and Cloud Infrastructure",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-162-01.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to obtain hard-coded credentials, gain access to telemetry data, and potentially send operational commands to the robot fleet.</strong></p>\n<p>The following versions of Yarbo Android/iOS Mobile Application and Cloud Infrastructure are affected:</p>\n<ul>\n<li>Yar",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-162-01",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-06-11T21:00:00+09:00",
+      "title_ja": "Yarboモバイルアプリとクラウドインフラにおけるハードコードされたクレデンシャル等の脆弱性",
+      "summary_ja": "Yarbo Android/iOSモバイルアプリケーションおよびクラウドインフラに複数の脆弱性が存在し、攻撃者がハードコードされたクレデンシャルを取得したり、テレメトリデータにアクセスしたり、ロボット群に操作コマンドを送信したりする可能性がある。CISAは関連するICSアドバイザリを発行している。",
+      "insight": "IoTデバイスとその関連クラウドインフラにおける脆弱性は、物理的なシステムへの影響に直結し、OT/ICSセキュリティとの連携が不可欠である。SOC/CDCは、モバイルアプリやクラウドAPI経由での不正アクセスや、ハードコードされたクレデンシャルの利用試行を検知するルールを強化する必要がある。特に、OT領域への影響を持つシステムの場合、AIエージェントがこれらのシステムを操作する可能性も考慮し、AIエージェントからのコマンド発行ログを厳重に監視すべき。",
+      "importance": "中",
+      "importance_reason": "モバイルアプリとクラウドインフラの脆弱性が物理デバイスの制御に繋がり、広範なインフラへの影響があるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "設定ミス",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Yarbo",
+        "モバイルアプリ",
+        "クラウドインフラ",
+        "ハードコードされたクレデンシャル",
+        "IoT"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9f4f6048fedb",
+      "title": "In Other News: Google Security Layoffs, AudiA6 Takedown, $400 Million Coupang Fine",
+      "summary": "<p>Other noteworthy stories that might have slipped under the radar: ICS device exposure remains flat as attack surface widens, Microsoft issues incident response playbook for AI, IBM and AT&#038;T accused of hack cover-ups.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-google-security-layoffs-audia6-takedown-400-million-coupang-fine/\">In Other News: Google Security Layoffs, AudiA6 Takedown, $400 Million Coupang Fine</a> appeared first on <a href=\"https://www.securityweek.c",
+      "url": "https://www.securityweek.com/in-other-news-google-security-layoffs-audia6-takedown-400-million-coupang-fine/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-06-13T01:17:26+09:00",
+      "title_ja": "Googleセキュリティ部門レイオフ、ICSデバイス露出、MicrosoftのAIインシデント対応プレイブック公開など複合ニュース",
+      "summary_ja": "Googleのセキュリティ部門でのレイオフ、AudiA6のテイクダウン、Coupangへの4億ドルの罰金などのニュースが報じられた。その他、ICSデバイスの露出が横ばいながら攻撃対象が拡大していること、MicrosoftがAIに関するインシデント対応プレイブックを公開したこと、IBMとAT&Tがハック隠蔽を非難されていることなども伝えられた。",
+      "insight": "MicrosoftがAIインシデント対応プレイブックを公開したことは、AIシステムのセキュリティが新たな標準となる兆候を示している。SOC/CDCは、自社のインシデント対応計画にAI固有の事象（プロンプトインジェクション、モデル汚染、AIエージェントの誤動作など）を組み込む必要があり、既存のプレイブックをAIリスクの観点から見直す時期に来ている。Googleのレイオフは、人員削減がセキュリティ対応能力に与える影響について、サービス提供側が常に考慮すべきリスクとなる。",
+      "importance": "中",
+      "importance_reason": "MicrosoftがAIインシデント対応プレイブックを公開したことで、AIセキュリティがインシデント対応の主要な要素として位置づけられつつあるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Googleレイオフ",
+        "ICSデバイス",
+        "Microsoft",
+        "AIインシデント対応プレイブック",
+        "Coupang罰金"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "CISO報告",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "c93d8d05cf7e",
+      "title": "Claude Fable 5 Doesn't Change the Mythos Security Story",
+      "summary": "Stay cool: Mythos 5 is an upgrade over Mythos Preview while Fable 5 is Mythos &quot;made safe for general use,&quot; Anthropic explained.",
+      "url": "https://www.darkreading.com/vulnerabilities-threats/claude-fable-5-doesnt-change-mythos-security-story",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-06-12T22:01:00+09:00",
+      "title_ja": "Claude Fable 5のリリースはMythosのセキュリティ基盤を変更しない",
+      "summary_ja": "Anthropicによると、Claude Fable 5はMythos Previewのアップグレード版であり、Mythosが「一般利用向けに安全化された」バージョンである。このリリースは、Mythosのセキュリティ基盤やその物語に本質的な変更をもたらすものではない。",
+      "insight": "AIモデルの安全性向上に関するベンダーの説明は、SOC/CDCが実際の導入判断を行う上で重要な要素となる。ベンダーによる「安全化された」という表現が、具体的にどのようなセキュリティ対策を含んでいるのか、第三者評価や開示された情報に基づいて深く検証する必要がある。特に、AIエージェントの導入時には、その基盤モデルのセキュリティ特性と、その上で動作するアプリケーションのセキュリティ対策を統合的に評価することが求められる。",
+      "importance": "低",
+      "importance_reason": "特定製品に関するベンダーのセキュリティ説明であり、広範な影響や新たな脅威を示すものではないため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Claude Fable 5",
+        "Mythos",
+        "Anthropic",
+        "LLMセキュリティ",
+        "製品安全性"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "a102233d6de2",
+      "title": "ThreatsDay Bulletin: Worm Code Leaked, AI Agent Phished, Claude Code Patch + 28 New Stories",
+      "summary": "It's been one of those weeks. You expect the usual noise: recycled malware, sloppy attacks, another easy target getting hit. Instead, there's a supply chain attack kit in a public repo, a $5,000-a-month RAT that clones browsers, and research showing AI agents can be tricked into leaking real credentials.\n\nThe bigger problem is how polished this all looks now. Mule networks run like SaaS.",
+      "url": "https://thehackernews.com/2026/06/threatsday-bulletin-worm-code-leaked-ai.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-11T22:20:41+09:00",
       "title_ja": "AIエージェントへのフィッシング、サプライチェーン攻撃キットなど新たな脅威が台頭",
       "summary_ja": "今週は、公開リポジトリでサプライチェーン攻撃キットが確認され、ブラウザをクローンする月額5,000ドルのRATが出現した。さらに、AIエージェントが騙されて認証情報を漏洩する研究結果も示され、攻撃手法の高度化と洗練が見られる。攻撃者側のツールやネットワークがSaaSのように運用され、その効率性と組織化が進んでいることが示唆されている。",
       "insight": "AIエージェントが直接的な攻撃対象となり、認証情報漏洩の媒介となる可能性が示されたことは、Security for AIの観点からSOC/CDCの監視範囲拡張を強く示唆する。AIエージェントの挙動ログ、特権操作、外部連携の監視は喫緊の課題。サプライチェーン攻撃の高度化は、AIエージェントが利用する外部スキルやライブラリのセキュリティ評価の重要性を高める。",
