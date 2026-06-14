@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NPM 12、サプライチェーン攻撃防止のためスクリプト実行挙動を変更 | Cyber Defense Notes</title>
-<meta name="description" content="NPM 12では、デフォルトで`npm install`が依存関係からのスクリプト実行を行わないよう変更されます。これは、サプライチェーン攻撃のリスクを軽減するための重要な変更であり、明示的に許可しない限りスクリプトは実行されなくなります。">
-<meta property="og:title" content="NPM 12、サプライチェーン攻撃防止のためスクリプト実行挙動を変更">
-<meta property="og:description" content="NPM 12では、デフォルトで`npm install`が依存関係からのスクリプト実行を行わないよう変更されます。これは、サプライチェーン攻撃のリスクを軽減するための重要な変更であり、明示的に許可しない限りスクリプトは実行されなくなります。">
+<title>npm 12がスクリプト実行動作を変更しサプライチェーン攻撃を防止 | Cyber Defense Notes</title>
+<meta name="description" content="npm 12では、デフォルトで依存関係からのスクリプト実行が許可されないよう挙動が変更されます。この変更は、悪意のあるパッケージが`npm install`時に自動的にスクリプトを実行し、システムを侵害するサプライチェーン攻撃のリスクを軽減">
+<meta property="og:title" content="npm 12がスクリプト実行動作を変更しサプライチェーン攻撃を防止">
+<meta property="og:description" content="npm 12では、デフォルトで依存関係からのスクリプト実行が許可されないよう挙動が変更されます。この変更は、悪意のあるパッケージが`npm install`時に自動的にスクリプトを実行し、システムを侵害するサプライチェーン攻撃のリスクを軽減">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/c91f595218f8.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NPM 12、サプライチェーン攻撃防止のためスクリプト実行挙動を変更">
-<meta name="twitter:description" content="NPM 12では、デフォルトで`npm install`が依存関係からのスクリプト実行を行わないよう変更されます。これは、サプライチェーン攻撃のリスクを軽減するための重要な変更であり、明示的に許可しない限りスクリプトは実行されなくなります。">
+<meta name="twitter:title" content="npm 12がスクリプト実行動作を変更しサプライチェーン攻撃を防止">
+<meta name="twitter:description" content="npm 12では、デフォルトで依存関係からのスクリプト実行が許可されないよう挙動が変更されます。この変更は、悪意のあるパッケージが`npm install`時に自動的にスクリプトを実行し、システムを侵害するサプライチェーン攻撃のリスクを軽減">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/c91f595218f8.html">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "NPM 12、サプライチェーン攻撃防止のためスクリプト実行挙動を変更",
-  "description": "NPM 12では、デフォルトで`npm install`が依存関係からのスクリプト実行を行わないよう変更されます。これは、サプライチェーン攻撃のリスクを軽減するための重要な変更であり、明示的に許可しない限りスクリプトは実行されなくなります。これにより、悪意のあるパッケージが意図せずコードを実行するのを防ぐことが期待されます。",
+  "headline": "npm 12がスクリプト実行動作を変更しサプライチェーン攻撃を防止",
+  "description": "npm 12では、デフォルトで依存関係からのスクリプト実行が許可されないよう挙動が変更されます。この変更は、悪意のあるパッケージが`npm install`時に自動的にスクリプトを実行し、システムを侵害するサプライチェーン攻撃のリスクを軽減することを目的としています。開発者には、明示的に許可されたスクリプトのみが実行されるよう設定する選択肢が提供されます。",
   "datePublished": "2026-06-14",
   "url": "https://ayudle.github.io/ai-security-news/article/c91f595218f8.html",
   "image": "https://ayudle.github.io/ai-security-news/og-image.png",
@@ -124,17 +124,17 @@ gtag('config', 'G-KV7Q7SQKZX');
       <span>2026-06-14</span>
       <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span>
     </div>
-    <h1 class="ap-title">NPM 12、サプライチェーン攻撃防止のためスクリプト実行挙動を変更</h1>
+    <h1 class="ap-title">npm 12がスクリプト実行動作を変更しサプライチェーン攻撃を防止</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">NPM 12では、デフォルトで`npm install`が依存関係からのスクリプト実行を行わないよう変更されます。これは、サプライチェーン攻撃のリスクを軽減するための重要な変更であり、明示的に許可しない限りスクリプトは実行されなくなります。これにより、悪意のあるパッケージが意図せずコードを実行するのを防ぐことが期待されます。</div>
+    <div class="ap-body">npm 12では、デフォルトで依存関係からのスクリプト実行が許可されないよう挙動が変更されます。この変更は、悪意のあるパッケージが`npm install`時に自動的にスクリプトを実行し、システムを侵害するサプライチェーン攻撃のリスクを軽減することを目的としています。開発者には、明示的に許可されたスクリプトのみが実行されるよう設定する選択肢が提供されます。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>NPMのような広く利用されるパッケージマネージャーのセキュリティ強化は、ソフトウェアサプライチェーン全体の防御力向上に貢献します。CDC/SOCとしては、この変更が自社の開発・運用プロセスに与える影響を評価し、開発チームと連携して、安全なパッケージ管理ポリシーを策定・適用を促すべきです。既存のSIEM/SOARでのソフトウェア構成分析やSBOM（Software Bill of Materials）との連携強化により、依存関係の脆弱性だけでなく、意図しないスクリプト実行によるリスクを可視化し、Exposure Managementの質を高める機会となるでしょう。</div></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>このnpmのセキュリティ強化は、開発環境におけるサプライチェーン攻撃対策の重要な進展です。SOC/CDCとしては、開発部門がnpm 12の新しいセキュリティ機能を採用しているか、そして明示的に許可されたスクリプトが正当なものかを確認するためのガバナンスと監視体制を強化する必要があります。このようなパッケージマネージャーレベルでのセキュリティ強化は、MDR/MSSPサービスにおいて顧客の開発環境セキュリティ評価・改善提案に組み込むべき重要な要素となります。</div></div></section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>ソフトウェアサプライチェーンのセキュリティ改善に繋がり、多くの開発者に影響する変更であるため。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>広く利用されるパッケージマネージャーのセキュリティ強化は、サプライチェーン攻撃リスクの軽減に直接貢献し、開発環境の防御を向上させるため。</div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
@@ -144,7 +144,7 @@ gtag('config', 'G-KV7Q7SQKZX');
     </div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：中</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Exposure管理</span><span class='cdc-badge-ap'>サービス企画</span></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：中</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Exposure管理</span><span class='cdc-badge-ap'>MDR/MSSP設計</span></div></section>
 
   <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-vulnerability-management-automation.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-08</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</div></a><a href="../columns/ai-supply-chain-exposure.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-16</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div></a></div></section>
 
@@ -160,16 +160,16 @@ gtag('config', 'G-KV7Q7SQKZX');
     </div>
     <div class="actions">
       <a href="https://www.securityweek.com/npm-12-will-change-script-execution-behavior-to-prevent-supply-chain-attacks/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0ANPM%2012%E3%80%81%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E6%94%BB%E6%92%83%E9%98%B2%E6%AD%A2%E3%81%AE%E3%81%9F%E3%82%81%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%AE%9F%E8%A1%8C%E6%8C%99%E5%8B%95%E3%82%92%E5%A4%89%E6%9B%B4%0A%0A%23%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E6%A5%AD%E7%95%8C%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2Fc91f595218f8.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0Anpm%2012%E3%81%8C%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%AE%9F%E8%A1%8C%E5%8B%95%E4%BD%9C%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%97%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E6%94%BB%E6%92%83%E3%82%92%E9%98%B2%E6%AD%A2%0A%0A%23%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E6%A5%AD%E7%95%8C%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2Fc91f595218f8.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/c91f595218f8.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
 
-  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Exposure%E7%AE%A1%E7%90%86#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../?context=%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BC%81%E7%94%BB#archive" class="explore-chip" data-search-context="サービス企画">サービス企画</a><a href="../?tag=%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="サプライチェーン攻撃">サプライチェーン攻撃</a><a href="../?tag=%E8%A3%BD%E5%93%81%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9#archive" class="explore-chip" data-search-tag="製品リリース">製品リリース</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Exposure%E7%AE%A1%E7%90%86#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../?context=MDR%2FMSSP%E8%A8%AD%E8%A8%88#archive" class="explore-chip" data-search-context="MDR/MSSP設計">MDR/MSSP設計</a><a href="../?tag=%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="サプライチェーン攻撃">サプライチェーン攻撃</a><a href="../?tag=%E8%A3%BD%E5%93%81%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9#archive" class="explore-chip" data-search-tag="製品リリース">製品リリース</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
 
   <section class="ap-section">
   <h3 class="ap-sec-title">関連記事：同じ「ビジネス・技術動向」の最近の記事</h3>
-  <div class="rel-list"><a href="9f4f6048fedb.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-13</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">SecurityWeek</span></div><div class="rel-title">Googleセキュリティ部門レイオフ、ICSデバイス露出、MicrosoftのAIインシデント対応プレイブック公開など複合ニュース</div></a><a href="0e9903b3f819.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-12</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">Simon Willison</span></div><div class="rel-title">Claude Fable 5の極めて積極的な問題解決能力とその挙動</div></a><a href="d620053669e0.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-10</span><span class="imp" style="color:#639922;border-color:#63992255">重要度 低</span><span class="rel-src">arXiv cs.CR</span></div><div class="rel-title">無線周波数フィンガープリンティング (RFF) の進化史とその応用</div></a></div>
+  <div class="rel-list"><a href="b8d669d310a8.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-14</span><span class="imp" style="color:#639922;border-color:#63992255">重要度 低</span><span class="rel-src">Simon Willison</span></div><div class="rel-title">PyPIでのWASMパッケージ公開、Pyodideで可能に</div></a><a href="016081c23e68.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-13</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">Wired Security</span></div><div class="rel-title">AIによるバグハンティングとOracleゼロデイ、その他セキュリティニュース</div></a><a href="9f4f6048fedb.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-13</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">SecurityWeek</span></div><div class="rel-title">Googleセキュリティ部門レイオフ、ICSデバイス露出、MicrosoftのAIインシデント対応プレイブック公開など複合ニュース</div></a></div>
 </section>
 </article>
 
