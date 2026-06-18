@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-18T06:20:30.423618+09:00",
-  "today": "2026-06-18",
+  "updated": "2026-06-19T06:27:34.559599+09:00",
+  "today": "2026-06-19",
   "articles": [
     {
       "id": "ecc0d33c2b0b",
@@ -12,59 +12,96 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-06-17T22:51:58+09:00",
-      "title_ja": "悪意あるJetBrainsプラグインがAI APIキーを窃取、AIコーディングアシスタントを装う",
-      "summary_ja": "サイバーセキュリティ研究者らは、JetBrains Marketplace上でAIプロバイダーキーを窃取する悪意あるプラグインキャンペーンを報告した。これらのプラグインはDeepSeekなどのLLMベースのAIコーディングアシスタントを装い、チャットやコードレビュー機能を提供しながら、利用者のAI APIキーを外部に送信していた。本キャンペーンでは少なくとも15の悪意あるプラグインが公開されていたという。",
-      "insight": "AI開発者が利用するIDEプラグインが悪用され、AIサービスのAPIキーが窃取される事案は、AIエコシステム全体のサプライチェーンリスクと、AI開発環境が新たな攻撃対象となっていることを示唆する。CDC/SOCは、AIサービス利用者の開発環境におけるセキュリティ対策、特に利用中のAIツールやプラグインの正当性検証プロセスを強化し、AI APIキーの異常な利用を検知する監視ルールを導入する必要がある。これは「Security for AI」の観点から特に重要である。",
+      "title_ja": "悪意あるJetBrainsプラグインがAI APIキーを窃取、Chrome拡張機能がチャット履歴を捕捉",
+      "summary_ja": "サイバーセキュリティ研究者らは、JetBrains Marketplaceで「協調的なマルウェアキャンペーン」を発見しました。少なくとも15個の悪意あるプラグインが公開され、これらはAIプロバイダーのAPIキーを窃取する能力を持っています。これらのプラグインはDeepSeekなどのLLMを基盤としたAIコーディングアシスタントを装い、チャット、コミットメッセージ、コードレビューなどの機能を提供していました。同時に、Chrome拡張機能がチャットボットの会話を傍受している事例も報告されています。",
+      "insight": "開発環境で使用されるAI関連プラグインの信頼性検証と、AIサービスのAPIキー管理がSOC/CDCの新たな監視対象となります。高価値なAI APIキーの異常な利用を検知するためのログ監視強化、特に開発者ワークステーションにおけるAIツールの挙動モニタリングが不可欠です。AIエージェントリスクモデルの「⑤アイデンティティ・権限層」および「②ツール・実行層」に直接関連します。",
       "importance": "高",
-      "importance_reason": "AI開発サプライチェーンの新たな攻撃経路であり、AIサービスの基盤となるクレデンシャルが直接的な標的になっているため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
+      "importance_reason": "開発サプライチェーンにおけるAI関連の新たな攻撃経路であり、AIサービスのクレデンシャル窃取に直結するため、即時対応と監視強化が求められます。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "クレデンシャル窃取",
-        "サプライチェーン攻撃",
-        "マルウェア"
+        "AIを使った攻撃",
+        "クレデンシャル窃取"
       ],
       "affected_layers": [
         "アプリ/API",
         "データ/AI"
       ],
       "related_keywords": [
-        "JetBrains Marketplace",
+        "JetBrains",
+        "プラグイン",
         "AI APIキー",
-        "悪意あるプラグイン",
-        "AIコーディングアシスタント",
-        "サプライチェーン攻撃"
+        "クレデンシャル窃取",
+        "開発ツール"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
         "Security for AI",
-        "顧客課題",
-        "MDR/MSSP設計"
+        "Identity/ITDR",
+        "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "6332b5691b35",
-      "title": "144 Mastra npm Packages Compromised via Hijacked Contributor Account",
-      "summary": "As many as 144 npm packages associated with the Mastra namespace (\"@mastra/*\"), a popular open-source JavaScript and TypeScript framework for building artificial intelligence (AI) applications, have been compromised as part of a software supply chain attack codenamed easy-day-js, per findings from Endor Labs, JFrog, SafeDep, Socket, and StepSecurity.\n\n\"A single npm account (ehindero)",
-      "url": "https://thehackernews.com/2026/06/144-mastra-npm-packages-compromised-via.html",
+      "id": "4f6b1102b4c8",
+      "title": "Conflict-Aware Retriever Editing for Knowledge Injection Attacks on LLM-Based RAG Systems",
+      "summary": "arXiv:2606.18310v1 Announce Type: new \nAbstract: Injecting malicious knowledge into retrieval-augmented generation (RAG) systems can manipulate retrieved evidence and mislead downstream generation, posing a serious security threat for AI applications. Existing RAG injection attacks mainly rely on manipulating external knowledge bases, such as crafting malicious corpus. However, the synthetic text crafted by such data-centric methods could be detectable, leading to the failure of attacks. Beyond ",
+      "url": "https://arxiv.org/abs/2606.18310",
       "ai_score": 3,
       "cdc_pre_score": 1,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-06-17T16:38:24+09:00",
-      "title_ja": "貢献者アカウントの乗っ取りにより144のMastra npmパッケージが侵害",
-      "summary_ja": "AIアプリケーション開発フレームワークであるMastraの144個のnpmパッケージが、貢献者アカウントの乗っ取りを通じてソフトウェアサプライチェーン攻撃「easy-day-js」により侵害された。この攻撃は、人気のオープンソースJavaScript/TypeScriptフレームワークを利用するAI開発エコシステムに広範な影響を与える可能性があると指摘されている。",
-      "insight": "オープンソースソフトウェア（OSS）サプライチェーンにおけるアカウント乗っ取りは、AI開発に不可欠なパッケージを汚染し、その先のAIシステムに悪意のあるコードを組み込む経路となる。CDC/SOCは、開発環境で利用されるOSSコンポーネントの継続的な脆弱性・完全性チェックを強化し、開発パイプラインにおける不審な活動（特にパッケージ公開者の変更や異常な更新）を監視する体制を構築する必要がある。これはAIシステムにおける「データ・インフラ層」のセキュリティに関わる。",
-      "importance": "高",
-      "importance_reason": "AI開発に不可欠なOSSコンポーネントがサプライチェーン攻撃で侵害され、広範囲に影響を与える可能性があるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-18T13:00:00+09:00",
+      "title_ja": "LLMベースRAGシステムへの知識注入攻撃：既存手法を超えた検出困難なリトリーバー編集手法",
+      "summary_ja": "RAG（検索拡張生成）システムにおいて、悪意ある知識を注入し、取得される証拠を操作してLLMの生成を誤誘導するセキュリティ脅威が指摘されています。従来のRAG注入攻撃は主に外部知識ベースの操作に依存していましたが、本研究では、合成テキストが検出されやすいデータセントリックな方法を超える、新たな知識注入攻撃手法「Conflict-Aware Retriever Editing」を提案。これにより、攻撃がより検出困難になる可能性が示唆されています。",
+      "insight": "RAGシステムに対する攻撃はプロンプトインジェクションに留まらず、その基盤となる知識ベース（ベクターDB等）の整合性を直接操作する方向へ進化しています。CDCは、RAGシステムの知識ベースへの不審な変更や、レトリーバーの動作異常を検知するためのログ監視、および知識ベースの変更管理プロセスを強化する必要があります。AIエージェントリスクモデルの「④データ・インフラ層」に該当します。",
+      "importance": "中",
+      "importance_reason": "RAGシステムの新たな攻撃経路であり、AIシステムの信頼性に影響を与える可能性があるため、中期的な防御策の検討が求められます。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "サプライチェーン攻撃",
-        "マルウェア",
-        "クレデンシャル窃取"
+        "モデル汚染",
+        "敵対的攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "RAG",
+        "知識注入",
+        "モデル汚染",
+        "LLM",
+        "Retriever Editing"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "808772756f94",
+      "title": "SafeClawBench: Separating Semantic, Audit-Evidence, and Sandbox Harm in Tool-Using LLM Agents",
+      "summary": "arXiv:2606.18356v1 Announce Type: new \nAbstract: Tool-using language-model agents introduce security failures that go beyond unsafe text: they can disclose protected objects, write persistent memory, send messages, modify databases, or trigger harmful code and tool effects. Existing evaluations often collapse these stages into a single attack success rate, making it difficult to tell whether a model merely agreed with an attacker or actually produced observable harm. We introduce SafeClawBench, ",
+      "url": "https://arxiv.org/abs/2606.18356",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-18T13:00:00+09:00",
+      "title_ja": "ツール利用型LLMエージェントにおける有害行為の評価指標：SafeClawBenchの提案",
+      "summary_ja": "ツール利用型LLMエージェントは、単に不安全なテキストを生成するだけでなく、保護されたオブジェクトの開示、永続メモリへの書き込み、メッセージ送信、データベース改変、有害なコードやツール効果のトリガーなど、より広範なセキュリティ障害を引き起こします。既存の評価方法ではこれらの段階を単一の攻撃成功率に集約してしまうため、モデルが攻撃者に同意したのか、実際に観測可能な損害を生んだのかが不明瞭でした。本稿では、これらの有害行為を分離して評価するためのSafeClawBenchを提案しています。",
+      "insight": "AIエージェントのリスクは、LLMの出力テキストだけでなく、それが実行するツールや操作によって引き起こされるシステムへの実害へと拡大しています。SOC/CDCは、AIエージェントのツール利用履歴、実行されたコマンド、APIコール、データベース操作などを詳細にログ取得・監視し、潜在的な悪用を検知するメカニズムを構築する必要があります。これはAIエージェントリスクモデルの「②ツール・実行層」および「③マルチエージェント層」に直接関連し、監査証跡の確保も重要です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの普及に伴い、その悪用による実害リスクを具体的に評価する枠組みが提示されており、今後のSOC/CDCの監視設計に直接的な影響があります。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った防御"
       ],
       "affected_layers": [
         "アプリ/API",
@@ -72,214 +109,218 @@
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "npmパッケージ",
-        "Mastra",
-        "サプライチェーン攻撃",
-        "貢献者アカウント",
-        "AIアプリケーション"
+        "LLMエージェント",
+        "ツール利用",
+        "セキュリティ評価",
+        "SafeClawBench",
+        "コード実行"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
         "Security for AI",
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "41b7cb7dc029",
+      "title": "GLM-5.2 is probably the most powerful text-only open weights LLM",
+      "summary": "<p>Chinese AI lab <a href=\"https://z.ai/\">Z.ai</a> released GLM-5.2 <a href=\"https://x.com/Zai_org/status/2065704919299235870\">to their coding plan subscribers</a> on June 13th, and then yesterday (June 16th) released the full open weights under an MIT license. Similar in size to their previous GLM-5 and GLM-5.1 releases, this is 753B parameter, <a href=\"https://huggingface.co/zai-org/GLM-5.2\">1.51TB</a> monster - with 40 active parameters (Mixture of Experts). GLM-5.2 is a text input only model",
+      "url": "https://simonwillison.net/2026/Jun/17/glm-52/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-06-18T08:58:39+09:00",
+      "title_ja": "GLM-5.2：テキストのみのオープンウェイトLLMとして強力なモデルが登場",
+      "summary_ja": "中国のAIラボZ.aiが、7530億パラメータのオープンウェイトLLM「GLM-5.2」をMITライセンスで公開しました。このモデルはテキスト入力のみに対応し、Mixture of Experts（MoE）技術を使用しています。以前のGLM-5およびGLM-5.1と比較しても同等の大規模モデルであり、その能力は非常に強力であると評価されています。",
+      "insight": "強力なオープンウェイトLLMの登場は、AI技術の普及と多様なアプリケーション開発を加速させます。SOC/CDCとしては、このようなモデルが防御側で脅威インテリジェンス分析やマルウェア解析などに活用される可能性を検討するとともに、攻撃者による悪用のリスク増大にも警戒する必要があります。AI for SecurityとSecurity for AIの両面でその影響を考慮すべきです。",
+      "importance": "低",
+      "importance_reason": "直接的なセキュリティインシデントや脆弱性報告ではなく、技術トレンドに関する情報のため、現時点での直接的なSOC/CDCへの影響は限定的です。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "GLM-5.2",
+        "LLM",
+        "オープンウェイト",
+        "Mixture of Experts",
+        "AIモデル"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "サービス企画",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "07556cde5058",
+      "title": "ThreatsDay Bulletin: Claude Chat Abuse, NastyC2 npm Packages, Device-Code Phishing + 25 More Stories",
+      "summary": "The internet did not break this week. It got used exactly as designed, which is worse.\n\nSearches were siphoned through shady browser add-ons. AI chat links turned into malware delivery paths. macOS attacks ran in memory and left almost nothing behind. Cloud agents looked like helpers until attackers treated them like open shells.\n\nAdd exposed edge gear, poisoned packages, cash courier scams,",
+      "url": "https://thehackernews.com/2026/06/threatsday-bulletin-claude-chat-abuse.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-19T00:27:54+09:00",
+      "title_ja": "ThreatsDay速報：Claudeチャット悪用、NastyC2 npmパッケージ、デバイスコードフィッシングなど最新脅威",
+      "summary_ja": "今週のサイバー脅威速報では、Claudeチャットの悪用によるマルウェア配信、不正なブラウザアドオンによる検索結果窃取、macOSにおけるインメモリ攻撃、クラウドエージェントの悪用、npmパッケージの汚染、デバイスコードフィッシングなど、多岐にわたる攻撃が報告されました。これらの脅威は、インターネットが設計通りに悪用されており、AI関連の新たな攻撃経路も含まれています。",
+      "insight": "AIチャットの悪用やクラウドエージェントの不正利用など、AI関連の新たな攻撃ベクトルが具体的に示されており、SOC/CDCはこれらの最新の攻撃手法を検知・分析するためのルールセットや監視対象を常に更新する必要があります。特に、開発サプライチェーンへの脅威やクラウド環境におけるエージェントの挙動監視は、MDR/MSSPの提供サービス設計において重要性が増しています。",
+      "importance": "高",
+      "importance_reason": "AI関連を含む多様な最新の攻撃手法が網羅されており、SOC/CDCの監視対象・検知ロジック・運用プロセスの見直しに直接的な影響を与えます。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "フィッシング",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Claudeチャット",
+        "マルウェア配信",
+        "クラウドエージェント",
+        "npmパッケージ",
+        "デバイスコードフィッシング"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
         "顧客課題",
+        "Exposure管理",
+        "Security for AI",
         "MDR/MSSP設計"
       ],
       "views": 0
     },
     {
-      "id": "177b9ef0c4d1",
-      "title": "Securing Multi-Agent GIS Systems: Risk Evaluation and Prompt Hardening Optimization",
-      "summary": "arXiv:2606.17092v1 Announce Type: new \nAbstract: Agentic systems are increasingly integrated with geographic information systems (GIS), where multi-agent coordination enables complex conversational and spatial analysis but introduces security risks. This work presents a security-oriented framework for risk identification, evaluation, and mitigation in a multi-agent GIS system while maintaining adaptability to broader agentic architectures. We test the agentic system of a commercial geospatial pa",
-      "url": "https://arxiv.org/abs/2606.17092",
-      "ai_score": 3,
+      "id": "6ed287e30357",
+      "title": "Apollo Pharmacy Blood Glucose Monitoring System APG-01 BT",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsma-26-169-01.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to obtain sensitive health-related information and prevent legitimate users from establishing a connection with the device.</strong></p>\n<p>The following versions of Apollo Pharmacy Blood Glucose Monitoring System APG-01 BT are affected:</p>\n<ul>\n<li>Blood Glu",
+      "url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-169-01",
+      "ai_score": 1,
       "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-06-17T13:00:00+09:00",
-      "title_ja": "マルチエージェントGISシステムのセキュリティ: リスク評価とプロンプトハーデニング最適化",
-      "summary_ja": "マルチエージェントシステムが地理情報システム（GIS）に統合され、複雑な対話・空間分析を可能にする一方で、セキュリティリスクも増大している。本研究では、マルチエージェントGISシステムにおけるリスク特定・評価・軽減のためのセキュリティ指向フレームワークを提示し、プロンプトハーデニング最適化手法を検証した。これはより広範なエージェントアーキテクチャへの適応も視野に入れている。",
-      "insight": "マルチエージェントシステムの普及に伴い、エージェント間の協調やプロンプト連携に起因する新たなセキュリティリスクが顕在化する。CDCは、AIエージェント間の通信、信頼境界、プロンプトの改ざん可能性などを監視対象に追加し、AIシステム固有のロギング要件を定義する必要がある。プロンプトインジェクションに対する防御策（プロンプトハーデニング）の導入と有効性評価は、Security for AIの重要な一環となる。",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-06-18T21:00:00+09:00",
+      "title_ja": "CISA、Apollo Pharmacyの血糖値モニタリングシステムに脆弱性警告",
+      "summary_ja": "CISAは、Apollo Pharmacyの血糖値モニタリングシステム「APG-01 BT」に存在する複数の脆弱性に関する勧告を発表しました。これらの脆弱性が悪用された場合、攻撃者は機微な健康関連情報を取得できる可能性があり、また正当なユーザーがデバイスに接続することを妨害する恐れがあります。影響を受けるのは特定のバージョンの「APG-01 BT」です。",
+      "insight": "医療機器を含むIoTデバイスの脆弱性管理と監視は、CDCにとって重要な領域です。特に機微な個人健康情報を扱うデバイスは、設定ミスや認証の不備がデータ侵害に直結するため、アセットインベントリ、脆弱性評価、デバイスのネットワーク分離の徹底が求められます。CISA勧告に基づき、類似デバイスの潜在的リスクを評価し、パッチ適用や緩和策を迅速に実行するプロセスがCDCには必要です。",
       "importance": "中",
-      "importance_reason": "マルチエージェントシステムに特化したリスク評価と防御策の研究であり、将来のAIシステムのセキュリティ設計に直接的な示唆を与えるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "importance_reason": "医療機器の脆弱性はデータ侵害やサービス停止に繋がり、人命に関わる可能性もあるため、CDCとして注意すべき情報です。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
       "tag_subs": [
-        "LLMセキュリティ",
-        "プロンプトインジェクション"
+        "設定ミス"
       ],
       "affected_layers": [
-        "アプリ/API",
+        "デバイス/エッジ",
         "データ/AI"
       ],
       "related_keywords": [
-        "マルチエージェントシステム",
-        "GIS",
-        "プロンプトハーデニング",
-        "リスク評価",
-        "LLMセキュリティ"
+        "CISA",
+        "医療機器",
+        "IoTデバイス",
+        "血糖値モニタリング",
+        "個人情報"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
-        "Security for AI",
-        "SOC運用変化",
-        "サービス企画"
+        "Exposure管理",
+        "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "b0d4ca0be1fa",
-      "title": "Timestamp-Aware Spatio-Temporal Graph Contrastive Learning for Network Intrusion Detection",
-      "summary": "arXiv:2606.17109v1 Announce Type: new \nAbstract: Given their effectiveness in modeling the relational structure among network traffic flows, graph neural networks (GNNs) have been widely adopted in network intrusion detection systems (NIDSs). However, most existing GNN-based NIDS approaches focus on the relational structure of traffic flows, and treat them as temporally independent, which limits their ability to cope with evolving attack behaviors. Moreover, their reliance on supervised or semi-",
-      "url": "https://arxiv.org/abs/2606.17109",
-      "ai_score": 3,
+      "id": "5d126231bab9",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "<p>CISA has added one new vulnerability to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-20253\" target=\"_blank\">CVE-2026-20253</a> Splunk Enterprise Missing Authentication for Critical Function Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for malicious cyber actors and poses ",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/06/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "ai_score": 1,
       "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-06-17T13:00:00+09:00",
-      "title_ja": "ネットワーク侵入検知のためのタイムスタンプ対応時空間グラフ対照学習",
-      "summary_ja": "グラフニューラルネットワーク（GNN）はネットワークトラフィックの流れの関係構造モデリングに有効だが、既存のGNNベースのNIDSは時間的独立性を前提としており、進化する攻撃行動への対応が限定的だった。本研究では、タイムスタンプ対応の時空間グラフ対照学習を用いることで、ネットワーク侵入検知の精度向上を目指し、動的に変化する攻撃パターンへの対応能力を向上させる。",
-      "insight": "AI（GNN）をNIDSに応用し、時間軸を考慮することで、従来のNIDSが苦手とした進化する攻撃パターンへの検知能力向上が期待できる。これはSOC/CDCにおけるAI for Securityの有効な応用例であり、将来的にSIEM/NIDS/SOARの検知ロジックを高度化する可能性がある。CDCは、このような研究動向を追いつつ、既存の検知システムで取りこぼされている高度な攻撃に対してAIによるパターン認識能力を活用する方向性を検討すべきである。",
-      "importance": "中",
-      "importance_reason": "ネットワーク侵入検知におけるAI技術の進化を示しており、AI for Securityの具体的な応用例として将来のSOC/CDCの検知能力向上に繋がるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "AIを使った防御",
-        "研究・論文"
-      ],
-      "affected_layers": [
-        "ネットワーク"
-      ],
-      "related_keywords": [
-        "グラフニューラルネットワーク",
-        "NIDS",
-        "侵入検知",
-        "時空間学習",
-        "AIを使った防御"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "AI for Security",
-        "SOC運用変化",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "663c986a03fd",
-      "title": "Pickle in the Middle – Hijacking Vertex AI Model Uploads for Cross-Tenant RCE",
-      "summary": "<p>Unit 42 discovered a Vertex AI Python SDK vulnerability that allows remote code execution via bucket squatting. Read the article for more. </p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/hijacking-vertex-ai-model/\">Pickle in the Middle – Hijacking Vertex AI Model Uploads for Cross-Tenant RCE</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
-      "url": "https://unit42.paloaltonetworks.com/hijacking-vertex-ai-model/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "Palo Alto Unit 42",
+      "source_name": "CISA",
       "source_tier": "A",
-      "published": "2026-06-16T19:00:29+09:00",
-      "title_ja": "Vertex AIのモデルアップロードでクロステナントRCE、バケットスクワッティング悪用",
-      "summary_ja": "Palo Alto Networks Unit 42は、Google CloudのVertex AI Python SDKに脆弱性を発見した。この脆弱性は、バケットスクワッティングという手法を悪用することで、モデルアップロードプロセスをハイジャックし、クロステナントでのリモートコード実行（RCE）を可能にするもの。これにより、異なるテナント間でコードが実行されるリスクがある。",
-      "insight": "クラウドAIプラットフォームにおけるモデルのライフサイクル管理、特にモデルアップロード時のセキュリティは、AIシステム全体の安全性に直結する。CDCは、クラウドAIプラットフォームの監視対象を、モデルのアップロードやデプロイ、関連するストレージバケットの操作にまで拡大し、不審な挙動を検知するルールを策定する必要がある。AIモデルのサプライチェーンにおける整合性検証プロセスも強化が求められ、これは「モデル・推論層」および「データ・インフラ層」のセキュリティに深く関わる。",
+      "published": "2026-06-18T21:00:00+09:00",
+      "title_ja": "CISAが既知の悪用されている脆弱性カタログにSplunk Enterpriseの脆弱性を追加",
+      "summary_ja": "CISAは、既知の悪用されている脆弱性（KEV）カタログに新たに1つの脆弱性を追加しました。追加されたのは、Splunk Enterpriseにおける「重要な機能に対する認証の欠如」の脆弱性（CVE-2026-20253）です。CISAは、この種の脆弱性が悪意あるサイバーアクターにとって頻繁な攻撃ベクトルであると警告しています。",
+      "insight": "KEVカタログへの追加は、当該脆弱性が既に積極的に悪用されていることを意味し、Splunk Enterpriseを使用している組織は緊急の対応が必要です。SOC/CDCは、自社および顧客環境におけるKEVに対する露出を定期的に評価し、パッチ管理や緩和策の適用状況を迅速に確認するプロセスを確立する必要があります。これは脆弱性管理とインシデント対応の最優先事項であり、CISOへの報告事項でもあります。",
       "importance": "高",
-      "importance_reason": "主要なクラウドAIプラットフォームの脆弱性であり、AIモデルのサプライチェーン全体に影響を与え、クロステナントRCEという深刻な結果をもたらす可能性があるため。",
+      "importance_reason": "CISAのKEVカタログに追加された脆弱性は、即時の対策が必須となるため、SOC/CDCにとって非常に重要です。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
         "エクスプロイト",
-        "設定ミス"
+        "CVE",
+        "認証バイパス"
       ],
       "affected_layers": [
-        "クラウド/サーバー",
-        "データ/AI"
+        "アプリ/API",
+        "クラウド/サーバー"
       ],
       "related_keywords": [
-        "Vertex AI",
-        "Python SDK",
-        "リモートコード実行",
-        "バケットスクワッティング",
-        "クラウドAIプラットフォーム"
+        "CISA KEV",
+        "Splunk Enterprise",
+        "CVE-2026-20253",
+        "認証の欠如",
+        "エクスプロイト"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
-        "Security for AI",
+        "Exposure管理",
         "SOC運用変化",
-        "顧客課題",
-        "MDR/MSSP設計"
+        "CISO報告"
       ],
       "views": 0
     },
     {
-      "id": "1cbddeefc936",
-      "title": "Rockwell Automation Logix 5370 & 5570 Controllers Vulnerable To Denial of Service Via CIP",
-      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-167-03.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of this vulnerability could cause a denial-of-service condition that may result in a major nonrecoverable fault (MNRF).</strong></p>\n<p>The following versions of Rockwell Automation Logix 5370 &amp; 5570 Controllers Vulnerable To Denial of Service Via CIP are affected:</p>\n<ul>\n<li>CompactLogix 5370 &lt;=34.0",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-167-03",
+      "id": "eec0a4c62049",
+      "title": "Novo Nordisk Breach Exposes Software Development Pipeline Risk",
+      "summary": "A leaked GitHub token underscores what most organizations get wrong: Treating secrets management as a tooling problem rather than an identity problem.",
+      "url": "https://www.darkreading.com/cyber-risk/novo-nordisk-breach-exposes-dev-pipeline-risk",
       "ai_score": 1,
       "cdc_pre_score": 1,
-      "source_name": "CISA",
-      "source_tier": "A",
-      "published": "2026-06-16T21:00:00+09:00",
-      "title_ja": "Rockwell Automation LogixコントローラにCIP経由のDoS脆弱性",
-      "summary_ja": "CISAは、Rockwell AutomationのLogix 5370および5570コントローラにサービス拒否（DoS）脆弱性があることを警告した。この脆弱性はCommon Industrial Protocol (CIP)を介して悪用され、主要な回復不能な障害（MNRF）を引き起こし、システムの動作を停止させる可能性がある。",
-      "insight": "OT/ICS環境におけるDoS脆弱性は、物理システムに重大な影響を及ぼし、事業継続性に直結する。CDCは、IT/OT融合の監視体制を強化し、OT環境特有のプロトコル（CIPなど）やデバイスに対する脆弱性管理、検知・対応プロセスを統合する必要がある。OTシステムの可用性喪失は経営層への報告事項となるため、ビジネス影響説明の能力も重要である。",
-      "importance": "中",
-      "importance_reason": "産業用制御システムの重要なコントローラにおけるDoS脆弱性であり、OT環境の事業継続性に直接的な影響を与えるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-06-19T05:05:47+09:00",
+      "title_ja": "Novo Nordisk情報漏洩：ソフトウェア開発パイプラインのリスクが露呈、シークレット管理はID問題",
+      "summary_ja": "製薬会社Novo Nordiskの情報漏洩事件では、流出したGitHubトークンが問題の根源として挙げられています。この記事では、この事態は多くの組織が「シークレット管理を単なるツール問題として捉え、アイデンティティ問題として認識していない」という根本的な誤りを浮き彫りにしたと指摘しています。開発パイプラインにおけるクレデンシャル管理の不備が、深刻なデータ侵害に繋がるリスクを示唆しています。",
+      "insight": "開発パイプラインにおけるクレデンシャル（APIキー、トークンなど）の管理は、IDとアクセス管理（IAM）の課題として再認識されるべきです。SOC/CDCは、開発環境におけるAPIキーやトークンの利用状況、アクセス権限を監視し、特にIdentity Threat Detection and Response (ITDR) の観点からDevSecOpsプロセス全体を監視対象に含める必要があります。これはAIサービスのAPIキー管理とも共通する課題です。",
+      "importance": "高",
+      "importance_reason": "DevSecOpsにおけるクレデンシャル管理の課題は広範な組織に影響し、AI関連のクレデンシャル保護にも直接関連するため、SOC/CDCにとって極めて重要です。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
       "tag_subs": [
-        "DDoS",
-        "CVE"
+        "データ侵害",
+        "クレデンシャル窃取"
       ],
       "affected_layers": [
-        "デバイス/エッジ"
+        "アプリ/API",
+        "ガバナンス/規制",
+        "クラウド/サーバー"
       ],
       "related_keywords": [
-        "Rockwell Automation",
-        "Logixコントローラ",
-        "DoS",
-        "CIP",
-        "ICS"
+        "Novo Nordisk",
+        "GitHubトークン",
+        "シークレット管理",
+        "DevSecOps",
+        "Identity and Access Management"
       ],
-      "cdc_relevance": 2,
+      "cdc_relevance": 3,
       "cdc_context": [
-        "SOC運用変化",
-        "顧客課題",
-        "Exposure管理"
-      ],
-      "views": 0
-    },
-    {
-      "id": "d6133f7ffe50",
-      "title": "Rockwell Automation RSLinx",
-      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-167-02.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of this vulnerability can lead to a denial of service, where the application will become unresponsive and will not recover on its own.</strong></p>\n<p>The following versions of RSLinx Classic Third-Party Vulnerability are affected:</p>\n<ul>\n<li>RSLinx Classic &lt;=4.50.00 (CVE-2020-13573)</li>\n</ul>\n<div clas",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-167-02",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "CISA",
-      "source_tier": "A",
-      "published": "2026-06-16T21:00:00+09:00",
-      "title_ja": "Rockwell Automation RSLinxにDoS脆弱性",
-      "summary_ja": "CISAは、Rockwell AutomationのRSLinx Classicソフトウェアにサービス拒否（DoS）脆弱性（CVE-2020-13573）があることを警告した。この脆弱性が悪用されると、アプリケーションが応答不能となり、自己回復できない状態に陥る可能性がある。影響を受けるのはRSLinx Classic 4.50.00以下のバージョンである。",
-      "insight": "記事6と同様に、ICS/OT環境におけるDoS脆弱性であり、制御システムの可用性喪失リスクを示す。CDCは、ICS環境に存在するRSLinxのような重要なソフトウェアの脆弱性管理を徹底し、パッチ適用計画や代替策の評価を行う必要がある。これらのOTインシデントは、事業停止という形で経営層への報告が必要となるため、ビジネス影響説明能力も問われる。",
-      "importance": "中",
-      "importance_reason": "産業用制御システムの重要なソフトウェアにおけるDoS脆弱性であり、OT環境の事業継続性に直接的な影響を与えるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "DDoS",
-        "CVE",
-        "パッチ未適用"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ"
-      ],
-      "related_keywords": [
-        "Rockwell Automation",
-        "RSLinx Classic",
-        "DoS",
-        "CVE-2020-13573",
-        "ICS"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
+        "Identity/ITDR",
         "SOC運用変化",
         "顧客課題",
         "Exposure管理",
@@ -288,127 +329,501 @@
       "views": 0
     },
     {
-      "id": "f3f7be93d21a",
-      "title": "1Password Acquires Apono in Reported $250M-$300M Deal",
-      "summary": "<p>Apono specializes in just-in-time access governance technology for humans, machines, and AI agents.</p>\n<p>The post <a href=\"https://www.securityweek.com/1password-acquires-apono-in-reported-250m-300m-deal/\">1Password Acquires Apono in Reported $250M-$300M Deal</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/1password-acquires-apono-in-reported-250m-300m-deal/",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-06-17T21:36:46+09:00",
-      "title_ja": "1PasswordがAponoを買収、AIエージェントのアクセスガバナンス強化へ",
-      "summary_ja": "パスワード管理サービスを提供する1Passwordが、ジャストインタイムアクセスガバナンス技術を手がけるAponoを推定2億5000万〜3億ドルで買収した。Aponoの技術は、人間だけでなくマシンやAIエージェントのアクセス管理にも対応しており、AIエージェントの認証認可・権限管理の重要性が高まっていることを示唆する。",
-      "insight": "AIエージェントの普及に伴い、そのアイデンティティと権限管理がSecurity for AIの重要な要素として認識され、M&Aを通じて市場が形成されている。CDCは、AIエージェントの「人間との委任関係」「セッション管理」「権限ギャップ」といった課題に対応するため、ITDR（Identity Threat Detection and Response）の範囲をAIエージェントにまで拡大し、AIエージェント固有のアクセスログや権限変更の監視を強化する必要がある。",
-      "importance": "高",
-      "importance_reason": "AIエージェントの普及に伴う新たなセキュリティ課題（アイデンティティ・権限管理）への市場の対応を示し、Security for AIの重要な方向性を提示しているため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
-      "tag_subs": [
-        "M&A",
-        "市場トレンド"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "1Password",
-        "Apono",
-        "M&A",
-        "アクセスガバナンス",
-        "AIエージェント"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "Identity/ITDR",
-        "Security for AI",
-        "SOC運用変化",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "e5a3137c832e",
-      "title": "Tenet Security Emerges From Stealth With $6 Million Seed Funding",
-      "summary": "<p>Tenet aims to detect and stop dangerous AI agentic behavior in real time.</p>\n<p>The post <a href=\"https://www.securityweek.com/tenet-security-emerges-from-stealth-with-6-million-seed-funding/\">Tenet Security Emerges From Stealth With $6 Million Seed Funding</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/tenet-security-emerges-from-stealth-with-6-million-seed-funding/",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-06-17T21:00:00+09:00",
-      "title_ja": "Tenet Securityが600万ドルのシード資金を調達、AIエージェントの危険な挙動をリアルタイム検知",
-      "summary_ja": "Tenet Securityが600万ドルのシード資金を調達し、AIエージェントの危険な挙動をリアルタイムで検知・停止するソリューションを提供すると発表した。これは、AIエージェントの自律的な判断・行動に伴う新たなセキュリティリスクに対応するためのスタートアップの動きを示すものだ。",
-      "insight": "AIエージェントの「ツール実行」「エージェント間通信」「タスク連鎖」といった動的な挙動をリアルタイムで監視し、異常を検知・停止するソリューションは、従来のSIEM/SOARでは困難だった新たな領域をカバーする。CDCは、このような専門ソリューションとの連携や、AIエージェントのランタイム挙動を詳細にロギングし、それを分析する仕組みを検討する必要がある。これはAIエージェントの「初動判断支援」や「自動対応」の品質保証にも関わる重要な領域となる。",
-      "importance": "高",
-      "importance_reason": "AIエージェント固有のランタイムセキュリティに特化したソリューションの登場を示し、Security for AI分野における市場と技術の進化を示す重要な動きであるため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
-      "tag_subs": [
-        "資金調達",
-        "スタートアップ",
-        "製品リリース"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "Tenet Security",
-        "AIエージェント",
-        "リアルタイム検知",
-        "危険な挙動",
-        "スタートアップ"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "Security for AI",
-        "SOC運用変化",
-        "MDR/MSSP設計",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "74178f07d12b",
-      "title": "UK Social Media Ban for Minors Has Privacy Experts Worried",
-      "summary": "The UK will ban adolescents under 16 years old from user-to-user social media platforms, despite age verification issues and privacy concerns.",
-      "url": "https://www.darkreading.com/cyber-risk/uk-social-media-ban-privacy-experts-worried",
+      "id": "2d57260d68c7",
+      "title": "FIFA Bug Exposes World Cup Streams to Remote Takeover",
+      "summary": "A hacker could have &quot;Rickrolled&quot; the World Cup — or worse — thanks to FIFA's unenforced Entra access controls.",
+      "url": "https://www.darkreading.com/application-security/fifa-bug-world-cup-streams-remote-takeover",
       "ai_score": 1,
       "cdc_pre_score": 1,
       "source_name": "Dark Reading",
       "source_tier": "B",
-      "published": "2026-06-17T17:00:00+09:00",
-      "title_ja": "イギリスの未成年者向けソーシャルメディア禁止法案、プライバシー専門家が懸念",
-      "summary_ja": "イギリスで16歳未満の未成年者に対するソーシャルメディアプラットフォームの利用禁止法案が提出され、年齢確認の課題やプライバシー保護の懸念が専門家から提起されている。この法案は、未成年者のオンライン保護を目的としているが、実装上の課題も多いとみられている。",
-      "insight": "この記事はAIセキュリティに直接関連するものではないが、一般データ保護やプライバシー規制の動向として捉えることができる。CDC/SOCは、顧客が提供するサービスが各国・地域のデータプライバシー規制に準拠しているかを確認し、関連するデータ収集・処理プロセスにおけるプライバシーリスクを管理する必要がある。特にAIシステムが個人データを扱う場合には、規制要件の遵守が必須となる。",
-      "importance": "低",
-      "importance_reason": "AIセキュリティやSOC/CDCの運用に直接的な影響は限定的であり、一般的なプライバシー規制の動向に属するため。",
-      "tag_main_id": "policy",
-      "tag_main_label": "規制・政策",
+      "published": "2026-06-19T03:20:07+09:00",
+      "title_ja": "FIFAのバグによりワールドカップ配信がリモート乗っ取りの危機に",
+      "summary_ja": "FIFAのEntraアクセス制御設定の不備が原因で、ワールドカップのストリームがリモートから乗っ取られる可能性があったことが明らかになりました。この脆弱性は、適切なアクセス管理が欠如していたことに起因し、最悪の場合、ストリームが不正に操作される事態を招く恐れがありました。",
+      "insight": "クラウドIAMサービス（Microsoft Entra IDなど）の設定ミスは、深刻なセキュリティリスクを引き起こし、サービス乗っ取りやデータ改ざんに繋がる可能性があります。SOC/CDCは、クラウド環境におけるIAM設定の監査と継続的な監視を強化し、設定不備による潜在的な露出を早期に検知・対応するプロセスを構築する必要があります。特に、重要なシステムやイベントに関わるサービスのアクセス制御は最優先で確認すべきです。",
+      "importance": "高",
+      "importance_reason": "アクセス制御の不備はクラウドサービス利用企業に共通する重大なリスクであり、大規模なサービス停止や信用失墜に繋がりかねないため、SOC/CDCにとって重要です。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
       "tag_subs": [
-        "国内規制",
-        "プライバシー侵害"
+        "設定ミス",
+        "認証バイパス"
       ],
       "affected_layers": [
+        "アプリ/API",
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "イギリス",
-        "ソーシャルメディア",
-        "未成年者",
-        "プライバシー",
-        "年齢確認"
+        "FIFA",
+        "Entra ID",
+        "アクセス制御",
+        "設定ミス",
+        "リモート乗っ取り"
       ],
-      "cdc_relevance": 1,
+      "cdc_relevance": 3,
       "cdc_context": [
-        "CISO報告"
+        "Exposure管理",
+        "顧客課題",
+        "SOC運用変化",
+        "Identity/ITDR"
+      ],
+      "views": 0
+    },
+    {
+      "id": "48b37da98813",
+      "title": "‘Popa’ Botnet Linked to Publicly-Traded Israeli Firm",
+      "summary": "For the past four years, a sprawling Android-based botnet called Popa has forced millions of consumer TV boxes to relay Internet traffic linked to advertising fraud, account takeovers, and mass data-scraping efforts. This week, researchers from multiple security firms concluded that the Popa botnet is linked to NetNut, a \"residential proxy\" provider operated by the publicly-traded Israeli firm Alarum Technologies Ltd [NASDAQ: ALAR].",
+      "url": "https://krebsonsecurity.com/2026/06/popa-botnet-linked-to-publicly-traded-israeli-firm/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Krebs on Security",
+      "source_tier": "B",
+      "published": "2026-06-19T02:37:58+09:00",
+      "title_ja": "Popaボットネットが上場イスラエル企業と関連付けられる",
+      "summary_ja": "過去4年間、Androidベースの広範なボットネット「Popa」が、数百万台のコンシューマー向けTVボックスを悪用し、広告詐欺、アカウント乗っ取り、大量データスクレイピングに関連するインターネットトラフィックを中継してきました。セキュリティ研究者らは今週、「Popa」ボットネットが、公開企業Alarum Technologies Ltd.（NASDAQ: ALAR）が運営する「住宅プロキシ」プロバイダーNetNutと関連があるという結論に至りました。",
+      "insight": "組み込みデバイスやスマートTVボックスがボットネットのインフラとして悪用される事例は、IoTデバイスのセキュリティリスクを改めて浮き彫りにします。SOC/CDC/MSSPは、顧客環境における異常なネットワークトラフィック、特にIoTデバイスからの外部C2通信やスクレイピング活動の兆候を監視し、これらの挙動を分析する能力を持つ必要があります。これはMDRサービスにおける異常検知の強化に繋がります。",
+      "importance": "中",
+      "importance_reason": "IoTデバイスのボットネット悪用は広範囲に影響し、特定の企業との関連が指摘されたことで、企業責任の観点からも重要です。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Popaボットネット",
+        "Android",
+        "TVボックス",
+        "住宅プロキシ",
+        "NetNut"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "顧客課題",
+        "MDR/MSSP設計",
+        "SOC運用変化"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-06-19",
+      "articles": [
+        {
+          "id": "ecc0d33c2b0b",
+          "title": "Malicious JetBrains Plugins Steal AI API Keys as Chrome Extensions Capture Chatbot Chats",
+          "summary": "Cybersecurity researchers have flagged a \"coordinated malware campaign\" on the JetBrains Marketplace that has published no less than 15 malicious plugins capable of exfiltrating artificial intelligence (AI) provider keys.\n\n\"Every plugin poses as an AI coding assistant built on DeepSeek and other large language models, offering chat, commit messages, code review, bug finding, and unit tests,\"",
+          "url": "https://thehackernews.com/2026/06/malicious-jetbrains-plugins-steal-ai.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-06-17T22:51:58+09:00",
+          "title_ja": "悪意あるJetBrainsプラグインがAI APIキーを窃取、Chrome拡張機能がチャット履歴を捕捉",
+          "summary_ja": "サイバーセキュリティ研究者らは、JetBrains Marketplaceで「協調的なマルウェアキャンペーン」を発見しました。少なくとも15個の悪意あるプラグインが公開され、これらはAIプロバイダーのAPIキーを窃取する能力を持っています。これらのプラグインはDeepSeekなどのLLMを基盤としたAIコーディングアシスタントを装い、チャット、コミットメッセージ、コードレビューなどの機能を提供していました。同時に、Chrome拡張機能がチャットボットの会話を傍受している事例も報告されています。",
+          "insight": "開発環境で使用されるAI関連プラグインの信頼性検証と、AIサービスのAPIキー管理がSOC/CDCの新たな監視対象となります。高価値なAI APIキーの異常な利用を検知するためのログ監視強化、特に開発者ワークステーションにおけるAIツールの挙動モニタリングが不可欠です。AIエージェントリスクモデルの「⑤アイデンティティ・権限層」および「②ツール・実行層」に直接関連します。",
+          "importance": "高",
+          "importance_reason": "開発サプライチェーンにおけるAI関連の新たな攻撃経路であり、AIサービスのクレデンシャル窃取に直結するため、即時対応と監視強化が求められます。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "クレデンシャル窃取"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "JetBrains",
+            "プラグイン",
+            "AI APIキー",
+            "クレデンシャル窃取",
+            "開発ツール"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "Identity/ITDR",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "4f6b1102b4c8",
+          "title": "Conflict-Aware Retriever Editing for Knowledge Injection Attacks on LLM-Based RAG Systems",
+          "summary": "arXiv:2606.18310v1 Announce Type: new \nAbstract: Injecting malicious knowledge into retrieval-augmented generation (RAG) systems can manipulate retrieved evidence and mislead downstream generation, posing a serious security threat for AI applications. Existing RAG injection attacks mainly rely on manipulating external knowledge bases, such as crafting malicious corpus. However, the synthetic text crafted by such data-centric methods could be detectable, leading to the failure of attacks. Beyond ",
+          "url": "https://arxiv.org/abs/2606.18310",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-06-18T13:00:00+09:00",
+          "title_ja": "LLMベースRAGシステムへの知識注入攻撃：既存手法を超えた検出困難なリトリーバー編集手法",
+          "summary_ja": "RAG（検索拡張生成）システムにおいて、悪意ある知識を注入し、取得される証拠を操作してLLMの生成を誤誘導するセキュリティ脅威が指摘されています。従来のRAG注入攻撃は主に外部知識ベースの操作に依存していましたが、本研究では、合成テキストが検出されやすいデータセントリックな方法を超える、新たな知識注入攻撃手法「Conflict-Aware Retriever Editing」を提案。これにより、攻撃がより検出困難になる可能性が示唆されています。",
+          "insight": "RAGシステムに対する攻撃はプロンプトインジェクションに留まらず、その基盤となる知識ベース（ベクターDB等）の整合性を直接操作する方向へ進化しています。CDCは、RAGシステムの知識ベースへの不審な変更や、レトリーバーの動作異常を検知するためのログ監視、および知識ベースの変更管理プロセスを強化する必要があります。AIエージェントリスクモデルの「④データ・インフラ層」に該当します。",
+          "importance": "中",
+          "importance_reason": "RAGシステムの新たな攻撃経路であり、AIシステムの信頼性に影響を与える可能性があるため、中期的な防御策の検討が求められます。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "モデル汚染",
+            "敵対的攻撃"
+          ],
+          "affected_layers": [
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "RAG",
+            "知識注入",
+            "モデル汚染",
+            "LLM",
+            "Retriever Editing"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Security for AI",
+            "サービス企画",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "808772756f94",
+          "title": "SafeClawBench: Separating Semantic, Audit-Evidence, and Sandbox Harm in Tool-Using LLM Agents",
+          "summary": "arXiv:2606.18356v1 Announce Type: new \nAbstract: Tool-using language-model agents introduce security failures that go beyond unsafe text: they can disclose protected objects, write persistent memory, send messages, modify databases, or trigger harmful code and tool effects. Existing evaluations often collapse these stages into a single attack success rate, making it difficult to tell whether a model merely agreed with an attacker or actually produced observable harm. We introduce SafeClawBench, ",
+          "url": "https://arxiv.org/abs/2606.18356",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-06-18T13:00:00+09:00",
+          "title_ja": "ツール利用型LLMエージェントにおける有害行為の評価指標：SafeClawBenchの提案",
+          "summary_ja": "ツール利用型LLMエージェントは、単に不安全なテキストを生成するだけでなく、保護されたオブジェクトの開示、永続メモリへの書き込み、メッセージ送信、データベース改変、有害なコードやツール効果のトリガーなど、より広範なセキュリティ障害を引き起こします。既存の評価方法ではこれらの段階を単一の攻撃成功率に集約してしまうため、モデルが攻撃者に同意したのか、実際に観測可能な損害を生んだのかが不明瞭でした。本稿では、これらの有害行為を分離して評価するためのSafeClawBenchを提案しています。",
+          "insight": "AIエージェントのリスクは、LLMの出力テキストだけでなく、それが実行するツールや操作によって引き起こされるシステムへの実害へと拡大しています。SOC/CDCは、AIエージェントのツール利用履歴、実行されたコマンド、APIコール、データベース操作などを詳細にログ取得・監視し、潜在的な悪用を検知するメカニズムを構築する必要があります。これはAIエージェントリスクモデルの「②ツール・実行層」および「③マルチエージェント層」に直接関連し、監査証跡の確保も重要です。",
+          "importance": "高",
+          "importance_reason": "AIエージェントの普及に伴い、その悪用による実害リスクを具体的に評価する枠組みが提示されており、今後のSOC/CDCの監視設計に直接的な影響があります。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "LLMセキュリティ",
+            "AIを使った防御"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "LLMエージェント",
+            "ツール利用",
+            "セキュリティ評価",
+            "SafeClawBench",
+            "コード実行"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "サービス企画",
+            "CISO報告"
+          ],
+          "views": 0
+        },
+        {
+          "id": "41b7cb7dc029",
+          "title": "GLM-5.2 is probably the most powerful text-only open weights LLM",
+          "summary": "<p>Chinese AI lab <a href=\"https://z.ai/\">Z.ai</a> released GLM-5.2 <a href=\"https://x.com/Zai_org/status/2065704919299235870\">to their coding plan subscribers</a> on June 13th, and then yesterday (June 16th) released the full open weights under an MIT license. Similar in size to their previous GLM-5 and GLM-5.1 releases, this is 753B parameter, <a href=\"https://huggingface.co/zai-org/GLM-5.2\">1.51TB</a> monster - with 40 active parameters (Mixture of Experts). GLM-5.2 is a text input only model",
+          "url": "https://simonwillison.net/2026/Jun/17/glm-52/#atom-everything",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Simon Willison",
+          "source_tier": "C",
+          "published": "2026-06-18T08:58:39+09:00",
+          "title_ja": "GLM-5.2：テキストのみのオープンウェイトLLMとして強力なモデルが登場",
+          "summary_ja": "中国のAIラボZ.aiが、7530億パラメータのオープンウェイトLLM「GLM-5.2」をMITライセンスで公開しました。このモデルはテキスト入力のみに対応し、Mixture of Experts（MoE）技術を使用しています。以前のGLM-5およびGLM-5.1と比較しても同等の大規模モデルであり、その能力は非常に強力であると評価されています。",
+          "insight": "強力なオープンウェイトLLMの登場は、AI技術の普及と多様なアプリケーション開発を加速させます。SOC/CDCとしては、このようなモデルが防御側で脅威インテリジェンス分析やマルウェア解析などに活用される可能性を検討するとともに、攻撃者による悪用のリスク増大にも警戒する必要があります。AI for SecurityとSecurity for AIの両面でその影響を考慮すべきです。",
+          "importance": "低",
+          "importance_reason": "直接的なセキュリティインシデントや脆弱性報告ではなく、技術トレンドに関する情報のため、現時点での直接的なSOC/CDCへの影響は限定的です。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "製品リリース",
+            "研究・論文"
+          ],
+          "affected_layers": [
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "GLM-5.2",
+            "LLM",
+            "オープンウェイト",
+            "Mixture of Experts",
+            "AIモデル"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "サービス企画",
+            "AI for Security"
+          ],
+          "views": 0
+        },
+        {
+          "id": "07556cde5058",
+          "title": "ThreatsDay Bulletin: Claude Chat Abuse, NastyC2 npm Packages, Device-Code Phishing + 25 More Stories",
+          "summary": "The internet did not break this week. It got used exactly as designed, which is worse.\n\nSearches were siphoned through shady browser add-ons. AI chat links turned into malware delivery paths. macOS attacks ran in memory and left almost nothing behind. Cloud agents looked like helpers until attackers treated them like open shells.\n\nAdd exposed edge gear, poisoned packages, cash courier scams,",
+          "url": "https://thehackernews.com/2026/06/threatsday-bulletin-claude-chat-abuse.html",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-06-19T00:27:54+09:00",
+          "title_ja": "ThreatsDay速報：Claudeチャット悪用、NastyC2 npmパッケージ、デバイスコードフィッシングなど最新脅威",
+          "summary_ja": "今週のサイバー脅威速報では、Claudeチャットの悪用によるマルウェア配信、不正なブラウザアドオンによる検索結果窃取、macOSにおけるインメモリ攻撃、クラウドエージェントの悪用、npmパッケージの汚染、デバイスコードフィッシングなど、多岐にわたる攻撃が報告されました。これらの脅威は、インターネットが設計通りに悪用されており、AI関連の新たな攻撃経路も含まれています。",
+          "insight": "AIチャットの悪用やクラウドエージェントの不正利用など、AI関連の新たな攻撃ベクトルが具体的に示されており、SOC/CDCはこれらの最新の攻撃手法を検知・分析するためのルールセットや監視対象を常に更新する必要があります。特に、開発サプライチェーンへの脅威やクラウド環境におけるエージェントの挙動監視は、MDR/MSSPの提供サービス設計において重要性が増しています。",
+          "importance": "高",
+          "importance_reason": "AI関連を含む多様な最新の攻撃手法が網羅されており、SOC/CDCの監視対象・検知ロジック・運用プロセスの見直しに直接的な影響を与えます。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "マルウェア",
+            "フィッシング",
+            "サプライチェーン攻撃"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "Claudeチャット",
+            "マルウェア配信",
+            "クラウドエージェント",
+            "npmパッケージ",
+            "デバイスコードフィッシング"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "顧客課題",
+            "Exposure管理",
+            "Security for AI",
+            "MDR/MSSP設計"
+          ],
+          "views": 0
+        },
+        {
+          "id": "6ed287e30357",
+          "title": "Apollo Pharmacy Blood Glucose Monitoring System APG-01 BT",
+          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsma-26-169-01.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to obtain sensitive health-related information and prevent legitimate users from establishing a connection with the device.</strong></p>\n<p>The following versions of Apollo Pharmacy Blood Glucose Monitoring System APG-01 BT are affected:</p>\n<ul>\n<li>Blood Glu",
+          "url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-169-01",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-06-18T21:00:00+09:00",
+          "title_ja": "CISA、Apollo Pharmacyの血糖値モニタリングシステムに脆弱性警告",
+          "summary_ja": "CISAは、Apollo Pharmacyの血糖値モニタリングシステム「APG-01 BT」に存在する複数の脆弱性に関する勧告を発表しました。これらの脆弱性が悪用された場合、攻撃者は機微な健康関連情報を取得できる可能性があり、また正当なユーザーがデバイスに接続することを妨害する恐れがあります。影響を受けるのは特定のバージョンの「APG-01 BT」です。",
+          "insight": "医療機器を含むIoTデバイスの脆弱性管理と監視は、CDCにとって重要な領域です。特に機微な個人健康情報を扱うデバイスは、設定ミスや認証の不備がデータ侵害に直結するため、アセットインベントリ、脆弱性評価、デバイスのネットワーク分離の徹底が求められます。CISA勧告に基づき、類似デバイスの潜在的リスクを評価し、パッチ適用や緩和策を迅速に実行するプロセスがCDCには必要です。",
+          "importance": "中",
+          "importance_reason": "医療機器の脆弱性はデータ侵害やサービス停止に繋がり、人命に関わる可能性もあるため、CDCとして注意すべき情報です。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "設定ミス"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "CISA",
+            "医療機器",
+            "IoTデバイス",
+            "血糖値モニタリング",
+            "個人情報"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "5d126231bab9",
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "summary": "<p>CISA has added one new vulnerability to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-20253\" target=\"_blank\">CVE-2026-20253</a> Splunk Enterprise Missing Authentication for Critical Function Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for malicious cyber actors and poses ",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/06/18/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-06-18T21:00:00+09:00",
+          "title_ja": "CISAが既知の悪用されている脆弱性カタログにSplunk Enterpriseの脆弱性を追加",
+          "summary_ja": "CISAは、既知の悪用されている脆弱性（KEV）カタログに新たに1つの脆弱性を追加しました。追加されたのは、Splunk Enterpriseにおける「重要な機能に対する認証の欠如」の脆弱性（CVE-2026-20253）です。CISAは、この種の脆弱性が悪意あるサイバーアクターにとって頻繁な攻撃ベクトルであると警告しています。",
+          "insight": "KEVカタログへの追加は、当該脆弱性が既に積極的に悪用されていることを意味し、Splunk Enterpriseを使用している組織は緊急の対応が必要です。SOC/CDCは、自社および顧客環境におけるKEVに対する露出を定期的に評価し、パッチ管理や緩和策の適用状況を迅速に確認するプロセスを確立する必要があります。これは脆弱性管理とインシデント対応の最優先事項であり、CISOへの報告事項でもあります。",
+          "importance": "高",
+          "importance_reason": "CISAのKEVカタログに追加された脆弱性は、即時の対策が必須となるため、SOC/CDCにとって非常に重要です。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "エクスプロイト",
+            "CVE",
+            "認証バイパス"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "CISA KEV",
+            "Splunk Enterprise",
+            "CVE-2026-20253",
+            "認証の欠如",
+            "エクスプロイト"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化",
+            "CISO報告"
+          ],
+          "views": 0
+        },
+        {
+          "id": "eec0a4c62049",
+          "title": "Novo Nordisk Breach Exposes Software Development Pipeline Risk",
+          "summary": "A leaked GitHub token underscores what most organizations get wrong: Treating secrets management as a tooling problem rather than an identity problem.",
+          "url": "https://www.darkreading.com/cyber-risk/novo-nordisk-breach-exposes-dev-pipeline-risk",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-06-19T05:05:47+09:00",
+          "title_ja": "Novo Nordisk情報漏洩：ソフトウェア開発パイプラインのリスクが露呈、シークレット管理はID問題",
+          "summary_ja": "製薬会社Novo Nordiskの情報漏洩事件では、流出したGitHubトークンが問題の根源として挙げられています。この記事では、この事態は多くの組織が「シークレット管理を単なるツール問題として捉え、アイデンティティ問題として認識していない」という根本的な誤りを浮き彫りにしたと指摘しています。開発パイプラインにおけるクレデンシャル管理の不備が、深刻なデータ侵害に繋がるリスクを示唆しています。",
+          "insight": "開発パイプラインにおけるクレデンシャル（APIキー、トークンなど）の管理は、IDとアクセス管理（IAM）の課題として再認識されるべきです。SOC/CDCは、開発環境におけるAPIキーやトークンの利用状況、アクセス権限を監視し、特にIdentity Threat Detection and Response (ITDR) の観点からDevSecOpsプロセス全体を監視対象に含める必要があります。これはAIサービスのAPIキー管理とも共通する課題です。",
+          "importance": "高",
+          "importance_reason": "DevSecOpsにおけるクレデンシャル管理の課題は広範な組織に影響し、AI関連のクレデンシャル保護にも直接関連するため、SOC/CDCにとって極めて重要です。",
+          "tag_main_id": "incident",
+          "tag_main_label": "インシデント",
+          "tag_subs": [
+            "データ侵害",
+            "クレデンシャル窃取"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "ガバナンス/規制",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "Novo Nordisk",
+            "GitHubトークン",
+            "シークレット管理",
+            "DevSecOps",
+            "Identity and Access Management"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Identity/ITDR",
+            "SOC運用変化",
+            "顧客課題",
+            "Exposure管理",
+            "CISO報告"
+          ],
+          "views": 0
+        },
+        {
+          "id": "2d57260d68c7",
+          "title": "FIFA Bug Exposes World Cup Streams to Remote Takeover",
+          "summary": "A hacker could have &quot;Rickrolled&quot; the World Cup — or worse — thanks to FIFA's unenforced Entra access controls.",
+          "url": "https://www.darkreading.com/application-security/fifa-bug-world-cup-streams-remote-takeover",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-06-19T03:20:07+09:00",
+          "title_ja": "FIFAのバグによりワールドカップ配信がリモート乗っ取りの危機に",
+          "summary_ja": "FIFAのEntraアクセス制御設定の不備が原因で、ワールドカップのストリームがリモートから乗っ取られる可能性があったことが明らかになりました。この脆弱性は、適切なアクセス管理が欠如していたことに起因し、最悪の場合、ストリームが不正に操作される事態を招く恐れがありました。",
+          "insight": "クラウドIAMサービス（Microsoft Entra IDなど）の設定ミスは、深刻なセキュリティリスクを引き起こし、サービス乗っ取りやデータ改ざんに繋がる可能性があります。SOC/CDCは、クラウド環境におけるIAM設定の監査と継続的な監視を強化し、設定不備による潜在的な露出を早期に検知・対応するプロセスを構築する必要があります。特に、重要なシステムやイベントに関わるサービスのアクセス制御は最優先で確認すべきです。",
+          "importance": "高",
+          "importance_reason": "アクセス制御の不備はクラウドサービス利用企業に共通する重大なリスクであり、大規模なサービス停止や信用失墜に繋がりかねないため、SOC/CDCにとって重要です。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "設定ミス",
+            "認証バイパス"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "FIFA",
+            "Entra ID",
+            "アクセス制御",
+            "設定ミス",
+            "リモート乗っ取り"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Exposure管理",
+            "顧客課題",
+            "SOC運用変化",
+            "Identity/ITDR"
+          ],
+          "views": 0
+        },
+        {
+          "id": "48b37da98813",
+          "title": "‘Popa’ Botnet Linked to Publicly-Traded Israeli Firm",
+          "summary": "For the past four years, a sprawling Android-based botnet called Popa has forced millions of consumer TV boxes to relay Internet traffic linked to advertising fraud, account takeovers, and mass data-scraping efforts. This week, researchers from multiple security firms concluded that the Popa botnet is linked to NetNut, a \"residential proxy\" provider operated by the publicly-traded Israeli firm Alarum Technologies Ltd [NASDAQ: ALAR].",
+          "url": "https://krebsonsecurity.com/2026/06/popa-botnet-linked-to-publicly-traded-israeli-firm/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Krebs on Security",
+          "source_tier": "B",
+          "published": "2026-06-19T02:37:58+09:00",
+          "title_ja": "Popaボットネットが上場イスラエル企業と関連付けられる",
+          "summary_ja": "過去4年間、Androidベースの広範なボットネット「Popa」が、数百万台のコンシューマー向けTVボックスを悪用し、広告詐欺、アカウント乗っ取り、大量データスクレイピングに関連するインターネットトラフィックを中継してきました。セキュリティ研究者らは今週、「Popa」ボットネットが、公開企業Alarum Technologies Ltd.（NASDAQ: ALAR）が運営する「住宅プロキシ」プロバイダーNetNutと関連があるという結論に至りました。",
+          "insight": "組み込みデバイスやスマートTVボックスがボットネットのインフラとして悪用される事例は、IoTデバイスのセキュリティリスクを改めて浮き彫りにします。SOC/CDC/MSSPは、顧客環境における異常なネットワークトラフィック、特にIoTデバイスからの外部C2通信やスクレイピング活動の兆候を監視し、これらの挙動を分析する能力を持つ必要があります。これはMDRサービスにおける異常検知の強化に繋がります。",
+          "importance": "中",
+          "importance_reason": "IoTデバイスのボットネット悪用は広範囲に影響し、特定の企業との関連が指摘されたことで、企業責任の観点からも重要です。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "マルウェア",
+            "クレデンシャル窃取"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ネットワーク"
+          ],
+          "related_keywords": [
+            "Popaボットネット",
+            "Android",
+            "TVボックス",
+            "住宅プロキシ",
+            "NetNut"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "顧客課題",
+            "MDR/MSSP設計",
+            "SOC運用変化"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】AIの悪用が開発環境やRAGシステムにまで広がり、AIシステム内部のセキュリティ課題（モデル、ツール実行、RAG知識ベース）が深刻化しています。同時に、DevSecOpsにおけるクレデンシャル管理やクラウドIAM設定の不備といった従来型のリスクもAI活用文脈で継続的な脅威であり、CDCはこれらを統合的に監視する体系を再構築する必要があります。\n【攻撃側の変化】AIコーディングアシスタントを装った悪意あるプラグインによるAI APIキー窃取、RAGシステムへの知識注入攻撃、AIチャットリンクからのマルウェア配信など、AIを標的とした、またはAIを悪用した攻撃が多様化し、攻撃がAIシステム内部の挙動にまで踏み込んできています。従来のマルウェアやフィッシング、サプライチェーン攻撃に加え、開発パイプラインのクレデンシャルやIoTデバイスの悪用も引き続き見られます。\n【防御側の変化】AIシステム固有のログ（プロンプト、ツール実行、RAGのレトリーバー動作、知識ベース変更）を監視対象に含める必要性が高まっています。CISAのKEVカタログ更新は緊急対応の基準となり、DevSecOpsにおけるクレデンシャル管理やクラウドIAM設定の重要性が再認識され、これらの設定不備を検知する機能が求められています。\n【Security for AI】AIエージェントのリスクはテキスト出力だけでなく、ツール実行による保護オブジェクト開示やデータベース改変といった実害に及ぶため、そのログや挙動の詳細な監視と監査証跡の確保が不可欠です。RAGシステムへの知識注入攻撃は、データ・インフラ層の信頼性問題を示唆し、開発環境のAI関連プラグインやAIサービスのAPIキー窃取はアイデンティティ・権限層の新たな課題となっています。\n【AI for Security】AIによるTier2調査やアラート判断支援は潜在的に有効ですが、AIが生成する判断根拠や証跡の信頼性を確保するためには、AIシステムの内部挙動自体を監視・評価できる仕組みが必要です。強力なオープンソースLLMの登場は、防御側でのAI活用（例：脅威インテリジェンス分析、脆弱性診断補助）の機会を広げます。\n【CDC/SOCへの示唆】監視対象は、AI関連プラグインの利用状況、AIサービスのAPIキーのアクセスログ、AIエージェントのツール実行ログ、RAGシステムの知識ベース変更ログ、DevSecOpsパイプラインにおけるクレデンシャルアクセスへと拡張する必要があります。検知ルールは、AI APIキーの異常利用やAIエージェントによる特権的なツール実行、クラウドIAM設定の逸脱に焦点を当てるべきです。人の役割は、AIが提供する証跡のレビューと最終判断、新たな攻撃手法に対する検知ロジックの設計、AIシステムのセキュリティ評価に移り、AIがカバーしない領域での専門性が求められます。\n【今日の問い】AIエージェントのツール実行やRAGシステムにおける「実害」を、既存のSIEM/SOAR/MDRでどのように検知・相関分析し、効果的な対応プロセスを構築できるか？ 開発環境やクラウドIAMにおけるAI関連の新たなクレデンシャル管理と、従来のIDDR/ITDRの枠組みをどのように統合し、組織横断的なセキュリティガバナンスを確立すべきか？"
+    },
     {
       "date": "2026-06-18",
       "articles": [
