@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AutoJack攻撃: ウェブページでAIエージェントを乗っ取りホストコード実行 | Cyber Defense Notes</title>
-<meta name="description" content="Microsoftの研究者が、AIブラウジングエージェントをリモートコード実行の配信手段に変える「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃では、攻撃者のウェブページをAIエージェントに読み込ませる">
-<meta property="og:title" content="AutoJack攻撃: ウェブページでAIエージェントを乗っ取りホストコード実行">
-<meta property="og:description" content="Microsoftの研究者が、AIブラウジングエージェントをリモートコード実行の配信手段に変える「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃では、攻撃者のウェブページをAIエージェントに読み込ませる">
+<title>AutoJack攻撃、AIエージェントを乗っ取りホストコード実行が可能に | Cyber Defense Notes</title>
+<meta name="description" content="Microsoftの研究者が「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃はAIブラウジングエージェントを悪用し、攻撃者のウェブページを読み込ませることで、特権サービスに到達しホストマシン上でプロセス">
+<meta property="og:title" content="AutoJack攻撃、AIエージェントを乗っ取りホストコード実行が可能に">
+<meta property="og:description" content="Microsoftの研究者が「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃はAIブラウジングエージェントを悪用し、攻撃者のウェブページを読み込ませることで、特権サービスに到達しホストマシン上でプロセス">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/317de22f4dac.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AutoJack攻撃: ウェブページでAIエージェントを乗っ取りホストコード実行">
-<meta name="twitter:description" content="Microsoftの研究者が、AIブラウジングエージェントをリモートコード実行の配信手段に変える「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃では、攻撃者のウェブページをAIエージェントに読み込ませる">
+<meta name="twitter:title" content="AutoJack攻撃、AIエージェントを乗っ取りホストコード実行が可能に">
+<meta name="twitter:description" content="Microsoftの研究者が「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃はAIブラウジングエージェントを悪用し、攻撃者のウェブページを読み込ませることで、特権サービスに到達しホストマシン上でプロセス">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/317de22f4dac.html">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "AutoJack攻撃: ウェブページでAIエージェントを乗っ取りホストコード実行",
-  "description": "Microsoftの研究者が、AIブラウジングエージェントをリモートコード実行の配信手段に変える「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃では、攻撃者のウェブページをAIエージェントに読み込ませることで、そのJavaScriptが同じマシン上の特権ローカルサービスに到達し、ホスト上でプロセスを生成できます。資格情報やユーザー操作は不要です。",
+  "headline": "AutoJack攻撃、AIエージェントを乗っ取りホストコード実行が可能に",
+  "description": "Microsoftの研究者が「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃はAIブラウジングエージェントを悪用し、攻撃者のウェブページを読み込ませることで、特権サービスに到達しホストマシン上でプロセスを起動し、リモートコード実行を可能にします。この攻撃は認証やユーザーの追加操作なしに実行される点が特徴です。",
   "datePublished": "2026-06-20",
   "url": "https://ayudle.github.io/ai-security-news/article/317de22f4dac.html",
   "image": "https://ayudle.github.io/ai-security-news/og-image.png",
@@ -124,27 +124,27 @@ gtag('config', 'G-KV7Q7SQKZX');
       <span>2026-06-20</span>
       <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span>
     </div>
-    <h1 class="ap-title">AutoJack攻撃: ウェブページでAIエージェントを乗っ取りホストコード実行</h1>
+    <h1 class="ap-title">AutoJack攻撃、AIエージェントを乗っ取りホストコード実行が可能に</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">Microsoftの研究者が、AIブラウジングエージェントをリモートコード実行の配信手段に変える「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃では、攻撃者のウェブページをAIエージェントに読み込ませることで、そのJavaScriptが同じマシン上の特権ローカルサービスに到達し、ホスト上でプロセスを生成できます。資格情報やユーザー操作は不要です。</div>
+    <div class="ap-body">Microsoftの研究者が「AutoJack」と名付けられたエクスプロイトチェーンを詳細に報告しました。この攻撃はAIブラウジングエージェントを悪用し、攻撃者のウェブページを読み込ませることで、特権サービスに到達しホストマシン上でプロセスを起動し、リモートコード実行を可能にします。この攻撃は認証やユーザーの追加操作なしに実行される点が特徴です。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>「AutoJack」攻撃は、AIエージェントが新たな攻撃ベクトルとなり、ホストシステムへの侵入経路となる極めて重要な脅威を示しています。これは「Security for AI」の最重要課題であり、AIエージェントの権限管理、実行環境の分離（サンドボックス化）、ウェブコンテンツ処理のセキュリティ強化が急務であることを示唆します。CDC/SOCは、AIエージェントのログ（ウェブアクセス履歴、ツール実行ログ、システムコール）を監視対象に加え、特権昇格や予期せぬコード実行の異常を検知するルールを緊急で設計する必要があります。</div></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>AIエージェントをターゲットとした新たな攻撃手法の具体化であり、Security for AIの観点から喫緊の課題です。CDCは、AIエージェントが外部リソース（特にウェブサイト）にアクセスする際の挙動監視を強化し、不審なプロセス起動や権限昇格を検知するルールを策定する必要があります。AIエージェントのサンドボックス化や、アクセス可能なリソースの厳格な制限、エージェントの活動ログを詳細に取得し分析する仕組みの導入が不可欠です。</div></div></section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントを介したリモートコード実行という新たな攻撃手法であり、Security for AIにおいて最も懸念される脅威の一つであるため。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントを悪用した具体的なコード実行攻撃であり、SOC/CDCの監視対象と対策を大きく変える可能性があるため。</div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
     <div class="tags-box">
       <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
-      <span class="tag-sub">AIを使った攻撃</span><span class="tag-sub">LLMセキュリティ</span><span class="tag-sub">プロンプトインジェクション</span>
+      <span class="tag-sub">AIを使った攻撃</span><span class="tag-sub">プロンプトインジェクション</span><span class="tag-sub">エクスプロイト</span>
     </div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Identity/ITDR</span><span class='cdc-badge-ap'>Security for AI</span></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Security for AI</span><span class='cdc-badge-ap'>Exposure管理</span></div></section>
 
   <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-vulnerability-management-automation.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-08</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</div></a><a href="../columns/ai-supply-chain-exposure.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-16</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div></a></div></section>
 
@@ -161,12 +161,12 @@ Steer the agent to load an attacker&#x27;s web page, and that page&#x27;s JavaSc
     </div>
     <div class="actions">
       <a href="https://thehackernews.com/2026/06/autojack-attack-lets-one-web-page.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0AAutoJack%E6%94%BB%E6%92%83%3A%20%E3%82%A6%E3%82%A7%E3%83%96%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%A7AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%92%E4%B9%97%E3%81%A3%E5%8F%96%E3%82%8A%E3%83%9B%E3%82%B9%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E5%AE%9F%E8%A1%8C%0A%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23AI%E6%94%BB%E6%92%83%20%23LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F317de22f4dac.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0AAutoJack%E6%94%BB%E6%92%83%E3%80%81AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%92%E4%B9%97%E3%81%A3%E5%8F%96%E3%82%8A%E3%83%9B%E3%82%B9%E3%83%88%E3%82%B3%E3%83%BC%E3%83%89%E5%AE%9F%E8%A1%8C%E3%81%8C%E5%8F%AF%E8%83%BD%E3%81%AB%0A%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23AI%E6%94%BB%E6%92%83%20%23%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F317de22f4dac.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/317de22f4dac.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
 
-  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Identity%2FITDR#archive" class="explore-chip" data-search-context="Identity/ITDR">Identity/ITDR</a><a href="../?context=Security%20for%20AI#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../?tag=AI%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="AIを使った攻撃">AIを使った攻撃</a><a href="../?tag=LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3#archive" class="explore-chip" data-search-tag="LLMセキュリティ">LLMセキュリティ</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Security%20for%20AI#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../?context=Exposure%E7%AE%A1%E7%90%86#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../?tag=AI%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="AIを使った攻撃">AIを使った攻撃</a><a href="../?tag=%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3#archive" class="explore-chip" data-search-tag="プロンプトインジェクション">プロンプトインジェクション</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
 
   <section class="ap-section">
   <h3 class="ap-sec-title">関連記事：同じ「AI×セキュリティ」の最近の記事</h3>
