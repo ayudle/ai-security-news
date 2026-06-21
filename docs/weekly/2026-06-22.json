@@ -1,0 +1,145 @@
+{
+  "executive_summary": "今週は、AIエージェントが「新たなID」として攻撃対象になり、その権限管理と行動監視がSOC/CDCの喫緊の課題であることが明確になりました。特に、AI開発サプライチェーンを狙った国家レベルの攻撃が顕在化し、npmパッケージやIDEプラグイン、クラウドAIプラットフォームの脆弱性を悪用する事例が多発しています。SOC/CDC/MDRは、従来のITインフラに加えて、AIシステム固有のログ、挙動、データ流通、開発プロセス全体を監視対象に含め、AIエージェントのID管理を強化する必要があります。これにより、将来の防御アーキテクチャはAIシステムの内側にも目を向け、AIをツールとしてだけでなく「守るべき対象」としても扱う必要があります。",
+  "top_topics": [
+    {
+      "title": "AIエージェントの攻撃対象化",
+      "summary": "AIエージェントが、ホストコード実行を可能にするAutoJack攻撃や、社会工学的攻撃、Decomposition Attacksの標的となる具体的な事例が報告されました。SOC/CDCは、AIエージェントを従来のユーザーと同様の「ID」として捉え、そのアクセス権限、行動、利用状況を厳格に監視する運用設計が急務です。",
+      "article_ids": [
+        "c9401231e8be",
+        "39b8213dc230",
+        "4d56346db1d8",
+        "b83855c5e359",
+        "e5a3137c832e",
+        "317de22f4dac",
+        "808772756f94"
+      ]
+    },
+    {
+      "title": "AIサプライチェーン攻撃",
+      "summary": "AI開発環境におけるサプライチェーン攻撃が深刻化しており、JetBrainsプラグインによるAI APIキー窃取、npmパッケージの侵害、そしてAI研究機関への国家支援型攻撃が確認されました。CDCは、AIモデルやアプリケーションの開発プロセス、特にCI/CDパイプラインやサードパーティコンポーネントの監視を強化し、悪意あるコード混入や改ざんを検知する体制を構築する必要があります。",
+      "article_ids": [
+        "c91f595218f8",
+        "abd49742a76e",
+        "ecc0d33c2b0b",
+        "633b5691b35",
+        "eec0a4c62049",
+        "6dc962b757f8"
+      ]
+    },
+    {
+      "title": "AI基盤・ツール脆弱性",
+      "summary": "SOC/CDCの中核ツールであるSplunk Enterprise、AIゲートウェイのLiteLLM、クラウドAIプラットフォームのVertex AI SDKに認証不要のRCEや権限昇格といった重大な脆弱性が相次いで報告されました。これらの基盤コンポーネントのセキュリティ侵害は、セキュリティ運用全体の信頼性とAIサービスへの甚大な影響を及ぼすため、迅速なパッチ適用と影響評価、監視強化が必須です。",
+      "article_ids": [
+        "8375823b34df",
+        "ded9c232b49b",
+        "663c986a03fd",
+        "5d126231bab9"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "IoT/OT/ICSデバイスのDoS脆弱性やボットネット悪用が継続しており、エッジデバイスを含む広範な資産の脆弱性管理と異常通信の監視が引き続き重要です。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "AI (GNN) を活用したネットワーク侵入検知の高度化に関する研究が進展しており、将来的な検知能力向上に貢献する可能性があります。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "Splunk EnterpriseやクラウドAIプラットフォーム、クラウドIAMにおける重大脆弱性や設定ミスが多発し、サービス乗っ取りやクロステナントRCEに繋がる深刻なリスクが顕在化しています。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "npmパッケージやIDEプラグイン、WordPressプラグインといったアプリケーション開発・実行環境におけるサプライチェーン攻撃とAPIキー漏洩リスクが顕著に増加しています。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIエージェントの攻撃対象化と「新たなID」としての管理の必要性が強調され、AI開発サプライチェーン攻撃、AIシステム固有の脆弱性（モデル汚染、ゲートウェイ乗っ取り）、シャドーAIの台頭が喫緊の課題です。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "AIモデルのアクセス制限や輸出規制が国家安全保障問題に直結しており、国際的なAI規制協力の動向は、将来的なAIシステム設計・運用のコンプライアンス要件に影響を与えます。"
+    }
+  ],
+  "next_week_outlook": "来週もAIエージェントのセキュリティとAIサプライチェーン攻撃が主要な脅威として継続すると予測されます。AIエージェントの挙動をリアルタイムで検知・停止する専門ソリューションの進化と、SOC/CDCにおけるAIシステムの包括的な監視体制構築への投資が加速するでしょう。また、AI規制の国際的な議論がさらに具体化し、企業へのガバナンス要求が高まる可能性があります。",
+  "period": {
+    "start": "2026-06-15",
+    "end": "2026-06-22"
+  },
+  "total_articles": 69,
+  "keyword_changes": [
+    {
+      "keyword": "Anthropic",
+      "this_week_count": 2,
+      "last_week_count": 8,
+      "change": -6,
+      "change_pct": -75
+    },
+    {
+      "keyword": "ガバナンス",
+      "this_week_count": 5,
+      "last_week_count": 0,
+      "change": 5,
+      "change_pct": 500
+    },
+    {
+      "keyword": "フィッシング",
+      "this_week_count": 0,
+      "last_week_count": 5,
+      "change": -5,
+      "change_pct": -100
+    },
+    {
+      "keyword": "LLM",
+      "this_week_count": 6,
+      "last_week_count": 2,
+      "change": 4,
+      "change_pct": 200
+    },
+    {
+      "keyword": "Claude Fable 5",
+      "this_week_count": 1,
+      "last_week_count": 5,
+      "change": -4,
+      "change_pct": -80
+    },
+    {
+      "keyword": "DoS",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "CISO",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "CISA",
+      "this_week_count": 2,
+      "last_week_count": 6,
+      "change": -4,
+      "change_pct": -67
+    },
+    {
+      "keyword": "ICS",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "Mythos 5",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    }
+  ],
+  "generated_at": "2026-06-22T08:10:33.592777+09:00"
+}
