@@ -11,6 +11,400 @@
       "source_name": "SecurityWeek",
       "source_tier": "B",
       "published": "2026-06-25T02:37:57+09:00",
+      "title_ja": "AIエージェントの「情報攻撃対象」化とトラップの理解",
+      "summary_ja": "攻撃者が隠されたコンテンツインジェクションやコグニティブステート汚染を通じて、信頼されたデータソースをAIエージェントへのトラップに変える新しい攻撃手法が登場した。これにより、AIエージェントの誤った判断や意図しない行動を誘発する。情報そのものが攻撃対象となる新たな脅威の側面が示された。",
+      "insight": "AIエージェントが外部情報を取り込むRAGなどのメカニズムを悪用する攻撃は、従来の脅威モデルでは捉えきれない。CDCは、AIエージェントが参照するデータソースの完全性・信頼性の監視、エージェントの不審な情報消費や判断に至るプロセスのログを詳細に収集・分析し、誤動作を検知する仕組みを早急に構築する必要がある。これはSecurity for AIにおける重要な監視項目となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの根本的なリスクであり、従来の防御メカニズムでは対策が困難な新たな攻撃対象を提示しているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "モデル汚染",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "情報攻撃",
+        "RAG",
+        "コンテンツインジェクション",
+        "コグニティブステート汚染"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d3200996a7c8",
+      "title": "What Does It Mean to Break a Distillation Defense?",
+      "summary": "arXiv:2606.25059v1 Announce Type: new \nAbstract: Black-box LLMs (accessible only via API) are vulnerable to distillation attacks, in which an attacker queries the model and trains a student on its outputs. A recent line of work proposes output perturbation defenses that modify the teacher's output to reduce student performance while preserving utility for legitimate users. As a relatively new family of approaches, output perturbation defenses lack a shared threat model, making it difficult to co",
+      "url": "https://arxiv.org/abs/2606.25059",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-25T13:00:00+09:00",
+      "title_ja": "LLM蒸留防御の破壊に関する考察",
+      "summary_ja": "ブラックボックス型LLMに対する蒸留攻撃（出力からモデルを再現）において、防御側は出力を摂動させることで学生モデルの性能を低下させつつ、正当なユーザーへの有用性を維持する手法が提案されている。しかし、これらの防御策には共有された脅威モデルが不足しており、比較・評価を困難にしている。",
+      "insight": "本記事は直接的なインシデント報告ではないが、AIモデルの知的財産保護とセキュリティを両立させる技術動向を示している。CDC/SOCにおいては、AIモデルの不正なコピーや悪用を検知するための技術として、将来的にAIモデルのログや振る舞い分析への応用可能性を中期的に注視する必要がある。",
+      "importance": "中",
+      "importance_reason": "AIモデルの知的財産保護とセキュリティに関する研究動向を示しており、将来的な防御技術への影響があるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "モデル逆転攻撃",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "LLM",
+        "蒸留攻撃",
+        "出力摂動防御",
+        "ブラックボックスモデル",
+        "脅威モデル"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "43d5e56d83b3",
+      "title": "SoK: AI Secure Code Generation: Progress, Pitfalls, and Paths Forward",
+      "summary": "arXiv:2606.25195v1 Announce Type: new \nAbstract: The increasing use of AI systems for code generation raises a central security question: what can today's models and coding agents actually do to produce secure code, where do they still fail, and what would move the field forward? Existing work has explored prompting, fine-tuning, reinforcement learning, and agentic workflows for secure code generation, but the field still lacks a systematic understanding of how these techniques improve security ",
+      "url": "https://arxiv.org/abs/2606.25195",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-06-25T13:00:00+09:00",
+      "title_ja": "AIセキュアコード生成の現状、課題、将来展望",
+      "summary_ja": "AIシステムによるコード生成の利用が増加する中、セキュアなコード生成における現在のモデルとコーディングエージェントの能力、限界、そして将来の方向性について体系的に考察している。プロンプティング、ファインチューニング、強化学習、エージェントワークフローなどの既存手法を検討し、今後の進展に必要な要素を議論する。",
+      "insight": "AIによるコード生成は開発速度を向上させるが、同時に新たな脆弱性生成のリスクも伴う。CDC/SOCは、開発段階でAIが生成したコードに起因する脆弱性が製品に組み込まれ、後にインシデントに繋がる可能性を認識すべきである。AI for Securityの観点からは、セキュア開発ライフサイクル（SSDLC）にAIによる脆弱性診断やコードレビューを組み込む際の限界と品質保証を検討する必要がある。",
+      "importance": "中",
+      "importance_reason": "AIによるコード生成の普及が、将来的なアプリケーション層の脆弱性トレンドとSOC/CDCの監視対象に影響を与える可能性があるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIコード生成",
+        "セキュアコード",
+        "SSDLC",
+        "脆弱性",
+        "エージェント"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "fb6da4d91e2c",
+      "title": "New macOS malware embeds fake errors to confuse AI analysis tools",
+      "summary": "A newly discovered macOS malware dubbed \"Gaslight\" is designed to confuse AI-assisted malware analysis tools by hiding prompt injection strings and fake debugging data within the executable. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/new-macos-malware-embeds-fake-errors-to-confuse-ai-analysis-tools/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-06-26T01:23:19+09:00",
+      "title_ja": "新型macOSマルウェア「Gaslight」がAI分析ツールを欺くプロンプトインジェクションを悪用",
+      "summary_ja": "新たに発見されたmacOSマルウェア「Gaslight」は、AI支援型のマルウェア分析ツールを欺くために、実行ファイル内にプロンプトインジェクション文字列や偽のデバッグデータを埋め込んでいる。これにより、AIがマルウェアの分析を中止したり拒否したりするよう誘導し、検知と分析を困難にさせる。",
+      "insight": "攻撃側がAI for Security（AIによるマルウェア分析）の弱点を直接狙う具体的な事例として、SOC/CDCのAI活用戦略に深刻な示唆を与える。AIによる自動分析を導入する際には、攻撃者によるAI妨害を想定した防御設計が必要であり、AIの判断結果を盲信せず、人間による検証プロセスやAIの判断根拠（証跡）の信頼性を確保する仕組みが不可欠となる。CDCはAIによる分析結果が信頼できない場合の運用フローを確立する必要がある。",
+      "importance": "高",
+      "importance_reason": "攻撃側がAI for Securityの具体的な弱点を突く新たな手法であり、SOC/CDCにおけるAI活用戦略に直接的な影響を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Gaslight",
+        "macOS",
+        "マルウェア分析",
+        "プロンプトインジェクション",
+        "AI欺瞞"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "bd25b0b3685d",
+      "title": "New Gaslight macOS Malware Uses Prompt Injection to Disrupt AI-Assisted Analysis",
+      "summary": "A previously undocumented Rust-based macOS implant and information stealer has been found to embed a prompt injection payload designed to trick a malware analyst's artificial intelligence (AI) tools and trick it into aborting or refusing an analysis of the artifact.\n\nThe malware has been codenamed Gaslight owing to this deceptive behavior. It's been assessed with high confidence that the tool is",
+      "url": "https://thehackernews.com/2026/06/new-gaslight-macos-malware-uses-prompt.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-25T18:23:03+09:00",
+      "title_ja": "新Gaslight macOSマルウェア、AI支援分析を阻害するプロンプトインジェクションを利用",
+      "summary_ja": "これまで未文書化のRustベースmacOSインプラントである情報窃取型マルウェアが発見された。このマルウェアは、マルウェアアナリストのAIツールを欺き、アーティファクトの分析を中止または拒否させるプロンプトインジェクションペイロードを埋め込んでいる。この欺瞞的な挙動から「Gaslight」と名付けられた。",
+      "insight": "AI for Securityとしてのマルウェア分析ツールが、攻撃者によって直接的な標的とされる具体的な攻撃手法が明らかになった。CDC/SOCは、AI分析結果の信頼性確保のため、AIの判断根拠（証跡）を詳細に記録し、疑わしい場合は人間の専門家による検証プロセスを組み込むべきである。AIが欺かれた際の運用エスカレーションパスや、AIの自己診断・自己修正メカニズムの研究・導入も重要となる。",
+      "importance": "高",
+      "importance_reason": "AIによる防御機能が攻撃者に意図的に妨害される具体的な手法であり、AI for Securityの設計と運用に直接的な影響を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "プロンプトインジェクション",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Gaslight",
+        "macOS",
+        "プロンプトインジェクション",
+        "AI分析ツール",
+        "マルウェア"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e39759f4a03f",
+      "title": "Dawn of the Apex Agentic Adversary",
+      "summary": "We are standing at the end of an era we never thought to mourn: the era of human-speed threats.\n\nFor years, cybersecurity moved to a rhythm organizations could follow. A researcher found a bug, a CVE was cataloged, a vendor navigated a patch cycle, and weeks or even months later, a fix was deployed. In this era, dwell time was measured in days, sometimes weeks. We are now approaching an",
+      "url": "https://thehackernews.com/2026/06/dawn-of-apex-agentic-adversary.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-24T20:30:00+09:00",
+      "title_ja": "AIエージェントによる超高速な脅威「Apex Agentic Adversary」の到来",
+      "summary_ja": "AIエージェントの悪用により、サイバー脅威の速度が人間の対応能力をはるかに超える「Apex Agentic Adversary」の時代が到来する可能性が指摘されている。これまで週単位で測られていた脅威対応期間が大幅に短縮され、防御側もAIを最大限に活用した高速な検知・対応が必須となる。",
+      "insight": "CDC/SOCは、検知から対応までの「Dwell Time」が劇的に短縮される新たな脅威環境に対応するため、従来の運用モデルを根本的に見直す必要がある。Tier1/2業務のAIによる高度な自動化、迅速な判断支援、AIエージェントによる自動対応の導入を加速しつつ、その信頼性と安全性を確保するための設計が重要となる。人間の役割は、複雑な判断や戦略的な対応、AIの監視・ガバナンスへとシフトしていく。",
+      "importance": "高",
+      "importance_reason": "サイバー脅威の根本的な性質（速度）が変化し、SOC/CDCの運用モデル全体にパラダイムシフトを迫る中長期的な構造変化を示唆しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "APT"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "Apex Agentic Adversary",
+        "脅威の高速化",
+        "Dwell Time",
+        "自動対応"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "21b4b9b70216",
+      "title": "Repositioning retail for the AI era",
+      "summary": "Artificial intelligence is rapidly reshaping retail, but not in the ways consumers might immediately notice. The biggest transformation may not be flashy virtual try-ons or chatbot shopping assistants, but in how decisions are made behind the scenes: how products surface in search results, how inventory moves through supply chains, how engineers ship code faster, and&#8230;",
+      "url": "https://www.technologyreview.com/2026/06/25/1137848/repositioning-retail-for-the-ai-era/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "MIT Tech Review",
+      "source_tier": "C",
+      "published": "2026-06-25T23:22:59+09:00",
+      "title_ja": "AI時代に向けた小売業界の再構築",
+      "summary_ja": "小売業界ではAIが急速に普及しており、消費者が直接気づくような華やかな部分だけでなく、検索結果の表示方法、サプライチェーンの最適化、コード開発の迅速化など、意思決定の舞台裏で大きな変革をもたらしている。",
+      "insight": "本記事はAIの一般的なビジネス適用例であり、直接的なサイバーセキュリティ脅威やSOC/CDCの運用への示唆は薄い。しかし、あらゆる業界でAIの活用が進むことは、Security for AIのニーズが高まり、AIシステム固有のセキュリティ対策が一般的な要件となるトレンドを示唆している。",
+      "importance": "低",
+      "importance_reason": "特定の業界におけるAI活用の動向を示すものであり、直接的なサイバーセキュリティ脅威やSOC/CDC運用への具体的な示唆は限定的であるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "小売業界",
+        "AI活用",
+        "サプライチェーン",
+        "コード開発",
+        "市場トレンド"
+      ],
+      "cdc_relevance": 0,
+      "cdc_context": [],
+      "views": 0
+    },
+    {
+      "id": "30f90f6f9bda",
+      "title": "2026 FIFA World Cup Faces Surge in Cyber Threats",
+      "summary": "Persistent cybercrime, social engineering, and infrastructure threats continue to plague the FIFA 2026 World Cup across the US, Canada, and Mexico.",
+      "url": "https://www.darkreading.com/cybersecurity-operations/2026-fifa-world-cup-faces-surge-cyber-threats",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-06-25T05:29:08+09:00",
+      "title_ja": "2026年FIFAワールドカップ、サイバー脅威の急増に直面",
+      "summary_ja": "2026年に開催されるFIFAワールドカップにおいて、持続的なサイバー犯罪、ソーシャルエンジニアリング、インフラ関連の脅威が急増する見込みであり、開催国である米国、カナダ、メキシコはこれらの脅威に直面している。大規模イベントを狙った攻撃の傾向が示されている。",
+      "insight": "大規模イベントは攻撃者の主要な標的となりやすく、SOC/CDCはイベント期間中の特別体制や警戒レベルの引き上げを検討する必要がある。特にソーシャルエンジニアリングやインフラへのDDoS、Web改ざんなどが懸念されるため、これらの脅威に対する監視強化、検知ルールのチューニング、インシデント対応計画の事前準備が重要となる。顧客課題として、大規模イベント時のセキュリティ対応のニーズがあることを示す。",
+      "importance": "中",
+      "importance_reason": "大規模イベントにおける一般的なサイバー脅威の傾向を示しており、SOC/CDCが対応を強化すべき具体的な顧客課題を示唆しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ソーシャルエンジニアリング",
+        "DDoS"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "FIFAワールドカップ",
+        "サイバー犯罪",
+        "ソーシャルエンジニアリング",
+        "インフラ脅威",
+        "大規模イベント"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "顧客課題",
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9e21fde342d6",
+      "title": "Do CISOs Need a Code of Ethics?",
+      "summary": "Dark Reading Confidential Episode 19: Kickbacks, no-show jobs, &quot;dirty&quot; VCs, and shelf ware — industry expert Robert &quot;RSnake&quot; Hansen explains why he thinks it's time for a CISO code of ethics. It could ensure cybersecurity bosses aren't engaged in self-dealing that could risk enterprise, and even national, security.",
+      "url": "https://www.darkreading.com/cybersecurity-operations/ciso-code-of-ethics",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-06-25T04:10:17+09:00",
+      "title_ja": "CISOは倫理規定を必要とするか？",
+      "summary_ja": "業界専門家は、CISOがキックバックやノーショー、自己取引といった不適切な行為を通じて企業や国家のセキュリティを危険に晒すことを防ぐため、CISOの倫理規定が必要であると提唱している。これはセキュリティ組織の健全性と信頼性に関わる議論である。",
+      "insight": "本記事はSOC/CDCの技術的な運用に直接関わるものではないが、セキュリティ組織全体の信頼性、透明性、そしてガバナンスの重要性を示唆している。CISOレベルでの倫理規定は、CDCが提供するサービス（例えば、経営層への報告や監査対応支援）の信頼性を担保する上で間接的に影響を与える。SOC/CDCサービス設計者は、組織全体の健全性が提供サービスの品質に与える影響を考慮すべきである。",
+      "importance": "低",
+      "importance_reason": "CISOの倫理という組織ガバナンスに関する議論であり、SOC/CDCの技術的運用への直接的な影響は限定的であるため。",
+      "tag_main_id": "policy",
+      "tag_main_label": "規制・政策",
+      "tag_subs": [
+        "コンプライアンス",
+        "標準化"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "CISO",
+        "倫理規定",
+        "ガバナンス",
+        "コンプライアンス",
+        "自己取引"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "85644ecdfaaf",
+      "title": "Securing the service desk: Why social engineering attacks keep succeeding",
+      "summary": "Service desks have become a favored target for attackers seeking password resets, MFA changes, and access to corporate accounts. Specops Software breaks down how service desk social engineering attacks work and how organizations can defend against them. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/securing-the-service-desk-why-social-engineering-attacks-keep-succeeding/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-06-24T23:02:12+09:00",
+      "title_ja": "サービスデスクのセキュリティ強化：ソーシャルエンジニアリング攻撃が成功し続ける理由",
+      "summary_ja": "サービスデスクは、パスワードリセット、MFA変更、企業アカウントへのアクセスなどを狙う攻撃者にとって主要な標的であり続けている。Specops Softwareの分析により、サービスデスクを狙ったソーシャルエンジニアリング攻撃の手口と、組織がそれらに対してどのように防御すべきかが解説されている。",
+      "insight": "サービスデスクはIdentity & Access Management (IAM) の最前線であり、ソーシャルエンジニアリング攻撃に対する脆弱性が高い。CDC/SOCは、サービスデスクシステムからの認証情報変更や特権昇格、異常なアクセス要求などをリアルタイムで監視し、迅速に対応する体制を強化する必要がある。ITDR (Identity Threat Detection and Response) ソリューションとの連携や、サービスデスク担当者への継続的なセキュリティ意識向上トレーニングが重要となる。",
+      "importance": "高",
+      "importance_reason": "サービスデスクへのソーシャルエンジニアリング攻撃は依然として効果的な攻撃手法であり、SOC/CDCが直接対処すべき重要なインシデント源であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ソーシャルエンジニアリング",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "サービスデスク",
+        "ソーシャルエンジニアリング",
+        "パスワードリセット",
+        "MFA",
+        "クレデンシャル窃取"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ed76fbc4f834",
+      "title": "When Information Becomes the Attack Surface – Understanding AI Agent Traps",
+      "summary": "<p>From hidden content injections to cognitive state poisoning, attackers are turning trusted data sources into traps for autonomous AI.</p>\n<p>The post <a href=\"https://www.securityweek.com/when-information-becomes-the-attack-surface-understanding-ai-agent-traps/\">When Information Becomes the Attack Surface &#8211; Understanding AI Agent Traps</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/when-information-becomes-the-attack-surface-understanding-ai-agent-traps/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-06-25T02:37:57+09:00",
       "title_ja": "AIエージェントを狙う情報攻撃面とトラップの理解",
       "summary_ja": "AIエージェントの普及に伴い、信頼されたデータソースが攻撃対象となり、隠されたコンテンツ注入や認知状態の汚染によって、自律型AIが攻撃者の仕掛けた罠にかかるリスクが増大しています。攻撃者は情報そのものを悪用し、エージェントの意思決定プロセスに影響を与えようとしています。この新たな攻撃手法は、従来のセキュリティ対策では検知が困難な場合があります。",
       "insight": "AIエージェントが利用する情報源（RAGコンテキスト等）が新たな攻撃面となるため、CDC/SOCはデータ入力の信頼性検証とエージェントの挙動監視を強化する必要がある。特に、AIエージェントが参照するデータに対するコンテンツ汚染やプロンプトインジェクションの検知手法を設計し、判断根拠の証跡管理と再現性を確保することが重要である。",
