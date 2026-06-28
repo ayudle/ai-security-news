@@ -2,6 +2,212 @@
   "month": "2026-06",
   "articles": [
     {
+      "id": "e6448c1692d0",
+      "title": "Clean GitHub repo tricks AI coding agents into running malware",
+      "summary": "An agentic coding tool tasked with cloning and setting up a seemingly benign GitHub repository could execute a malicious payload that remains invisible to security scanners, AI agents, and human reviewers. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/clean-github-repo-tricks-ai-coding-agents-into-running-malware/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-06-27T23:22:36+09:00",
+      "title_ja": "クリーンなGitHubリポジトリがAIコーディングエージェントにマルウェアを実行させる手口",
+      "summary_ja": "AIコーディングエージェントが、一見無害なGitHubリポジトリのクローンとセットアップを指示された際、セキュリティスキャナーやAIエージェント、人間には見えない悪意あるペイロードを実行する新たな攻撃手法が発見されました。このマルウェアは、エージェントがローカルにコードをセットアップする過程で実行され、既存のセキュリティ対策を回避する可能性があります。",
+      "insight": "この事象は、AIエージェントの「②ツール・実行層」における新たなリスクを示唆する。SOC/CDCは、従来のファイルベースのマルウェア検知だけでなく、AIエージェントが外部リソース（GitHubなど）と連携し、コードをビルド・実行する際の動的な挙動を監視する必要がある。AIエージェントのプロセス監視、API呼び出し、外部コマンド実行のロギングと異常検知が設計上の論点となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントを介した新たなマルウェア実行経路が示され、従来のセキュリティ対策では検知が困難なため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "GitHub",
+        "マルウェア",
+        "コード実行",
+        "サプライチェーン"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "84222de80e84",
+      "title": "OpenAI Previews GPT-5.6 Sol With Restricted Access and Stronger Cyber Safeguards",
+      "summary": "OpenAI on Friday released three versions of GPT-5.6, called Sol, Terra, and Luna, as a limited preview to a small number of companies as part of an ongoing engagement with the U.S. government.\n\nWhile Sol is the latest flagship model and the most powerful, Terra strikes a balance between efficiency and power, and Luna is fine-tuned for speed and affordability.\n\n\"GPT‑5.6 Sol launches with our most",
+      "url": "https://thehackernews.com/2026/06/openai-limits-gpt-56-rollout-as-sol.html",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-27T21:19:37+09:00",
+      "title_ja": "OpenAI、サイバーセキュリティ対策を強化したGPT-5.6 Solを限定プレビュー",
+      "summary_ja": "OpenAIがGPT-5.6の3バージョン（Sol, Terra, Luna）を一部企業に限定公開しました。このうち最新フラッグシップモデルであるSolは、最も強力であり、米国政府との連携の一環としてサイバーセキュリティ対策が強化されていると報じられています。モデルは効率性や速度に応じて調整されています。",
+      "insight": "AIモデル提供者側がセキュリティを強化する動向は、「①モデル・推論層」の脆弱性対策として重要である。SOC/CDCとしては、こうしたモデル自体の安全性向上に加え、AIエージェントが複数のツールやAPIと連携する「②ツール・実行層」や「③マルチエージェント層」におけるリスクを別途評価し、適切な監視と防御策を講じる必要がある。",
+      "importance": "中",
+      "importance_reason": "AIモデルのセキュリティ強化は重要だが、エージェント全体のセキュリティリスクを完全に払拭するものではないため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "GPT-5.6",
+        "LLMセキュリティ",
+        "限定公開",
+        "米国政府"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "44b1143094a1",
+      "title": "Data breach exposes up to 14.2 million email logins at six ISPs",
+      "summary": "Japanese telecommunications operator KDDI Corporation disclosed a data breach where threat actors gained access to one of its email systems used by five other internet service providers (ISPs) in the country. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/data-breach-exposes-up-to-142-million-email-logins-at-six-isps/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-06-28T23:13:46+09:00",
+      "title_ja": "データ侵害により6社のISPで最大1420万件のメールログイン情報が流出",
+      "summary_ja": "日本の通信事業者KDDIが、攻撃者によってメールシステムへのアクセスを受け、同システムを利用していた他の5社のインターネットサービスプロバイダー（ISP）を含む最大1420万件のメールログイン情報が流出したデータ侵害を公表しました。これは広範囲にわたる個人情報流出につながる可能性があります。",
+      "insight": "この大規模データ侵害は、単一の企業だけでなくサプライチェーン全体の脆弱性が深刻な影響をもたらすことを改めて示している。CDCは、自社システムのみならず、重要サプライヤーとの連携システムにおけるログ収集、認証情報の管理・監視体制、そして侵害時の迅速な影響範囲特定と顧客への説明責任を果たすプロセスを強化する必要がある。",
+      "importance": "高",
+      "importance_reason": "大規模なクレデンシャル窃取と情報漏洩であり、サプライチェーンリスクの現実的な脅威を示すため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "クレデンシャル窃取",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "KDDI",
+        "データ侵害",
+        "ISP",
+        "メールログイン",
+        "サプライチェーン"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "顧客課題",
+        "Identity/ITDR",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "cdd3a23529c8",
+      "title": "Ukraine Says Russian Intelligence Used Fake Support Texts to Steal Messaging Credentials",
+      "summary": "The Security Service of Ukraine (SSU) said it, together with the U.S. Federal Bureau of Investigation (FBI), uncovered a long-running campaign orchestrated by Russian intelligence services to break into the messaging accounts of government officials, military personnel, politicians, and activists in Ukraine, Europe, and the U.S.\n\nThe systematic cyber attacks aimed at stealing sensitive",
+      "url": "https://thehackernews.com/2026/06/ukraine-says-russian-intelligence-used.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-06-28T02:27:11+09:00",
+      "title_ja": "ウクライナ、ロシア情報機関が偽サポートテキストでメッセージング認証情報を窃取と発表",
+      "summary_ja": "ウクライナ保安庁（SSU）と米連邦捜査局（FBI）は、ロシア情報機関がウクライナ、欧州、米国の政府関係者、軍人、政治家、活動家のメッセージングアカウントに侵入するため、偽のサポートテキストを使用した長期的なサイバー攻撃キャンペーンを摘発したと発表しました。この攻撃は機密情報の窃取を目的としていました。",
+      "insight": "国家レベルのAPT攻撃において、ソーシャルエンジニアリングが依然として効果的な攻撃手法であることを示す。CDCは、技術的な検知だけでなく、ユーザーに対する継続的なセキュリティ意識向上トレーニング、特にフィッシング・スミッシング対策の強化を顧客に促す必要がある。多要素認証の普及と、異常なログイン試行やセッション活動の監視が重要となる。",
+      "importance": "高",
+      "importance_reason": "国家主体によるソーシャルエンジニアリングとクレデンシャル窃取の継続的な脅威であり、広範な標的を狙っているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ソーシャルエンジニアリング",
+        "クレデンシャル窃取",
+        "APT"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ロシア情報機関",
+        "ウクライナ",
+        "APT",
+        "ソーシャルエンジニアリング",
+        "クレデンシャル窃取"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "74e2b245d5ce",
+      "title": "Third-Party Breaches Teach Education Sector a Costly Lesson in Vendor Risk",
+      "summary": "Rising threats from third-party actors are forcing institutions to play defense to protect student data from ransomware and other attacks.",
+      "url": "https://www.darkreading.com/cyber-risk/third-party-breaches-teaches-education-lesson-vendor-risk",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-06-27T20:48:05+09:00",
+      "title_ja": "サードパーティ侵害が教育機関にベンダーリスクの教訓をもたらす",
+      "summary_ja": "サードパーティからの脅威が増大する中、教育機関は学生データをランサムウェアやその他の攻撃から保護するため、防御策を強化する必要に迫られています。これは、外部ベンダーを介した侵害が教育セクターにとって深刻なコストと課題をもたらしていることを示唆しています。",
+      "insight": "サードパーティリスクは業種を問わず共通の課題であり、特に機微な情報を扱う教育機関でのインシデントは、データプライバシーへの影響が大きい。MDR/MSSPは、サービス設計において、顧客のサプライチェーン全体のベンダーリスク評価支援、契約におけるセキュリティ要件の監査、そしてベンダー経由の脅威を検知・対応する能力を強化することが求められる。",
+      "importance": "中",
+      "importance_reason": "サードパーティリスクの重要性と、具体的な業種での影響が示されているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "ランサムウェア"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "サードパーティ",
+        "ベンダーリスク",
+        "教育機関",
+        "ランサムウェア",
+        "学生データ"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "MDR/MSSP設計",
+        "顧客課題",
+        "Exposure管理",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
       "id": "67030eccfa8a",
       "title": "Cisco Adds NHI to Security Stack With Astrix, WideField Acquisitions",
       "summary": "Cisco joins a growing list of security platform providers that are betting that securing the agentic workforce means turning identity into the primary control plane.",
