@@ -11,6 +11,334 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-07-04T04:40:01+09:00",
+      "title_ja": "Linuxカーネルに新たなroot権限昇格の脆弱性「Bad Epoll」、Androidにも影響",
+      "summary_ja": "Linuxカーネルに新たな脆弱性「Bad Epoll (CVE-2026-46242)」が発見され、一般ユーザーがroot権限を取得可能であることが明らかになった。この脆弱性はLinuxデスクトップ、サーバー、Androidに影響を与えるが、既に修正パッチがリリースされている。興味深いことに、AnthropicのAIモデルMythosが以前に別のバグを発見したのと同じカーネルコード領域でこの脆弱性が発見された。",
+      "insight": "広範なOSに影響するroot権限昇格の脆弱性は、SOC/CDCにとって常に最優先で対応すべき事項である。特にAndroidデバイスへの影響は、BYOD環境や組み込みシステムを持つ企業にとって重要であり、速やかなパッチ適用計画とシステム監査が求められる。また、AIモデルが脆弱性発見に間接的に貢献した事例として、AI for Securityの可能性を示唆する。",
+      "importance": "高",
+      "importance_reason": "広範囲のLinuxシステムとAndroidデバイスに影響するroot権限昇格の脆弱性であり、即時のパッチ適用と影響評価が求められるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト",
+        "CVE",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Linux Kernel",
+        "Bad Epoll",
+        "CVE-2026-46242",
+        "Android",
+        "Root権限昇格"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "b01a9b8b56ae",
+      "title": "June 2026 newsletter",
+      "summary": "<p>The June edition of my <a href=\"https://github.com/sponsors/simonw/\">sponsors-only monthly newsletter</a> is out. If you are a sponsor (or if you start a sponsorship now) you can <a href=\"https://github.com/simonw-private/monthly/blob/main/2026-06-june.md\">access it here</a>.</p>\n<p>This month:</p>\n<ul>\n<li>Claude Fable 5, GPT-5.6, and US export restrictions</li>\n<li>GLM-5.2 is the new best open weights model</li>\n<li>Tokenmaxxing is so over</li>\n<li>Datasette Apps</li>\n<li>sqlite-utils and s",
+      "url": "https://simonwillison.net/2026/Jul/3/june-newsletter/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-07-03T23:50:50+09:00",
+      "title_ja": "2026年6月ニュースレター：最新LLM動向とオープンソースモデル",
+      "summary_ja": "2026年6月のニュースレターでは、Claude Fable 5、GPT-5.6といった主要なLLMの進化、米国による輸出規制、そして新たなオープンウェイトモデルGLM-5.2の登場に言及している。また、トークン最大化戦略の終焉や、Datasette Apps、sqlite-utilsなどの技術動向にも触れられている。",
+      "insight": "最新LLMの動向は、Security for AIの進化とリスク予測において重要である。特にオープンソースLLMの性能向上は、攻撃者側のAI利用能力を底上げする可能性を考慮すべきである。CDCの観点からは、AI技術の一般的な進展を把握し、将来的な脅威インテリジェンスや防御策の検討に役立てる必要はあるものの、直接的な運用への影響は限定的。",
+      "importance": "低",
+      "importance_reason": "広範な技術動向のまとめであり、特定の緊急性の高い脅威や直接的な防御策の必要性を指し示すものではないため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "製品リリース",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "LLM",
+        "Claude Fable",
+        "GPT",
+        "GLM",
+        "輸出規制"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "サービス企画",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0a4428d5fdfd",
+      "title": "JadePuffer ransomware used AI agent to automate entire attack",
+      "summary": "Researchers identified what they believe is the first documented case of a ransomware operation, JadePuffer, conducted entirely by a large language model (LLM) agent. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/jadepuffer-ransomware-used-ai-agent-to-automate-entire-attack/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-04T23:16:38+09:00",
+      "title_ja": "JadePufferランサムウェア、AIエージェントを使い攻撃を完全に自動化",
+      "summary_ja": "研究者たちは、AIエージェント、特に大規模言語モデル（LLM）エージェントによって攻撃が完全に自動化された初のランサムウェア事例「JadePuffer」を発見した。これは、LLMエージェントが単なるツールではなく、攻撃全体を自律的に実行できるレベルに達したことを示している。この動きは、サイバー攻撃の速度と複雑性を劇的に向上させる可能性を秘めている。",
+      "insight": "AIエージェントによる攻撃の自動化は、SOC/CDCの運用モデルに根本的な変化を要求する。従来の検知・対応プロセスでは、AIの速度と自律性に対応しきれない可能性があるため、防御側もAIを活用した自動化（AI for Security）と、AIシステムの挙動を監視する（Security for AI）の両面での強化が急務となる。Tier1/2のアラート判断と初動対応の自動化を加速し、人間はより高度な意思決定と戦略策定に集中すべきである。",
+      "importance": "高",
+      "importance_reason": "AIエージェントによる攻撃の完全自動化はサイバー攻撃のゲームチェンジャーとなり、防御側の検知・対応能力に深刻な影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "ランサムウェア",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "JadePuffer",
+        "ランサムウェア",
+        "LLMエージェント",
+        "攻撃自動化",
+        "自律型攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d31e87af3d55",
+      "title": "Agentic AI Used to Conduct Ransomware Attack via Langflow",
+      "summary": "<p>Attack demonstrates how LLM agents can combine known exploitation techniques with real-time reasoning to automate complex, multi-stage intrusions.</p>\n<p>The post <a href=\"https://www.securityweek.com/agentic-ai-used-to-conduct-ransomware-attack-via-langflow/\">Agentic AI Used to Conduct Ransomware Attack via Langflow</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/agentic-ai-used-to-conduct-ransomware-attack-via-langflow/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-03T20:00:00+09:00",
+      "title_ja": "Langflow経由でエージェントAIが悪用され、ランサムウェア攻撃が実行される",
+      "summary_ja": "本記事は、LLMエージェントがLangflowを介して既知の脆弱性悪用技術とリアルタイム推論を組み合わせ、複雑な多段階の侵入を自動化した事例を報告している。これは、エージェントAIが単一のタスクだけでなく、複数のステップにわたる攻撃フロー全体を自律的に実行する能力を持つことを実証した初めてのケースと見られる。",
+      "insight": "AIエージェントがツール（Langflow）を介して既存の攻撃技術を組み合わせ、リアルタイム推論で多段階攻撃を遂行することは、AIエージェントリスクモデルの「②ツール・実行層」と「③マルチエージェント層」における脅威が現実化したことを示す。CDCは、AIエージェントが利用する外部ツール連携やAPI通信、エージェント間の連鎖的な挙動を監視対象に加え、これらの異常検知を強化する必要がある。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが多段階攻撃を自動実行する具体的な手口が示されており、Security for AIの設計とSOC/CDCの監視対象拡大に直接的な示唆を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "ランサムウェア",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "エージェントAI",
+        "Langflow",
+        "ランサムウェア",
+        "多段階攻撃",
+        "リアルタイム推論"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "4290d6efe584",
+      "title": "NetNut proxy network disrupted, 2 million infected devices cut off",
+      "summary": "A joint operation involving Google has disrupted NetNut, a residential proxy network that gave access to millions of compromised Android devices, including smart TVs and streaming boxes. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/netnut-proxy-network-disrupted-2-million-infected-devices-cut-off/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-04T02:50:04+09:00",
+      "title_ja": "NetNutプロキシネットワークが解体され、200万台の感染デバイスが遮断",
+      "summary_ja": "Googleを含む国際的な共同作戦により、NetNutと呼ばれる大規模なレジデンシャルプロキシネットワークが解体された。このネットワークは、スマートTVやストリーミングボックスを含む200万台もの侵害されたAndroidデバイスへのアクセスを提供し、サイバー犯罪者に悪用されていた。今回の措置により、これらの感染デバイスはネットワークから切り離された。",
+      "insight": "大規模なボットネットやプロキシネットワークの解体は、脅威インテリジェンスとしてSOC/CDCの分析対象となる。自社環境で類似の感染デバイスがないか、またはこのような悪性プロキシ経由の通信が発生していないかを確認するための監視体制の強化が求められる。特にIoTデバイスやBYOD環境におけるセキュリティ監視の重要性を再認識させる。",
+      "importance": "中",
+      "importance_reason": "大規模な脅威インフラが解体されたことで、広範な感染デバイスへの影響と、国際的な協力によるサイバー犯罪対策の重要性を示しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "DDoS"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "NetNut",
+        "プロキシネットワーク",
+        "Androidデバイス",
+        "ボットネット",
+        "国際協力"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "237869d02b45",
+      "title": "Chinese LLMs Broaden the Gap Between Attackers &amp; Defenders",
+      "summary": "Two new models from Chinese firms compete with top US mainstream and frontier models. Should cyber-defenders be worried?",
+      "url": "https://www.darkreading.com/cyber-risk/chinese-llms-broaden-gap-between-attackers-and-defenders",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-03T22:01:00+09:00",
+      "title_ja": "中国製LLMの登場が攻撃者と防御者の間のギャップを拡大か",
+      "summary_ja": "中国企業が開発した2つの新しいLLMが、米国の主要な最先端モデルと競争力を持ち始めている。これらの強力なLLMの登場は、サイバー防御側にとって懸念材料となり、攻撃者と防御者の間の技術的なギャップをさらに広げる可能性があると指摘されている。",
+      "insight": "高性能なLLMが多様な国や組織から登場することは、AI技術のコモディティ化と並行して、攻撃者によるAI悪用の障壁を低下させることを意味する。CDCは、このような技術動向を常に追跡し、攻撃側がAIで何を可能にするか、それに対して防御側がどうAIを活用して対抗するかを戦略的に検討する必要がある。特に、AIを使った防御（AI for Security）のロードマップと、AIの安全性評価（Security for AI）の重要性が増す。",
+      "importance": "中",
+      "importance_reason": "AI技術の地政学的な競争がサイバーセキュリティの攻防バランスに影響を及ぼし、防御側のAI戦略に示唆を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "AIを使った防御",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "中国LLM",
+        "生成AI",
+        "攻撃者",
+        "防御者",
+        "技術ギャップ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "c2a08bc85708",
+      "title": "European Parliament Member Investigating Spyware Was Hacked With Pegasus",
+      "summary": "A new report from the Citizen Lab has revealed that former Member of the European Parliament Stelios Kouloglou had his mobile device repeatedly hacked with the notorious Pegasus spyware while serving on a committee that was tasked with investigating the abuse of such commercial surveillance tools in the bloc.\n\n\"Through forensic analysis of his device, we found that the attackers could have had",
+      "url": "https://thehackernews.com/2026/07/european-parliament-member.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-03T20:05:43+09:00",
+      "title_ja": "スパイウェア調査中の欧州議会議員がPegasusにハッキングされる",
+      "summary_ja": "Citizen Labの報告により、元欧州議会議員Stelios Kouloglou氏が、商業スパイウェアの濫用を調査する委員会に所属中に、悪名高いPegasusスパイウェアによってモバイルデバイスを繰り返しハッキングされていたことが判明した。彼のデバイスのフォレンジック分析から、攻撃者は広範なアクセス権限を持っていた可能性が示唆されている。",
+      "insight": "国家レベルのAPTや高度なスパイウェア（Pegasusなど）による標的型攻撃は、特定の高価値ターゲットを持つ組織のCDCにとって重要な脅威である。モバイルデバイスの監視強化、特にOSやアプリの挙動監視、ネットワーク通信の異常検知、物理的アクセス保護の重要性を示唆する。CISO報告においても、特定の役員や高位職員に対するこのような高度な脅威への対策状況を説明する必要がある。",
+      "importance": "中",
+      "importance_reason": "国家レベルの高度なスパイウェア攻撃が民主主義の根幹に関わる個人を標的とした事例であり、高価値ターゲットを持つ組織のCDCに示唆を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "APT",
+        "ソーシャルエンジニアリング",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Pegasus",
+        "スパイウェア",
+        "欧州議会議員",
+        "Citizen Lab",
+        "モバイルハッキング"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "CISO報告",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "474f7d0eaa78",
+      "title": "In Other News: Canadian Hacker Jailed, Open Source Zero-Days, Two Sentenced for ATM Jackpotting",
+      "summary": "<p>Noteworthy stories that might have slipped under the radar: Anonymous-linked Canadian hacker jailed, researcher drops zero-days in open source projects, Venezuelans sentenced in the US over ATM jackpotting. </p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-canadian-hacker-jailed-open-source-zero-days-two-sentenced-for-atm-jackpotting/\">In Other News: Canadian Hacker Jailed, Open Source Zero-Days, Two Sentenced for ATM Jackpotting</a> appeared first on <a href=\"https://www.s",
+      "url": "https://www.securityweek.com/in-other-news-canadian-hacker-jailed-open-source-zero-days-two-sentenced-for-atm-jackpotting/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-04T00:10:42+09:00",
+      "title_ja": "カナダ人ハッカー投獄、オープンソースゼロデイ公開、ATMジャックポッティングで有罪判決",
+      "summary_ja": "本記事は、カナダ人ハッカーの投獄、研究者によるオープンソースプロジェクトにおけるゼロデイ脆弱性の公開、そしてATMジャックポッティングでベネズエラ人が米国で有罪判決を受けた、といった複数のサイバーセキュリティ関連ニュースをまとめている。これらの事案は、サイバー犯罪の多様性と法的執行の継続性を示唆する。",
+      "insight": "複数の個別インシデントの報告であり、特定のCDC運用モデルに直接的な影響を与えるものではないが、ゼロデイ脆弱性がオープンソースプロジェクトでも発見されうるという事実は、ソフトウェアサプライチェーンリスクの継続的な監視の重要性を示唆する。ATMジャックポッティングのような物理的・金銭的被害に直結する攻撃への警戒も継続する必要がある。",
+      "importance": "低",
+      "importance_reason": "複数の個別事案をまとめたものであり、緊急性の高い広範な影響や新しい傾向を示すものではないため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "金融被害",
+        "データ侵害",
+        "情報漏洩"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "デバイス/エッジ",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "カナダ人ハッカー",
+        "オープンソース",
+        "ゼロデイ",
+        "ATMジャックポッティング",
+        "有罪判決"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d8e23367fb10",
+      "title": "New \"Bad Epoll\" Linux Kernel Flaw Lets Unprivileged Users Gain Root, Hits Android",
+      "summary": "A newly disclosed Linux kernel flaw called Bad Epoll (CVE-2026-46242) lets an ordinary user with no special access take full control of a machine as root. It affects Linux desktops, servers, and Android, and a fix is out.\n\nBad Epoll sits in the same small stretch of kernel code where Anthropic's most powerful AI model, Mythos, recently found a different bug.\n\nThe AI caught one flaw and missed",
+      "url": "https://thehackernews.com/2026/07/new-bad-epoll-linux-kernel-flaw-lets.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-04T04:40:01+09:00",
       "title_ja": "Linuxカーネルの新たな脆弱性「Bad Epoll」で非特権ユーザーがroot権限を取得可能に、Androidにも影響",
       "summary_ja": "Linuxカーネルに新たな脆弱性「Bad Epoll」（CVE-2026-46242）が発見され、非特権ユーザーがroot権限を取得できることが判明しました。この脆弱性はLinuxデスクトップ、サーバー、Androidに影響しますが、既に修正パッチが提供されています。興味深いことに、AnthropicのAIモデルMythosがこの脆弱性と同じコード領域で以前に別のバグを発見しており、AIによる脆弱性発見能力の一端を示しています。",
       "insight": "Linuxカーネルのroot権限昇格の脆弱性はSOC/CDCにとって常に重要な監視・対応事項です。本件ではAIがバグ発見に貢献したものの、別のバグを見逃したという点が示唆的です。SOC/CDCは、OS脆弱性管理プロセスにおけるAI支援ツールの導入可能性を評価するとともに、AIの限界を理解し、人間の専門家との協調による多層的な検証体制を構築する必要があります。AIが発見した脆弱性への対応プロセスも考慮すべきです。",
