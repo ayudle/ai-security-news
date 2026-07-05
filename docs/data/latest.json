@@ -1,86 +1,44 @@
 {
-  "updated": "2026-07-05T05:16:14.879245+09:00",
-  "today": "2026-07-05",
+  "updated": "2026-07-06T05:20:56.383299+09:00",
+  "today": "2026-07-06",
   "articles": [
     {
-      "id": "d8e23367fb10",
-      "title": "New \"Bad Epoll\" Linux Kernel Flaw Lets Unprivileged Users Gain Root, Hits Android",
-      "summary": "A newly disclosed Linux kernel flaw called Bad Epoll (CVE-2026-46242) lets an ordinary user with no special access take full control of a machine as root. It affects Linux desktops, servers, and Android, and a fix is out.\n\nBad Epoll sits in the same small stretch of kernel code where Anthropic's most powerful AI model, Mythos, recently found a different bug.\n\nThe AI caught one flaw and missed",
-      "url": "https://thehackernews.com/2026/07/new-bad-epoll-linux-kernel-flaw-lets.html",
-      "ai_score": 3,
-      "cdc_pre_score": 1,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-07-04T04:40:01+09:00",
-      "title_ja": "Linuxカーネルに新たなroot権限昇格の脆弱性「Bad Epoll」、Androidにも影響",
-      "summary_ja": "Linuxカーネルに新たな脆弱性「Bad Epoll (CVE-2026-46242)」が発見され、一般ユーザーがroot権限を取得可能であることが明らかになった。この脆弱性はLinuxデスクトップ、サーバー、Androidに影響を与えるが、既に修正パッチがリリースされている。興味深いことに、AnthropicのAIモデルMythosが以前に別のバグを発見したのと同じカーネルコード領域でこの脆弱性が発見された。",
-      "insight": "広範なOSに影響するroot権限昇格の脆弱性は、SOC/CDCにとって常に最優先で対応すべき事項である。特にAndroidデバイスへの影響は、BYOD環境や組み込みシステムを持つ企業にとって重要であり、速やかなパッチ適用計画とシステム監査が求められる。また、AIモデルが脆弱性発見に間接的に貢献した事例として、AI for Securityの可能性を示唆する。",
-      "importance": "高",
-      "importance_reason": "広範囲のLinuxシステムとAndroidデバイスに影響するroot権限昇格の脆弱性であり、即時のパッチ適用と影響評価が求められるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "エクスプロイト",
-        "CVE",
-        "パッチ未適用"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "Linux Kernel",
-        "Bad Epoll",
-        "CVE-2026-46242",
-        "Android",
-        "Root権限昇格"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Exposure管理",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "b01a9b8b56ae",
-      "title": "June 2026 newsletter",
-      "summary": "<p>The June edition of my <a href=\"https://github.com/sponsors/simonw/\">sponsors-only monthly newsletter</a> is out. If you are a sponsor (or if you start a sponsorship now) you can <a href=\"https://github.com/simonw-private/monthly/blob/main/2026-06-june.md\">access it here</a>.</p>\n<p>This month:</p>\n<ul>\n<li>Claude Fable 5, GPT-5.6, and US export restrictions</li>\n<li>GLM-5.2 is the new best open weights model</li>\n<li>Tokenmaxxing is so over</li>\n<li>Datasette Apps</li>\n<li>sqlite-utils and s",
-      "url": "https://simonwillison.net/2026/Jul/3/june-newsletter/#atom-everything",
+      "id": "1e3a50d47fc0",
+      "title": "sqlite-utils 4.0rc2, mostly written by Claude Fable (for about $149.25)",
+      "summary": "<p>I wrote about the <a href=\"https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/\">sqlite-utils 4.0rc1</a> release a couple of weeks ago. Since we only have Claude Fable on our Max subscriptions for a few more days, I decided to see if it could help me get to a 4.0 stable release that I felt truly comfortable about, since I try to keep to <a href=\"https://semver.org\">SemVer</a> and like my incompatible major versions to be as rare as possible.</p>\n<p>I started with this prompt, in Claude C",
+      "url": "https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/#atom-everything",
       "ai_score": 3,
       "cdc_pre_score": 1,
       "source_name": "Simon Willison",
       "source_tier": "C",
-      "published": "2026-07-03T23:50:50+09:00",
-      "title_ja": "2026年6月ニュースレター：最新LLM動向とオープンソースモデル",
-      "summary_ja": "2026年6月のニュースレターでは、Claude Fable 5、GPT-5.6といった主要なLLMの進化、米国による輸出規制、そして新たなオープンウェイトモデルGLM-5.2の登場に言及している。また、トークン最大化戦略の終焉や、Datasette Apps、sqlite-utilsなどの技術動向にも触れられている。",
-      "insight": "最新LLMの動向は、Security for AIの進化とリスク予測において重要である。特にオープンソースLLMの性能向上は、攻撃者側のAI利用能力を底上げする可能性を考慮すべきである。CDCの観点からは、AI技術の一般的な進展を把握し、将来的な脅威インテリジェンスや防御策の検討に役立てる必要はあるものの、直接的な運用への影響は限定的。",
-      "importance": "低",
-      "importance_reason": "広範な技術動向のまとめであり、特定の緊急性の高い脅威や直接的な防御策の必要性を指し示すものではないため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
+      "published": "2026-07-05T10:00:48+09:00",
+      "title_ja": "AIエージェント「Claude Fable」がsqlite-utils開発の大部分を担う",
+      "summary_ja": "開発者Simon Willison氏が、AIエージェントClaude Fableを活用して「sqlite-utils 4.0rc2」の大部分を開発した。SemVerへの準拠を重視し、AIの支援により安定版リリースに向けた作業を進めた。この開発にかかった費用は約149.25ドルとされている。",
+      "insight": "この記事はAIを活用した開発効率化の事例であり、AI for Securityの文脈でAIがSOC/CDCツール開発や自動化スクリプト作成に活用される可能性を示唆する。一方で、AIが生成したコードの品質保証や潜在的な脆弱性混入リスク、AIエージェントの利用状況の可視化とガバナンスがSOC/CDC設計者にとっての論点となる。",
+      "importance": "中",
+      "importance_reason": "AIエージェントによる開発の具体例であり、AI for Securityの将来像や潜在的なコードセキュリティリスクの議論を促すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "市場トレンド",
-        "製品リリース",
-        "研究・論文"
+        "AIを使った防御",
+        "製品リリース"
       ],
       "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
+        "アプリ/API",
+        "データ/AI"
       ],
       "related_keywords": [
-        "LLM",
+        "AIエージェント",
+        "コード生成",
+        "sqlite-utils",
         "Claude Fable",
-        "GPT",
-        "GLM",
-        "輸出規制"
+        "開発効率化"
       ],
-      "cdc_relevance": 1,
+      "cdc_relevance": 2,
       "cdc_context": [
-        "サービス企画",
         "AI for Security",
-        "Security for AI"
+        "Security for AI",
+        "サービス企画"
       ],
       "views": 0
     },
@@ -94,244 +52,214 @@
       "source_name": "Bleeping Computer",
       "source_tier": "B",
       "published": "2026-07-04T23:16:38+09:00",
-      "title_ja": "JadePufferランサムウェア、AIエージェントを使い攻撃を完全に自動化",
-      "summary_ja": "研究者たちは、AIエージェント、特に大規模言語モデル（LLM）エージェントによって攻撃が完全に自動化された初のランサムウェア事例「JadePuffer」を発見した。これは、LLMエージェントが単なるツールではなく、攻撃全体を自律的に実行できるレベルに達したことを示している。この動きは、サイバー攻撃の速度と複雑性を劇的に向上させる可能性を秘めている。",
-      "insight": "AIエージェントによる攻撃の自動化は、SOC/CDCの運用モデルに根本的な変化を要求する。従来の検知・対応プロセスでは、AIの速度と自律性に対応しきれない可能性があるため、防御側もAIを活用した自動化（AI for Security）と、AIシステムの挙動を監視する（Security for AI）の両面での強化が急務となる。Tier1/2のアラート判断と初動対応の自動化を加速し、人間はより高度な意思決定と戦略策定に集中すべきである。",
+      "title_ja": "ランサムウェア「JadePuffer」、AIエージェントを使い攻撃全体を自動化",
+      "summary_ja": "セキュリティ研究者らは、ランサムウェア「JadePuffer」がAIエージェントを完全に利用して攻撃を実行した、初の事例を特定した。この攻撃は、検知からデータ暗号化、身代金要求までの一連のプロセスをAIエージェントが自動で遂行したとされている。これにより、従来の人間主導の攻撃と比較して、速度と規模の面で新たな脅威が浮上した。",
+      "insight": "AIエージェントが攻撃全体を自動化する事例は、防御側の検知・対応速度を大幅に上回る可能性を示唆する。SOC/CDCは、AIエージェントの異常な挙動を早期に検知するための新たな監視ポイントやAIベースの異常検知技術の導入を検討する必要がある。特に、MDRサービスでは、AIによる高速な攻撃に対応するための自動応答能力やSOAR連携の強化が喫緊の課題となる。",
       "importance": "高",
-      "importance_reason": "AIエージェントによる攻撃の完全自動化はサイバー攻撃のゲームチェンジャーとなり、防御側の検知・対応能力に深刻な影響を与えるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "importance_reason": "AIエージェントが攻撃全体を自動化する初の事例であり、攻撃手法の進化と防御側の対応速度への深刻な影響が予想されるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
       "tag_subs": [
         "ランサムウェア",
         "AIを使った攻撃"
       ],
       "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
+        "デバイス/エッジ",
+        "ネットワーク",
+        "クラウド/サーバー"
       ],
       "related_keywords": [
         "JadePuffer",
+        "AIエージェント",
         "ランサムウェア",
-        "LLMエージェント",
         "攻撃自動化",
-        "自律型攻撃"
+        "LLMエージェント"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
         "MDR/MSSP設計",
-        "AI for Security",
-        "Security for AI"
+        "サービス企画",
+        "顧客課題",
+        "AI for Security"
       ],
       "views": 0
     },
     {
-      "id": "d31e87af3d55",
-      "title": "Agentic AI Used to Conduct Ransomware Attack via Langflow",
-      "summary": "<p>Attack demonstrates how LLM agents can combine known exploitation techniques with real-time reasoning to automate complex, multi-stage intrusions.</p>\n<p>The post <a href=\"https://www.securityweek.com/agentic-ai-used-to-conduct-ransomware-attack-via-langflow/\">Agentic AI Used to Conduct Ransomware Attack via Langflow</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/agentic-ai-used-to-conduct-ransomware-attack-via-langflow/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-07-03T20:00:00+09:00",
-      "title_ja": "Langflow経由でエージェントAIが悪用され、ランサムウェア攻撃が実行される",
-      "summary_ja": "本記事は、LLMエージェントがLangflowを介して既知の脆弱性悪用技術とリアルタイム推論を組み合わせ、複雑な多段階の侵入を自動化した事例を報告している。これは、エージェントAIが単一のタスクだけでなく、複数のステップにわたる攻撃フロー全体を自律的に実行する能力を持つことを実証した初めてのケースと見られる。",
-      "insight": "AIエージェントがツール（Langflow）を介して既存の攻撃技術を組み合わせ、リアルタイム推論で多段階攻撃を遂行することは、AIエージェントリスクモデルの「②ツール・実行層」と「③マルチエージェント層」における脅威が現実化したことを示す。CDCは、AIエージェントが利用する外部ツール連携やAPI通信、エージェント間の連鎖的な挙動を監視対象に加え、これらの異常検知を強化する必要がある。",
-      "importance": "高",
-      "importance_reason": "AIエージェントが多段階攻撃を自動実行する具体的な手口が示されており、Security for AIの設計とSOC/CDCの監視対象拡大に直接的な示唆を与えるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "ランサムウェア",
-        "AIを使った攻撃"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "エージェントAI",
-        "Langflow",
-        "ランサムウェア",
-        "多段階攻撃",
-        "リアルタイム推論"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "AI for Security",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "4290d6efe584",
-      "title": "NetNut proxy network disrupted, 2 million infected devices cut off",
-      "summary": "A joint operation involving Google has disrupted NetNut, a residential proxy network that gave access to millions of compromised Android devices, including smart TVs and streaming boxes. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/netnut-proxy-network-disrupted-2-million-infected-devices-cut-off/",
+      "id": "da3100ccc13c",
+      "title": "U.S. Government Entity Paid Kairos $1 Million in Data-Theft Extortion Case",
+      "summary": "A U.S. government entity paid about $1 million to keep stolen files from being leaked, according to a new&nbsp;case study by Rakesh Krishnan for Ransom-ISAC, built on a leaked negotiation chat and the blockchain trail the payment left.\n\nThe odd part: the group that took the money calls itself Kairos, but it may not be a ransomware gang at all. Krishnan found no sign that it ever locked a single",
+      "url": "https://thehackernews.com/2026/07/us-government-entity-paid-kairos-group.html",
       "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-07-04T02:50:04+09:00",
-      "title_ja": "NetNutプロキシネットワークが解体され、200万台の感染デバイスが遮断",
-      "summary_ja": "Googleを含む国際的な共同作戦により、NetNutと呼ばれる大規模なレジデンシャルプロキシネットワークが解体された。このネットワークは、スマートTVやストリーミングボックスを含む200万台もの侵害されたAndroidデバイスへのアクセスを提供し、サイバー犯罪者に悪用されていた。今回の措置により、これらの感染デバイスはネットワークから切り離された。",
-      "insight": "大規模なボットネットやプロキシネットワークの解体は、脅威インテリジェンスとしてSOC/CDCの分析対象となる。自社環境で類似の感染デバイスがないか、またはこのような悪性プロキシ経由の通信が発生していないかを確認するための監視体制の強化が求められる。特にIoTデバイスやBYOD環境におけるセキュリティ監視の重要性を再認識させる。",
-      "importance": "中",
-      "importance_reason": "大規模な脅威インフラが解体されたことで、広範な感染デバイスへの影響と、国際的な協力によるサイバー犯罪対策の重要性を示しているため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "マルウェア",
-        "DDoS"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "ネットワーク"
-      ],
-      "related_keywords": [
-        "NetNut",
-        "プロキシネットワーク",
-        "Androidデバイス",
-        "ボットネット",
-        "国際協力"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "SOC運用変化",
-        "Exposure管理",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "237869d02b45",
-      "title": "Chinese LLMs Broaden the Gap Between Attackers &amp; Defenders",
-      "summary": "Two new models from Chinese firms compete with top US mainstream and frontier models. Should cyber-defenders be worried?",
-      "url": "https://www.darkreading.com/cyber-risk/chinese-llms-broaden-gap-between-attackers-and-defenders",
-      "ai_score": 2,
       "cdc_pre_score": 0,
-      "source_name": "Dark Reading",
+      "source_name": "The Hacker News",
       "source_tier": "B",
-      "published": "2026-07-03T22:01:00+09:00",
-      "title_ja": "中国製LLMの登場が攻撃者と防御者の間のギャップを拡大か",
-      "summary_ja": "中国企業が開発した2つの新しいLLMが、米国の主要な最先端モデルと競争力を持ち始めている。これらの強力なLLMの登場は、サイバー防御側にとって懸念材料となり、攻撃者と防御者の間の技術的なギャップをさらに広げる可能性があると指摘されている。",
-      "insight": "高性能なLLMが多様な国や組織から登場することは、AI技術のコモディティ化と並行して、攻撃者によるAI悪用の障壁を低下させることを意味する。CDCは、このような技術動向を常に追跡し、攻撃側がAIで何を可能にするか、それに対して防御側がどうAIを活用して対抗するかを戦略的に検討する必要がある。特に、AIを使った防御（AI for Security）のロードマップと、AIの安全性評価（Security for AI）の重要性が増す。",
-      "importance": "中",
-      "importance_reason": "AI技術の地政学的な競争がサイバーセキュリティの攻防バランスに影響を及ぼし、防御側のAI戦略に示唆を与えるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "published": "2026-07-04T21:47:53+09:00",
+      "title_ja": "米政府機関、データ窃盗犯Kairosに100万ドルの身代金支払い",
+      "summary_ja": "米国政府機関が、データ窃盗グループ「Kairos」に対し約100万ドルを支払い、盗まれたファイルの公開を阻止したことが報じられた。Ransom-ISACのケーススタディによると、Kairosは通常のランサムウェアと異なり、データをロックする形跡がなく、窃取したデータの公開を盾に脅迫する新たな手口を用いている可能性がある。この事件は、身代金支払いの動機がデータロック解除からデータ漏洩阻止へと変化している傾向を示す。",
+      "insight": "データ窃盗・暴露型脅迫は、従来のランサムウェア検知・復旧対策だけでは不十分であることを示唆する。SOC/CDCは、データ流出の早期検知（DLP強化）、データのアクセス監査、外部へのデータ転送監視、および影響評価とCISOへの報告プロセスを強化する必要がある。特に、身代金交渉支援や情報漏洩時の広報対応まで含めたCDCの対応範囲の重要性が増す。",
+      "importance": "高",
+      "importance_reason": "政府機関への被害に加え、データを暗号化せず情報漏洩を脅迫する新たな脅威形態であり、データ流出対策の再考を促すため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
       "tag_subs": [
-        "AIを使った攻撃",
-        "AIを使った防御",
-        "市場トレンド"
+        "データ侵害",
+        "情報漏洩",
+        "金融被害"
       ],
       "affected_layers": [
         "データ/AI",
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "中国LLM",
-        "生成AI",
-        "攻撃者",
-        "防御者",
-        "技術ギャップ"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "CISO報告",
-        "サービス企画",
-        "AI for Security",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "c2a08bc85708",
-      "title": "European Parliament Member Investigating Spyware Was Hacked With Pegasus",
-      "summary": "A new report from the Citizen Lab has revealed that former Member of the European Parliament Stelios Kouloglou had his mobile device repeatedly hacked with the notorious Pegasus spyware while serving on a committee that was tasked with investigating the abuse of such commercial surveillance tools in the bloc.\n\n\"Through forensic analysis of his device, we found that the attackers could have had",
-      "url": "https://thehackernews.com/2026/07/european-parliament-member.html",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-07-03T20:05:43+09:00",
-      "title_ja": "スパイウェア調査中の欧州議会議員がPegasusにハッキングされる",
-      "summary_ja": "Citizen Labの報告により、元欧州議会議員Stelios Kouloglou氏が、商業スパイウェアの濫用を調査する委員会に所属中に、悪名高いPegasusスパイウェアによってモバイルデバイスを繰り返しハッキングされていたことが判明した。彼のデバイスのフォレンジック分析から、攻撃者は広範なアクセス権限を持っていた可能性が示唆されている。",
-      "insight": "国家レベルのAPTや高度なスパイウェア（Pegasusなど）による標的型攻撃は、特定の高価値ターゲットを持つ組織のCDCにとって重要な脅威である。モバイルデバイスの監視強化、特にOSやアプリの挙動監視、ネットワーク通信の異常検知、物理的アクセス保護の重要性を示唆する。CISO報告においても、特定の役員や高位職員に対するこのような高度な脅威への対策状況を説明する必要がある。",
-      "importance": "中",
-      "importance_reason": "国家レベルの高度なスパイウェア攻撃が民主主義の根幹に関わる個人を標的とした事例であり、高価値ターゲットを持つ組織のCDCに示唆を与えるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "APT",
-        "ソーシャルエンジニアリング",
-        "マルウェア"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "Pegasus",
-        "スパイウェア",
-        "欧州議会議員",
-        "Citizen Lab",
-        "モバイルハッキング"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "SOC運用変化",
-        "CISO報告",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "474f7d0eaa78",
-      "title": "In Other News: Canadian Hacker Jailed, Open Source Zero-Days, Two Sentenced for ATM Jackpotting",
-      "summary": "<p>Noteworthy stories that might have slipped under the radar: Anonymous-linked Canadian hacker jailed, researcher drops zero-days in open source projects, Venezuelans sentenced in the US over ATM jackpotting. </p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-canadian-hacker-jailed-open-source-zero-days-two-sentenced-for-atm-jackpotting/\">In Other News: Canadian Hacker Jailed, Open Source Zero-Days, Two Sentenced for ATM Jackpotting</a> appeared first on <a href=\"https://www.s",
-      "url": "https://www.securityweek.com/in-other-news-canadian-hacker-jailed-open-source-zero-days-two-sentenced-for-atm-jackpotting/",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-07-04T00:10:42+09:00",
-      "title_ja": "カナダ人ハッカー投獄、オープンソースゼロデイ公開、ATMジャックポッティングで有罪判決",
-      "summary_ja": "本記事は、カナダ人ハッカーの投獄、研究者によるオープンソースプロジェクトにおけるゼロデイ脆弱性の公開、そしてATMジャックポッティングでベネズエラ人が米国で有罪判決を受けた、といった複数のサイバーセキュリティ関連ニュースをまとめている。これらの事案は、サイバー犯罪の多様性と法的執行の継続性を示唆する。",
-      "insight": "複数の個別インシデントの報告であり、特定のCDC運用モデルに直接的な影響を与えるものではないが、ゼロデイ脆弱性がオープンソースプロジェクトでも発見されうるという事実は、ソフトウェアサプライチェーンリスクの継続的な監視の重要性を示唆する。ATMジャックポッティングのような物理的・金銭的被害に直結する攻撃への警戒も継続する必要がある。",
-      "importance": "低",
-      "importance_reason": "複数の個別事案をまとめたものであり、緊急性の高い広範な影響や新しい傾向を示すものではないため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
-      "tag_subs": [
-        "金融被害",
-        "データ侵害",
+        "Kairos",
+        "データ窃盗",
+        "脅迫",
+        "身代金",
         "情報漏洩"
       ],
-      "affected_layers": [
-        "アプリ/API",
-        "デバイス/エッジ",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "カナダ人ハッカー",
-        "オープンソース",
-        "ゼロデイ",
-        "ATMジャックポッティング",
-        "有罪判決"
-      ],
-      "cdc_relevance": 1,
+      "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
-        "顧客課題"
+        "CISO報告",
+        "顧客課題",
+        "Exposure管理"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-07-06",
+      "articles": [
+        {
+          "id": "1e3a50d47fc0",
+          "title": "sqlite-utils 4.0rc2, mostly written by Claude Fable (for about $149.25)",
+          "summary": "<p>I wrote about the <a href=\"https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/\">sqlite-utils 4.0rc1</a> release a couple of weeks ago. Since we only have Claude Fable on our Max subscriptions for a few more days, I decided to see if it could help me get to a 4.0 stable release that I felt truly comfortable about, since I try to keep to <a href=\"https://semver.org\">SemVer</a> and like my incompatible major versions to be as rare as possible.</p>\n<p>I started with this prompt, in Claude C",
+          "url": "https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/#atom-everything",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Simon Willison",
+          "source_tier": "C",
+          "published": "2026-07-05T10:00:48+09:00",
+          "title_ja": "AIエージェント「Claude Fable」がsqlite-utils開発の大部分を担う",
+          "summary_ja": "開発者Simon Willison氏が、AIエージェントClaude Fableを活用して「sqlite-utils 4.0rc2」の大部分を開発した。SemVerへの準拠を重視し、AIの支援により安定版リリースに向けた作業を進めた。この開発にかかった費用は約149.25ドルとされている。",
+          "insight": "この記事はAIを活用した開発効率化の事例であり、AI for Securityの文脈でAIがSOC/CDCツール開発や自動化スクリプト作成に活用される可能性を示唆する。一方で、AIが生成したコードの品質保証や潜在的な脆弱性混入リスク、AIエージェントの利用状況の可視化とガバナンスがSOC/CDC設計者にとっての論点となる。",
+          "importance": "中",
+          "importance_reason": "AIエージェントによる開発の具体例であり、AI for Securityの将来像や潜在的なコードセキュリティリスクの議論を促すため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御",
+            "製品リリース"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "AIエージェント",
+            "コード生成",
+            "sqlite-utils",
+            "Claude Fable",
+            "開発効率化"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "Security for AI",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "0a4428d5fdfd",
+          "title": "JadePuffer ransomware used AI agent to automate entire attack",
+          "summary": "Researchers identified what they believe is the first documented case of a ransomware operation, JadePuffer, conducted entirely by a large language model (LLM) agent. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/jadepuffer-ransomware-used-ai-agent-to-automate-entire-attack/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-07-04T23:16:38+09:00",
+          "title_ja": "ランサムウェア「JadePuffer」、AIエージェントを使い攻撃全体を自動化",
+          "summary_ja": "セキュリティ研究者らは、ランサムウェア「JadePuffer」がAIエージェントを完全に利用して攻撃を実行した、初の事例を特定した。この攻撃は、検知からデータ暗号化、身代金要求までの一連のプロセスをAIエージェントが自動で遂行したとされている。これにより、従来の人間主導の攻撃と比較して、速度と規模の面で新たな脅威が浮上した。",
+          "insight": "AIエージェントが攻撃全体を自動化する事例は、防御側の検知・対応速度を大幅に上回る可能性を示唆する。SOC/CDCは、AIエージェントの異常な挙動を早期に検知するための新たな監視ポイントやAIベースの異常検知技術の導入を検討する必要がある。特に、MDRサービスでは、AIによる高速な攻撃に対応するための自動応答能力やSOAR連携の強化が喫緊の課題となる。",
+          "importance": "高",
+          "importance_reason": "AIエージェントが攻撃全体を自動化する初の事例であり、攻撃手法の進化と防御側の対応速度への深刻な影響が予想されるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "ランサムウェア",
+            "AIを使った攻撃"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ネットワーク",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "JadePuffer",
+            "AIエージェント",
+            "ランサムウェア",
+            "攻撃自動化",
+            "LLMエージェント"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "MDR/MSSP設計",
+            "サービス企画",
+            "顧客課題",
+            "AI for Security"
+          ],
+          "views": 0
+        },
+        {
+          "id": "da3100ccc13c",
+          "title": "U.S. Government Entity Paid Kairos $1 Million in Data-Theft Extortion Case",
+          "summary": "A U.S. government entity paid about $1 million to keep stolen files from being leaked, according to a new&nbsp;case study by Rakesh Krishnan for Ransom-ISAC, built on a leaked negotiation chat and the blockchain trail the payment left.\n\nThe odd part: the group that took the money calls itself Kairos, but it may not be a ransomware gang at all. Krishnan found no sign that it ever locked a single",
+          "url": "https://thehackernews.com/2026/07/us-government-entity-paid-kairos-group.html",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-07-04T21:47:53+09:00",
+          "title_ja": "米政府機関、データ窃盗犯Kairosに100万ドルの身代金支払い",
+          "summary_ja": "米国政府機関が、データ窃盗グループ「Kairos」に対し約100万ドルを支払い、盗まれたファイルの公開を阻止したことが報じられた。Ransom-ISACのケーススタディによると、Kairosは通常のランサムウェアと異なり、データをロックする形跡がなく、窃取したデータの公開を盾に脅迫する新たな手口を用いている可能性がある。この事件は、身代金支払いの動機がデータロック解除からデータ漏洩阻止へと変化している傾向を示す。",
+          "insight": "データ窃盗・暴露型脅迫は、従来のランサムウェア検知・復旧対策だけでは不十分であることを示唆する。SOC/CDCは、データ流出の早期検知（DLP強化）、データのアクセス監査、外部へのデータ転送監視、および影響評価とCISOへの報告プロセスを強化する必要がある。特に、身代金交渉支援や情報漏洩時の広報対応まで含めたCDCの対応範囲の重要性が増す。",
+          "importance": "高",
+          "importance_reason": "政府機関への被害に加え、データを暗号化せず情報漏洩を脅迫する新たな脅威形態であり、データ流出対策の再考を促すため。",
+          "tag_main_id": "incident",
+          "tag_main_label": "インシデント",
+          "tag_subs": [
+            "データ侵害",
+            "情報漏洩",
+            "金融被害"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "Kairos",
+            "データ窃盗",
+            "脅迫",
+            "身代金",
+            "情報漏洩"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "CISO報告",
+            "顧客課題",
+            "Exposure管理"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】AIエージェントが悪用され攻撃を自動化する新たな脅威が出現し、防御側はこれに対応するためAI活用とセキュリティアーキテクチャの抜本的見直しを迫られている。従来のランサムウェアに加え、データ窃盗と情報漏洩を主眼とした脅迫が増加しており、SOC/CDCは検知・対応の範囲と速度を劇的に変化させる必要がある。\n【攻撃側の変化】AIエージェントがランサムウェア攻撃全体を自動化する事例が確認され、攻撃の実行速度と規模が飛躍的に向上する可能性が示唆される。また、データを暗号化せずに窃取し、その公開を脅迫する新たな手口（データ窃盗・暴露型脅迫）が増加しており、防御側はランサムウェア対策だけでなくデータ流出防止と漏洩対応を強化する必要がある。\n【防御側の変化】AIエージェントによる自動化攻撃の出現に対し、防御側は検知から対応までの時間を極限まで短縮するAIを活用した自動防御システムの導入が不可欠となる。既存のSIEM/SOAR/MDRは、AIエージェントの挙動をリアルタイムで分析し、高速な初動対応を行うためのAI統合機能の強化が求められる。\n【Security for AI】AIエージェント自体が攻撃ツールとして悪用される実例（JadePuffer）は、AIシステム固有のログ、挙動、権限、データ流通を従来のSOC監視対象に追加する緊急性が高まっている。特に、エージェントのツール実行層やマルチエージェント層における権限濫用、タスク連鎖の悪用リスクへの監視が不可欠となる。AIによるコード生成は、AIが生成したコード自体の脆弱性評価やサプライチェーンリスクの観点からSecurity for AIの課題となる。\n【AI for Security】AIがソフトウェア開発の効率化に貢献する事例（sqlite-utils）は、SOC/CDC運用におけるカスタムツール開発、自動化スクリプト生成、分析レポート作成支援などへのAI活用可能性を示唆する。AI自動化攻撃に対抗するため、AI for Securityの領域では、AIベースの異常検知、脅威インテリジェンス分析、高速なアラートトリアージ、インシデント初動対応の自動化といった領域でのAI活用がさらに加速する。\n【CDC/SOCへの示唆】AIエージェントによる攻撃の自動化は、SOCの検知・対応プロセスにおいて人間が介在する余地を縮小させ、Tier1/2の自動化とAIによる初動判断・エスカレーション基準の再構築を強く要求する。監視対象にはAIエージェントのログや活動履歴が必須となり、AIシステム固有の異常挙動を検知する新たなルールとモデルが必要となる。データ窃盗・暴露型脅迫の増加は、CDCが検知フェーズをデータ流出監視に拡大し、対応フェーズを経営報告・法務連携・広報対応まで統合する必要があることを強調する。\n【今日の問い】AIエージェントによる攻撃自動化の進展に対し、SOC/CDCはどのレベルまで自動防御能力を拡張し、人間のアナリストの役割を再定義すべきか。AIが生成するコードやAIエージェントが実行するアクションのログは、従来のSIEM/SOARでどのように統合・分析し、Security for AIの監視対象としてどのように標準化すべきか。"
+    },
     {
       "date": "2026-07-05",
       "articles": [
