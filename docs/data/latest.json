@@ -1,134 +1,613 @@
 {
-  "updated": "2026-07-06T05:20:56.383299+09:00",
-  "today": "2026-07-06",
+  "updated": "2026-07-07T05:59:13.444338+09:00",
+  "today": "2026-07-07",
   "articles": [
     {
-      "id": "1e3a50d47fc0",
-      "title": "sqlite-utils 4.0rc2, mostly written by Claude Fable (for about $149.25)",
-      "summary": "<p>I wrote about the <a href=\"https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/\">sqlite-utils 4.0rc1</a> release a couple of weeks ago. Since we only have Claude Fable on our Max subscriptions for a few more days, I decided to see if it could help me get to a 4.0 stable release that I felt truly comfortable about, since I try to keep to <a href=\"https://semver.org\">SemVer</a> and like my incompatible major versions to be as rare as possible.</p>\n<p>I started with this prompt, in Claude C",
-      "url": "https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/#atom-everything",
+      "id": "e2e70e897ddd",
+      "title": "⚡ Weekly Recap: Proxy Botnets, Browser Ransomware, AI Agent Tricks, Fake PoC Malware and More",
+      "summary": "A streaming box should not need a threat model. Neither should a username field, a demo repo, a reset flow, or a browser permission prompt. That is the irritating part this week: the risky pieces were ordinary.\n\nHome devices became a routing cover. Clean code pulled dirt from a dependency. Identity shortcuts aged badly. AI systems trusted the wrong instructions. Same soft spot throughout: trust",
+      "url": "https://thehackernews.com/2026/07/monday-recap-proxy-botnets-browser.html",
       "ai_score": 3,
       "cdc_pre_score": 1,
-      "source_name": "Simon Willison",
-      "source_tier": "C",
-      "published": "2026-07-05T10:00:48+09:00",
-      "title_ja": "AIエージェント「Claude Fable」がsqlite-utils開発の大部分を担う",
-      "summary_ja": "開発者Simon Willison氏が、AIエージェントClaude Fableを活用して「sqlite-utils 4.0rc2」の大部分を開発した。SemVerへの準拠を重視し、AIの支援により安定版リリースに向けた作業を進めた。この開発にかかった費用は約149.25ドルとされている。",
-      "insight": "この記事はAIを活用した開発効率化の事例であり、AI for Securityの文脈でAIがSOC/CDCツール開発や自動化スクリプト作成に活用される可能性を示唆する。一方で、AIが生成したコードの品質保証や潜在的な脆弱性混入リスク、AIエージェントの利用状況の可視化とガバナンスがSOC/CDC設計者にとっての論点となる。",
-      "importance": "中",
-      "importance_reason": "AIエージェントによる開発の具体例であり、AI for Securityの将来像や潜在的なコードセキュリティリスクの議論を促すため。",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-06T22:01:14+09:00",
+      "title_ja": "週刊リキャップ：プロキシボットネット、ブラウザランサムウェア、AIエージェントの悪用など",
+      "summary_ja": "本記事は、通常脅威モデルを必要としないような日常的なシステムやコンポーネントが、信頼の脆弱性を突かれリスク源となっている複数の事象をまとめている。具体的には、ホームデバイスがボットネットのルーティングカバーとして悪用された事例、依存関係から悪意あるコードが引き込まれた事例、そして誤った命令を信頼したAIシステムによる攻撃が報告されている。これらの事例は、システムやプロセスの「信頼」という共通の脆弱性が悪用されていることを示唆している。",
+      "insight": "日常的な「信頼」に基づく要素が悪用されるケースが増加しており、SOC/CDCは監視対象を従来の境界内だけでなく、サプライチェーンやAIエージェントの信頼境界まで拡張する必要がある。特にAIシステムの信頼性判断基準や、ホームデバイスを介したネットワーク内部への侵入経路に対する可視化と制御が今後の重要な検討事項となる。MDR/MSSPは、顧客環境の隠れた「信頼の連鎖」を評価し、AIエージェントの挙動監視をサービスに組み込むべきか、またそのログ収集と分析方法を検討すべきである。",
+      "importance": "高",
+      "importance_reason": "日常的な信頼に基づいたシステムが広範に悪用され、特にAIエージェントの悪用が示唆されており、SOC/CDCの監視範囲と信頼モデルの根本的な再評価を促すため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "AIを使った防御",
-        "製品リリース"
+        "AIを使った攻撃",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "プロキシボットネット",
+        "ブラウザランサムウェア",
+        "AIエージェント",
+        "信頼の脆弱性",
+        "サプライチェーン"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "AI for Security",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "7fd5a1e9eee3",
+      "title": "Phishing poses as big-brand job interview to steal Google accounts",
+      "summary": "A phishing campaign is impersonating more than 30 well-known brands, including Adobe, Netflix, Coca-Cola, and OpenAI, in fake job interviews to steal Google account credentials from marketing professionals. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/phishing-poses-as-big-brand-job-interview-to-steal-google-accounts/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-07T05:27:37+09:00",
+      "title_ja": "大手ブランドを騙るフィッシングでGoogleアカウントが窃取される",
+      "summary_ja": "30以上の有名ブランド（Adobe、Netflix、Coca-Cola、OpenAIなど）を騙る大規模なフィッシングキャンペーンが展開されており、マーケティング専門家を標的に偽の求人面接を通じてGoogleアカウントの認証情報を窃取している。この攻撃は、ターゲットが求人応募中という心理的な隙を突き、巧妙なソーシャルエンジニアリングと著名ブランドの信頼性を悪用している。窃取された認証情報は、さらなる攻撃の足がかりとなる。",
+      "insight": "従来のフィッシング対策に加え、AIエージェントが企業活動に深く統合される将来においては、AIエージェント自体がこのようなフィッシング詐欺の標的とならないか、またはフィッシング詐欺の伝播を助長しないかの検証がCDCにとって重要となる。SOCは、従業員教育の強化と多要素認証の徹底に加え、疑わしい求人関連のURLやメールの監視を強化し、自動化されたAIベースの分析ツールによる脅威インテリジェンスとの連携を検討すべきである。",
+      "importance": "中",
+      "importance_reason": "広範なブランドを悪用し、特定の専門家層を狙う巧妙なフィッシングであり、AI時代のソーシャルエンジニアリングのリスクを高めるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "ソーシャルエンジニアリング",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "フィッシングキャンペーン",
+        "Googleアカウント",
+        "求人詐欺",
+        "ソーシャルエンジニアリング",
+        "認証情報窃取"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0b38ed0c51e6",
+      "title": "JadePuffer: The First Complete LLM-Driven Ransomware Attack",
+      "summary": "An &quot;agentic threat actor&quot; successfully exploited a Langflow flaw to steal data from a production database server and encrypt other systems.",
+      "url": "https://www.darkreading.com/cyberattacks-data-breaches/jadepuffer-first-complete-llm-driven-ransomware-attack",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-07T01:36:50+09:00",
+      "title_ja": "JadePuffer：初の完全なLLM駆動型ランサムウェア攻撃",
+      "summary_ja": "「agentic threat actor」（エージェント型脅威アクター）がLangflowの脆弱性を悪用し、本番データベースサーバーからデータを窃取し、他のシステムを暗号化するランサムウェア攻撃に成功した。これはLLMが攻撃の一部ではなく、攻撃全体を駆動する形で利用された初の事例とされ、AIが攻撃者のインテリジェンスと実行能力を大幅に向上させる可能性を示している。攻撃は脆弱性の特定からデータ窃取、暗号化まで自動的に進行したと推測される。",
+      "insight": "AIエージェントが脆弱性特定から実行までを自動化する「agentic threat actor」の出現は、防御側の反応速度と監視の粒度に根本的な変革を迫る。CDCは、AIシステムが関与する攻撃の痕跡を従来のセキュリティログだけでなく、AIシステム自体のログ（プロンプト、推論、ツール実行履歴など）から検知・分析できる体制を早急に構築する必要がある。Security for AIの観点から、LLM/AIエージェントの脆弱性（特にツール・実行層）への監視と対策が急務となる。",
+      "importance": "高",
+      "importance_reason": "LLMが攻撃全体を駆動するランサムウェア攻撃の初の事例であり、AIエージェントの悪用が本格化していることを示すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ランサムウェア",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "LLM駆動型攻撃",
+        "ランサムウェア",
+        "Langflow脆弱性",
+        "agentic threat actor",
+        "データ窃取"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d2ea5a1200ce",
+      "title": "Prompt Injection Attacks Trick AI Agents Into Making Crypto Payments",
+      "summary": "<p>Researchers uncovered two campaigns embedding indirect prompt injections in malicious websites to exploit autonomous AI agents browsing the web.</p>\n<p>The post <a href=\"https://www.securityweek.com/prompt-injection-attacks-trick-ai-agents-into-making-crypto-payments/\">Prompt Injection Attacks Trick AI Agents Into Making Crypto Payments</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/prompt-injection-attacks-trick-ai-agents-into-making-crypto-payments/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-06T20:19:47+09:00",
+      "title_ja": "プロンプトインジェクション攻撃がAIエージェントを欺き暗号通貨支払いを行わせる",
+      "summary_ja": "研究者らが、悪意あるウェブサイトに間接的なプロンプトインジェクションを埋め込むことで、ウェブを閲覧する自律型AIエージェントを悪用する二つのキャンペーンを発見した。この攻撃は、AIエージェントがアクセスした悪意のあるコンテンツから隠された指示を読み取り、それを正規の命令と誤認して暗号通貨支払いを実行させるというもので、AIエージェントのツール・実行層の権限と信頼モデルの脆弱性を突いている。",
+      "insight": "AIエージェントが外部リソースと連携し、金融取引などの実行権限を持つ場合、プロンプトインジェクションは直接的なデータ侵害だけでなく、財務的な被害に直結するリスクがある。CDCは、AIエージェントの行動ログ、特に外部API呼び出しや支払いトランザクションに関する詳細な監視と、不審なプロンプトのパターン検知ルールを強化する必要がある。AIエージェントの信頼境界と、人間による承認なしに実行可能なアクションの範囲を再定義し、権限管理の厳格化が求められる。",
+      "importance": "高",
+      "importance_reason": "自律型AIエージェントが金銭的被害に直結するプロンプトインジェクション攻撃の具体例であり、AIエージェントの安全な利用における重大なセキュリティリスクを示すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "AIを使った攻撃",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "プロンプトインジェクション",
+        "AIエージェント",
+        "暗号通貨支払い",
+        "間接プロンプトインジェクション",
+        "自律型AI"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "Identity/ITDR",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "6f394a28950a",
+      "title": "SkillCloak Lets Malicious AI Agent Skills Evade Static Scanners with Self-Extracting Packing",
+      "summary": "Scanners meant to catch malicious add-on \"skills\" for AI coding agents can be fooled by a few simple changes that leave the malware working, according to a&nbsp;new study&nbsp;from researchers at the Hong Kong University of Science and Technology.\n\nTheir strongest trick slipped past every scanner tested more than 90% of the time, and the same team built a runtime checker that catches most of the",
+      "url": "https://thehackernews.com/2026/07/new-skillcloak-technique-lets-malicious.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-06T15:33:56+09:00",
+      "title_ja": "SkillCloak：悪意あるAIエージェントのスキルが自己解凍パッキングで静的スキャナーを回避",
+      "summary_ja": "香港科技大学の研究者らによる新しい研究で、「SkillCloak」という手法を用いることで、AIコーディングエージェント向けの悪意あるアドオン「スキル」が、わずかな変更で静的スキャナーを90%以上の確率で回避できることが示された。この手法は、自己解凍パッキングを利用してマルウェアの検出を困難にするもので、同じチームはランタイムチェッカーを開発し、そのほとんどを捕捉できることも証明している。",
+      "insight": "AIエージェントの「スキル」や「プラグイン」が新たな攻撃ベクトルとなり、既存の静的解析ツールでは検出が困難な巧妙なマルウェアが出現している。CDCは、AIエージェントの運用環境において、従来のシグネチャベースの検出だけでなく、ランタイム時の挙動監視やサンドボックス環境での動的解析を組み合わせる必要がある。AIエージェントの信頼チェーン全体を監視し、異常なリソースアクセスやプロセス実行を検知する仕組みを検討する必要がある。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの拡張機能が静的スキャナーを回避する技術が開発され、AIエコシステムにおけるマルウェア検出の新たな課題を提示しているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "マルウェア",
+        "LLMセキュリティ"
       ],
       "affected_layers": [
         "アプリ/API",
         "データ/AI"
       ],
       "related_keywords": [
-        "AIエージェント",
-        "コード生成",
-        "sqlite-utils",
-        "Claude Fable",
-        "開発効率化"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "AI for Security",
-        "Security for AI",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "0a4428d5fdfd",
-      "title": "JadePuffer ransomware used AI agent to automate entire attack",
-      "summary": "Researchers identified what they believe is the first documented case of a ransomware operation, JadePuffer, conducted entirely by a large language model (LLM) agent. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/jadepuffer-ransomware-used-ai-agent-to-automate-entire-attack/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-07-04T23:16:38+09:00",
-      "title_ja": "ランサムウェア「JadePuffer」、AIエージェントを使い攻撃全体を自動化",
-      "summary_ja": "セキュリティ研究者らは、ランサムウェア「JadePuffer」がAIエージェントを完全に利用して攻撃を実行した、初の事例を特定した。この攻撃は、検知からデータ暗号化、身代金要求までの一連のプロセスをAIエージェントが自動で遂行したとされている。これにより、従来の人間主導の攻撃と比較して、速度と規模の面で新たな脅威が浮上した。",
-      "insight": "AIエージェントが攻撃全体を自動化する事例は、防御側の検知・対応速度を大幅に上回る可能性を示唆する。SOC/CDCは、AIエージェントの異常な挙動を早期に検知するための新たな監視ポイントやAIベースの異常検知技術の導入を検討する必要がある。特に、MDRサービスでは、AIによる高速な攻撃に対応するための自動応答能力やSOAR連携の強化が喫緊の課題となる。",
-      "importance": "高",
-      "importance_reason": "AIエージェントが攻撃全体を自動化する初の事例であり、攻撃手法の進化と防御側の対応速度への深刻な影響が予想されるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "ランサムウェア",
-        "AIを使った攻撃"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "ネットワーク",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "JadePuffer",
-        "AIエージェント",
-        "ランサムウェア",
-        "攻撃自動化",
-        "LLMエージェント"
+        "SkillCloak",
+        "AIエージェントスキル",
+        "静的スキャナー回避",
+        "自己解凍パッキング",
+        "ランタイムチェッカー"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
-        "MDR/MSSP設計",
+        "Security for AI",
         "サービス企画",
-        "顧客課題",
-        "AI for Security"
+        "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "da3100ccc13c",
-      "title": "U.S. Government Entity Paid Kairos $1 Million in Data-Theft Extortion Case",
-      "summary": "A U.S. government entity paid about $1 million to keep stolen files from being leaked, according to a new&nbsp;case study by Rakesh Krishnan for Ransom-ISAC, built on a leaked negotiation chat and the blockchain trail the payment left.\n\nThe odd part: the group that took the money calls itself Kairos, but it may not be a ransomware gang at all. Krishnan found no sign that it ever locked a single",
-      "url": "https://thehackernews.com/2026/07/us-government-entity-paid-kairos-group.html",
+      "id": "b57b68af03ca",
+      "title": "Armored Likho APT Targeting Government, Electric Power Entities",
+      "summary": "<p>The threat actor uses modular RATs and information stealers in financially motivated and cyber espionage campaigns.</p>\n<p>The post <a href=\"https://www.securityweek.com/armored-likho-apt-targeting-government-electric-power-entities/\">Armored Likho APT Targeting Government, Electric Power Entities</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/armored-likho-apt-targeting-government-electric-power-entities/",
       "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "The Hacker News",
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
       "source_tier": "B",
-      "published": "2026-07-04T21:47:53+09:00",
-      "title_ja": "米政府機関、データ窃盗犯Kairosに100万ドルの身代金支払い",
-      "summary_ja": "米国政府機関が、データ窃盗グループ「Kairos」に対し約100万ドルを支払い、盗まれたファイルの公開を阻止したことが報じられた。Ransom-ISACのケーススタディによると、Kairosは通常のランサムウェアと異なり、データをロックする形跡がなく、窃取したデータの公開を盾に脅迫する新たな手口を用いている可能性がある。この事件は、身代金支払いの動機がデータロック解除からデータ漏洩阻止へと変化している傾向を示す。",
-      "insight": "データ窃盗・暴露型脅迫は、従来のランサムウェア検知・復旧対策だけでは不十分であることを示唆する。SOC/CDCは、データ流出の早期検知（DLP強化）、データのアクセス監査、外部へのデータ転送監視、および影響評価とCISOへの報告プロセスを強化する必要がある。特に、身代金交渉支援や情報漏洩時の広報対応まで含めたCDCの対応範囲の重要性が増す。",
+      "published": "2026-07-07T00:10:39+09:00",
+      "title_ja": "Armored Likho APTが政府機関と電力会社を標的",
+      "summary_ja": "Armored Likhoと名付けられた脅威アクターが、モジュール型RAT（Remote Access Trojan）と情報窃取型マルウェアを用いて、政府機関や電力会社を標的とした金銭目的およびサイバースパイ活動を展開している。このAPTグループは、高度な偵察と持続的なアクセスを確立し、機密情報の窃取や重要インフラへの影響を狙っているとみられる。",
+      "insight": "APTグループによる国家支援型または高度な攻撃は、常にSOC/CDCの最優先事項であり続ける。特に重要インフラを標的とした攻撃は、物理的な被害や広範なサービス停止につながるため、高度な脅威インテリジェンスと、IT/OT融合環境における検知・対応能力の強化が不可欠である。AI for Securityの観点からは、こうしたAPTグループの活動パターンやTTPs（戦術・技術・手順）をAIで分析し、未知の脅威を早期に発見する機会を模索すべきである。",
       "importance": "高",
-      "importance_reason": "政府機関への被害に加え、データを暗号化せず情報漏洩を脅迫する新たな脅威形態であり、データ流出対策の再考を促すため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
+      "importance_reason": "政府機関と重要インフラを標的とするAPT攻撃であり、国家レベルのセキュリティリスクと広範な影響を持つため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
       "tag_subs": [
-        "データ侵害",
-        "情報漏洩",
-        "金融被害"
+        "APT",
+        "マルウェア",
+        "情報漏洩"
       ],
       "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
+        "ネットワーク",
+        "クラウド/サーバー",
+        "データ/AI"
       ],
       "related_keywords": [
-        "Kairos",
-        "データ窃盗",
-        "脅迫",
-        "身代金",
-        "情報漏洩"
+        "Armored Likho",
+        "APT",
+        "RAT",
+        "情報窃取",
+        "重要インフラ"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
         "CISO報告",
         "顧客課題",
-        "Exposure管理"
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d47fade4fc4a",
+      "title": "Fake IT support calls on Microsoft Teams push EtherRAT malware",
+      "summary": "Threat actors are abusing Microsoft Teams voice calls by impersonating corporate IT support staff to trick employees into installing the EtherRAT malware, giving attackers initial access to corporate networks. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/fake-it-support-calls-on-microsoft-teams-push-etherrat-malware/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-07T05:23:45+09:00",
+      "title_ja": "Microsoft Teamsでの偽ITサポート電話がEtherRATマルウェアを拡散",
+      "summary_ja": "脅威アクターがMicrosoft Teamsの音声通話を悪用し、企業のITサポート担当者を装って従業員を欺き、EtherRATマルウェアをインストールさせて企業ネットワークへの初期アクセスを確立している。この攻撃は、リモートワークが普及し、コラボレーションツールが日常的に利用される環境において、ソーシャルエンジニアリングと信頼の悪用が依然として有効な攻撃経路であることを示している。",
+      "insight": "リモートワーク環境でのコラボレーションツールの利用拡大は、新たなソーシャルエンジニアリングの経路を提供しており、SOC/CDCは従業員に対する継続的なセキュリティ意識向上トレーニングと、Microsoft Teamsなどのツールにおける不審な活動の監視を強化する必要がある。特に、AI for Securityの観点から、Teamsの通話内容やファイル共有における不審なパターンをAIで検知し、疑わしい挙動に対するアラートを自動生成するなどの活用機会を検討すべきである。",
+      "importance": "中",
+      "importance_reason": "広く使われるコラボレーションツールを悪用したソーシャルエンジニアリングとマルウェア拡散であり、企業の初期侵入経路として効果的であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ソーシャルエンジニアリング",
+        "マルウェア",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Microsoft Teams",
+        "偽ITサポート",
+        "EtherRAT",
+        "ソーシャルエンジニアリング",
+        "初期アクセス"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "AI for Security"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-07-07",
+      "articles": [
+        {
+          "id": "e2e70e897ddd",
+          "title": "⚡ Weekly Recap: Proxy Botnets, Browser Ransomware, AI Agent Tricks, Fake PoC Malware and More",
+          "summary": "A streaming box should not need a threat model. Neither should a username field, a demo repo, a reset flow, or a browser permission prompt. That is the irritating part this week: the risky pieces were ordinary.\n\nHome devices became a routing cover. Clean code pulled dirt from a dependency. Identity shortcuts aged badly. AI systems trusted the wrong instructions. Same soft spot throughout: trust",
+          "url": "https://thehackernews.com/2026/07/monday-recap-proxy-botnets-browser.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-07-06T22:01:14+09:00",
+          "title_ja": "週刊リキャップ：プロキシボットネット、ブラウザランサムウェア、AIエージェントの悪用など",
+          "summary_ja": "本記事は、通常脅威モデルを必要としないような日常的なシステムやコンポーネントが、信頼の脆弱性を突かれリスク源となっている複数の事象をまとめている。具体的には、ホームデバイスがボットネットのルーティングカバーとして悪用された事例、依存関係から悪意あるコードが引き込まれた事例、そして誤った命令を信頼したAIシステムによる攻撃が報告されている。これらの事例は、システムやプロセスの「信頼」という共通の脆弱性が悪用されていることを示唆している。",
+          "insight": "日常的な「信頼」に基づく要素が悪用されるケースが増加しており、SOC/CDCは監視対象を従来の境界内だけでなく、サプライチェーンやAIエージェントの信頼境界まで拡張する必要がある。特にAIシステムの信頼性判断基準や、ホームデバイスを介したネットワーク内部への侵入経路に対する可視化と制御が今後の重要な検討事項となる。MDR/MSSPは、顧客環境の隠れた「信頼の連鎖」を評価し、AIエージェントの挙動監視をサービスに組み込むべきか、またそのログ収集と分析方法を検討すべきである。",
+          "importance": "高",
+          "importance_reason": "日常的な信頼に基づいたシステムが広範に悪用され、特にAIエージェントの悪用が示唆されており、SOC/CDCの監視範囲と信頼モデルの根本的な再評価を促すため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "サプライチェーン攻撃"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "プロキシボットネット",
+            "ブラウザランサムウェア",
+            "AIエージェント",
+            "信頼の脆弱性",
+            "サプライチェーン"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "MDR/MSSP設計",
+            "AI for Security",
+            "Security for AI",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "7fd5a1e9eee3",
+          "title": "Phishing poses as big-brand job interview to steal Google accounts",
+          "summary": "A phishing campaign is impersonating more than 30 well-known brands, including Adobe, Netflix, Coca-Cola, and OpenAI, in fake job interviews to steal Google account credentials from marketing professionals. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/phishing-poses-as-big-brand-job-interview-to-steal-google-accounts/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-07-07T05:27:37+09:00",
+          "title_ja": "大手ブランドを騙るフィッシングでGoogleアカウントが窃取される",
+          "summary_ja": "30以上の有名ブランド（Adobe、Netflix、Coca-Cola、OpenAIなど）を騙る大規模なフィッシングキャンペーンが展開されており、マーケティング専門家を標的に偽の求人面接を通じてGoogleアカウントの認証情報を窃取している。この攻撃は、ターゲットが求人応募中という心理的な隙を突き、巧妙なソーシャルエンジニアリングと著名ブランドの信頼性を悪用している。窃取された認証情報は、さらなる攻撃の足がかりとなる。",
+          "insight": "従来のフィッシング対策に加え、AIエージェントが企業活動に深く統合される将来においては、AIエージェント自体がこのようなフィッシング詐欺の標的とならないか、またはフィッシング詐欺の伝播を助長しないかの検証がCDCにとって重要となる。SOCは、従業員教育の強化と多要素認証の徹底に加え、疑わしい求人関連のURLやメールの監視を強化し、自動化されたAIベースの分析ツールによる脅威インテリジェンスとの連携を検討すべきである。",
+          "importance": "中",
+          "importance_reason": "広範なブランドを悪用し、特定の専門家層を狙う巧妙なフィッシングであり、AI時代のソーシャルエンジニアリングのリスクを高めるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "フィッシング",
+            "ソーシャルエンジニアリング",
+            "クレデンシャル窃取"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "フィッシングキャンペーン",
+            "Googleアカウント",
+            "求人詐欺",
+            "ソーシャルエンジニアリング",
+            "認証情報窃取"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "0b38ed0c51e6",
+          "title": "JadePuffer: The First Complete LLM-Driven Ransomware Attack",
+          "summary": "An &quot;agentic threat actor&quot; successfully exploited a Langflow flaw to steal data from a production database server and encrypt other systems.",
+          "url": "https://www.darkreading.com/cyberattacks-data-breaches/jadepuffer-first-complete-llm-driven-ransomware-attack",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-07-07T01:36:50+09:00",
+          "title_ja": "JadePuffer：初の完全なLLM駆動型ランサムウェア攻撃",
+          "summary_ja": "「agentic threat actor」（エージェント型脅威アクター）がLangflowの脆弱性を悪用し、本番データベースサーバーからデータを窃取し、他のシステムを暗号化するランサムウェア攻撃に成功した。これはLLMが攻撃の一部ではなく、攻撃全体を駆動する形で利用された初の事例とされ、AIが攻撃者のインテリジェンスと実行能力を大幅に向上させる可能性を示している。攻撃は脆弱性の特定からデータ窃取、暗号化まで自動的に進行したと推測される。",
+          "insight": "AIエージェントが脆弱性特定から実行までを自動化する「agentic threat actor」の出現は、防御側の反応速度と監視の粒度に根本的な変革を迫る。CDCは、AIシステムが関与する攻撃の痕跡を従来のセキュリティログだけでなく、AIシステム自体のログ（プロンプト、推論、ツール実行履歴など）から検知・分析できる体制を早急に構築する必要がある。Security for AIの観点から、LLM/AIエージェントの脆弱性（特にツール・実行層）への監視と対策が急務となる。",
+          "importance": "高",
+          "importance_reason": "LLMが攻撃全体を駆動するランサムウェア攻撃の初の事例であり、AIエージェントの悪用が本格化していることを示すため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "ランサムウェア",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "LLM駆動型攻撃",
+            "ランサムウェア",
+            "Langflow脆弱性",
+            "agentic threat actor",
+            "データ窃取"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "サービス企画",
+            "顧客課題",
+            "CISO報告"
+          ],
+          "views": 0
+        },
+        {
+          "id": "d2ea5a1200ce",
+          "title": "Prompt Injection Attacks Trick AI Agents Into Making Crypto Payments",
+          "summary": "<p>Researchers uncovered two campaigns embedding indirect prompt injections in malicious websites to exploit autonomous AI agents browsing the web.</p>\n<p>The post <a href=\"https://www.securityweek.com/prompt-injection-attacks-trick-ai-agents-into-making-crypto-payments/\">Prompt Injection Attacks Trick AI Agents Into Making Crypto Payments</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/prompt-injection-attacks-trick-ai-agents-into-making-crypto-payments/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-07-06T20:19:47+09:00",
+          "title_ja": "プロンプトインジェクション攻撃がAIエージェントを欺き暗号通貨支払いを行わせる",
+          "summary_ja": "研究者らが、悪意あるウェブサイトに間接的なプロンプトインジェクションを埋め込むことで、ウェブを閲覧する自律型AIエージェントを悪用する二つのキャンペーンを発見した。この攻撃は、AIエージェントがアクセスした悪意のあるコンテンツから隠された指示を読み取り、それを正規の命令と誤認して暗号通貨支払いを実行させるというもので、AIエージェントのツール・実行層の権限と信頼モデルの脆弱性を突いている。",
+          "insight": "AIエージェントが外部リソースと連携し、金融取引などの実行権限を持つ場合、プロンプトインジェクションは直接的なデータ侵害だけでなく、財務的な被害に直結するリスクがある。CDCは、AIエージェントの行動ログ、特に外部API呼び出しや支払いトランザクションに関する詳細な監視と、不審なプロンプトのパターン検知ルールを強化する必要がある。AIエージェントの信頼境界と、人間による承認なしに実行可能なアクションの範囲を再定義し、権限管理の厳格化が求められる。",
+          "importance": "高",
+          "importance_reason": "自律型AIエージェントが金銭的被害に直結するプロンプトインジェクション攻撃の具体例であり、AIエージェントの安全な利用における重大なセキュリティリスクを示すため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "AIを使った攻撃",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "プロンプトインジェクション",
+            "AIエージェント",
+            "暗号通貨支払い",
+            "間接プロンプトインジェクション",
+            "自律型AI"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "Identity/ITDR",
+            "サービス企画",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "6f394a28950a",
+          "title": "SkillCloak Lets Malicious AI Agent Skills Evade Static Scanners with Self-Extracting Packing",
+          "summary": "Scanners meant to catch malicious add-on \"skills\" for AI coding agents can be fooled by a few simple changes that leave the malware working, according to a&nbsp;new study&nbsp;from researchers at the Hong Kong University of Science and Technology.\n\nTheir strongest trick slipped past every scanner tested more than 90% of the time, and the same team built a runtime checker that catches most of the",
+          "url": "https://thehackernews.com/2026/07/new-skillcloak-technique-lets-malicious.html",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-07-06T15:33:56+09:00",
+          "title_ja": "SkillCloak：悪意あるAIエージェントのスキルが自己解凍パッキングで静的スキャナーを回避",
+          "summary_ja": "香港科技大学の研究者らによる新しい研究で、「SkillCloak」という手法を用いることで、AIコーディングエージェント向けの悪意あるアドオン「スキル」が、わずかな変更で静的スキャナーを90%以上の確率で回避できることが示された。この手法は、自己解凍パッキングを利用してマルウェアの検出を困難にするもので、同じチームはランタイムチェッカーを開発し、そのほとんどを捕捉できることも証明している。",
+          "insight": "AIエージェントの「スキル」や「プラグイン」が新たな攻撃ベクトルとなり、既存の静的解析ツールでは検出が困難な巧妙なマルウェアが出現している。CDCは、AIエージェントの運用環境において、従来のシグネチャベースの検出だけでなく、ランタイム時の挙動監視やサンドボックス環境での動的解析を組み合わせる必要がある。AIエージェントの信頼チェーン全体を監視し、異常なリソースアクセスやプロセス実行を検知する仕組みを検討する必要がある。",
+          "importance": "高",
+          "importance_reason": "AIエージェントの拡張機能が静的スキャナーを回避する技術が開発され、AIエコシステムにおけるマルウェア検出の新たな課題を提示しているため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "マルウェア",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "SkillCloak",
+            "AIエージェントスキル",
+            "静的スキャナー回避",
+            "自己解凍パッキング",
+            "ランタイムチェッカー"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "サービス企画",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "b57b68af03ca",
+          "title": "Armored Likho APT Targeting Government, Electric Power Entities",
+          "summary": "<p>The threat actor uses modular RATs and information stealers in financially motivated and cyber espionage campaigns.</p>\n<p>The post <a href=\"https://www.securityweek.com/armored-likho-apt-targeting-government-electric-power-entities/\">Armored Likho APT Targeting Government, Electric Power Entities</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/armored-likho-apt-targeting-government-electric-power-entities/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-07-07T00:10:39+09:00",
+          "title_ja": "Armored Likho APTが政府機関と電力会社を標的",
+          "summary_ja": "Armored Likhoと名付けられた脅威アクターが、モジュール型RAT（Remote Access Trojan）と情報窃取型マルウェアを用いて、政府機関や電力会社を標的とした金銭目的およびサイバースパイ活動を展開している。このAPTグループは、高度な偵察と持続的なアクセスを確立し、機密情報の窃取や重要インフラへの影響を狙っているとみられる。",
+          "insight": "APTグループによる国家支援型または高度な攻撃は、常にSOC/CDCの最優先事項であり続ける。特に重要インフラを標的とした攻撃は、物理的な被害や広範なサービス停止につながるため、高度な脅威インテリジェンスと、IT/OT融合環境における検知・対応能力の強化が不可欠である。AI for Securityの観点からは、こうしたAPTグループの活動パターンやTTPs（戦術・技術・手順）をAIで分析し、未知の脅威を早期に発見する機会を模索すべきである。",
+          "importance": "高",
+          "importance_reason": "政府機関と重要インフラを標的とするAPT攻撃であり、国家レベルのセキュリティリスクと広範な影響を持つため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "APT",
+            "マルウェア",
+            "情報漏洩"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "クラウド/サーバー",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "Armored Likho",
+            "APT",
+            "RAT",
+            "情報窃取",
+            "重要インフラ"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "CISO報告",
+            "顧客課題",
+            "AI for Security"
+          ],
+          "views": 0
+        },
+        {
+          "id": "d47fade4fc4a",
+          "title": "Fake IT support calls on Microsoft Teams push EtherRAT malware",
+          "summary": "Threat actors are abusing Microsoft Teams voice calls by impersonating corporate IT support staff to trick employees into installing the EtherRAT malware, giving attackers initial access to corporate networks. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/fake-it-support-calls-on-microsoft-teams-push-etherrat-malware/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-07-07T05:23:45+09:00",
+          "title_ja": "Microsoft Teamsでの偽ITサポート電話がEtherRATマルウェアを拡散",
+          "summary_ja": "脅威アクターがMicrosoft Teamsの音声通話を悪用し、企業のITサポート担当者を装って従業員を欺き、EtherRATマルウェアをインストールさせて企業ネットワークへの初期アクセスを確立している。この攻撃は、リモートワークが普及し、コラボレーションツールが日常的に利用される環境において、ソーシャルエンジニアリングと信頼の悪用が依然として有効な攻撃経路であることを示している。",
+          "insight": "リモートワーク環境でのコラボレーションツールの利用拡大は、新たなソーシャルエンジニアリングの経路を提供しており、SOC/CDCは従業員に対する継続的なセキュリティ意識向上トレーニングと、Microsoft Teamsなどのツールにおける不審な活動の監視を強化する必要がある。特に、AI for Securityの観点から、Teamsの通話内容やファイル共有における不審なパターンをAIで検知し、疑わしい挙動に対するアラートを自動生成するなどの活用機会を検討すべきである。",
+          "importance": "中",
+          "importance_reason": "広く使われるコラボレーションツールを悪用したソーシャルエンジニアリングとマルウェア拡散であり、企業の初期侵入経路として効果的であるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "ソーシャルエンジニアリング",
+            "マルウェア",
+            "クレデンシャル窃取"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Microsoft Teams",
+            "偽ITサポート",
+            "EtherRAT",
+            "ソーシャルエンジニアリング",
+            "初期アクセス"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "顧客課題",
+            "AI for Security"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】\n本日の記事群は、AIエージェントが悪意ある目的で利用され、攻撃の自律性と巧妙さが加速している中長期的な構造変化を明確に示唆する。特に、プロンプトインジェクションによる金銭的被害や、LLMが攻撃全体を駆動するランサムウェアの出現は、従来の防御モデルを根本から見直す必要性を突きつけている。\n【攻撃側の変化】\n攻撃側は、AIエージェントの自律的な動作能力と、日常的なシステムや信頼関係の脆弱性を組み合わせて、効率的かつ多角的な攻撃を展開している。LLM駆動型ランサムウェア（[3]）やAIエージェントへのプロンプトインジェクションによる金銭窃取（[4]）は、AIが単なるツールではなく、攻撃の「実行主体」となり得ることを示している。また、AIエージェントのスキルを難読化して検出を回避する手法（[5]）は、防御側がAIエコシステム固有の新しいマルウェア検出技術を必要とすることを示唆する。フィッシング（[2]）やソーシャルエンジニアリング（[7]）といった古典的な攻撃手法も、AIエージェントの活用やコラボレーションツールの悪用によって、そのリーチと精度を増している。\n【防御側の変化】\n防御側は、従来のSIEM/SOAR/MDRでは捉えきれないAIエージェントの内部挙動や、AIシステム固有の脆弱性に対する監視能力の構築が急務となる。AIが関与する攻撃では、検知から対応までの時間が短縮されるため、人間による判断を支援するAI for Securityの導入は必須となるが、その判断根拠の明確化と品質保証が問われる。AIエージェントの信頼境界と、人間による承認なしに実行可能なアクションの範囲を再定義する必要がある。\n【Security for AI】\n本日の記事は、AIシステムのセキュリティ対策が極めて重要であることを強調している。特に、LLM/AIエージェントの脆弱性（モデル・推論層、ツール・実行層）が悪用され、プロンプトインジェクション（[4]）やサプライチェーン経由での悪意あるコード実行（[1]）、さらには攻撃全体を駆動する能力（[3]）を持つことが明らかになった。AIシステム固有のログ（プロンプト履歴、ツール実行ログ、API連携ログ）の収集と、それらに対する異常検知がSecurity for AIの最重要課題となる。AIエージェントの権限管理と、外部ツール連携時のセキュリティ検証も不可欠である。\n【AI for Security】\nAI for Securityの観点では、AIがSOC/CDC業務において、Tier2調査における膨大なログデータの相関分析、攻撃者のTTPsとAIエージェントの挙動パターンの比較分析、レポート作成支援などに活用される機会が増大する（[6], [7]）。特に、AIエージェントによる自動化された攻撃への対抗策として、AIを活用した異常検知や初動判断支援の自動化は必須となるが、その判断の信頼性、証跡の再現性、そしてハルシネーションなどのリスク管理が重要となる。\n【CDC/SOCへの示唆】\nCDC/SOCは、監視対象にAIシステム固有のログ（プロンプト入力、出力、ツール利用状況、API連携、学習データへのアクセス）を追加し、これらのログに基づく新たな検知ルールと運用プロセスを確立する必要がある。AIエージェントの権限管理と、人間との委任関係の明確化は、Identity/ITDRの重要な拡張領域となる。従来のSOCが担っていた役割はAI for Securityによって一部自動化されるが、最終的な判断、複雑なインシデント調査、経営層への報告、そしてAIシステムのセキュリティアーキテクチャ設計・監査といったより高度な人間の役割が残る。MDR/MSSPは、AIエージェントの監視と対応をサービスに組み込むことで、顧客への価値提供を強化できる。\n【今日の問い】\nAIエージェントが自律的に攻撃を実行する時代において、従来のセキュリティオペレーションセンターの監視対象と責任範囲はどのように再定義されるべきか。また、AIエージェントの振る舞いを監視するためのログ要件と、それらを検知・対応するAI for Securityの信頼性をどのように確保し、監査可能性を担保すべきか。"
+    },
     {
       "date": "2026-07-06",
       "articles": [
