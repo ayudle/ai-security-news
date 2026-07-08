@@ -2,6 +2,403 @@
   "month": "2026-07",
   "articles": [
     {
+      "id": "740c860a4417",
+      "title": "Entra passkey enrollment vishing targets Microsoft 365 users",
+      "summary": "A threat actor has been targeting organizations across multiple sectors with voice-based fake security requests that ask Microsoft 365 users to enroll a new Entra passkey. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/entra-passkey-enrollment-vishing-targets-microsoft-365-users/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-09T01:47:25+09:00",
+      "title_ja": "Entraパスキー登録を悪用したM365ユーザーへのビッシング攻撃",
+      "summary_ja": "攻撃者は音声ベースの偽のセキュリティリクエストを多方面の組織に送りつけ、Microsoft 365ユーザーに新しいEntraパスキーを登録するよう誘導している。このビッシング攻撃は、多要素認証（MFA）をバイパスし、ユーザーアカウントを乗っ取ろうとするもので、Identityプラットフォームのセキュリティ機能が強化される中で新たな攻撃手法が生まれていることを示している。",
+      "insight": "この攻撃は、MFAが普及する中で、認証プロセスの「人の要素」を狙うソーシャルエンジニアリングの巧妙化を示唆する。CDCは、MFA利用状況と不審な認証リクエストを組み合わせた検知ロジックの見直しが必要。また、ユーザー教育だけでは防ぎきれないため、Identityプロバイダー側の不審なパスキー登録試行に対する異常検知と自動ブロック機能を強化する必要がある。",
+      "importance": "高",
+      "importance_reason": "MFAをバイパスする新たなフィッシング手法であり、広範囲のMicrosoft 365利用組織に影響を及ぼすため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Entra",
+        "パスキー",
+        "Microsoft 365",
+        "ビッシング",
+        "MFAバイパス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "58f7054f6e71",
+      "title": "CISA Reportedly Using Anthropic’s Mythos to Scan Government Software for Flaws",
+      "summary": "<p>The audits are reportedly being spearheaded by CISA’s Attack Surface Evaluation team, a specialized unit tasked with conducting digital defense assessments and simulated hacking exercises.</p>\n<p>The post <a href=\"https://www.securityweek.com/cisa-reportedly-using-anthropics-mythos-to-scan-government-software-for-flaws/\">CISA Reportedly Using Anthropic’s Mythos to Scan Government Software for Flaws</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/cisa-reportedly-using-anthropics-mythos-to-scan-government-software-for-flaws/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-07T22:13:02+09:00",
+      "title_ja": "CISAがAnthropic Mythosを利用し政府ソフトウェアの脆弱性をスキャン",
+      "summary_ja": "米国サイバーセキュリティ・社会基盤安全保障庁（CISA）は、AnthropicのAIモデル「Mythos」を活用し、政府機関のソフトウェアにおける脆弱性スキャンを試みていると報じられた。CISAのAttack Surface Evaluationチームがデジタル防御評価や模擬ハッキング演習の一環として実施しており、AIをセキュリティ防御に活用する動きが加速している。",
+      "insight": "CISAによるAIを活用した脆弱性スキャンは、AI for Securityの具体的な適用事例として注目される。SOC/CDCにおいては、AIによる高速かつ広範囲な脆弱性評価が、予防的防御の質を高める可能性を示唆。ただし、AIの誤検出や未検出のリスクも考慮し、人間の専門家による最終確認や精度検証のプロセス設計が求められる。",
+      "importance": "中",
+      "importance_reason": "AI for Securityの実用的な適用事例であり、脆弱性管理と評価の未来を示唆するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "CISA",
+        "Anthropic Mythos",
+        "脆弱性スキャン",
+        "政府機関",
+        "AI for Security"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "Exposure管理",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "b89829a5923a",
+      "title": "Proof of Execution: Runtime Verification for Governed AI Agent Actions",
+      "summary": "arXiv:2607.05397v1 Announce Type: new \nAbstract: Agent systems increasingly execute rather than advise. When an AI agent queries regulated data, invokes effectful tools, and mutates persistent state, correctness is not captured by whether a terminal output looks plausible. The operative questions are whether each step was authorized under a contract, whether the recorded history is tamper-evident, and whether the trajectory can be reconstructed deterministically. We formalize this as runtime pro",
+      "url": "https://arxiv.org/abs/2607.05397",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-07-08T13:00:00+09:00",
+      "title_ja": "AIエージェントの統制されたアクションに対する実行時検証の提唱",
+      "summary_ja": "AIエージェントが助言だけでなく実際にアクションを実行するようになり、規制データへの問い合わせやツール実行、状態変更を行うケースが増加している。本論文は、エージェントの各ステップが契約に基づいて認可されているか、履歴が改ざん防止されているか、そして軌跡が再現可能であるかを実行時に検証するフレームワークを提案している。",
+      "insight": "AIエージェントの行動がシステム状態に影響を与えるため、その実行の正当性・監査可能性はSOC/CDCにとって極めて重要な課題となる。AIエージェントの行動ログだけでなく、その行動がポリシーに準拠しているかをリアルタイムで検証する仕組みの導入が、Security for AIの設計において不可欠。将来のAI駆動型CDCでは、エージェントの「Proof of Execution」を監査証跡として活用する必要がある。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの信頼性と監査性を確保するための基礎的な研究であり、Security for AIの将来のアーキテクチャに大きな影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "実行時検証",
+        "認可",
+        "監査証跡",
+        "再現性"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "49f7b65a42ff",
+      "title": "Evaluating calibrated refusal and safe usefulness in dual-use biology settings",
+      "summary": "arXiv:2607.05462v1 Announce Type: new \nAbstract: As AI agents are incorporated into life science workflows, the capabilities that speed discovery might also enable misuse. We present BioSecBench-Refusal, a benchmark for risk identification and refusal behavior for biological research tasks. The benchmark pairs 61 Routine tasks, legitimate analyses adapted from the published literature, with 46 Red-Team tasks, fictional scenarios that resemble real research but conceal a biosecurity hazard. Acros",
+      "url": "https://arxiv.org/abs/2607.05462",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-07-08T13:00:00+09:00",
+      "title_ja": "二重利用可能な生物学分野におけるAIエージェントの拒否能力と安全性評価",
+      "summary_ja": "AIエージェントが生命科学のワークフローに組み込まれることで、発見を加速する能力が悪用されるリスクも生まれている。本研究は、生物学研究タスクにおけるリスク特定と拒否行動を評価するベンチマーク「BioSecBench-Refusal」を提示。正規のタスクと生物兵器関連のリスクを隠したレッドチームタスクを組み合わせて、AIの安全性を検証している。",
+      "insight": "AIエージェントが特定の指示を拒否する能力の評価は、AIシステムが社会的に許容されない行動や倫理的に問題のある行動をとることを防ぐ上で重要。SOC/CDCにおいては、自社のAIエージェントが危険な指示や悪用につながる指示に対し、適切に拒否するかどうかを評価・検証するプロセスを設計する必要がある。これは、AIシステムのガバナンスとリスク管理フレームワークに組み込むべきSecurity for AIの重要な側面となる。",
+      "importance": "中",
+      "importance_reason": "特定の悪用リスクを持つ分野におけるAIエージェントの安全な利用を考える上で、拒否機能の評価は重要な示唆を与えるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "バイアス・差別"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "二重利用",
+        "生命科学",
+        "拒否機能",
+        "安全性評価"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "b5e587ddbc8f",
+      "title": "sqlite-utils 4.0, now with database schema migrations",
+      "summary": "<p>This morning I released <a href=\"https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0\">sqlite-utils 4.0</a>, the 124th release of that project and the first major version bump since <a href=\"https://sqlite-utils.datasette.io/en/stable/changelog.html#v3-0\">3.0</a> in November 2020. In addition to some small but significant breaking changes (described in <a href=\"https://sqlite-utils.datasette.io/en/stable/upgrading.html\">this upgrade guide</a>), this version introduces three major f",
+      "url": "https://simonwillison.net/2026/Jul/7/sqlite-utils-4/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-07-08T04:32:57+09:00",
+      "title_ja": "sqlite-utils 4.0がデータベーススキーママイグレーション機能を追加",
+      "summary_ja": "sqlite-utilsのバージョン4.0がリリースされ、データベーススキーマのマイグレーション機能が主要な新機能として導入された。このアップデートには、2020年11月のバージョン3.0以来のいくつかの破壊的変更と、アップグレードガイドが提供されている。",
+      "insight": "この記事は特定のセキュリティインシデントやAI活用とは直接関係しないが、データベース管理ツールの一つとして、AIエージェントが扱うデータのバックエンドで利用される可能性はある。SOC/CDCの観点からは、CI/CDパイプラインにおける依存ライブラリの脆弱性管理や、DBスキーマ変更時の影響評価プロセスが重要。AIエージェントが利用するデータベースのセキュリティを確保する文脈で考慮されうる。",
+      "importance": "低",
+      "importance_reason": "セキュリティインシデントやAI×セキュリティの直接的な話題ではないため、間接的な関連にとどまる。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "sqlite-utils",
+        "データベース",
+        "スキーママイグレーション",
+        "ソフトウェア開発"
+      ],
+      "cdc_relevance": 0,
+      "cdc_context": [],
+      "views": 0
+    },
+    {
+      "id": "79af8da1f1ca",
+      "title": "AI Coding Agents Found Triggering Endpoint Security Rules Built to Catch Attackers",
+      "summary": "Sophos looked at a week of its own endpoint data and found that AI coding agents such as Claude Code, Cursor, and OpenAI Codex are setting off detection rules written to catch human intruders.\n\nThe agents are not malicious. They just do a lot of things that, to a behavioral engine, look exactly like an attack.\n\nDecrypting browser credentials, listing what sits in Windows' credential store,",
+      "url": "https://thehackernews.com/2026/07/ai-coding-agents-found-triggering.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-09T02:02:12+09:00",
+      "title_ja": "AIコーディングエージェントが悪意なくエンドポイントセキュリティルールをトリガー",
+      "summary_ja": "Sophosの調査により、Claude CodeやCursor、OpenAI CodexといったAIコーディングエージェントが、人間の攻撃者を検知するために設計された既存のエンドポイントセキュリティルールを誤ってトリガーしていることが判明した。これらのエージェントは悪意はないものの、ブラウザ資格情報の復号やWindowsクレデンシャルストアのリストアップなど、攻撃と酷似した挙動を示すため、誤検知の原因となっている。",
+      "insight": "この現象は、AIエージェントが普及する未来において、既存のSOC/CDC運用に大きな混乱をもたらす可能性を示唆。EDR/XDR等のエンドポイント監視製品はAIエージェントの「正当な」挙動を攻撃と誤認識するリスクがあり、誤検知アラートの増加やアナリストの疲弊につながる。Security for AIの観点からは、AIエージェントのホワイトリスト化や、挙動ベース検知ルールの見直し、AIエージェント特有のコンテキストを理解した検知エンジンの開発が喫緊の課題。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの導入が既存のセキュリティ監視体制に直接的な運用上の課題をもたらすため、SOC/CDCの設計・運用に即座に影響する。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "エンドポイントセキュリティ",
+        "誤検知",
+        "EDR",
+        "コーディングエージェント"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d7db7dd1ee64",
+      "title": "Critical Vulnerability Exposes GitHub Agentic Workflows to Prompt Injection",
+      "summary": "<p>Researchers show how attackers can use a crafted public GitHub Issue to trick AI-powered workflows into exposing data from private repositories without authentication.</p>\n<p>The post <a href=\"https://www.securityweek.com/critical-vulnerability-exposes-github-agentic-workflows-to-prompt-injection/\">Critical Vulnerability Exposes GitHub Agentic Workflows to Prompt Injection</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/critical-vulnerability-exposes-github-agentic-workflows-to-prompt-injection/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-08T19:30:55+09:00",
+      "title_ja": "GitHub Agentic Workflowsにプロンプトインジェクションの重大な脆弱性",
+      "summary_ja": "研究者らは、GitHub Agentic Workflowsに存在する重大なプロンプトインジェクション脆弱性を発見した。攻撃者は、巧みに作成された公開GitHub Issueを利用することで、認証なしにプライベートリポジトリのデータを漏洩させることが可能である。この脆弱性は、AIが外部ツールやデータソースと連携する際の新たなリスクを示している。",
+      "insight": "この脆弱性は、AIエージェントと外部システム（GitHub）が連携する際のSecurity for AIの課題を浮き彫りにする。SOC/CDCは、AIエージェントがアクセスするデータ範囲や権限、外部API連携におけるプロンプトインジェクション耐性を、設計段階から評価・監視する必要がある。特に、CI/CDパイプラインの一部としてAIエージェントが組み込まれる場合、サプライチェーン攻撃のリスクが増大し、ログやアラートの設計を見直す必要がある。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの重要な連携システムにおけるプロンプトインジェクション脆弱性であり、データ漏洩の直接的なリスクを持つため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "GitHub Agentic Workflows",
+        "プロンプトインジェクション",
+        "プライベートリポジトリ",
+        "データ漏洩",
+        "AIエージェント"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "6ac7d0ab5da4",
+      "title": "CISA orders feds to prioritize patching Langflow auth bypass flaw",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) gave federal agencies until Friday to patch an actively exploited vulnerability in the Langflow visual framework for building AI agents. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-prioritize-patching-langflow-auth-bypass-flaw/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-08T18:58:11+09:00",
+      "title_ja": "CISA、Langflow認証バイパス脆弱性の緊急パッチ適用を連邦機関に指示",
+      "summary_ja": "米国サイバーセキュリティ・社会基盤安全保障庁（CISA）は、連邦機関に対し、AIエージェント構築用のビジュアルフレームワークであるLangflowの認証バイパス脆弱性について、期限を設けて優先的にパッチを適用するよう命じた。この脆弱性は活発に悪用されていることが報じられており、AI開発ツールのサプライチェーンリスクが顕在化している。",
+      "insight": "CISAによるこの指示は、AIエージェントを構成するツールの脆弱性が即座に攻撃対象となる現実を示しており、Security for AIにおいてサプライチェーンリスク管理が喫緊の課題であることを強調している。SOC/CDCは、AIシステムの構築に使用されるフレームワークやライブラリの脆弱性管理を強化し、脆弱性情報（CVE）に基づいたパッチ適用状況の監視と緊急対応プロセスを確立する必要がある。Identity/ITDRの観点からも、AIエージェントの認証・認可基盤の堅牢性が重要。",
+      "importance": "高",
+      "importance_reason": "AIエージェント開発フレームワークの認証バイパス脆弱性が活発に悪用されており、サプライチェーンリスク管理の重要性を強調するため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "認証バイパス",
+        "CVE"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "CISA",
+        "Langflow",
+        "認証バイパス",
+        "AIエージェントフレームワーク",
+        "脆弱性管理"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "Exposure管理",
+        "Identity/ITDR",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "abe9f09c818d",
+      "title": "Public GitHub Issue Could Trick GitHub Agentic Workflows Into Leaking Private Repo Data",
+      "summary": "A public issue can trick GitHub Agentic Workflows into leaking the contents of an organization's private repositories, researchers at Noma Security have shown.\n\nThe attacker needs only to open a normal-looking issue on a public repository, with no stolen credentials and no access to the organization. If that organization has given the agent read access across its repositories, private ones",
+      "url": "https://thehackernews.com/2026/07/public-github-issue-could-trick-github.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-07T23:04:50+09:00",
+      "title_ja": "公開GitHub IssueでGitHub Agentic Workflowsがプライベートリポジトリデータを漏洩する可能性",
+      "summary_ja": "Noma Securityの研究者によると、GitHub Agentic Workflowsは、公開リポジトリに作成された通常に見えるIssueによって、組織のプライベートリポジトリのコンテンツを漏洩する可能性がある。攻撃者は認証情報不要で、AIエージェントが組織内のリポジトリに読み取り権限を持っている場合にこの脆弱性を悪用できる。",
+      "insight": "記事[7]と同様に、AIエージェントが広範な権限を持つことの危険性と、プロンプトインジェクションが引き起こす深刻なリスクを再認識させる。SOC/CDCは、AIエージェントのアクセス制御と権限管理を厳格化し、必要最小限の原則（PoLP）を適用することが不可欠。AIエージェントの挙動ログを監視し、不審なデータアクセスや外部連携を早期に検知するルールが必要であり、これはSecurity for AIの監視設計の要となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントを悪用したプロンプトインジェクションによるデータ漏洩の具体的な手口が示されており、広範な開発組織に影響を及ぼすため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "GitHub Agentic Workflows",
+        "プロンプトインジェクション",
+        "プライベートリポジトリ",
+        "データ漏洩",
+        "AIエージェント"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2fd6b24169fd",
+      "title": "State IDs for AI Agents: Will Estonia Set a Precedent?",
+      "summary": "The world's digital testing ground plans to help people use AI agents for government purposes.",
+      "url": "https://www.darkreading.com/cybersecurity-operations/state-ids-ai-agents-estonia",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-08T17:01:00+09:00",
+      "title_ja": "エストニアがAIエージェント向けに国家IDを検討、その先例となるか",
+      "summary_ja": "デジタル化の先進国であるエストニアが、AIエージェントが政府サービスを利用する際に国家IDを付与する可能性を検討している。この動きは、AIエージェントの身元確認と責任の所在を明確にし、ガバナンスを確立しようとする国際的な取り組みの先駆けとなる可能性がある。",
+      "insight": "AIエージェントに「身元」を付与する構想は、Security for AIにおける認証・認可・監査の根幹を揺るがす重要な動向。SOC/CDCにおいては、AIエージェントのIdentity & Access Management (IAM) 設計に大きな影響を与える。エージェント間の連携、人間との委任関係、そしてインシデント発生時の責任追跡を可能にするためには、AIエージェント個別の識別子とアクセス権限の厳密な管理が不可欠であり、これらをCDCの監視・管理対象に組み込む検討が必要となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントのアイデンティティ管理に関する根本的な問いを提起し、将来のAIガバナンスとSecurity for AIの方向性を決定づける可能性があるため。",
+      "tag_main_id": "policy",
+      "tag_main_label": "規制・政策",
+      "tag_subs": [
+        "標準化",
+        "国際連携"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "国家ID",
+        "エストニア",
+        "アイデンティティ管理",
+        "ガバナンス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Identity/ITDR",
+        "Security for AI",
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
       "id": "58f7054f6e71",
       "title": "CISA Reportedly Using Anthropic’s Mythos to Scan Government Software for Flaws",
       "summary": "<p>The audits are reportedly being spearheaded by CISA’s Attack Surface Evaluation team, a specialized unit tasked with conducting digital defense assessments and simulated hacking exercises.</p>\n<p>The post <a href=\"https://www.securityweek.com/cisa-reportedly-using-anthropics-mythos-to-scan-government-software-for-flaws/\">CISA Reportedly Using Anthropic’s Mythos to Scan Government Software for Flaws</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
