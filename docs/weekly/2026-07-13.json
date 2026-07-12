@@ -1,0 +1,156 @@
+{
+  "executive_summary": "今週はAIエージェントが悪意ある攻撃を自動化するツールとして顕在化し、ランサムウェアの実行やプロンプトインジェクションによる機密データ窃取といった具体的な脅威が報告されました。これにより、AIエージェントのID管理、権限設定、実行時の挙動監視といったSecurity for AIの設計が喫緊の課題となっています。同時に、パスキー登録を悪用したMFAバイパス攻撃やサプライチェーン攻撃も巧妙化を続け、SOC/CDCはAI固有の脅威と既存の高度化する脅威の両面に対応できる統合的な防御体制への移行が不可避です。防御アーキテクチャにおいては、AIエージェントの活動ログを新たな監視対象とし、既存のIdentity Threat Detection and Response (ITDR) モデルを拡張する設計が求められます。AI for Securityの活用も進む一方で、AIの誤検知や安全性アライメントの課題も認識し、人間による最終検証とガバナンスを確保するプロセスが重要です。",
+  "top_topics": [
+    {
+      "title": "AIエージェントの攻撃利用とIDリスク",
+      "summary": "AIエージェントがランサムウェア攻撃を自動化し、プロンプトインジェクションによるデータ漏洩・金銭窃取のリスクが顕在化しました。AIエージェントが新たなIDとして振る舞うため、従来のID管理モデルの見直しと権限管理の厳格化がSOC/CDCにとって喫緊の課題となります。",
+      "article_ids": [
+        "0a4428d5fdfd",
+        "0b38ed0c51e6",
+        "d2ea5a1200ce",
+        "6f394a28950a",
+        "e2e70e897ddd",
+        "627069b81f84",
+        "abe9f09c818d",
+        "bd6ee59e88de",
+        "b89829a5923a",
+        "d7db7dd1ee64",
+        "2fd6b24169fd",
+        "829497370206",
+        "abb9c15741b7",
+        "79af8da1f1ca",
+        "c1b4d4c12c5a",
+        "90f86814b58d",
+        "ad965b7b750e",
+        "2a850db0bbde",
+        "562b94f32c88"
+      ]
+    },
+    {
+      "title": "MFA・パスキー狙うID窃取",
+      "summary": "Microsoft 365ユーザーを狙ったEntraパスキー登録の悪用やビッシング攻撃が多発しました。MFAが普及する中でも認証プロセスの「人の要素」を狙うソーシャルエンジニアリングが巧妙化しており、Identity Threat Detection and Response (ITDR) の強化とユーザー教育の継続が不可欠です。",
+      "article_ids": [
+        "740c860a4417",
+        "989a2177f3e8",
+        "04d3c302f530"
+      ]
+    },
+    {
+      "title": "AIシステム・フレームワーク脆弱性",
+      "summary": "AIエージェントを構成するLangflowの認証バイパス脆弱性やGitHub Agentic Workflowsにおけるデータ漏洩リスクが報告されました。AIシステム自体の脆弱性管理と、AIエージェントに付与されるSaaSやリソースへの権限の厳格な管理が、サプライチェーンリスク軽減のために重要です。",
+      "article_ids": [
+        "d7db7dd1ee64",
+        "6ac7d0ab5da4",
+        "abe9f09c818d",
+        "bd6ee59e88de",
+        "981101e2dad8",
+        "ad965b7b750e"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "モバイルデバイスを標的としたWireless ADB悪用マルウェア「RedHook Android」が出現し、エンドポイントセキュリティの強化が求められると共に、AIエージェントがエンドポイントセキュリティルールを誤検知する問題が浮上しました。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "AIゲートウェイのセキュリティリスクが指摘され、クラウドやIAMへの不正アクセス経路となる可能性から、この重要な接点のセキュリティ監視が喫緊の課題となっています。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "Microsoft 365やGitHub Agentic Workflowsを介したプライベートデータ漏洩が報告され、SaaS連携におけるAIエージェントの権限管理が重要性を増しています。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "AIエージェントの「スキル」や「プラグイン」が悪用され、既存の静的解析ツールを回避する巧妙なマルウェアが登場しており、新たな攻撃ベクトルとして監視が求められます。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIエージェントがランサムウェア攻撃を自動化し、プロンプトインジェクションやハルシネーション悪用による情報窃取やRCEが具体的な脅威として顕在化しました。CISAがAIを活用した脆弱性スキャンを開始するなど、AI for Securityの活用も進んでいます。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "エストニアのAIエージェント向け国家ID検討や英国政府のAI防衛計画が発表され、AIシステムのガバナンスとコンプライアンスの重要性が高まると共に、LLMの安全性アライメントがセキュリティ業務を阻害する可能性も指摘されています。"
+    }
+  ],
+  "next_week_outlook": "来週もAIエージェントのセキュリティ、特にその身元確認、権限管理、および実行時検証に関する技術的・政策的議論が主要な焦点となるでしょう。また、AIエージェントのログ収集・分析の標準化に向けた具体的な進展が期待されます。同時に、従来のソーシャルエンジニアリングやサプライチェーン攻撃も進化を続けるため、SOC/CDCは多角的な防御戦略の立案と継続的な脅威インテリジェンスの収集が不可欠です。",
+  "period": {
+    "start": "2026-07-06",
+    "end": "2026-07-13"
+  },
+  "total_articles": 62,
+  "keyword_changes": [
+    {
+      "keyword": "パスキー",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "AIエージェント",
+      "this_week_count": 15,
+      "last_week_count": 11,
+      "change": 4,
+      "change_pct": 36
+    },
+    {
+      "keyword": "GitHub Agentic Workflows",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "プライベートリポジトリ",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "AIアシスタント",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "フィッシング",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "Anthropic",
+      "this_week_count": 1,
+      "last_week_count": 4,
+      "change": -3,
+      "change_pct": -75
+    },
+    {
+      "keyword": "IAM",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "Microsoft 365",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "CISA",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    }
+  ],
+  "generated_at": "2026-07-13T07:44:55.739989+09:00"
+}
