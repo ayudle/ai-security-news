@@ -2,6 +2,369 @@
   "month": "2026-07",
   "articles": [
     {
+      "id": "6d3d6d723f0f",
+      "title": "Thinking Fast and Slow in the SOC: The Case for Combining Autonomous AI with Analyst Copilots",
+      "summary": "A few days ago, I was sitting with the CISO of a Fortune 50 company, walking through how his security team was thinking about AI agents in the SOC. Smart team. Serious program. They had already connected Claude to a few detection tools and were seeing real value in specific investigations. But as we mapped out the broader architecture, something kept nagging at me. The design they were building",
+      "url": "https://thehackernews.com/2026/07/thinking-fast-and-slow-in-soc-case-for.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-13T20:37:05+09:00",
+      "title_ja": "SOCにおけるAIエージェントとアナリストコパイロットの連携の必要性",
+      "summary_ja": "フォーチュン500企業のCISOがSOCにAIエージェント（Claude）を導入し、特定調査で価値を見出している。しかし、広範なアーキテクチャ設計では、自律型AIとアナリストコパイロットの組み合わせが、迅速かつ綿密な意思決定プロセスを最適化する上で重要であるという課題意識が示唆されている。これは、AIがSOCで人と協調する未来を示唆している。",
+      "insight": "SOC/CDC業務において、AIエージェントを自律型とアナリストコパイロットの両面で導入し、段階的な運用と役割分担を設計する必要がある。AIは人間のアナリストを完全に代替するのではなく、判断根拠の提供、証跡管理、再現性向上に寄与する補助ツールとして位置づけるべきである。SOC/CDCは、AIと人がどのように協調し、どのようなプロセスでインシデントに対応するかを明確に定義する必要がある。",
+      "importance": "高",
+      "importance_reason": "SOC/CDCの将来的な運用モデルとAI for Securityの設計思想に直接的な影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "アナリストコパイロット",
+        "SOC",
+        "AI for Security",
+        "意思決定"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "サービス企画",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "20379dc7d355",
+      "title": "Proof-of-Continuity: A Temporal Model for Authority Propagation in Distributed Systems and AI Agents",
+      "summary": "arXiv:2607.08906v1 Announce Type: new \nAbstract: Proof-of-Possession authorization models derive authority from the possession of artifacts such as tokens, credentials, or capabilities. This paper argues that possession is insufficient for discrete execution chains, whether they span multiple services or occur as separated steps within the same machine, because it does not guarantee preservation of the causal relationship between the origin of a request and the authority exercised at later steps",
+      "url": "https://arxiv.org/abs/2607.08906",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-07-13T13:00:00+09:00",
+      "title_ja": "分散システムとAIエージェントにおける権限伝播の時系列モデル「Proof-of-Continuity」",
+      "summary_ja": "本論文は、トークンやクレデンシャルによる「所持」に基づく認証モデルが、分散システムやAIエージェントにおける離散的な実行チェーンにおいて不十分であると指摘している。リクエストの起源と後続ステップでの権限行使との間の因果関係の保持を保証するため、「Proof-of-Continuity」という時系列モデルを提案し、より堅牢な権限管理の必要性を示唆している。",
+      "insight": "AIエージェントが複数のサービスやツールを連携して実行する際、その権限が正しく、かつ意図された因果関係に基づいて伝播しているかを保証する仕組みは、Security for AIの重要な設計課題となる。CDC/SOCにおいては、AIエージェントのログや監査証跡を収集・分析する際に、この「権限の連続性」を検証できるデータモデルやツールの導入が求められる。これはAIエージェントのリスクモデルにおけるアイデンティティ・権限層、マルチエージェント層、ツール・実行層のセキュリティ設計に直結する。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの根本的なセキュリティモデル、特に認証・認可・権限管理の未来の方向性を示す重要な研究であるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "権限管理",
+        "認証認可",
+        "Proof-of-Continuity",
+        "分散システム"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "41d2b467549a",
+      "title": "Secret Scanner Agent: Extracting Secrets and Access Context from Unstructured Documents",
+      "summary": "arXiv:2607.09011v1 Announce Type: new \nAbstract: Exposed documents such as emails, chat threads, tickets, and incident notes routinely leak credentials, but during incident response a leaked secret is only half the story. Responders also need to identify the ``door'' the secret opens: the account, tenant, endpoint, database, cloud resource, or other system that the credential could allow an attacker to access. Traditional secret scanners rely on regular expressions or trained classifiers which w",
+      "url": "https://arxiv.org/abs/2607.09011",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-07-13T13:00:00+09:00",
+      "title_ja": "非構造化文書から機密情報とアクセスコンテキストを抽出する「Secret Scanner Agent」",
+      "summary_ja": "電子メール、チャットログ、チケットなどの非構造化文書からは日常的に認証情報が漏洩している。インシデント対応では、漏洩した秘密情報だけでなく、それが開く「ドア」、すなわちアクセス可能なアカウントやシステムを特定することが不可欠である。本研究は、従来の正規表現や分類器に依存しない、新たな手法で秘密情報とそのアクセスコンテキストを抽出する「Secret Scanner Agent」を提案している。",
+      "insight": "SOC/CDC運用において、非構造化データからの機密情報検出は、インシデント予防および対応時の重要な課題である。AI for Securityとして、このような高度な機密情報スキャナーを導入することで、データ侵害の早期発見や、漏洩した認証情報がもたらすビジネス影響の迅速な特定が可能になる。これにより、Tier2調査の効率化や、インシデント対応における「ドア」特定までの時間を短縮し、被害を最小化する上で重要な役割を果たす。",
+      "importance": "中",
+      "importance_reason": "インシデント対応の効率化とデータ侵害防止に直接貢献する具体的なAI for Security技術の進展を示すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "機密情報",
+        "非構造化文書",
+        "シークレットスキャナー",
+        "インシデント対応",
+        "アクセスコンテキスト"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "顧客課題",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
+      "id": "42ea9f901c74",
+      "title": "'Yellow Teams' Are Defining the Future of AI Security",
+      "summary": "In some companies, engineers are building defense and attack tools to test the potential of artificial intelligence for cybersecurity — and its threat.",
+      "url": "https://www.darkreading.com/cybersecurity-operations/yellow-teams-defining-future-ai-security",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-14T03:18:30+09:00",
+      "title_ja": "AIセキュリティの未来を形作る「Yellow Teams」の台頭",
+      "summary_ja": "一部の企業では、「Yellow Teams」と呼ばれる専門家グループが、サイバーセキュリティにおけるAIの可能性と脅威の両方を検証するため、防御・攻撃双方のAIツールを開発しテストしている。これは、AIの進化がセキュリティの攻防両面に与える影響を深く理解し、先手を打つための新たな取り組みを示唆している。",
+      "insight": "AIの進化がセキュリティの攻防に与える影響は不可避であり、SOC/CDCの設計・運用者は「Yellow Teams」のような専門部隊の活動から学び、AIを悪用した攻撃手法とAIによる防御手法の両方を深く理解する必要がある。AI for Securityの導入だけでなく、自社AIシステムのSecurity for AIを強化するためにも、継続的な研究と検証、そして脅威インテリジェンスの活用が重要となる。この取り組みは、AI時代のSOC/CDCのサービス企画や人材育成に示唆を与える。",
+      "importance": "中",
+      "importance_reason": "AIとセキュリティの攻防における新たなアプローチと専門チームの出現を示し、将来のセキュリティ戦略の方向性を示すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Yellow Teams",
+        "AIセキュリティ",
+        "AIを使った防御",
+        "AIを使った攻撃",
+        "レッドチーム"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f2f86bf37849",
+      "title": "Forg365 PhaaS Targets Microsoft 365 with Device Code and AitM Session Theft",
+      "summary": "A new phishing-as-a-service (PhaaS) operation called Forg365 is using a combination of device code phishing, adversary-in-the-middle (AitM) tactics, antibot evasion, artificial intelligence (AI)-assisted lure creation, and post-compromise mailbox operations targeting Microsoft 365 accounts.\n\nDistributed via Telegram and costing $400 a month (or $3,800 per year), attack chains leverage phishing",
+      "url": "https://thehackernews.com/2026/07/forg365-phaas-targets-microsoft-365.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-13T22:03:33+09:00",
+      "title_ja": "Forg365 PhaaSがデバイスコードとAitMセッション窃取でMicrosoft 365を標的に",
+      "summary_ja": "「Forg365」という新たなPhaaS（Phishing-as-a-Service）が、デバイスコードフィッシング、Adversary-in-the-Middle（AitM）戦術、アンチボット回避、AI支援型誘引作成、ポスト侵害後のメールボックス操作を組み合わせ、Microsoft 365アカウントを標的にしている。月額400ドルでTelegram経由で提供されており、高度な多要素認証（MFA）をバイパスする能力を持つ。",
+      "insight": "AIを利用した高度なフィッシング（PhaaS）が、多要素認証をもバイパスする技術を用いてMicrosoft 365環境を標的にしていることは、Identity/ITDRの強化が喫緊の課題であることを示している。SOC/CDCは、従来のフィッシング検知に加え、デバイスコードフローの異常検知、AitM攻撃の痕跡、AIが生成した巧妙な誘引文言を分析する能力、そしてポスト侵害後のメールボックス操作を監視・検知するルールを強化する必要がある。AIが攻撃側に悪用される現実を突きつけ、Security for AIの重要性も高まる。",
+      "importance": "高",
+      "importance_reason": "MFAをバイパスするAIを活用した高度なフィッシング攻撃は、多くの組織にとって即座の脅威であり、防御戦略の見直しが必要となるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ネットワーク",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Forg365",
+        "PhaaS",
+        "Microsoft 365",
+        "デバイスコードフィッシング",
+        "AitM"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題",
+        "MDR/MSSP設計",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d3cca11a878e",
+      "title": "Breach at the Beach: Play the Ultimate Entra ID CTF",
+      "summary": "Learn how attackers abuse Entra ID through a free hands-on Capture the Flag. Varonis created the Breach at the Beach CTF to teach defenders how to investigate Entra ID attack techniques using realistic scenarios. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/breach-at-the-beach-play-the-ultimate-entra-id-ctf/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-13T23:01:11+09:00",
+      "title_ja": "Entra ID攻撃手法を学ぶCTF「Breach at the Beach」",
+      "summary_ja": "Varonisが、攻撃者がMicrosoft Entra ID（旧Azure AD）をどのように悪用するかを学ぶための無料のハンズオンCTF「Breach at the Beach」を公開した。これは、防御側が現実的なシナリオを通じてEntra IDの攻撃技術を調査し、対応するスキルを向上させることを目的としている。",
+      "insight": "Microsoft Entra IDはクラウド環境におけるIdentity & Access Managementの重要な基盤であり、そのセキュリティ強化はSOC/CDCにとって不可欠な領域である。このCTFは、SOCアナリストがEntra ID固有の攻撃ベクトルと防御策を実践的に学ぶ良い機会を提供し、ITDR（Identity Threat Detection and Response）の能力向上に直結する。CDCは、Entra IDのログ監視、異常検知、認証・認可に関するインシデント対応フローを継続的に強化する必要がある。",
+      "importance": "中",
+      "importance_reason": "クラウドアイデンティティ管理における具体的な脅威と対策への理解を深める実践的な機会を提供するため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Entra ID",
+        "Azure AD",
+        "CTF",
+        "Identity & Access Management",
+        "ITDR"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Identity/ITDR",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ac6d852f0dc5",
+      "title": "OpenAI temporarily relaxes GPT-5.6 Sol usage limits",
+      "summary": "OpenAI is temporarily relaxing GPT-5.6 Sol usage after demand for the company's most powerful model surged over the past 48 hours. [...]",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-temporarily-relaxes-gpt-56-sol-usage-limits/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-13T09:44:44+09:00",
+      "title_ja": "OpenAIがGPT-5.6 Solの利用制限を一時的に緩和",
+      "summary_ja": "OpenAIは、同社の最も強力なモデルであるGPT-5.6 Solへの需要が過去48時間で急増したことを受け、一時的に利用制限を緩和している。これは、最先端AIモデルへの関心と利用が急速に拡大している現状を反映している。",
+      "insight": "最先端AIモデルへの需要増大は、企業がAI技術の導入を加速させる可能性を示唆しており、それに伴いAIシステム固有のリスク（Security for AI）も増大する。SOC/CDCは、LLMの利用拡大がシャドーAI利用やプロンプト管理といった新たなセキュリティ課題を生むことを認識し、AIシステムのガバナンスと監視体制を早期に計画する必要がある。これは、AIシステムの普及が組織全体のセキュリティアーキテクチャに与える影響を把握するための市場トレンド情報として重要である。",
+      "importance": "低",
+      "importance_reason": "直接的なセキュリティインシデントや対策ではなく、市場動向の示唆に留まるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "GPT-5.6 Sol",
+        "LLM",
+        "AIモデル",
+        "利用制限"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f1376037a624",
+      "title": "GigaWiper Lets Threat Actors Choose Their Own Destructive Attack",
+      "summary": "A modular implant borrows from various malware families to combine both backdoor and wiper activities to maximize impact and minimize operational output.",
+      "url": "https://www.darkreading.com/cyberattacks-data-breaches/gigawiper-threat-actors-choose-their-own-destructive-attack",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-14T01:50:54+09:00",
+      "title_ja": "GigaWiperが脅威アクターに破壊的攻撃の選択肢を提供",
+      "summary_ja": "「GigaWiper」は、複数のマルウェアファミリーの要素を取り入れたモジュラー型のインプラントであり、バックドア機能とワイパー機能の両方を組み合わせて、最大のインパクトを最小限の運用で達成することを可能にする。攻撃者は破壊的攻撃の実施を任意に選択できるため、より広範囲かつ深刻な被害をもたらす潜在的な脅威となっている。",
+      "insight": "ランサムウェアとワイパーを組み合わせたような破壊的マルウェアの進化は、インシデント発生時の復旧戦略とレジリエンスの重要性を再認識させる。SOC/CDCは、GigaWiperのようなマルウェアによる初期侵入、水平展開、最終的な破壊活動の各フェーズを検知し、対応するための強化された検出ルール、隔離・封じ込めプロセス、およびデータバックアップと復旧計画を準備する必要がある。これは、EDR/XDR、SIEMなどの検知ツール連携と、迅速な封じ込め・復旧プロセス設計に直結する。",
+      "importance": "中",
+      "importance_reason": "バックドアとワイパー機能を組み合わせた破壊的攻撃は、広範囲かつ深刻な被害をもたらす可能性が高いため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "GigaWiper",
+        "モジュラー型マルウェア",
+        "ワイパー攻撃",
+        "バックドア",
+        "破壊的攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
+      "id": "89c16b3448fb",
+      "title": "Lessons Learned from CISA’s Recent GitHub Leak",
+      "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) has issued a postmortem on a data leak in which a contractor published dozens of internal CISA credentials -- including AWS Govcloud keys -- in a public GitHub repository for almost six months before being notified by KrebsOnSecurity. Experts say the gaps identified in the agency's initial response provide important lessons that all security teams should absorb.",
+      "url": "https://krebsonsecurity.com/2026/07/lessons-learned-from-cisas-recent-github-leak/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Krebs on Security",
+      "source_tier": "B",
+      "published": "2026-07-14T00:03:28+09:00",
+      "title_ja": "CISAのGitHub情報漏洩から学ぶ教訓",
+      "summary_ja": "CISAが、委託業者がAWS GovCloudのキーを含む数十の内部認証情報を公開GitHubリポジトリに約6ヶ月間放置し、KrebsOnSecurityに通知されるまで気づかなかったデータ漏洩の事後報告書を発表した。この事件は、認証情報管理とインシデント対応の初期段階における課題を浮き彫りにし、すべてのセキュリティチームが学ぶべき重要な教訓を示している。",
+      "insight": "クラウド環境における認証情報（APIキー、シークレット）の管理と、パブリックリポジトリのスキャンは、SOC/CDCの重要な監視対象である。委託業者による設定ミスや、長期にわたる情報漏洩の見落としは、脆弱性管理と外部連携のガバナンスの欠如を示唆する。CDCは、サプライチェーンリスク管理の一環として委託業者への監査を強化し、自動的なシークレットスキャンツール導入、アラート後のインシデント対応体制の改善、特に長期にわたる漏洩のリスク評価と対応プロセスを再確認する必要がある。これは、AIシステムのAPI連携が増える中で、Security for AIの観点からも認証情報管理の基本が重要であることを示唆している。",
+      "importance": "高",
+      "importance_reason": "公的機関における重大な情報漏洩とその対応における課題は、多くの組織にとって共通の教訓となり、即座の対策見直しを促すため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "データ侵害",
+        "設定ミス"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "CISA",
+        "GitHub",
+        "情報漏洩",
+        "AWS GovCloud",
+        "認証情報管理"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "CISO報告",
+        "顧客課題",
+        "Exposure管理",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
       "id": "46c825ba403b",
       "title": "Claude Fable 5 stays free for paid users until July 19 as Anthropic buys more time",
       "summary": "Anthropic has just extended access to Claude Fable 5 for paid subscribers until July 19, giving you another week to keep using the most powerful model. [...]",
