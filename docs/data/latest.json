@@ -1,7 +1,48 @@
 {
-  "updated": "2026-07-14T05:33:30.995109+09:00",
-  "today": "2026-07-14",
+  "updated": "2026-07-15T05:21:46.255614+09:00",
+  "today": "2026-07-15",
   "articles": [
+    {
+      "id": "6f2a02e8372f",
+      "title": "How Pentera Turns AI Security Workflows into Validation Engines",
+      "summary": "AI security agents are starting to influence real security decisions. They summarize findings, prioritize remediation, recommend next steps, and help teams move faster. But most still rely on fragmented risk signals: scanner output, severity scores, threat intelligence, configuration findings, and exposure data.\n\nThat fragmentation matters because attackers do not move through environments one",
+      "url": "https://thehackernews.com/2026/07/how-pentera-turns-ai-security-workflows.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-14T20:30:00+09:00",
+      "title_ja": "PenteraがAIセキュリティワークフローを検証エンジンに変える方法",
+      "summary_ja": "PenteraはAIセキュリティエージェントがセキュリティ意思決定を支援し、修復の優先順位付けや次のステップの推奨を通じて、チームの作業を加速すると述べている。しかし、現在のエージェントはスキャナー出力や脅威インテリジェンスなど断片的なリスクシグナルに依存しており、統合された攻撃者視点での検証の必要性を指摘している。AIエージェントは、これらの情報を統合し、実際の攻撃パスをシミュレートすることで、より実用的な防御策を提案できる可能性がある。",
+      "insight": "SOC/CDCはAIエージェントをTier2調査や初動判断支援に活用する際、そのAIが依拠する情報源が断片的でないか、複数のシグナルを統合的に評価できるかを検証する必要がある。AIが生成する修復推奨事項や次のステップの正当性・有効性を評価するための品質保証プロセスをどう組み込むか、またその証跡管理は新たな設計課題となる。これはMDR/MSSPサービス設計において、AIによるサービス提供範囲と品質保証のバランスを問う。AIは判断根拠と再現性を高めるための重要なツールとなる。",
+      "importance": "高",
+      "importance_reason": "AI for Securityの具体的な活用と課題を提起し、SOC/CDCの運用設計に直接的な影響があるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIセキュリティエージェント",
+        "リスクシグナル",
+        "修復推奨",
+        "脅威インテリジェンス",
+        "Pentera"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "MDR/MSSP設計",
+        "サービス企画"
+      ],
+      "views": 0
+    },
     {
       "id": "6d3d6d723f0f",
       "title": "Thinking Fast and Slow in the SOC: The Case for Combining Autonomous AI with Analyst Copilots",
@@ -12,15 +53,16 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-07-13T20:37:05+09:00",
-      "title_ja": "SOCにおけるAIエージェントとアナリストコパイロットの連携の必要性",
-      "summary_ja": "フォーチュン500企業のCISOがSOCにAIエージェント（Claude）を導入し、特定調査で価値を見出している。しかし、広範なアーキテクチャ設計では、自律型AIとアナリストコパイロットの組み合わせが、迅速かつ綿密な意思決定プロセスを最適化する上で重要であるという課題意識が示唆されている。これは、AIがSOCで人と協調する未来を示唆している。",
-      "insight": "SOC/CDC業務において、AIエージェントを自律型とアナリストコパイロットの両面で導入し、段階的な運用と役割分担を設計する必要がある。AIは人間のアナリストを完全に代替するのではなく、判断根拠の提供、証跡管理、再現性向上に寄与する補助ツールとして位置づけるべきである。SOC/CDCは、AIと人がどのように協調し、どのようなプロセスでインシデントに対応するかを明確に定義する必要がある。",
+      "title_ja": "SOCにおける迅速思考と熟慮：自律型AIとアナリストコパイロットの組み合わせ",
+      "summary_ja": "Fortune 50企業のCISOがSOCにおけるAIエージェント（Claude）の活用を検討しており、特定の調査で価値を見出している。しかし、自律型AIの高速な判断能力と、アナリストコパイロットとしての人間の熟考をいかに統合するかがアーキテクチャ設計の課題となっている。記事は、これら二つのアプローチの組み合わせがSOCの将来を形作ると提言している。",
+      "insight": "SOC/CDCにおいてAIを導入する際、自律型AIの迅速な判断能力と、アナリストによる複雑な状況判断や創造的思考をいかに連携させるかが重要な設計課題となる。AIは人を置き換えるのではなく、判断根拠の提示や初動判断支援に重点を置くことで、Tier2/3アナリストの業務効率と品質を高めるコパイロットとしての役割が期待される。これは、AI導入による夜間対応やエスカレーション基準の変化にも直結する。",
       "importance": "高",
-      "importance_reason": "SOC/CDCの将来的な運用モデルとAI for Securityの設計思想に直接的な影響を与えるため。",
+      "importance_reason": "SOC/CDCにおけるAI活用モデルの具体的な検討事例とその設計課題を示しており、将来の運用体制に直接影響するため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "AIを使った防御"
+        "AIを使った防御",
+        "LLMセキュリティ"
       ],
       "affected_layers": [
         "データ/AI",
@@ -29,36 +71,40 @@
       "related_keywords": [
         "AIエージェント",
         "アナリストコパイロット",
-        "SOC",
-        "AI for Security",
-        "意思決定"
+        "自律型AI",
+        "Claude",
+        "SOCアーキテクチャ"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
+        "AI for Security",
+        "MDR/MSSP設計",
         "サービス企画",
-        "AI for Security"
+        "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "20379dc7d355",
-      "title": "Proof-of-Continuity: A Temporal Model for Authority Propagation in Distributed Systems and AI Agents",
-      "summary": "arXiv:2607.08906v1 Announce Type: new \nAbstract: Proof-of-Possession authorization models derive authority from the possession of artifacts such as tokens, credentials, or capabilities. This paper argues that possession is insufficient for discrete execution chains, whether they span multiple services or occur as separated steps within the same machine, because it does not guarantee preservation of the causal relationship between the origin of a request and the authority exercised at later steps",
-      "url": "https://arxiv.org/abs/2607.08906",
+      "id": "83885529a9aa",
+      "title": "A Survey on LLM Watermarking: Theory and Deployment",
+      "summary": "arXiv:2607.10103v1 Announce Type: new \nAbstract: Large language models (LLMs) are increasingly embedded in high-impact workflows, yet their ability to generate fluent text at scale has amplified risks of provenance ambiguity, model misuse, and large-scale content laundering. LLM watermarking, embedding invisible signatures into model outputs, has emerged as a promising technical layer for attribution, auditing, and downstream trust decisions. However, the literature has grown rapidly and unevenl",
+      "url": "https://arxiv.org/abs/2607.10103",
       "ai_score": 3,
       "cdc_pre_score": 1,
       "source_name": "arXiv cs.CR",
       "source_tier": "C",
-      "published": "2026-07-13T13:00:00+09:00",
-      "title_ja": "分散システムとAIエージェントにおける権限伝播の時系列モデル「Proof-of-Continuity」",
-      "summary_ja": "本論文は、トークンやクレデンシャルによる「所持」に基づく認証モデルが、分散システムやAIエージェントにおける離散的な実行チェーンにおいて不十分であると指摘している。リクエストの起源と後続ステップでの権限行使との間の因果関係の保持を保証するため、「Proof-of-Continuity」という時系列モデルを提案し、より堅牢な権限管理の必要性を示唆している。",
-      "insight": "AIエージェントが複数のサービスやツールを連携して実行する際、その権限が正しく、かつ意図された因果関係に基づいて伝播しているかを保証する仕組みは、Security for AIの重要な設計課題となる。CDC/SOCにおいては、AIエージェントのログや監査証跡を収集・分析する際に、この「権限の連続性」を検証できるデータモデルやツールの導入が求められる。これはAIエージェントのリスクモデルにおけるアイデンティティ・権限層、マルチエージェント層、ツール・実行層のセキュリティ設計に直結する。",
-      "importance": "高",
-      "importance_reason": "AIエージェントの根本的なセキュリティモデル、特に認証・認可・権限管理の未来の方向性を示す重要な研究であるため。",
+      "published": "2026-07-14T13:00:00+09:00",
+      "title_ja": "LLMウォーターマークの調査：理論と導入",
+      "summary_ja": "LLMのウォーターマーク技術に関する調査論文が発表された。LLMが生成するテキストの由来の曖昧さ、モデルの悪用、大規模なコンテンツロンダリングといったリスクが高まる中、不可視の署名を埋め込むウォーターマークは、帰属の特定、監査、信頼性の確保に有望な技術として注目されている。これにより、AI生成コンテンツの信頼性を向上させる可能性が示唆されている。",
+      "insight": "AIシステム、特にLLMの出力を監視対象とするCDCにとって、生成コンテンツの真贋や出自を保証するウォーターマーク技術は、Security for AIの重要な要素となり得る。これにより、AIが生成した誤情報や悪用コンテンツの拡散防止、またインシデント発生時の原因特定と証跡管理において、新たな監視・分析の観点とツールが必要となる可能性を考える。これはAIリスクの「誤情報生成」「著作権」への対応策として重要となる。",
+      "importance": "中",
+      "importance_reason": "LLMの信頼性確保と悪用防止のための技術であり、Security for AIおよび将来の監視対象に影響を与える可能性があるため。",
       "tag_main_id": "ai_risk",
       "tag_main_label": "AIリスク",
       "tag_subs": [
+        "誤情報生成",
+        "著作権",
         "安全性評価"
       ],
       "affected_layers": [
@@ -66,58 +112,139 @@
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "AIエージェント",
-        "権限管理",
-        "認証認可",
-        "Proof-of-Continuity",
-        "分散システム"
+        "LLM",
+        "ウォーターマーク",
+        "帰属特定",
+        "モデル誤用",
+        "コンテンツロンダリング"
       ],
-      "cdc_relevance": 3,
+      "cdc_relevance": 2,
       "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
         "Security for AI",
+        "SOC運用変化",
+        "CISO報告",
         "サービス企画"
       ],
       "views": 0
     },
     {
-      "id": "41d2b467549a",
-      "title": "Secret Scanner Agent: Extracting Secrets and Access Context from Unstructured Documents",
-      "summary": "arXiv:2607.09011v1 Announce Type: new \nAbstract: Exposed documents such as emails, chat threads, tickets, and incident notes routinely leak credentials, but during incident response a leaked secret is only half the story. Responders also need to identify the ``door'' the secret opens: the account, tenant, endpoint, database, cloud resource, or other system that the credential could allow an attacker to access. Traditional secret scanners rely on regular expressions or trained classifiers which w",
-      "url": "https://arxiv.org/abs/2607.09011",
+      "id": "beb8c22b967b",
+      "title": "Minionese: Comprehensive Benchmark and Mechanistic Study of Multilingual LLM Safety",
+      "summary": "arXiv:2607.10112v1 Announce Type: new \nAbstract: Safety alignment in large language models remains brittle across languages: prompts reliably refused in English can elicit harmful compliance in non-English and low-resource settings. We introduce \\textsc{Minionese}, a multilingual jailbreak benchmark spanning 18 languages, 4 resource tiers, and 4 perturbation types (standard translation, code-switching, transliteration, and translationese), paired with a geometric mechanistic analysis of refusal ",
+      "url": "https://arxiv.org/abs/2607.10112",
       "ai_score": 3,
       "cdc_pre_score": 1,
       "source_name": "arXiv cs.CR",
       "source_tier": "C",
-      "published": "2026-07-13T13:00:00+09:00",
-      "title_ja": "非構造化文書から機密情報とアクセスコンテキストを抽出する「Secret Scanner Agent」",
-      "summary_ja": "電子メール、チャットログ、チケットなどの非構造化文書からは日常的に認証情報が漏洩している。インシデント対応では、漏洩した秘密情報だけでなく、それが開く「ドア」、すなわちアクセス可能なアカウントやシステムを特定することが不可欠である。本研究は、従来の正規表現や分類器に依存しない、新たな手法で秘密情報とそのアクセスコンテキストを抽出する「Secret Scanner Agent」を提案している。",
-      "insight": "SOC/CDC運用において、非構造化データからの機密情報検出は、インシデント予防および対応時の重要な課題である。AI for Securityとして、このような高度な機密情報スキャナーを導入することで、データ侵害の早期発見や、漏洩した認証情報がもたらすビジネス影響の迅速な特定が可能になる。これにより、Tier2調査の効率化や、インシデント対応における「ドア」特定までの時間を短縮し、被害を最小化する上で重要な役割を果たす。",
+      "published": "2026-07-14T13:00:00+09:00",
+      "title_ja": "Minionese: 多言語LLM安全性の包括的なベンチマークとメカニズム研究",
+      "summary_ja": "多言語LLMの安全性アライメントが言語間で不安定であることが示された。英語では拒否される有害なプロンプトが、非英語や低リソース言語設定では受け入れられる可能性がある。本研究は18言語にわたる多言語ジェイルブレイクベンチマーク「Minionese」を導入し、拒否行動のメカニズム解析を行っている。これは、LLMのグローバル展開における新たなリスクを浮き彫りにする。",
+      "insight": "LLMのグローバル展開が進むにつれて、多言語対応におけるセキュリティリスク、特にプロンプトインジェクションや有害な応答生成のリスクが顕在化する。CDCは、自社が利用するLLMやAIエージェントが多言語環境でどのように振る舞うかを評価し、英語以外の言語での悪用に対する監視・検知ルールを検討する必要がある。これはSecurity for AIの重要な側面であり、AIエージェントリスクモデルの「モデル・推論層」のリスク評価を複雑化させる。",
       "importance": "中",
-      "importance_reason": "インシデント対応の効率化とデータ侵害防止に直接貢献する具体的なAI for Security技術の進展を示すため。",
+      "importance_reason": "LLMの多言語安全性という新たなリスク領域を提示し、グローバルでAIを導入する組織にとって重要な考慮点となるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "プロンプトインジェクション"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "多言語LLM",
+        "安全性アライメント",
+        "ジェイルブレイク",
+        "Minionese",
+        "プロンプトインジェクション"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "613a1c6aeda1",
+      "title": "Microsoft Patches a Record 570 Security Flaws",
+      "summary": "Microsoft Corp. today released software updates to plug at least 570 security holes in its Windows operating systems and other software, almost triple the number of vulnerabilities the software giant fixed in its record-smashing Patch Tuesday release last month. Microsoft attributed the burgeoning patch counts to vulnerability discoveries aided by artificial intelligence.",
+      "url": "https://krebsonsecurity.com/2026/07/microsoft-patches-a-record-570-security-flaws/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Krebs on Security",
+      "source_tier": "B",
+      "published": "2026-07-15T04:22:42+09:00",
+      "title_ja": "Microsoftが記録的な570件のセキュリティ欠陥を修正",
+      "summary_ja": "MicrosoftがWindows OSやその他ソフトウェアの合計570件ものセキュリティ脆弱性を修正する過去最多のパッチをリリースした。この数は前回の記録的なリリースのおよそ3倍に相当する。Microsoftは、この膨大な数の脆弱性発見に人工知能（AI）が貢献していると公表している。",
+      "insight": "AIが脆弱性発見の効率を大幅に向上させていることは、攻撃者だけでなく防御側もAIを積極的に活用していることを示唆する。CDCは、AIを活用した脆弱性管理やパッチ適用プロセスの最適化を検討し、Exposure管理の精度を高める必要がある。AIによる脆弱性発見の傾向を分析し、自社の脆弱性管理戦略にどう活かすかを問い直す機会となる。これは、AI for Securityが脆弱性管理領域で具体的な効果を発揮し始めたことを示す。",
+      "importance": "中",
+      "importance_reason": "AI for Securityの具体的な成果を示しており、脆弱性管理のプロセスに影響を与える可能性が高いため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
         "AIを使った防御"
       ],
       "affected_layers": [
-        "データ/AI",
-        "アプリ/API"
+        "アプリ/API",
+        "ガバナンス/規制"
       ],
       "related_keywords": [
-        "機密情報",
-        "非構造化文書",
-        "シークレットスキャナー",
-        "インシデント対応",
-        "アクセスコンテキスト"
+        "Microsoft",
+        "パッチ",
+        "脆弱性",
+        "AI活用",
+        "セキュリティフロー"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "Exposure管理",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "a81c3f8408af",
+      "title": "Unpatched Claude for Chrome Flaw Lets Extensions Read Gmail, Calendar",
+      "summary": "<p>A ClaudeBleed-linked vulnerability reportedly persists across eight patches, exposing potentially sensitive data to other extensions. </p>\n<p>The post <a href=\"https://www.securityweek.com/unpatched-claude-for-chrome-flaw-lets-extensions-read-gmail-calendar/\">Unpatched Claude for Chrome Flaw Lets Extensions Read Gmail, Calendar</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/unpatched-claude-for-chrome-flaw-lets-extensions-read-gmail-calendar/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-14T22:00:00+09:00",
+      "title_ja": "未修正のClaude for Chromeの欠陥により、拡張機能がGmail、カレンダーを読み取り可能に",
+      "summary_ja": "Claude for Chromeにおいて、複数のパッチが適用された後も「ClaudeBleed」に関連する脆弱性が残存していることが報じられている。この脆弱性により、悪意のある他のブラウザ拡張機能が、ユーザーのGmailやGoogleカレンダーといった機密データを読み取ることが可能となる。これは、AIエージェントが既存のアプリケーション環境と連携する際の新たなリスクを示す。",
+      "insight": "AIエージェントがブラウザ拡張機能として提供される場合、そのAPI連携やプロセス間通信における脆弱性は、AIエージェントの「ツール・実行層」および「データ・インフラ層」に属する新たなリスクとしてSOC/CDCの監視対象となる。特に、AIエージェントが機密情報へのアクセス権限を持つ場合、その権限管理と挙動監視は従来のアプリケーション監視以上に厳格に行い、Identity/ITDRの観点からAIエージェント固有の認証・認可メカニズムを設計する必要がある。AIエージェントのログやデータフローを監視対象に追加するべきである。",
+      "importance": "高",
+      "importance_reason": "AIエージェント固有の脆弱性が実環境で情報漏洩に繋がる可能性を示し、Security for AIの具体的なリスクとCDCの監視対象を明確にするため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Claude for Chrome",
+        "ClaudeBleed",
+        "拡張機能",
+        "Gmail",
+        "カレンダー"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
+        "Security for AI",
         "SOC運用変化",
-        "AI for Security",
-        "顧客課題",
-        "MDR/MSSP設計"
+        "Identity/ITDR",
+        "顧客課題"
       ],
       "views": 0
     },
@@ -131,242 +258,580 @@
       "source_name": "Dark Reading",
       "source_tier": "B",
       "published": "2026-07-14T03:18:30+09:00",
-      "title_ja": "AIセキュリティの未来を形作る「Yellow Teams」の台頭",
-      "summary_ja": "一部の企業では、「Yellow Teams」と呼ばれる専門家グループが、サイバーセキュリティにおけるAIの可能性と脅威の両方を検証するため、防御・攻撃双方のAIツールを開発しテストしている。これは、AIの進化がセキュリティの攻防両面に与える影響を深く理解し、先手を打つための新たな取り組みを示唆している。",
-      "insight": "AIの進化がセキュリティの攻防に与える影響は不可避であり、SOC/CDCの設計・運用者は「Yellow Teams」のような専門部隊の活動から学び、AIを悪用した攻撃手法とAIによる防御手法の両方を深く理解する必要がある。AI for Securityの導入だけでなく、自社AIシステムのSecurity for AIを強化するためにも、継続的な研究と検証、そして脅威インテリジェンスの活用が重要となる。この取り組みは、AI時代のSOC/CDCのサービス企画や人材育成に示唆を与える。",
+      "title_ja": "「イエローチーム」がAIセキュリティの未来を定義",
+      "summary_ja": "一部の企業では「イエローチーム」と呼ばれる専門チームが、サイバーセキュリティにおける人工知能の潜在能力と脅威を評価するため、攻撃・防御両面でのAIツールを開発・テストしている。これは、AIがもたらす新たな脅威と防御策を理解するための、実践的なアプローチの重要性を示唆している。",
+      "insight": "AIセキュリティの進化には、攻撃側と防御側両方の視点からの継続的な研究と検証が不可欠であり、イエローチームのような専門組織の活動は、将来のSOC/CDCの防御戦略を形成する上で重要な知見を提供する。CDCは、イエローチームの活動で得られたAIシステムに対する攻撃手法や防御策の情報を積極的に取り入れ、AI for SecurityとSecurity for AIの両面からサービス設計を最適化する必要がある。これは、AI導入による人の役割変化にも関わる。",
       "importance": "中",
-      "importance_reason": "AIとセキュリティの攻防における新たなアプローチと専門チームの出現を示し、将来のセキュリティ戦略の方向性を示すため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "importance_reason": "AIセキュリティ分野の研究・開発トレンドを示し、将来の防御戦略策定に影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
       "tag_subs": [
-        "AIを使った防御",
-        "AIを使った攻撃"
+        "研究・論文",
+        "市場トレンド"
       ],
       "affected_layers": [
         "データ/AI",
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "Yellow Teams",
+        "イエローチーム",
         "AIセキュリティ",
         "AIを使った防御",
         "AIを使った攻撃",
-        "レッドチーム"
+        "攻撃ツール"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
-        "SOC運用変化",
         "AI for Security",
         "Security for AI",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "f2f86bf37849",
-      "title": "Forg365 PhaaS Targets Microsoft 365 with Device Code and AitM Session Theft",
-      "summary": "A new phishing-as-a-service (PhaaS) operation called Forg365 is using a combination of device code phishing, adversary-in-the-middle (AitM) tactics, antibot evasion, artificial intelligence (AI)-assisted lure creation, and post-compromise mailbox operations targeting Microsoft 365 accounts.\n\nDistributed via Telegram and costing $400 a month (or $3,800 per year), attack chains leverage phishing",
-      "url": "https://thehackernews.com/2026/07/forg365-phaas-targets-microsoft-365.html",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-07-13T22:03:33+09:00",
-      "title_ja": "Forg365 PhaaSがデバイスコードとAitMセッション窃取でMicrosoft 365を標的に",
-      "summary_ja": "「Forg365」という新たなPhaaS（Phishing-as-a-Service）が、デバイスコードフィッシング、Adversary-in-the-Middle（AitM）戦術、アンチボット回避、AI支援型誘引作成、ポスト侵害後のメールボックス操作を組み合わせ、Microsoft 365アカウントを標的にしている。月額400ドルでTelegram経由で提供されており、高度な多要素認証（MFA）をバイパスする能力を持つ。",
-      "insight": "AIを利用した高度なフィッシング（PhaaS）が、多要素認証をもバイパスする技術を用いてMicrosoft 365環境を標的にしていることは、Identity/ITDRの強化が喫緊の課題であることを示している。SOC/CDCは、従来のフィッシング検知に加え、デバイスコードフローの異常検知、AitM攻撃の痕跡、AIが生成した巧妙な誘引文言を分析する能力、そしてポスト侵害後のメールボックス操作を監視・検知するルールを強化する必要がある。AIが攻撃側に悪用される現実を突きつけ、Security for AIの重要性も高まる。",
-      "importance": "高",
-      "importance_reason": "MFAをバイパスするAIを活用した高度なフィッシング攻撃は、多くの組織にとって即座の脅威であり、防御戦略の見直しが必要となるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "フィッシング",
-        "クレデンシャル窃取"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "ネットワーク",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "Forg365",
-        "PhaaS",
-        "Microsoft 365",
-        "デバイスコードフィッシング",
-        "AitM"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "顧客課題",
-        "MDR/MSSP設計",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "d3cca11a878e",
-      "title": "Breach at the Beach: Play the Ultimate Entra ID CTF",
-      "summary": "Learn how attackers abuse Entra ID through a free hands-on Capture the Flag. Varonis created the Breach at the Beach CTF to teach defenders how to investigate Entra ID attack techniques using realistic scenarios. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/breach-at-the-beach-play-the-ultimate-entra-id-ctf/",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-07-13T23:01:11+09:00",
-      "title_ja": "Entra ID攻撃手法を学ぶCTF「Breach at the Beach」",
-      "summary_ja": "Varonisが、攻撃者がMicrosoft Entra ID（旧Azure AD）をどのように悪用するかを学ぶための無料のハンズオンCTF「Breach at the Beach」を公開した。これは、防御側が現実的なシナリオを通じてEntra IDの攻撃技術を調査し、対応するスキルを向上させることを目的としている。",
-      "insight": "Microsoft Entra IDはクラウド環境におけるIdentity & Access Managementの重要な基盤であり、そのセキュリティ強化はSOC/CDCにとって不可欠な領域である。このCTFは、SOCアナリストがEntra ID固有の攻撃ベクトルと防御策を実践的に学ぶ良い機会を提供し、ITDR（Identity Threat Detection and Response）の能力向上に直結する。CDCは、Entra IDのログ監視、異常検知、認証・認可に関するインシデント対応フローを継続的に強化する必要がある。",
-      "importance": "中",
-      "importance_reason": "クラウドアイデンティティ管理における具体的な脅威と対策への理解を深める実践的な機会を提供するため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
-      "tag_subs": [
-        "製品リリース"
-      ],
-      "affected_layers": [
-        "クラウド/サーバー",
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "Entra ID",
-        "Azure AD",
-        "CTF",
-        "Identity & Access Management",
-        "ITDR"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Identity/ITDR",
-        "SOC運用変化",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "ac6d852f0dc5",
-      "title": "OpenAI temporarily relaxes GPT-5.6 Sol usage limits",
-      "summary": "OpenAI is temporarily relaxing GPT-5.6 Sol usage after demand for the company's most powerful model surged over the past 48 hours. [...]",
-      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-temporarily-relaxes-gpt-56-sol-usage-limits/",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-07-13T09:44:44+09:00",
-      "title_ja": "OpenAIがGPT-5.6 Solの利用制限を一時的に緩和",
-      "summary_ja": "OpenAIは、同社の最も強力なモデルであるGPT-5.6 Solへの需要が過去48時間で急増したことを受け、一時的に利用制限を緩和している。これは、最先端AIモデルへの関心と利用が急速に拡大している現状を反映している。",
-      "insight": "最先端AIモデルへの需要増大は、企業がAI技術の導入を加速させる可能性を示唆しており、それに伴いAIシステム固有のリスク（Security for AI）も増大する。SOC/CDCは、LLMの利用拡大がシャドーAI利用やプロンプト管理といった新たなセキュリティ課題を生むことを認識し、AIシステムのガバナンスと監視体制を早期に計画する必要がある。これは、AIシステムの普及が組織全体のセキュリティアーキテクチャに与える影響を把握するための市場トレンド情報として重要である。",
-      "importance": "低",
-      "importance_reason": "直接的なセキュリティインシデントや対策ではなく、市場動向の示唆に留まるため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
-      "tag_subs": [
-        "市場トレンド"
-      ],
-      "affected_layers": [
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "OpenAI",
-        "GPT-5.6 Sol",
-        "LLM",
-        "AIモデル",
-        "利用制限"
-      ],
-      "cdc_relevance": 1,
-      "cdc_context": [
         "サービス企画",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "f1376037a624",
-      "title": "GigaWiper Lets Threat Actors Choose Their Own Destructive Attack",
-      "summary": "A modular implant borrows from various malware families to combine both backdoor and wiper activities to maximize impact and minimize operational output.",
-      "url": "https://www.darkreading.com/cyberattacks-data-breaches/gigawiper-threat-actors-choose-their-own-destructive-attack",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "Dark Reading",
-      "source_tier": "B",
-      "published": "2026-07-14T01:50:54+09:00",
-      "title_ja": "GigaWiperが脅威アクターに破壊的攻撃の選択肢を提供",
-      "summary_ja": "「GigaWiper」は、複数のマルウェアファミリーの要素を取り入れたモジュラー型のインプラントであり、バックドア機能とワイパー機能の両方を組み合わせて、最大のインパクトを最小限の運用で達成することを可能にする。攻撃者は破壊的攻撃の実施を任意に選択できるため、より広範囲かつ深刻な被害をもたらす潜在的な脅威となっている。",
-      "insight": "ランサムウェアとワイパーを組み合わせたような破壊的マルウェアの進化は、インシデント発生時の復旧戦略とレジリエンスの重要性を再認識させる。SOC/CDCは、GigaWiperのようなマルウェアによる初期侵入、水平展開、最終的な破壊活動の各フェーズを検知し、対応するための強化された検出ルール、隔離・封じ込めプロセス、およびデータバックアップと復旧計画を準備する必要がある。これは、EDR/XDR、SIEMなどの検知ツール連携と、迅速な封じ込め・復旧プロセス設計に直結する。",
-      "importance": "中",
-      "importance_reason": "バックドアとワイパー機能を組み合わせた破壊的攻撃は、広範囲かつ深刻な被害をもたらす可能性が高いため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "マルウェア"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "ネットワーク",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "GigaWiper",
-        "モジュラー型マルウェア",
-        "ワイパー攻撃",
-        "バックドア",
-        "破壊的攻撃"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "顧客課題",
         "MDR/MSSP設計"
       ],
       "views": 0
     },
     {
-      "id": "89c16b3448fb",
-      "title": "Lessons Learned from CISA’s Recent GitHub Leak",
-      "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) has issued a postmortem on a data leak in which a contractor published dozens of internal CISA credentials -- including AWS Govcloud keys -- in a public GitHub repository for almost six months before being notified by KrebsOnSecurity. Experts say the gaps identified in the agency's initial response provide important lessons that all security teams should absorb.",
-      "url": "https://krebsonsecurity.com/2026/07/lessons-learned-from-cisas-recent-github-leak/",
+      "id": "0f207928a268",
+      "title": "Nearly 300 GitHub repos pose as legit software to push malware",
+      "summary": "A threat actor has published hundreds of fake GitHub repositories impersonating legitimate software and security projects to distribute infostealer malware. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/nearly-300-github-repos-pose-as-legit-software-to-push-malware/",
       "ai_score": 1,
-      "cdc_pre_score": 0,
-      "source_name": "Krebs on Security",
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
       "source_tier": "B",
-      "published": "2026-07-14T00:03:28+09:00",
-      "title_ja": "CISAのGitHub情報漏洩から学ぶ教訓",
-      "summary_ja": "CISAが、委託業者がAWS GovCloudのキーを含む数十の内部認証情報を公開GitHubリポジトリに約6ヶ月間放置し、KrebsOnSecurityに通知されるまで気づかなかったデータ漏洩の事後報告書を発表した。この事件は、認証情報管理とインシデント対応の初期段階における課題を浮き彫りにし、すべてのセキュリティチームが学ぶべき重要な教訓を示している。",
-      "insight": "クラウド環境における認証情報（APIキー、シークレット）の管理と、パブリックリポジトリのスキャンは、SOC/CDCの重要な監視対象である。委託業者による設定ミスや、長期にわたる情報漏洩の見落としは、脆弱性管理と外部連携のガバナンスの欠如を示唆する。CDCは、サプライチェーンリスク管理の一環として委託業者への監査を強化し、自動的なシークレットスキャンツール導入、アラート後のインシデント対応体制の改善、特に長期にわたる漏洩のリスク評価と対応プロセスを再確認する必要がある。これは、AIシステムのAPI連携が増える中で、Security for AIの観点からも認証情報管理の基本が重要であることを示唆している。",
-      "importance": "高",
-      "importance_reason": "公的機関における重大な情報漏洩とその対応における課題は、多くの組織にとって共通の教訓となり、即座の対策見直しを促すため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
+      "published": "2026-07-15T04:15:17+09:00",
+      "title_ja": "約300のGitHubリポジトリが正規ソフトウェアを装いマルウェアを配布",
+      "summary_ja": "脅威アクターが、正当なソフトウェアやセキュリティプロジェクトを装った約300の偽GitHubリポジトリを公開し、情報窃取マルウェアを配布している。この手口は、開発者コミュニティの信頼を利用したサプライチェーン攻撃の一種であり、ソフトウェアの取得源に対する厳格な検証の必要性を強調する。",
+      "insight": "サプライチェーン攻撃の手口が巧妙化し、開発者や企業が広く利用するプラットフォーム（GitHub）が悪用されている。CDCは、開発環境やCI/CDパイプラインにおける依存関係のスキャンを強化し、オープンソースソフトウェアの利用における信頼性検証を徹底する必要がある。SOC運用では、疑わしいリポジトリからのダウンロードや実行に対する監視と検知ルールを更新し、サプライチェーンリスク管理を強化する。これは、MDR/MSSPサービス設計における、開発環境の監視範囲拡大を示唆する。",
+      "importance": "中",
+      "importance_reason": "広く利用されるプラットフォームを悪用したサプライチェーン攻撃の脅威が継続しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
       "tag_subs": [
-        "情報漏洩",
-        "データ侵害",
-        "設定ミス"
+        "マルウェア",
+        "サプライチェーン攻撃"
       ],
       "affected_layers": [
         "アプリ/API",
-        "ガバナンス/規制",
-        "クラウド/サーバー"
+        "ネットワーク",
+        "デバイス/エッジ"
       ],
       "related_keywords": [
-        "CISA",
         "GitHub",
-        "情報漏洩",
-        "AWS GovCloud",
-        "認証情報管理"
+        "偽リポジトリ",
+        "マルウェア",
+        "情報窃取",
+        "サプライチェーン攻撃"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "258ffe6d801e",
+      "title": "Microsoft Patches Record 622 Vulnerabilities, Including Two Exploited Zero-Days",
+      "summary": "<p>Two flaws in Active Directory and SharePoint Server have been exploited as zero-days, and a BitLocker bug was publicly disclosed.</p>\n<p>The post <a href=\"https://www.securityweek.com/microsoft-patches-record-622-vulnerabilities-including-two-exploited-zero-days/\">Microsoft Patches Record 622 Vulnerabilities, Including Two Exploited Zero-Days</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/microsoft-patches-record-622-vulnerabilities-including-two-exploited-zero-days/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-15T03:50:20+09:00",
+      "title_ja": "Microsoftが記録的な622件の脆弱性を修正、2件のゼロデイ脆弱性を含む",
+      "summary_ja": "Microsoftは過去最多となる622件の脆弱性を修正し、その中にはActive DirectoryとSharePoint Serverで悪用が確認された2件のゼロデイ脆弱性、およびBitLockerの公開済み脆弱性が含まれる。これらの脆弱性は広範なシステムに影響を及ぼし、緊急性の高い対応が求められる状況である。",
+      "insight": "ゼロデイ脆弱性の悪用が確認された広範な製品群における緊急パッチは、迅速な脆弱性管理とインシデント対応の重要性を再認識させる。CDCは、Active DirectoryやSharePointのような基幹システムに対する脆弱性情報を常に把握し、ゼロデイエクスプロイトに対する検知能力を強化する必要がある。また、これらの脆弱性が利用された際の攻撃チェーンを想定し、初期アクセスから権限昇格、データ窃取に至る一連の挙動を監視するための運用プロセスを強化すべきである。Exposure管理の観点から、影響評価と優先順位付けがより一層重要となる。",
+      "importance": "高",
+      "importance_reason": "ゼロデイ脆弱性の悪用が確認され、Active Directoryなど基幹システムに影響があるため、即時の対応と防御策の見直しが求められる。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "ゼロデイ",
+        "エクスプロイト",
+        "CVE"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Microsoft",
+        "ゼロデイ脆弱性",
+        "Active Directory",
+        "SharePoint Server",
+        "BitLocker"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
-        "CISO報告",
-        "顧客課題",
         "Exposure管理",
-        "Security for AI"
+        "CISO報告",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "45abfaad3c1f",
+      "title": "Frontier AI: The Genie's Out of the Bottle, but Where's the Rulebook?",
+      "summary": "Cutting-edge artificial intelligence models are deploying with more independence and less human oversight. Several state governments are trying to legislate transparency in their use.",
+      "url": "https://www.darkreading.com/cybersecurity-operations/frontier-ai-genie-out-of-bottle-where-rulebook",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-15T01:02:39+09:00",
+      "title_ja": "フロンティアAI：蓋を開けたが、ルールブックはどこに？",
+      "summary_ja": "最先端のAIモデルは、ますます自律性を高め、人間による監視が少ない状態で展開されている。複数の州政府が、AIの利用における透明性を法制化しようと試みている。この傾向は、技術の進歩と規制の間のギャップが拡大していることを示しており、AIガバナンスの緊急性が高まっている。",
+      "insight": "自律性の高いAIエージェントの普及は、AIシステムが人間監視なしに重要な意思決定や行動を実行するリスクを高め、組織・ガバナンス層における責任範囲や監査の課題を深刻化させる。CDCは、AIエージェントのデプロイメントにおいて、その挙動、決定ロジック、外部連携の透明性を確保するためのフレームワークを設計し、規制動向を注視しながらコンプライアンス対応を進める必要がある。これはSecurity for AIとAIリスク管理の最重要課題の一つとなる。CISO報告においても、このガバナンス課題への取り組みが求められる。",
+      "importance": "高",
+      "importance_reason": "AIの自律性の高まりが組織・ガバナンスレベルの根本的なリスクをもたらし、規制・政策動向に直接影響を与えるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "アライメント"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "フロンティアAI",
+        "自律性",
+        "人間監視",
+        "透明性",
+        "規制"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "CISO報告",
+        "サービス企画"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-07-15",
+      "articles": [
+        {
+          "id": "6f2a02e8372f",
+          "title": "How Pentera Turns AI Security Workflows into Validation Engines",
+          "summary": "AI security agents are starting to influence real security decisions. They summarize findings, prioritize remediation, recommend next steps, and help teams move faster. But most still rely on fragmented risk signals: scanner output, severity scores, threat intelligence, configuration findings, and exposure data.\n\nThat fragmentation matters because attackers do not move through environments one",
+          "url": "https://thehackernews.com/2026/07/how-pentera-turns-ai-security-workflows.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-07-14T20:30:00+09:00",
+          "title_ja": "PenteraがAIセキュリティワークフローを検証エンジンに変える方法",
+          "summary_ja": "PenteraはAIセキュリティエージェントがセキュリティ意思決定を支援し、修復の優先順位付けや次のステップの推奨を通じて、チームの作業を加速すると述べている。しかし、現在のエージェントはスキャナー出力や脅威インテリジェンスなど断片的なリスクシグナルに依存しており、統合された攻撃者視点での検証の必要性を指摘している。AIエージェントは、これらの情報を統合し、実際の攻撃パスをシミュレートすることで、より実用的な防御策を提案できる可能性がある。",
+          "insight": "SOC/CDCはAIエージェントをTier2調査や初動判断支援に活用する際、そのAIが依拠する情報源が断片的でないか、複数のシグナルを統合的に評価できるかを検証する必要がある。AIが生成する修復推奨事項や次のステップの正当性・有効性を評価するための品質保証プロセスをどう組み込むか、またその証跡管理は新たな設計課題となる。これはMDR/MSSPサービス設計において、AIによるサービス提供範囲と品質保証のバランスを問う。AIは判断根拠と再現性を高めるための重要なツールとなる。",
+          "importance": "高",
+          "importance_reason": "AI for Securityの具体的な活用と課題を提起し、SOC/CDCの運用設計に直接的な影響があるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御",
+            "市場トレンド"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "AIセキュリティエージェント",
+            "リスクシグナル",
+            "修復推奨",
+            "脅威インテリジェンス",
+            "Pentera"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "AI for Security",
+            "MDR/MSSP設計",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "6d3d6d723f0f",
+          "title": "Thinking Fast and Slow in the SOC: The Case for Combining Autonomous AI with Analyst Copilots",
+          "summary": "A few days ago, I was sitting with the CISO of a Fortune 50 company, walking through how his security team was thinking about AI agents in the SOC. Smart team. Serious program. They had already connected Claude to a few detection tools and were seeing real value in specific investigations. But as we mapped out the broader architecture, something kept nagging at me. The design they were building",
+          "url": "https://thehackernews.com/2026/07/thinking-fast-and-slow-in-soc-case-for.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-07-13T20:37:05+09:00",
+          "title_ja": "SOCにおける迅速思考と熟慮：自律型AIとアナリストコパイロットの組み合わせ",
+          "summary_ja": "Fortune 50企業のCISOがSOCにおけるAIエージェント（Claude）の活用を検討しており、特定の調査で価値を見出している。しかし、自律型AIの高速な判断能力と、アナリストコパイロットとしての人間の熟考をいかに統合するかがアーキテクチャ設計の課題となっている。記事は、これら二つのアプローチの組み合わせがSOCの将来を形作ると提言している。",
+          "insight": "SOC/CDCにおいてAIを導入する際、自律型AIの迅速な判断能力と、アナリストによる複雑な状況判断や創造的思考をいかに連携させるかが重要な設計課題となる。AIは人を置き換えるのではなく、判断根拠の提示や初動判断支援に重点を置くことで、Tier2/3アナリストの業務効率と品質を高めるコパイロットとしての役割が期待される。これは、AI導入による夜間対応やエスカレーション基準の変化にも直結する。",
+          "importance": "高",
+          "importance_reason": "SOC/CDCにおけるAI活用モデルの具体的な検討事例とその設計課題を示しており、将来の運用体制に直接影響するため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "AIエージェント",
+            "アナリストコパイロット",
+            "自律型AI",
+            "Claude",
+            "SOCアーキテクチャ"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "AI for Security",
+            "MDR/MSSP設計",
+            "サービス企画",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "83885529a9aa",
+          "title": "A Survey on LLM Watermarking: Theory and Deployment",
+          "summary": "arXiv:2607.10103v1 Announce Type: new \nAbstract: Large language models (LLMs) are increasingly embedded in high-impact workflows, yet their ability to generate fluent text at scale has amplified risks of provenance ambiguity, model misuse, and large-scale content laundering. LLM watermarking, embedding invisible signatures into model outputs, has emerged as a promising technical layer for attribution, auditing, and downstream trust decisions. However, the literature has grown rapidly and unevenl",
+          "url": "https://arxiv.org/abs/2607.10103",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-07-14T13:00:00+09:00",
+          "title_ja": "LLMウォーターマークの調査：理論と導入",
+          "summary_ja": "LLMのウォーターマーク技術に関する調査論文が発表された。LLMが生成するテキストの由来の曖昧さ、モデルの悪用、大規模なコンテンツロンダリングといったリスクが高まる中、不可視の署名を埋め込むウォーターマークは、帰属の特定、監査、信頼性の確保に有望な技術として注目されている。これにより、AI生成コンテンツの信頼性を向上させる可能性が示唆されている。",
+          "insight": "AIシステム、特にLLMの出力を監視対象とするCDCにとって、生成コンテンツの真贋や出自を保証するウォーターマーク技術は、Security for AIの重要な要素となり得る。これにより、AIが生成した誤情報や悪用コンテンツの拡散防止、またインシデント発生時の原因特定と証跡管理において、新たな監視・分析の観点とツールが必要となる可能性を考える。これはAIリスクの「誤情報生成」「著作権」への対応策として重要となる。",
+          "importance": "中",
+          "importance_reason": "LLMの信頼性確保と悪用防止のための技術であり、Security for AIおよび将来の監視対象に影響を与える可能性があるため。",
+          "tag_main_id": "ai_risk",
+          "tag_main_label": "AIリスク",
+          "tag_subs": [
+            "誤情報生成",
+            "著作権",
+            "安全性評価"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "LLM",
+            "ウォーターマーク",
+            "帰属特定",
+            "モデル誤用",
+            "コンテンツロンダリング"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Security for AI",
+            "SOC運用変化",
+            "CISO報告",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "beb8c22b967b",
+          "title": "Minionese: Comprehensive Benchmark and Mechanistic Study of Multilingual LLM Safety",
+          "summary": "arXiv:2607.10112v1 Announce Type: new \nAbstract: Safety alignment in large language models remains brittle across languages: prompts reliably refused in English can elicit harmful compliance in non-English and low-resource settings. We introduce \\textsc{Minionese}, a multilingual jailbreak benchmark spanning 18 languages, 4 resource tiers, and 4 perturbation types (standard translation, code-switching, transliteration, and translationese), paired with a geometric mechanistic analysis of refusal ",
+          "url": "https://arxiv.org/abs/2607.10112",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-07-14T13:00:00+09:00",
+          "title_ja": "Minionese: 多言語LLM安全性の包括的なベンチマークとメカニズム研究",
+          "summary_ja": "多言語LLMの安全性アライメントが言語間で不安定であることが示された。英語では拒否される有害なプロンプトが、非英語や低リソース言語設定では受け入れられる可能性がある。本研究は18言語にわたる多言語ジェイルブレイクベンチマーク「Minionese」を導入し、拒否行動のメカニズム解析を行っている。これは、LLMのグローバル展開における新たなリスクを浮き彫りにする。",
+          "insight": "LLMのグローバル展開が進むにつれて、多言語対応におけるセキュリティリスク、特にプロンプトインジェクションや有害な応答生成のリスクが顕在化する。CDCは、自社が利用するLLMやAIエージェントが多言語環境でどのように振る舞うかを評価し、英語以外の言語での悪用に対する監視・検知ルールを検討する必要がある。これはSecurity for AIの重要な側面であり、AIエージェントリスクモデルの「モデル・推論層」のリスク評価を複雑化させる。",
+          "importance": "中",
+          "importance_reason": "LLMの多言語安全性という新たなリスク領域を提示し、グローバルでAIを導入する組織にとって重要な考慮点となるため。",
+          "tag_main_id": "ai_risk",
+          "tag_main_label": "AIリスク",
+          "tag_subs": [
+            "安全性評価",
+            "プロンプトインジェクション"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "多言語LLM",
+            "安全性アライメント",
+            "ジェイルブレイク",
+            "Minionese",
+            "プロンプトインジェクション"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Security for AI",
+            "SOC運用変化",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "613a1c6aeda1",
+          "title": "Microsoft Patches a Record 570 Security Flaws",
+          "summary": "Microsoft Corp. today released software updates to plug at least 570 security holes in its Windows operating systems and other software, almost triple the number of vulnerabilities the software giant fixed in its record-smashing Patch Tuesday release last month. Microsoft attributed the burgeoning patch counts to vulnerability discoveries aided by artificial intelligence.",
+          "url": "https://krebsonsecurity.com/2026/07/microsoft-patches-a-record-570-security-flaws/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Krebs on Security",
+          "source_tier": "B",
+          "published": "2026-07-15T04:22:42+09:00",
+          "title_ja": "Microsoftが記録的な570件のセキュリティ欠陥を修正",
+          "summary_ja": "MicrosoftがWindows OSやその他ソフトウェアの合計570件ものセキュリティ脆弱性を修正する過去最多のパッチをリリースした。この数は前回の記録的なリリースのおよそ3倍に相当する。Microsoftは、この膨大な数の脆弱性発見に人工知能（AI）が貢献していると公表している。",
+          "insight": "AIが脆弱性発見の効率を大幅に向上させていることは、攻撃者だけでなく防御側もAIを積極的に活用していることを示唆する。CDCは、AIを活用した脆弱性管理やパッチ適用プロセスの最適化を検討し、Exposure管理の精度を高める必要がある。AIによる脆弱性発見の傾向を分析し、自社の脆弱性管理戦略にどう活かすかを問い直す機会となる。これは、AI for Securityが脆弱性管理領域で具体的な効果を発揮し始めたことを示す。",
+          "importance": "中",
+          "importance_reason": "AI for Securityの具体的な成果を示しており、脆弱性管理のプロセスに影響を与える可能性が高いため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "Microsoft",
+            "パッチ",
+            "脆弱性",
+            "AI活用",
+            "セキュリティフロー"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "Exposure管理",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "a81c3f8408af",
+          "title": "Unpatched Claude for Chrome Flaw Lets Extensions Read Gmail, Calendar",
+          "summary": "<p>A ClaudeBleed-linked vulnerability reportedly persists across eight patches, exposing potentially sensitive data to other extensions. </p>\n<p>The post <a href=\"https://www.securityweek.com/unpatched-claude-for-chrome-flaw-lets-extensions-read-gmail-calendar/\">Unpatched Claude for Chrome Flaw Lets Extensions Read Gmail, Calendar</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/unpatched-claude-for-chrome-flaw-lets-extensions-read-gmail-calendar/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-07-14T22:00:00+09:00",
+          "title_ja": "未修正のClaude for Chromeの欠陥により、拡張機能がGmail、カレンダーを読み取り可能に",
+          "summary_ja": "Claude for Chromeにおいて、複数のパッチが適用された後も「ClaudeBleed」に関連する脆弱性が残存していることが報じられている。この脆弱性により、悪意のある他のブラウザ拡張機能が、ユーザーのGmailやGoogleカレンダーといった機密データを読み取ることが可能となる。これは、AIエージェントが既存のアプリケーション環境と連携する際の新たなリスクを示す。",
+          "insight": "AIエージェントがブラウザ拡張機能として提供される場合、そのAPI連携やプロセス間通信における脆弱性は、AIエージェントの「ツール・実行層」および「データ・インフラ層」に属する新たなリスクとしてSOC/CDCの監視対象となる。特に、AIエージェントが機密情報へのアクセス権限を持つ場合、その権限管理と挙動監視は従来のアプリケーション監視以上に厳格に行い、Identity/ITDRの観点からAIエージェント固有の認証・認可メカニズムを設計する必要がある。AIエージェントのログやデータフローを監視対象に追加するべきである。",
+          "importance": "高",
+          "importance_reason": "AIエージェント固有の脆弱性が実環境で情報漏洩に繋がる可能性を示し、Security for AIの具体的なリスクとCDCの監視対象を明確にするため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "エクスプロイト",
+            "認証バイパス"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "Claude for Chrome",
+            "ClaudeBleed",
+            "拡張機能",
+            "Gmail",
+            "カレンダー"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Security for AI",
+            "SOC運用変化",
+            "Identity/ITDR",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "42ea9f901c74",
+          "title": "'Yellow Teams' Are Defining the Future of AI Security",
+          "summary": "In some companies, engineers are building defense and attack tools to test the potential of artificial intelligence for cybersecurity — and its threat.",
+          "url": "https://www.darkreading.com/cybersecurity-operations/yellow-teams-defining-future-ai-security",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-07-14T03:18:30+09:00",
+          "title_ja": "「イエローチーム」がAIセキュリティの未来を定義",
+          "summary_ja": "一部の企業では「イエローチーム」と呼ばれる専門チームが、サイバーセキュリティにおける人工知能の潜在能力と脅威を評価するため、攻撃・防御両面でのAIツールを開発・テストしている。これは、AIがもたらす新たな脅威と防御策を理解するための、実践的なアプローチの重要性を示唆している。",
+          "insight": "AIセキュリティの進化には、攻撃側と防御側両方の視点からの継続的な研究と検証が不可欠であり、イエローチームのような専門組織の活動は、将来のSOC/CDCの防御戦略を形成する上で重要な知見を提供する。CDCは、イエローチームの活動で得られたAIシステムに対する攻撃手法や防御策の情報を積極的に取り入れ、AI for SecurityとSecurity for AIの両面からサービス設計を最適化する必要がある。これは、AI導入による人の役割変化にも関わる。",
+          "importance": "中",
+          "importance_reason": "AIセキュリティ分野の研究・開発トレンドを示し、将来の防御戦略策定に影響を与えるため。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "研究・論文",
+            "市場トレンド"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "イエローチーム",
+            "AIセキュリティ",
+            "AIを使った防御",
+            "AIを使った攻撃",
+            "攻撃ツール"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "Security for AI",
+            "サービス企画",
+            "MDR/MSSP設計"
+          ],
+          "views": 0
+        },
+        {
+          "id": "0f207928a268",
+          "title": "Nearly 300 GitHub repos pose as legit software to push malware",
+          "summary": "A threat actor has published hundreds of fake GitHub repositories impersonating legitimate software and security projects to distribute infostealer malware. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/nearly-300-github-repos-pose-as-legit-software-to-push-malware/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-07-15T04:15:17+09:00",
+          "title_ja": "約300のGitHubリポジトリが正規ソフトウェアを装いマルウェアを配布",
+          "summary_ja": "脅威アクターが、正当なソフトウェアやセキュリティプロジェクトを装った約300の偽GitHubリポジトリを公開し、情報窃取マルウェアを配布している。この手口は、開発者コミュニティの信頼を利用したサプライチェーン攻撃の一種であり、ソフトウェアの取得源に対する厳格な検証の必要性を強調する。",
+          "insight": "サプライチェーン攻撃の手口が巧妙化し、開発者や企業が広く利用するプラットフォーム（GitHub）が悪用されている。CDCは、開発環境やCI/CDパイプラインにおける依存関係のスキャンを強化し、オープンソースソフトウェアの利用における信頼性検証を徹底する必要がある。SOC運用では、疑わしいリポジトリからのダウンロードや実行に対する監視と検知ルールを更新し、サプライチェーンリスク管理を強化する。これは、MDR/MSSPサービス設計における、開発環境の監視範囲拡大を示唆する。",
+          "importance": "中",
+          "importance_reason": "広く利用されるプラットフォームを悪用したサプライチェーン攻撃の脅威が継続しているため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "マルウェア",
+            "サプライチェーン攻撃"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "ネットワーク",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "GitHub",
+            "偽リポジトリ",
+            "マルウェア",
+            "情報窃取",
+            "サプライチェーン攻撃"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "258ffe6d801e",
+          "title": "Microsoft Patches Record 622 Vulnerabilities, Including Two Exploited Zero-Days",
+          "summary": "<p>Two flaws in Active Directory and SharePoint Server have been exploited as zero-days, and a BitLocker bug was publicly disclosed.</p>\n<p>The post <a href=\"https://www.securityweek.com/microsoft-patches-record-622-vulnerabilities-including-two-exploited-zero-days/\">Microsoft Patches Record 622 Vulnerabilities, Including Two Exploited Zero-Days</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/microsoft-patches-record-622-vulnerabilities-including-two-exploited-zero-days/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-07-15T03:50:20+09:00",
+          "title_ja": "Microsoftが記録的な622件の脆弱性を修正、2件のゼロデイ脆弱性を含む",
+          "summary_ja": "Microsoftは過去最多となる622件の脆弱性を修正し、その中にはActive DirectoryとSharePoint Serverで悪用が確認された2件のゼロデイ脆弱性、およびBitLockerの公開済み脆弱性が含まれる。これらの脆弱性は広範なシステムに影響を及ぼし、緊急性の高い対応が求められる状況である。",
+          "insight": "ゼロデイ脆弱性の悪用が確認された広範な製品群における緊急パッチは、迅速な脆弱性管理とインシデント対応の重要性を再認識させる。CDCは、Active DirectoryやSharePointのような基幹システムに対する脆弱性情報を常に把握し、ゼロデイエクスプロイトに対する検知能力を強化する必要がある。また、これらの脆弱性が利用された際の攻撃チェーンを想定し、初期アクセスから権限昇格、データ窃取に至る一連の挙動を監視するための運用プロセスを強化すべきである。Exposure管理の観点から、影響評価と優先順位付けがより一層重要となる。",
+          "importance": "高",
+          "importance_reason": "ゼロデイ脆弱性の悪用が確認され、Active Directoryなど基幹システムに影響があるため、即時の対応と防御策の見直しが求められる。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "ゼロデイ",
+            "エクスプロイト",
+            "CVE"
+          ],
+          "affected_layers": [
+            "クラウド/サーバー",
+            "アプリ/API",
+            "ネットワーク"
+          ],
+          "related_keywords": [
+            "Microsoft",
+            "ゼロデイ脆弱性",
+            "Active Directory",
+            "SharePoint Server",
+            "BitLocker"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理",
+            "CISO報告",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "45abfaad3c1f",
+          "title": "Frontier AI: The Genie's Out of the Bottle, but Where's the Rulebook?",
+          "summary": "Cutting-edge artificial intelligence models are deploying with more independence and less human oversight. Several state governments are trying to legislate transparency in their use.",
+          "url": "https://www.darkreading.com/cybersecurity-operations/frontier-ai-genie-out-of-bottle-where-rulebook",
+          "ai_score": 2,
+          "cdc_pre_score": 0,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-07-15T01:02:39+09:00",
+          "title_ja": "フロンティアAI：蓋を開けたが、ルールブックはどこに？",
+          "summary_ja": "最先端のAIモデルは、ますます自律性を高め、人間による監視が少ない状態で展開されている。複数の州政府が、AIの利用における透明性を法制化しようと試みている。この傾向は、技術の進歩と規制の間のギャップが拡大していることを示しており、AIガバナンスの緊急性が高まっている。",
+          "insight": "自律性の高いAIエージェントの普及は、AIシステムが人間監視なしに重要な意思決定や行動を実行するリスクを高め、組織・ガバナンス層における責任範囲や監査の課題を深刻化させる。CDCは、AIエージェントのデプロイメントにおいて、その挙動、決定ロジック、外部連携の透明性を確保するためのフレームワークを設計し、規制動向を注視しながらコンプライアンス対応を進める必要がある。これはSecurity for AIとAIリスク管理の最重要課題の一つとなる。CISO報告においても、このガバナンス課題への取り組みが求められる。",
+          "importance": "高",
+          "importance_reason": "AIの自律性の高まりが組織・ガバナンスレベルの根本的なリスクをもたらし、規制・政策動向に直接影響を与えるため。",
+          "tag_main_id": "ai_risk",
+          "tag_main_label": "AIリスク",
+          "tag_subs": [
+            "安全性評価",
+            "アライメント"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "フロンティアAI",
+            "自律性",
+            "人間監視",
+            "透明性",
+            "規制"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Security for AI",
+            "CISO報告",
+            "サービス企画"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】AIが脆弱性発見とSOC業務の効率化を加速する一方で、AIシステムそのものの新たな脆弱性や、AIを悪用した多言語環境での攻撃リスクも顕在化しており、防御アーキテクチャは攻防両面でのAIの影響に迅速に適応する必要がある。\n【攻撃側の変化】AIの能力を活用した脆弱性発見（[5]Microsoft）、多言語対応LLMの安全性を狙うジェイルブレイク（[4]Minionese）、正当なソフトウェアを装ったGitHubリポジトリからのマルウェア配布（[8]GitHub repo）といった、サプライチェーンを標的とした攻撃の巧妙化が確認されている。\n【防御側の変化】AIを活用した脆弱性発見（[5]Microsoft, [9]Microsoft）、SOC/CDC業務におけるAIエージェントの活用（[1]Pentera, [2]Thinking Fast and Slow）が進展し、AIがアナリストのコパイロットとして調査・判断支援に貢献し始めている。また、LLM出力の信頼性を確保するためのウォーターマーク技術（[3]LLM Watermarking）や、AIセキュリティを専門とする「イエローチーム」の活動（[7]Yellow Teams）も活発化している。\n【Security for AI】LLMの多言語安全性アライメントの課題（[4]Minionese）、AIモデル出力の信頼性を担保するウォーターマーク技術の必要性（[3]LLM Watermarking）、そしてAIエージェントがブラウザ拡張機能として動作する際の深刻な脆弱性（[6]Claude for Chrome）が明らかになった。特に[6]はAIエージェントの「ツール・実行層」および「アイデンティティ・権限層」のリスクが実環境で情報漏洩に繋がる可能性を示唆しており、AIシステム固有のログ・挙動・権限・データ流通の監視が喫緊の課題となる。自律性の高いフロンティアAIのガバナンス（[10]Frontier AI）も大きな問いである。\n【AI for Security】AIは、これまでのSOC/CDC業務におけるTier2調査、アラート判断、ナレッジ検索、レポート作成、初動判断支援において、人の判断根拠・証跡・再現性を高めるコパイロットとしての役割を担い始めている（[1]Pentera, [2]Thinking Fast and Slow）。Microsoftの事例（[5]）のように、AIが脆弱性発見プロセスを加速させ、防御側のDetection & Response能力を向上させる可能性も示されている。\n【CDC/SOCへの示唆】AIエージェントの普及に伴い、SOCは「AIエージェント監視の一機能」としてCDCに統合進化していく構造変化が加速する。[6]のようなAIエージェント固有の脆弱性は、AIシステムのログ、挙動、利用権限、API連携の監視を従来のSOCの監視対象に必須として追加する必要があることを示唆する。AIによる検知・調査・初動判断支援の深化は、Tier1/2/3の役割分担、夜間対応、エスカレーション基準、そしてAIが提供する「判断根拠」「証跡」の品質保証プロセスに大きな変化をもたらす。AIを導入する際のサービス品質保証、特に誤検知・誤判断時の責任分解点は設計上の重要論点となる。\n【今日の問い】自律性の高いAIエージェントが重要な判断や外部ツール実行を行う際、その権限管理、監査証跡、およびインシデント発生時の責任範囲をどのように設計し、説明責任を担保すべきか？また、AIによる脆弱性発見が加速する中で、既存の脆弱性管理プロセスやパッチ適用戦略はどのように最適化されるべきか？"
+    },
     {
       "date": "2026-07-14",
       "articles": [
