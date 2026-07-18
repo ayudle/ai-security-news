@@ -11,6 +11,420 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-07-17T20:44:41+09:00",
+      "title_ja": "EU、GoogleにAndroidのAIアシスタントへのアクセス開放を命令",
+      "summary_ja": "欧州委員会はGoogleに対し、Android 18（2027年8月1日まで）までに、競合AIアシスタントがGoogleのGeminiと同等のマイク、カメラ、画面アクセス、バックグラウンドでのアプリ操作権限を持つよう命令した。この決定は、AIアシスタント間の公平な競争を促進することを目的としている。これにより、AIエージェントのOSレベルでのアクセス権限とプライバシーに関する規制動向が注目される。",
+      "insight": "この命令は、AIエージェントの普及に伴うOSレベルでの権限管理の複雑化と、それに伴うセキュリティリスクの増大を示唆している。CDC/SOC設計者は、将来的に多様なAIアシスタントが端末の機微な情報にアクセスする際の認証・認可メカニズム、それらの挙動を監視するためのログ要件、および異常検知ルールを再検討する必要がある。特に、AIエージェントの権限濫用や連携におけるプライバシー侵害リスクへの対応が重要となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントのOSレベルでの広範なアクセス権限付与は、セキュリティ監視対象とリスク評価に構造的な変化をもたらすため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "EU AI法",
+        "標準化",
+        "プライバシー侵害"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "EU",
+        "Android",
+        "AIアシスタント",
+        "権限管理",
+        "プライバシー"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9a79c915fce1",
+      "title": "New NadMesh Botnet Hunts Exposed AI Services for Cloud Keys and Kubernetes Tokens",
+      "summary": "A Go botnet called NadMesh turned up in early July hunting exposed AI services, and the operator's own dashboard claims 3,811 unique AWS keys.\n\nA Shodan harvester keeps the scan queue stocked with ComfyUI, Ollama, n8n, Open WebUI, Langflow, and Gradio: the image generators, local model runners, and workflow builders that teams stand up fast and firewall late.\n\nThe intel feed behind that counter",
+      "url": "https://thehackernews.com/2026/07/new-nadmesh-botnet-hunts-exposed-ai.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-18T02:12:23+09:00",
+      "title_ja": "新ボットネット「NadMesh」、露出したAIサービスからクラウドキーを窃取",
+      "summary_ja": "Go言語で書かれた新ボットネット「NadMesh」が、公開されたAIサービス（ComfyUI, Ollama, n8n等）を標的に、クラウド環境の認証情報（AWSキー、Kubernetesトークン）を窃取していることが判明した。攻撃者はShodanを利用して露出しているサービスを探索しており、既に3,811のAWSキーが窃取されたと主張している。これは、AIサービスの安易な公開や設定ミスが新たな攻撃経路となっていることを示す。",
+      "insight": "AIサービスを迅速に立ち上げる際のセキュリティ軽視が、クラウド環境への深刻な侵害リスクに直結する。CDC/SOCにおいては、AI/MLワークロードが稼働するクラウド環境のExposure管理を強化し、設定ミスや不要なポート開放を継続的に監視するプロセスが不可欠となる。AIサービス関連のログ（APIアクセス、設定変更、異常挙動）を従来のSIEMに取り込み、クラウドキーやトークンの不正利用を検知するルールを優先的に設計する必要がある。",
+      "importance": "高",
+      "importance_reason": "AIサービスを狙った具体的な攻撃が広範囲に展開され、クラウド環境のクレデンシャル窃取という深刻な結果を招いているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "クレデンシャル窃取",
+        "設定ミス"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "NadMesh",
+        "ボットネット",
+        "AIサービス",
+        "AWSキー",
+        "Kubernetes"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9c851671edd7",
+      "title": "The Real AI Threat Is Blind Trust",
+      "summary": "AI models left to both interpret and execute commands eliminate critical cybersecurity oversight.",
+      "url": "https://www.darkreading.com/application-security/real-ai-threat-blind-trust",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-18T01:43:13+09:00",
+      "title_ja": "AIへの盲目的な信頼が真の脅威となる",
+      "summary_ja": "AIモデルがコマンドの解釈と実行の両方を自律的に行うことで、従来人間が担っていた重要なサイバーセキュリティ監視の機会が失われる可能性が指摘されている。この「盲目的な信頼」は、AIエージェントの自律性が高まるにつれて、潜在的なリスク要因となる。人間による監視・介入なしにAIが自律的に行動することの安全保障上の課題が強調されている。",
+      "insight": "AIエージェントの自律性が向上する一方で、その行動が適切なガバナンスと監視下にあるかどうかが、CDC/SOCの新たな焦点となる。エージェントAIの活動ログや意図を理解するための仕組み、そして異常な挙動を検知し人間が介入できるトリガーとプロセスの設計が不可欠である。AIエージェントの「ブラックボックス化」を防ぎ、その判断根拠と実行証跡をいかに可視化・監査可能にするかが、CDCサービス設計の重要な論点となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの自律性向上という中長期的なトレンドが、根本的なセキュリティ監視のパラダイムシフトを要求するため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "安全性評価",
+        "アライメント",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "自律性",
+        "盲目的な信頼",
+        "ガバナンス",
+        "監視"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "CISO報告",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ab18113fc3e9",
+      "title": "In Other News: Iran Tracks US Military Phones, CrashStealer macOS Malware, CVD Blueprint",
+      "summary": "<p>Noteworthy stories that might have slipped under the radar: OpenClaw AI agents exploited via WhatsApp, ransomware hits naval defense firm TKMS, Lidl discloses data breach.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-iran-tracks-us-military-phones-crashstealer-macos-malware-cvd-blueprint/\">In Other News: Iran Tracks US Military Phones, CrashStealer macOS Malware, CVD Blueprint</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/in-other-news-iran-tracks-us-military-phones-crashstealer-macos-malware-cvd-blueprint/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-17T23:27:54+09:00",
+      "title_ja": "その他ニュース: AIエージェントの悪用、ランサムウェア被害、データ侵害",
+      "summary_ja": "複数の注目ニュースが報じられた。OpenClaw AIエージェントがWhatsAppを介して悪用された事例が確認されたほか、ドイツの海軍防衛企業TKMSがランサムウェア攻撃を受け、スーパーマーケットチェーンのLidlがデータ侵害を公表した。これらのインシデントは、多様な攻撃手法が引き続き企業を脅かしている現状と、AIエージェントの新たな悪用事例を示している。",
+      "insight": "AIエージェントの悪用が既に実環境で発生していることから、CDC/SOCはAIエージェントの通信チャネル（例: WhatsApp）や連携先アプリからの情報漏洩・悪用リスクを監視対象に加える必要がある。特に、AIエージェントが関与するソーシャルエンジニアリングや情報窃取のシナリオを想定し、検知ルールや対応プレイブックを策定することが急務となる。ランサムウェアやデータ侵害は依然として主要な脅威であり、基本的なサイバーハイジーンと迅速なインシデント対応能力の維持も重要。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの具体的な悪用事例が確認され、既存の攻撃手法と組み合わされているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ランサムウェア",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "OpenClaw",
+        "AIエージェント",
+        "WhatsApp",
+        "ランサムウェア",
+        "データ侵害"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "99425d5b55d7",
+      "title": "Podcast: Broken Governance, Agentic AI, and the MindStone Agent Exclusive",
+      "summary": "<p>(Video) Artificial intelligence is transforming cybersecurity, but are governance, compliance, and security practices evolving fast enough to keep up?</p>\n<p>The post <a href=\"https://www.securityweek.com/podcast-broken-governance-agentic-ai-and-the-mindstone-agent-exclusive/\">Podcast: Broken Governance, Agentic AI, and the MindStone Agent Exclusive</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/podcast-broken-governance-agentic-ai-and-the-mindstone-agent-exclusive/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-17T21:11:22+09:00",
+      "title_ja": "ポッドキャスト: 破綻したガバナンス、エージェントAI、セキュリティの進化",
+      "summary_ja": "サイバーセキュリティがAIによって変革される中、ガバナンス、コンプライアンス、および既存のセキュリティプラクティスが、AIの進化の速さに追いついているかという疑問が提起されたポッドキャストが紹介されている。特に、エージェントAIの登場が組織のセキュリティ戦略に与える影響と、それに対する適切なガバナンスの必要性が議論されている。",
+      "insight": "AIの急速な進化は、既存のセキュリティガバナンスフレームワークに大きなギャップを生じさせている。CDC/SOCサービスプロバイダーは、顧客のAIシステム導入におけるリスク評価、コンプライアンス要件（例：AI法の監査要件）への対応支援をサービス設計に組み込む必要がある。AIエージェントの「シャドーAI」化を防ぎ、組織全体でのポリシー遵守と責任範囲の明確化を支援するガバナンス強化の視点が、MDR/MSSPの提供価値を高める。",
+      "importance": "中",
+      "importance_reason": "AIの急速な発展に対するガバナンスの課題は、中長期的なセキュリティ戦略の根幹に関わるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIガバナンス",
+        "エージェントAI",
+        "コンプライアンス",
+        "セキュリティプラクティス"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0244b2767206",
+      "title": "Three Steps to the Terminal: A Siemens ROX II Zero-Day Trilogy",
+      "summary": "<p>A technical analysis of three chained zero-day vulnerabilities in Siemens ROX II OT switches that allow privilege escalation and persistent root access.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/siemens-rox-ii-zero-day-vulnerabilities/\">Three Steps to the Terminal: A Siemens ROX II Zero-Day Trilogy</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/siemens-rox-ii-zero-day-vulnerabilities/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-07-17T19:00:24+09:00",
+      "title_ja": "シーメンスROX II OTスイッチのゼロデイ脆弱性3連鎖を分析",
+      "summary_ja": "Siemens ROX II OTスイッチにおける3つのゼロデイ脆弱性が技術的に分析され、これらを連鎖させることで特権昇格と永続的なルートアクセスが可能になることが判明した。これは、重要インフラで使用されるOTデバイスの脆弱性が依然として深刻な脅威であるという警告である。",
+      "insight": "OT/ICS環境におけるゼロデイ脆弱性は、産業システムへの甚大な影響を及ぼす可能性があり、CDCの監視・対応対象として極めて重要である。AIとは直接関係しないが、OT環境の監視においては、専用の異常検知技術と、緊急性の高い脆弱性へのパッチ適用管理（または緩和策）のプロセスが不可欠となる。SOC/CDCはITとOTのセキュリティギャップを埋め、統合的な脅威インテリジェンスと対応能力を提供する必要がある。",
+      "importance": "中",
+      "importance_reason": "OT環境におけるゼロデイ脆弱性は、重要インフラに直接的な影響を及ぼす潜在的なリスクが高いため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ゼロデイ",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Siemens ROX II",
+        "OTスイッチ",
+        "ゼロデイ",
+        "特権昇格",
+        "ICS"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "70826d3b2622",
+      "title": "Prompt Injection Attacks Are Thwarting AI Hacking Agents",
+      "summary": "“Context bombing” tricks malicious AI agents into shutting down before they can do harm.",
+      "url": "https://www.wired.com/story/prompt-injection-attacks-are-thwarting-ai-hacking-agents/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-07-18T18:00:00+09:00",
+      "title_ja": "プロンプトインジェクション攻撃がAIハッキングエージェントの阻止に活用可能",
+      "summary_ja": "「コンテキストボミング」と呼ばれるプロンプトインジェクション攻撃が、悪意あるAIハッキングエージェントを停止させる防御策として利用可能であることが報告された。これは、AIシステムの脆弱性を逆手に取り、攻撃的なAIエージェントの自律的な動作を妨害する手法として機能する。",
+      "insight": "プロンプトインジェクションは攻撃手法として認識されてきたが、防御側がAIエージェントの挙動を制御・停止させる手段としても活用され得る。CDC/SOC設計者は、AIエージェントの防御策として、プロンプトインジェクションを検知し、悪意あるエージェントの活動を無効化する「エージェント型防御」の可能性を検討する必要がある。これは、AIモデルの入力・出力監視に加え、AIエージェント間の「会話」を監視し、異常なコンテキスト変化を検知する新たな検知ロジックの設計を求める。",
+      "importance": "中",
+      "importance_reason": "AIを標的とするプロンプトインジェクション攻撃が、防御策としても応用されるという新たな視点を提供するため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "AIを使った防御",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "プロンプトインジェクション",
+        "コンテキストボミング",
+        "AIエージェント",
+        "AI防御",
+        "サイバー攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "AI for Security",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "189850f386a0",
+      "title": "Abbott probes two cyber incidents amid extortion claims",
+      "summary": "Abbott Laboratories is investigating two separate cybersecurity incidents after confirming unauthorized access to internal legacy Exact Sciences systems in its Cancer Diagnostics business, while also investigating a separate claim that attackers breached its LabCentral portal and stole company data. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/abbott-laboratories-probes-two-cyber-incidents-amid-extortion-claims/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-18T05:45:52+09:00",
+      "title_ja": "アボット社が恐喝主張を伴う2件のサイバーインシデントを調査中",
+      "summary_ja": "Abbott Laboratoriesは、内部のレガシーなExact Sciencesシステムへの不正アクセスと、LabCentralポータルからのデータ窃取が主張される2件の独立したサイバーインシデントを調査している。これらの事件には恐喝の主張が伴っており、医療分野におけるデータ侵害とランサムウェア（あるいはデータ窃取型）攻撃の継続的な脅威を示している。",
+      "insight": "大手企業においてもレガシーシステムが攻撃経路となり、データ侵害や恐喝被害につながる事例は依然として多い。CDC/SOCは、顧客のレガシーシステムを含むIT資産全体の可視化と脆弱性管理を強化し、継続的なExposure管理の重要性を再認識させる必要がある。インシデント発生時には、迅速な初動対応、証拠保全、そして経営層への正確な状況報告（ビジネス影響の説明）が求められ、これらのプロセスをCDCサービスとして確立することが重要。",
+      "importance": "中",
+      "importance_reason": "医療分野の大手企業で発生したデータ侵害と恐喝は、企業にとって依然として重大な脅威であり、インシデント対応体制の重要性を再確認させるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "データ侵害",
+        "情報漏洩"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Abbott Laboratories",
+        "データ侵害",
+        "恐喝",
+        "レガシーシステム",
+        "医療分野"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "CISO報告",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "c0c9ad9dad45",
+      "title": "Inside the Search for \"Clean\" Residential Proxies for Carding",
+      "summary": "Residential proxies are no longer the silver bullet they once were for carding. Flare explains why cybercriminals increasingly seek \"clean\" residential proxies and combine them with browser fingerprints, device profiles, and other identity signals to evade modern fraud detection. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/inside-the-search-for-clean-residential-proxies-for-carding/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-07-17T23:00:10+09:00",
+      "title_ja": "クレジットカード詐欺における「クリーンな住宅用プロキシ」の探索",
+      "summary_ja": "サイバー犯罪者がクレジットカード詐欺において、もはや単純な住宅用プロキシだけでは不十分であり、「クリーンな」住宅用プロキシをブラウザフィンガープリント、デバイスプロファイル、その他のID信号と組み合わせて、現代の不正検知システムを回避しようとしていることが報告された。これは攻撃側の手口がより高度化し、多要素認証やデバイス識別技術を迂回しようとしていることを示唆する。",
+      "insight": "攻撃者がより洗練された手法で認証バイパスや不正検知回避を試みていることから、CDC/SOCは認証・認可システムや不正検知ソリューションの監視強化が必要となる。特に、IDP (Identity Provider) のログや、デバイスフィンガープリント情報など、多様なテレメトリを統合分析し、異常な認証試行やセッションハイジャックの兆候を早期に検知する能力が求められる。これは、ITDR（Identity Threat Detection and Response）の領域をさらに深掘りする動向である。",
+      "importance": "中",
+      "importance_reason": "攻撃手法の高度化は、認証・不正検知システムを常に進化させる必要があり、CDCの監視範囲に影響を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "クレデンシャル窃取",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "クレジットカード詐欺",
+        "住宅用プロキシ",
+        "ブラウザフィンガープリント",
+        "不正検知",
+        "ID信号"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e08014396622",
+      "title": "Google Bets 'Agentic Defense' Strategy Can Outpace Attackers",
+      "summary": "Google Cloud incorporates key Wiz capabilities into an agentic defense platform to automate threat detection and remediation against AI attacks.",
+      "url": "https://www.darkreading.com/cloud-security/google-bets-agentic-defense-strategy-outpace-attackers",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-07-17T20:50:25+09:00",
+      "title_ja": "Google、攻撃者に対抗する「エージェント型防御」戦略に注力",
+      "summary_ja": "Google Cloudが、Wizの主要機能を統合した「エージェント型防御プラットフォーム」を導入し、AI攻撃に対する脅威検知と修復の自動化を進める戦略を発表した。これは、AI for Securityの具体的な取り組みとして、攻撃者の変化の速さを上回る防御能力の構築を目指すものである。",
+      "insight": "AI for Securityの進化は、SOC/CDCの運用モデルを大きく変革する可能性を秘めている。エージェント型防御は、脅威検知から修復までを自動化することで、Tier1/2業務の負荷軽減と対応速度の向上に寄与する。CDC設計者は、このような自動化された防御プラットフォームをサービスにどのように組み込み、人間との協調、エスカレーションポイント、誤検知・誤対応時の品質保証を担保するかを検討する必要がある。将来的にはMDR/MSSPのサービス差別化の鍵となるだろう。",
+      "importance": "高",
+      "importance_reason": "AI for Securityによる自動化防御は、SOC/CDCの運用効率と対応能力を根本的に変革する可能性を秘めているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "AIを使った防御",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Google Cloud",
+        "エージェント型防御",
+        "Wiz",
+        "脅威検知",
+        "自動修復"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "サービス企画",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "473e4db92f03",
+      "title": "E.U. Orders Google to Open Android Mic, Camera and Screen to Rival AI Assistants",
+      "summary": "The European Commission on Thursday ordered Google to give rival AI assistants the same reach into Android that Gemini already has: the camera, the microphone, whatever is on screen, a wake word that fires with the display off, and the ability to drive other apps in the background by imitating taps and typing.\n\nGoogle has to ship it in the next major release, Android 18, and by 1 August 2027 at",
+      "url": "https://thehackernews.com/2026/07/eu-orders-google-to-open-android-mic.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-17T20:44:41+09:00",
       "title_ja": "EU、GoogleにAndroidのAIアシスタント機能の競合への開放を命令",
       "summary_ja": "欧州委員会はGoogleに対し、Android 18（2027年8月1日までに）でGeminiと同等のマイク・カメラ・画面アクセス、起動ワード、バックグラウンドでのアプリ操作能力を競合AIアシスタントにも開放するよう命令した。この決定は、サードパーティAIアシスタントがモバイルデバイス上で高い権限を持つことを意味し、AIエージェントの競争促進と同時にセキュリティリスクを増大させる可能性がある。AIエージェントの機能がOSレベルで広く利用可能になることで、その監視と権限管理が重要な課題となる。",
       "insight": "AIエージェントがOSレベルの深い権限（マイク、カメラ、画面、アプリ操作）を持つことが法的に義務付けられることで、従来のアプリセキュリティモデルが大きく変化する。SOC/CDCは、これらのAIアシスタントの挙動ログを詳細に収集し、異常なアクセスや操作を検知する新たな監視ルールと対応プロセスの設計を急ぐ必要がある。特にサードパーティAIアシスタントにおける権限の過剰付与や悪用は、データ漏洩やプライバシー侵害に直結するリスクがあるため、Identity/ITDRの観点からのAIエージェントの認証・認可制御が喫緊の課題となる。",
