@@ -1,0 +1,145 @@
+{
+  "executive_summary": "今週はAIエージェントの悪用が具体的な脅威として顕在化し、AIシステム固有のセキュリティリスク（Security for AI）への対応がSOC/CDCの喫緊の課題であることが明確になりました。プロンプトインジェクション、AIエージェントの権限管理、悪用されたAIツールからの攻撃が多発しており、従来の防御モデルの見直しが急務です。一方で、AIは脆弱性発見やSOC業務の効率化（AI for Security）に貢献しつつありますが、最終的な判断には人間の知識と責任が不可欠であると示唆されています。サプライチェーン攻撃やゼロデイ脆弱性といった従来の重要脅威も継続しており、AI脅威と並行して基本的なサイバーハイジーンと迅速なインシデント対応の強化が求められます。",
+  "top_topics": [
+    {
+      "title": "AIエージェント悪用と監視",
+      "summary": "AIエージェントがハッキングエージェントとして悪用され、プロンプトインジェクションによる自律的な悪意ある挙動が確認されました。SOC/CDCは、AIエージェントの活動ログ、プロンプト、権限利用状況を新たな監視対象とし、専用の検知・対応プロセスの設計を急ぐ必要があります。",
+      "article_ids": [
+        "ad02ca180aab",
+        "fa1c1a0e5ac4",
+        "ab18113fc3e9",
+        "d40c6f6fd1c1",
+        "9c851671edd7",
+        "473e4db92f03"
+      ]
+    },
+    {
+      "title": "SOCでのAI活用と役割",
+      "summary": "SOC業務においてAIはTier2調査、アラート判断、初動判断支援のコパイロットとして効率化に貢献し、脆弱性自動発見やエージェント型防御も進展しています。しかし、AIの判断根拠や証跡の検証、最終的な責任は人間に帰属するため、AIと人の協調モデルと役割分担の明確化が重要です。",
+      "article_ids": [
+        "6d3d6d723f0f",
+        "6f2a02e8372f",
+        "bf8fdda8d0af",
+        "c60c0e9a27c1",
+        "e08014396622"
+      ]
+    },
+    {
+      "title": "継続するサプライチェーン脅威",
+      "summary": "npmパッケージ侵害、GitHubリポジトリ悪用、多要素認証バイパス型フィッシングなど、サプライチェーンを標的とした攻撃が巧妙化しています。また、SonicWallやWordPressのゼロデイ/RCE脆弱性が公開悪用されるなど、従来の重要脅威への迅速な対応と脆弱性管理の強化が引き続き求められます。",
+      "article_ids": [
+        "981101e2dad8",
+        "f2f86bf37849",
+        "89c16b3448fb",
+        "0f207928a268",
+        "af9b87ce7f63",
+        "dae53909cc88"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "モバイルマルウェアがWireless ADBを悪用しシェル権限を取得する事例や、EU規制によりAndroidのAIアシスタント機能がOSレベルの深い権限を持つことで、デバイスの監視とAIエージェントの権限管理の複雑性が増しています。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "GigaWiperのような破壊的マルウェアの進化や、SonicWall SMAのゼロデイ脆弱性悪用など、境界防御を突破する脅威が顕在化しており、異常なネットワーク挙動の検知強化が求められます。OT/ICS環境におけるゼロデイ脆弱性への対応も重要性を増しています。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "GitHub情報漏洩や、露出したAIサービスからのクラウドキー窃取ボットネット「NadMesh」の出現は、クラウド環境の設定ミスやAPIキー管理の不備が深刻な侵害に繋がるリスクを示唆しています。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "npmパッケージ侵害やLLM生成コードの脆弱性、Claudeブラウザ拡張機能の欠陥、WordPressのRCE脆弱性など、アプリケーション層での脆弱性やサプライチェーン攻撃が継続しており、DevSecOpsやWAFによる防御の強化が必要です。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIエージェントの権限伝播モデル「Proof-of-Continuity」やガードレールフレームワーク「SingGuard-NSFA」が登場し、AIシステム固有のリスク管理が活発化しています。LLMがログ分析に利用される際のプロンプトインジェクション（Context Contamination）のリスクや、プライバシーポリシーとデータ利用の不整合がAIリスクとして注目されています。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "自律性の高いフロンティアAIのガバナンスの課題や、AIエージェント普及に伴う組織・ガバナンス層のセキュリティプラクティス再構築が議論されています。EUによるAndroid AIアシスタントへの規制は、AIサービスの設計における法的・倫理的考慮の必要性を示しています。"
+    }
+  ],
+  "next_week_outlook": "来週もAIエージェントの悪用と防御、そしてAIシステムのガバナンスに関する議論が活発に続くでしょう。特にAIエージェントの「盲目的な信頼」を回避するための人間による監査・介入のメカニズムや、その情報提供の透明性に関する設計論点が深掘りされると予測されます。また、広範な利用基盤を持つソフトウェアのゼロデイ脆弱性が依然として大きな脅威であり、迅速な脅威インテリジェンスの共有とパッチ適用能力が引き続き問われるでしょう。",
+  "period": {
+    "start": "2026-07-13",
+    "end": "2026-07-20"
+  },
+  "total_articles": 69,
+  "keyword_changes": [
+    {
+      "keyword": "マルウェア",
+      "this_week_count": 6,
+      "last_week_count": 1,
+      "change": 5,
+      "change_pct": 500
+    },
+    {
+      "keyword": "プライベートリポジトリ",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "パスキー",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "プロンプトインジェクション",
+      "this_week_count": 8,
+      "last_week_count": 4,
+      "change": 4,
+      "change_pct": 100
+    },
+    {
+      "keyword": "フィッシング",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "自律性",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "GitHub Agentic Workflows",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "Claude",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "コンプライアンス",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "AIを使った防御",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    }
+  ],
+  "generated_at": "2026-07-20T07:49:38.875629+09:00"
+}
