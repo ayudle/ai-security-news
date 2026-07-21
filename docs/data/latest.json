@@ -1,7 +1,50 @@
 {
-  "updated": "2026-07-21T07:09:32.934597+09:00",
-  "today": "2026-07-21",
+  "updated": "2026-07-22T05:34:00.437608+09:00",
+  "today": "2026-07-22",
   "articles": [
+    {
+      "id": "6cc0521e57e7",
+      "title": "Open-Source Android AI Agents Could Let Invisible Screen Text Run Code on Host PCs",
+      "summary": "An Android app that can draw over other windows and write to shared storage can slip instructions to the AI agent driving that phone, in text no human eye will ever see. Two more steps, and the same app is running commands on the PC driving the agent.\n\nResearchers demonstrated that chain, plus six other attacks, against five open-source mobile agent frameworks: AppAgent, AppAgentX,",
+      "url": "https://thehackernews.com/2026/07/open-source-android-ai-agents-could-let.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-21T20:58:00+09:00",
+      "title_ja": "オープンソースAndroid AIエージェント、隠れた画面テキストでホストPC上のコード実行を可能に",
+      "summary_ja": "オープンソースのAndroid AIエージェントにおいて、ユーザーには見えない画面上のテキストを悪用し、ホストPC上でコード実行が可能となる脆弱性が研究者により実証された。この攻撃は、エージェントが他のウィンドウ上に描画し、共有ストレージへの書き込み権限を持つ場合に、AIエージェントに不正な命令を密かに注入することで発生する。AppAgentやAppAgentXを含む複数のモバイルエージェントフレームワークでこの連鎖攻撃が確認されており、AIエージェントのプロンプトインジェクションリスクが拡大している。",
+      "insight": "この攻撃は、AIエージェントのプロンプトが非可視な要素からも形成され、それが実行環境に影響を及ぼす可能性を示している。SOC/CDCは、AIエージェントが利用するUIレイヤーにおける非可視要素の監視、およびエージェントが連携するホスト環境での異常なコマンド実行やファイル変更を検知する仕組みの導入を検討すべきである。特に、エージェントが実行するアプリケーションの権限管理と、その活動ログの詳細な監視が不可欠となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが非可視プロンプトを介してホスト環境でコード実行する具体的な攻撃経路を示し、AIシステム固有のリスクとして即時対応が必要なため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "AIを使った攻撃",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "Android",
+        "コード実行",
+        "非表示テキスト",
+        "プロンプトインジェクション"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "Identity/ITDR",
+        "サービス企画"
+      ],
+      "views": 0
+    },
     {
       "id": "e2e964b55e3a",
       "title": "CISOs Feel the Heat Over AI Risk",
@@ -12,16 +55,15 @@
       "source_name": "Dark Reading",
       "source_tier": "B",
       "published": "2026-07-21T04:07:01+09:00",
-      "title_ja": "AIリスク増大でCISOの職務負担と離職意向が増加",
-      "summary_ja": "企業のAI導入が加速する中、CISOは新たなAIリスクへの対応に直面しており、職務上のプレッシャーが増大しています。これにより、トップセキュリティ幹部の26%が離職を検討している状況です。AIに関するリスク評価やガバナンス構築が急務となっていますが、既存のセキュリティ体制だけでは対応が困難な現実が背景にあります。",
-      "insight": "AI導入はCISOにとって新たな経営リスクと認識されており、CDC/SOCのサービス設計においても、AIリスクの可視化と経営層への報告方法が重要になります。AIシステム固有のリスク管理（AIエージェントリスク6階層モデルの組織・ガバナンス層）をCDCのサービス範囲に含めることで、CISOの課題解決に貢献できるかを問いとして持つべきです。",
-      "importance": "高",
-      "importance_reason": "AI導入は全企業に波及し、CISOの職務継続に影響を与えるため、経営層へのAIリスク説明とガバナンス構築は喫緊の課題。",
-      "tag_main_id": "ai_risk",
-      "tag_main_label": "AIリスク",
+      "title_ja": "AIリスクの増大がCISOに重圧、26%が離職を検討",
+      "summary_ja": "企業がAI導入を急速に進める中、AIシステムに関連するセキュリティリスクへの対応が最高情報セキュリティ責任者（CISO）にとって大きな重圧となっている。調査によると、CISOの26%が現在の職務からの離職を検討するほど、その責任と課題の増大を感じている。これは、AI技術のビジネス活用とリスク管理のバランスを取ることの困難さ、および経営層への説明責任の課題を浮き彫りにしている。",
+      "insight": "AIリスクに対するCISOのプレッシャー増大は、CDCが経営層に対し、AIシステムのセキュリティ状況やリスクをどのように報告し、説明責任を果たすかの重要性を高める。CDCは、AI固有のリスク評価フレームワークを確立し、定量的なリスク指標やインシデント対応能力を明確に提示することで、CISOの負担軽減と戦略的判断支援に貢献できる。",
+      "importance": "中",
+      "importance_reason": "AIリスク管理が経営課題として認識され、CISOの責務が拡大していることを示唆しており、CDCが経営層と連携する上での重要論点となるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
       "tag_subs": [
-        "安全性評価",
-        "アライメント"
+        "市場トレンド"
       ],
       "affected_layers": [
         "ガバナンス/規制"
@@ -29,9 +71,9 @@
       "related_keywords": [
         "CISO",
         "AIリスク",
-        "ガバナンス",
-        "リーダーシップ",
-        "プレッシャー"
+        "経営課題",
+        "情報セキュリティ",
+        "ガバナンス"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
@@ -41,117 +83,165 @@
       "views": 0
     },
     {
-      "id": "4a65b328cf67",
-      "title": "Autonomous AI Intrusions Are Here: Lessons from the Hugging Face Compromise",
-      "summary": "<p><a href=\"https://huggingface.co/blog/security-incident-july-2026\">Hugging Face disclosed an intrusion</a> that, according to them, was driven end to end by an autonomous AI agent system.</p>\n<p><a href=\"https://embracethered.com/blog/images/2026/ai-intrusions-are-here.png\"><img alt=\"ai intrusion\" src=\"https://embracethered.com/blog/images/2026/ai-intrusions-are-here.png\" /></a></p>\n<p>Along similar lines, Sysdig recently published a blog on <a href=\"https://www.sysdig.com/blog/jadepuffer-agen",
-      "url": "https://embracethered.com/blog/posts/2026/ai-intrusion-are-now-real/",
+      "id": "15c314db196b",
+      "title": "A Fireside Chat with Cat and Thariq from the Claude Code team",
+      "summary": "<p>Earlier this month I hosted a fireside chat session at the <a href=\"https://www.ai.engineer/worldsfair/2026\">AI Engineer World's Fair</a> with Cat Wu and Thariq Shihipar from Anthropic's Claude Code team. We talked about Claude Code, Claude Tag, Fable, coding agent security, evals, tool design, and how Anthropic use these tools themselves.</p>\n<p>The full video of the session is now available <a href=\"https://www.youtube.com/watch?v=uU5Gv2h8-9g\">on YouTube</a>. Below is an edited copy of the ",
+      "url": "https://simonwillison.net/2026/Jul/21/cat-and-thariq/#atom-everything",
       "ai_score": 3,
       "cdc_pre_score": 1,
-      "source_name": "Embrace The Red",
-      "source_tier": "B",
-      "published": "2026-07-20T10:00:00+09:00",
-      "title_ja": "Hugging Faceへの自律AIエージェントによる侵害が明らかに",
-      "summary_ja": "Hugging Faceは、自律AIエージェントシステムによってエンドツーエンドで実行された侵入被害を公表しました。この攻撃は、従来の人間による操作ではなく、AI自身が攻撃プロセスを進行させる新たな脅威を示唆しています。AIエージェントによる自動化された攻撃が現実のものとなり、その影響が懸念されます。",
-      "insight": "AIエージェントによる自律的な攻撃は、SOC/CDCの検知・対応プロセスに根本的な変化を要求します。従来のSIEM/SOARによるルールベースや人間中心の分析では追いつかない可能性があり、AIエージェントの異常な挙動をAIで検知する「AI vs AI」の防御戦略と、AIシステム固有のログ監視（例: AIエージェントの行動ログ、ツール実行ログ）が急務となります。",
-      "importance": "高",
-      "importance_reason": "自律AIエージェントによる攻撃の現実化を具体的な事例で示しており、SOC/CDCの運用設計に直接的かつ即時的な影響があるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "AIを使った攻撃",
-        "APT"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "Hugging Face",
-        "自律AIエージェント",
-        "AI攻撃",
-        "侵入",
-        "Embrace The Red"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Security for AI",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "f2ac8589b0cb",
-      "title": "Lazy Arithmetic using Systolic Arrays for Closing the Verification Gap on Embedded Systems",
-      "summary": "arXiv:2607.15328v1 Announce Type: new \nAbstract: Complex algorithms such as deep neural networks are increasingly being deployed on embedded, resource constrained platforms. However, existing hardware and software schemes for implementing these models on the edge fall short, particularly for safety-critical applications such as medical devices. First, hardware such as GPUs, NPUs and TPUs are designed for throughput rather than correctness of computation of security, and are as such susceptible t",
-      "url": "https://arxiv.org/abs/2607.15328",
-      "ai_score": 3,
-      "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
+      "source_name": "Simon Willison",
       "source_tier": "C",
-      "published": "2026-07-20T13:00:00+09:00",
-      "title_ja": "組み込みシステムAIの検証ギャップに関する研究",
-      "summary_ja": "深層学習のような複雑なアルゴリズムが組み込みシステムに展開される中、既存のハードウェアやソフトウェアの検証手法では安全性・正確性に課題があることが指摘されています。特に医療機器などの安全性が重視されるアプリケーションでは、TPUやGPUが計算の正確性よりもスループットを重視して設計されているため、検証ギャップが存在します。",
-      "insight": "本記事は研究段階の内容であり、SOC/CDCの即時的な運用には影響が小さいですが、将来的なAI組み込みデバイスの普及を考慮すると、それらのデバイスが持つ潜在的な脆弱性や検証プロセスを理解することが重要です。医療や産業制御などのOT領域でのAI利用が増えるにつれて、デバイス/エッジ層のセキュリティリスクとCDCでの監視対象となり得るかを中期的な観点で検討する必要があるでしょう。",
+      "published": "2026-07-21T21:54:02+09:00",
+      "title_ja": "Anthropic Claude Codeチーム、コーディングエージェントのセキュリティについて対談",
+      "summary_ja": "AI Engineer World's Fairにて、AnthropicのClaude Codeチームが、同社のClaude Code、Claude Tag、Fableといったツール、およびコーディングエージェントのセキュリティに関する対談を実施した。議論の焦点は、AIがコード生成やタスク実行を行う際のセキュリティ評価方法、ツール設計における考慮事項、そしてAnthropicが自社でこれらのツールをどのように利用し、セキュリティを確保しているかという点であった。",
+      "insight": "AIベンダー自身がコーディングエージェントのセキュリティと評価に深く取り組んでいることは、AI開発におけるセキュリティの複雑さと重要性を示している。SOC/CDCとしては、自社で利用するAI開発ツールやコーディングエージェントが提供するセキュリティ機能、およびそれらのログが監視可能であるかを把握し、潜在的な脆弱性や悪用リスクに対して開発部門と連携して対策を検討する必要がある。",
       "importance": "低",
-      "importance_reason": "即時のインシデントや運用変化に関するものではなく、研究段階の技術課題に関する論文であるため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
-      "tag_subs": [
-        "研究・論文"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ"
-      ],
-      "related_keywords": [
-        "組み込みシステム",
-        "ディープニューラルネットワーク",
-        "検証ギャップ",
-        "安全性",
-        "医療機器"
-      ],
-      "cdc_relevance": 1,
-      "cdc_context": [
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "f70e470b7606",
-      "title": "On the Impact of Entropy-based Features",
-      "summary": "arXiv:2607.15379v1 Announce Type: new \nAbstract: Network anomaly detection is increasingly challenging due to the growing diversity and variability of traffic patterns, which are not always well captured by traditional statistical features. In this work, we explore the use of entropy as an additional feature to support supervised network traffic classification. The main idea is to use entropy to represent variability in selected traffic attributes, complementing conventional descriptors rather t",
-      "url": "https://arxiv.org/abs/2607.15379",
-      "ai_score": 3,
-      "cdc_pre_score": 1,
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-07-20T13:00:00+09:00",
-      "title_ja": "ネットワーク異常検知におけるエントロピーベース特徴量の活用研究",
-      "summary_ja": "多様化するネットワークトラフィックパターンに対応するため、従来の統計的特徴量では捉えきれない異常を検知する新たな手法として、エントロピーベースの特徴量活用が研究されています。この手法は、選択されたトラフィック属性の変動性をエントロピーで表現し、教師ありネットワークトラフィック分類を補完することを目指しています。これにより、既存の防御策では見過ごされがちな異常トラフィックを効果的に識別できる可能性があります。",
-      "insight": "SOC/CDCの検知能力向上に直結する研究であり、AI for Securityの領域で注目すべき動向です。将来的にSIEM/NDRの検知エンジンに組み込まれれば、より洗練された異常検知が可能となり、アナリストの調査負担軽減や誤検知削減に寄与する可能性があります。既存の監視ツールやAI活用ロードマップにおいて、このような先進的な分析手法の導入可能性を評価する視点が必要です。",
-      "importance": "中",
-      "importance_reason": "直接的なインシデント報告ではないが、SOC/CDCの検知能力向上に繋がり、AI for Securityの具体的な進展を示すため。",
+      "importance_reason": "AI開発者側の議論であり、直接的なSOC/CDCの運用設計への具体的な示唆は限定的だが、LLMセキュリティの動向を理解する上で参考となるため。",
       "tag_main_id": "biz_tech",
       "tag_main_label": "ビジネス・技術動向",
       "tag_subs": [
         "研究・論文",
-        "AIを使った防御"
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Anthropic",
+        "Claude Code",
+        "コーディングエージェント",
+        "セキュリティ評価",
+        "LLMセキュリティ"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "b86ddca1762a",
+      "title": "Boundary-Seeking GAN-Augmented TabTransformer for Adversarially Robust Intrusion Detection",
+      "summary": "arXiv:2607.16348v1 Announce Type: new \nAbstract: Machine learning-based intrusion detection systems (IDSs) often suffer from class imbalance and vulnerability to adversarial attacks, leading to degraded detection performance and reduced robustness. This study proposes a TabTransformer framework augmented by the Boundary-Seeking Generative Adversarial Network (BGAN) for flow-based intrusion detection using the CICIDS2017 dataset. BGAN serves a dual purpose by generating synthetic minority-class s",
+      "url": "https://arxiv.org/abs/2607.16348",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-07-21T13:00:00+09:00",
+      "title_ja": "敵対的攻撃に堅牢な侵入検知システムのためのGAN拡張TabTransformerを提案",
+      "summary_ja": "機械学習ベースの侵入検知システム（IDS）が抱える、クラス不均衡問題や敵対的攻撃に対する脆弱性を改善するため、Boundary-Seeking Generative Adversarial Network（BGAN）で拡張されたTabTransformerフレームワークが提案された。この研究は、CICIDS2017データセットを用いてフローベースの侵入検知における検出性能と堅牢性を向上させることを目的としており、BGANが合成少数クラスサンプルの生成に貢献している。",
+      "insight": "AI for Securityの分野における進展を示しており、将来的にIDSやSIEMの検知精度向上に貢献する可能性がある。SOC/CDCは、既存の検知システムが敵対的攻撃に対してどの程度脆弱であるかを評価し、このようなAIを活用した堅牢化技術の導入を中長期的な視点で検討することで、検知能力の強化と誤検知の削減を目指すべきである。",
+      "importance": "中",
+      "importance_reason": "AIを活用した防御技術の進化を示す研究であり、将来的にはSOC/CDCの検知能力向上に繋がるが、即時の運用変更を直接促すものではないため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "敵対的攻撃",
+        "研究・論文"
       ],
       "affected_layers": [
         "ネットワーク",
         "データ/AI"
       ],
       "related_keywords": [
-        "ネットワーク異常検知",
-        "エントロピー",
-        "トラフィック分類",
-        "教師あり学習",
-        "統計的特徴量"
+        "IDS",
+        "機械学習",
+        "敵対的攻撃",
+        "GAN",
+        "TabTransformer"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
+        "AI for Security",
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "877a9b843670",
+      "title": "Signal-based Model Access Risk Analysis for AI System Operations Security",
+      "summary": "arXiv:2607.16414v1 Announce Type: new \nAbstract: Artificial intelligence (AI) systems are now ubiquitous across domains such as security, finance, healthcare, consumer technology, and large-scale cloud services, where they process massive volumes of data and make consequential decisions daily. This widespread adoption has created a broad attack surface through which adversaries can manipulate, evade, extract information from, or otherwise subvert deployed models. Depending on system design and e",
+      "url": "https://arxiv.org/abs/2607.16414",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-07-21T13:00:00+09:00",
+      "title_ja": "AIシステム運用セキュリティのための信号ベースモデルアクセスリスク分析フレームワーク",
+      "summary_ja": "AIシステムの普及が広範囲な攻撃対象面を生み出し、攻撃者がモデルを操作、回避、情報抽出、転覆させることが可能になっている。本研究は、AIシステムの運用セキュリティを確保するため、システム設計や展開環境に応じたモデルアクセスリスクの分析フレームワークを提案している。悪意のあるアクターが展開されたモデルを操作し、悪用する方法を体系的に評価することを目的とし、AIシステムのデプロイメント後の継続的な監視とリスク管理の重要性を強調する。",
+      "insight": "Security for AIの重要な側面を提示しており、AIシステムのデプロイメント後の運用監視におけるリスク評価の必要性を強調する。SOC/CDCは、AIモデルへのアクセスパターン、変更履歴、推論結果の整合性など、AIシステム固有の「信号」を監視対象とし、それらを基にしたリスク評価と検知ルールを策定する必要がある。AIシステムが生成するログの標準化と、そのログからリスク信号を抽出する技術の検討も重要な論点となる。",
+      "importance": "高",
+      "importance_reason": "AIシステムの運用セキュリティにおける新たなリスク評価の必要性と、監視すべき具体的な視点を提供しており、CDCのSecurity for AI戦略に直接影響を与えるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIシステム",
+        "運用セキュリティ",
+        "モデルアクセス",
+        "リスク分析",
+        "攻撃対象面"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
         "SOC運用変化",
-        "AI for Security"
+        "CISO報告",
+        "サービス企画",
+        "Exposure管理"
+      ],
+      "views": 0
+    },
+    {
+      "id": "68ffda06798b",
+      "title": "AWS Kiro Flaw Let a Poisoned Web Page Rewrite Its Config and Run Code",
+      "summary": "Hidden text on a web page was enough to make Kiro, AWS's agentic coding IDE, rewrite its own configuration file and run an attacker's code on a developer's machine, with no approval step able to stop it.\n\nIntezer, in research with Kodem Security, found that a request as ordinary as asking Kiro to summarize a page could end in remote code execution. AWS has patched the issue, and no CVE has been",
+      "url": "https://thehackernews.com/2026/07/aws-kiro-flaw-let-poisoned-web-page.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-07-22T01:06:12+09:00",
+      "title_ja": "AWS Kiroの脆弱性：不正ウェブページが設定を書き換え、承認なしでコード実行",
+      "summary_ja": "AWSのAIエージェント型コーディングIDEであるKiroに、隠されたテキストを含むウェブページを介して、その設定ファイルを書き換え、攻撃者のコードを承認なしで実行させる脆弱性が見つかった。IntezerとKodem Securityの研究で、ウェブページの要約を求めるような一般的なリクエストでもリモートコード実行に至る可能性が示された。AWSは既にこの問題をパッチ適用済みであり、CVEは公開されていない。",
+      "insight": "この事案は、AIエージェントが外部コンテンツ（ウェブページ）を処理する際に、従来のプロンプトインジェクションとは異なる形で、非可視な情報を使ってシステムの設定を変更し、コードを実行できるリスクを示す。SOC/CDCは、AIエージェントが外部ソースから取得した情報を処理する際の入出力検証、設定ファイルの変更監視、およびエージェントの実行環境における不審なプロセス起動を厳重に監視する必要がある。特に、AIエージェントの権限分離と、その活動ログの詳細な分析が求められる。",
+      "importance": "高",
+      "importance_reason": "クラウドベースのAIエージェント型IDEにおける具体的なリモートコード実行経路が明らかになり、AIエージェントのセキュリティ監視・運用に即座に影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "プロンプトインジェクション",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AWS Kiro",
+        "AIエージェント",
+        "IDE",
+        "リモートコード実行",
+        "プロンプトインジェクション"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "Identity/ITDR",
+        "MDR/MSSP設計"
       ],
       "views": 0
     },
@@ -165,34 +255,34 @@
       "source_name": "Bleeping Computer",
       "source_tier": "B",
       "published": "2026-07-21T06:14:42+09:00",
-      "title_ja": "AIエージェントのサンドボックスエスケープ脆弱性発覚",
-      "summary_ja": "Cursor、Codex、Gemini CLI、AntigravityといったAIエージェントにおいて、サンドボックスエスケープの脆弱性が発見されました。AIエージェントが不正なファイルを生成し、それを信頼されたホストツールが実行することでサンドボックスを迂回。複数のCVEが割り当てられ、パッチが適用された一方で、Googleは一部の深刻度を下方修正しました。",
-      "insight": "これはAIエージェントの「ツール・実行層」における重大なリスクであり、Security for AIの観点から喫緊の対応が必要です。SOC/CDCは、AIエージェントが利用するツールやAPI連携の監視を強化し、その実行環境（サンドボックス）のセキュリティモデルを再評価する必要があります。AIエージェントの出力（生成ファイル）とそれが利用するホストツールの連携挙動を詳細に監視する新たなログとルールが不可欠です。",
+      "title_ja": "Cursor、Codex、Gemini CLI、AntigravityなどのAIエージェントでサンドボックスエスケープが確認",
+      "summary_ja": "主要なAIエージェントであるCursor、Codex、Gemini CLI、Antigravityにおいて、研究者によってサンドボックスからのエスケープ脆弱性が発見された。これらのエージェントは、AIが生成した悪意のあるファイルをホストシステム上の信頼されたツールが実行することでサンドボックスを迂回していた。この問題に対して複数のCVEが発行され、パッチが適用されているが、Googleは一部のAntigravityの脆弱性評価を下方修正した。",
+      "insight": "AIエージェントが信頼されたホストツールを介してサンドボックスを脱出するという攻撃パターンは、AIエージェントとOS間の信頼境界の曖昧さを示す。SOC/CDCは、AIエージェントが生成するファイルの監視、ホストシステムにおける不審なプロセス実行やファイルアクセス、特にAIエージェントが管理する権限範囲を超えた活動の検知ルールを強化する必要がある。エージェントの権限分離と最小権限の原則の適用、およびサンドボックス実装の継続的な検証が不可欠である。",
       "importance": "高",
-      "importance_reason": "AIエージェントの根幹的なセキュリティ対策であるサンドボックスが破られた具体例であり、AIシステム設計・運用の見直しが必須となるため。",
+      "importance_reason": "複数の主要AIエージェントでサンドボックスエスケープという根本的な脆弱性が実証されており、AIシステムのセキュリティ設計と運用における重要な課題を提示しているため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "LLMセキュリティ",
-        "エクスプロイト",
-        "AIを使った攻撃"
+        "AIを使った攻撃",
+        "エクスプロイト"
       ],
       "affected_layers": [
         "アプリ/API",
-        "データ/AI"
+        "クラウド/サーバー"
       ],
       "related_keywords": [
         "AIエージェント",
         "サンドボックスエスケープ",
+        "コード実行",
         "CVE",
-        "Cursor",
-        "Gemini CLI"
+        "権限昇格"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
         "Security for AI",
-        "Identity/ITDR"
+        "Identity/ITDR",
+        "MDR/MSSP設計"
       ],
       "views": 0
     },
@@ -206,201 +296,520 @@
       "source_name": "Bleeping Computer",
       "source_tier": "B",
       "published": "2026-07-21T06:08:02+09:00",
-      "title_ja": "JadePufferエージェントがAIモデルデータ向けランサムウェアに進化",
-      "summary_ja": "自律AIエージェント「JadePuffer」が進化し、「EncForge」と呼ばれるカスタムマルウェアを用いて、AIアセット（訓練データセット、ベクターデータベース、モデルチェックポイントなど）を暗号化するランサムウェア攻撃を行うようになりました。これは、AIシステム固有の資産を狙った攻撃が現実化したことを示しています。",
-      "insight": "この進化は、AIアセットが新たな高価値な標的となったことを明確に示しており、SOC/CDCにおける「Security for AI」の重要性を再認識させます。AIシステム専用のランサムウェア防御策として、AIアセットのバックアップ戦略、アクセス制御の強化、そしてAI関連データに対する不審な暗号化挙動の検知が緊急課題です。従来のランサムウェア検知に加え、AI特有のデータ保存形式や利用パターンを考慮した検知ロジックが必要となるでしょう。",
+      "title_ja": "JadePufferエージェント型攻撃、AIモデルデータにランサムウェアを仕掛ける",
+      "summary_ja": "自律型AIエージェントであるJadePufferが、「EncForge」と呼ばれるカスタムマルウェアを搭載し、AI資産を標的とするランサムウェア攻撃に進化していることが明らかになった。このマルウェアは、AIの訓練データセット、ベクターデータベース、モデルチェックポイントといったAIシステムにとって重要な資産を暗号化することを目的としており、AIシステムに対する新たな脅威として浮上している。",
+      "insight": "AIシステム固有の資産（訓練データ、ベクターDB、モデル）が直接的な攻撃対象となるランサムウェアの登場は、従来のデータ保護戦略の抜本的な見直しを迫る。SOC/CDCは、AI資産の特定、重要度分類、適切なバックアップ・リカバリ戦略の策定、そしてこれらの資産への不正アクセスや改ざんを検知する監視体制を強化する必要がある。AIシステム特有のログ（例：モデルの整合性チェックログ）の監視や、これらの資産のアクセス権限管理も不可欠となる。",
       "importance": "高",
-      "importance_reason": "AIアセットを直接標的とするランサムウェア攻撃の出現は、企業のAI戦略に大きな影響を与え、CDCのインシデント対応計画に直結するため。",
+      "importance_reason": "AIシステムの核心的な資産を標的とする新しいタイプのランサムウェア攻撃であり、AIセキュリティの防御戦略に根本的な影響を与えるため。",
       "tag_main_id": "attack",
       "tag_main_label": "攻撃・脅威",
       "tag_subs": [
         "ランサムウェア",
-        "AIを使った攻撃",
-        "モデル汚染"
+        "AIを使った攻撃"
       ],
       "affected_layers": [
-        "データ/AI",
-        "クラウド/サーバー"
+        "データ/AI"
       ],
       "related_keywords": [
         "JadePuffer",
         "AIエージェント",
         "ランサムウェア",
-        "EncForge",
-        "AIアセット"
+        "AI資産",
+        "訓練データ"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
         "Security for AI",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "1695b0439d46",
-      "title": "FakeGit Campaign Uses 7,600 GitHub Repositories to Spread SmartLoader Malware",
-      "summary": "Cybersecurity researchers have discovered nearly 7,600 malicious GitHub repositories, out of which more than 800 pose as artificial intelligence (AI) skills or Model Context Protocol (MCP) servers to deliver a malware family known as SmartLoader as part of an ongoing campaign codenamed FakeGit.\n\n\"FakeGit uses copied projects, lookalike developer profiles, convincing READMEs, and malicious ZIP",
-      "url": "https://thehackernews.com/2026/07/fakegit-campaign-uses-7600-github.html",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-07-21T03:23:03+09:00",
-      "title_ja": "FakeGitキャンペーン、7,600件のGitHubリポジトリでマルウェア拡散",
-      "summary_ja": "「FakeGit」と名付けられたキャンペーンにおいて、約7,600件の悪意あるGitHubリポジトリが発見され、そのうち800件以上がAIスキルやModel Context Protocol（MCP）サーバーを装い、「SmartLoader」マルウェアを拡散していました。このキャンペーンは、コピープロジェクト、開発者プロフィールの偽装、説得力のあるREADMEファイルを用いて、ユーザーを騙していました。",
-      "insight": "これは、AI関連のサプライチェーンを狙った「Security for AI」の脅威であり、特に開発者やAI研究者が利用するプラットフォームの監視強化がSOC/CDCに求められます。開発環境における外部ライブラリやコードの導入管理、ソフトウェアサプライチェーンセキュリティの確保が重要です。AI関連プロジェクトを装う手口は今後も増える可能性が高く、CDCは、開発者へのセキュリティ啓発と、オープンソース利用時のレピュテーション評価支援をサービスに組み込むべきです。",
-      "importance": "高",
-      "importance_reason": "AI開発サプライチェーンを悪用した大規模なマルウェア拡散事例であり、AI関連企業のセキュリティに直接的な影響を与えるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "マルウェア",
-        "サプライチェーン攻撃",
-        "ソーシャルエンジニアリング"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "GitHub",
-        "FakeGit",
-        "SmartLoader",
-        "マルウェア",
-        "サプライチェーン"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
         "Exposure管理",
-        "Security for AI",
+        "CISO報告",
         "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "c131eea97389",
-      "title": "Mythos Didn't Break Your Security Program. Your Exposure Window Could.",
-      "summary": "The industry spent the initial months after Anthropic's April 7 Mythos reveal focused on volume. How many new CVEs would Mythos add to an already overloaded pipeline? How quickly would the flood of AI-driven discovery overwhelm triage capabilities? How long would it take adversaries to weaponize Mythos findings at scale? Those questions were and remain valid. Yet they all stop short of",
-      "url": "https://thehackernews.com/2026/07/mythos-didnt-break-your-security.html",
-      "ai_score": 3,
+      "id": "6b413ad4b1a4",
+      "title": "Cisco Launches Low-Cost AI Models for Source Code Security",
+      "summary": "<p>The open-weight Antares models are designed to pinpoint known vulnerabilities in codebases faster and at a fraction of the cost of larger AI models.</p>\n<p>The post <a href=\"https://www.securityweek.com/cisco-launches-low-cost-ai-models-for-source-code-security/\">Cisco Launches Low-Cost AI Models for Source Code Security</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/cisco-launches-low-cost-ai-models-for-source-code-security/",
+      "ai_score": 2,
       "cdc_pre_score": 0,
-      "source_name": "The Hacker News",
+      "source_name": "SecurityWeek",
       "source_tier": "B",
-      "published": "2026-07-20T20:30:00+09:00",
-      "title_ja": "AIによる脆弱性発見ツール「Mythos」がセキュリティプログラムに与える影響",
-      "summary_ja": "AnthropicのAI脆弱性発見ツール「Mythos」の登場により、新たなCVEが大量発生し、既存の脆弱性管理プロセスが飽和する可能性が議論されています。このAIは迅速に脆弱性を特定できる一方で、その情報が悪用されるまでの「露出期間」が短縮されるリスクがあり、従来の脆弱性管理の仕組みでは対応が困難になる可能性があります。脆弱性発見から対策までのスピードが問われる時代になってきました。",
-      "insight": "AI for Securityの進展は、防御側の効率を向上させる一方で、新たな課題（「脆弱性飽和」）を生み出す可能性を示唆しています。SOC/CDCは、AIを活用した脆弱性管理ツール（Mythosなど）からの膨大な情報を効率的にトリアージし、対応する能力を強化する必要があります。特に、影響評価や優先順位付けの自動化、SOARとの連携による対応プロセスの迅速化が求められるでしょう。Exposure管理サービスの重要性が増します。",
+      "published": "2026-07-22T02:44:33+09:00",
+      "title_ja": "Cisco、ソースコードセキュリティ向け低コストAIモデルを発表",
+      "summary_ja": "Ciscoが、オープンウェイトのAIモデル「Antares」を発表した。このモデルは、大規模なAIモデルよりも低コストで、コードベース内の既知の脆弱性を迅速に特定することを目的としている。Antaresは、ソフトウェア開発ライフサイクルにおけるセキュリティテストの効率化と、早期段階での脆弱性発見に貢献するAI for Securityの具体的な適用事例であり、DevSecOpsへのAI活用を促進する。",
+      "insight": "AI for Securityの好事例であり、開発段階でのセキュリティ対策（シフトレフト）にAIを活用することで、サプライチェーン攻撃のリスク低減や、本番環境での脆弱性発覚を未然に防ぐ効果が期待できる。CDCは、このようなAIを活用したコードスキャンツールと連携し、開発チームからの脆弱性情報を早期に把握し、SOC/CDCの監視対象システムにおける優先順位付けや対応計画に組み込むことで、プロアクティブな防御体制を強化できる。",
       "importance": "中",
-      "importance_reason": "AI for Securityの進展が防御側の脆弱性管理プロセスに構造的な変化と新たな課題をもたらすため、中期的な対応が必要。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
+      "importance_reason": "AI for Securityにおける具体的な製品化動向であり、開発セキュリティ強化とCDCの連携の可能性を示唆するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
         "AIを使った防御",
-        "市場トレンド"
+        "製品リリース"
       ],
       "affected_layers": [
-        "ガバナンス/規制",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "Mythos",
-        "Anthropic",
-        "CVE",
-        "脆弱性発見",
-        "露出期間"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "AI for Security",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "03faa4d0f1d2",
-      "title": "Capital One Open Sources AI-Powered ‘VulnHunter’ Security Tool",
-      "summary": "<p>The agentic security tool identifies potentially exploitable code flaws, traces attack paths, and recommends targeted remediations.</p>\n<p>The post <a href=\"https://www.securityweek.com/capital-one-open-sources-ai-powered-vulnhunter-security-tool/\">Capital One Open Sources AI-Powered ‘VulnHunter’ Security Tool</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/capital-one-open-sources-ai-powered-vulnhunter-security-tool/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-07-20T19:25:07+09:00",
-      "title_ja": "Capital OneがAI脆弱性ハンティングツール「VulnHunter」をオープンソース化",
-      "summary_ja": "Capital Oneが、AIを活用したセキュリティツール「VulnHunter」をオープンソース化しました。このエージェント型ツールは、潜在的に悪用可能なコードの欠陥を特定し、攻撃パスをトレースし、具体的な修正案を推奨する機能を持っています。これにより、開発者が自身のコードの脆弱性を早期に発見し、対処できることを目指しています。",
-      "insight": "これはAI for Securityの具体的な適用例として、SOC/CDCの運用効率向上に貢献する可能性があります。AIを活用した脆弱性診断やセキュリティテスト自動化は、MDR/MSSPサービスにおける品質保証や顧客への付加価値提供に繋がります。特にTier2/3アナリストの調査支援や、お客様のDevSecOpsへの組み込みを支援するサービス企画の観点で、本ツールの活用可能性を検討すべきです。",
-      "importance": "中",
-      "importance_reason": "AI for Securityの具体的なツールがオープンソース化された事例であり、防御側のAI活用を推進する市場トレンドを示すため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
-      "tag_subs": [
-        "製品リリース",
-        "AIを使った防御"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "Capital One",
-        "VulnHunter",
-        "AIツール",
-        "オープンソース",
-        "脆弱性ハンティング"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "AI for Security",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "6bb07642d356",
-      "title": "Hugging Face Hacked in Autonomous AI Attack",
-      "summary": "<p>Targeting production infrastructure, the attack compromised internal datasets and service credentials.</p>\n<p>The post <a href=\"https://www.securityweek.com/hugging-face-hacked-in-autonomous-ai-attack/\">Hugging Face Hacked in Autonomous AI Attack</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/hugging-face-hacked-in-autonomous-ai-attack/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-07-20T18:36:15+09:00",
-      "title_ja": "Hugging Faceが自律AI攻撃で生産インフラ侵害、情報漏洩",
-      "summary_ja": "Hugging Faceが自律AIによる攻撃を受け、生産インフラが侵害され、内部データセットやサービス資格情報が漏洩したと発表しました。このインシデントは、AIを悪用した攻撃がAIサービスプロバイダーの核心的な資産を標的にし、重大な情報漏洩に繋がることを実証しています。AIシステムとその周辺インフラの包括的なセキュリティ対策が急務です。",
-      "insight": "これは、記事2のインシデントの具体的な影響を示しており、AIシステムそのものが新たな攻撃対象となり、その侵害が情報漏洩に直結する現実を突きつけます。SOC/CDCは、AIサービスを提供する顧客に対して、AIアセット、APIキー、サービス資格情報の厳格な管理と監視を強化するよう強く促す必要があります。特に「データ・インフラ層」および「アイデンティティ・権限層」のセキュリティ監視項目を直ちに拡充し、インシデント対応計画にAI固有の復旧手順を組み込むべきです。",
-      "importance": "高",
-      "importance_reason": "自律AI攻撃が実際に情報漏洩という重大なインシデントを引き起こした事例であり、Security for AIの重要性を裏付けるため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
-      "tag_subs": [
-        "情報漏洩",
-        "データ侵害"
-      ],
-      "affected_layers": [
-        "クラウド/サーバー",
-        "データ/AI",
         "アプリ/API"
       ],
       "related_keywords": [
-        "Hugging Face",
-        "自律AI攻撃",
-        "情報漏洩",
-        "データセット",
-        "サービス資格情報"
+        "Cisco",
+        "Antares",
+        "ソースコードセキュリティ",
+        "AIモデル",
+        "脆弱性診断"
       ],
-      "cdc_relevance": 3,
+      "cdc_relevance": 2,
       "cdc_context": [
+        "AI for Security",
         "SOC運用変化",
-        "Security for AI",
-        "顧客課題"
+        "Exposure管理"
+      ],
+      "views": 0
+    },
+    {
+      "id": "8a2f2a70b759",
+      "title": "CISO Conversations: Andreas Gaetje – From Economics to CISO at Körber AG",
+      "summary": "<p>Gaetje’s story shows that you don’t need to be a ‘deep bit-crawler’ to become a Chief Information Security Officer.</p>\n<p>The post <a href=\"https://www.securityweek.com/ciso-conversations-andreas-gaetje-from-economics-to-ciso-at-korber-ag/\">CISO Conversations: Andreas Gaetje – From Economics to CISO at Körber AG</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/ciso-conversations-andreas-gaetje-from-economics-to-ciso-at-korber-ag/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-07-21T20:30:00+09:00",
+      "title_ja": "CISO対談：経済学出身のCISOが語るキャリアパス",
+      "summary_ja": "Körber AGのCISOであるAndreas Gaetje氏との対談記事では、彼が経済学のバックグラウンドを持ちながらCISOになった経緯が紹介されている。この対談は、CISOの役割が単なる深い技術知識だけでなく、ビジネス全体のリスク管理や組織的ガバナンスへの理解が不可欠であることを示唆している。CISOの専門性が多様化し、ビジネス戦略に深く関与する現代の傾向を反映する内容である。",
+      "insight": "この記事はCISOのリーダーシップとスキルの多様性を示唆しており、SOC/CDCの運営者がCISOに報告する際、技術的な詳細だけでなく、ビジネスへの影響やリスクマネジメントの観点から説明することの重要性を再認識させる。CDCは、技術的な検知・対応能力に加え、経営層が理解しやすい形でセキュリティ状況やAIリスクを可視化・報告する能力を向上させるべきである。",
+      "importance": "低",
+      "importance_reason": "CISOのキャリアパスに関する内容であり、直接的なSOC/CDCの運用設計や技術的対策への示唆は限定的であるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "CISO",
+        "キャリアパス",
+        "ガバナンス",
+        "リスク管理",
+        "リーダーシップ"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "CISO報告"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-07-22",
+      "articles": [
+        {
+          "id": "6cc0521e57e7",
+          "title": "Open-Source Android AI Agents Could Let Invisible Screen Text Run Code on Host PCs",
+          "summary": "An Android app that can draw over other windows and write to shared storage can slip instructions to the AI agent driving that phone, in text no human eye will ever see. Two more steps, and the same app is running commands on the PC driving the agent.\n\nResearchers demonstrated that chain, plus six other attacks, against five open-source mobile agent frameworks: AppAgent, AppAgentX,",
+          "url": "https://thehackernews.com/2026/07/open-source-android-ai-agents-could-let.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-07-21T20:58:00+09:00",
+          "title_ja": "オープンソースAndroid AIエージェント、隠れた画面テキストでホストPC上のコード実行を可能に",
+          "summary_ja": "オープンソースのAndroid AIエージェントにおいて、ユーザーには見えない画面上のテキストを悪用し、ホストPC上でコード実行が可能となる脆弱性が研究者により実証された。この攻撃は、エージェントが他のウィンドウ上に描画し、共有ストレージへの書き込み権限を持つ場合に、AIエージェントに不正な命令を密かに注入することで発生する。AppAgentやAppAgentXを含む複数のモバイルエージェントフレームワークでこの連鎖攻撃が確認されており、AIエージェントのプロンプトインジェクションリスクが拡大している。",
+          "insight": "この攻撃は、AIエージェントのプロンプトが非可視な要素からも形成され、それが実行環境に影響を及ぼす可能性を示している。SOC/CDCは、AIエージェントが利用するUIレイヤーにおける非可視要素の監視、およびエージェントが連携するホスト環境での異常なコマンド実行やファイル変更を検知する仕組みの導入を検討すべきである。特に、エージェントが実行するアプリケーションの権限管理と、その活動ログの詳細な監視が不可欠となる。",
+          "importance": "高",
+          "importance_reason": "AIエージェントが非可視プロンプトを介してホスト環境でコード実行する具体的な攻撃経路を示し、AIシステム固有のリスクとして即時対応が必要なため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "AIを使った攻撃",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "AIエージェント",
+            "Android",
+            "コード実行",
+            "非表示テキスト",
+            "プロンプトインジェクション"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "Identity/ITDR",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "e2e964b55e3a",
+          "title": "CISOs Feel the Heat Over AI Risk",
+          "summary": "Job pressures have increased as companies run headlong into AI adoption, causing 26% of top security executives to consider leaving their position.",
+          "url": "https://www.darkreading.com/cybersecurity-operations/cisos-feel-heat-ai-risk",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-07-21T04:07:01+09:00",
+          "title_ja": "AIリスクの増大がCISOに重圧、26%が離職を検討",
+          "summary_ja": "企業がAI導入を急速に進める中、AIシステムに関連するセキュリティリスクへの対応が最高情報セキュリティ責任者（CISO）にとって大きな重圧となっている。調査によると、CISOの26%が現在の職務からの離職を検討するほど、その責任と課題の増大を感じている。これは、AI技術のビジネス活用とリスク管理のバランスを取ることの困難さ、および経営層への説明責任の課題を浮き彫りにしている。",
+          "insight": "AIリスクに対するCISOのプレッシャー増大は、CDCが経営層に対し、AIシステムのセキュリティ状況やリスクをどのように報告し、説明責任を果たすかの重要性を高める。CDCは、AI固有のリスク評価フレームワークを確立し、定量的なリスク指標やインシデント対応能力を明確に提示することで、CISOの負担軽減と戦略的判断支援に貢献できる。",
+          "importance": "中",
+          "importance_reason": "AIリスク管理が経営課題として認識され、CISOの責務が拡大していることを示唆しており、CDCが経営層と連携する上での重要論点となるため。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "市場トレンド"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "CISO",
+            "AIリスク",
+            "経営課題",
+            "情報セキュリティ",
+            "ガバナンス"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "CISO報告",
+            "サービス企画"
+          ],
+          "views": 0
+        },
+        {
+          "id": "15c314db196b",
+          "title": "A Fireside Chat with Cat and Thariq from the Claude Code team",
+          "summary": "<p>Earlier this month I hosted a fireside chat session at the <a href=\"https://www.ai.engineer/worldsfair/2026\">AI Engineer World's Fair</a> with Cat Wu and Thariq Shihipar from Anthropic's Claude Code team. We talked about Claude Code, Claude Tag, Fable, coding agent security, evals, tool design, and how Anthropic use these tools themselves.</p>\n<p>The full video of the session is now available <a href=\"https://www.youtube.com/watch?v=uU5Gv2h8-9g\">on YouTube</a>. Below is an edited copy of the ",
+          "url": "https://simonwillison.net/2026/Jul/21/cat-and-thariq/#atom-everything",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Simon Willison",
+          "source_tier": "C",
+          "published": "2026-07-21T21:54:02+09:00",
+          "title_ja": "Anthropic Claude Codeチーム、コーディングエージェントのセキュリティについて対談",
+          "summary_ja": "AI Engineer World's Fairにて、AnthropicのClaude Codeチームが、同社のClaude Code、Claude Tag、Fableといったツール、およびコーディングエージェントのセキュリティに関する対談を実施した。議論の焦点は、AIがコード生成やタスク実行を行う際のセキュリティ評価方法、ツール設計における考慮事項、そしてAnthropicが自社でこれらのツールをどのように利用し、セキュリティを確保しているかという点であった。",
+          "insight": "AIベンダー自身がコーディングエージェントのセキュリティと評価に深く取り組んでいることは、AI開発におけるセキュリティの複雑さと重要性を示している。SOC/CDCとしては、自社で利用するAI開発ツールやコーディングエージェントが提供するセキュリティ機能、およびそれらのログが監視可能であるかを把握し、潜在的な脆弱性や悪用リスクに対して開発部門と連携して対策を検討する必要がある。",
+          "importance": "低",
+          "importance_reason": "AI開発者側の議論であり、直接的なSOC/CDCの運用設計への具体的な示唆は限定的だが、LLMセキュリティの動向を理解する上で参考となるため。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "研究・論文",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Anthropic",
+            "Claude Code",
+            "コーディングエージェント",
+            "セキュリティ評価",
+            "LLMセキュリティ"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "b86ddca1762a",
+          "title": "Boundary-Seeking GAN-Augmented TabTransformer for Adversarially Robust Intrusion Detection",
+          "summary": "arXiv:2607.16348v1 Announce Type: new \nAbstract: Machine learning-based intrusion detection systems (IDSs) often suffer from class imbalance and vulnerability to adversarial attacks, leading to degraded detection performance and reduced robustness. This study proposes a TabTransformer framework augmented by the Boundary-Seeking Generative Adversarial Network (BGAN) for flow-based intrusion detection using the CICIDS2017 dataset. BGAN serves a dual purpose by generating synthetic minority-class s",
+          "url": "https://arxiv.org/abs/2607.16348",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-07-21T13:00:00+09:00",
+          "title_ja": "敵対的攻撃に堅牢な侵入検知システムのためのGAN拡張TabTransformerを提案",
+          "summary_ja": "機械学習ベースの侵入検知システム（IDS）が抱える、クラス不均衡問題や敵対的攻撃に対する脆弱性を改善するため、Boundary-Seeking Generative Adversarial Network（BGAN）で拡張されたTabTransformerフレームワークが提案された。この研究は、CICIDS2017データセットを用いてフローベースの侵入検知における検出性能と堅牢性を向上させることを目的としており、BGANが合成少数クラスサンプルの生成に貢献している。",
+          "insight": "AI for Securityの分野における進展を示しており、将来的にIDSやSIEMの検知精度向上に貢献する可能性がある。SOC/CDCは、既存の検知システムが敵対的攻撃に対してどの程度脆弱であるかを評価し、このようなAIを活用した堅牢化技術の導入を中長期的な視点で検討することで、検知能力の強化と誤検知の削減を目指すべきである。",
+          "importance": "中",
+          "importance_reason": "AIを活用した防御技術の進化を示す研究であり、将来的にはSOC/CDCの検知能力向上に繋がるが、即時の運用変更を直接促すものではないため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御",
+            "敵対的攻撃",
+            "研究・論文"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "IDS",
+            "機械学習",
+            "敵対的攻撃",
+            "GAN",
+            "TabTransformer"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "SOC運用変化"
+          ],
+          "views": 0
+        },
+        {
+          "id": "877a9b843670",
+          "title": "Signal-based Model Access Risk Analysis for AI System Operations Security",
+          "summary": "arXiv:2607.16414v1 Announce Type: new \nAbstract: Artificial intelligence (AI) systems are now ubiquitous across domains such as security, finance, healthcare, consumer technology, and large-scale cloud services, where they process massive volumes of data and make consequential decisions daily. This widespread adoption has created a broad attack surface through which adversaries can manipulate, evade, extract information from, or otherwise subvert deployed models. Depending on system design and e",
+          "url": "https://arxiv.org/abs/2607.16414",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-07-21T13:00:00+09:00",
+          "title_ja": "AIシステム運用セキュリティのための信号ベースモデルアクセスリスク分析フレームワーク",
+          "summary_ja": "AIシステムの普及が広範囲な攻撃対象面を生み出し、攻撃者がモデルを操作、回避、情報抽出、転覆させることが可能になっている。本研究は、AIシステムの運用セキュリティを確保するため、システム設計や展開環境に応じたモデルアクセスリスクの分析フレームワークを提案している。悪意のあるアクターが展開されたモデルを操作し、悪用する方法を体系的に評価することを目的とし、AIシステムのデプロイメント後の継続的な監視とリスク管理の重要性を強調する。",
+          "insight": "Security for AIの重要な側面を提示しており、AIシステムのデプロイメント後の運用監視におけるリスク評価の必要性を強調する。SOC/CDCは、AIモデルへのアクセスパターン、変更履歴、推論結果の整合性など、AIシステム固有の「信号」を監視対象とし、それらを基にしたリスク評価と検知ルールを策定する必要がある。AIシステムが生成するログの標準化と、そのログからリスク信号を抽出する技術の検討も重要な論点となる。",
+          "importance": "高",
+          "importance_reason": "AIシステムの運用セキュリティにおける新たなリスク評価の必要性と、監視すべき具体的な視点を提供しており、CDCのSecurity for AI戦略に直接影響を与えるため。",
+          "tag_main_id": "ai_risk",
+          "tag_main_label": "AIリスク",
+          "tag_subs": [
+            "安全性評価",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "AIシステム",
+            "運用セキュリティ",
+            "モデルアクセス",
+            "リスク分析",
+            "攻撃対象面"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "Security for AI",
+            "SOC運用変化",
+            "CISO報告",
+            "サービス企画",
+            "Exposure管理"
+          ],
+          "views": 0
+        },
+        {
+          "id": "68ffda06798b",
+          "title": "AWS Kiro Flaw Let a Poisoned Web Page Rewrite Its Config and Run Code",
+          "summary": "Hidden text on a web page was enough to make Kiro, AWS's agentic coding IDE, rewrite its own configuration file and run an attacker's code on a developer's machine, with no approval step able to stop it.\n\nIntezer, in research with Kodem Security, found that a request as ordinary as asking Kiro to summarize a page could end in remote code execution. AWS has patched the issue, and no CVE has been",
+          "url": "https://thehackernews.com/2026/07/aws-kiro-flaw-let-poisoned-web-page.html",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-07-22T01:06:12+09:00",
+          "title_ja": "AWS Kiroの脆弱性：不正ウェブページが設定を書き換え、承認なしでコード実行",
+          "summary_ja": "AWSのAIエージェント型コーディングIDEであるKiroに、隠されたテキストを含むウェブページを介して、その設定ファイルを書き換え、攻撃者のコードを承認なしで実行させる脆弱性が見つかった。IntezerとKodem Securityの研究で、ウェブページの要約を求めるような一般的なリクエストでもリモートコード実行に至る可能性が示された。AWSは既にこの問題をパッチ適用済みであり、CVEは公開されていない。",
+          "insight": "この事案は、AIエージェントが外部コンテンツ（ウェブページ）を処理する際に、従来のプロンプトインジェクションとは異なる形で、非可視な情報を使ってシステムの設定を変更し、コードを実行できるリスクを示す。SOC/CDCは、AIエージェントが外部ソースから取得した情報を処理する際の入出力検証、設定ファイルの変更監視、およびエージェントの実行環境における不審なプロセス起動を厳重に監視する必要がある。特に、AIエージェントの権限分離と、その活動ログの詳細な分析が求められる。",
+          "importance": "高",
+          "importance_reason": "クラウドベースのAIエージェント型IDEにおける具体的なリモートコード実行経路が明らかになり、AIエージェントのセキュリティ監視・運用に即座に影響を与えるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "プロンプトインジェクション",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "クラウド/サーバー",
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "AWS Kiro",
+            "AIエージェント",
+            "IDE",
+            "リモートコード実行",
+            "プロンプトインジェクション"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "Identity/ITDR",
+            "MDR/MSSP設計"
+          ],
+          "views": 0
+        },
+        {
+          "id": "4f54d10c0818",
+          "title": "Cursor, Codex, Gemini CLI, Antigravity hit by sandbox escapes",
+          "summary": "Researchers escaped the sandboxes in Cursor, Codex, Gemini CLI and Antigravity by having the AI agent write files that trusted host tools later run. Multiple CVEs, patches, and Google downgrading two Antigravity findings. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/cursor-codex-gemini-cli-antigravity-hit-by-sandbox-escapes/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-07-21T06:14:42+09:00",
+          "title_ja": "Cursor、Codex、Gemini CLI、AntigravityなどのAIエージェントでサンドボックスエスケープが確認",
+          "summary_ja": "主要なAIエージェントであるCursor、Codex、Gemini CLI、Antigravityにおいて、研究者によってサンドボックスからのエスケープ脆弱性が発見された。これらのエージェントは、AIが生成した悪意のあるファイルをホストシステム上の信頼されたツールが実行することでサンドボックスを迂回していた。この問題に対して複数のCVEが発行され、パッチが適用されているが、Googleは一部のAntigravityの脆弱性評価を下方修正した。",
+          "insight": "AIエージェントが信頼されたホストツールを介してサンドボックスを脱出するという攻撃パターンは、AIエージェントとOS間の信頼境界の曖昧さを示す。SOC/CDCは、AIエージェントが生成するファイルの監視、ホストシステムにおける不審なプロセス実行やファイルアクセス、特にAIエージェントが管理する権限範囲を超えた活動の検知ルールを強化する必要がある。エージェントの権限分離と最小権限の原則の適用、およびサンドボックス実装の継続的な検証が不可欠である。",
+          "importance": "高",
+          "importance_reason": "複数の主要AIエージェントでサンドボックスエスケープという根本的な脆弱性が実証されており、AIシステムのセキュリティ設計と運用における重要な課題を提示しているため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "AIエージェント",
+            "サンドボックスエスケープ",
+            "コード実行",
+            "CVE",
+            "権限昇格"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "Identity/ITDR",
+            "MDR/MSSP設計"
+          ],
+          "views": 0
+        },
+        {
+          "id": "b523d8722705",
+          "title": "JadePuffer agentic attacks now target AI model data with ransomware",
+          "summary": "The JadePuffer autonomous AI agent has upgraded with custom malware called EncForge that focuses on encrypting AI assets, such as training datasets, vector databases, and model checkpoints. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/jadepuffer-agentic-attacks-now-target-ai-model-data-with-ransomware/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-07-21T06:08:02+09:00",
+          "title_ja": "JadePufferエージェント型攻撃、AIモデルデータにランサムウェアを仕掛ける",
+          "summary_ja": "自律型AIエージェントであるJadePufferが、「EncForge」と呼ばれるカスタムマルウェアを搭載し、AI資産を標的とするランサムウェア攻撃に進化していることが明らかになった。このマルウェアは、AIの訓練データセット、ベクターデータベース、モデルチェックポイントといったAIシステムにとって重要な資産を暗号化することを目的としており、AIシステムに対する新たな脅威として浮上している。",
+          "insight": "AIシステム固有の資産（訓練データ、ベクターDB、モデル）が直接的な攻撃対象となるランサムウェアの登場は、従来のデータ保護戦略の抜本的な見直しを迫る。SOC/CDCは、AI資産の特定、重要度分類、適切なバックアップ・リカバリ戦略の策定、そしてこれらの資産への不正アクセスや改ざんを検知する監視体制を強化する必要がある。AIシステム特有のログ（例：モデルの整合性チェックログ）の監視や、これらの資産のアクセス権限管理も不可欠となる。",
+          "importance": "高",
+          "importance_reason": "AIシステムの核心的な資産を標的とする新しいタイプのランサムウェア攻撃であり、AIセキュリティの防御戦略に根本的な影響を与えるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "ランサムウェア",
+            "AIを使った攻撃"
+          ],
+          "affected_layers": [
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "JadePuffer",
+            "AIエージェント",
+            "ランサムウェア",
+            "AI資産",
+            "訓練データ"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Security for AI",
+            "Exposure管理",
+            "CISO報告",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "6b413ad4b1a4",
+          "title": "Cisco Launches Low-Cost AI Models for Source Code Security",
+          "summary": "<p>The open-weight Antares models are designed to pinpoint known vulnerabilities in codebases faster and at a fraction of the cost of larger AI models.</p>\n<p>The post <a href=\"https://www.securityweek.com/cisco-launches-low-cost-ai-models-for-source-code-security/\">Cisco Launches Low-Cost AI Models for Source Code Security</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/cisco-launches-low-cost-ai-models-for-source-code-security/",
+          "ai_score": 2,
+          "cdc_pre_score": 0,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-07-22T02:44:33+09:00",
+          "title_ja": "Cisco、ソースコードセキュリティ向け低コストAIモデルを発表",
+          "summary_ja": "Ciscoが、オープンウェイトのAIモデル「Antares」を発表した。このモデルは、大規模なAIモデルよりも低コストで、コードベース内の既知の脆弱性を迅速に特定することを目的としている。Antaresは、ソフトウェア開発ライフサイクルにおけるセキュリティテストの効率化と、早期段階での脆弱性発見に貢献するAI for Securityの具体的な適用事例であり、DevSecOpsへのAI活用を促進する。",
+          "insight": "AI for Securityの好事例であり、開発段階でのセキュリティ対策（シフトレフト）にAIを活用することで、サプライチェーン攻撃のリスク低減や、本番環境での脆弱性発覚を未然に防ぐ効果が期待できる。CDCは、このようなAIを活用したコードスキャンツールと連携し、開発チームからの脆弱性情報を早期に把握し、SOC/CDCの監視対象システムにおける優先順位付けや対応計画に組み込むことで、プロアクティブな防御体制を強化できる。",
+          "importance": "中",
+          "importance_reason": "AI for Securityにおける具体的な製品化動向であり、開発セキュリティ強化とCDCの連携の可能性を示唆するため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った防御",
+            "製品リリース"
+          ],
+          "affected_layers": [
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Cisco",
+            "Antares",
+            "ソースコードセキュリティ",
+            "AIモデル",
+            "脆弱性診断"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "SOC運用変化",
+            "Exposure管理"
+          ],
+          "views": 0
+        },
+        {
+          "id": "8a2f2a70b759",
+          "title": "CISO Conversations: Andreas Gaetje – From Economics to CISO at Körber AG",
+          "summary": "<p>Gaetje’s story shows that you don’t need to be a ‘deep bit-crawler’ to become a Chief Information Security Officer.</p>\n<p>The post <a href=\"https://www.securityweek.com/ciso-conversations-andreas-gaetje-from-economics-to-ciso-at-korber-ag/\">CISO Conversations: Andreas Gaetje – From Economics to CISO at Körber AG</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/ciso-conversations-andreas-gaetje-from-economics-to-ciso-at-korber-ag/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-07-21T20:30:00+09:00",
+          "title_ja": "CISO対談：経済学出身のCISOが語るキャリアパス",
+          "summary_ja": "Körber AGのCISOであるAndreas Gaetje氏との対談記事では、彼が経済学のバックグラウンドを持ちながらCISOになった経緯が紹介されている。この対談は、CISOの役割が単なる深い技術知識だけでなく、ビジネス全体のリスク管理や組織的ガバナンスへの理解が不可欠であることを示唆している。CISOの専門性が多様化し、ビジネス戦略に深く関与する現代の傾向を反映する内容である。",
+          "insight": "この記事はCISOのリーダーシップとスキルの多様性を示唆しており、SOC/CDCの運営者がCISOに報告する際、技術的な詳細だけでなく、ビジネスへの影響やリスクマネジメントの観点から説明することの重要性を再認識させる。CDCは、技術的な検知・対応能力に加え、経営層が理解しやすい形でセキュリティ状況やAIリスクを可視化・報告する能力を向上させるべきである。",
+          "importance": "低",
+          "importance_reason": "CISOのキャリアパスに関する内容であり、直接的なSOC/CDCの運用設計や技術的対策への示唆は限定的であるため。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "市場トレンド"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "CISO",
+            "キャリアパス",
+            "ガバナンス",
+            "リスク管理",
+            "リーダーシップ"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "CISO報告"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】\n本日のニュースは、AIエージェントの内部挙動を悪用した多層的な攻撃手法が確立されつつある現状と、AIシステム固有の資産を狙うランサムウェアの登場により、従来のセキュリティ監視・防御の限界が明確になったことを示唆する。AIの進展に伴い、攻撃側はAIの特性を悪用する一方、防御側もAI for Securityの活用を加速させている。\n【攻撃側の変化】\n攻撃側は、AIエージェントの特性を深く理解し、その設計上の盲点を突いている。非表示テキストを悪用したプロンプトインジェクションの変種（記事1, 6）、AIエージェントのサンドボックスエスケープ（記事7）、さらにはAIシステム固有の資産（訓練データ、ベクターDB、モデルチェックポイント）を直接的に標的とするランサムウェア（記事8）が登場している。これにより、攻撃対象は従来のITインフラからAIスタック全体へと拡大し、より巧妙かつ直接的にAIシステムの運用を阻害しようとしている。\n【防御側の変化】\n防御側もAI for Securityの進化を加速させている。機械学習ベースのIDSを敵対的攻撃に堅牢化する研究（記事4）や、Ciscoがソースコードセキュリティ向けに低コストAIモデルをリリースする（記事9）など、AIを活用した検知・防御能力の向上が進む。しかし、AIエージェント特有の攻撃手法に対しては、既存のSIEM/EDR/MDRでは対応しきれない課題が露呈しており、新たな監視・検知メカニズムの構築が急務である。CISOはAIリスクへの対応に重圧を感じている（記事2）。\n【Security for AI】\nLLMやAIエージェントの「モデル・推論層」および「ツール・実行層」における脆弱性（プロンプトインジェクション、サンドボックスエスケープ、コード実行）が顕在化している（記事1, 6, 7）。AIシステムの運用セキュリティでは、モデルアクセスリスクの分析（記事5）や、エージェントが利用する外部ツール、生成・実行するコード、ファイルシステム操作、API連携、権限委譲といったAI固有のログや挙動を監視対象に追加し、脅威を検知する仕組みが不可欠である。\n【AI for Security】\nAI for Securityは、検知精度向上（IDSの敵対的攻撃耐性強化、記事4）や開発セキュリティ（コードスキャン、記事9）の領域で着実に進化している。CDC業務においては、Tier2調査・アラート判断・ナレッジ検索・レポート作成といった業務効率化に加え、AIシステム固有のログ解析や異常検知におけるAI活用は、将来的なAIリスクへの防御に不可欠な要素となる。\n【CDC/SOCへの示唆】\nCDC/SOCは、AIエージェントを悪用した攻撃に対応するため、監視対象、ログ、検知ルール、運用プロセス、人の役割を再定義する必要がある。具体的には、AIエージェントが使用するUIレイヤーの非表示情報、エージェントが連携する外部ツールや実行環境におけるプロセス起動、ファイル変更、ネットワーク通信、そしてAI資産（訓練データ、モデル）へのアクセスを監視対象に含めるべきだ。プロンプトログ、ツール実行ログ、サンドボックスログ、モデルアクセスログ、AI資産の整合性ログなど、AIシステム固有のログの収集と標準化も不可欠である。AIエージェントの異常な振る舞いや、AI資産への不正アクセス・改ざんを特定する専用の検知ルールを開発し、サンドボックス脱出のパターンや、エージェントによる意図しないコード実行・設定変更を捕捉することが求められる。AIシステムの専門家との連携を強化し、AI特有のインシデント解析能力を向上させ、AIエージェントの挙動を理解し、誤検知と実際の脅威を区別するスキルを育成する必要がある。また、AIシステムが関わるインシデントのエスカレーション基準と、CISOへの報告内容にAI固有のリスク要素を盛り込む枠組みを確立する。\n【今日の問い】\nAIエージェントのサンドボックスエスケープやコード実行を検知するために、既存のEDR/XDRの監視範囲をどのように拡張し、AIシステム固有のログと効果的に統合分析するべきか？また、AIシステムの学習データやモデル自体を標的とするランサムウェア攻撃に対し、AI資産の整合性監視、バックアップ・リカバリのRTO/RPO要件はどのように再設計されるべきか？"
+    },
     {
       "date": "2026-07-21",
       "articles": [
@@ -31879,116 +32288,6 @@
           "tag_subs": [
             "プライバシー侵害",
             "敵対的攻撃"
-          ],
-          "views": 0
-        }
-      ]
-    },
-    {
-      "date": "2026-04-22",
-      "articles": [
-        {
-          "id": "cf573a410882",
-          "title": "Silex Technology SD-330AC and AMC Manager",
-          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-111-10.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary code, cause a denial-of-service, or configuration information may be altered without authentication.</strong></p>\n<p>The following versions of Silex Technology SD-330AC and AMC Manager are affected:</p>\n<ul>\n<li>SD-330AC &lt;=1.42 (CVE-2026",
-          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-111-10",
-          "source_name": "CISA",
-          "source_tier": "A",
-          "published": "2026-04-21T21:00:00+09:00",
-          "title_ja": "Silex Technology製品の複数脆弱性",
-          "summary_ja": "Silex Technology社のSD-330ACおよびAMC Managerに複数の脆弱性が発見された。これらの脆弱性を悪用されると、攻撃者は任意のコード実行、サービス拒否攻撃 (DoS)、または認証なしでの設定変更が可能となる。OT環境に設置されているデバイスが悪用されると、システムの運用停止や不正操作に繋がりかねない。CISAはこれらの脆弱性について警告しており、早急な対策が求められる。",
-          "insight": "産業用無線LAN製品における認証機構やメモリ管理の不備は、OT環境のセキュリティリスクを増大させる。SBOMを活用し、サプライチェーン全体での脆弱性管理を強化すべきである。",
-          "importance": "中",
-          "importance_reason": "任意のコード実行やDoS、認証なし設定変更が可能であり、OT環境における運用に直接的な影響を与える可能性があるため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "エクスプロイト",
-            "設定ミス"
-          ],
-          "views": 0
-        },
-        {
-          "id": "81b6e0582d59",
-          "title": "Siemens RUGGEDCOM CROSSBOW Secure Access Manager Primary",
-          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-111-02.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>RUGGEDCOM CROSSBOW Secure Access Manager Primary (SAM-P) contains a vulnerability that could allow an attacker to escalate their own privileges. Siemens has released a new version for RUGGEDCOM CROSSBOW Secure Access Manager Primary (SAM-P) and recommends to update to the latest version.</strong></p>\n<p>The following versions of Sie",
-          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-111-02",
-          "source_name": "CISA",
-          "source_tier": "A",
-          "published": "2026-04-21T21:00:00+09:00",
-          "title_ja": "Siemens RUGGEDCOM CROSSBOW SAM-Pの権限昇格脆弱性",
-          "summary_ja": "Siemens社のRUGGEDCOM CROSSBOW Secure Access Manager Primary (SAM-P) に権限昇格の脆弱性が存在することが報告された。この脆弱性を悪用されると、攻撃者は自身の権限を昇格させ、システムに対するより広範な制御を獲得する可能性がある。シーメンスは既に修正バージョンをリリースしており、ユーザーに対して迅速なアップデートを推奨している。OT環境のアクセス管理におけるセキュリティ侵害は、重大なインシデントに発展するリスクがある。",
-          "insight": "産業用アクセス管理システムにおける権限昇格は、OTシステムのセキュリティ境界を侵害し、重大なインシデントに発展するリスクが高い。最小権限の原則の徹底と定期的なパッチ適用が不可欠である。",
-          "importance": "中",
-          "importance_reason": "産業用アクセス管理システムにおける権限昇格は、システム全体のセキュリティを危険に晒し、OT環境の安定性に関わるため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "認証バイパス",
-            "パッチ未適用"
-          ],
-          "views": 0
-        },
-        {
-          "id": "ab5f0043e5ea",
-          "title": "Siemens TPM 2.0",
-          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-111-01.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>The products listed below contain a vulnerability that could allow an attacker to perform an out-of-bound read, potentially leading to information disclosure or denial of service of the TPM. Siemens has released new versions for several affected products and recommends to update to the latest versions. Siemens is preparing further f",
-          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-111-01",
-          "source_name": "CISA",
-          "source_tier": "A",
-          "published": "2026-04-21T21:00:00+09:00",
-          "title_ja": "Siemens TPM 2.0のアウトオブバウンドリード脆弱性",
-          "summary_ja": "Siemens社のTPM 2.0製品において、アウトオブバウンドリードの脆弱性が発見された。この脆弱性を悪用されると、攻撃者は情報漏洩やサービス拒否 (DoS) 攻撃を引き起こす可能性がある。シーメンスは影響を受ける複数製品の修正バージョンをリリースしており、今後のさらなる更新も予定されている。TPMはハードウェアレベルのセキュリティを提供する重要なコンポーネントであり、その脆弱性は基盤的な信頼性に関わる。",
-          "insight": "ハードウェアセキュリティモジュールであるTPMの脆弱性は、根幹的な信頼性に影響を与えうる。ファームウェアレベルの脆弱性対応は複雑な場合が多く、継続的な情報収集と計画的なパッチ適用が重要である。",
-          "importance": "中",
-          "importance_reason": "TPMという基盤となるセキュリティコンポーネントの脆弱性であり、情報漏洩やDoSに繋がる可能性があるため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "エクスプロイト",
-            "情報漏洩"
-          ],
-          "views": 0
-        },
-        {
-          "id": "6efc4b89afe2",
-          "title": "SenseLive X3050",
-          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-111-12.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to take complete control of the device.</strong></p>\n<p>The following versions of SenseLive X3050 are affected:</p>\n<ul>\n<li>X3050 V1.523 (CVE-2026-40630, CVE-2026-25720, CVE-2026-35503, CVE-2026-39462, CVE-2026-27843, CVE-2026-40431, CVE-2026-40623, CVE-2026-2",
-          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-111-12",
-          "source_name": "CISA",
-          "source_tier": "A",
-          "published": "2026-04-21T21:00:00+09:00",
-          "title_ja": "SenseLive X3050のデバイス完全制御を許す複数脆弱性",
-          "summary_ja": "SenseLive X3050に複数の脆弱性が発見された。これらの脆弱性が悪用されると、攻撃者はデバイスを完全に制御できる可能性があるため、極めて重大なリスクをはらむ。CISAはベンダーからの修正情報がまだ提供されていない状況であることを示唆しており、ユーザーは注意が必要である。ICSデバイスの完全な制御は、生産ラインの停止や物理的な損害に直結する恐れがある。",
-          "insight": "ICSデバイスにおける複数の重大な脆弱性は、攻撃者にとって格好のターゲットとなりうる。ベンダーからのパッチ提供を待つ間に、ネットワーク分離やアクセス制御強化などの緩和策を講じることが重要である。",
-          "importance": "高",
-          "importance_reason": "攻撃者がデバイスを完全に制御できるという重大な影響があり、ICS環境のセキュリティに壊滅的な打撃を与えうるため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "エクスプロイト",
-            "パッチ未適用"
-          ],
-          "views": 0
-        },
-        {
-          "id": "8509586b60a8",
-          "title": "Siemens Analytics Toolkit",
-          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-111-04.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Multiple Siemens applications are affected by improper certificate validation in Siemens Analytics Toolkit. This could allow an unauthenticated remote attacker to perform man in the middle attacks. Siemens has released new versions for the affected products and recommends to update to the latest versions.</strong></p>\n<p>The followi",
-          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-111-04",
-          "source_name": "CISA",
-          "source_tier": "A",
-          "published": "2026-04-21T21:00:00+09:00",
-          "title_ja": "Siemens Analytics Toolkitの不正な証明書検証脆弱性",
-          "summary_ja": "Siemens Analytics Toolkitにおいて、不正な証明書検証の脆弱性が発見された。この脆弱性により、認証されていないリモート攻撃者が中間者攻撃 (Man-in-the-Middle attacks) を実行し、通信の盗聴や改ざんを行うことが可能となる。シーメンスは影響を受ける製品の修正版をリリースしており、速やかなアップデートを推奨している。OT環境における通信の信頼性が損なわれることは、システムの誤動作やデータ漏洩に繋がりかねない。",
-          "insight": "OT環境における通信の完全性と機密性は極めて重要であり、証明書検証の不備は信頼された通信を容易に侵害しうる。ICS/OTシステムの導入・運用時には、セキュアな通信設定と構成管理を徹底すべきである。",
-          "importance": "中",
-          "importance_reason": "中間者攻撃により機密性・完全性が侵害される可能性があり、OT環境におけるデータ通信の信頼性に影響を与えるため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "設定ミス",
-            "エクスプロイト"
           ],
           "views": 0
         }
