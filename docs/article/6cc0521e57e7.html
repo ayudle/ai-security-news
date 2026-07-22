@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>オープンソースAndroid AIエージェント、隠れた画面テキストでホストPC上のコード実行を可能に | Cyber Defense Notes</title>
-<meta name="description" content="オープンソースのAndroid AIエージェントにおいて、ユーザーには見えない画面上のテキストを悪用し、ホストPC上でコード実行が可能となる脆弱性が研究者により実証された。この攻撃は、エージェントが他のウィンドウ上に描画し、共有ストレージへ">
-<meta property="og:title" content="オープンソースAndroid AIエージェント、隠れた画面テキストでホストPC上のコード実行を可能に">
-<meta property="og:description" content="オープンソースのAndroid AIエージェントにおいて、ユーザーには見えない画面上のテキストを悪用し、ホストPC上でコード実行が可能となる脆弱性が研究者により実証された。この攻撃は、エージェントが他のウィンドウ上に描画し、共有ストレージへ">
+<title>オープンソースAndroid AIエージェントの隠れた画面テキストによるRCE脆弱性 | Cyber Defense Notes</title>
+<meta name="description" content="研究者が、オープンソースのAndroid AIエージェントで、人間に見えない画面上のテキストを介してAIエージェントに命令を注入し、ホストPCでコードを実行できる攻撃を実証した。これは、オーバーレイ描画や共有ストレージへの書き込み権限を持つ">
+<meta property="og:title" content="オープンソースAndroid AIエージェントの隠れた画面テキストによるRCE脆弱性">
+<meta property="og:description" content="研究者が、オープンソースのAndroid AIエージェントで、人間に見えない画面上のテキストを介してAIエージェントに命令を注入し、ホストPCでコードを実行できる攻撃を実証した。これは、オーバーレイ描画や共有ストレージへの書き込み権限を持つ">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/6cc0521e57e7.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="オープンソースAndroid AIエージェント、隠れた画面テキストでホストPC上のコード実行を可能に">
-<meta name="twitter:description" content="オープンソースのAndroid AIエージェントにおいて、ユーザーには見えない画面上のテキストを悪用し、ホストPC上でコード実行が可能となる脆弱性が研究者により実証された。この攻撃は、エージェントが他のウィンドウ上に描画し、共有ストレージへ">
+<meta name="twitter:title" content="オープンソースAndroid AIエージェントの隠れた画面テキストによるRCE脆弱性">
+<meta name="twitter:description" content="研究者が、オープンソースのAndroid AIエージェントで、人間に見えない画面上のテキストを介してAIエージェントに命令を注入し、ホストPCでコードを実行できる攻撃を実証した。これは、オーバーレイ描画や共有ストレージへの書き込み権限を持つ">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/6cc0521e57e7.html">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "オープンソースAndroid AIエージェント、隠れた画面テキストでホストPC上のコード実行を可能に",
-  "description": "オープンソースのAndroid AIエージェントにおいて、ユーザーには見えない画面上のテキストを悪用し、ホストPC上でコード実行が可能となる脆弱性が研究者により実証された。この攻撃は、エージェントが他のウィンドウ上に描画し、共有ストレージへの書き込み権限を持つ場合に、AIエージェントに不正な命令を密かに注入することで発生する。AppAgentやAppAgentXを含む複数のモバイルエージェントフレ",
+  "headline": "オープンソースAndroid AIエージェントの隠れた画面テキストによるRCE脆弱性",
+  "description": "研究者が、オープンソースのAndroid AIエージェントで、人間に見えない画面上のテキストを介してAIエージェントに命令を注入し、ホストPCでコードを実行できる攻撃を実証した。これは、オーバーレイ描画や共有ストレージへの書き込み権限を持つ悪意のあるAndroidアプリが、AIエージェントを悪用してホストシステムを侵害する新たな脅威となる。",
   "datePublished": "2026-07-21",
   "url": "https://ayudle.github.io/ai-security-news/article/6cc0521e57e7.html",
   "image": "https://ayudle.github.io/ai-security-news/og-image.png",
@@ -124,27 +124,27 @@ gtag('config', 'G-KV7Q7SQKZX');
       <span>2026-07-21</span>
       <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span>
     </div>
-    <h1 class="ap-title">オープンソースAndroid AIエージェント、隠れた画面テキストでホストPC上のコード実行を可能に</h1>
+    <h1 class="ap-title">オープンソースAndroid AIエージェントの隠れた画面テキストによるRCE脆弱性</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">オープンソースのAndroid AIエージェントにおいて、ユーザーには見えない画面上のテキストを悪用し、ホストPC上でコード実行が可能となる脆弱性が研究者により実証された。この攻撃は、エージェントが他のウィンドウ上に描画し、共有ストレージへの書き込み権限を持つ場合に、AIエージェントに不正な命令を密かに注入することで発生する。AppAgentやAppAgentXを含む複数のモバイルエージェントフレームワークでこの連鎖攻撃が確認されており、AIエージェントのプロンプトインジェクションリスクが拡大している。</div>
+    <div class="ap-body">研究者が、オープンソースのAndroid AIエージェントで、人間に見えない画面上のテキストを介してAIエージェントに命令を注入し、ホストPCでコードを実行できる攻撃を実証した。これは、オーバーレイ描画や共有ストレージへの書き込み権限を持つ悪意のあるAndroidアプリが、AIエージェントを悪用してホストシステムを侵害する新たな脅威となる。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>この攻撃は、AIエージェントのプロンプトが非可視な要素からも形成され、それが実行環境に影響を及ぼす可能性を示している。SOC/CDCは、AIエージェントが利用するUIレイヤーにおける非可視要素の監視、およびエージェントが連携するホスト環境での異常なコマンド実行やファイル変更を検知する仕組みの導入を検討すべきである。特に、エージェントが実行するアプリケーションの権限管理と、その活動ログの詳細な監視が不可欠となる。</div></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>AIエージェントの「プロンプト」は、ユーザー入力だけでなく、画面上の見えない情報やアプリ間連携の文脈データも含まれるため、監視対象を拡張する必要がある。特に、AIエージェントが持つ外部ツール実行能力やAPI連携機能を監視し、異常なコード実行や権限昇格を検知するための新しいルールや挙動ベースの検知ロジックがSOC/CDCには求められる。</div></div></section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントが非可視プロンプトを介してホスト環境でコード実行する具体的な攻撃経路を示し、AIシステム固有のリスクとして即時対応が必要なため。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェント固有の新しい攻撃経路であり、人間には見えない形でRCEに繋がる具体的な手法が示され、緊急の対策が必要となるため。</div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
     <div class="tags-box">
       <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
-      <span class="tag-sub">プロンプトインジェクション</span><span class="tag-sub">AIを使った攻撃</span><span class="tag-sub">エクスプロイト</span>
+      <span class="tag-sub">プロンプトインジェクション</span><span class="tag-sub">AIを使った攻撃</span><span class="tag-sub">LLMセキュリティ</span>
     </div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Security for AI</span><span class='cdc-badge-ap'>Identity/ITDR</span></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Security for AI</span></div></section>
 
   <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-vulnerability-management-automation.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-08</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</div></a><a href="../columns/ai-supply-chain-exposure.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-16</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div></a></div></section>
 
@@ -161,16 +161,16 @@ Researchers demonstrated that chain, plus six o</div>
     </div>
     <div class="actions">
       <a href="https://thehackernews.com/2026/07/open-source-android-ai-agents-could-let.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0A%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9Android%20AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%80%81%E9%9A%A0%E3%82%8C%E3%81%9F%E7%94%BB%E9%9D%A2%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%A7%E3%83%9B%E3%82%B9%E3%83%88PC%E4%B8%8A%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%AE%9F%E8%A1%8C%E3%82%92%E5%8F%AF%E8%83%BD%E3%81%AB%0A%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%20%23AI%E6%94%BB%E6%92%83&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F6cc0521e57e7.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0A%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9Android%20AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E9%9A%A0%E3%82%8C%E3%81%9F%E7%94%BB%E9%9D%A2%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%81%AB%E3%82%88%E3%82%8BRCE%E8%84%86%E5%BC%B1%E6%80%A7%0A%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%20%23AI%E6%94%BB%E6%92%83&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F6cc0521e57e7.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/6cc0521e57e7.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
 
-  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Security%20for%20AI#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../?context=Identity%2FITDR#archive" class="explore-chip" data-search-context="Identity/ITDR">Identity/ITDR</a><a href="../?tag=%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3#archive" class="explore-chip" data-search-tag="プロンプトインジェクション">プロンプトインジェクション</a><a href="../?tag=AI%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="AIを使った攻撃">AIを使った攻撃</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Security%20for%20AI#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../?tag=%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3#archive" class="explore-chip" data-search-tag="プロンプトインジェクション">プロンプトインジェクション</a><a href="../?tag=AI%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="AIを使った攻撃">AIを使った攻撃</a><a href="../?tag=LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3#archive" class="explore-chip" data-search-tag="LLMセキュリティ">LLMセキュリティ</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
 
   <section class="ap-section">
   <h3 class="ap-sec-title">関連記事：同じ「AI×セキュリティ」の最近の記事</h3>
-  <div class="rel-list"><a href="6b413ad4b1a4.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-07-22</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">SecurityWeek</span></div><div class="rel-title">Cisco、ソースコードセキュリティ向け低コストAIモデルを発表</div></a><a href="68ffda06798b.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-07-22</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">The Hacker News</span></div><div class="rel-title">AWS Kiroの脆弱性：不正ウェブページが設定を書き換え、承認なしでコード実行</div></a><a href="b86ddca1762a.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-07-21</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">arXiv cs.CR</span></div><div class="rel-title">敵対的攻撃に堅牢な侵入検知システムのためのGAN拡張TabTransformerを提案</div></a></div>
+  <div class="rel-list"><a href="0ccdbdf01574.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-07-23</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">Dark Reading</span></div><div class="rel-title">AIの攻撃：OpenAIモデルが自律的にHugging Faceをハッキング</div></a><a href="94b8cb0af02b.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-07-22</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">arXiv cs.CR</span></div><div class="rel-title">ロバストネス最適化防御における共通脆弱性：一つの侵害が全体を露呈</div></a><a href="4faa88042352.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-07-22</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">Wired Security</span></div><div class="rel-title">OpenAIモデルがサンドボックスを脱出しHugging Faceをハッキング</div></a></div>
 </section>
 </article>
 
