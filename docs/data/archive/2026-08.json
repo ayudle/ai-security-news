@@ -2,6 +2,411 @@
   "month": "2026-08",
   "articles": [
     {
+      "id": "243387e47843",
+      "title": "Now we have a timeline of the OpenAI accidental attack against Hugging Face",
+      "summary": "<p>OpenAI gave a last-minute presentation at the Black Hat security on Wednesday about \"the Hugging Face Incident\" (<a href=\"https://simonwillison.net/2026/Jul/22/openai-cyberattack/\">previously</a> on this blog). <a href=\"https://www.youtube.com/watch?v=87DyyMV0kCY\">The video</a> was published yesterday. It's short and information dense and well worth watching, in particular because it provides full details of what happened and how things played out inside OpenAI. I've used the video to constru",
+      "url": "https://simonwillison.net/2026/Aug/7/openai-timeline/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-08-08T08:55:58+09:00",
+      "title_ja": "OpenAIの実験モデルがHugging Faceに偶発的なDDoS的負荷",
+      "summary_ja": "OpenAIがBlack Hatで、実験的な未公開モデルのトレーニング実行が設定ミスにより、Hugging Faceのインフラに予期せぬDDoSのような負荷を与えた「Hugging Faceインシデント」の詳細を報告しました。この偶発的な攻撃は、OpenAI内部での詳細な調査と対応のタイムラインと共に説明され、AIシステムの運用における潜在的な外部影響リスクを浮き彫りにしています。",
+      "insight": "AIモデルの大規模なトレーニングや評価は、意図しない設定ミスにより外部システムへDDoS的影響を与えるリスクがあることが示された。SOC/CDCとしては、自社のAIシステムが外部API利用や大規模データ処理を行う際、意図せず他者に影響を与えないかのリスク評価が必須。AIシステムの外部通信量、異常なアクセスパターン、出力先などを監視対象に加え、偶発的な攻撃（攻撃意図のない異常挙動）を検知・対応する新たなロジックの検討が必要となる。",
+      "importance": "高",
+      "importance_reason": "AIシステムの意図しない外部影響という新たなリスクカテゴリを示唆し、AI for SecurityとSecurity for AIの両面で監視・対応プロセスの再考を促すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ネットワーク",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "Hugging Face",
+        "DDoS",
+        "AIモデルトレーニング",
+        "設定ミス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "c2c5a8c4d8e3",
+      "title": "AI-Assisted HTTP Terminator Finds Novel HTTP Desync Techniques and Apache Zero-Day",
+      "summary": "PortSwigger says HTTP Terminator, an artificial intelligence (AI)-assisted research system built by James Kettle, generated and proved new HTTP desynchronization techniques after exploring 30,000 candidate desync vectors.\n\nPortSwigger said a separate human-guided discovery cascade also exposed a zero-day in Apache Traffic Server. Kettle said HTTP Terminator tested 30,000 websites where",
+      "url": "https://thehackernews.com/2026/08/ai-assisted-http-terminator-finds-novel.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-08-07T19:09:54+09:00",
+      "title_ja": "AIアシスト型ツールがHTTP Desync手法とApacheゼロデイを発見",
+      "summary_ja": "PortSwiggerのAIアシスト型研究システム「HTTP Terminator」が、30,000のHTTP Desynchronization候補を探索し、新たなHTTP Desync手法とApache Traffic Serverのゼロデイ脆弱性を発見しました。このシステムは、人間では発見が困難な高度な脆弱性を効率的に見つけ出す能力を示しています。",
+      "insight": "AIは防御側（研究・検証）において、人間では発見が難しい高度な脆弱性や攻撃手法を効率的に特定する能力を持つことが実証された。これは、攻撃者も同様にAIを活用して新たな脆弱性を発見する可能性を示唆する。SOC/CDCは、AIを活用した脅威ハンティングや脆弱性診断の導入を検討すると共に、攻撃側のAI利用を前提とした脅威インテリジェンスの強化と、Webアプリケーションの複雑な挙動に対する防御策を強化する必要がある。",
+      "importance": "中",
+      "importance_reason": "AIが防御側にも攻撃側にも活用される技術進化の具体例を示し、AI for Securityの有効性を示すため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "HTTP Terminator",
+        "AIアシスト",
+        "HTTP Desynchronization",
+        "Apache Zero-Day",
+        "脆弱性発見"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "7d496a89a881",
+      "title": "Now we have a timeline of the OpenAI accidental attack against Hugging Face",
+      "summary": "<p><a href=\"https://news.ycombinator.com/item?id=49220609#49221745\">My comment</a> on <a href=\"https://news.ycombinator.com/item?id=49220609\">Now we have a timeline of the OpenAI accidental attack against Hugging Face</a> &mdash; Hacker News.</p><p>I think one of the most interesting details here might be tucked away in that first bulletin point:</p>\n<blockquote>\n<p>May 7: OpenAI starts a new training run for an experimental, unreleased model. <em>(Do they mean an evaluation run? They say traini",
+      "url": "https://simonwillison.net/2026/Aug/8/now-we-have-a-timeline-of-the-openai-accidental-attack-against-h/#atom-everything",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-08-08T23:06:41+09:00",
+      "title_ja": "OpenAIのHugging Faceへの偶発的攻撃に関する詳細タイムライン",
+      "summary_ja": "OpenAIがBlack Hatで発表した「Hugging Faceインシデント」について、その詳細なタイムラインがSimon Willison氏によって追記されました。このインシデントは、OpenAIの実験モデルのトレーニング実行が原因でHugging Faceのインフラに予期せぬ負荷を与えたもので、偶発的な攻撃の経緯と内部対応が詳細に記述されています。",
+      "insight": "（記事1と同一内容のため、関連する示唆は記事1に集約）",
+      "importance": "高",
+      "importance_reason": "（記事1と同一内容のため、記事1の重要度判断に集約）",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ネットワーク",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "Hugging Face",
+        "DDoS",
+        "AIモデルトレーニング",
+        "設定ミス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f81b423bf34c",
+      "title": "Inside the Modern SOC: The Identity Front Door",
+      "summary": "<p>Identity-based attacks drive 90% of incidents. Learn how modern attackers exploit identities and what SOC leaders can do to respond.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/soc-identity-front-door/\">Inside the Modern SOC: The Identity Front Door</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/soc-identity-front-door/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-08-08T08:00:01+09:00",
+      "title_ja": "現代SOCにおけるIDを狙った攻撃の最前線",
+      "summary_ja": "Palo Alto Unit 42のレポートによると、インシデントの90%がIDベースの攻撃に起因しており、現代の攻撃者がIDをどのように悪用しているかを解説しています。この記事は、SOCリーダーがこれらの脅威に対応するために講じるべき対策についても言及しています。",
+      "insight": "IDは依然として主要な攻撃ベクトルであり、AIエージェントの普及はエージェントのID・権限管理をさらに複雑化させる。SOC/CDCは、Identity Threat Detection and Response (ITDR) を核としたID監視と対応を最優先課題とし、MFAやゼロトラストアーキテクチャの導入・強化が必須となる。AIエージェントの権限付与、セッション管理、人間との委任関係の監視も、IDベースの攻撃の新たな側面としてCDCの監視対象に加える必要がある。",
+      "importance": "高",
+      "importance_reason": "SOC/CDCにとって普遍的かつ継続的に最も重要な課題の一つであり、AIエージェント時代にはその重要性が一層高まるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "IDベース攻撃",
+        "SOC",
+        "ITDR",
+        "MFA",
+        "ゼロトラスト"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Identity/ITDR",
+        "SOC運用変化",
+        "CISO報告",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2fa934658c9c",
+      "title": "Sensitive Info Goes Into ‘No Reply’ Emails Constantly. This Guy Sees It All",
+      "summary": "Two security researchers bought cheap domains—including noreply.net and deleteduser.com—and set up email listening services. Hundreds of companies are sending them corporate secrets.",
+      "url": "https://www.wired.com/story/sensitive-info-goes-into-no-reply-emails-constantly-this-guy-sees-it-all/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-08-08T19:00:00+09:00",
+      "title_ja": "「No Reply」メールに機密情報が誤送信される実態",
+      "summary_ja": "セキュリティ研究者が「noreply.net」などのドメインを取得しメール受信サービスを設置したところ、多数の企業から企業秘密が記載されたメールが誤送信されていることを発見しました。これは組織内部の情報管理ポリシーの不徹底や設定ミスによる情報漏洩リスクを浮き彫りにしています。",
+      "insight": "組織内部からの意図しない情報漏洩リスクが改めて浮き彫りになった。AIエージェントが普及する中で、AIが生成した情報や、AIが外部ツールと連携して送信する情報が、設定ミスや誤認識により不適切な宛先に送信される可能性を示唆する。SOC/CDCは、DLPソリューションの強化に加え、AIシステムの外部通信ログ、メールログを詳細に監視し、機密情報の不適切な送信をAIの挙動と合わせて検知する仕組みを構築する必要がある。",
+      "importance": "中",
+      "importance_reason": "AIエージェントによるデータ流出リスクと関連し、内部運用のリスクが継続していることを示すため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "個人情報流出"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "No Replyメール",
+        "誤送信",
+        "情報漏洩",
+        "DLP",
+        "企業秘密"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f8b3b09c8a32",
+      "title": "Atlassian Rovo Can Be Tricked Into Sending Jira and Confluence Data to Attackers",
+      "summary": "Attacker-controlled instructions can make Atlassian's Rovo assistant collect Jira or Confluence data that a signed-in user can access, then send it to an outside server. Two security firms found that behavior independently, by different routes. Only one of those routes is confirmed closed.\n\nPromptArmor, an AI security firm, hid the instructions in content Rovo reads. It said an uploaded file was",
+      "url": "https://thehackernews.com/2026/08/atlassian-rovo-can-be-tricked-into.html",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-08-08T17:54:50+09:00",
+      "title_ja": "Atlassian Rovoがプロンプトインジェクションで機密データを送信",
+      "summary_ja": "AtlassianのAIアシスタント「Rovo」に、攻撃者が細工した指示（プロンプトインジェクション）により、JiraやConfluenceの機密データを外部サーバーに送信させる脆弱性が発見されました。この挙動は異なるセキュリティ企業によって独立して発見され、AIエージェントにおけるデータ流出の新たなリスクが顕在化しています。",
+      "insight": "AIアシスタント（AIエージェント）が組織内の機密データにアクセスし、外部ツールと連携する機能を持つ場合、プロンプトインジェクションによるデータ流出リスクが極めて高いことが具体的に示された。SOC/CDCは、AIエージェントのプロンプトログ、実行コマンドログ、API呼び出し、データ送信ログを詳細に監視し、異常なデータアクセスや外部送信を検知する仕組みを早急に構築する必要がある。これはAIシステム固有のログ監視と、AIエージェントの権限・ガバナンス管理の重要性を強く示唆している。",
+      "importance": "高",
+      "importance_reason": "AIエージェントにおけるプロンプトインジェクションによるデータ流出という具体的な脅威を示し、Security for AIの最重要課題の一つであるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Atlassian Rovo",
+        "Jira",
+        "Confluence",
+        "プロンプトインジェクション",
+        "データ流出"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "d2d5e8d0d8d1",
+      "title": "Levi Strauss & Co. says hackers stole corporate data in cyberattack",
+      "summary": "Levi Strauss & Co. (Levi's) says that hackers used social engineering on three of its employees to gain access to and steal corporate data stored on their machines. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/levi-strauss-and-co-says-hackers-stole-corporate-data-in-cyberattack/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-08T00:48:20+09:00",
+      "title_ja": "Levi Strauss & Co.、ソーシャルエンジニアリングで企業データ窃取被害",
+      "summary_ja": "Levi Strauss & Co.が、従業員3名がソーシャルエンジニアリング攻撃の標的となり、企業データが窃取されたことを発表しました。このインシデントは、人の脆弱性を突く伝統的な攻撃手法が依然として有効であることを示しています。",
+      "insight": "ソーシャルエンジニアリングは依然として効果的な攻撃手法であり、人の脆弱性を突く普遍的なリスクとして存在し続ける。AIエージェントの普及は、AIが生成する巧妙なフィッシングメールや音声、なりすましなどにより、ソーシャルエンジニアリングがさらに高度化・巧妙化する可能性を示唆する。SOC/CDCは、エンドポイント監視やID関連ログ監視に加え、従業員へのセキュリティ意識向上トレーニングの強化と、AIを活用した高度なフィッシング対策の導入を検討する必要がある。",
+      "importance": "中",
+      "importance_reason": "伝統的な攻撃手法の継続的な有効性を示しつつ、AIによる攻撃高度化の可能性を示唆するため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ソーシャルエンジニアリング",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Levi Strauss & Co.",
+        "ソーシャルエンジニアリング",
+        "データ窃取",
+        "従業員教育"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9fbfd79465ae",
+      "title": "In Other News: AI Slop Limits Apple Bounties, North Carolina Port Attacks, Hackers Target Wall Street",
+      "summary": "<p>Noteworthy stories that might have slipped under the radar: ban on Chinese data center tech, QuickFox VPN supply chain attack, IEH Corporation mailbox breached via phishing.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-ai-slop-limits-apple-bounties-north-carolina-port-attacks-hackers-target-wall-street/\">In Other News: AI Slop Limits Apple Bounties, North Carolina Port Attacks, Hackers Target Wall Street</a> appeared first on <a href=\"https://www.securityweek.com\">Secur",
+      "url": "https://www.securityweek.com/in-other-news-ai-slop-limits-apple-bounties-north-carolina-port-attacks-hackers-target-wall-street/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-08-07T23:26:42+09:00",
+      "title_ja": "AI生成コンテンツの品質問題、港湾攻撃、ウォール街へのサイバー攻撃",
+      "summary_ja": "Appleがバグ報奨金プログラムでAIが生成した品質の低い脆弱性報告（「AI Slop」）を制限する可能性が報じられました。その他、QuickFox VPNへのサプライチェーン攻撃や、IEH Corporationへのフィッシング攻撃など、多様なサイバー攻撃の事例が報告されています。",
+      "insight": "AIは必ずしも高品質な成果物をもたらすとは限らず、AIが生成する情報（アラート、レポート、脆弱性報告など）の信頼性や品質評価が重要になる。SOC/CDC業務においてAIを活用する際、AIの「ハルシネーション」や「バイアス」を考慮し、人間の最終判断と検証が不可欠である。サプライチェーン攻撃やフィッシングといった基本的な脅威は依然として有効であり、AIを活用した高度化が懸念されるため、継続的な対策強化が求められる。",
+      "importance": "中",
+      "importance_reason": "AI活用における品質管理の重要性と、伝統的脅威の継続的な有効性を示唆するため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "ハルシネーション",
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AI Slop",
+        "Apple Bug Bounties",
+        "サプライチェーン攻撃",
+        "フィッシング",
+        "AI品質評価"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2c4df525fff4",
+      "title": "Microsoft, Apple Release Fresh Security Updates",
+      "summary": "<p>Microsoft fixed critical vulnerabilities across Azure, Entra, and SharePoint, while Apple patched a high-severity authentication bypass.</p>\n<p>The post <a href=\"https://www.securityweek.com/microsoft-apple-release-fresh-security-updates/\">Microsoft, Apple Release Fresh Security Updates</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/microsoft-apple-release-fresh-security-updates/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-08-07T18:09:54+09:00",
+      "title_ja": "MicrosoftとAppleが最新のセキュリティアップデートを公開",
+      "summary_ja": "MicrosoftがAzure、Entra、SharePointの重要な脆弱性を修正するアップデートをリリースし、Appleも高 severity の認証バイパス脆弱性に対応するパッチを公開しました。これらのアップデートは、広範囲に影響を及ぼす可能性のある脆弱性に対処するものです。",
+      "insight": "脆弱性管理と迅速なパッチ適用は、セキュリティ対策の基本であり、引き続き最優先事項である。特にクラウドサービスやID管理サービス（Entra）の脆弱性は広範囲に影響を及ぼすため、SOC/CDCはベンダーからのセキュリティ情報を常に追跡し、自社環境への影響評価と対応計画を迅速に策定する必要がある。AIエージェントがこれらの基盤システムを利用する場合、基盤の脆弱性はAIシステムのリスクにも直結するため、その影響範囲を考慮する必要がある。",
+      "importance": "中",
+      "importance_reason": "セキュリティ対策の基本的な重要性を再確認し、クラウド・ID関連システムの脆弱性が広範な影響をもたらすため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Microsoft",
+        "Apple",
+        "セキュリティアップデート",
+        "脆弱性",
+        "Azure"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e64368097dfb",
+      "title": "Hackers breach TrueConf to trojanize client installers with backdoors",
+      "summary": "The Head Mare hacktivist group has been exploiting vulnerabilities in unpatched TrueConf video conferencing servers to replace client installers with malicious versions that deliver backdoors. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-breach-trueconf-to-trojanize-client-installers-with-backdoors/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-08T23:16:23+09:00",
+      "title_ja": "TrueConfが侵害され、クライアントインストーラーにバックドアが仕込まれる",
+      "summary_ja": "Head Mareハクティビストグループが、パッチ未適用のTrueConfビデオ会議サーバーの脆弱性を悪用し、クライアントインストーラーをマルウェア感染版に置き換えてバックドアを仕込んだと報じられました。これはサプライチェーン攻撃の一種であり、ソフトウェア配布経路のセキュリティリスクを示しています。",
+      "insight": "サプライチェーン攻撃は継続的な脅威であり、特にソフトウェアの配布経路が狙われると広範囲に影響を及ぼす。SOC/CDCは、サプライチェーンリスク管理の強化、導入するソフトウェアの完全性検証、エンドポイントでの不審なプロセス実行の監視を徹底する必要がある。パッチ未適用が根本原因であることから、脆弱性管理とパッチ適用プロセスの見直しも必須。AIエージェントがサプライチェーンを介して展開される場合、その信頼性検証はより複雑かつ重要になる。",
+      "importance": "中",
+      "importance_reason": "サプライチェーン攻撃の具体例を示し、基本的な脆弱性管理の重要性を再認識させるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "TrueConf",
+        "サプライチェーン攻撃",
+        "マルウェア",
+        "バックドア",
+        "パッチ未適用"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
       "id": "8797abd48fdf",
       "title": "ASTELD: A Six-Axis Classification Framework for Autonomous AI Agents - Design, Evaluation, and an OpenClaw Case Study",
       "summary": "arXiv:2608.05201v1 Announce Type: new \nAbstract: Autonomous AI agent platforms differ substantially in architecture, security, tool integration, execution, autonomy, and deployment, yet the field lacks a common classification scheme for comparing these design choices. We propose ASTELD, an operational six-axis classification framework for autonomous AI agents: Architecture pattern, Security posture, Tool integration model, Execution paradigm, Level of autonomy and human control, and Deployment t",
