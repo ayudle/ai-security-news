@@ -2,6 +2,414 @@
   "month": "2026-08",
   "articles": [
     {
+      "id": "dc67ce3f34b1",
+      "title": "Over 2,500 Organizations Impacted by LiteLLM Supply Chain Attack",
+      "summary": "<p>LiteLLM was compromised through the Trivy hack and abused to distribute information-stealing malware to its users.</p>\n<p>The post <a href=\"https://www.securityweek.com/over-2500-organizations-impacted-by-litellm-supply-chain-attack/\">Over 2,500 Organizations Impacted by LiteLLM Supply Chain Attack</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/over-2500-organizations-impacted-by-litellm-supply-chain-attack/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-08-12T18:55:45+09:00",
+      "title_ja": "LiteLLMを介したサプライチェーン攻撃で2,500超の組織が情報窃取の被害",
+      "summary_ja": "LLM APIを統合するLiteLLMがソフトウェアサプライチェーン攻撃の一環として侵害され、情報窃取マルウェアがユーザーに配布されました。この攻撃は、オープンソースのスキャンツールTrivyのイメージを悪用して悪意のあるPythonライブラリを公開したことに関連しています。結果として、2,500以上の組織が機密情報漏洩のリスクに晒されました。",
+      "insight": "AI関連のライブラリやフレームワークを標的としたサプライチェーン攻撃が現実化しており、LLM/AIエージェントの導入を検討する企業にとって深刻なリスクです。SOC/CDCは、AI開発・運用環境におけるサードパーティライブラリの脆弱性管理と、それらが利用するクラウドキーやAPIキーなどクレデンシャルの監視を強化し、依存関係のセキュリティ評価をプロセスに組み込むべきです。",
+      "importance": "高",
+      "importance_reason": "AIシステムのサプライチェーン攻撃が広範囲の組織に影響を与え、重要クレデンシャルの漏洩に直結するため、即時対応と設計の見直しが求められる。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "マルウェア",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "LiteLLM",
+        "サプライチェーン攻撃",
+        "情報窃取マルウェア",
+        "PyPI",
+        "Trivy"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0ae077590e9f",
+      "title": "Malicious LiteLLM Releases Tied to Trivy Hack May Have Exposed 2,100+ Organizations",
+      "summary": "Two malicious LiteLLM releases sat on PyPI for about 40 minutes in March carrying credential-stealing code capable of harvesting cloud keys, SSH keys, Kubernetes tokens, database passwords, and other secrets from systems that installed them.\n\nThreat intelligence firm CloudSEK now says a dataset it obtained, built from roughly 434,000 files the attackers captured, maps potential exposure to more",
+      "url": "https://thehackernews.com/2026/08/malicious-litellm-releases-tied-to.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-08-12T17:04:52+09:00",
+      "title_ja": "悪意あるLiteLLMリリースにより2,100以上の組織が情報漏洩の可能性",
+      "summary_ja": "LiteLLMの悪意あるバージョンがPyPIに約40分間公開され、これをインストールしたシステムからクラウドキー、SSHキー、Kubernetesトークン、データベースパスワードなどのクレデンシャルを窃取するコードが含まれていました。脅威インテリジェンス企業CloudSEKの調査により、攻撃者が約43.4万個のファイルを含むデータセットから、2,100以上の組織が潜在的な情報漏洩の影響を受けた可能性が指摘されています。これは、AI開発環境におけるサードパーティ依存関係の監視が不十分であったことによる深刻なインシデントです。",
+      "insight": "AI/LLM開発で利用されるライブラリのサプライチェーンリスクが具体化し、従来のSOC/CDCの監視範囲外で機密情報が窃取される事態が示されました。CDCはAIシステムの開発・運用パイプラインにおける依存関係のセキュリティ評価を厳格化し、CI/CDパイプラインやコンテナ環境での悪性コード実行を検知する能力を早急に構築する必要があります。特に、AIエージェントのツール・実行層の監視が喫緊の課題です。",
+      "importance": "高",
+      "importance_reason": "AI関連のサプライチェーン攻撃が広範囲な組織に重大な情報漏洩をもたらした具体的な事例であり、SOC/CDCの監視範囲と対応プロセスに直接的な影響を与える。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "LiteLLM",
+        "PyPI",
+        "クレデンシャル窃取",
+        "サプライチェーン攻撃",
+        "情報漏洩"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ec8973ee8022",
+      "title": "OpenAI Launches GPT-5.6-Cyber with Reduced Safeguards for Exploit Development",
+      "summary": "OpenAI on Monday unveiled a new cybersecurity-focused model called GPT‑5.6‑Cyber that it said is focused on vulnerability research, penetration testing, and incident response.\n\n\"Built on GPT‑5.6 Sol, it is trained to improve capabilities on several specialized cybersecurity tasks (e.g., finding zero-day vulnerabilities and developing exploit chains) and to reduce refusals for certain higher-risk",
+      "url": "https://thehackernews.com/2026/08/openai-launches-gpt-56-cyber-with.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-08-11T22:11:23+09:00",
+      "title_ja": "OpenAI、セキュリティ研究向けに安全性制限を緩和した「GPT-5.6-Cyber」を発表",
+      "summary_ja": "OpenAIがサイバーセキュリティに特化した新モデル「GPT-5.6-Cyber」を発表しました。このモデルは、GPT-5.6 Solをベースに、脆弱性研究、ペネトレーションテスト、インシデント対応など専門的なタスクでの能力向上を目的としています。特に、ゼロデイ脆弱性の発見やエクスプロイトチェーンの開発といった高リスクな要求に対する拒否率が低減されており、サイバー防御側の効率化と同時に、攻撃側の能力向上にも寄与する可能性を秘めています。",
+      "insight": "AIがセキュリティ業務における強力なツールとなる可能性を示す一方で、その悪用リスクも内包しています。SOC/CDCは、AI for SecurityとしてGPT-5.6-Cyberのようなモデルをティア2/3の調査、アラート判断、ナレッジ検索、レポート作成支援に活用する機会を検討すべきです。同時に、Security for AIの観点から、このようなモデルが悪用された際の防御策や、LLMが生成する情報に対するファクトチェックの必要性も考慮に入れる必要があります。",
+      "importance": "中",
+      "importance_reason": "AIが防御と攻撃の両面で活用される時代の到来を告げ、SOC/CDCの業務効率化と新たな脅威への対応の両面で示唆を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "GPT-5.6-Cyber",
+        "脆弱性研究",
+        "ペネトレーションテスト",
+        "インシデント対応"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2f17412ce22f",
+      "title": "From Prompt Injection to Web Exploitation: Revisiting Classic Vulnerabilities in LLM-Integrated Applications",
+      "summary": "arXiv:2608.10281v1 Announce Type: new \nAbstract: Large Language Models are increasingly integrated into web applications through chatbots, tool-calling pipelines, and agentic workflows. In these systems, user input may influence not only generated text, but also backend actions such as database queries, HTTP requests, file operations, template rendering, or API calls. This paper introduces LLM-mediated web attacks, a class of attacks in which attacker-controlled input is transformed by an LLM-in",
+      "url": "https://arxiv.org/abs/2608.10281",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-08-12T13:00:00+09:00",
+      "title_ja": "LLM統合アプリケーションにおける従来のWeb脆弱性の再考：LLM媒介Web攻撃",
+      "summary_ja": "LLMがチャットボット、ツール呼び出し、エージェントワークフローを通じてWebアプリケーションに深く統合されるにつれて、ユーザー入力がLLMの生成テキストだけでなく、バックエンドでのデータベースクエリ、HTTPリクエスト、ファイル操作、API呼び出しといったアクションに影響を及ぼすリスクが指摘されています。本論文は、攻撃者制御の入力がLLMによって変換され、従来のWeb脆弱性（SQLインジェクション、OSコマンドインジェクションなど）を引き起こす「LLM媒介Web攻撃」という新たな攻撃クラスを提唱し、その概念と潜在的影響を詳細に説明しています。",
+      "insight": "LLMやAIエージェントのツール・実行層、マルチエージェント層における新たなリスクとして、プロンプトインジェクションが従来のWebアプリケーション脆弱性と融合し、バックエンドシステムへの直接的な攻撃経路となり得ることが明確になりました。SOC/CDCは、LLM統合アプリケーションの監視において、AIシステム固有のログ（プロンプト履歴、LLM出力、ツール実行ログ）とWebアプリケーションログを相関分析し、不審なバックエンドアクションやAPIコールを検知する新たなルールとプロセスを策定する必要があります。これはAIエージェントのアイデンティティ・権限管理と密接に関連します。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが普及する中で、プロンプトインジェクションと既存のWeb脆弱性が融合した新たな攻撃クラスが具体的に提示され、SOC/CDCの監視対象と検知ロジックに直接的な見直しを求めるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "LLM媒介Web攻撃",
+        "プロンプトインジェクション",
+        "Webアプリケーション脆弱性",
+        "ツール呼び出し",
+        "AIエージェント"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "6b12bb402439",
+      "title": "Trigger the Straggler: Load Hijack on Mixture-of-Experts LLMs",
+      "summary": "arXiv:2608.10614v1 Announce Type: new \nAbstract: Expert parallelism (EP) is a common strategy for serving large Mixture-of-Experts (MoE) models across multiple GPUs by distributing experts among devices. Router decisions then determine both which experts process each token and which GPUs execute the resulting work. This procedure exposes a supply-chain attack surface in the serving schedule. We introduce Load Hijack, in which a malicious model provider modifies only a checkpoint's router weights",
+      "url": "https://arxiv.org/abs/2608.10614",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-08-12T13:00:00+09:00",
+      "title_ja": "MoE LLMにおけるロードハイジャック：モデルの専門家並列処理を悪用した攻撃",
+      "summary_ja": "Mixture-of-Experts (MoE) LLMの専門家並列処理（Expert parallelism）は、複数のGPUに専門家（Expert）を分散させることでモデルの効率的な提供を可能にしますが、ルーターの決定がどの専門家が各トークンを処理するか、どのGPUがそれを実行するかを制御します。本研究では、「Load Hijack」という新たなサプライチェーン攻撃を提案しています。これは、悪意のあるモデルプロバイダーがモデルのチェックポイントにあるルーターウェイトのみを改変し、特定の専門家に意図的に処理を集中させることで、GPUリソースを乗っ取ったり、機密情報を抽出したりする潜在的なリスクを指摘しています。",
+      "insight": "AIモデルの内部構造、特にMoEのような高度なアーキテクチャが新たな攻撃対象となることを示しています。これは、AIエージェントリスク6階層モデルの「モデル・推論層」におけるサプライチェーン攻撃、モデル汚染の進化形と捉えられます。SOC/CDCは、自社で利用する基盤モデルや特定タスクモデルの供給元に対するセキュリティ評価を強化し、モデルの改ざん検知や異常なリソース利用パターンの監視を検討する必要があります。特に、モデルの信頼性や整合性の検証が、今後重要な監視ポイントとなるでしょう。",
+      "importance": "中",
+      "importance_reason": "AIモデルの内部構造を悪用する新たなサプライチェーン攻撃の可能性を示唆しており、将来的なAIセキュリティ監視の高度化に影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "モデル汚染",
+        "サプライチェーン攻撃",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Mixture-of-Experts (MoE)",
+        "Load Hijack",
+        "モデル汚染",
+        "ルーターウェイト",
+        "GPUリソース"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "cd11628cff1e",
+      "title": "Mindgard Raises $30 Million to Protect AI Systems",
+      "summary": "<p>The cybersecurity startup will use the fresh investment to scale its product, engineering, sales, and marketing teams.</p>\n<p>The post <a href=\"https://www.securityweek.com/mindgard-raises-30-million-to-protect-ai-systems/\">Mindgard Raises $30 Million to Protect AI Systems</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/mindgard-raises-30-million-to-protect-ai-systems/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-08-12T22:24:00+09:00",
+      "title_ja": "MindgardがAIシステム保護のため3000万ドルの資金調達",
+      "summary_ja": "サイバーセキュリティスタートアップのMindgardが、AIシステム保護を専門とする企業として3000万ドルの資金調達を実施しました。この新たな投資は、同社の製品開発、エンジニアリング、セールス、マーケティングチームの規模拡大に活用される予定です。これは、AIシステムのセキュリティに対する市場ニーズの高まりと、専門ソリューションへの投資が活発化していることを示しています。",
+      "insight": "AIセキュリティに特化したスタートアップへの大型投資は、AIシステムの保護が独立した市場として急速に成熟していることを示唆します。SOC/CDCを設計・運用する立場としては、既存のセキュリティソリューションの限界を補完するAI特化型セキュリティツールの動向を注視し、将来的なサービス設計やMDR/MSSPの提供機能に組み込む可能性を検討すべきです。これは、AI for SecurityとSecurity for AIの両面で必要なツール選定の参考となります。",
+      "importance": "中",
+      "importance_reason": "AIセキュリティ市場の成長と投資動向を示しており、将来のSOC/CDCのツール選定やサービス設計に間接的に影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "資金調達",
+        "市場トレンド",
+        "スタートアップ"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Mindgard",
+        "AIセキュリティ",
+        "資金調達",
+        "スタートアップ",
+        "市場トレンド"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "サービス企画",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "aecf94a48ee2",
+      "title": "Kimwolf v7: An Evolution of the Kimwolf Botnet",
+      "summary": "<p>Discover how Kimwolf v7 targets Android IoT devices with HTTP/2 DDoS fingerprinting, Ethereum ENS C2 resolution and Tor backup routing.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/kimwolf-v7-botnet-malware/\">Kimwolf v7: An Evolution of the Kimwolf Botnet</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/kimwolf-v7-botnet-malware/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-08-11T19:00:16+09:00",
+      "title_ja": "Kimwolfボットネットv7：Android IoTデバイスを狙うDDoS攻撃の進化",
+      "summary_ja": "Kimwolfボットネットの最新バージョンv7が、Android IoTデバイスを標的に、HTTP/2 DDoSフィンガープリンティング、Ethereum ENS C2解決、Torバックアップルーティングといった高度な技術を駆使して進化しています。このボットネットは、従来のC2通信を隠蔽し、検知を回避するための新たな手法を導入しており、IoTデバイスが依然として大規模なサイバー攻撃の足場として悪用されている現状を浮き彫りにしています。",
+      "insight": "IoTデバイスを狙うボットネットが技術的に進化しており、特にC2通信の難読化や代替経路の利用は、従来のネットワーク監視だけでは検知が困難であることを示します。SOC/CDCは、IoTデバイスのライフサイクル全体（デバイス登録、設定、トラフィックパターン、異常挙動）を監視対象に含め、HTTP/2トラフィック解析能力やENSなどの新技術への対応、Torのような匿名通信の監視強化を検討すべきです。顧客のIoT環境に対するExposure管理と、異常検知能力の向上が課題となります。",
+      "importance": "中",
+      "importance_reason": "IoTデバイスを狙うボットネットの技術的な進化を示しており、SOC/CDCの監視範囲と検知能力の拡充を促すため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "DDoS"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Kimwolf v7",
+        "ボットネット",
+        "IoTデバイス",
+        "DDoS攻撃",
+        "Ethereum ENS"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "fb528945d7d5",
+      "title": "Hundreds of fake Chrome VPN extensions route traffic through a proxy",
+      "summary": "More than 737 browser extensions published on the Chrome Web Store impersonated well-known VPN and proxy services while routing users' traffic through SOCKS5 proxies operated by a single provider. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/hundreds-of-fake-chrome-vpn-extensions-route-traffic-through-a-proxy/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-13T03:54:57+09:00",
+      "title_ja": "数百の偽Chrome VPN拡張機能がSOCKS5プロキシ経由でトラフィックをルーティング",
+      "summary_ja": "Chrome Web Store上で737以上の偽VPNおよびプロキシサービスを装うブラウザ拡張機能が発見されました。これらの拡張機能は、ユーザーのインターネットトラフィックを、単一のプロバイダが運用するSOCKS5プロキシ経由で密かにルーティングしていました。これにより、ユーザーのプライバシー侵害や通信傍受、マルウェア感染のリスクが高まります。",
+      "insight": "エンドユーザーが利用するブラウザ拡張機能の脅威は継続しており、企業ネットワーク内外からの不審なトラフィックやプロキシ利用の監視が引き続き重要であることを示しています。SOC/CDCは、クライアント端末における不審なブラウザ拡張機能の利用を検知する仕組み（EDR/XDRとの連携）や、ネットワークトラフィックの挙動分析を通じて、意図しないプロキシ経由の通信を識別する能力を強化する必要があります。これはExposure管理の一環として、シャドーITやユーザー起因のリスクへの対応に繋がります。",
+      "importance": "中",
+      "importance_reason": "広範囲なユーザーに影響する偽拡張機能によるトラフィック乗っ取りであり、SOC/CDCが監視すべきエンドポイントセキュリティとネットワークセキュリティの重要性を示すため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Chrome拡張機能",
+        "偽VPN",
+        "SOCKS5プロキシ",
+        "トラフィックルーティング",
+        "ブラウザセキュリティ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "91c831f6e5a5",
+      "title": "Walmart's &quot;Trusted Agent&quot; Approach to Purple Teaming",
+      "summary": "Walmart co-locates red and blue teams to build trust and improve security through collaborative purple teaming exercises",
+      "url": "https://www.darkreading.com/cybersecurity-operations/walmart-trusted-agent-approach-purple-teaming",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-08-13T01:28:04+09:00",
+      "title_ja": "ウォルマートの「Trusted Agent」アプローチによるパープルチーミング",
+      "summary_ja": "ウォルマートは、レッドチームとブルーチームを物理的にも組織的にも連携させ、「Trusted Agent」と呼ばれる信頼に基づいた共同のパープルチーミング演習を実施しています。このアプローチにより、両チーム間の信頼関係を構築し、共同作業を通じてセキュリティ対策の有効性を高め、組織全体の防御能力向上を図っています。",
+      "insight": "MDR/MSSPサービス提供者やCDCの運用組織にとって、レッドチーム（攻撃側）とブルーチーム（防御側）の連携は、検知・対応能力を向上させる上で極めて重要です。この事例は、SOC/CDCの運用効率や防御能力を継続的に改善するためのプラクティスとして参考になります。サービス設計においては、顧客のレッドチームとの連携機会を創出し、脅威インテリジェンスの共有や共同訓練を通じて、より実践的な防御策を構築する視点が求められます。",
+      "importance": "低",
+      "importance_reason": "特定の組織の運用事例であり、業界全体に即時影響を与えるものではないが、SOC/CDCの運用改善の参考となるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "パープルチーミング",
+        "レッドチーム",
+        "ブルーチーム",
+        "ウォルマート",
+        "セキュリティ運用"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "5ce925481fd9",
+      "title": "FBI: Hackers target online accounts to steal nude photos",
+      "summary": "The FBI warns that cybercriminals are targeting adults' and children's social media and other online accounts to steal sexually explicit images or videos. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/fbi-warns-of-hackers-targeting-online-accounts-to-steal-explicit-photos/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-12T23:15:09+09:00",
+      "title_ja": "FBIがオンラインアカウントを狙うハッカーによる性的画像窃取を警告",
+      "summary_ja": "FBIは、サイバー犯罪者が成人および子供のソーシャルメディアやその他のオンラインアカウントを標的に、クレデンシャル窃取やソーシャルエンジニアリング手法を用いて性的画像や動画を窃取していると警告しています。この種の攻撃は、被害者のプライバシーを侵害し、恐喝やその他の犯罪に利用される可能性があり、個人レベルでのセキュリティ意識の向上が求められます。",
+      "insight": "アカウント乗っ取りや個人情報窃取は古典的な脅威ですが、その標的が子供やセンシティブな情報に拡大しており、被害の深刻さが増しています。SOC/CDCは、Identity/ITDRの観点から、アカウント乗っ取りの検知・対応能力を常に高く保つ必要があります。特に、顧客組織のエンドユーザーや従業員のアカウントに対する監視強化、多要素認証の導入支援、セキュリティ意識向上トレーニングの提供は、MDR/MSSPサービスとして不可欠な要素です。",
+      "importance": "低",
+      "importance_reason": "一般的なクレデンシャル窃取の脅威であり、SOC/CDCの基本業務範囲に属するが、被害の深刻性から注意喚起の価値があるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "クレデンシャル窃取",
+        "ソーシャルエンジニアリング",
+        "個人情報流出"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "FBI警告",
+        "オンラインアカウント",
+        "クレデンシャル窃取",
+        "ソーシャルエンジニアリング",
+        "個人情報流出"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "顧客課題",
+        "Identity/ITDR"
+      ],
+      "views": 0
+    },
+    {
       "id": "ec8973ee8022",
       "title": "OpenAI Launches GPT-5.6-Cyber with Reduced Safeguards for Exploit Development",
       "summary": "OpenAI on Monday unveiled a new cybersecurity-focused model called GPT‑5.6‑Cyber that it said is focused on vulnerability research, penetration testing, and incident response.\n\n\"Built on GPT‑5.6 Sol, it is trained to improve capabilities on several specialized cybersecurity tasks (e.g., finding zero-day vulnerabilities and developing exploit chains) and to reduce refusals for certain higher-risk",
