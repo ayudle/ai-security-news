@@ -2,6 +2,407 @@
   "month": "2026-08",
   "articles": [
     {
+      "id": "0ae077590e9f",
+      "title": "Malicious LiteLLM Releases Tied to Trivy Hack May Have Exposed 2,100+ Organizations",
+      "summary": "Two malicious LiteLLM releases sat on PyPI for about 40 minutes in March carrying credential-stealing code capable of harvesting cloud keys, SSH keys, Kubernetes tokens, database passwords, and other secrets from systems that installed them.\n\nThreat intelligence firm CloudSEK now says a dataset it obtained, built from roughly 434,000 files the attackers captured, maps potential exposure to more",
+      "url": "https://thehackernews.com/2026/08/malicious-litellm-releases-tied-to.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-08-12T17:04:52+09:00",
+      "title_ja": "悪意あるLiteLLMリリースが2,100以上の組織にクレデンシャル情報漏洩の可能性",
+      "summary_ja": "2つの悪意あるLiteLLMリリースがPyPIに約40分間存在し、これらをインストールしたシステムからクラウドキー、SSHキー、Kubernetesトークン、データベースパスワードなどの機密情報を窃取するコードが含まれていました。脅威インテリジェンス企業CloudSEKは、攻撃者が取得した約434,000ファイルから2,100以上の組織が潜在的に情報漏洩した可能性があると報告しています。これは、AI関連のソフトウェアサプライチェーンを悪用した攻撃の一例です。",
+      "insight": "AI関連ライブラリのサプライチェーン攻撃が具体化し、開発・運用環境におけるコンポーネントの信頼性検証がSOC/CDCにとって喫緊の課題であることを示唆します。特に、AIシステムが扱うクラウド、コンテナ、データベースなどの機密情報へのアクセス権限管理と、異常検知の強化が不可欠です。従来のソフトウェアサプライチェーン監視に加え、AI開発エコシステム特有のリスク評価・管理プロセスを設計するべきです。",
+      "importance": "高",
+      "importance_reason": "AI開発サプライチェーンを標的とした攻撃が現実化し、広範囲にわたる機密情報窃取リスクがあるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "LiteLLM",
+        "PyPI",
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取",
+        "Kubernetes"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3c646cdcdd8a",
+      "title": "Agent Safety Should Be a Runtime Contract",
+      "summary": "arXiv:2608.11274v1 Announce Type: new \nAbstract: The dominant paradigm treats AI safety as a property to be instilled during model training via RLHF, DPO, or Constitutional AI. We argue this is structurally insufficient for autonomous agents that execute code, mutate files, send messages, and modify databases. Agent safety should be a runtime contract enforced by the harness, and the contract has two complementary faces. The preventive face blocks dangerous actions before they happen via sandbox",
+      "url": "https://arxiv.org/abs/2608.11274",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-08-13T13:00:00+09:00",
+      "title_ja": "AIエージェントの安全性はランタイムでの契約として強制されるべき",
+      "summary_ja": "AIの安全性はモデルトレーニング段階（RLHF、DPOなど）だけでなく、コード実行、ファイル変更、メッセージ送信、データベース変更を行う自律型エージェントにおいては、ランタイム時にハーネスによって強制される「契約」として扱うべきだと提言されています。この契約は、サンドボックスによる危険な行動の予防と、監視・回復による対応という二つの側面を持つべきであると主張されています。これは、AIエージェントの行動が予測不能な結果を招くリスクへの対処法として、実証的で新しいアプローチを示しています。",
+      "insight": "AIエージェントの普及に伴い、そのセキュリティと安全性を確保するための防御アーキテクチャは、モデル層だけでなく実行環境全体で設計される必要があることを明確に示しています。SOC/CDCは、AIエージェントが実行するアクション（ツール呼び出し、API連携、データアクセスなど）を厳格に監視し、異常を検知するためのランタイムポリシーを設計・適用する責務を負います。エージェントの行動履歴を追跡し、その判断根拠と証跡を管理する仕組みがCDCの品質保証において不可欠となります。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの安全確保に関する根本的な防御パラダイムを提言しており、今後のAIセキュリティ設計に直接的な影響を与えるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "ランタイム安全性",
+        "サンドボックス",
+        "RLHF",
+        "ハーネス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ca3ced9b9285",
+      "title": "Knowledge-Graph-Guided Retrieval-Augmented LLMs for Explainable Root Cause Analysis in Automotive HiL Validation",
+      "summary": "arXiv:2608.11277v1 Announce Type: new \nAbstract: Hardware-in-the-Loop validation of automotive software systems generates large multivariate time-series recordings whose manual analysis is time-consuming and often limited to anomaly detection and fault classification rather than root-cause analysis. Although deep learning methods have shown strong performance in fault detection and classification, they usually require task-specific training or retraining when new fault locations, systems, or ope",
+      "url": "https://arxiv.org/abs/2608.11277",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-08-13T13:00:00+09:00",
+      "title_ja": "自動車HiL検証における根本原因分析のためのナレッジグラフ誘導型RAG-LLM",
+      "summary_ja": "自動車ソフトウェアシステムのHardware-in-the-Loop (HiL) 検証において生成される大量の多変量時系列記録について、手動での分析は時間と労力がかかり、根本原因分析よりも異常検知や故障分類に限定されがちです。この研究は、ナレッジグラフとRetrieval-Augmented Generation (RAG) を組み合わせたLLMを活用し、根拠説明可能な根本原因分析を実現する手法を提案しています。これにより、複雑なシステムの故障分析の効率と精度を向上させることが期待されます。",
+      "insight": "本研究は、SOC/CDC業務におけるAI for Securityの具体的な応用可能性を示唆しています。特に、複雑なインシデントの根本原因分析や、多様なデータソースからのナレッジ検索・統合において、RAGとナレッジグラフを組み合わせたLLMが有効なツールとなり得ます。Tier2/3アナリストの調査・分析能力をAIで拡張し、判断根拠の明確化やレポート作成の効率化に繋がるか、その導入可能性を検討するべきです。",
+      "importance": "中",
+      "importance_reason": "SOC/CDC業務におけるAI for Securityの具体的な活用方法を示唆する研究であり、中期的な戦略に影響する可能性があるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ナレッジグラフ",
+        "RAG",
+        "LLM",
+        "根本原因分析",
+        "HiL検証"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "cd11628cff1e",
+      "title": "Mindgard Raises $30 Million to Protect AI Systems",
+      "summary": "<p>The cybersecurity startup will use the fresh investment to scale its product, engineering, sales, and marketing teams.</p>\n<p>The post <a href=\"https://www.securityweek.com/mindgard-raises-30-million-to-protect-ai-systems/\">Mindgard Raises $30 Million to Protect AI Systems</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/mindgard-raises-30-million-to-protect-ai-systems/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-08-12T22:24:00+09:00",
+      "title_ja": "Mindgard、AIシステム保護で3,000万ドルを調達",
+      "summary_ja": "AIシステム保護に特化したサイバーセキュリティスタートアップのMindgardが、製品開発、エンジニアリング、営業・マーケティングチームの拡充のため、3,000万ドルの資金調達を実施しました。この投資は、AIセキュリティ市場の成長と、その専門性の高まりを示唆しています。Mindgardのような専門企業の台頭は、既存のセキュリティソリューションではカバーしきれないAI固有のリスクへの対応ニーズが高まっていることを反映しています。",
+      "insight": "AIセキュリティ市場への投資が活発化しており、AIシステム保護を専門とするベンダーのソリューションが今後SOC/CDCの検討対象となる可能性が高いです。Security for AIの観点から、AIシステムのライフサイクル全体を保護する新しいツールやサービスが市場に登場することで、MDR/MSSPは自社のサービスポートフォリオを再評価し、これらの専門ソリューションとの連携や統合を検討する必要があるでしょう。CISO報告においても、AIセキュリティ市場の動向は重要な要素となります。",
+      "importance": "中",
+      "importance_reason": "AIセキュリティ市場の成長とスタートアップの台頭が、今後のサービス設計やツール選定に影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "資金調達",
+        "スタートアップ",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Mindgard",
+        "AIシステム保護",
+        "資金調達",
+        "スタートアップ",
+        "AIセキュリティ市場"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "サービス企画",
+        "MDR/MSSP設計",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2055660bf576",
+      "title": "AI 'watermark removers' flood the web. Almost none can prove they work.",
+      "summary": "Multiple 'watermark removers' have surfaced days after Anthropic began watermarking text generated by Claude, including an open source project with over 4,500 GitHub stars and paid AI detection evasion services. None of the tools' claims about defeating the text watermark can be verified, as Anthropic has not released a detector. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/ai-watermark-removers-flood-the-web-almost-none-can-prove-they-work/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-14T02:33:28+09:00",
+      "title_ja": "AIウォーターマーク除去ツールが横行、有効性は未検証",
+      "summary_ja": "AnthropicがClaudeにテキストウォーターマーキング機能の導入を開始した直後から、そのウォーターマークを除去すると称するツールが多数登場しています。GitHubで4,500以上のスターを獲得したオープンソースプロジェクトや有料のAI検出回避サービスも含まれます。しかし、Anthropicが検出器を公開していないため、これらのツールが実際にウォーターマークを無効化できるかどうかは検証されていません。",
+      "insight": "AI生成コンテンツの信頼性を確保するための防御策（ウォーターマーキング）に対し、それを回避しようとする攻撃側の動きが既に表面化しています。これはAIセキュリティにおける「矛と盾」の競争が加速していることを示唆し、AIシステムの信頼性や、AIが悪用された際の誤情報生成リスクを管理する上で重要な観点となります。SOC/CDCは、AI生成コンテンツの検出回避技術の進化を追跡し、将来的な脅威インテリジェンスとして活用できるよう、動向を注視すべきです。",
+      "importance": "中",
+      "importance_reason": "AI生成コンテンツの信頼性に関わる防御・攻撃のいたちごっこが始まっており、中長期的なAIリスク管理に影響するため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "誤情報生成",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIウォーターマーク",
+        "Anthropic Claude",
+        "検出回避",
+        "誤情報",
+        "AI生成コンテンツ"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "0d88d413f657",
+      "title": "Cybersecurity M&A Roundup: 21 Deals Announced in July 2026",
+      "summary": "<p>Significant cybersecurity M&#038;A deals announced by Barracuda, CrowdStrike, Cyera, Okta, Palo Alto Networks, and Qualcomm.</p>\n<p>The post <a href=\"https://www.securityweek.com/cybersecurity-ma-roundup-21-deals-announced-in-july-2026/\">Cybersecurity M&#038;A Roundup: 21 Deals Announced in July 2026</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/cybersecurity-ma-roundup-21-deals-announced-in-july-2026/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-08-13T23:41:44+09:00",
+      "title_ja": "2026年7月のサイバーセキュリティM&A動向：21件の取引",
+      "summary_ja": "2026年7月にBarracuda、CrowdStrike、Cyera、Okta、Palo Alto Networks、Qualcommなどの主要企業によって、21件のサイバーセキュリティ分野のM&Aが発表されました。これらの取引は、サイバーセキュリティ業界が継続的に統合と進化を遂げていることを示しており、特にAI、クラウドセキュリティ、ID管理などの領域で投資と技術統合が進んでいると推察されます。",
+      "insight": "サイバーセキュリティ業界におけるM&Aの活発化は、既存のSIEM/SOAR/MDRベンダーが新たな技術やサービスを取り込み、ソリューションの統合・強化を図っていることを示唆しています。これは、SOC/CDCが直面する脅威の複雑化と、防御技術の高度化が同時に進行している結果であり、将来的な防御アーキテクチャやMDR/MSSPサービスの設計において、主要ベンダーの戦略や提供サービスのポートフォリオ変化を考慮に入れる必要があります。サービス企画者は、これらの市場トレンドを理解し、自社のサービス戦略に反映させるべきです。",
+      "importance": "中",
+      "importance_reason": "サイバーセキュリティ市場全体のトレンドと主要ベンダーの戦略変化を示しており、中長期的なサービス設計に影響するため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "M&A",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "M&A",
+        "サイバーセキュリティ市場",
+        "Barracuda",
+        "CrowdStrike",
+        "Okta"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "MDR/MSSP設計",
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "89e7fbeee8f0",
+      "title": "WhatsApp rolls out new feature that flags potential scam messages",
+      "summary": "WhatsApp has begun rolling out a new optional \"Scam Alert\" feature, which uses a local machine learning model to warn users when scammers are targeting them. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/whatsapp-rolls-out-new-feature-that-flags-potential-scam-messages/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-13T20:50:22+09:00",
+      "title_ja": "WhatsAppが詐欺メッセージ検知機能を展開",
+      "summary_ja": "WhatsAppが、ローカルの機械学習モデルを利用して潜在的な詐欺メッセージをユーザーに警告する新しいオプション機能「Scam Alert」の提供を開始しました。この機能は、メッセージングアプリの利用者が遭遇する可能性のあるフィッシングやソーシャルエンジニアリング攻撃からの保護を強化することを目的としています。エンドユーザー向けのAI活用による防御策の普及を示しています。",
+      "insight": "AI for Securityの観点から、クライアントサイドやエンドポイントでの機械学習モデル活用による脅威検知が進んでいることを示唆します。このようなローカルでの検知機能は、SOC/CDCが受信するアラートの精度向上や量的な削減に貢献する可能性があります。特にフィッシングやソーシャルエンジニアリングといったユーザー起点のリスクに対し、入口対策の強化として注目すべきであり、CDCはこれらの技術進化が全体の検知・対応プロセスに与える影響を評価し、連携を検討するべきです。",
+      "importance": "中",
+      "importance_reason": "エンドユーザー向けサービスにおけるAI活用による防御策の普及は、SOC/CDCのアラート負荷軽減や検知精度向上に貢献する可能性があるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "フィッシング",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "WhatsApp",
+        "詐欺検知",
+        "Scam Alert",
+        "機械学習",
+        "フィッシング対策"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "5d895d960fcf",
+      "title": "'Jewelbug' APT Balances State Espionage &amp; Cryptocurrency Theft",
+      "summary": "Researchers discovered hackers-for-hire performing cyber espionage and financially motivated heists from the same Web panel.",
+      "url": "https://www.darkreading.com/threat-intelligence/jewelbug-apt-state-espionage-cryptocurrency-theft",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-08-13T19:00:00+09:00",
+      "title_ja": "APTグループ「Jewelbug」が国家スパイと仮想通貨窃盗を並行",
+      "summary_ja": "研究者たちは、国家支援型のサイバースパイ活動と金銭目的の仮想通貨窃盗を同じWebパネルから実行しているハッカー集団「Jewelbug」を発見しました。このグループは、伝統的なAPT（高度持続的脅威）活動と、金融犯罪という異なる目的を併せ持っており、攻撃者の動機と手口の複雑化を示しています。単一の攻撃者が複数の目的を持つことは、従来の脅威分類や検知アプローチでは捉えにくい新たな課題を提示しています。",
+      "insight": "攻撃者の目的が多様化・複合化している現代において、従来のAPTや金融犯罪といった分類にとらわれない包括的な脅威インテリジェンスと検知能力がSOC/CDCには求められます。既存のSIEM/SOAR/MDRの限界として、多様な攻撃ベクトルと目的を単一のシナリオで捉えきれない点があり、より高度な脅威ハンティングや振る舞い分析が必要となります。攻撃者のTTPs（戦術、技術、手順）を多角的に分析し、それに基づいた検知・対応シナリオを拡充するべきです。",
+      "importance": "高",
+      "importance_reason": "攻撃者の目的の複合化と多様なTTPsの使用は、SOC/CDCの検知・分析・対応のフレームワークに根本的な再考を迫るため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "APT",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Jewelbug",
+        "APT",
+        "サイバースパイ",
+        "仮想通貨窃盗",
+        "脅威インテリジェンス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "6587cc84877b",
+      "title": "CBP Workers Allegedly Used Government Databases to Spy on Exes, Crushes, and Colleagues",
+      "summary": "Records obtained by WIRED detail hundreds of allegations of Customs and Border Protection workers misusing internal tools to look up romantic interests and track colleagues’ cell phones.",
+      "url": "https://www.wired.com/story/cbp-workers-allegedly-used-government-databases-to-spy-on-exes-crushes-and-colleagues/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-08-13T18:30:00+09:00",
+      "title_ja": "CBP職員が政府データベースを私的利用し元恋人や同僚を監視",
+      "summary_ja": "WIREDが入手した記録によると、米国税関・国境警備局（CBP）の職員が、内部ツールを私的な目的（元恋人、興味のある人物、同僚の追跡など）で数百件にわたり不正利用していた疑いが詳細に報じられています。これは内部不正の深刻な事例であり、特権アクセスの濫用、データガバナンスの欠如、組織のセキュリティポリシー違反が複合的に絡み合った結果です。データのプライバシー侵害と個人情報流出のリスクを浮き彫りにしています。",
+      "insight": "AIエージェントの普及により特権的なアクセス権限が増加する中で、内部不正のリスク管理はSOC/CDCにとって極めて重要になります。この事例は、技術的な防御策だけでなく、人間による権限の濫用を防ぐための運用プロセス、監視、監査の重要性を再認識させます。特に、データへのアクセスログや利用状況を厳格に監視し、UEBA (User and Entity Behavior Analytics) を活用して異常な行動を検知する体制の強化が必須です。Identity/ITDRの観点からも、人間とAIエージェント双方のID・権限管理を厳格化し、監査対応能力を高めるべきです。",
+      "importance": "高",
+      "importance_reason": "内部不正の典型的な事例であり、AIエージェントが特権を持つ環境下でそのリスクがさらに高まるため、SOC/CDCの根本的な設計に影響するため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "個人情報流出"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "CBP",
+        "内部不正",
+        "特権アクセス濫用",
+        "データプライバシー",
+        "個人情報流出"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "CISO報告",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "91c831f6e5a5",
+      "title": "Walmart Takes a 'Trusted Agent' Approach to Purple Teaming",
+      "summary": "Walmart colocates red and blue teams to build trust and improve security through collaborative purple teaming exercises",
+      "url": "https://www.darkreading.com/cybersecurity-operations/walmart-trusted-agent-approach-purple-teaming",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-08-13T01:28:04+09:00",
+      "title_ja": "Walmart、パープルチーミングに「信頼されたエージェント」アプローチを採用",
+      "summary_ja": "Walmartが、レッドチームとブルーチームを連携させる「パープルチーミング」に、信頼に基づいたアプローチを採用しています。これにより、両チームが緊密に協力し、互いの知見を共有しながらセキュリティを継続的に改善する文化を醸成しています。このアプローチは、組織全体のセキュリティ成熟度を高め、より実践的な防御能力を構築することに貢献しています。",
+      "insight": "SOC/CDCの運用強化において、組織内のチーム連携と継続的な改善サイクルは不可欠です。パープルチーミングは、検知・分析・対応の有効性を検証し、防御側の能力を向上させるための実用的なアプローチであり、SOC運用変化の具体的な方向性を示唆しています。AIの導入がTier間の役割分担を変える中で、人間同士の信頼と協業を基盤とした防御体制の構築は、AIの限界を補完し、全体のセキュリティ品質を保証する上で引き続き重要な要素となります。",
+      "importance": "中",
+      "importance_reason": "SOC/CDCの運用改善における組織的なアプローチの有効性を示し、防御体制の成熟に貢献する重要なプラクティスであるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Walmart",
+        "パープルチーミング",
+        "レッドチーム",
+        "ブルーチーム",
+        "セキュリティ運用"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
       "id": "dc67ce3f34b1",
       "title": "Over 2,500 Organizations Impacted by LiteLLM Supply Chain Attack",
       "summary": "<p>LiteLLM was compromised through the Trivy hack and abused to distribute information-stealing malware to its users.</p>\n<p>The post <a href=\"https://www.securityweek.com/over-2500-organizations-impacted-by-litellm-supply-chain-attack/\">Over 2,500 Organizations Impacted by LiteLLM Supply Chain Attack</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
