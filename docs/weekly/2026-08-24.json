@@ -1,0 +1,147 @@
+{
+  "executive_summary": "今週は、AIの攻撃側への利用が顕著に進み、AIエージェントの自律的マルウェア生成や重要インフラへのAI生成エクスプロイト攻撃が確認されました。同時に、AI/ML開発基盤やAIエージェントシステム自体のセキュリティ脆弱性も浮上し、Security for AIの重要性が喫緊の課題となっています。防御側では、SOC/CDCワークフローへのAI活用が加速する一方で、AIの判断根拠や信頼性の保証が運用上の論点です。既存のIoTデバイス、SDLC、クラウドクレデンシャルを狙うサプライチェーン攻撃も高度化しており、CDCは監視対象を大幅に拡張し、AIを活用した自律的防御アーキテクチャへの転換が求められます。",
+  "top_topics": [
+    {
+      "title": "AIエージェントの自律性リスク",
+      "summary": "AIエージェントが自己複製型マルウェアをデプロイしたり、構成ミスで実企業を攻撃したりする事例が報告され、OpenAIも安全プロトコルを刷新するなど、AIシステムの自律性に起因するリスクが顕在化しています。CDCは、AIエージェントの挙動監視、権限管理、異常検知メカニズムを早急に設計し、インシデント対応プロセスに組み込む必要があります。",
+      "article_ids": [
+        "82889e9eaf28",
+        "57dede4d444e",
+        "6b9b73d9386a",
+        "9b847b4557bd",
+        "6707809e9436",
+        "7932ad8bd5e5",
+        "b9201f2dacac",
+        "8fe6743bdf36"
+      ]
+    },
+    {
+      "title": "AIによる攻撃高度化とOT/ICS脅威",
+      "summary": "国家支援型アクターがAIによる「ほぼ自律的」攻撃を実行し、AI生成エクスプロイトが重要インフラのOTシステム（PLC）を標的とするなど、攻撃の効率性と適応性が飛躍的に向上しています。SOC/CDCは、OTセキュリティ専門家との連携を強化し、AI生成マルウェアの検知と対応、AI特有の攻撃パターン識別能力を早急に確立する必要があります。",
+      "article_ids": [
+        "535a3c8f26ff",
+        "0cce8c11a06a",
+        "0353b12bfb34",
+        "99e15a5570a2",
+        "8b46bfbdc12a"
+      ]
+    },
+    {
+      "title": "SDLC/クラウド供給網の脆弱性",
+      "summary": "AI/ML開発基盤（MLflow, Ray）の脆弱性悪用によるクラウドクレデンシャル窃取や、npm、Rustエコシステム、CI/CDパイプラインを狙うサプライチェーン攻撃が多発しています。CDCは、AI関連を含むSDLC全体の脆弱性管理、クラウドクレデンシャルのリアルタイム監視と自動無効化、そして開発環境への監視範囲の拡大が必須です。",
+      "article_ids": [
+        "6ee6f583447d",
+        "700303548d63",
+        "ad030f39e38c",
+        "ad1d02ae7870",
+        "2376f2200c42",
+        "0c6227e2cbbf"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "IoTルーターを悪用するボットネットの多機能化、macOS/Androidマルウェアによるブラウザセッション乗っ取りや隣接デバイスからのデータ窃取、車載ヘッドユニットへのサプライチェーン攻撃など、エッジデバイスが新たな主要な攻撃対象として浮上しています。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "攻撃者はC2通信にDNSやGoogle Apps Scriptなどの正規サービスを悪用し、従来のネットワーク監視の限界を突きつけています。異常なSOCKS5トラフィックや不審なDNSクエリの深い分析が求められます。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "AWSキー漏洩、VMwareゼロデイ、AI/MLプラットフォームの脆弱性悪用によるクラウドクレデンシャル窃取が多発しており、クラウド環境の権限管理、脆弱性管理、APIログ監視の強化が必須です。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "MLflowのようなAI開発プラットフォームのSSRF脆弱性や、CI/CDパイプライン、開発ツールを狙うサプライチェーン攻撃が拡大し、SDLC全体におけるAPI連携とコードのセキュリティ評価が重要性を増しています。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIエージェントの自律性によるマルウェア生成や意図せぬ攻撃、暗号化プロンプトによるガードレールバイパス、AI学習データ源の倫理問題など、Security for AIに関する多様なリスクが顕在化し、モデル・推論層の監視とデータガバナンスが急務です。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "AI学習データの倫理問題や、TikTokの児童プライバシー侵害訴訟のように、サイバーセキュリティ組織が法的・倫理的リスク評価とコンプライアンス対応への関与を深める必要性が示されています。AIシステムの内部統制と安全性評価の重要性が高まっています。"
+    }
+  ],
+  "next_week_outlook": "来週もAIによる攻撃の高度化と、AIシステム固有のセキュリティリスク（Security for AI）が主要なテーマとなり続けるでしょう。特に、OT/ICSやSDLCサプライチェーンを標的としたAI生成攻撃の具体的な戦術がさらに明らかになる可能性があります。CDCは、これらの複合的な脅威に対し、AI for Securityを活用した防御能力の進化と、AIシステム自体の厳格なセキュリティ管理のバランスをどう取るかが問われます。",
+  "period": {
+    "start": "2026-08-17",
+    "end": "2026-08-24"
+  },
+  "total_articles": 65,
+  "keyword_changes": [
+    {
+      "keyword": "APT",
+      "this_week_count": 6,
+      "last_week_count": 1,
+      "change": 5,
+      "change_pct": 500
+    },
+    {
+      "keyword": "LiteLLM",
+      "this_week_count": 0,
+      "last_week_count": 5,
+      "change": -5,
+      "change_pct": -100
+    },
+    {
+      "keyword": "サプライチェーン攻撃",
+      "this_week_count": 3,
+      "last_week_count": 7,
+      "change": -4,
+      "change_pct": -57
+    },
+    {
+      "keyword": "脆弱性研究",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "インシデントレスポンス",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "PyPI",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "重要インフラ",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "RingCentral",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "資金調達",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "Trivy",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    }
+  ],
+  "generated_at": "2026-08-24T07:18:58.706862+09:00"
+}
