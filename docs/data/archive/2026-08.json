@@ -2,6 +2,248 @@
   "month": "2026-08",
   "articles": [
     {
+      "id": "0a4ac3f5a847",
+      "title": "Anthropic warns infostealer malware is hijacking Claude sessions to drain usage",
+      "summary": "Anthropic is warning some Claude users that infostealer malware on their PCs has stolen active Claude login sessions, allowing attackers to access accounts and consume their usage. [...]",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-warns-infostealer-malware-is-hijacking-claude-sessions-to-drain-usage/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-30T23:30:25+09:00",
+      "title_ja": "AnthropicがClaudeセッション乗っ取りマルウェアに警告、利用枠不正消費の被害",
+      "summary_ja": "Anthropicは、情報窃取型マルウェアがPCに感染し、Claudeのアクティブなログインセッションを盗み、攻撃者がアカウントにアクセスして利用枠を消費していると警告した。このマルウェアは、ユーザーの認証情報を窃取するだけでなく、既にログイン済みのセッションを直接ハイジャックする能力を持つ。これにより、ユーザーは意図しない利用料金の発生や、機密情報の漏洩リスクに晒される。",
+      "insight": "AIサービスの利用が拡大する中、従来のマルウェアがAIサービスのアカウント乗っ取りを狙う新たな手口が確認された。SOC/CDCは、AIサービスのアクセスログ（特に異常なAPIコールや利用枠の急増）を監視対象に追加し、従来のEDR/XDRでは検知しにくいセッションハイジャックのリスクに対応する必要がある。また、従業員向けにAIサービス利用におけるマルウェア感染予防とセッション管理の重要性を再教育すべきか、検討するべき。",
+      "importance": "高",
+      "importance_reason": "AIサービス利用が一般化する中で、セッションハイジャックという新たな脅威が顕在化し、AIサービスのセキュリティモデル設計とSOC監視体制に直接影響を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Anthropic Claude",
+        "情報窃取マルウェア",
+        "セッションハイジャック",
+        "アカウント乗っ取り",
+        "利用枠消費"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "45d64c4fa56d",
+      "title": "TerminalFix Uses Fake Cloudflare CAPTCHAs to Deploy Reverse-Tunnel Backdoor",
+      "summary": "Microsoft has disclosed details of a new ClickFix variant, dubbed TerminalFix, that aims to trick users into running a malicious command in Windows Terminal or PowerShell.\n\n\"While traditional ClickFix campaigns direct victims to the Windows Run dialog, TerminalFix campaigns apply the same technique but direct users to Windows Terminal or PowerShell instead, increasing the likelihood that complex",
+      "url": "https://thehackernews.com/2026/08/terminalfix-uses-fake-cloudflare.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-08-30T16:36:33+09:00",
+      "title_ja": "TerminalFix、偽Cloudflare CAPTCHAを悪用しリバースシェルをデプロイ",
+      "summary_ja": "Microsoftは、ClickFixの新たな亜種「TerminalFix」の出現を警告した。これは、偽のCloudflare CAPTCHAを装ってユーザーを欺き、Windows TerminalやPowerShellで悪意のあるコマンドを実行させるもの。従来のClickFixがWindows Runダイアログを利用したのに対し、TerminalFixはより複雑なコマンド実行を可能にし、リバーストンネル型バックドアをデプロイする。",
+      "insight": "フィッシングとソーシャルエンジニアリングの手口が、ユーザーにCLIツールでの直接的なコマンド実行を促す形へと進化している。SOC/CDCは、EDR/XDRのログを活用し、PowerShellやWindows Terminalからの異常なコマンド実行や外部通信を検知するルールを強化する必要がある。また、従業員へのフィッシング訓練において、CLIコマンド実行を促す手口への注意喚起を追加すべきか、検討するべき。",
+      "importance": "中",
+      "importance_reason": "従来のフィッシング手法の進化形であり、ユーザーの行動を悪用してマルウェアをデプロイする手口が高度化しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "マルウェア",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "TerminalFix",
+        "ClickFix",
+        "Cloudflare CAPTCHA",
+        "Windows Terminal",
+        "PowerShell"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3f7c49eff9e6",
+      "title": "Anthropic is cutting Claude Code's current weekly limits by 17%",
+      "summary": "Anthropic is permanently increasing Claude Code's standard weekly usage limits by 25% for Pro, Max, Team, and seat-based Enterprise plans, but it's not as good as it sounds. [...]",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-is-cutting-claude-codes-current-weekly-limits-by-17-percent/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-08-30T08:11:51+09:00",
+      "title_ja": "AnthropicがClaude Codeの週間利用制限を実質的に削減",
+      "summary_ja": "Anthropicは、Claude Codeのプロ、マックス、チーム、およびシートベースのエンタープライズプランにおける週間利用制限を実質的に17%削減すると発表した。これは、標準利用制限を25%増加させるものの、既存のユーザーにとっては以前よりも利用可能量が減ることを意味する。AIサービスの提供側が、サービスの利用状況やリソース制約に応じて、利用ポリシーを調整している。",
+      "insight": "AIサービスの利用制限変更は、企業のAI活用戦略や、サービス継続性計画に影響を与える可能性がある。直接的なセキュリティインシデントではないが、サービス利用状況の変更は、今後のAIサービス利用に関するガバナンスやコスト管理の観点からCISO報告やサービス企画部門にとって重要となりうる。SOC/CDCは、利用しているAIサービスの利用規約変更が、事業継続計画やセキュリティ運用に間接的に影響しないか確認するべき。",
+      "importance": "低",
+      "importance_reason": "直接的なセキュリティ脅威ではなく、AIサービス提供側のビジネス判断であり、セキュリティ運用への直接的な影響は小さいと判断されるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Anthropic Claude Code",
+        "利用制限",
+        "AIサービス",
+        "リソース管理"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "7e7b8b046854",
+      "title": "Five Critical WordPress Plugin and Theme Flaws Enable Site Takeover or RCE",
+      "summary": "Multiple critical security flaws have been disclosed in WordPress plugins and themes, including WPMU DEV Dashboard, Avada, TranslatePress, Pods, and GiveWP, that could lead to authentication bypass, account takeover, and arbitrary code execution.\n\nThe vulnerabilities, according to Wordfence and Patchstack, are listed below -\n\n\n  CVE-2026-76581 (CVSS score: 9.8) - An authentication bypass flaw in",
+      "url": "https://thehackernews.com/2026/08/five-critical-wordpress-plugin-and.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-08-30T01:25:03+09:00",
+      "title_ja": "WordPressプラグイン・テーマに致命的な脆弱性、サイト乗っ取りやRCEの恐れ",
+      "summary_ja": "WordPressの主要プラグインおよびテーマ（WPMU DEV Dashboard, Avada, TranslatePress, Pods, GiveWPなど）に複数の致命的なセキュリティ脆弱性が開示された。これらの脆弱性には、認証バイパス、アカウント乗っ取り、および任意コード実行（RCE）の可能性が含まれており、CVSSスコア9.8のものが含まれる。",
+      "insight": "広く普及しているWebアプリケーションの脆弱性は、常にSOC/CDCにとって重要な監視・対策対象である。Webサイトの運営者にとって、これらの脆弱性情報は即座にパッチ適用や設定見直しを促すものであり、適用が遅れた場合は侵害のリスクが非常に高い。SOC/CDCは、自社が利用するWordPressサイトおよび関連プラグイン・テーマのバージョン管理と脆弱性スキャンを徹底し、脆弱性悪用を検知するためのWAFやIDS/IPSルールを整備・強化する必要がある。",
+      "importance": "高",
+      "importance_reason": "広く利用されているWordPressのプラグイン・テーマに致命的な脆弱性が発見され、サイト乗っ取りやRCEといった深刻な被害に直結する可能性があるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "認証バイパス",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "WordPress",
+        "プラグイン脆弱性",
+        "テーマ脆弱性",
+        "認証バイパス",
+        "RCE"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "fff3c3f7fc71",
+      "title": "Hasbro Data Breach Exposed Employee Personal Information",
+      "summary": "<p>A cyberattack caused disruptions at the toy and game giant earlier this year and the company is now disclosing a data breach.</p>\n<p>The post <a href=\"https://www.securityweek.com/hasbro-data-breach-exposed-employee-personal-information/\">Hasbro Data Breach Exposed Employee Personal Information</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/hasbro-data-breach-exposed-employee-personal-information/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-08-29T20:55:00+09:00",
+      "title_ja": "Hasbroのデータ侵害で従業員の個人情報が流出",
+      "summary_ja": "玩具・ゲーム大手のHasbroが、今年初めに発生したサイバー攻撃に起因するデータ侵害を公表した。この侵害により、従業員の個人情報が外部に流出したことが判明した。サイバー攻撃自体はサービス中断を引き起こしたが、その後の調査で個人情報の流出が確認された。",
+      "insight": "データ侵害は依然として企業にとって重大なリスクであり、従業員の個人情報漏洩は二次的なフィッシングやソーシャルエンジニアリング攻撃に繋がりうる。SOC/CDCは、インシデント発生時の迅速な検知・封じ込め・復旧プロセスの確立と、フォレンジック調査能力の維持が不可欠である。また、CISO報告において、データ侵害のリスク評価と対応状況を経営層に適切に伝えるための準備が重要。",
+      "importance": "中",
+      "importance_reason": "データ侵害はビジネスへの影響が大きく、個人情報流出は企業に対する信頼失墜や法的・経済的損失に直結するため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "情報漏洩",
+        "個人情報流出"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Hasbro",
+        "データ侵害",
+        "個人情報流出",
+        "従業員情報",
+        "サイバー攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "CISO報告",
+        "SOC運用変化",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "09e5073b81ef",
+      "title": "The Cybersecurity Apocalypse Is Coming in ‘Months,’ AI Giants Warn",
+      "summary": "Plus: Hackers target over 100 US water systems, ICE puts in an order for robot dogs, and you’ll never guess what “MrChildPorn” was arrested for.",
+      "url": "https://www.wired.com/story/security-news-this-week-the-cybersecurity-apocalypse-is-coming-in-months-ai-giants-warn/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-08-29T19:30:00+09:00",
+      "title_ja": "AI大手、サイバーセキュリティの「終末」が数ヶ月以内に到来と警告",
+      "summary_ja": "AI大手企業が、サイバーセキュリティの状況が数ヶ月以内に劇的に悪化し「終末」を迎える可能性があると警告した。この記事では、ハッカーが100以上の米国の水道システムを標的にしている事例や、その他のセキュリティニュースも紹介されており、AIの進化がサイバー脅威の様相を一変させる可能性を示唆している。",
+      "insight": "AI技術の急速な進化は、攻撃者側の能力を大幅に向上させ、国家レベルの重要インフラを含む広範なターゲットへの脅威を増大させるという認識が、AI開発企業自身からも示されている。SOC/CDCは、短期的な戦術だけでなく、中長期的な防御戦略として、AIを活用した防御（AI for Security）の導入と、AIシステム自体のセキュリティ（Security for AI）を両輪で強化するロードマップを策定する必要がある。これはCISO報告の最重要アジェンダとなる。",
+      "importance": "高",
+      "importance_reason": "AI技術の進展がサイバーセキュリティ全体に与える構造的な影響と、重要インフラへの具体的な脅威を示唆しており、将来の防御戦略を根本的に再考させる可能性があるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "AI脅威",
+        "サイバーセキュリティ終末",
+        "重要インフラ攻撃",
+        "AI giants"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
       "id": "0c4c1362df55",
       "title": "Hundreds of OpenAI Agents Invaded Hugging Face Servers",
       "summary": "The Hugging Face incident was bigger and worse than previously thought, with approximately 700 agents collaborating on a sophisticated, multistage attack.",
