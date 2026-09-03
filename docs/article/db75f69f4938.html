@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AIコーディングエージェントにおける悪意ある.git Configによるコード実行脆弱性 | Cyber Defense Notes</title>
-<meta name="description" content="Manifold Securityが、Claude, Codex, Cursorなどの7つのコマンドラインAIコーディングエージェントにおける8つのセキュリティ脆弱性を開示した。悪意のある.git設定ファイルを通じて、エージェントのサンドボ">
-<meta property="og:title" content="AIコーディングエージェントにおける悪意ある.git Configによるコード実行脆弱性">
-<meta property="og:description" content="Manifold Securityが、Claude, Codex, Cursorなどの7つのコマンドラインAIコーディングエージェントにおける8つのセキュリティ脆弱性を開示した。悪意のある.git設定ファイルを通じて、エージェントのサンドボ">
+<title>悪意ある.git設定ファイルによるAIコーディングエージェントのコード実行リスク | Cyber Defense Notes</title>
+<meta name="description" content="Manifold Securityは、リポジトリ内の悪意あるGit設定ファイルを通じて、Claude、Codex、CursorなどのAIコーディングエージェントが開発者のマシン上で、サンドボックス外でコマンドを実行する8件のセキュリティ脆弱">
+<meta property="og:title" content="悪意ある.git設定ファイルによるAIコーディングエージェントのコード実行リスク">
+<meta property="og:description" content="Manifold Securityは、リポジトリ内の悪意あるGit設定ファイルを通じて、Claude、Codex、CursorなどのAIコーディングエージェントが開発者のマシン上で、サンドボックス外でコマンドを実行する8件のセキュリティ脆弱">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/db75f69f4938.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AIコーディングエージェントにおける悪意ある.git Configによるコード実行脆弱性">
-<meta name="twitter:description" content="Manifold Securityが、Claude, Codex, Cursorなどの7つのコマンドラインAIコーディングエージェントにおける8つのセキュリティ脆弱性を開示した。悪意のある.git設定ファイルを通じて、エージェントのサンドボ">
+<meta name="twitter:title" content="悪意ある.git設定ファイルによるAIコーディングエージェントのコード実行リスク">
+<meta name="twitter:description" content="Manifold Securityは、リポジトリ内の悪意あるGit設定ファイルを通じて、Claude、Codex、CursorなどのAIコーディングエージェントが開発者のマシン上で、サンドボックス外でコマンドを実行する8件のセキュリティ脆弱">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/db75f69f4938.html">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "AIコーディングエージェントにおける悪意ある.git Configによるコード実行脆弱性",
-  "description": "Manifold Securityが、Claude, Codex, Cursorなどの7つのコマンドラインAIコーディングエージェントにおける8つのセキュリティ脆弱性を開示した。悪意のある.git設定ファイルを通じて、エージェントのサンドボックス外でユーザー権限で攻撃者のコードが実行される可能性があり、4つは未パッチのままであると報じられている。",
+  "headline": "悪意ある.git設定ファイルによるAIコーディングエージェントのコード実行リスク",
+  "description": "Manifold Securityは、リポジトリ内の悪意あるGit設定ファイルを通じて、Claude、Codex、CursorなどのAIコーディングエージェントが開発者のマシン上で、サンドボックス外でコマンドを実行する8件のセキュリティ脆弱性を発見しました。この攻撃は、エージェントが開発者の権限で実行され、承認プロンプトなしに動作します。これは、AIエージェントの「ツール・実行層」における新たな侵",
   "datePublished": "2026-09-02",
   "url": "https://ayudle.github.io/ai-security-news/article/db75f69f4938.html",
   "image": "https://ayudle.github.io/ai-security-news/og-image.png",
@@ -124,27 +124,27 @@ gtag('config', 'G-KV7Q7SQKZX');
       <span>2026-09-02</span>
       <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span>
     </div>
-    <h1 class="ap-title">AIコーディングエージェントにおける悪意ある.git Configによるコード実行脆弱性</h1>
+    <h1 class="ap-title">悪意ある.git設定ファイルによるAIコーディングエージェントのコード実行リスク</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">Manifold Securityが、Claude, Codex, Cursorなどの7つのコマンドラインAIコーディングエージェントにおける8つのセキュリティ脆弱性を開示した。悪意のある.git設定ファイルを通じて、エージェントのサンドボックス外でユーザー権限で攻撃者のコードが実行される可能性があり、4つは未パッチのままであると報じられている。</div>
+    <div class="ap-body">Manifold Securityは、リポジトリ内の悪意あるGit設定ファイルを通じて、Claude、Codex、CursorなどのAIコーディングエージェントが開発者のマシン上で、サンドボックス外でコマンドを実行する8件のセキュリティ脆弱性を発見しました。この攻撃は、エージェントが開発者の権限で実行され、承認プロンプトなしに動作します。これは、AIエージェントの「ツール・実行層」における新たな侵入経路を示しています。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>AIエージェントを開発・運用する環境において、サプライチェーンを介したコード実行リスクが顕在化している。SOC/CDCは、AIエージェントの利用状況を把握し、開発環境のセキュリティ強化、AIエージェントが実行するコマンドの監視、サンドボックス脱出の検知、そしてソフトウェアサプライチェーン全体（特にGitリポジトリ）のセキュリティ監査を徹底する必要がある。これは、AIエージェントの「ツール・実行層」における深刻なリスクであり、開発セキュリティと運用セキュリティの両面での対策が求められる。</div></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>AIエージェントが外部ツールを実行する際のセキュリティリスク、特に「ツール・実行層」および「アイデンティティ・権限層」の脆弱性を明確に示しています。SOC/CDCは、AIエージェントが利用する開発環境やリポジトリの監視を強化し、エージェントが実行するコマンド、アクセスするファイル、特権昇格の有無を詳細にログ収集・監視する新たな仕組みを構築する必要があります。また、開発者が利用するAIツールが「シャドーAI」として存在するリスクにも留意し、ガバナンスと監視対象の拡大を検討すべきです。</div></div></section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェント利用における新たな具体的な脆弱性であり、サプライチェーン攻撃やコード実行のリスクが現実化しているため、即時的な対応が求められる。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントの「ツール・実行層」における具体的な脆弱性であり、SOC/CDCの監視対象・検知ルール・対応プロセスに直接影響するため。</div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
     <div class="tags-box">
       <span class="tag-main" style="background:#BA751720;color:#BA7517;border-color:#BA751744">脆弱性</span>
-      <span class="tag-sub">エクスプロイト</span><span class="tag-sub">サプライチェーン攻撃</span>
+      <span class="tag-sub">エクスプロイト</span><span class="tag-sub">認証バイパス</span>
     </div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Exposure管理</span><span class='cdc-badge-ap'>Security for AI</span></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>Security for AI</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>顧客課題</span></div></section>
 
   <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-vulnerability-management-automation.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-08</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</div></a><a href="../columns/ai-supply-chain-exposure.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-16</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div></a></div></section>
 
@@ -161,12 +161,12 @@ The command executes as the user, outside the ag</div>
     </div>
     <div class="actions">
       <a href="https://thehackernews.com/2026/09/malicious-git-configs-can-make-claude.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0AAI%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%82%AA%E6%84%8F%E3%81%82%E3%82%8B.git%20Config%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E5%AE%9F%E8%A1%8C%E8%84%86%E5%BC%B1%E6%80%A7%0A%0A%23%E8%84%86%E5%BC%B1%E6%80%A7%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2Fdb75f69f4938.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0A%E6%82%AA%E6%84%8F%E3%81%82%E3%82%8B.git%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8BAI%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%AE%9F%E8%A1%8C%E3%83%AA%E3%82%B9%E3%82%AF%0A%0A%23%E8%84%86%E5%BC%B1%E6%80%A7%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2Fdb75f69f4938.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/db75f69f4938.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
 
-  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Exposure%E7%AE%A1%E7%90%86#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../?context=Security%20for%20AI#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../?tag=%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%82%A4%E3%83%88#archive" class="explore-chip" data-search-tag="エクスプロイト">エクスプロイト</a><a href="../?tag=%E3%82%B5%E3%83%97%E3%83%A9%E3%82%A4%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E6%94%BB%E6%92%83#archive" class="explore-chip" data-search-tag="サプライチェーン攻撃">サプライチェーン攻撃</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=Security%20for%20AI#archive" class="explore-chip" data-search-context="Security for AI">Security for AI</a><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=%E9%A1%A7%E5%AE%A2%E8%AA%B2%E9%A1%8C#archive" class="explore-chip" data-search-context="顧客課題">顧客課題</a><a href="../?tag=%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%82%A4%E3%83%88#archive" class="explore-chip" data-search-tag="エクスプロイト">エクスプロイト</a><a href="../?tag=%E8%AA%8D%E8%A8%BC%E3%83%90%E3%82%A4%E3%83%91%E3%82%B9#archive" class="explore-chip" data-search-tag="認証バイパス">認証バイパス</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
 
   <section class="ap-section">
   <h3 class="ap-sec-title">関連記事：同じ「脆弱性」の最近の記事</h3>
