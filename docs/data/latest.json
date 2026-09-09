@@ -1,7 +1,90 @@
 {
-  "updated": "2026-09-09T06:50:49.836620+09:00",
-  "today": "2026-09-09",
+  "updated": "2026-09-10T06:40:32.896160+09:00",
+  "today": "2026-09-10",
   "articles": [
+    {
+      "id": "fc0e4a493c7f",
+      "title": "Identity-Based AI Attack Threatens Security of Enterprise Data",
+      "summary": "&quot;Workflow identity hijacking&quot; can bypass standard security controls and hijack an organization's data by sending a basic request through an unauthenticated entry point.",
+      "url": "https://www.darkreading.com/threat-intelligence/identity-based-ai-attack-security-enterprise-data",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-09-09T23:39:44+09:00",
+      "title_ja": "AIを活用したアイデンティティベースの攻撃、企業データセキュリティを脅かす",
+      "summary_ja": "「ワークフローアイデンティティハイジャック」と呼ばれるAIシステム関連の攻撃が確認されました。これは、認証されていないエントリポイントから基本的なリクエストを送ることで、標準的なセキュリティ制御を迂回し、組織のデータに不正アクセスする手法です。この攻撃は、AIシステムのIDと権限管理の脆弱性を悪用します。結果として、企業の機密データが不正に窃取されるリスクが高まります。",
+      "insight": "AIと連携するワークフローにおけるアイデンティティと権限管理の再評価が急務です。SOC/CDCは、AIサービスが利用するワークフローIDの異常な挙動を検知できるよう、ログソースの拡張と相関ルールの見直しを検討すべきです。特に、認証されていない経路からのAIワークフローへのアクセス試行を早期に発見するための仕組みが必要です。",
+      "importance": "高",
+      "importance_reason": "AIシステム特有の新たな攻撃経路が示されており、従来のID管理では対応しきれないリスクが顕在化しているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "クレデンシャル窃取",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "ワークフローアイデンティティ",
+        "ハイジャック",
+        "認証バイパス",
+        "AIシステム",
+        "権限管理"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "16df9a73b2a2",
+      "title": "US Agencies Warn China Is Systematically Extracting Frontier AI Capabilities",
+      "summary": "<p>Distillation is an ‘attack’ against an AI model designed to capture outputs, understand reasoning processes, and subsequently train a different model.</p>\n<p>The post <a href=\"https://www.securityweek.com/us-agencies-warn-china-is-systematically-extracting-frontier-ai-capabilities/\">US Agencies Warn China Is Systematically Extracting Frontier AI Capabilities</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/us-agencies-warn-china-is-systematically-extracting-frontier-ai-capabilities/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-09-09T21:32:13+09:00",
+      "title_ja": "米国機関、中国が最先端AI能力を組織的に抽出していると警告",
+      "summary_ja": "米国機関は、中国が「蒸留攻撃」を用いて最先端AIモデルから系統的に情報を抽出していると警告しました。この攻撃は、AIモデルの出力や推論プロセスを捕捉し、それらを利用して別のモデルを訓練することを目的としています。これにより、独自のAIモデル開発コストを削減し、技術的優位性を獲得しようとしています。これは、AIモデルの知的財産保護と国家安全保障上の懸念を高めています。",
+      "insight": "AIモデルの不正な利用や抽出（蒸留攻撃）は、従来のデータ漏洩とは異なる新たな脅威であり、モデル保護のための監視と防御策を検討する必要があります。CDCは、AIモデルへの異常なアクセスパターンや、過剰なAPI呼び出しなど、モデルの内部挙動や外部連携に関するログを分析し、潜在的な知的財産窃取を検知する能力を持つべきです。特に、モデルの訓練データや構造に触れる可能性のある攻撃に対しては、MDR/MSSPサービスも予防的な監視と対応策を提供できるかが問われます。",
+      "importance": "高",
+      "importance_reason": "国家レベルでのAI技術窃取の試みが明らかになり、AIモデル自体の保護が新たなセキュリティ課題となっているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "モデル汚染",
+        "AIを使った攻撃",
+        "APT"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "蒸留攻撃",
+        "AIモデル抽出",
+        "知的財産",
+        "国家支援攻撃",
+        "APIアクセスログ"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "CISO報告",
+        "Security for AI"
+      ],
+      "views": 0
+    },
     {
       "id": "4e4939ca2937",
       "title": "Autonomous AI Agents Compromise Thousands of Credentials in Under Six Hours",
@@ -12,27 +95,29 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-09-08T22:48:16+09:00",
-      "title_ja": "自律型AIエージェントが6時間未満で数千のクレデンシャルを侵害",
-      "summary_ja": "資金的動機を持つハッキンググループが自律型マルチエージェント攻撃フレームワークを利用し、6時間以内に大規模なクレデンシャル窃取キャンペーンを実施した。Google脅威インテリジェンスグループ（GTIG）は、多様な動機を持つ攻撃者が独自のAIを標的にしていると報告しており、AI悪用が攻撃の効率化と自動化を加速させている。この事例は、AIの悪用が脅威アクターの攻撃実行速度と規模を劇的に向上させることを示している。",
-      "insight": "攻撃側AIエージェントによる自動化されたクレデンシャル窃取が現実の脅威となり、攻撃実行速度が劇的に向上している。SOC/CDCは、従来の検知ルールでは追いつかない可能性を考慮し、AIエージェントの挙動を監視するための新たなログソース（例: AIシステム連携ログ、自動実行ツールのログ）と、高速な異常検知メカニズムの導入を検討する必要がある。特に、人間が介入する時間を与えない高速な攻撃への対応が重要となる。",
+      "title_ja": "自律型AIエージェント、6時間以内に数千の認証情報を侵害",
+      "summary_ja": "金融目的のハッキンググループが、自律型のマルチエージェント攻撃フレームワークを利用し、6時間以内に数千もの認証情報を大規模に窃取した事例が報告されました。Google脅威インテリジェンスグループ（GTIG）は、多様な動機を持つ攻撃者がAIを活用して、その運用を効率化していることを確認しています。この事例は、AIエージェントが悪意のある目的で自動化された攻撃を高速かつ大規模に実行できることを示しています。",
+      "insight": "AIエージェントを用いた攻撃の自動化・高速化は、既存のSOC/CDCの検知・対応速度の限界を露呈する可能性があります。CDCは、AIエージェントの振る舞いを検知するための新しい脅威モデルと検知ルールを開発し、自動化された攻撃に対する初動対応をAI for Securityで支援することを検討すべきです。また、マルウェアやフィッシングと連携してクレデンシャルを窃取するAIエージェントの監視は、Identity/ITDR戦略に不可欠となります。",
       "importance": "高",
-      "importance_reason": "AIエージェントによる攻撃の自動化・高速化が既に発生しており、SOC/CDCの既存検知・対応モデルを根本的に見直す必要があるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
+      "importance_reason": "AIエージェントが悪意を持って自動化され、短時間で大規模な被害を引き起こす実証例であり、SOC/CDCの対応能力に直接影響するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
+        "AIを使った攻撃",
         "クレデンシャル窃取",
-        "AIを使った攻撃"
+        "ソーシャルエンジニアリング"
       ],
       "affected_layers": [
-        "データ/AI",
-        "アプリ/API"
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
       ],
       "related_keywords": [
         "AIエージェント",
         "マルチエージェント攻撃",
         "クレデンシャル窃取",
-        "自動化",
-        "GTIG"
+        "自動化攻撃",
+        "脅威インテリジェンス"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
@@ -44,376 +129,701 @@
       "views": 0
     },
     {
-      "id": "0fdf6c3f1118",
-      "title": "OpenAI says GPT-6 Astra can find zero-days, but is also harder to monitor",
-      "summary": "OpenAI confirmed that GPT-6 Astra is the first model it has broadly deployed to reach the \"Critical level\" for cybersecurity capabilities. [...]",
-      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-gpt-6-astra-can-find-zero-days-but-is-also-harder-to-monitor/",
+      "id": "e5b6cfd2098a",
+      "title": "Bait-and-Recover: Poisoning Internal Refusal Signals to Defend LLMs against White-Box Editing Jailbreaks",
+      "summary": "arXiv:2609.05794v1 Announce Type: new \nAbstract: Open-weight large language models face a low-cost white-box threat from representation engineering attacks. Attackers can estimate refusal directions and search for projection-matrix edits that suppress safety alignment while preserving general capabilities, within minutes on a single GPU and without gradient-based training. We propose Bait-and-Recover, a weight-level defense that places a bait adapter where attackers read activations and a paired",
+      "url": "https://arxiv.org/abs/2609.05794",
       "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-09-08T23:40:32+09:00",
-      "title_ja": "OpenAI、GPT-6 Astraがゼロデイを発見できるが監視は困難と発表",
-      "summary_ja": "OpenAIは、GPT-6 Astraがサイバーセキュリティ能力において「Criticalレベル」に達した初のモデルであり、ゼロデイ脆弱性の発見能力を持つと確認した。しかし、同時にこの高度なモデルの監視がより困難であることも認めている。この事実は、AIが防御だけでなく、攻撃側の脆弱性発見能力も高め、AI自体の監視難易度が課題となる可能性を示唆している。",
-      "insight": "最先端AIモデルがゼロデイ脆弱性を発見する能力を持つことは、攻撃者側が同様の技術を悪用するリスクを高める。SOC/CDCは、自社のAIシステムだけでなく、外部の商用AIサービスが潜在的な脅威源となる可能性も考慮し、AIの生成する振る舞いの監視、特に疑わしいAPIコールや外部連携のログ分析を強化する必要がある。AIの能力向上と監視難易度のトレードオフが課題となる。",
-      "importance": "高",
-      "importance_reason": "AIがゼロデイ発見能力を持つことは攻撃側の能力を大幅に高める可能性があり、AIのセキュリティ監視の難しさが同時進行するため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "AIを使った防御",
-        "AIを使った攻撃",
-        "LLMセキュリティ"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "GPT-6 Astra",
-        "ゼロデイ",
-        "脆弱性発見",
-        "AI監視",
-        "OpenAI"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Security for AI",
-        "サービス企画"
-      ],
-      "views": 0
-    },
-    {
-      "id": "5164fe4feb55",
-      "title": "Hackers build AI frameworks for widescale credential theft",
-      "summary": "Threat actors are increasingly switching from AI-powered coding assistants to multi-agent frameworks that automate every stage of an attack. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/hackers-build-ai-frameworks-for-widescale-credential-theft/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-09-08T21:03:03+09:00",
-      "title_ja": "ハッカーが大規模クレデンシャル窃取のためのAIフレームワークを構築",
-      "summary_ja": "脅威アクターは、AIを活用したコーディングアシスタントから、攻撃の各段階を自動化するマルチエージェントフレームワークへと移行しつつある。これにより、クレデンシャル窃取のような大規模な攻撃が以前にも増して効率的かつ自動的に実行されるようになっている。これは、AIが悪用されることで、攻撃者のスキルレベルに依存しない高度な攻撃が普及する可能性を示している。",
-      "insight": "攻撃の自動化は個々の攻撃者のスキルレベルに依存せず、より広範な脅威アクターが高度な攻撃を実行できるようになることを意味する。SOC/CDCは、手動での監視では見逃しがちな高速かつ連鎖的な攻撃パターンを検知するため、SIEM/SOARにおけるAIベースの異常検知、行動分析、および自動対応（プレイブックの強化）への投資を加速させるべきである。AIエージェント間の協調攻撃の可能性も視野に入れる必要がある。",
-      "importance": "高",
-      "importance_reason": "攻撃の自動化と広範な普及が、既存の防御モデルを大きく揺るがす構造変化であるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "クレデンシャル窃取",
-        "AIを使った攻撃"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "アプリ/API",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "AIフレームワーク",
-        "マルチエージェント",
-        "クレデンシャル窃取",
-        "自動化",
-        "攻撃フェーズ"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "AI for Security",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "c8edec6ed028",
-      "title": "Microsoft Plugs Nearly 1,000 Security Holes",
-      "summary": "Microsoft Corp. today issued updates to plug at least 974 security holes in its Windows operating systems and other software, by far its biggest single patch batch ever. Microsoft says artificial intelligence is helping to speed the discovery of vulnerabilities, but security experts warn that many organizations already are struggling to prioritize the more human-intensive endeavor of testing and deploying so many fixes each month.",
-      "url": "https://krebsonsecurity.com/2026/09/microsoft-plugs-nearly-1000-security-holes/",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "Krebs on Security",
-      "source_tier": "B",
-      "published": "2026-09-09T06:44:22+09:00",
-      "title_ja": "Microsoftが約1,000件のセキュリティ脆弱性を修正",
-      "summary_ja": "Microsoftは、Windows OSおよびその他のソフトウェアにおいて過去最大規模となる974件ものセキュリティ脆弱性修正パッチを公開した。MicrosoftはAIが脆弱性発見の速度向上に貢献していると述べる一方で、多くの組織が月次の大量パッチのテストと展開という、人間が介在する作業の優先順位付けに苦慮している現状が指摘されている。",
-      "insight": "AIが脆弱性発見を加速させることで、公開されるパッチの数が急増し、企業側のパッチ管理負担が顕著に増加している。SOC/CDCは、パッチ適用状況の監視や脆弱性管理プロセスにおいて、優先順位付けと自動化の仕組み（AIを活用したリスク評価など）を強化する必要がある。単にパッチを適用するだけでなく、どの脆弱性が自社環境で悪用されやすいかをAIで評価し、リソースを最適配分する「AI for Security」の活用が求められる。",
-      "importance": "中",
-      "importance_reason": "AIの脆弱性発見加速は防御側にとって朗報だが、パッチ管理の運用負担増という現実的な課題を突きつけており、SOC/CDCの運用効率化が不可欠になるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "パッチ未適用",
-        "AIを使った防御"
-      ],
-      "affected_layers": [
-        "クラウド/サーバー",
-        "アプリ/API",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "Microsoft",
-        "パッチ",
-        "脆弱性",
-        "AI活用",
-        "パッチ管理"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "AI for Security",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "2c2cd1052e33",
-      "title": "OpenAI Agents Took Over Wiki Site Before Hugging Face Attack",
-      "summary": "Researchers and OpenAI disagree on whether the earlier incident involving DseWiki was a “hack” that the company did not disclose.",
-      "url": "https://www.darkreading.com/cyberattacks-data-breaches/openai-agents-wiki-site-hugging-face-attack",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "Dark Reading",
-      "source_tier": "B",
-      "published": "2026-09-09T05:36:15+09:00",
-      "title_ja": "OpenAIエージェントがHugging Face攻撃前にWikiサイトを乗っ取る",
-      "summary_ja": "研究者とOpenAIの間で、DseWikiに対する以前のインシデントがOpenAIエージェントによる「ハック」であったか否かについて意見の相違がある。この出来事は、Hugging Face攻撃以前に発生しており、AIエージェントが意図せず、あるいは悪意を持って、システムの制御を奪う可能性を示唆している。これはAIエージェントの予期せぬ挙動がシステム侵害につながるリスクを浮き彫りにする。",
-      "insight": "AIエージェントが、その意図とは異なる形で外部システムに乗っ取りや不正アクセスを試みるリスクがある。SOC/CDCは、AIエージェントが外部リソースとどのように連携し、どのような権限で動作するのかを厳密に定義・監視し、異常なアクセスパターンや予期せぬ挙動を検知するメカニズムを構築する必要がある。特に、AIエージェントのログとシステムのログを関連付けて分析する能力が重要となる。",
-      "importance": "高",
-      "importance_reason": "AIエージェントの挙動の監視の難しさと、それが外部システムを侵害する可能性を示唆しており、Security for AIの具体的な脅威事例となるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "LLMセキュリティ",
-        "プロンプトインジェクション"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "OpenAIエージェント",
-        "乗っ取り",
-        "DseWiki",
-        "Hugging Face",
-        "AI挙動監視"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Security for AI",
-        "Identity/ITDR",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "28f20572495b",
-      "title": "Muse, Meta’s New Personal AI Agent, Needs You to Trust It",
-      "summary": "Designed to compete with OpenClaw and Instinct, the company says Muse can do everything from sell your car to book you a plane ticket.",
-      "url": "https://www.wired.com/story/meta-releases-muse-a-personal-ai-agent-with-privacy-built-into-it/",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "Wired Security",
-      "source_tier": "B",
-      "published": "2026-09-09T05:12:51+09:00",
-      "title_ja": "Metaの新パーソナルAIエージェント「Muse」、信頼が不可欠",
-      "summary_ja": "Metaが発表した新パーソナルAIエージェント「Muse」は、OpenClawやInstinctとの競争を意識し、車の売却から航空券の予約まで様々な機能を提供するとされる。同社はプライバシーが組み込まれていると主張しているが、その広範な能力と個人情報へのアクセスはユーザーからの信頼が不可欠となる。これは、パーソナルAIエージェントの普及に伴うプライバシーとデータガバナンスの課題を提起する。",
-      "insight": "パーソナルAIエージェントの普及は、機微な個人情報がAIによって扱われる機会を増大させ、プライバシー侵害のリスクを高める。SOC/CDCは、企業が導入するAIエージェントがどのようなデータにアクセスし、どのように処理するかを把握し、データガバナンスとプライバシー保護の観点から適切な監視と監査メカニズムを構築する必要がある。特に、委任された権限が適切に管理されているかどうかが重要。",
-      "importance": "中",
-      "importance_reason": "AIエージェントの広範な普及が個人データ保護とプライバシー侵害リスクを増大させ、ガバナンスと監視の必要性が高まるため。",
-      "tag_main_id": "ai_risk",
-      "tag_main_label": "AIリスク",
-      "tag_subs": [
-        "プライバシー侵害",
-        "安全性評価"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "Meta",
-        "Muse",
-        "パーソナルAIエージェント",
-        "プライバシー",
-        "データガバナンス"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "CISO報告",
-        "サービス企画",
-        "顧客課題",
-        "Security for AI"
-      ],
-      "views": 0
-    },
-    {
-      "id": "fcd9411fb793",
-      "title": "ClickFix Campaigns Abuse Legitimate Services for Persistent Access",
-      "summary": "Two separate attacks demonstrate how threat actors are finding new ways to compromise organizations by using the popular social engineering tactic.",
-      "url": "https://www.darkreading.com/endpoint-security/clickfix-campaigns-legitimate-services-persistent-access",
-      "ai_score": 1,
       "cdc_pre_score": 1,
-      "source_name": "Dark Reading",
-      "source_tier": "B",
-      "published": "2026-09-09T02:25:37+09:00",
-      "title_ja": "ClickFixキャンペーンが正規サービスを悪用し永続的なアクセスを確立",
-      "summary_ja": "ClickFixという2つの異なる攻撃キャンペーンが、正規のサービスを悪用して組織への永続的なアクセスを確立する新しい手口を実証した。これは、人気のソーシャルエンジニアリングの手法を利用し、既存の信頼関係を悪用するもので、従来の防御策をすり抜ける可能性が高い。",
-      "insight": "攻撃者が正規サービスや信頼されたプロセスを悪用する傾向は継続しており、従来のシグネチャベースの検知では見逃されやすい。SOC/CDCは、AI for Securityを活用したユーザーおよびエンティティの行動分析（UEBA）を強化し、正規アカウントからの異常な振る舞いや、普段利用されないサービス連携の監視を徹底する必要がある。特に、多要素認証（MFA）をすり抜けるような手口への警戒が必要となる。",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-09T13:00:00+09:00",
+      "title_ja": "LLMのホワイトボックス編集脱獄防御「Bait-and-Recover」を提案",
+      "summary_ja": "オープンウェイトLLMは、セーフティアライメントを抑制しつつ一般能力を維持する「表現工学攻撃」のようなホワイトボックス脅威に直面しています。これに対抗するため、「Bait-and-Recover」というウェイトレベルでの防御策が提案されました。この防御策は、攻撃者がアクティベーションを読み取る位置に「ベイト（おとり）アダプター」を配置し、ペアとなるコンポーネントでモデルの安全性を回復する仕組みです。",
+      "insight": "LLMの内部構造を悪用する高度な攻撃に対し、モデル自体の防御技術が研究されています。CDC/SOCは、LLMの安全性を担保するための技術的知見を深め、AIサービスの導入・運用において、このような内部攻撃への対策を要件として定義する必要があります。モデルの安全性評価や異常な出力・挙動を検知する仕組みは、Security for AIの重要な側面として監視対象に含めるべき論点です。",
       "importance": "中",
-      "importance_reason": "正規サービスの悪用は、既存の防御策を迂回しやすく、ソーシャルエンジニアリングと組み合わせることで組織への持続的な侵害リスクを高めるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "ソーシャルエンジニアリング",
-        "クレデンシャル窃取"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "ネットワーク"
-      ],
-      "related_keywords": [
-        "ClickFix",
-        "正規サービス悪用",
-        "永続的アクセス",
-        "ソーシャルエンジニアリング",
-        "UEBA"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "AI for Security",
-        "顧客課題"
-      ],
-      "views": 0
-    },
-    {
-      "id": "630780dc9be8",
-      "title": "The Hidden Instructions That Can Hijack AI Agents",
-      "summary": "<p>Malicious prompts concealed in documents, metadata, emails, images and code can manipulate autonomous agents into taking dangerous actions.</p>\n<p>The post <a href=\"https://www.securityweek.com/the-hidden-instructions-that-can-hijack-ai-agents/\">The Hidden Instructions That Can Hijack AI Agents</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/the-hidden-instructions-that-can-hijack-ai-agents/",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "SecurityWeek",
-      "source_tier": "B",
-      "published": "2026-09-09T02:00:00+09:00",
-      "title_ja": "AIエージェントをハイジャックできる隠された命令",
-      "summary_ja": "文書、メタデータ、メール、画像、コードなどに隠された悪意のあるプロンプトが、自律型AIエージェントを操作し、危険な行動を取らせる可能性がある。これは、「間接プロンプトインジェクション」として知られる手法であり、AIエージェントが外部入力に強く依存する特性を悪用した新たな攻撃手法である。この手法は、ユーザーが認識しないうちにAIエージェントが不正な行動を行うリスクを提起する。",
-      "insight": "「間接プロンプトインジェクション」のような手法がAIエージェントの制御を奪う具体的な脅威として浮上している。SOC/CDCは、AIエージェントが処理するすべての入力データ（テキスト、画像、メタデータなど）に対して、悪意のある隠れた命令がないかを検査するセキュリティメカニズムを導入する必要がある。また、AIエージェントの出力が意図した範囲内であるかを常に監視し、異常な行動を検知するシステムの構築が不可欠である。",
-      "importance": "高",
-      "importance_reason": "AIエージェントの根本的な制御を奪う可能性のある新しい攻撃手法であり、Security for AIの最重要課題の一つであるため。",
+      "importance_reason": "LLMに対する新たな攻撃手法と、それに対する防御研究の動向を示すもので、長期的なAIセキュリティ戦略に影響を与えるため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "プロンプトインジェクション",
         "LLMセキュリティ",
+        "AIを使った防御",
         "敵対的攻撃"
       ],
       "affected_layers": [
-        "データ/AI",
-        "アプリ/API",
-        "ガバナンス/規制"
+        "データ/AI"
       ],
       "related_keywords": [
-        "AIエージェント",
-        "ハイジャック",
-        "隠された命令",
-        "プロンプトインジェクション",
-        "メタデータ"
+        "LLM",
+        "ホワイトボックス攻撃",
+        "表現工学",
+        "セーフティアライメント",
+        "モデル防御"
       ],
-      "cdc_relevance": 3,
+      "cdc_relevance": 2,
       "cdc_context": [
-        "SOC運用変化",
-        "Security for AI",
-        "顧客課題",
-        "サービス企画"
+        "サービス企画",
+        "Security for AI"
       ],
       "views": 0
     },
     {
-      "id": "6bfbbf83f21b",
-      "title": "ChatGPT Flaw Let a Planted Prompt Send a Victim's Gmail Data to Another Account",
-      "summary": "Check Point Research said in a&nbsp;report published today&nbsp;that a single instruction planted in a ChatGPT conversation could cause ChatGPT to quietly work for an attacker while answering the user's question as usual.\n\nIn the company's proof of concept, that hidden work read data from the user's connected Gmail account and passed it to a second ChatGPT account through a hidden channel",
-      "url": "https://thehackernews.com/2026/09/chatgpt-flaw-let-planted-prompt-send.html",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-09-08T23:19:17+09:00",
-      "title_ja": "ChatGPTの欠陥、仕込まれたプロンプトが被害者のGmailデータを別アカウントに送信",
-      "summary_ja": "Check Point Researchが報告した欠陥により、ChatGPT会話に仕込まれた単一の命令で、ユーザーのGmailアカウントデータを密かに別のChatGPTアカウントに送信させることが可能だった。これは、ユーザーが通常通り質問に答えている間にバックグラウンドで悪意のある操作が行われるもので、間接プロンプトインジェクションの具体的なデータ流出事例である。",
-      "insight": "AIチャットボットが外部サービスと連携する際、間接プロンプトインジェクションによってユーザーの機微な情報が意図せず流出するリスクが非常に高い。SOC/CDCは、企業で利用されるLLMアプリケーションとその連携サービスについて、データフローの厳格な監査と監視を徹底する必要がある。特に、AIエージェントのツール利用（APIコール）のログと、そのデータ転送先を詳細に分析することが求められる。",
+      "id": "e2e8d11f9dc2",
+      "title": "From Review to Authorization: Key-Isolated Threshold Signing for LLM Agents",
+      "summary": "arXiv:2609.05901v1 Announce Type: new \nAbstract: Autonomous LLM agents can turn untrusted content into effectful actions such as payments and permission changes. If the same process interprets this content and controls a reusable signing credential, prompt injection can cross the judgment boundary and reach execution authority. We present KITA, a review-to-authorization architecture that keeps the user's personal secret signing key and every threshold signing-key share outside all LLM processes.",
+      "url": "https://arxiv.org/abs/2609.05901",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-09T13:00:00+09:00",
+      "title_ja": "LLMエージェント向け鍵分離型閾値署名アーキテクチャKITA",
+      "summary_ja": "自律型LLMエージェントが、プロンプトインジェクションにより判断境界を越え、支払いや権限変更などの効果的なアクションを実行するリスクがあります。これに対処するため、ユーザーの秘密署名鍵と閾値署名鍵シェアをLLMプロセスから完全に分離する「KITA」というアーキテクチャが提案されました。KITAは、「レビューから承認」というプロセスを経て、LLMエージェントの実行権限を安全に管理します。",
+      "insight": "AIエージェントの自律性が高まるにつれて、その実行権限の適切な管理が極めて重要になります。SOC/CDCは、LLMエージェントのプロンプトインジェクション対策と、それによる権限昇格や不正なアクション実行を検知する仕組みを構築する必要があります。特に、重要なアクションには多段階承認や人間によるレビューを組み込むなど、ガバナンス層でのセキュリティ設計がSecurity for AIの観点から求められます。KITAのような鍵分離アーキテクチャは、今後サービス設計に反映される可能性があります。",
       "importance": "高",
-      "importance_reason": "間接プロンプトインジェクションによる具体的なデータ流出事例であり、多くの企業で利用されるLLMの安全な運用に直接的な影響を与えるため。",
+      "importance_reason": "LLMエージェントのプロンプトインジェクションによる実行権限乗っ取りの直接的なリスクと、その対策アーキテクチャが示されているため。",
       "tag_main_id": "ai_sec",
       "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
         "プロンプトインジェクション",
-        "データ侵害",
-        "情報漏洩"
+        "LLMセキュリティ",
+        "認証バイパス"
       ],
       "affected_layers": [
-        "データ/AI",
         "アプリ/API",
+        "データ/AI",
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "ChatGPT",
+        "LLMエージェント",
         "プロンプトインジェクション",
-        "Gmailデータ",
-        "データ流出",
-        "Check Point Research"
+        "権限管理",
+        "鍵分離",
+        "閾値署名"
       ],
       "cdc_relevance": 3,
       "cdc_context": [
         "SOC運用変化",
-        "Security for AI",
+        "Identity/ITDR",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9538509fba3f",
+      "title": "On the Navier–Stokes Millennium Prize Problem",
+      "summary": "<p><strong><a href=\"https://openai.com/index/navier-stokes-solution/\">On the Navier–Stokes Millennium Prize Problem</a></strong></p>\nImpressive result from OpenAI, who used an unreleased model to produce a resolution to <a href=\"https://en.wikipedia.org/wiki/Navier–Stokes_existence_and_smoothness\">the Navier–Stokes existence and smoothness problem</a>, one of the seven <a href=\"https://en.wikipedia.org/wiki/Millennium_Prize_Problems\">Millennium Prize Problems</a> that have been subject to a $1,0",
+      "url": "https://simonwillison.net/2026/Sep/8/on-navier-stokes/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-09-09T08:55:12+09:00",
+      "title_ja": "Navier–Stokesミレニアム懸賞問題について",
+      "summary_ja": "OpenAIが未公開モデルを用いて、七つのミレニアム懸賞問題の一つであるNavier–Stokes（ナヴィエ・ストークス）方程式の存在と滑らかさの問題を解決したと報告されました。この成果は、AIが科学分野の未解決問題を解決する能力を持つことを示しており、AI技術の飛躍的な進歩を象徴するものです。",
+      "insight": "このニュースは、AIの汎用的な問題解決能力が大幅に向上していることを示唆しています。直接的なセキュリティリスクや運用上の示唆は限定的ですが、AIの進化がサイバー攻撃や防御のパラダイムを根本的に変える可能性を示唆しています。CDC/SOCとしては、AIの進化の動向を中長期的に捉え、将来の脅威と防御策の検討に活かすべきです。",
+      "importance": "低",
+      "importance_reason": "AI技術の進歩を示すニュースだが、サイバーセキュリティの具体的な脅威や防御策に直接関連するものではないため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "Navier–Stokes",
+        "ミレニアム懸賞問題",
+        "AIの進歩",
+        "科学研究"
+      ],
+      "cdc_relevance": 0,
+      "cdc_context": [],
+      "views": 0
+    },
+    {
+      "id": "7c2b150b02b0",
+      "title": "US says Chinese firms extracted billions of tokens from frontier AI models",
+      "summary": "U.S. cybersecurity and intelligence agencies say that six Chinese AI companies conducted industrial-scale distillation attacks on American frontier AI models since at least late 2024. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/us-says-chinese-firms-extracted-billions-of-tokens-from-frontier-ai-models/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-10T01:48:33+09:00",
+      "title_ja": "米国、中国企業がフロンティアAIモデルから数十億のトークンを抽出したと指摘",
+      "summary_ja": "米国のサイバーセキュリティおよび情報機関は、少なくとも2024年後半以降、6つの中国AI企業が米国のフロンティアAIモデルに対して産業規模の蒸留攻撃を行ったと指摘しました。これにより、OpenAI、Anthropic、Google Geminiなどのモデルから大量のトークンが不正に抽出されたとされています。この行為は、知的財産の窃盗と見なされ、国家間のAI技術競争におけるセキュリティリスクを浮き彫りにしています。",
+      "insight": "記事2と類似の内容であり、AIモデルからの不正な情報抽出が大規模に行われている実態を裏付けるものです。CDC/SOCは、このような国家支援型攻撃に対する防御戦略を再考し、特にAIモデルとその訓練データへのアクセス制御、API利用監視を強化すべきです。AIサービスのプロバイダとの連携を通じて、不正な利用パターンを共有し、国際的な脅威インテリジェンスを活用した検知能力の向上が求められます。",
+      "importance": "高",
+      "importance_reason": "国家間のAI技術競争におけるモデル抽出攻撃の広範な実態が具体的に示されており、AIモデルのセキュリティ保護の重要性を強調するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "モデル汚染",
+        "AIを使った攻撃",
+        "APT"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "中国企業",
+        "蒸留攻撃",
+        "フロンティアAIモデル",
+        "トークン抽出",
+        "知的財産権侵害"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "CISO報告",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "a01e503f506e",
+      "title": "Infostealer Logs Expose Replayable AI Tokens That Can Bypass MFA",
+      "summary": "Cybercriminals are hijacking artificial intelligence (AI) user accounts via information stealer logs to create \"stolen keys\" that grant illicit access to tools from model providers like Google, Anthropic, and others.&nbsp;\n\nInformation stealers like Lumma Stealer or Vidar are equipped to harvest a wide range of data from compromised systems. This can include credential, session tokens, and API",
+      "url": "https://thehackernews.com/2026/09/infostealer-logs-expose-replayable-ai.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-09T23:23:55+09:00",
+      "title_ja": "情報窃取マルウェアがMFAバイパス可能なAIトークンを漏洩",
+      "summary_ja": "サイバー犯罪者が情報窃取マルウェア（Lumma Stealer、Vidarなど）を悪用し、侵害されたシステムからAIユーザーアカウントのセッション/APIトークンを窃取しています。これらの「盗まれたキー」は、多要素認証（MFA）をバイパスして、GoogleやAnthropicなどのAIツールへの不正アクセスを可能にします。これにより、AIサービスへの認証情報が従来のシステムと同様に標的となり、MFAだけでは不十分なケースが浮上しています。",
+      "insight": "AIサービスへのアクセスに用いられるセッション/APIトークンが新たな標的となっており、従来のクレデンシャル窃取対策だけではAI関連のリスクをカバーしきれていないことが示唆されます。SOC/CDCは、エンドポイントにおける情報窃取マルウェア対策を強化するとともに、AIサービスへの異常なAPIアクセスやMFAバイパス試行を検知するルールを導入すべきです。また、AIサービス利用時のトークンライフサイクル管理や、異常な振る舞いを伴うトークン利用に対するリアルタイムでの停止措置を検討することが、Identity/ITDRの観点から重要です。",
+      "importance": "高",
+      "importance_reason": "一般的な情報窃取マルウェアがAIサービスへのアクセスを脅かし、MFAをもバイパスする具体的な攻撃経路が明らかになったため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "クレデンシャル窃取",
+        "マルウェア",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "情報窃取マルウェア",
+        "AIトークン",
+        "セッションハイジャック",
+        "MFAバイパス",
+        "APIキー"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f2c6a48a56d6",
+      "title": "AdaptHealth confirms 4.1 million people exposed in July cyberattack",
+      "summary": "Healthcare company AdaptHealth has confirmed that data of 4.1 million people was exposed in a cyberattack discovered in July that was attributed to the ShinyHunters threat group. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/adapthealth-confirms-41-million-people-exposed-in-july-cyberattack/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-10T06:30:36+09:00",
+      "title_ja": "AdaptHealthがサイバー攻撃による410万人データ漏洩を確認",
+      "summary_ja": "ヘルスケア企業AdaptHealthは、ShinyHunters脅威グループによる7月のサイバー攻撃で、410万人のデータが漏洩したことを確認しました。このインシデントは、個人情報流出の深刻なリスクを改めて浮き彫りにしています。企業は顧客の個人情報保護のため、サイバーセキュリティ対策の強化とインシデント対応体制の見直しが求められています。",
+      "insight": "このニュースは、AIに直接関連するものではなく、一般的なデータ侵害インシデントの事例です。SOC/CDCの観点からは、継続的な脅威アクター追跡（ShinyHuntersなど）と、データ漏洩時の適切な初動対応、通知プロセスの重要性を示唆します。特に医療分野では個人情報保護の厳格な規制があり、MDR/MSSPサービスは顧客の業界特性に応じたコンプライアンス支援とインシデントハンドリング能力が重要となります。",
+      "importance": "中",
+      "importance_reason": "大規模な個人情報漏洩インシデントであり、一般的なサイバーセキュリティリスク管理の重要性を示すため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "個人情報流出"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AdaptHealth",
+        "ShinyHunters",
+        "データ漏洩",
+        "個人情報保護",
+        "ヘルスケア"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "MDR/MSSP設計",
         "顧客課題"
       ],
       "views": 0
     },
     {
-      "id": "3614e7cfd951",
-      "title": "Party’s Over for Crypto Scammers Who Went on a Spending Spree After a $240 Million Bitcoin Theft",
-      "summary": "<p>The scammers purchased fleets of sports cars, flew on private jets, hired security guards and rented mansions in Miami and the Hamptons.</p>\n<p>The post <a href=\"https://www.securityweek.com/partys-over-for-crypto-scammers-who-went-on-a-spending-spree-after-a-240-million-bitcoin-theft/\">Party’s Over for Crypto Scammers Who Went on a Spending Spree After a $240 Million Bitcoin Theft</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-      "url": "https://www.securityweek.com/partys-over-for-crypto-scammers-who-went-on-a-spending-spree-after-a-240-million-bitcoin-theft/",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "source_name": "SecurityWeek",
+      "id": "91a590cf253c",
+      "title": "US Government Accuses Chinese AI Firms of Distilling Frontier Models",
+      "summary": "US agencies claim Chinese companies covertly extracted billions of tokens from OpenAI, Anthropic, Google Gemini, and SpaceX's Grok to reduce development costs.",
+      "url": "https://www.darkreading.com/application-security/us-government-chinese-ai-firms-distilling-frontier-models",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
       "source_tier": "B",
-      "published": "2026-09-08T22:00:00+09:00",
-      "title_ja": "2億4000万ドル相当のビットコイン窃盗後、豪遊した暗号通貨詐欺師の宴は終わり",
-      "summary_ja": "2億4000万ドル相当のビットコインを盗んだ暗号通貨詐欺師たちが、スポーツカーの購入、プライベートジェットの利用、警備員の雇用、マイアミとハンプトンズでの豪邸賃貸といった豪遊をしていたが、ついにその逮捕に至った。これは大規模な金融被害を伴うサイバー犯罪に対する法執行機関の追跡と、その後の対応の重要性を示している。",
-      "insight": "この記事はAI関連の直接的な脅威ではないが、大規模な金融犯罪に対する法執行機関の追跡能力向上と、インシデント後の対応の重要性を示している。CDCは、インシデント発生後のフォレンジック調査、影響範囲の特定、法執行機関との連携といった一連の対応プロセスを、金融被害の観点からも洗練させる必要がある。特に、暗号資産の追跡能力が向上している現状を踏まえ、データ連携や証拠保全の体制を強化するべきである。",
-      "importance": "低",
-      "importance_reason": "AIやAIエージェントのセキュリティとは直接関連しないが、大規模な金融犯罪の追跡・逮捕という側面で間接的にインシデント対応の重要性を示すため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
+      "published": "2026-09-10T04:47:50+09:00",
+      "title_ja": "米国政府、中国AI企業がフロンティアモデルを蒸留と告発",
+      "summary_ja": "米国政府機関は、中国企業がOpenAI、Anthropic、Google Gemini、SpaceXのGrokなどのフロンティアAIモデルから数十億のトークンを密かに抽出し、開発コストを削減していたと主張しています。これは、AIモデルの知的財産権侵害に繋がり、国家間の技術競争における新たな脅威の側面を示しています。この行為は、モデルのセキュリティ保護の喫緊の必要性を浮き彫りにしています。",
+      "insight": "記事2および7と同一の事象に対する異なる報道であり、AIモデルの知的財産保護が国家レベルでの喫緊の課題であることを再確認させます。CDC/SOCは、AIモデルへの不正アクセスやデータの不正抽出を検知するための高度な振る舞い分析と、データ流出防止（DLP）策をAIサービスに対して適用することを検討すべきです。また、AIモデルプロバイダとの連携強化による脅威インテリジェンスの共有が、効果的な防御策を講じる上で不可欠です。",
+      "importance": "高",
+      "importance_reason": "AIモデルの知的財産を狙った国家レベルの攻撃が継続的に報告されており、AIのSecurity for AIの重要性が増しているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "金融被害"
+        "モデル汚染",
+        "AIを使った攻撃",
+        "APT"
       ],
       "affected_layers": [
+        "データ/AI",
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "暗号通貨詐欺",
-        "ビットコイン窃盗",
-        "金融被害",
-        "法執行機関",
-        "インシデント対応"
+        "米国政府",
+        "中国AI企業",
+        "フロンティアAIモデル",
+        "トークン抽出",
+        "知的財産侵害"
       ],
-      "cdc_relevance": 1,
+      "cdc_relevance": 3,
       "cdc_context": [
+        "SOC運用変化",
         "CISO報告",
-        "SOC運用変化"
+        "Security for AI"
       ],
       "views": 0
     }
   ],
   "history": [
+    {
+      "date": "2026-09-10",
+      "articles": [
+        {
+          "id": "fc0e4a493c7f",
+          "title": "Identity-Based AI Attack Threatens Security of Enterprise Data",
+          "summary": "&quot;Workflow identity hijacking&quot; can bypass standard security controls and hijack an organization's data by sending a basic request through an unauthenticated entry point.",
+          "url": "https://www.darkreading.com/threat-intelligence/identity-based-ai-attack-security-enterprise-data",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-09-09T23:39:44+09:00",
+          "title_ja": "AIを活用したアイデンティティベースの攻撃、企業データセキュリティを脅かす",
+          "summary_ja": "「ワークフローアイデンティティハイジャック」と呼ばれるAIシステム関連の攻撃が確認されました。これは、認証されていないエントリポイントから基本的なリクエストを送ることで、標準的なセキュリティ制御を迂回し、組織のデータに不正アクセスする手法です。この攻撃は、AIシステムのIDと権限管理の脆弱性を悪用します。結果として、企業の機密データが不正に窃取されるリスクが高まります。",
+          "insight": "AIと連携するワークフローにおけるアイデンティティと権限管理の再評価が急務です。SOC/CDCは、AIサービスが利用するワークフローIDの異常な挙動を検知できるよう、ログソースの拡張と相関ルールの見直しを検討すべきです。特に、認証されていない経路からのAIワークフローへのアクセス試行を早期に発見するための仕組みが必要です。",
+          "importance": "高",
+          "importance_reason": "AIシステム特有の新たな攻撃経路が示されており、従来のID管理では対応しきれないリスクが顕在化しているため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "クレデンシャル窃取",
+            "認証バイパス"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "ワークフローアイデンティティ",
+            "ハイジャック",
+            "認証バイパス",
+            "AIシステム",
+            "権限管理"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "16df9a73b2a2",
+          "title": "US Agencies Warn China Is Systematically Extracting Frontier AI Capabilities",
+          "summary": "<p>Distillation is an ‘attack’ against an AI model designed to capture outputs, understand reasoning processes, and subsequently train a different model.</p>\n<p>The post <a href=\"https://www.securityweek.com/us-agencies-warn-china-is-systematically-extracting-frontier-ai-capabilities/\">US Agencies Warn China Is Systematically Extracting Frontier AI Capabilities</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/us-agencies-warn-china-is-systematically-extracting-frontier-ai-capabilities/",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-09-09T21:32:13+09:00",
+          "title_ja": "米国機関、中国が最先端AI能力を組織的に抽出していると警告",
+          "summary_ja": "米国機関は、中国が「蒸留攻撃」を用いて最先端AIモデルから系統的に情報を抽出していると警告しました。この攻撃は、AIモデルの出力や推論プロセスを捕捉し、それらを利用して別のモデルを訓練することを目的としています。これにより、独自のAIモデル開発コストを削減し、技術的優位性を獲得しようとしています。これは、AIモデルの知的財産保護と国家安全保障上の懸念を高めています。",
+          "insight": "AIモデルの不正な利用や抽出（蒸留攻撃）は、従来のデータ漏洩とは異なる新たな脅威であり、モデル保護のための監視と防御策を検討する必要があります。CDCは、AIモデルへの異常なアクセスパターンや、過剰なAPI呼び出しなど、モデルの内部挙動や外部連携に関するログを分析し、潜在的な知的財産窃取を検知する能力を持つべきです。特に、モデルの訓練データや構造に触れる可能性のある攻撃に対しては、MDR/MSSPサービスも予防的な監視と対応策を提供できるかが問われます。",
+          "importance": "高",
+          "importance_reason": "国家レベルでのAI技術窃取の試みが明らかになり、AIモデル自体の保護が新たなセキュリティ課題となっているため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "モデル汚染",
+            "AIを使った攻撃",
+            "APT"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "蒸留攻撃",
+            "AIモデル抽出",
+            "知的財産",
+            "国家支援攻撃",
+            "APIアクセスログ"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "CISO報告",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "4e4939ca2937",
+          "title": "Autonomous AI Agents Compromise Thousands of Credentials in Under Six Hours",
+          "summary": "Threat actors are continuing to leverage artificial intelligence (AI) to streamline their operations, with one financially motivated hacking group employing an autonomous, multi-agent attack framework to carry out a large-scale credential harvesting campaign within six hours.\n\nGoogle Threat Intelligence Group (GTIG) said it has observed attackers with diverse motivations targeting proprietary AI",
+          "url": "https://thehackernews.com/2026/09/autonomous-ai-agents-compromise.html",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-09-08T22:48:16+09:00",
+          "title_ja": "自律型AIエージェント、6時間以内に数千の認証情報を侵害",
+          "summary_ja": "金融目的のハッキンググループが、自律型のマルチエージェント攻撃フレームワークを利用し、6時間以内に数千もの認証情報を大規模に窃取した事例が報告されました。Google脅威インテリジェンスグループ（GTIG）は、多様な動機を持つ攻撃者がAIを活用して、その運用を効率化していることを確認しています。この事例は、AIエージェントが悪意のある目的で自動化された攻撃を高速かつ大規模に実行できることを示しています。",
+          "insight": "AIエージェントを用いた攻撃の自動化・高速化は、既存のSOC/CDCの検知・対応速度の限界を露呈する可能性があります。CDCは、AIエージェントの振る舞いを検知するための新しい脅威モデルと検知ルールを開発し、自動化された攻撃に対する初動対応をAI for Securityで支援することを検討すべきです。また、マルウェアやフィッシングと連携してクレデンシャルを窃取するAIエージェントの監視は、Identity/ITDR戦略に不可欠となります。",
+          "importance": "高",
+          "importance_reason": "AIエージェントが悪意を持って自動化され、短時間で大規模な被害を引き起こす実証例であり、SOC/CDCの対応能力に直接影響するため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "クレデンシャル窃取",
+            "ソーシャルエンジニアリング"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "AIエージェント",
+            "マルチエージェント攻撃",
+            "クレデンシャル窃取",
+            "自動化攻撃",
+            "脅威インテリジェンス"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "AI for Security",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "e5b6cfd2098a",
+          "title": "Bait-and-Recover: Poisoning Internal Refusal Signals to Defend LLMs against White-Box Editing Jailbreaks",
+          "summary": "arXiv:2609.05794v1 Announce Type: new \nAbstract: Open-weight large language models face a low-cost white-box threat from representation engineering attacks. Attackers can estimate refusal directions and search for projection-matrix edits that suppress safety alignment while preserving general capabilities, within minutes on a single GPU and without gradient-based training. We propose Bait-and-Recover, a weight-level defense that places a bait adapter where attackers read activations and a paired",
+          "url": "https://arxiv.org/abs/2609.05794",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-09-09T13:00:00+09:00",
+          "title_ja": "LLMのホワイトボックス編集脱獄防御「Bait-and-Recover」を提案",
+          "summary_ja": "オープンウェイトLLMは、セーフティアライメントを抑制しつつ一般能力を維持する「表現工学攻撃」のようなホワイトボックス脅威に直面しています。これに対抗するため、「Bait-and-Recover」というウェイトレベルでの防御策が提案されました。この防御策は、攻撃者がアクティベーションを読み取る位置に「ベイト（おとり）アダプター」を配置し、ペアとなるコンポーネントでモデルの安全性を回復する仕組みです。",
+          "insight": "LLMの内部構造を悪用する高度な攻撃に対し、モデル自体の防御技術が研究されています。CDC/SOCは、LLMの安全性を担保するための技術的知見を深め、AIサービスの導入・運用において、このような内部攻撃への対策を要件として定義する必要があります。モデルの安全性評価や異常な出力・挙動を検知する仕組みは、Security for AIの重要な側面として監視対象に含めるべき論点です。",
+          "importance": "中",
+          "importance_reason": "LLMに対する新たな攻撃手法と、それに対する防御研究の動向を示すもので、長期的なAIセキュリティ戦略に影響を与えるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "LLMセキュリティ",
+            "AIを使った防御",
+            "敵対的攻撃"
+          ],
+          "affected_layers": [
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "LLM",
+            "ホワイトボックス攻撃",
+            "表現工学",
+            "セーフティアライメント",
+            "モデル防御"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "サービス企画",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "e2e8d11f9dc2",
+          "title": "From Review to Authorization: Key-Isolated Threshold Signing for LLM Agents",
+          "summary": "arXiv:2609.05901v1 Announce Type: new \nAbstract: Autonomous LLM agents can turn untrusted content into effectful actions such as payments and permission changes. If the same process interprets this content and controls a reusable signing credential, prompt injection can cross the judgment boundary and reach execution authority. We present KITA, a review-to-authorization architecture that keeps the user's personal secret signing key and every threshold signing-key share outside all LLM processes.",
+          "url": "https://arxiv.org/abs/2609.05901",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-09-09T13:00:00+09:00",
+          "title_ja": "LLMエージェント向け鍵分離型閾値署名アーキテクチャKITA",
+          "summary_ja": "自律型LLMエージェントが、プロンプトインジェクションにより判断境界を越え、支払いや権限変更などの効果的なアクションを実行するリスクがあります。これに対処するため、ユーザーの秘密署名鍵と閾値署名鍵シェアをLLMプロセスから完全に分離する「KITA」というアーキテクチャが提案されました。KITAは、「レビューから承認」というプロセスを経て、LLMエージェントの実行権限を安全に管理します。",
+          "insight": "AIエージェントの自律性が高まるにつれて、その実行権限の適切な管理が極めて重要になります。SOC/CDCは、LLMエージェントのプロンプトインジェクション対策と、それによる権限昇格や不正なアクション実行を検知する仕組みを構築する必要があります。特に、重要なアクションには多段階承認や人間によるレビューを組み込むなど、ガバナンス層でのセキュリティ設計がSecurity for AIの観点から求められます。KITAのような鍵分離アーキテクチャは、今後サービス設計に反映される可能性があります。",
+          "importance": "高",
+          "importance_reason": "LLMエージェントのプロンプトインジェクションによる実行権限乗っ取りの直接的なリスクと、その対策アーキテクチャが示されているため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "プロンプトインジェクション",
+            "LLMセキュリティ",
+            "認証バイパス"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "LLMエージェント",
+            "プロンプトインジェクション",
+            "権限管理",
+            "鍵分離",
+            "閾値署名"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "サービス企画",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "9538509fba3f",
+          "title": "On the Navier–Stokes Millennium Prize Problem",
+          "summary": "<p><strong><a href=\"https://openai.com/index/navier-stokes-solution/\">On the Navier–Stokes Millennium Prize Problem</a></strong></p>\nImpressive result from OpenAI, who used an unreleased model to produce a resolution to <a href=\"https://en.wikipedia.org/wiki/Navier–Stokes_existence_and_smoothness\">the Navier–Stokes existence and smoothness problem</a>, one of the seven <a href=\"https://en.wikipedia.org/wiki/Millennium_Prize_Problems\">Millennium Prize Problems</a> that have been subject to a $1,0",
+          "url": "https://simonwillison.net/2026/Sep/8/on-navier-stokes/",
+          "ai_score": 3,
+          "cdc_pre_score": 1,
+          "source_name": "Simon Willison",
+          "source_tier": "C",
+          "published": "2026-09-09T08:55:12+09:00",
+          "title_ja": "Navier–Stokesミレニアム懸賞問題について",
+          "summary_ja": "OpenAIが未公開モデルを用いて、七つのミレニアム懸賞問題の一つであるNavier–Stokes（ナヴィエ・ストークス）方程式の存在と滑らかさの問題を解決したと報告されました。この成果は、AIが科学分野の未解決問題を解決する能力を持つことを示しており、AI技術の飛躍的な進歩を象徴するものです。",
+          "insight": "このニュースは、AIの汎用的な問題解決能力が大幅に向上していることを示唆しています。直接的なセキュリティリスクや運用上の示唆は限定的ですが、AIの進化がサイバー攻撃や防御のパラダイムを根本的に変える可能性を示唆しています。CDC/SOCとしては、AIの進化の動向を中長期的に捉え、将来の脅威と防御策の検討に活かすべきです。",
+          "importance": "低",
+          "importance_reason": "AI技術の進歩を示すニュースだが、サイバーセキュリティの具体的な脅威や防御策に直接関連するものではないため。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "研究・論文"
+          ],
+          "affected_layers": [
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "OpenAI",
+            "Navier–Stokes",
+            "ミレニアム懸賞問題",
+            "AIの進歩",
+            "科学研究"
+          ],
+          "cdc_relevance": 0,
+          "cdc_context": [],
+          "views": 0
+        },
+        {
+          "id": "7c2b150b02b0",
+          "title": "US says Chinese firms extracted billions of tokens from frontier AI models",
+          "summary": "U.S. cybersecurity and intelligence agencies say that six Chinese AI companies conducted industrial-scale distillation attacks on American frontier AI models since at least late 2024. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/us-says-chinese-firms-extracted-billions-of-tokens-from-frontier-ai-models/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-09-10T01:48:33+09:00",
+          "title_ja": "米国、中国企業がフロンティアAIモデルから数十億のトークンを抽出したと指摘",
+          "summary_ja": "米国のサイバーセキュリティおよび情報機関は、少なくとも2024年後半以降、6つの中国AI企業が米国のフロンティアAIモデルに対して産業規模の蒸留攻撃を行ったと指摘しました。これにより、OpenAI、Anthropic、Google Geminiなどのモデルから大量のトークンが不正に抽出されたとされています。この行為は、知的財産の窃盗と見なされ、国家間のAI技術競争におけるセキュリティリスクを浮き彫りにしています。",
+          "insight": "記事2と類似の内容であり、AIモデルからの不正な情報抽出が大規模に行われている実態を裏付けるものです。CDC/SOCは、このような国家支援型攻撃に対する防御戦略を再考し、特にAIモデルとその訓練データへのアクセス制御、API利用監視を強化すべきです。AIサービスのプロバイダとの連携を通じて、不正な利用パターンを共有し、国際的な脅威インテリジェンスを活用した検知能力の向上が求められます。",
+          "importance": "高",
+          "importance_reason": "国家間のAI技術競争におけるモデル抽出攻撃の広範な実態が具体的に示されており、AIモデルのセキュリティ保護の重要性を強調するため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "モデル汚染",
+            "AIを使った攻撃",
+            "APT"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "中国企業",
+            "蒸留攻撃",
+            "フロンティアAIモデル",
+            "トークン抽出",
+            "知的財産権侵害"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "CISO報告",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "a01e503f506e",
+          "title": "Infostealer Logs Expose Replayable AI Tokens That Can Bypass MFA",
+          "summary": "Cybercriminals are hijacking artificial intelligence (AI) user accounts via information stealer logs to create \"stolen keys\" that grant illicit access to tools from model providers like Google, Anthropic, and others.&nbsp;\n\nInformation stealers like Lumma Stealer or Vidar are equipped to harvest a wide range of data from compromised systems. This can include credential, session tokens, and API",
+          "url": "https://thehackernews.com/2026/09/infostealer-logs-expose-replayable-ai.html",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-09-09T23:23:55+09:00",
+          "title_ja": "情報窃取マルウェアがMFAバイパス可能なAIトークンを漏洩",
+          "summary_ja": "サイバー犯罪者が情報窃取マルウェア（Lumma Stealer、Vidarなど）を悪用し、侵害されたシステムからAIユーザーアカウントのセッション/APIトークンを窃取しています。これらの「盗まれたキー」は、多要素認証（MFA）をバイパスして、GoogleやAnthropicなどのAIツールへの不正アクセスを可能にします。これにより、AIサービスへの認証情報が従来のシステムと同様に標的となり、MFAだけでは不十分なケースが浮上しています。",
+          "insight": "AIサービスへのアクセスに用いられるセッション/APIトークンが新たな標的となっており、従来のクレデンシャル窃取対策だけではAI関連のリスクをカバーしきれていないことが示唆されます。SOC/CDCは、エンドポイントにおける情報窃取マルウェア対策を強化するとともに、AIサービスへの異常なAPIアクセスやMFAバイパス試行を検知するルールを導入すべきです。また、AIサービス利用時のトークンライフサイクル管理や、異常な振る舞いを伴うトークン利用に対するリアルタイムでの停止措置を検討することが、Identity/ITDRの観点から重要です。",
+          "importance": "高",
+          "importance_reason": "一般的な情報窃取マルウェアがAIサービスへのアクセスを脅かし、MFAをもバイパスする具体的な攻撃経路が明らかになったため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "クレデンシャル窃取",
+            "マルウェア",
+            "認証バイパス"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "情報窃取マルウェア",
+            "AIトークン",
+            "セッションハイジャック",
+            "MFAバイパス",
+            "APIキー"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "AI for Security",
+            "Security for AI"
+          ],
+          "views": 0
+        },
+        {
+          "id": "f2c6a48a56d6",
+          "title": "AdaptHealth confirms 4.1 million people exposed in July cyberattack",
+          "summary": "Healthcare company AdaptHealth has confirmed that data of 4.1 million people was exposed in a cyberattack discovered in July that was attributed to the ShinyHunters threat group. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/adapthealth-confirms-41-million-people-exposed-in-july-cyberattack/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-09-10T06:30:36+09:00",
+          "title_ja": "AdaptHealthがサイバー攻撃による410万人データ漏洩を確認",
+          "summary_ja": "ヘルスケア企業AdaptHealthは、ShinyHunters脅威グループによる7月のサイバー攻撃で、410万人のデータが漏洩したことを確認しました。このインシデントは、個人情報流出の深刻なリスクを改めて浮き彫りにしています。企業は顧客の個人情報保護のため、サイバーセキュリティ対策の強化とインシデント対応体制の見直しが求められています。",
+          "insight": "このニュースは、AIに直接関連するものではなく、一般的なデータ侵害インシデントの事例です。SOC/CDCの観点からは、継続的な脅威アクター追跡（ShinyHuntersなど）と、データ漏洩時の適切な初動対応、通知プロセスの重要性を示唆します。特に医療分野では個人情報保護の厳格な規制があり、MDR/MSSPサービスは顧客の業界特性に応じたコンプライアンス支援とインシデントハンドリング能力が重要となります。",
+          "importance": "中",
+          "importance_reason": "大規模な個人情報漏洩インシデントであり、一般的なサイバーセキュリティリスク管理の重要性を示すため。",
+          "tag_main_id": "incident",
+          "tag_main_label": "インシデント",
+          "tag_subs": [
+            "データ侵害",
+            "個人情報流出"
+          ],
+          "affected_layers": [
+            "クラウド/サーバー",
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "AdaptHealth",
+            "ShinyHunters",
+            "データ漏洩",
+            "個人情報保護",
+            "ヘルスケア"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "MDR/MSSP設計",
+            "顧客課題"
+          ],
+          "views": 0
+        },
+        {
+          "id": "91a590cf253c",
+          "title": "US Government Accuses Chinese AI Firms of Distilling Frontier Models",
+          "summary": "US agencies claim Chinese companies covertly extracted billions of tokens from OpenAI, Anthropic, Google Gemini, and SpaceX's Grok to reduce development costs.",
+          "url": "https://www.darkreading.com/application-security/us-government-chinese-ai-firms-distilling-frontier-models",
+          "ai_score": 2,
+          "cdc_pre_score": 0,
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-09-10T04:47:50+09:00",
+          "title_ja": "米国政府、中国AI企業がフロンティアモデルを蒸留と告発",
+          "summary_ja": "米国政府機関は、中国企業がOpenAI、Anthropic、Google Gemini、SpaceXのGrokなどのフロンティアAIモデルから数十億のトークンを密かに抽出し、開発コストを削減していたと主張しています。これは、AIモデルの知的財産権侵害に繋がり、国家間の技術競争における新たな脅威の側面を示しています。この行為は、モデルのセキュリティ保護の喫緊の必要性を浮き彫りにしています。",
+          "insight": "記事2および7と同一の事象に対する異なる報道であり、AIモデルの知的財産保護が国家レベルでの喫緊の課題であることを再確認させます。CDC/SOCは、AIモデルへの不正アクセスやデータの不正抽出を検知するための高度な振る舞い分析と、データ流出防止（DLP）策をAIサービスに対して適用することを検討すべきです。また、AIモデルプロバイダとの連携強化による脅威インテリジェンスの共有が、効果的な防御策を講じる上で不可欠です。",
+          "importance": "高",
+          "importance_reason": "AIモデルの知的財産を狙った国家レベルの攻撃が継続的に報告されており、AIのSecurity for AIの重要性が増しているため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "モデル汚染",
+            "AIを使った攻撃",
+            "APT"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "米国政府",
+            "中国AI企業",
+            "フロンティアAIモデル",
+            "トークン抽出",
+            "知的財産侵害"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "CISO報告",
+            "Security for AI"
+          ],
+          "views": 0
+        }
+      ],
+      "today_implication": "【今日の結論】AIエージェントの悪用による攻撃の自動化・高速化、およびAIサービスやモデル自体を標的とする攻撃が顕著に増加しており、従来のセキュリティ対策に加え、AI固有のID・権限管理、モデル保護、ログ監視の強化が喫緊の課題となっています。\n\n【攻撃側の変化】AIエージェントが、数時間で数千のクレデンシャルを窃取するような大規模かつ高速な攻撃（記事3）に悪用され始めています。また、情報窃取マルウェアはAIサービスへのアクセスに用いられるMFAバイパス可能なセッション/APIトークンを標的とし（記事8）、AI連携ワークフローにおけるIDハイジャック（記事1）も確認されています。さらに、国家支援と見られる組織によるAIモデルの「蒸留攻撃」により、最先端AIモデルからの知的財産抽出が大規模に行われている（記事2, 7, 10）など、AIそのものを狙う攻撃も深刻化しています。\n\n【防御側の変化】LLMに対するホワイトボックス攻撃への防御策（記事4）や、LLMエージェントの実行権限をプロンプトインジェクションから保護するための鍵分離アーキテクチャ（記事5）など、AIシステム固有の脆弱性に対する技術的な防御研究が進んでいます。\n\n【Security for AI】AIエージェントのID・権限管理を従来のシステムから分離し、特に重要なアクションには厳格な承認プロセスを設ける必要があります（記事5）。AIサービス利用におけるセッション/APIトークンの保護はMFAだけでは不十分であり（記事8）、ライフサイクル管理と異常利用の監視を強化すべきです。また、AIモデルの不正利用や抽出（蒸留攻撃）に対しては、モデルへのアクセス制御、API利用の監視、そしてサプライチェーン全体での知的財産保護戦略が求められます（記事2, 7, 10）。\n\n【AI for Security】AIエージェントが悪用する自動化された高速攻撃パターンを検知するため、AI for Securityによる異常検知・振る舞い分析の高度化が必須です。AIサービスへの不正アクセスやワークフローIDの異常な利用をAIでリアルタイムに分析し、初動判断支援に活用する機会が増加します。\n\n【CDC/SOCへの示唆】AIエージェントの挙動ログ、LLMのAPIアクセスログ、AIサービス利用ログ、ワークフローIDの活動ログを新たな監視対象として追加し、これらのログからの異常検知ルールを構築する必要があります。AIエージェントによる自動化攻撃への対応速度を向上させるため、SOARによる自動化対応をAI for Securityで強化し、エスカレーション基準を見直すべきです。SOCアナリストの役割は、AIシステム固有の脅威分析、攻撃痕跡の解析、そしてAIエージェントの権限モデル設計・監査へとシフトします。\n\n【今日の問い】自社で利用・開発しているAIシステムやAIエージェントについて、そのID・権限管理やAIトークン管理は現状のセキュリティ運用で十分にカバーできているか、またAIモデルの不正利用や抽出を検知・防御する具体的な手段は検討されているか？"
+    },
     {
       "date": "2026-09-09",
       "articles": [
@@ -33645,420 +34055,6 @@
         }
       ],
       "today_implication": "【今日の結論】\nAIエージェントの普及に伴い、攻撃側はAIを悪用したフィッシングや、AIエージェント自体のクレデンシャル窃取、RAGメモリ汚染、サプライチェーン攻撃といった新しい脅威ベクトルを急速に確立している。これにより、防御側はAIシステム固有のログと振る舞いを監視対象に加え、既存のSOC/CDCアーキテクチャを「Security for AI」の観点から根本的に見直す必要に迫られている。\n【攻撃側の変化】\n本日はAIを悪用した攻撃手法が顕著に報告された。特に、Google Geminiをフィッシング詐欺に利用する事例（[6]）や、AIエージェントが実クレデンシャルを漏洩させられる可能性（[1]）、RAGエージェントの持続的メモリを汚染する攻撃（[3]）など、AIシステム固有の脆弱性を突く攻撃が現実化している。また、AIエージェントのサードパーティ製スキルを悪用するサプライチェーンリスク（[5]）も指摘されており、攻撃側はAIシステムの複雑なエコシステムを標的とする方向に進化している。\n【防御側の変化】\nMicrosoftがAIインシデント対応プレイブックを公開（[9]）したように、主要ベンダーはAIシステムの防御に関する標準化に着手し始めている。これは、従来のインシデント対応フレームワークがAI固有のリスクに対応しきれないという認識が広まっていることを示唆する。しかし、多くのSOC/CDCでは、これらの新しい脅威に対する監視ルールや対応手順が未整備であり、AI固有のログ収集・分析能力が急務となっている。CISAのKEVカタログ更新（[7]）は既存脆弱性の継続的な悪用を示唆しており、基礎的な脆弱性管理の重要性も依然として高い。\n【Security for AI】\nLLM、AIエージェント、RAG、API連携におけるリスクが多角的に浮上している。AIエージェントがクレデンシャルを漏洩させたり（[1]）、RAGの持続的メモリが汚染されたりする（[3]）事例は、AIシステムの認証・認可、データフロー、メモリ管理における新たな監視ポイントの必要性を示す。特に、AIエージェントの「スキル」や「ツール利用」がサプライチェーンリスク（[5]）となり、その権限範囲と実行内容の厳格な検証が不可欠である。AIエージェントの自律性（[4]）は利便性と引き換えに予期せぬ挙動のリスクを高める。\n【AI for Security】\n本日の記事ではAI for Securityの具体的な活用事例は直接言及されていないものの、攻撃側がAIを悪用する洗練度が高まっている現状（[1, 6]）を踏まえれば、防御側もAIによる検知・分析能力の向上が不可欠である。特に、AIが生成した不審なコンテンツの特定、AIエージェントの正常な振る舞いからの逸脱検知、膨大なAIシステムログからの異常パターン検出において、AIを活用した自動化支援がTier2調査やアラート判断の精度・速度向上に寄与する。これは人間アナリストの判断根拠と証跡を強化する役割を担う。\n【CDC/SOCへの示唆】\nCDCは、従来のIT資産に加え、AIエージェント、RAGベクトルデータベース、AIモデル、サードパーティ製AIスキル、AIエージェントが実行する外部ツール/APIへの監視対象を緊急で拡大する必要がある。具体的には、AIエージェントの実行ログ、プロンプト履歴、メモリへの入出力、外部ツールとのAPI通信、権限利用ログなどを統合的な監視対象とする。検知ルールは、単一イベントだけでなく、セッションを跨ぐ汚染（[3]）や、AIエージェントの自律的な「積極的すぎる」挙動（[4]）を異常として捉える必要がある。これにより、Tier1/2の役割分担やエスカレーション基準も再定義され、人による最終判断とAIによる効率的な情報提供・初動判断支援の連携が鍵となる。\n【今日の問い】\nAIエージェントの自律性が進化する中で、その振る舞いの透明性と説明可能性をどのように確保し、ポリシー違反や不正な意図を検知するためのログ設計・分析基盤を構築すべきか。また、AIエージェントのサプライチェーンリスク（サードパーティ製スキル、RAGデータ源など）に対して、CDCはどのような事前評価・継続的監視体制を構築し、どの程度の責任範囲を負うべきか。"
-    },
-    {
-      "date": "2026-06-12",
-      "articles": [
-        {
-          "id": "a102233d6de2",
-          "title": "ThreatsDay Bulletin: Worm Code Leaked, AI Agent Phished, Claude Code Patch + 28 New Stories",
-          "summary": "It's been one of those weeks. You expect the usual noise: recycled malware, sloppy attacks, another easy target getting hit. Instead, there's a supply chain attack kit in a public repo, a $5,000-a-month RAT that clones browsers, and research showing AI agents can be tricked into leaking real credentials.\n\nThe bigger problem is how polished this all looks now. Mule networks run like SaaS.",
-          "url": "https://thehackernews.com/2026/06/threatsday-bulletin-worm-code-leaked-ai.html",
-          "ai_score": 3,
-          "cdc_pre_score": 1,
-          "source_name": "The Hacker News",
-          "source_tier": "B",
-          "published": "2026-06-11T22:20:41+09:00",
-          "title_ja": "AIエージェントへのフィッシング、サプライチェーン攻撃キットなど新たな脅威が台頭",
-          "summary_ja": "今週は、公開リポジトリでサプライチェーン攻撃キットが確認され、ブラウザをクローンする月額5,000ドルのRATが出現した。さらに、AIエージェントが騙されて認証情報を漏洩する研究結果も示され、攻撃手法の高度化と洗練が見られる。攻撃者側のツールやネットワークがSaaSのように運用され、その効率性と組織化が進んでいることが示唆されている。",
-          "insight": "AIエージェントが直接的な攻撃対象となり、認証情報漏洩の媒介となる可能性が示されたことは、Security for AIの観点からSOC/CDCの監視範囲拡張を強く示唆する。AIエージェントの挙動ログ、特権操作、外部連携の監視は喫緊の課題。サプライチェーン攻撃の高度化は、AIエージェントが利用する外部スキルやライブラリのセキュリティ評価の重要性を高める。",
-          "importance": "高",
-          "importance_reason": "AIエージェントが攻撃対象となり、クレデンシャル窃取の経路となる新たな脅威が具体的に報告されており、SOC/CDCの監視・対応設計に直接的な影響を与えるため。",
-          "tag_main_id": "attack",
-          "tag_main_label": "攻撃・脅威",
-          "tag_subs": [
-            "フィッシング",
-            "サプライチェーン攻撃",
-            "AIを使った攻撃"
-          ],
-          "affected_layers": [
-            "データ/AI",
-            "アプリ/API",
-            "ガバナンス/規制"
-          ],
-          "related_keywords": [
-            "AIエージェント",
-            "クレデンシャル窃取",
-            "フィッシング",
-            "サプライチェーン攻撃",
-            "RAT"
-          ],
-          "cdc_relevance": 3,
-          "cdc_context": [
-            "SOC運用変化",
-            "Identity/ITDR",
-            "Security for AI",
-            "顧客課題"
-          ],
-          "views": 0
-        },
-        {
-          "id": "15f76b42ea43",
-          "title": "JailbreakOPT: Tool-Assisted Iterative Jailbreak Prompt Optimization",
-          "summary": "arXiv:2606.11425v1 Announce Type: new \nAbstract: Jailbreak attacks expose persistent safety weaknesses in large language models (LLMs), but existing stateless single-turn methods face a trade-off: hand-crafted prompts are expressive but static, while iterative prompt optimization can adapt but often relies on low-level mutations that require many target queries. We propose JailbreakOPT, a tool-assisted framework for improving iterative single-turn jailbreak prompt optimization. JailbreakOPT orga",
-          "url": "https://arxiv.org/abs/2606.11425",
-          "ai_score": 3,
-          "cdc_pre_score": 1,
-          "source_name": "arXiv cs.CR",
-          "source_tier": "C",
-          "published": "2026-06-11T13:00:00+09:00",
-          "title_ja": "LLMのジェイルブレイク攻撃最適化フレームワーク「JailbreakOPT」の提案",
-          "summary_ja": "大規模言語モデル（LLM）に対するジェイルブレイク攻撃の永続的な安全性弱点が指摘されており、既存手法は静的または効率性に課題があった。本研究では、ツール支援型フレームワーク「JailbreakOPT」を提案し、イテレーションによるシングルターンのジェイルブレイクプロンプト最適化を改善する。これにより、LLMの安全性を脅かす新たな攻撃手法が体系化された。",
-          "insight": "LLMのジェイルブレイク攻撃手法が進化していることは、AI for SecurityおよびSecurity for AIの両面で重要な示唆を持つ。AIエージェントのコアとなるLLMの安全性を確保するため、プロンプトの検証、LLMの挙動監視、不適切な出力検知の仕組みをCDCは検討する必要がある。AIを使った防御側は、これらの攻撃手法を理解し、防御策に組み込むべきである。",
-          "importance": "中",
-          "importance_reason": "LLMのジェイルブレイク攻撃の体系化は、AIシステムを運用する企業にとって直接的なリスクであり、今後の防御戦略に影響を与えるため。",
-          "tag_main_id": "ai_sec",
-          "tag_main_label": "AI×セキュリティ",
-          "tag_subs": [
-            "プロンプトインジェクション",
-            "LLMセキュリティ"
-          ],
-          "affected_layers": [
-            "データ/AI"
-          ],
-          "related_keywords": [
-            "LLM",
-            "ジェイルブレイク",
-            "プロンプトインジェクション",
-            "モデル安全性",
-            "JailbreakOPT"
-          ],
-          "cdc_relevance": 2,
-          "cdc_context": [
-            "Security for AI",
-            "サービス企画"
-          ],
-          "views": 0
-        },
-        {
-          "id": "9eb111985fe3",
-          "title": "Evaluating and Combating the Impact of Concept Drift on the Performance of Machine Learning-Based Phishing Detection Systems",
-          "summary": "arXiv:2606.11471v1 Announce Type: new \nAbstract: The expansion of the digital domain has resulted in a substantial increase in digital communication, with email emerging as one of the most prominent channels. The proliferation of email communication is apparent in both professional and personal contexts, thereby creating numerous vulnerabilities for malicious actors to exploit. Spam emails, a form of unsolicited correspondence often bearing malicious intent towards recipients, have been an ongoi",
-          "url": "https://arxiv.org/abs/2606.11471",
-          "ai_score": 3,
-          "cdc_pre_score": 1,
-          "source_name": "arXiv cs.CR",
-          "source_tier": "C",
-          "published": "2026-06-11T13:00:00+09:00",
-          "title_ja": "機械学習ベースのフィッシング検知システムにおけるコンセプトドリフトの影響評価と対策",
-          "summary_ja": "デジタルコミュニケーションの拡大に伴い、メールは悪意ある攻撃者が悪用する主要チャネルとなっている。本研究は、機械学習ベースのフィッシング検知システムが直面する、脅威環境の変化による性能劣化（コンセプトドリフト）を評価し、その影響を緩和するための対策を提案する。これにより、AI for Securityの分野における持続的な防御能力の維持の課題が浮き彫りになった。",
-          "insight": "AI for Securityとして機械学習モデルを活用するSOC/CDCにおいて、時間経過による検知性能の劣化（コンセプトドリフト）は避けて通れない課題。この研究は、AIを導入した検知システムの継続的なモニタリング、再学習、モデル更新プロセスの重要性を示唆する。CDCは、自社のAIベース検知システムの有効性を定期的に評価し、運用品質を維持する仕組みを構築すべき。",
-          "importance": "中",
-          "importance_reason": "AI for Securityを導入するSOC/CDCの運用品質に直接関わる研究であり、AI活用における現実的な課題とその対策を提示しているため。",
-          "tag_main_id": "ai_sec",
-          "tag_main_label": "AI×セキュリティ",
-          "tag_subs": [
-            "AIを使った防御"
-          ],
-          "affected_layers": [
-            "データ/AI"
-          ],
-          "related_keywords": [
-            "機械学習",
-            "フィッシング検知",
-            "コンセプトドリフト",
-            "AIを使った防御",
-            "モデル性能"
-          ],
-          "cdc_relevance": 2,
-          "cdc_context": [
-            "AI for Security",
-            "SOC運用変化",
-            "サービス企画"
-          ],
-          "views": 0
-        },
-        {
-          "id": "25aa92cea612",
-          "title": "Trust No Skill: Integrity Verification for AI Agent Supply Chains",
-          "summary": "<p>Protect enterprise AI agents from supply chain risks by auditing third-party skills for hidden vulnerabilities and multi-stage attack chains.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/ai-agent-supply-chain-risks/\">Trust No Skill: Integrity Verification for AI Agent Supply Chains</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
-          "url": "https://unit42.paloaltonetworks.com/ai-agent-supply-chain-risks/",
-          "ai_score": 3,
-          "cdc_pre_score": 0,
-          "source_name": "Palo Alto Unit 42",
-          "source_tier": "A",
-          "published": "2026-06-11T19:00:24+09:00",
-          "title_ja": "AIエージェントのサプライチェーンリスク：サードパーティースキルの整合性検証",
-          "summary_ja": "企業AIエージェントは、サードパーティのスキル（ツールや機能）を統合して活用する際に、サプライチェーンリスクに直面する。これらのスキルには、隠れた脆弱性や多段階攻撃チェーンが含まれる可能性があり、企業はAIエージェントのサプライチェーン全体を監査し、整合性を検証する必要がある。このリスクは、AIエージェントが持つ高い権限と広範な影響力を考慮すると特に重要となる。",
-          "insight": "AIエージェントが外部スキルを利用する際のサプライチェーンリスクは、Security for AIにおける喫緊の課題。CDCは、AIエージェントが使用する全スキル（API連携含む）のインベントリ管理、セキュリティ評価、および実行時の挙動監視を強化する必要がある。エージェントが外部サービスと連携する際の権限設定やデータ流通経路の可視化も重要であり、従来のサプライチェーンリスク管理をAIエージェント向けに拡張する視点が求められる。",
-          "importance": "高",
-          "importance_reason": "AIエージェントの「ツール・実行層」におけるサプライチェーンリスクは、ビジネスに広範な影響を及ぼす可能性があり、新たな監視・管理領域となるため。",
-          "tag_main_id": "ai_sec",
-          "tag_main_label": "AI×セキュリティ",
-          "tag_subs": [
-            "LLMセキュリティ",
-            "サプライチェーン攻撃"
-          ],
-          "affected_layers": [
-            "データ/AI",
-            "アプリ/API",
-            "ガバナンス/規制"
-          ],
-          "related_keywords": [
-            "AIエージェント",
-            "サプライチェーン",
-            "サードパーティースキル",
-            "整合性検証",
-            "ツール権限濫用"
-          ],
-          "cdc_relevance": 3,
-          "cdc_context": [
-            "Security for AI",
-            "SOC運用変化",
-            "サービス企画",
-            "顧客課題",
-            "MDR/MSSP設計"
-          ],
-          "views": 0
-        },
-        {
-          "id": "34a21788ebfb",
-          "title": "CISA Tells US Agencies to Fix Security Bugs in as Little as 3 Days Thanks to AI Threats",
-          "summary": "“Defenders cannot afford to take weeks to patch,” one Cybersecurity and Infrastructure Security Agency official warned on Wednesday.",
-          "url": "https://www.wired.com/story/cisa-ai-vulnerability-directive/",
-          "ai_score": 3,
-          "cdc_pre_score": 0,
-          "source_name": "Wired Security",
-          "source_tier": "B",
-          "published": "2026-06-11T05:55:40+09:00",
-          "title_ja": "CISA、AI脅威を背景に米政府機関にセキュリティバグの3日以内の修正を指示",
-          "summary_ja": "CISAは、AI関連の脅威の増大を背景に、米国の連邦政府機関に対し、セキュリティ脆弱性のパッチ適用を3日以内に行うよう指示した。CISA関係者は、防御側がパッチ適用に数週間かける余裕はないと警告しており、AIが攻撃を加速させている現状への緊急的な対応を示している。これは、従来の脆弱性管理プロセスにおけるリードタイムの根本的な見直しを迫るものである。",
-          "insight": "AIが攻撃を加速させる中、防御側の対応速度を劇的に向上させる必要性を示唆している。SOC/CDCは、検知から対応までの時間を短縮するため、AI for Securityによるアラートトリアージ、自動初動対応、脅威インテリジェンスとの連携を強化すべき。脆弱性管理とインシデント対応の連携を密にし、迅速な情報共有とパッチ適用・緩和策導入の体制を整えることが、MDR/MSSPのサービスレベルにおいても重要になる。",
-          "importance": "高",
-          "importance_reason": "AI脅威の加速が防御側の対応速度を劇的に変化させる必要性を示しており、SOC/CDCの運用プロセス全体に影響を与えるため。",
-          "tag_main_id": "policy",
-          "tag_main_label": "規制・政策",
-          "tag_subs": [
-            "CISA勧告",
-            "標準化"
-          ],
-          "affected_layers": [
-            "ガバナンス/規制",
-            "クラウド/サーバー",
-            "アプリ/API"
-          ],
-          "related_keywords": [
-            "CISA",
-            "脆弱性管理",
-            "パッチ適用",
-            "AI脅威",
-            "対応速度"
-          ],
-          "cdc_relevance": 3,
-          "cdc_context": [
-            "SOC運用変化",
-            "Exposure管理",
-            "CISO報告",
-            "AI for Security"
-          ],
-          "views": 0
-        },
-        {
-          "id": "47496bcca9d5",
-          "title": "Langflow Vulnerability CVE-2026-5027 Exploited for Unauthenticated RCE",
-          "summary": "A high-severity security flaw in Langflow, an open-source low-code platform to build artificial intelligence (AI) applications, has come under active exploitation in the wild, according to findings from VulnCheck.\n\nThe vulnerability in question is CVE-2026-5027 (CVSS score: 8.8), a case of path traversal that could allow an attacker to write files to arbitrary locations.\n\n\"The 'POST /api/v2/",
-          "url": "https://thehackernews.com/2026/06/unpatched-langflow-flaw-cve-2026-5027.html",
-          "ai_score": 3,
-          "cdc_pre_score": 0,
-          "source_name": "The Hacker News",
-          "source_tier": "B",
-          "published": "2026-06-11T00:00:59+09:00",
-          "title_ja": "Langflowの脆弱性CVE-2026-5027が悪用され認証なしRCE攻撃が発生",
-          "summary_ja": "AIアプリケーションを構築するためのオープンソースのローコードプラットフォーム「Langflow」に存在する高深刻度脆弱性CVE-2026-5027（CVSSスコア8.8）が、実際に悪用されていることが判明した。このパス・トラバーサル脆弱性により、攻撃者は任意の場所にファイルを書き込み、認証なしでリモートコード実行（RCE）を可能にする。AI開発基盤そのもののセキュリティリスクが顕在化した。",
-          "insight": "AIシステムを構築・運用するプラットフォーム自体の脆弱性悪用は、Security for AIの重要な側面。CDCは、AI開発環境やAIアプリケーションの実行基盤も監視対象に含める必要があり、従来のSIEM/SOARでは収集しきれないログ（開発ツールのアクセスログ、API通信、コード実行ログなど）の分析が求められる。AIシステムのサプライチェーンにおけるソフトウェアコンポーネント分析（SCA）の重要性が改めて示された。",
-          "importance": "高",
-          "importance_reason": "AI開発プラットフォームの脆弱性が実際に悪用されており、AIシステムそのものの基盤セキュリティがCDCの監視・対応範囲となることを示す直接的な事例であるため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "CVE",
-            "エクスプロイト"
-          ],
-          "affected_layers": [
-            "アプリ/API",
-            "クラウド/サーバー",
-            "データ/AI"
-          ],
-          "related_keywords": [
-            "Langflow",
-            "CVE-2026-5027",
-            "RCE",
-            "パス・トラバーサル",
-            "AIアプリケーション"
-          ],
-          "cdc_relevance": 3,
-          "cdc_context": [
-            "Security for AI",
-            "SOC運用変化",
-            "Exposure管理",
-            "顧客課題"
-          ],
-          "views": 0
-        },
-        {
-          "id": "e557f2555dcd",
-          "title": "Yarbo Android/iOS Mobile Application and Cloud Infrastructure",
-          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-162-01.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to obtain hard-coded credentials, gain access to telemetry data, and potentially send operational commands to the robot fleet.</strong></p>\n<p>The following versions of Yarbo Android/iOS Mobile Application and Cloud Infrastructure are affected:</p>\n<ul>\n<li>Yar",
-          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-162-01",
-          "ai_score": 1,
-          "cdc_pre_score": 1,
-          "source_name": "CISA",
-          "source_tier": "A",
-          "published": "2026-06-11T21:00:00+09:00",
-          "title_ja": "Yarbo Android/iOSモバイルアプリケーションおよびクラウドインフラの脆弱性",
-          "summary_ja": "CISAが、YarboのAndroid/iOSモバイルアプリケーションおよび関連するクラウドインフラストラクチャに存在する脆弱性について警告した。これらの脆弱性が悪用されると、攻撃者はハードコードされた認証情報を取得したり、テレメトリデータにアクセスしたり、さらにはロボットフリートに運用コマンドを送信したりする可能性がある。IoTデバイスと連携するクラウドサービスのセキュリティが問われている。",
-          "insight": "AIを搭載したロボットなどのIoT/OTデバイスは、その制御システムがクラウドと連携するケースが多く、その全体像をCDCが監視する必要がある。ハードコードされた認証情報やデータ流出はIdentity/ITDR、データ/AI層のリスクに直結し、運用の安全性に影響を与える。従来のデバイスセキュリティに加え、クラウド連携における認証・認可、データ通信の整合性、APIセキュリティをCDCはカバーすべき。",
-          "importance": "中",
-          "importance_reason": "IoT/OTデバイスとクラウド連携における脆弱性は、物理的・運用上の影響を伴う可能性があり、CDCの監視対象拡大の必要性を示すため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "設定ミス",
-            "認証バイパス"
-          ],
-          "affected_layers": [
-            "デバイス/エッジ",
-            "クラウド/サーバー",
-            "アプリ/API"
-          ],
-          "related_keywords": [
-            "Yarbo",
-            "IoT",
-            "OTセキュリティ",
-            "ハードコードされた認証情報",
-            "テレメトリデータ"
-          ],
-          "cdc_relevance": 2,
-          "cdc_context": [
-            "SOC運用変化",
-            "Identity/ITDR",
-            "顧客課題"
-          ],
-          "views": 0
-        },
-        {
-          "id": "fb7879a68cd0",
-          "title": "Naxclow IoT Platform",
-          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-162-02.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to impersonate devices, intercept or manipulate communications, harvest sensitive credentials at scale, or gain unauthorized access.</strong></p>\n<p>The following versions of Naxclow IoT Platform are affected:</p>\n<ul>\n<li>Smart Doorbell X3 vers:all/*&nbsp;</li",
-          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-162-02",
-          "ai_score": 1,
-          "cdc_pre_score": 1,
-          "source_name": "CISA",
-          "source_tier": "A",
-          "published": "2026-06-11T21:00:00+09:00",
-          "title_ja": "Naxclow IoTプラットフォームの脆弱性",
-          "summary_ja": "CISAが、Naxclow IoTプラットフォームに複数の脆弱性が存在することを警告した。これらの脆弱性が悪用されると、攻撃者はデバイスのなりすまし、通信の傍受や操作、大量の機密認証情報の窃取、または不正アクセスが可能になる。IoTデバイスが大規模に利用されるプラットフォームにおける、認証・通信・アクセス制御の根本的なセキュリティ課題が浮き彫りになっている。",
-          "insight": "IoTプラットフォーム全体のセキュリティは、単一デバイスの脆弱性にとどまらず、エコシステム全体の信頼性を脅かす。CDCは、IoTプラットフォームの認証認可、デバイスの識別、通信の暗号化、異常なデバイス挙動の監視を強化すべき。特に大規模な認証情報窃取の可能性は、Identity/ITDR戦略の見直しを促す。AIが組み込まれたIoTデバイスの普及に伴い、これらのリスクはさらに複雑化する。",
-          "importance": "中",
-          "importance_reason": "IoTプラットフォームの大規模な脆弱性は、広範囲のデバイスとユーザーに影響を及ぼし、CDCの監視・対応能力の拡張を促すため。",
-          "tag_main_id": "vuln",
-          "tag_main_label": "脆弱性",
-          "tag_subs": [
-            "設定ミス",
-            "認証バイパス"
-          ],
-          "affected_layers": [
-            "デバイス/エッジ",
-            "ネットワーク",
-            "クラウド/サーバー"
-          ],
-          "related_keywords": [
-            "Naxclow",
-            "IoTプラットフォーム",
-            "デバイスなりすまし",
-            "通信傍受",
-            "クレデンシャル窃取"
-          ],
-          "cdc_relevance": 2,
-          "cdc_context": [
-            "SOC運用変化",
-            "Identity/ITDR",
-            "顧客課題"
-          ],
-          "views": 0
-        },
-        {
-          "id": "16e8351d2bda",
-          "title": "Drug Sites Hijacked Spotify’s Search Ranking Through Fake Podcasts",
-          "summary": "A joint congressional report describes a spam operation that turned tens of thousands of fake podcasts into search-engine bait for illegal pharmacy and scam sites.",
-          "url": "https://www.wired.com/story/drug-sites-hijacked-spotifys-search-ranking-through-fake-podcasts-report-finds/",
-          "ai_score": 1,
-          "cdc_pre_score": 1,
-          "source_name": "Wired Security",
-          "source_tier": "B",
-          "published": "2026-06-12T01:07:30+09:00",
-          "title_ja": "Spotifyの検索ランキングが違法薬物サイトへの誘導に利用される",
-          "summary_ja": "共同議会報告書によると、数万件の偽ポッドキャストがSpotifyの検索ランキングをハイジャックし、違法薬局や詐欺サイトへの誘導に使われていたことが明らかになった。これは、プラットフォームの信頼性やユーザーベースを悪用した、ソーシャルエンジニアリング的な攻撃の一種である。",
-          "insight": "直接的なサイバーインシデントではないが、デジタルプラットフォームの悪用によるブランド毀損やユーザーを標的としたソーシャルエンジニアリングの足がかりとなり得る。CDCは、自社のデジタルプレゼンスに対する評判管理や、模倣サイト・詐欺サイトの監視といった、より広範なデジタルリスクモニタリングの必要性を検討すべき。AIによるコンテンツ生成が悪用される可能性も考慮し、ブランド保護の観点を強化する。",
-          "importance": "低",
-          "importance_reason": "直接的なサイバー攻撃や脆弱性に関連するものではなく、従来のSOC/CDCの守備範囲からやや外れるため。",
-          "tag_main_id": "attack",
-          "tag_main_label": "攻撃・脅威",
-          "tag_subs": [
-            "ソーシャルエンジニアリング"
-          ],
-          "affected_layers": [
-            "アプリ/API",
-            "ガバナンス/規制"
-          ],
-          "related_keywords": [
-            "Spotify",
-            "検索ランキング",
-            "偽ポッドキャスト",
-            "ソーシャルエンジニアリング",
-            "ブランド毀損"
-          ],
-          "cdc_relevance": 1,
-          "cdc_context": [
-            "顧客課題",
-            "サービス企画"
-          ],
-          "views": 0
-        },
-        {
-          "id": "db42106c3cd4",
-          "title": "CISA Directs Federal Agencies to Prioritize Security Patches Based on Risk",
-          "summary": "<p>The new BOD 26-04 requires agencies to review and update vulnerability management policies with a focus on KEV catalog entries.</p>\n<p>The post <a href=\"https://www.securityweek.com/cisa-directs-federal-agencies-to-prioritize-security-patches-based-on-risk/\">CISA Directs Federal Agencies to Prioritize Security Patches Based on Risk</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
-          "url": "https://www.securityweek.com/cisa-directs-federal-agencies-to-prioritize-security-patches-based-on-risk/",
-          "ai_score": 1,
-          "cdc_pre_score": 1,
-          "source_name": "SecurityWeek",
-          "source_tier": "B",
-          "published": "2026-06-11T22:01:14+09:00",
-          "title_ja": "CISA、連邦機関にリスクに基づいたセキュリティパッチの優先順位付けを指示",
-          "summary_ja": "CISAは、連邦機関に対して、Known Exploited Vulnerabilities (KEV) カタログのエントリに焦点を当て、脆弱性管理ポリシーを見直し、リスクに基づいたセキュリティパッチ適用を優先するよう指令（BOD 26-04）を出した。これは、限られたリソースの中で効果的にリスクを軽減するための戦略であり、脆弱性管理の効率化を求めるものである。",
-          "insight": "CISAのこの指示は、SOC/CDCが限られたリソースで優先的に対応すべき脆弱性を特定し、予防的措置を講じる上で重要な指針となる。AI for Securityを活用し、KEVや脅威インテリジェンスに基づいて脆弱性のリスクスコアを自動計算し、パッチ適用計画を最適化する機会がある。Exposure管理の観点から、検出された脆弱性の優先順位付けと、迅速な対応プロセスをCDCは確立すべき。",
-          "importance": "高",
-          "importance_reason": "リスクベースの脆弱性管理は、SOC/CDCの効率と有効性を高める上で不可欠であり、AI活用による自動化の機会も大きいことから、戦略的な重要性が高い。",
-          "tag_main_id": "policy",
-          "tag_main_label": "規制・政策",
-          "tag_subs": [
-            "CISA勧告",
-            "コンプライアンス"
-          ],
-          "affected_layers": [
-            "ガバナンス/規制",
-            "クラウド/サーバー",
-            "アプリ/API"
-          ],
-          "related_keywords": [
-            "CISA",
-            "脆弱性管理",
-            "KEVカタログ",
-            "リスクベース",
-            "パッチ優先順位"
-          ],
-          "cdc_relevance": 3,
-          "cdc_context": [
-            "Exposure管理",
-            "SOC運用変化",
-            "CISO報告",
-            "AI for Security"
-          ],
-          "views": 0
-        }
-      ],
-      "today_implication": "【今日の結論】AIの急速な進化と普及は、攻撃側と防御側の対応速度と監視対象を根本的に変革させており、AIエージェントやAIシステムそのものが新たな攻撃対象・脅威媒介となり、CDCは従来の守備範囲を超えた監視・対応能力の拡張が喫緊の課題となっている。特にAI関連の脆弱性管理とインシデント対応の迅速化が求められる。\n【攻撃側の変化】AIエージェントを狙ったフィッシングによるクレデンシャル窃取（記事1）や、AIエージェントが利用するサードパーティースキルを悪用したサプライチェーン攻撃（記事4）など、AIシステム固有の攻撃手法が高度化している。また、AIアプリケーション開発プラットフォーム自体の脆弱性悪用（記事6）も発生しており、攻撃側がAIシステムのあらゆる階層を狙う傾向が強まっている。LLMのジェイルブレイク攻撃手法も進化（記事2）。\n【防御側の変化】AIを悪用した攻撃の加速に対応するため、CISAは米連邦機関に対し、脆弱性パッチ適用期間の劇的な短縮（3日以内）や、リスクベースでのパッチ優先順位付けを指示（記事5, 10）。これは、防御側がインシデント発生前後の対応速度を抜本的に見直す必要性を示唆している。一方、AI for Securityにおける機械学習ベースの検知システムには、コンセプトドリフトによる性能劣化という運用上の課題も浮上している（記事3）。\n【Security for AI】AIエージェントのクレデンシャル窃取（記事1）や、エージェントが利用するサードパーティースキルのサプライチェーンリスク（記事4）は、AIエージェントの挙動監視と信頼性検証が必須であることを示す。AIアプリケーション開発プラットフォームの脆弱性悪用（記事6）は、AIシステムのインフラセキュリティへの新たな懸念を提起。LLMのジェイルブレイク攻撃の進化（記事2）は、モデル層の防御策の重要性を強調しており、AIエージェントリスク6階層モデルの「モデル・推論層」「ツール・実行層」「データ・インフラ層」「アイデンティティ・権限層」「組織・ガバナンス層」にわたる広範な対策が必要である。\n【AI for Security】機械学習ベースのフィッシング検知システムにおけるコンセプトドリフトの課題（記事3）は、AIをセキュリティに活用する際のモデルの継続的な品質保証と再学習プロセスの重要性を示す。CISAの指令（記事5, 10）は、AIを活用した脅威インテリジェンスの分析、脆弱性スコアリング、アラートの自動トリアージなど、AI for SecurityによるSOC/CDCの対応速度向上への期待を高めている。\n【CDC/SOCへの示唆】従来の監視対象に加え、AIエージェントの挙動、AIアプリケーション開発基盤、AIエージェントが利用する外部スキル（ツール・API連携）のログ収集と異常検知ルールの策定が急務となる。IoT/OTデバイスとクラウド連携のセキュリティ（記事7, 8）もCDCの監視スコープに組み込む必要がある。CISAの指令（記事5, 10）を受け、検知から対応までのリードタイムを大幅に短縮するため、AIを活用した初動判断支援や自動化を強化し、脆弱性管理とインシデント対応の連携をより密にすることが求められる。人間の役割は、AIによる高速化された情報から最終的な判断を下し、複雑なインシデント調査、ビジネス影響の説明、そしてAIシステムのセキュリティ設計・監査にシフトしていく。\n【今日の問い】AIエージェントが組織内で広範に利用される中で、その多岐にわたる活動ログをどのように統合的に収集・分析し、既存のSIEM/SOAR/MDRサービスへ組み込むことで、効果的な検知と迅速な対応を実現できるのか？ AIを悪用した攻撃が加速する現状において、CDCが検知からビジネス影響説明までのプロセスを、従来の数日から数週間ではなく、数時間から数日へと短縮するために、どのような組織的変革とAI技術の活用が必要となるか？"
     }
   ],
   "taxonomy": {
