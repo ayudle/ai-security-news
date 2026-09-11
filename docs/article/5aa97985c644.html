@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SPIFFE/SPIREにおける侵害後のアイデンティティ悪用 | Cyber Defense Notes</title>
-<meta name="description" content="Palo Alto Unit 42のレポートによると、侵害されたKubernetesノード上でルートアクセスを取得した攻撃者が、SPIFFE/SPIREのメタデータを悪用し、同じノード上のワークロードのアイデンティティを偽装・窃取する手法が">
-<meta property="og:title" content="SPIFFE/SPIREにおける侵害後のアイデンティティ悪用">
-<meta property="og:description" content="Palo Alto Unit 42のレポートによると、侵害されたKubernetesノード上でルートアクセスを取得した攻撃者が、SPIFFE/SPIREのメタデータを悪用し、同じノード上のワークロードのアイデンティティを偽装・窃取する手法が">
+<title>SPIFFE/SPIREにおけるポストエクスプロイトでのアイデンティティ悪用 | Cyber Defense Notes</title>
+<meta name="description" content="Kubernetesノードのルートアクセスが侵害された場合、攻撃者はSPIFFE/SPIREのメタデータを利用して、同居するワークロードのアイデンティティを詐称し、情報を窃取できることが示された。これは、クラウドネイティブ環境におけるアイデ">
+<meta property="og:title" content="SPIFFE/SPIREにおけるポストエクスプロイトでのアイデンティティ悪用">
+<meta property="og:description" content="Kubernetesノードのルートアクセスが侵害された場合、攻撃者はSPIFFE/SPIREのメタデータを利用して、同居するワークロードのアイデンティティを詐称し、情報を窃取できることが示された。これは、クラウドネイティブ環境におけるアイデ">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/5aa97985c644.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SPIFFE/SPIREにおける侵害後のアイデンティティ悪用">
-<meta name="twitter:description" content="Palo Alto Unit 42のレポートによると、侵害されたKubernetesノード上でルートアクセスを取得した攻撃者が、SPIFFE/SPIREのメタデータを悪用し、同じノード上のワークロードのアイデンティティを偽装・窃取する手法が">
+<meta name="twitter:title" content="SPIFFE/SPIREにおけるポストエクスプロイトでのアイデンティティ悪用">
+<meta name="twitter:description" content="Kubernetesノードのルートアクセスが侵害された場合、攻撃者はSPIFFE/SPIREのメタデータを利用して、同居するワークロードのアイデンティティを詐称し、情報を窃取できることが示された。これは、クラウドネイティブ環境におけるアイデ">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/5aa97985c644.html">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "SPIFFE/SPIREにおける侵害後のアイデンティティ悪用",
-  "description": "Palo Alto Unit 42のレポートによると、侵害されたKubernetesノード上でルートアクセスを取得した攻撃者が、SPIFFE/SPIREのメタデータを悪用し、同じノード上のワークロードのアイデンティティを偽装・窃取する手法が明らかにされました。これにより、攻撃者はKubernetes環境内で横展開し、より広範なシステムへのアクセスを得る可能性があります。",
+  "headline": "SPIFFE/SPIREにおけるポストエクスプロイトでのアイデンティティ悪用",
+  "description": "Kubernetesノードのルートアクセスが侵害された場合、攻撃者はSPIFFE/SPIREのメタデータを利用して、同居するワークロードのアイデンティティを詐称し、情報を窃取できることが示された。これは、クラウドネイティブ環境におけるアイデンティティ管理の新たな脆弱性を示している。",
   "datePublished": "2026-09-10",
   "url": "https://ayudle.github.io/ai-security-news/article/5aa97985c644.html",
   "image": "https://ayudle.github.io/ai-security-news/og-image.png",
@@ -124,27 +124,27 @@ gtag('config', 'G-KV7Q7SQKZX');
       <span>2026-09-10</span>
       <span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span>
     </div>
-    <h1 class="ap-title">SPIFFE/SPIREにおける侵害後のアイデンティティ悪用</h1>
+    <h1 class="ap-title">SPIFFE/SPIREにおけるポストエクスプロイトでのアイデンティティ悪用</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">Palo Alto Unit 42のレポートによると、侵害されたKubernetesノード上でルートアクセスを取得した攻撃者が、SPIFFE/SPIREのメタデータを悪用し、同じノード上のワークロードのアイデンティティを偽装・窃取する手法が明らかにされました。これにより、攻撃者はKubernetes環境内で横展開し、より広範なシステムへのアクセスを得る可能性があります。</div>
+    <div class="ap-body">Kubernetesノードのルートアクセスが侵害された場合、攻撃者はSPIFFE/SPIREのメタデータを利用して、同居するワークロードのアイデンティティを詐称し、情報を窃取できることが示された。これは、クラウドネイティブ環境におけるアイデンティティ管理の新たな脆弱性を示している。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>Kubernetes環境におけるアイデンティティの悪用は、ITDR（Identity Threat Detection and Response）の重要性を高めます。AIエージェントの普及により、Kubernetes上で動作するAIワークロードが増加する中、そのアイデンティティ管理と権限分離がSOC/CDCの重要な監視対象となります。AI for Securityを活用し、SPIFFE/SPIREのID管理システムからのログを分析することで、異常なアイデンティティの偽装や権限利用を早期に検知する仕組みを検討すべきです。特に、マイクロサービス間通信における信頼境界の監視と、ワークロード単位での厳格なアクセス制御が求められます。</div></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>この記事は直接AIに関するものではないが、クラウドネイティブ環境におけるアイデンティティ管理の脆弱性は、AIエージェントやAIサービスが利用する権限と密接に関わる。CDCは、AIシステムが依存する基盤インフラ（Kubernetes等）におけるアイデンティティ管理（SPIFFE/SPIREなど）の監視と強化が不可欠であることを認識すべきだ。AIエージェントリスクモデルのアイデンティティ・権限層のセキュリティ強化は、AIシステムの信頼性を確保する上で重要。</div></div></section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>Kubernetes環境におけるアイデンティティ悪用は、クラウドネイティブ環境のセキュリティで重要であり、AIワークロードの増加に伴い関連性が高まるため。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>クラウドネイティブ環境におけるアイデンティティ管理の重要な脆弱性であり、AIシステムにも影響を及ぼす可能性があるため。</div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
     <div class="tags-box">
       <span class="tag-main" style="background:#BA751720;color:#BA7517;border-color:#BA751744">脆弱性</span>
-      <span class="tag-sub">認証バイパス</span><span class="tag-sub">設定ミス</span>
+      <span class="tag-sub">認証バイパス</span>
     </div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：中</span><span class='cdc-badge-ap'>Identity/ITDR</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Exposure管理</span></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：中</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Identity/ITDR</span><span class='cdc-badge-ap'>Exposure管理</span></div></section>
 
   <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-vulnerability-management-automation.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-08</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</div></a><a href="../columns/ai-supply-chain-exposure.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-16</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div></a></div></section>
 
@@ -160,12 +160,12 @@ gtag('config', 'G-KV7Q7SQKZX');
     </div>
     <div class="actions">
       <a href="https://unit42.paloaltonetworks.com/kubernetes-spiffe-spire-identity-spoofing/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0ASPIFFE%2FSPIRE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E4%BE%B5%E5%AE%B3%E5%BE%8C%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E6%82%AA%E7%94%A8%0A%0A%23%E8%84%86%E5%BC%B1%E6%80%A7%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F5aa97985c644.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0ASPIFFE%2FSPIRE%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%9D%E3%82%B9%E3%83%88%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%82%A4%E3%83%88%E3%81%A7%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3%E6%82%AA%E7%94%A8%0A%0A%23%E8%84%86%E5%BC%B1%E6%80%A7%20%23%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F5aa97985c644.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/5aa97985c644.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
 
-  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=Identity%2FITDR#archive" class="explore-chip" data-search-context="Identity/ITDR">Identity/ITDR</a><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Exposure%E7%AE%A1%E7%90%86#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../?tag=%E8%AA%8D%E8%A8%BC%E3%83%90%E3%82%A4%E3%83%91%E3%82%B9#archive" class="explore-chip" data-search-tag="認証バイパス">認証バイパス</a><a href="../?tag=%E8%A8%AD%E5%AE%9A%E3%83%9F%E3%82%B9#archive" class="explore-chip" data-search-tag="設定ミス">設定ミス</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Identity%2FITDR#archive" class="explore-chip" data-search-context="Identity/ITDR">Identity/ITDR</a><a href="../?context=Exposure%E7%AE%A1%E7%90%86#archive" class="explore-chip" data-search-context="Exposure管理">Exposure管理</a><a href="../?tag=%E8%AA%8D%E8%A8%BC%E3%83%90%E3%82%A4%E3%83%91%E3%82%B9#archive" class="explore-chip" data-search-tag="認証バイパス">認証バイパス</a><a href="../?tag=%E8%84%86%E5%BC%B1%E6%80%A7#archive" class="explore-chip" data-search-tag="脆弱性">脆弱性</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
 
   <section class="ap-section">
   <h3 class="ap-sec-title">関連記事：同じ「脆弱性」の最近の記事</h3>
