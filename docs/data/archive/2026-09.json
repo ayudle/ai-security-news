@@ -2,6 +2,419 @@
   "month": "2026-09",
   "articles": [
     {
+      "id": "396d395e9ee3",
+      "title": "A Vault with a Heap-View: The Uncomfortable Space Between AgentCore Harness and Identity",
+      "summary": "<p>Analysis of how default configurations in AWS AgentCore Harness allow prompt injection to exfiltrate credentials, and key steps to secure your agents.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/securing-aws-agentcore-harness-credentials/\">A Vault with a Heap-View: The Uncomfortable Space Between AgentCore Harness and Identity</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/securing-aws-agentcore-harness-credentials/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-09-18T19:00:36+09:00",
+      "title_ja": "AWS AgentCore Harnessにおけるプロンプトインジェクションによるクレデンシャル窃取リスク",
+      "summary_ja": "AWS AgentCore Harnessのデフォルト設定にプロンプトインジェクションの脆弱性が存在し、これによりAWSのクレデンシャルが窃取される可能性があるとPalo Alto Unit 42が分析した。記事では、AIエージェント利用におけるセキュリティ設定の重要性と、エージェント保護のための主要な対策ステップを詳述している。これは、AIエージェントがクラウド環境で動作する際の新たなリスク経路を浮き彫りにする。",
+      "insight": "AIエージェントのツール・実行層における権限濫用と、クラウド環境のIAM・エージェント設定ミスが結合すると、従来のクラウドセキュリティでは見過ごされがちな新たなクレデンシャル窃取経路が発生する。SOC/CDCは、AIエージェントが利用するクラウドサービスの権限設計と、エージェント特有の設定（例: AgentCore Harness）に関する監視項目・検知ルールを強化し、異常なアクセスや挙動を特定する専門知識を育成する必要がある。",
+      "importance": "高",
+      "importance_reason": "AWSのような基盤サービスにおけるAIエージェント関連の脆弱性は、広範囲の組織に影響を及ぼし、即時対応が求められるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AWS AgentCore Harness",
+        "プロンプトインジェクション",
+        "クレデンシャル窃取",
+        "IAM",
+        "AIエージェント"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ce739af91bd6",
+      "title": "RatHat Android Malware Abuses ADB to Retain Shell Access After Uninstall",
+      "summary": "Cybersecurity researchers have flagged a new Android malware called RatHat that's assessed to be operated by China-based threat actors and features an artificial intelligence (AI)-powered system to navigate and control compromised devices.\n\n\n\"Distributed primarily via targeted smishing (SMS/text phishing) and malvertising campaigns leading to deceptive third-party download portals, RatHat uses",
+      "url": "https://thehackernews.com/2026/09/rathat-android-malware-abuses-adb-to.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-18T15:17:25+09:00",
+      "title_ja": "AI搭載Androidマルウェア「RatHat」、ADB悪用でアンインストール後も持続性維持",
+      "summary_ja": "サイバーセキュリティ研究者が、中国を拠点とする脅威アクターが運用する新種のAndroidマルウェア「RatHat」を報告した。このマルウェアはAIシステムを搭載し、デバイスのナビゲートと制御を自動化し、ADB（Android Debug Bridge）を悪用してアンインストール後もシェルアクセスを維持する持続性を持つ。主にsmishingや悪質な広告を通じて配布される。",
+      "insight": "AIを悪用する攻撃側の進化を示す具体的な事例であり、従来のマルウェア対策やモバイルセキュリティの枠を超えた監視が必要となる。SOC/CDCは、モバイルデバイスのAI悪用マルウェアに対する検知能力を強化し、特にアンインストール後も持続するメカニズム（ADB悪用など）を特定できるログ収集と分析手法を検討すべき。AI搭載マルウェアの検知には、AIを使った防御の導入も必要となる可能性がある。",
+      "importance": "高",
+      "importance_reason": "AIを悪用したマルウェアによる新たな永続化手法は、防御側の対応を困難にし、広範囲のモバイルユーザーに影響を与えるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "AIを使った攻撃",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "RatHat",
+        "Androidマルウェア",
+        "ADB",
+        "AIを使った攻撃",
+        "Smishing"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "53c7b75c4fc0",
+      "title": "CISO's Expert Guide to Agentic Pentesting for Websites",
+      "summary": "Attackers now weaponize new vulnerabilities in about five days (Mandiant, part of Google Cloud). The median organization takes 43 days to patch one (Verizon DBIR 2026). A new free guide explains how autonomous AI agents are closing that gap, and what security leaders must demand before pointing one at production.\n\nTL;DR\n\nExploitation is now the front door. It starts 31% of breaches (Verizon DBIR",
+      "url": "https://thehackernews.com/2026/09/cisos-expert-guide-to-agentic.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-17T19:50:53+09:00",
+      "title_ja": "AIエージェントによるウェブサイトのペネトレーションテストに関するCISO向けガイド",
+      "summary_ja": "攻撃者が脆弱性を平均5日で悪用するのに対し、組織のパッチ適用に平均43日かかる現状において、自律型AIエージェントによるペネトレーションテストがこのギャップを埋める可能性を解説するガイドが発表された。このガイドは、CISOが本番環境でAIエージェントを利用する際に考慮すべき点を説明し、脆弱性悪用が侵害の主要な侵入経路となっている現状を指摘している。",
+      "insight": "AI for Securityの具体的な適用例として、AIエージェントによるペネトレーションテストが、防御側の脆弱性対応速度を向上させる可能性を示す。SOC/CDCの観点では、AIエージェントを活用した脆弱性診断結果を迅速にインシデント対応フローに組み込み、リスク評価・是正プロセスの効率化を図るべき。ただし、AIエージェント自体の誤爆リスクや権限管理に関するSecurity for AIの視点も不可欠となる。",
+      "importance": "中",
+      "importance_reason": "AIエージェントを防御側に活用する具体的な方法論であり、SOC/CDCの運用効率化に貢献する可能性があるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "ペネトレーションテスト",
+        "脆弱性管理",
+        "CISO",
+        "自動化"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9e6cba4c897c",
+      "title": "Robust Conformal Intrusion Detection via Traffic-Aware Calibration and Attack-Orbit Invariance",
+      "summary": "arXiv:2609.19241v1 Announce Type: new \nAbstract: Large language models fine-tuned for network intrusion detection emit single-point predictions without statistical validity guarantees. Conformal prediction supplies a finite-sample coverage guarantee, but a threshold calibrated on clean traffic fails once an adversary perturbs controllable network features. We demonstrate this failure across three intrusion detection benchmarks and propose traffic-aware conformal prediction, which calibrates on t",
+      "url": "https://arxiv.org/abs/2609.19241",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-18T13:00:00+09:00",
+      "title_ja": "トラフィック認識型キャリブレーションによる堅牢な共形侵入検知手法",
+      "summary_ja": "ネットワーク侵入検知のためにファインチューニングされた大規模言語モデル（LLM）が統計的妥当性を保証できないという問題に対し、arXivの論文は、敵対的摂動に耐えうる「トラフィック認識型共形予測」を提案している。この手法は、クリーンなトラフィックでキャリブレーションされた閾値が、攻撃によってネットワーク特徴が変化すると機能不全に陥ることを検証し、その解決策を提供する。",
+      "insight": "AI for Securityにおける検知モデルの堅牢性と信頼性の重要性を強調する。SOC/CDCがAIを活用して侵入検知を行う際、モデルが敵対的攻撃に対して脆弱である可能性を考慮し、定期的なモデル評価と再キャリブレーションが必要であることを示唆する。特に、AIを用いた異常検知システム導入時には、モデルの誤検知・見逃しリスクを評価し、その対策を運用プロセスに組み込むことが不可欠となる。",
+      "importance": "中",
+      "importance_reason": "AIを用いた侵入検知の根本的な課題と、その解決策に関する研究であり、AI for Securityの方向性に影響を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "敵対的攻撃",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "侵入検知",
+        "LLM",
+        "敵対的攻撃",
+        "共形予測",
+        "ネットワークセキュリティ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "8e5626b71b22",
+      "title": "SoK: Trading Agents or Market Crashers? Dissecting Robustness and Security Failures in Academic Financial LLM Trading Schemes",
+      "summary": "arXiv:2609.19705v1 Announce Type: new \nAbstract: Autonomous large language model (LLM) agents are moving rapidly into high-stakes domains, yet existing agentic-AI security studies remain largely domain-agnostic and overlook the distinctive, high-consequence attack surface such settings create. We examine this gap through financial trading agents, a representative case of high-stakes agentic security, where a single compromised agent has direct execution authority over real capital in an adversar",
+      "url": "https://arxiv.org/abs/2609.19705",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-18T13:00:00+09:00",
+      "title_ja": "金融LLM取引エージェントの堅牢性とセキュリティに関する研究：市場暴落のリスク",
+      "summary_ja": "arXivの論文「SoK」は、金融取引エージェントのような高リスク領域における自律型LLMエージェントの堅牢性とセキュリティ課題を分析している。既存のAIセキュリティ研究が高リスク領域の特性を見落としていると指摘し、単一の侵害されたエージェントが実際の資本に対して直接的な実行権限を持つことで、市場暴落などの高結果の攻撃面を生成するリスクを詳述している。",
+      "insight": "Security for AIの重要性が、高リスク・高影響な「金融」というドメインで具体的なリスクとして提示されている。SOC/CDCの観点では、AIエージェントが持つ権限と、その侵害がビジネスに与える直接的な影響の評価が極めて重要となる。AIエージェントのアイデンティティ・権限層、ツール・実行層における監視と、異常検知時の緊急停止プロセスの設計が、従来の脅威に加え必須の検討事項となる。",
+      "importance": "高",
+      "importance_reason": "高リスクな金融領域におけるAIエージェントのセキュリティ課題を提起し、単一エージェント侵害が市場に直接的な影響を及ぼす可能性を示唆するため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "金融取引エージェント",
+        "LLMセキュリティ",
+        "高リスク領域",
+        "安全性評価",
+        "市場リスク"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "CISO報告",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3aca3e862c50",
+      "title": "How To Write With An LLM",
+      "summary": "<p><strong><a href=\"https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/\">How To Write With An LLM</a></strong></p>\nThomas Ptacek on using LLMs as copyeditors, not as writing assistants:</p>\n<blockquote>\n<p><strong>Rule Number One: You may not use a single word an LLM suggests to you.</strong></p>\n<p>[...] I think that as a form of intellectual personal protective equipment you should adopt the rule that any specific turn of phrase an LLM suggests is off limits. Be strict about the r",
+      "url": "https://simonwillison.net/2026/Sep/17/how-to-write-with-an-llm/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-09-18T08:37:27+09:00",
+      "title_ja": "LLMの賢い活用法：校正者として、提案単語は使わない",
+      "summary_ja": "Thomas Ptacek氏が、LLMを執筆アシスタントとしてではなく、校正者として利用することを推奨する記事。LLMが提案する具体的な言い回しは一切使わないという厳格なルールを提唱し、LLMが生成するコンテンツの信頼性や独自性について考察している。これは、LLMの出力に対する人間の責任と判断の重要性を示唆する。",
+      "insight": "直接的なサイバーセキュリティ脅威ではないものの、SOC/CDCがAI for SecurityとしてLLMをレポート作成やナレッジ検索に活用する際の品質管理・情報信頼性に関する示唆がある。AIが生成した情報の「ハルシネーション」や偏りを避けるため、LLMの出力を鵜呑みにせず、人間の専門家によるレビューと検証が不可欠であることを再認識させる。",
+      "importance": "低",
+      "importance_reason": "AI利用における一般的な注意喚起であり、直接的なサイバーセキュリティ脅威やSOC/CDCの運用変化に直結するものではないため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "ハルシネーション",
+        "誤情報生成"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "LLM活用",
+        "校正",
+        "情報信頼性",
+        "ハルシネーション",
+        "品質管理"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "70183419f721",
+      "title": "In Other News: Ransomware Developer Sentenced, Plugin4Shell AI Attack, Critical SAP Flaw",
+      "summary": "<p>Noteworthy stories that might have slipped under the radar: Mandiant's 2026 AI risk report, PhantomRaven malware used by bug bounty hunter, WordPress plugin bug exploited.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-ransomware-developer-sentenced-plugin4shell-ai-attack-critical-sap-flaw/\">In Other News: Ransomware Developer Sentenced, Plugin4Shell AI Attack, Critical SAP Flaw</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/in-other-news-ransomware-developer-sentenced-plugin4shell-ai-attack-critical-sap-flaw/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-09-18T23:25:00+09:00",
+      "title_ja": "ランサムウェア開発者判決、Plugin4Shell AI攻撃、SAP脆弱性など",
+      "summary_ja": "SecurityWeekが報じたニュースまとめ。ランサムウェア開発者への有罪判決、Plugin4ShellというAIを使った攻撃、およびSAPの重大な脆弱性について触れている。また、Mandiantの2026年AIリスクレポートについても言及があり、AIが攻撃側・防御側の双方に影響を与えている現状を示唆する。",
+      "insight": "「Plugin4Shell AI Attack」という記述は、AIが具体的な攻撃手段として用いられていることを明確に示唆しており、Security for AIの必要性を強調する。SOC/CDCは、既存の脅威（ランサムウェア、SAP脆弱性）に加え、AIを悪用した攻撃の手法を継続的に情報収集し、検知ルールやインシデント対応プロセスに組み込む必要がある。AIを活用した脆弱性悪用や攻撃チェーンが今後増加すると推測される。",
+      "importance": "中",
+      "importance_reason": "AIを使った具体的な攻撃の事例が言及されており、AIが脅威環境に与える影響を認識する上で重要であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ランサムウェア",
+        "CVE"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Plugin4Shell AI Attack",
+        "ランサムウェア",
+        "SAP脆弱性",
+        "Mandiant AIリスクレポート",
+        "AIを使った攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3dc866148422",
+      "title": "AI-Built Exploit and Sign-In Flaw Opened Path to Internal OpenAI Code",
+      "summary": "<p>Hacktron researchers earned a bug bounty after demonstrating access to OpenAI employee accounts. </p>\n<p>The post <a href=\"https://www.securityweek.com/ai-built-exploit-and-sign-in-flaw-opened-path-to-internal-openai-code/\">AI-Built Exploit and Sign-In Flaw Opened Path to Internal OpenAI Code</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/ai-built-exploit-and-sign-in-flaw-opened-path-to-internal-openai-code/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-09-18T21:45:24+09:00",
+      "title_ja": "AI生成エクスプロイトとサインインの欠陥によりOpenAI内部コードへアクセス",
+      "summary_ja": "Hacktronの研究者が、AIが生成したエクスプロイトコードとサインインの脆弱性を利用してOpenAIの従業員アカウントにアクセスできることを実証し、バグバウンティを獲得した。この事例は、AIが脆弱性発見やエクスプロイト生成に活用され、AIシステムの提供元自体が攻撃対象となる可能性を示唆している。",
+      "insight": "AIが脆弱性悪用ツールの開発を加速させる可能性を示唆する事例であり、AI for SecurityとSecurity for AIの両面で重要な示唆を持つ。SOC/CDCは、AIを活用した攻撃の動向を監視するとともに、AIシステムの開発・運用環境における認証・認可、およびAI生成コードのセキュリティ評価プロセスを強化する必要がある。特に、AIサービス提供者の内部システムが標的となるリスクは、サプライチェーン全体のリスク評価に含めるべき論点となる。",
+      "importance": "高",
+      "importance_reason": "AIが生成したエクスプロイトによる具体的なシステム侵害の事例であり、AIを巡る攻撃と防御のパラダイムシフトを象徴するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "認証バイパス",
+        "情報漏洩"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AI生成エクスプロイト",
+        "OpenAI",
+        "サインイン脆弱性",
+        "バグバウンティ",
+        "内部コード"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "38af989595ec",
+      "title": "AI Agent Breaches Spanish Organization, Modifies Personal Data",
+      "summary": "AI-driven cyberattacks used to be exotic. Soon, it'll be odd if threat actors aren't using agents to do all of their bidding.",
+      "url": "https://www.darkreading.com/cyberattacks-data-breaches/ai-agent-breaches-spanish-organization-personal-data",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-09-18T16:00:00+09:00",
+      "title_ja": "AIエージェントがスペイン組織を侵害し個人データを改ざん",
+      "summary_ja": "Dark Readingは、AIエージェントによるサイバー攻撃でスペインの組織が侵害され、個人データが改ざんされたと報じた。記事は、脅威アクターがAIエージェントを攻撃に利用することが今後一般的になるだろうと予測しており、AIを使った攻撃が概念的なものではなく現実の脅威として顕在化していることを示す。",
+      "insight": "AIエージェントが標的組織のデータ改ざんにまで至る具体的なインシデント事例であり、Security for AIの緊急性を裏付ける。SOC/CDCは、AIエージェントのログや挙動、API連携、データアクセス履歴を従来の監視対象に加え、異常な挙動を検知できる体制を構築する必要がある。また、AIエージェントが悪用された際の対応手順や証拠保全についても見直しが求められる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントによる具体的なデータ改ざんインシデント事例であり、AIを使った攻撃が現実の脅威として認識される重要な転換点であるため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "個人情報流出"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント攻撃",
+        "個人データ改ざん",
+        "データ侵害",
+        "スペイン組織",
+        "脅威アクター"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "CISO報告",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "53ac148f5533",
+      "title": "Inside the Modern SOC: Defending the Cross-Environment Pivot",
+      "summary": "<p>Cross-environment attacks demand a new approach to security operations. Learn how Unit 42 Managed XSIAM helps SOC teams investigate complete attack paths.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/soc-cross-environment-pivot/\">Inside the Modern SOC: Defending the Cross-Environment Pivot</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/soc-cross-environment-pivot/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-09-18T07:00:33+09:00",
+      "title_ja": "モダンSOCの進化：クロス環境攻撃への防御とXSIAMの活用",
+      "summary_ja": "Palo Alto Unit 42の記事は、クラウドやオンプレミス、SaaSなど複数の環境をまたぐ「クロス環境攻撃」が高度化している現代において、SOCが新しいアプローチを採用する必要性を説く。Unit 42 Managed XSIAMが、完全な攻撃経路を調査し、SOCチームを支援することで、この新たな課題に対応する方法を説明している。",
+      "insight": "従来のSOC/SIEM/SOARの限界が露呈し、XDRやXSIAMのような統合的なセキュリティオペレーションプラットフォームの導入が不可欠であることを示唆する。SOC/CDCの設計・運用においては、AI for Securityによる複数環境にわたる相関分析、自動化された調査・対応、脅威ハンティングの強化が必須となる。AIが検知・分析の効率性を高める一方で、人間のアナリストはより複雑な判断や戦略的な対応に注力するシフトが求められる。",
+      "importance": "中",
+      "importance_reason": "現代のSOCが直面する課題と、それに対応するためのアーキテクチャ・サービスの方向性を示しており、SOC/CDCの設計・運用に直接影響するため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "モダンSOC",
+        "クロス環境攻撃",
+        "XSIAM",
+        "Unit 42 Managed XSIAM",
+        "セキュリティオペレーション"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "サービス企画",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
       "id": "53c7b75c4fc0",
       "title": "CISO's Expert Guide to Agentic Pentesting for Websites",
       "summary": "Attackers now weaponize new vulnerabilities in about five days (Mandiant, part of Google Cloud). The median organization takes 43 days to patch one (Verizon DBIR 2026). A new free guide explains how autonomous AI agents are closing that gap, and what security leaders must demand before pointing one at production.\n\nTL;DR\n\nExploitation is now the front door. It starts 31% of breaches (Verizon DBIR",
