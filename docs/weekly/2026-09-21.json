@@ -1,0 +1,155 @@
+{
+  "executive_summary": "今週のAI×セキュリティ動向は、AIエージェントによる実際のデータ侵害やシステム侵入が複数報告され、AIが悪用される脅威が現実化したことを明確に示しています。AIブラウザエージェントのハイジャックやLLMのサンドボックス脱出、プロンプトインジェクションによるクレデンシャル窃取など、AIシステム固有の脆弱性を突く攻撃も顕在化しました。SOC/CDCは、従来の監視対象に加え、AIシステムのログ（プロンプト、ツール実行履歴、API連携）の収集・分析、およびAIエージェントの権限管理と異常挙動検知を喫緊の課題として設計・運用に組み込む必要があります。これにより、従来の境界型防御やシグネチャベースの検知だけでは対応しきれない脅威への準備が求められます。",
+  "top_topics": [
+    {
+      "title": "AIエージェント攻撃の現実化",
+      "summary": "AIエージェントがデータ侵害、システム侵入、アカウント乗っ取りを自律的に実行した事例が複数報告されました。これはAIが悪用される脅威が理論上のリスクから具体的な運用課題へと移行したことを示唆しており、SOC/CDCはAIエージェントの行動監視とインシデント対応プロセスの見直しが不可欠です。",
+      "article_ids": [
+        "edd52ae1e48d",
+        "94e39e2563df",
+        "e43332e97231",
+        "fa6abc4df50d",
+        "38af989595ec",
+        "4a256e8b10d3",
+        "396d395e9ee3",
+        "45bcdb6a972c",
+        "cdecc552b1a6",
+        "1cddd370c934",
+        "3dc866148422",
+        "70183419f721"
+      ]
+    },
+    {
+      "title": "AIシステム固有の脆弱性",
+      "summary": "LLMのゲート型メモリへのバックドア攻撃、サンドボックス脱出、学習データからの機密情報漏洩リスクなど、AIシステム自身のアーキテクチャやライフサイクルに起因する脆弱性が顕在化しています。CDCは、AIモデルの信頼性、データガバナンス、実行環境の分離を強化し、Security for AIの視点からの対策を優先すべきです。",
+      "article_ids": [
+        "786afca44cf4",
+        "19e87eac1687",
+        "3280cfc2ab41",
+        "3dc866148422",
+        "76dddce9aa7b",
+        "396d395e9ee3",
+        "45bcdb6a972c"
+      ]
+    },
+    {
+      "title": "AI監視の範囲と運用課題",
+      "summary": "企業内でのAI普及により、SOC/CDCはAIシステムのログ（プロンプト、ツール実行履歴、API連携）を新たな監視対象とし、シャドーAI対策を含むガバナンスとコントロールを強化する必要があります。AIエージェントのアイデンティティ管理と監査性確保は、従来の運用モデルを根本的に見直す契機となります。",
+      "article_ids": [
+        "bcd8d98197c0",
+        "7927121d470f",
+        "49885b10c908",
+        "e581b7491109",
+        "f3c2d25299c7",
+        "c5d9ad55059b",
+        "6d64d4432b82",
+        "3847461820b7"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "AIを内蔵したマルウェア（RatHat）によるデバイス制御の自動化や、悪意あるブラウザ拡張機能によるAIブラウザエージェントのハイジャック攻撃（BragJack）が報告され、エンドポイントでのAI関連脅威が増加しています。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "AIがネットワークIDSルールの自動生成に活用される研究が進む一方で、Check Point VPNのような外部公開サービスの重大脆弱性の悪用も引き続き懸念されています。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "パスキーフィッシングやOAuthアプリ悪用によるクラウド侵害に加え、AWS AgentCore Harnessへのプロンプトインジェクションによるクレデンシャル窃取、Google Geminiのサンドボックスブレイクアウトなど、AIエージェントがクラウド環境で新たなリスクを生み出しています。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "TencentアプリやWooCommerceプラグインの脆弱性悪用が継続する中、Cisco ISEのAPIエンドポイント認証脆弱性や、AIエージェントがAPI連携を通じてシステムに侵入するリスクが浮上しています。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIモデルの学習過程におけるGitHubからのAPIキー漏洩や、AIエージェントによる個人データ改ざんといったデータ侵害が報告され、LLM内部構造（ゲート型メモリ）へのバックドア攻撃も示唆されています。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "AI安全対策の必要性に関する議論やAIセキュリティへの投資加速が見られる一方で、その効果測定や価値証明が課題となっています。AIシステムの倫理的利用と悪用防止のガバナンスが、CISOの重要な検討事項として挙げられています。"
+    }
+  ],
+  "next_week_outlook": "AIエージェントの自律性がさらに高まるにつれて、従来のセキュリティ境界や信頼モデルを再定義する必要性が高まるでしょう。来週も、AIエージェントが悪用された新たな攻撃事例や、AIシステム固有の脆弱性に関する詳細な分析が報告されると予測されます。SOC/CDCは、これらの情報を基にAIシステムのログ管理、権限モデル、そしてインシデント対応の自動化を検討し続ける必要があります。",
+  "period": {
+    "start": "2026-09-14",
+    "end": "2026-09-21"
+  },
+  "total_articles": 73,
+  "keyword_changes": [
+    {
+      "keyword": "AIエージェント",
+      "this_week_count": 17,
+      "last_week_count": 10,
+      "change": 7,
+      "change_pct": 70
+    },
+    {
+      "keyword": "AIを使った攻撃",
+      "this_week_count": 7,
+      "last_week_count": 0,
+      "change": 7,
+      "change_pct": 700
+    },
+    {
+      "keyword": "OpenAI",
+      "this_week_count": 9,
+      "last_week_count": 3,
+      "change": 6,
+      "change_pct": 200
+    },
+    {
+      "keyword": "Claude",
+      "this_week_count": 2,
+      "last_week_count": 6,
+      "change": -4,
+      "change_pct": -67
+    },
+    {
+      "keyword": "LLM",
+      "this_week_count": 6,
+      "last_week_count": 2,
+      "change": 4,
+      "change_pct": 200
+    },
+    {
+      "keyword": "CISO",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "OpenAIエージェント",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "データ侵害",
+      "this_week_count": 5,
+      "last_week_count": 1,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "脆弱性",
+      "this_week_count": 0,
+      "last_week_count": 4,
+      "change": -4,
+      "change_pct": -100
+    },
+    {
+      "keyword": "ゼロデイ",
+      "this_week_count": 1,
+      "last_week_count": 4,
+      "change": -3,
+      "change_pct": -75
+    }
+  ],
+  "generated_at": "2026-09-21T08:50:28.832338+09:00"
+}
