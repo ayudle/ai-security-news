@@ -2,6 +2,246 @@
   "month": "2026-09",
   "articles": [
     {
+      "id": "45bcdb6a972c",
+      "title": "BragJack attacks hijack AI browser agents through malicious extensions",
+      "summary": "BragJack, a proof-of-concept attack from Forever Security's Gal Weizman, hijacks the AI assistants in Chrome, Edge, Opera Neon, Perplexity Comet, and Claude in Chrome using one malicious extension. The Prompt Forcing technique earned over $20,000 in bounties and two CVEs. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/bragjack-attacks-hijack-ai-browser-agents-through-malicious-extensions/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-19T23:56:31+09:00",
+      "title_ja": "悪意ある拡張機能がAIブラウザエージェントをハイジャックする「BragJack」攻撃",
+      "summary_ja": "Forever Securityの研究者が、悪意あるブラウザ拡張機能を用いてChrome、Edge、Perplexity Comet、ClaudeなどのAIブラウザエージェントをハイジャックするPoC攻撃「BragJack」を発見した。この攻撃は「Prompt Forcing」技術を利用し、2万ドル以上の報奨金と2つのCVEを獲得した。これにより、AIエージェントがユーザーの意図しない行動をさせられるリスクが浮上している。",
+      "insight": "AIエージェントが多機能化しブラウザに深く統合されることで、悪意あるブラウザ拡張機能が新たな攻撃経路となる点が示唆される。SOC/CDCは、エンドポイント監視においてブラウザ拡張機能の挙動やAIエージェントとのインタラクションを詳細に監視する必要がある。特に、AIエージェントの利用状況や、それらが実行する操作のログ収集と異常検知のルールを設計する上での新たな論点となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの普及と連携が進む中で、新たな攻撃ベクトルの具体例を示し、既存のエンドポイントセキュリティやブラウザセキュリティの限界を突きつけるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "ブラウザ拡張機能",
+        "Prompt Forcing",
+        "BragJack",
+        "PoC"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3280cfc2ab41",
+      "title": "Researchers escape OpenAI Codex sandbox to run commands on host",
+      "summary": "Researchers escaped OpenAI's Codex sandbox two ways, one running commands on a developer's machine from its most locked-down mode. OpenAI has patched both. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/researchers-escape-openai-codex-sandbox-to-run-commands-on-host/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-20T21:00:00+09:00",
+      "title_ja": "OpenAI Codexサンドボックスからの脱出手法が発見・修正",
+      "summary_ja": "研究者らがOpenAIのCodexサンドボックスから2つの方法で脱出し、ホスト上でコマンド実行に成功したと報告した。うち1つは最も厳重なロックダウンモードからの脱出であり、開発者のマシンにアクセス可能であった。OpenAIは既にこれらの脆弱性に対しパッチを適用済みである。",
+      "insight": "LLMの実行環境であるサンドボックスからの脱出は、基盤モデルのセキュリティにおける重大な脆弱性を示唆する。CDC/SOCは、自社で利用または開発するAIシステムの実行環境（特にクラウド上のコンテナやVM）のセキュリティ、およびサンドボックス機能の堅牢性を評価する必要がある。AIシステムが外部ツールを実行する際の分離メカニズム、そのログ、そして異常なプロセス実行の監視が、Security for AIの重要な要素となる。",
+      "importance": "高",
+      "importance_reason": "AIモデルの安全性確保の根幹に関わるサンドボックスの脆弱性であり、攻撃が成立した場合のシステムへの影響が大きいため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "OpenAI Codex",
+        "サンドボックス",
+        "エスケープ",
+        "ホストコマンド実行",
+        "LLMセキュリティ"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
+      "id": "4a256e8b10d3",
+      "title": "Claude Opus 5 Helped Researchers Take Over OpenAI Staff Accounts via Chained Flaws",
+      "summary": "Three researchers at the security firm&nbsp;Hacktron&nbsp;used Anthropic's Claude Opus 5 to chain two flaws and take over the ChatGPT and Codex accounts of several OpenAI employees, then reach an internal OpenAI code repository.\n\nThe chain began with a bug in the software that runs OpenAI's public help forum and moved through a weakness in OpenAI's own login system.\n\nThis was security research,",
+      "url": "https://thehackernews.com/2026/09/claude-opus-5-helped-researchers-take.html",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-20T03:36:53+09:00",
+      "title_ja": "Claude Opus 5がOpenAI従業員アカウント乗っ取りを支援",
+      "summary_ja": "セキュリティ企業Hacktronの研究者3名が、AnthropicのClaude Opus 5を活用し、OpenAIのパブリックヘルプフォーラムのバグとログインシステムの脆弱性を連鎖させ、複数のOpenAI従業員のChatGPTおよびCodexアカウントを乗っ取ることに成功した。最終的に内部のOpenAIコードリポジトリへのアクセスも得た。これはセキュリティ研究の一環として実施された。",
+      "insight": "LLMが攻撃連鎖における情報収集や脆弱性分析、エクスプロイト開発の一部を効率化し、複合的な攻撃の成功率を高める可能性を示唆する。CDC/SOCは、ID管理の強化（特にクラウドSaaSアカウントの監視）、従業員のAI利用ポリシーの策定、およびシャドーAI利用のリスク評価を急ぐ必要がある。AIが攻撃者のツールとして利用される新たな側面を考慮し、Identity/ITDR戦略の見直しが求められる。",
+      "importance": "高",
+      "importance_reason": "LLMが実際の多段階攻撃チェーンの構築・実行を支援した具体例であり、AIが悪用される手口の進化を示すため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "クレデンシャル窃取",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Claude Opus 5",
+        "OpenAIアカウント",
+        "アカウント乗っ取り",
+        "認証バイパス",
+        "AIを使った攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Security for AI",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e581b7491109",
+      "title": "Identity Visibility in 2026: The Foundation of Identity Security",
+      "summary": "Identity visibility is a starting point for modern identity security, because stolen and misused credentials are among the most frequently reported initial access vectors in breach research, including Verizon's annual Data Breach Investigations Report. This article explains what identity visibility means in IAM, why cloud and multicloud environments complicate it, which capabilities matter in",
+      "url": "https://thehackernews.com/2026/09/identity-visibility-in-2026-foundation.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-19T22:28:41+09:00",
+      "title_ja": "2026年におけるアイデンティティ可視性：アイデンティティセキュリティの基盤",
+      "summary_ja": "認証情報の窃取・悪用がデータ侵害の主要な初動アクセスベクトルである中、現代のアイデンティティセキュリティにおいてアイデンティティ可視性が不可欠な基盤となっている。本記事では、IAMにおけるアイデンティティ可視性の意味、クラウド・マルチクラウド環境での複雑さ、および重要な機能について解説している。",
+      "insight": "AIエージェントの普及により、AIへのID付与やその権限管理が複雑化する中で、アイデンティティ可視性はCDC/SOC運用の中心的な要素となる。人間に加えてAIシステムやエージェントのID、その付与された権限、アクセス履歴、挙動を横断的に監視・分析できるIdentity/ITDRの強化が求められる。従来のユーザーIDに加え、AI固有のIDと認証フローに対するリスク評価と監視設計が急務である。",
+      "importance": "高",
+      "importance_reason": "AI時代のセキュリティにおいて、アイデンティティは引き続き主要な攻撃ベクトルであり、その可視化と管理が防御の基盤となるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "アイデンティティ可視性",
+        "IAM",
+        "クレデンシャル窃取",
+        "クラウドセキュリティ",
+        "ITDR"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Identity/ITDR",
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "7fdcde0b1388",
+      "title": "[Virtual Event] Cybersecurity Outlook 2027",
+      "summary": "",
+      "url": "https://www.darkreading.com/events/virtual-event-cybersecurity-outlook-2027",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-12-04T01:00:00+09:00",
+      "title_ja": "【バーチャルイベント】サイバーセキュリティ展望 2027",
+      "summary_ja": "サイバーセキュリティに関する2027年の展望をテーマとしたバーチャルイベントの告知である。",
+      "insight": "このイベントは、将来のサイバーセキュリティトレンド、特にAIがもたらす変化や新たな脅威、防御策について議論される機会となるだろう。SOC/CDCの設計者や運用者は、このような業界イベントを通じて、中長期的な戦略立案やサービス企画に必要な情報を収集し、将来的な脅威の予測と防御態勢の進化に役立てるべきである。",
+      "importance": "低",
+      "importance_reason": "直接的な技術や脅威に関する情報ではなく、イベント告知であるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "サイバーセキュリティ展望",
+        "イベント",
+        "市場トレンド"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "サービス企画",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "9b54ffdd342d",
+      "title": "Forget the AI Slowdown—the Vulnerability Explosion Is Already Happening",
+      "summary": "AI labs are toying with an industry-wide pact to slow development. Meanwhile, widely available AI chatbots are already helping uncover a tidal wave of security flaws.",
+      "url": "https://www.wired.com/story/kernel-panic-ai-vulnerability-explosion/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-09-19T20:00:00+09:00",
+      "title_ja": "AI開発の減速より、脆弱性爆発がすでに進行中",
+      "summary_ja": "AIラボが開発ペースの減速を検討する中、すでに広く利用可能なAIチャットボットが多数のセキュリティ脆弱性発見に貢献している。これは、AI技術の普及がサイバーセキュリティの脆弱性「爆発」を加速させている現状を示している。",
+      "insight": "AIが防御側で脆弱性発見を効率化する一方で、攻撃者側もAIを悪用して脆弱性を特定・発見する能力を高めるだろう。SOC/CDCは、AIを活用した脆弱性管理プロセスを検討するとともに、攻撃者によるAI利用を前提とした脅威インテリジェンスの収集と対応策を講じる必要がある。AIによって増大する脆弱性への対応は、従来の脆弱性管理プロセスだけでは追いつかない可能性があり、AI for SecurityとSecurity for AIの両面からアプローチが求められる。",
+      "importance": "高",
+      "importance_reason": "AIの普及が脆弱性数の増加に直結する可能性を示唆しており、セキュリティ対策の優先順位と戦略に大きな影響を与えるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIチャットボット",
+        "脆弱性爆発",
+        "AIを使った防御",
+        "AIを使った攻撃",
+        "脅威インテリジェンス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "Security for AI",
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
       "id": "396d395e9ee3",
       "title": "A Vault with a Heap-View: The Uncomfortable Space Between AgentCore Harness and Identity",
       "summary": "<p>Analysis of how default configurations in AWS AgentCore Harness allow prompt injection to exfiltrate credentials, and key steps to secure your agents.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/securing-aws-agentcore-harness-credentials/\">A Vault with a Heap-View: The Uncomfortable Space Between AgentCore Harness and Identity</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
