@@ -2,6 +2,401 @@
   "month": "2026-09",
   "articles": [
     {
+      "id": "bfa69338820a",
+      "title": "With the Rise of AI Agents, SOC 2 Should Adapt or Risk Irrelevance",
+      "summary": "AI agents can operate through human credentials and take actions that existing SOC 2 controls may not distinguish from human activity. Token Security explains why SOC 2 needs to adapt to address the security gaps created by agent identities. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/with-the-rise-of-ai-agents-soc-2-should-adapt-or-risk-irrelevance/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-25T23:51:10+09:00",
+      "title_ja": "AIエージェント台頭でSOC 2は適応必須、さもなくば無関係に",
+      "summary_ja": "AIエージェントは人間の認証情報で活動し、既存のSOC 2コントロールではその行動を人間と区別することが困難です。このセキュリティギャップをToken Securityが指摘し、SOC 2がAIエージェントのアイデンティティに対応する必要性を強調しています。既存の監査・コンプライアンス基準では、AIエージェントによる不適切なアクションを適切に検知・報告できないリスクがあります。これにより、企業はコンプライアンス違反だけでなく、新たなセキュリティ脅威に晒される可能性があります。",
+      "insight": "AIエージェントの行動が既存のSOC 2監査基準では識別できないという指摘は、コンプライアンスとセキュリティ運用の両面で深刻な課題を提起します。CDC設計においては、AIエージェントのアイデンティティ管理、権限委譲、行動ログの取得・分析を必須とし、人間とAIエージェントの活動を区別できる新たな検知メカニズムと対応プロセスの確立が急務です。監査証跡の設計においても、AIエージェント固有の情報をどう組み込むかが問われます。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが既存のセキュリティおよびコンプライアンスフレームワークの根本的な見直しを迫るため、経営レベルでの対応が求められます。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "アライメント"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "SOC 2",
+        "コンプライアンス",
+        "アイデンティティ",
+        "監査"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "サービス企画",
+        "Security for AI",
+        "CISO報告"
+      ],
+      "views": 0
+    },
+    {
+      "id": "b7b7006bc564",
+      "title": "Who Is Behind the Harness? Fingerprinting LLMs through Agentic Behavior",
+      "summary": "arXiv:2609.28559v1 Announce Type: new \nAbstract: LLMs increasingly operate through coding-agent harnesses that inspect repositories, invoke tools, and modify files. Substituting the model behind such an agent can therefore change security-relevant decisions, including whether it verifies changes or recovers safely from failures. Existing LLM fingerprints largely infer identity from direct text or token distributions. In coding agents, these signals are mediated by system instructions, controller",
+      "url": "https://arxiv.org/abs/2609.28559",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-25T13:00:00+09:00",
+      "title_ja": "エージェントの振る舞いからLLMを特定する研究",
+      "summary_ja": "LLMはコードエージェントのハーネスを通じてリポジトリの検査、ツール呼び出し、ファイルの変更などを行います。このようなエージェントの背後にあるモデルを特定することは、セキュリティ関連の意思決定に影響を与える可能性があります。従来のLLM指紋技術はテキストやトークンの分布に依存していましたが、本研究ではシステム指示やコントローラによって仲介されるコードエージェントの振る舞いからモデルの同一性を推測する手法を提案しています。これにより、モデルの差し替えや改ざんを検知する可能性が示唆されます。",
+      "insight": "AIエージェントの振る舞いログからLLMモデルの特定を試みる研究は、モデル汚染や不正なモデルへの差し替えを検知するための重要な手がかりとなります。CDC運用では、AIエージェントの実行証拠（ツール実行ログ、API呼び出し、ファイル変更など）を詳細に収集し、その挙動パターンから異常を検知するメカニズムを設計するべきです。これにより、AIシステム固有のセキュリティ脅威に対する防御深度を高めることが可能になります。",
+      "importance": "中",
+      "importance_reason": "AIエージェントのセキュリティ脅威に対応する防御技術の基礎研究であり、将来の監視技術に影響を与える可能性があります。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "LLM",
+        "AIエージェント",
+        "フィンガープリンティング",
+        "モデル特定",
+        "コードエージェント"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "8f53883faef3",
+      "title": "Where Cyber Agents Struggle: Bottleneck Analysis of Multi-Stage LLM Agents",
+      "summary": "arXiv:2609.28572v1 Announce Type: new \nAbstract: Multi-stage LLM-based cyber agents may complete attack workflows while remaining brittle, costly, or reliant on incorrect interpretations of execution evidence. Success rates alone obscure inefficiency, adaptation through retries, and recognition of success or failure. We present an end-to-end diagnostic study of an Autonomous Adversary system with orchestrator, executor, and validator LLMs in enterprise-like lateral-movement scenarios. Six fronti",
+      "url": "https://arxiv.org/abs/2609.28572",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-25T13:00:00+09:00",
+      "title_ja": "サイバーエージェントの課題：多段階LLMエージェントのボトルネック分析",
+      "summary_ja": "マルチステージLLMベースのサイバーエージェントは、攻撃ワークフローを完了できる一方で、脆さやコストの高さ、実行証拠の誤解釈に依存する問題が指摘されています。本研究は、オーケストレーター、エグゼキューター、バリデーターのLLMで構成されるAutonomous Adversaryシステムを企業のような横移動シナリオで診断的に研究しました。成功率だけでは見えない、非効率性、リトライによる適応、成功・失敗の認識のボトルネックが分析され、攻撃側AIエージェントの限界と特性が示されています。",
+      "insight": "攻撃側AIエージェントの能力と限界を詳細に分析する本研究は、防御側がAI for Security戦略を立てる上で有益な情報を提供します。CDC運用者は、攻撃側AIの試行回数、誤解釈パターン、およびリトライ戦略を理解することで、防御側のAI駆動型検知ロジックや初動判断支援システムの精度向上に繋がるでしょう。攻撃側のボトルネックは防御側の検知・防御ポイントになり得るため、この知見を検知ルール設計に活かすべきです。",
+      "importance": "中",
+      "importance_reason": "攻撃側AIの能力と限界を深く理解することで、防御戦略の立案に役立つ基礎的な情報を提供します。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "LLMエージェント",
+        "サイバー攻撃",
+        "ボトルネック",
+        "Autonomous Adversary",
+        "横移動"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "c4a39b642f3c",
+      "title": "'Salesbleed' Exploits Salesforce Agents to Enable Slack Phishing",
+      "summary": "Agentic AI can smuggle arbitrary instructions from the Web, across multiple apps, into trusted internal communications channels.",
+      "url": "https://www.darkreading.com/application-security/salesbleed-exploits-salesforce-agents-slack-phishing",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-09-25T06:04:03+09:00",
+      "title_ja": "「Salesbleed」 Salesforceエージェントが悪用されSlackフィッシングに",
+      "summary_ja": "Agentic AIが悪用され、Webから任意の命令が複数のアプリケーションを介して信頼された社内コミュニケーションチャネルに持ち込まれ、Slackでのフィッシング攻撃が可能になる「Salesbleed」という手法が報告されました。この攻撃は、SalesforceのAIエージェントが、外部コンテンツを内部Slackチャネルに中継する際のセキュリティ上の脆弱性を突いたものです。結果として、従業員は信頼されたチャネルからのメッセージであると誤認し、悪意のあるリンクや指示に従ってしまうリスクがあります。",
+      "insight": "AIエージェントが複数のアプリケーションや信頼されたチャネルをまたいで動作する際に、そのデータフローや命令実行の正当性を検証するメカニズムの重要性を示唆しています。CDC設計においては、AIエージェントが関与するAPI連携、チャネル間通信、外部サービスからの入力に対する厳格なポリシーとリアルタイム監視を導入する必要があります。特に、AIエージェントが社内コミュニケーションツールに介入する挙動は、プロンプトインジェクションの新たな経路として警戒すべきです。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが悪用され、既存の信頼されたチャネルを通じてフィッシングが行われる具体的な攻撃手法が示されたため、即時対応が求められます。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Salesbleed",
+        "AIエージェント",
+        "Salesforce",
+        "Slack",
+        "フィッシング"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "1246ccd8d2a7",
+      "title": "New Carbonato malware uses AI agents to hijack exposed Docker hosts",
+      "summary": "A new botnet malware called Carbonato is targeting insecure hosts running Docker daemons to install the Hermes Agent AI framework and take control. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/new-carbonato-malware-uses-ai-agents-to-hijack-exposed-docker-hosts/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-25T05:10:48+09:00",
+      "title_ja": "新マルウェア「Carbonato」がAIエージェントでDockerホストを乗っ取り",
+      "summary_ja": "新種のボットネットマルウェア「Carbonato」が、インターネットに露出した安全でないDockerデーモンを実行するホストを標的にしています。このマルウェアは、侵害したシステムに「Hermes Agent AIフレームワーク」をインストールし、乗っ取ったDockerホストを制御下に置くことで、悪意のある活動を実行します。これは、AIエージェント技術自体が攻撃の道具として利用され、既存のインフラの脆弱性と結びつくことで、より広範な影響をもたらす可能性を示しています。",
+      "insight": "AIエージェント技術が悪意のあるマルウェアの実行環境として利用される具体的な事例であり、Security for AIの重要性を強く示しています。CDC運用では、Docker環境のようなコンテナ化されたインフラにおける設定不備の監視強化に加え、AIフレームワークの不正インストールや異常なリソース利用を検知するルールを導入する必要があります。AIエージェントが実行するプロセス、ネットワーク通信、コンテナ操作ログの監視を強化し、その正当性を継続的に検証する体制が不可欠です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが悪意のあるマルウェアによって利用され、インフラ乗っ取りの具体的な攻撃手法が明らかになったため、即時対応が求められます。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "DDoS"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Carbonato",
+        "マルウェア",
+        "Docker",
+        "AIエージェント",
+        "Hermes Agent AI"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "af5a5956a8b8",
+      "title": "3 Cyber Threats That Defined the Summer of 2026",
+      "summary": "This installment of the Reporters' Notebook video series discusses the impact of AI agents breaching Hugging Face, Fairlife's ransomware attack, and Iranian-linked threat actors compromising a dozen US water systems. It was a busy summer.",
+      "url": "https://www.darkreading.com/cyberattacks-data-breaches/3-cyber-threats-defined-summer-2026",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-09-24T23:44:12+09:00",
+      "title_ja": "2026年夏のサイバー脅威トップ3",
+      "summary_ja": "Reporters' Notebookのビデオシリーズは、2026年夏に特に注目された3つのサイバー脅威を議論しています。これらには、AIエージェントによるHugging Faceの侵害、Fairlifeに対するランサムウェア攻撃、そしてイラン関連の脅威アクターによる12の米国水道システムへの侵害が含まれます。AIエージェントを悪用した攻撃が、著名なAIプラットフォームに対する現実的な脅威となっていることが強調されており、その影響の広がりが示唆されています。",
+      "insight": "AIエージェントを悪用したHugging Face侵害の言及は、AI関連のプラットフォームやサービス自体が新たな攻撃対象となっていることを示唆します。CDCは、自社が利用するAI関連SaaSやクラウドサービスに対するサプライチェーンリスク評価を強化し、AIエージェントの活動ログやAPI連携の監視を優先すべきです。経営層への報告では、AI固有のリスクとインシデント事例を含めることで、セキュリティ投資の必要性を明確に伝えることができるでしょう。",
+      "importance": "高",
+      "importance_reason": "AIエージェントによる攻撃が具体的なインシデントとして報告されており、AI関連のサプライチェーンリスクが高まっていることを示しているためです。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "サービス停止",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "Hugging Face",
+        "ランサムウェア",
+        "APT",
+        "水システム"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "CISO報告",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "5bac3bdecd25",
+      "title": "PamStealer macOS Malware Adds Live C2 Payload Decryption and Multi-Layer Persistence",
+      "summary": "Cybersecurity researchers have flagged a new version of PamStealer that ensures that the main payload can only be recovered using a server-side decryption chain.\n\nThe latest artifacts, per Jamf Threat Labs, continue to rely on the same JavaScript for Automation (JXA) dropper mechanism, but modify the lure and the delivery method.\n\n\"Where earlier variants embedded their payload key material",
+      "url": "https://thehackernews.com/2026/09/pamstealer-macos-malware-adds-live-c2.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-25T22:18:06+09:00",
+      "title_ja": "PamStealer macOSマルウェアがライブC2ペイロード復号と多層永続化機能を追加",
+      "summary_ja": "サイバーセキュリティ研究者らは、PamStealer macOSマルウェアの新しいバージョンが、サーバーサイド復号チェーンを用いてメインペイロードを復号する機能と多層的な永続化メカニズムを追加したことを報告しました。Jamf Threat Labsによると、最新のアーティファクトは、以前のバージョンと同様にJavaScript for Automation (JXA) ドロッパーメカニズムに依存しつつ、誘引と配信方法を変更しています。これは、マルウェアがより高度な回避技術と持続性を獲得していることを示します。",
+      "insight": "マルウェアの進化は常に追いかけるべき脅威ですが、本件は従来のマルウェア技術の進化であり、直接的なAIエージェント関連のセキュリティ課題とは異なります。CDC運用では、エンドポイント保護の強化、新たな検出シグネチャの導入、JXAのようなスクリプト実行の監視、C2通信の分析が引き続き重要です。特に、復号化プロセスや永続化メカニズムを深く理解し、その挙動を検知ルールに反映させる必要があります。",
+      "importance": "中",
+      "importance_reason": "従来のマルウェア攻撃の進化を示しており、エンドポイントセキュリティの継続的な強化が求められるため、SOC運用にとって重要です。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "PamStealer",
+        "macOS",
+        "マルウェア",
+        "C2",
+        "ペイロード復号"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ff604e69df2b",
+      "title": "The SOC Doesn't Need to Start Over with Every Alert",
+      "summary": "Security leaders keep debating whether AI will produce an entirely new class of cyberattack. The nearer change is quieter and already visible: AI has made a failed attack cheap to retry.\n\nThe routine version looks like this. An attacker lands on a low-privilege cloud account, and the first try at privilege escalation goes nowhere. That dead end used to cost hours of documentation reading,",
+      "url": "https://thehackernews.com/2026/09/the-soc-doesnt-need-to-start-over-with.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-25T20:30:00+09:00",
+      "title_ja": "SOCはアラートごとに最初からやり直す必要はない",
+      "summary_ja": "AIがサイバー攻撃の新たなクラスを生み出すかどうかの議論が続く中、より差し迫った変化として、AIが攻撃の再試行コストを劇的に低減させている点が指摘されています。攻撃者はAIを活用することで、低権限アカウントへの侵入後の権限昇格失敗など、以前は時間のかかった試行錯誤を効率的に繰り返せるようになりました。この記事は、防御側もAIを積極的に活用し、SOCがアラートごとにゼロから調査を開始する非効率性を解消する必要があると提唱しています。",
+      "insight": "攻撃側AIによる攻撃の高速化と多角化に対応するため、防御側もAI for Securityの導入は不可避です。CDC設計において、AIによるTier2調査の自動化、アラートのトリアージと優先順位付け、過去のインシデントデータに基づいた初動判断支援は、運用負荷の軽減と対応速度の向上に直結します。これにより、SOCアナリストはより高度な脅威ハンティングやインシデント対応に注力でき、人材不足問題の緩和にも繋がるでしょう。",
+      "importance": "高",
+      "importance_reason": "攻撃側AIの脅威に対抗するために防御側AIの活用が必須であり、SOC業務の効率化と高度化に直接影響するため重要です。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AI",
+        "SOC",
+        "アラート",
+        "攻撃効率化",
+        "権限昇格"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2004691cde9f",
+      "title": "Windows, Linux, Android File Notification Systems Leak User Activity",
+      "summary": "<p>Researchers show that file-change notification systems can leak keystroke timing, browsing activity, and WhatsApp media events.</p>\n<p>The post <a href=\"https://www.securityweek.com/windows-linux-android-file-notification-systems-leak-user-activity/\">Windows, Linux, Android File Notification Systems Leak User Activity</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/windows-linux-android-file-notification-systems-leak-user-activity/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-09-25T19:53:32+09:00",
+      "title_ja": "Windows, Linux, Androidのファイル通知システムがユーザー活動を漏洩",
+      "summary_ja": "研究者らは、Windows、Linux、Androidのファイル変更通知システムが、キーストロークのタイミング、ブラウジング活動、WhatsAppのメディアイベントなどのユーザーアクティビティを漏洩する可能性があることを示しました。これは、オペレーティングシステムレベルの意図しない情報漏洩チャネルが存在し、サイドチャネル攻撃によって機密情報が窃取されるリスクがあることを意味します。従来のセキュリティ対策では見過ごされがちな領域での脆弱性を示唆しています。",
+      "insight": "OSレベルのファイル通知システムが情報漏洩源となる可能性は、従来のOSログやEDRによる監視だけでは捕捉しきれないリスクを示します。CDC運用者は、デバイス/エッジ層におけるより低レベルな活動監視の必要性を再認識すべきです。特に、AIエージェントが利用するファイルシステムへのアクセス監視は強化し、不審なファイル変更通知イベントを相関分析することで、AIシステム固有のサプライチェーン攻撃やデータ流出の早期検知に繋がる可能性があります。",
+      "importance": "中",
+      "importance_reason": "OSレベルの新たな情報漏洩経路が示され、従来の監視対象外の領域でのリスク認識を促すため、中程度の重要度です。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "ファイル通知システム",
+        "情報漏洩",
+        "キーストローク",
+        "ブラウジング履歴",
+        "サイドチャネル攻撃"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "fd61ebce606b",
+      "title": "Kontext Security Emerges With $4 Million for AI Agent Runtime Controls",
+      "summary": "<p>The startup’s runtime enforcement platform evaluates AI agents in real time to provide visibility and control over their actions.</p>\n<p>The post <a href=\"https://www.securityweek.com/kontext-security-emerges-with-4-million-for-ai-agent-runtime-controls/\">Kontext Security Emerges With $4 Million for AI Agent Runtime Controls</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/kontext-security-emerges-with-4-million-for-ai-agent-runtime-controls/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-09-25T00:52:00+09:00",
+      "title_ja": "Kontext Security、AIエージェントのランタイム制御で400万ドルを調達",
+      "summary_ja": "スタートアップのKontext Securityが、AIエージェントのランタイム制御プラットフォーム開発のため400万ドルの資金を調達しました。このプラットフォームは、AIエージェントの行動をリアルタイムで評価し、そのアクションに対する可視性と制御を提供するものです。AIエージェントの普及に伴う新たなセキュリティ脅威に対応するための専門ソリューションが登場しており、AIエージェントのガバナンスとセキュリティが市場ニーズとして顕在化していることを示しています。",
+      "insight": "AIエージェントの振る舞いをリアルタイムで監視・制御する新たなソリューションの登場は、Security for AI領域の市場が立ち上がりつつある明確な兆候です。CDC/MDR/MSSPは、このようなAIエージェントランタイム保護（AARP）技術をサービスポートフォリオに組み込むことで、顧客のAIシステム固有のセキュリティ課題に対応できます。特に、AIエージェントのツール実行やAPI連携における異常検知、ポリシー適用は、既存のSOARやCASBの機能拡張として検討すべき領域です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントのセキュリティ対策に特化したソリューションの市場化が進展しており、防御アーキテクチャに直接影響するため重要です。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "資金調達",
+        "製品リリース",
+        "スタートアップ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Kontext Security",
+        "AIエージェント",
+        "ランタイム制御",
+        "資金調達",
+        "AARP"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "サービス企画",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
       "id": "23dc9d1ab018",
       "title": "Malicious AI agents steal 600K credit cards, infect 100+ sites with skimmers",
       "summary": "A financially motivated threat actor is using open-source AI agent frameworks to attack hundreds of online retailers at scale, stealing more than 600,000 credit card records. [...]",
