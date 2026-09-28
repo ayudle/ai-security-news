@@ -2,6 +2,425 @@
   "month": "2026-09",
   "articles": [
     {
+      "id": "097b65f90159",
+      "title": "IAM for AI agents: A Practical Enterprise Framework",
+      "summary": "What is IAM for AI agents?\n\nAI agents authenticate, invoke tools, and act across enterprise systems with delegated authority. IAM for AI Agents is the identity-control architecture that governs those actors. This guide covers the limits of conventional provisioning, the components that matter, how to evaluate framework choices, and what runtime evidence proves an agent behaved as intended.",
+      "url": "https://thehackernews.com/2026/09/iam-for-ai-agent.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-29T03:20:38+09:00",
+      "title_ja": "AIエージェント向けIAMの実践的フレームワーク",
+      "summary_ja": "AIエージェントが企業システムで認証、ツール呼び出し、権限委譲されたアクションを行うため、従来のIAMでは対応しきれない課題が生じています。本ガイドは、AIエージェントに特化したIAM（Identity and Access Management）の必要性、その構成要素、フレームワーク選択の評価基準、およびエージェントが意図通りに動作したことを証明するための実行時証拠について解説しています。これはAIエージェントの安全な運用を実現するための基盤となるアーキテクチャ設計に不可欠です。",
+      "insight": "AIエージェントは自律的に動作するため、人間と同様またはそれ以上に厳密なID管理と権限付与、そしてその活動の可視化と監査が必要です。CDC設計においては、AIエージェントのIDライフサイクル管理、アクセス制御ポリシーの定義、ツール連携時の権限委譲モデル、実行時ログから意図通りの挙動を証明できる証跡管理メカニズムを検討し、Security for AIの重要な柱として位置づけるべきです。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの普及に伴い、その活動を安全に管理するためのIAMは必須となり、今後のAIシステムセキュリティの基盤となるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "IAM",
+        "ID管理",
+        "アクセス制御",
+        "権限委譲"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "MDR/MSSP設計",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "a3fd0bb8be39",
+      "title": "RatHat Android Malware Console Uses Gemini to Identify Higher-Value Victims",
+      "summary": "RatHat's operators build and publish the Android banking trojan and control infected phones from a web console, according to security company Cleafy. Cleafy has&nbsp;traced nearly 100 deployments&nbsp;of that console since April 2026. It said this fits a malware-as-a-service model, in which each customer runs a separate copy.\n\nThe console stores what the malware collects from each phone,",
+      "url": "https://thehackernews.com/2026/09/rathat-android-malware-console-uses.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-09-29T02:38:33+09:00",
+      "title_ja": "RatHat AndroidマルウェアがGeminiを悪用し標的を選定",
+      "summary_ja": "RatHatというAndroidバンキングトロイの木馬の運用者が、Google Geminiをマルウェアのコントロールコンソールに統合し、感染したデバイスから窃取した情報をもとに高価値の標的を識別していることが判明しました。このマルウェアはマルウェアアズアサービスモデルで提供され、多数のデプロイが確認されています。AIが悪用されることで、攻撃者はより効率的かつ的確に被害者を選定できるようになっています。",
+      "insight": "AIが悪意ある目的で活用され、攻撃の効率と精度を向上させる具体的な事例です。CDCとしては、従来のマルウェア検知に加え、AI悪用が組み込まれた攻撃手法に対応するため、異常なデータフローやAIサービスへの不審なアクセス、そしてAIが生成・処理した情報に基づく標的の行動変化を検知する新たなロジックを検討する必要があります。",
+      "importance": "高",
+      "importance_reason": "AIが悪意ある攻撃ツールとして現実世界で活用され、従来のマルウェアの効率を向上させていることを示すため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "RatHat",
+        "Androidマルウェア",
+        "バンキングトロイの木馬",
+        "Google Gemini",
+        "AIを使った攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "c41091d43b63",
+      "title": "80,000+ Organizations Had AI Logins Stolen: From Shadow AI to LLMjacking",
+      "summary": "Infostealer logs exposed AI account credentials and sessions tied to more than 80,000 corporate domains, creating risks ranging from stolen conversations to LLMjacking. SOCRadar examines the growing market for stolen AI logins and how organizations can identify their exposure. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/80-000-plus-organizations-had-ai-logins-stolen-from-shadow-ai-to-llmjacking/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-28T23:00:10+09:00",
+      "title_ja": "8万超の組織でAIログイン情報が窃取、シャドーAIからLLMjackingのリスク",
+      "summary_ja": "インフォスティーラー型のマルウェアにより、8万を超える企業ドメインに関連するAIアカウントの認証情報やセッションが盗まれ、広範なリスクに晒されていることが明らかになりました。これにより、AIとの会話データの窃取から「LLMjacking」（AIモデルの乗っ取り）に至るまで、様々な脅威が発生しています。シャドーAIの存在も、この認証情報漏洩のリスクをさらに増大させています。",
+      "insight": "AIサービスの利用が拡大する中で、その認証情報が新たな攻撃対象となっている現状を示しています。CDC/SOCは、従業員による承認されていないAIサービスの利用（シャドーAI）を可視化し、AIサービスの認証情報保護を従来のクレデンシャル窃取対策のスコープに含める必要があります。また、AIアカウントの不審なログインやAPIキーの利用を検知するための監視体制を強化することが重要です。",
+      "importance": "高",
+      "importance_reason": "AIアカウントの認証情報窃取が大規模に発生し、LLMjackingという新たなAI固有のリスクが現実化しているため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "クレデンシャル窃取",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIアカウント",
+        "認証情報窃取",
+        "インフォスティーラー",
+        "LLMjacking",
+        "シャドーAI"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "12d854ee0c6b",
+      "title": "Quoting @joedaroo",
+      "summary": "<blockquote cite=\"https://twitter.com/joedaroo/status/2104335929293127851\"><p>To say that we were surprised at the jump and suddenness of the capabilities of our models when it came to “cyber” or “swarming” or “message boards” or anything else related to the incidents is an understatement. Security posture takes time to develop. It’s not just about hardening the systems at play; you have to ingrain it in the culture of the company. The literal people themselves in your organization have to chang",
+      "url": "https://simonwillison.net/2026/Sep/28/joedaroo/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-09-29T04:11:42+09:00",
+      "title_ja": "AIモデルの能力急増に驚き、セキュリティ態勢は組織文化への浸透が重要",
+      "summary_ja": "AIモデルが「サイバー」関連や「スウォーミング」といった特定の能力を突然向上させたことに驚きが表明されています。セキュリティ態勢を確立するには時間がかかり、単にシステムを強化するだけでなく、企業文化にセキュリティを深く浸透させ、組織内の人々自身が変化していく必要があると指摘されています。これは、AI技術の急速な進化に対応するための組織的な課題を浮き彫りにしています。",
+      "insight": "AI技術の急速な進化は、予測不可能な能力向上をもたらす可能性があり、それに対するセキュリティ設計や運用は追いつきにくいという認識が重要です。CDC/SOCは、技術的な対策だけでなく、AI利用ポリシーの徹底、従業員へのセキュリティ教育、シャドーAI対策といった組織的なガバナンスと文化変革を支援し、AIリスク管理フレームワークを継続的に更新していく必要があります。",
+      "importance": "中",
+      "importance_reason": "AIの予測不能な能力向上と、それに対応するセキュリティ態勢構築の難しさを指摘し、組織文化の重要性を示唆しているため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AI能力",
+        "セキュリティ態勢",
+        "組織文化",
+        "ガバナンス",
+        "変化管理"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "f94e7dab72fd",
+      "title": "Subjects, Not Authors: The Authorship Hazard in Agentic Dataspaces",
+      "summary": "arXiv:2609.30614v1 Announce Type: new \nAbstract: Dataspace connectors decide whether a transfer may occur, not what the transferred value contains, tolerable for contracted applications, not for LLM agents that compose tool calls and spawn sub-agents. Research on agents that generate governance artifacts evaluates output quality; who may authorize an artifact for use falls between that literature and the governance literature, and neither owns it. A published policy is what a dataspace's decisio",
+      "url": "https://arxiv.org/abs/2609.30614",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-28T13:00:00+09:00",
+      "title_ja": "エージェント型データスペースにおける承認の課題",
+      "summary_ja": "データスペースコネクタは、転送される値の内容ではなく、転送の可否のみを決定しますが、ツール呼び出しやサブエージェント生成を行うLLMエージェントには不十分です。エージェントが生成するガバナンス成果物の品質は評価されるものの、「誰がその成果物の使用を承認できるか」という問題は未解決であり、ガバナンスの責任範囲が曖昧であると指摘されています。エージェントが自律的に生成・実行する情報の信頼性と承認プロセスが課題となっています。",
+      "insight": "マルチエージェント環境や自律型エージェントにおいて、エージェントが生成するアウトプットや実行するアクションに対する人間の責任と承認プロセスが重要なガバナンス課題となります。CDC設計においては、エージェント間の通信やタスク連鎖における信頼境界の定義、エージェントが生成した成果物に対する承認ワークフローの監視・監査、そして問題発生時の責任所在の明確化を支援する機能が必要になります。",
+      "importance": "中",
+      "importance_reason": "AIエージェントが自律的に生成・実行するコンテンツやアクションに対するガバナンスと責任の課題を提起しており、設計上の重要な論点となるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価",
+        "著作権"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "データスペース",
+        "LLMエージェント",
+        "ガバナンス",
+        "責任範囲",
+        "承認プロセス"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "サービス企画",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e64981e159bb",
+      "title": "A Large-Scale Empirical Study of Modern Phishing Email Content",
+      "summary": "arXiv:2609.30683v1 Announce Type: new \nAbstract: Phishing remains one of the most pervasive threats to Internet users, and email remains its predominant delivery channel. Email content is the attack surface of phishing: it is what the victim reads and what automated defenses inspect. Yet the composition of modern phishing content is poorly measured. Prior work has characterized dimensions such as theme, call-to-action (CTA), and impersonation, but not at scale, and their associations and tempora",
+      "url": "https://arxiv.org/abs/2609.30683",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-28T13:00:00+09:00",
+      "title_ja": "現代のフィッシングメールコンテンツに関する大規模実証研究",
+      "summary_ja": "フィッシングは依然としてインターネットユーザーに対する最も広範な脅威の一つであり、メールが主要な配信チャネルです。本研究は、現代のフィッシングメールコンテンツの構成要素について、大規模な実証研究を通じてその特性を詳細に分析しています。先行研究ではテーマ、Call-to-Action (CTA)、なりすましといった側面が扱われていましたが、本研究はより広範な関連性と時間的変化を捉えています。",
+      "insight": "AIの進化が話題になる一方で、フィッシングメールという古典的かつ最も基本的な攻撃手法が依然として極めて効果的であることを再認識させられます。CDC/SOCとしては、AI for Securityを用いてフィッシングメールの高度な検知や分類を試みると同時に、従業員への継続的なセキュリティ教育と多層防御のアプローチを強化することが、広範な脅威への基本的な対策として引き続き重要です。",
+      "importance": "低",
+      "importance_reason": "フィッシングの継続的な脅威を再確認する内容であり、新たなAI関連の攻撃手法と比較して直接的な新規性はないため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "フィッシング",
+        "メール攻撃",
+        "攻撃サーフェス",
+        "CTA",
+        "なりすまし"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "922b779b0327",
+      "title": "2026 in LLMs (so far)",
+      "summary": "<p>On Friday I gave the closing keynote at the <a href=\"https://www.wearedevelopers.com/world-congress-north-america\">WeAreDevelopers World Congress North America</a> in San Jose. I tied together the key trends from the past year into a chronological exploration of everything that happened in 2026. The video <a href=\"https://www.youtube.com/watch?v=GAkIytR7vcc\">is on YouTube</a>; here are my annotated slides and notes to accompany the talk.</p>\n\n<p> </p>\n\n<p>And as an <a href=\"https://simonwilli",
+      "url": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-09-28T08:54:15+09:00",
+      "title_ja": "2026年これまでのLLM主要トレンド",
+      "summary_ja": "WeAreDevelopers World Congress North Americaでの基調講演では、2026年上半期のLLM分野における主要なトレンドが時系列に沿ってまとめられました。この講演では、最新のLLM技術の進展とその影響について深く掘り下げられています。LLMの進化はサイバーセキュリティに多大な影響を与えており、攻撃側と防御側の双方でその活用が進んでいます。",
+      "insight": "LLMの技術トレンドを継続的に追うことは、AI for SecurityとSecurity for AIの両面で不可欠です。CDC/SOCのサービス企画やMDR/MSSPの設計において、最新のLLMの能力や限界を理解し、それが将来の脅威動向や防御戦略にどう影響するかを見極める必要があります。特に、AIエージェントの自律性向上は、監視対象の拡大や異常検知ロジックの複雑化に直結します。",
+      "importance": "中",
+      "importance_reason": "LLMの主要トレンドをまとめた内容であり、今後のAI関連のセキュリティリスクや防御戦略を考察する上で重要な背景情報となるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "LLM",
+        "技術トレンド",
+        "AI進化",
+        "基調講演"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "サービス企画",
+        "CISO報告",
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "1b3dac92ae80",
+      "title": "Carbonato Botnet Puts an AI Agent on Hacked Docker Hosts",
+      "summary": "The botnet uses the open source Hermes Agent AI framework to execute commands via Telegram and steal AI API keys from exposed Docker hosts.",
+      "url": "https://www.darkreading.com/identity-access-management-security/carbonato-botnet-ai-agent-hacked-docker-hosts",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-09-29T05:23:58+09:00",
+      "title_ja": "Carbonatoボットネット、侵害DockerホストにAIエージェントを配置",
+      "summary_ja": "Carbonatoボットネットが、ハッキングされたDockerホスト上にオープンソースのHermes Agent AIフレームワークを利用したAIエージェントを配置していることが判明しました。このAIエージェントはTelegram経由でコマンドを実行し、露出したDockerホストからAI APIキーを窃取します。これにより、攻撃者はクラウド環境での偵察やさらなる侵害を効率的に行うことが可能となります。",
+      "insight": "攻撃者が既存のボットネットインフラにAIエージェントを組み込み、その自律性と機能性を高めていることを示しています。CDC/SOCは、侵害された環境でAIエージェントが展開される可能性を考慮し、コンテナ環境における異常なプロセス実行、AI APIキーへのアクセス、AIエージェントフレームワークの不審な導入を検知するルールを強化する必要があります。",
+      "importance": "高",
+      "importance_reason": "既存のボットネットにAIエージェントが組み込まれ、AI APIキー窃取という新たな攻撃経路が現実化しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "AIを使った攻撃",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Carbonato",
+        "ボットネット",
+        "Dockerホスト",
+        "AIエージェント",
+        "Hermes Agent AI"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "bc584af0c123",
+      "title": "JadePuffer agentic AI attacks target Azure, destroy cloud resources",
+      "summary": "The JadePuffer ransomware operator is targeting Azure tenants with agent-driven attacks that conduct reconnaissance, steal credentials, and destroy core components. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/jadepuffer-agentic-ai-attacks-target-azure-destroy-cloud-resources/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-29T00:49:27+09:00",
+      "title_ja": "JadePufferエージェント型AI攻撃がAzureを標的に、クラウド資源を破壊",
+      "summary_ja": "JadePufferランサムウェアの運用者が、エージェント駆動型AI攻撃を用いてAzureテナントを標的にし、偵察、認証情報の窃取、そして重要なクラウドコンポーネントの破壊を行っていることが報じられました。この攻撃は、AIエージェントがクラウド環境で自律的に活動し、広範囲な損害をもたらす能力を持っていることを示唆しています。",
+      "insight": "AIエージェントが悪用され、クラウド環境で自律的に偵察、認証情報窃取、そして破壊活動を行う、極めて深刻な攻撃が現実化しています。CDC/SOCは、クラウド環境におけるAIエージェントの挙動を監視し、特に特権エージェントの異常な活動、APIコール、リソース変更・削除を厳重に検知する仕組みを構築する必要があります。これはMDR/MSSPサービス設計において、クラウドセキュリティとAIセキュリティの統合を急ぐべき課題です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントがクラウド環境で自律的に破壊的な攻撃を実行する具体的な事例であり、即時の対策が求められるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ランサムウェア",
+        "AIを使った攻撃",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "JadePuffer",
+        "AI攻撃",
+        "Azureテナント",
+        "クラウド破壊",
+        "エージェント駆動型攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "MDR/MSSP設計",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "566d9c07bf5e",
+      "title": "JadePuffer AI Actor Compromises Azure Tenant in Destructive Cloud Attack",
+      "summary": "The &quot;agentic threat actor&quot; may have used exposed credentials to access resources and delete cloud-based storage, applications, and databases.",
+      "url": "https://www.darkreading.com/cloud-security/jadepuffer-ai-actor-azure-tenant-destructive-cloud-attack",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-09-29T00:33:21+09:00",
+      "title_ja": "JadePuffer AIアクターがAzureテナントを侵害し破壊的なクラウド攻撃",
+      "summary_ja": "「エージェント型脅威アクター」であるJadePufferが、露出した認証情報を使用してAzureリソースにアクセスし、クラウドベースのストレージ、アプリケーション、データベースを削除した可能性が報じられています。このインシデントは、AIエージェントが高度な自律性をもってクラウド環境を標的にし、甚大な被害をもたらす能力を持つことを裏付けています。初期アクセスには認証情報窃取が利用されたと推測されます。",
+      "insight": "記事9と同様に、AIエージェントが露出した認証情報を足がかりにクラウド環境で自律的に活動し、広範囲にわたる破壊をもたらす事例です。CDC/SOCは、クラウド環境のアクセスログ、API監査ログを詳細に監視し、AIエージェントによる異常なリソース操作や権限昇格を迅速に検知・対応する能力を強化する必要があります。特に、Identity/ITDRの観点からAIエージェントの認証・認可と挙動監視は最優先事項です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが悪用されたクラウド環境での破壊的な攻撃の深刻度と、認証情報窃取がその起点となる可能性を強調しているため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "サービス停止",
+        "データ侵害",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "JadePuffer",
+        "AIアクター",
+        "Azureテナント",
+        "クラウド攻撃",
+        "破壊的攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理",
+        "MDR/MSSP設計",
+        "顧客課題",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
       "id": "3618d6c1d166",
       "title": "Zero Trust for AI Agents Starts With Fixing Zero Visibility",
       "summary": "The way we talk about AI agents is shifting, and the way we implement them requires an even more fundamental shift. While earlier discourse focused on how quickly organizations could stand up agents and how much productivity they could promise, a string of recent incidents, including a widely discussed intrusion at Hugging Face during an evaluation of OpenAI agents, has spurred organizations to",
