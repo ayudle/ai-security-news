@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AIエージェント向けIAMの実践的フレームワーク | Cyber Defense Notes</title>
-<meta name="description" content="AIエージェントが企業システムで認証、ツール呼び出し、権限委譲されたアクションを行うため、従来のIAMでは対応しきれない課題が生じています。本ガイドは、AIエージェントに特化したIAM（Identity and Access Managem">
-<meta property="og:title" content="AIエージェント向けIAMの実践的フレームワーク">
-<meta property="og:description" content="AIエージェントが企業システムで認証、ツール呼び出し、権限委譲されたアクションを行うため、従来のIAMでは対応しきれない課題が生じています。本ガイドは、AIエージェントに特化したIAM（Identity and Access Managem">
+<title>AIエージェント向けIAMの実用的なエンタープライズフレームワーク | Cyber Defense Notes</title>
+<meta name="description" content="本ガイドは、AIエージェントが企業システム内で認証し、ツールを呼び出し、委任された権限で行動する際のID制御アーキテクチャ「IAM for AI Agents」について解説する。従来のプロビジョニングの限界を指摘し、必要なコンポーネント、フ">
+<meta property="og:title" content="AIエージェント向けIAMの実用的なエンタープライズフレームワーク">
+<meta property="og:description" content="本ガイドは、AIエージェントが企業システム内で認証し、ツールを呼び出し、委任された権限で行動する際のID制御アーキテクチャ「IAM for AI Agents」について解説する。従来のプロビジョニングの限界を指摘し、必要なコンポーネント、フ">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/article/097b65f90159.html">
 <meta property="og:type" content="article">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AIエージェント向けIAMの実践的フレームワーク">
-<meta name="twitter:description" content="AIエージェントが企業システムで認証、ツール呼び出し、権限委譲されたアクションを行うため、従来のIAMでは対応しきれない課題が生じています。本ガイドは、AIエージェントに特化したIAM（Identity and Access Managem">
+<meta name="twitter:title" content="AIエージェント向けIAMの実用的なエンタープライズフレームワーク">
+<meta name="twitter:description" content="本ガイドは、AIエージェントが企業システム内で認証し、ツールを呼び出し、委任された権限で行動する際のID制御アーキテクチャ「IAM for AI Agents」について解説する。従来のプロビジョニングの限界を指摘し、必要なコンポーネント、フ">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/article/097b65f90159.html">
@@ -21,8 +21,8 @@
 {
   "@context": "https://schema.org",
   "@type": "NewsArticle",
-  "headline": "AIエージェント向けIAMの実践的フレームワーク",
-  "description": "AIエージェントが企業システムで認証、ツール呼び出し、権限委譲されたアクションを行うため、従来のIAMでは対応しきれない課題が生じています。本ガイドは、AIエージェントに特化したIAM（Identity and Access Management）の必要性、その構成要素、フレームワーク選択の評価基準、およびエージェントが意図通りに動作したことを証明するための実行時証拠について解説しています。これは",
+  "headline": "AIエージェント向けIAMの実用的なエンタープライズフレームワーク",
+  "description": "本ガイドは、AIエージェントが企業システム内で認証し、ツールを呼び出し、委任された権限で行動する際のID制御アーキテクチャ「IAM for AI Agents」について解説する。従来のプロビジョニングの限界を指摘し、必要なコンポーネント、フレームワークの評価方法、およびエージェントが意図通りに動作したことを証明するランタイム証拠について論じている。これにより、企業環境でのAIエージェントの安全な利",
   "datePublished": "2026-09-29",
   "url": "https://ayudle.github.io/ai-security-news/article/097b65f90159.html",
   "image": "https://ayudle.github.io/ai-security-news/og-image.png",
@@ -124,27 +124,27 @@ gtag('config', 'G-KV7Q7SQKZX');
       <span>2026-09-29</span>
       <span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span>
     </div>
-    <h1 class="ap-title">AIエージェント向けIAMの実践的フレームワーク</h1>
+    <h1 class="ap-title">AIエージェント向けIAMの実用的なエンタープライズフレームワーク</h1>
   </div>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">要約</h3>
-    <div class="ap-body">AIエージェントが企業システムで認証、ツール呼び出し、権限委譲されたアクションを行うため、従来のIAMでは対応しきれない課題が生じています。本ガイドは、AIエージェントに特化したIAM（Identity and Access Management）の必要性、その構成要素、フレームワーク選択の評価基準、およびエージェントが意図通りに動作したことを証明するための実行時証拠について解説しています。これはAIエージェントの安全な運用を実現するための基盤となるアーキテクチャ設計に不可欠です。</div>
+    <div class="ap-body">本ガイドは、AIエージェントが企業システム内で認証し、ツールを呼び出し、委任された権限で行動する際のID制御アーキテクチャ「IAM for AI Agents」について解説する。従来のプロビジョニングの限界を指摘し、必要なコンポーネント、フレームワークの評価方法、およびエージェントが意図通りに動作したことを証明するランタイム証拠について論じている。これにより、企業環境でのAIエージェントの安全な利用を促進する。</div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>AIエージェントは自律的に動作するため、人間と同様またはそれ以上に厳密なID管理と権限付与、そしてその活動の可視化と監査が必要です。CDC設計においては、AIエージェントのIDライフサイクル管理、アクセス制御ポリシーの定義、ツール連携時の権限委譲モデル、実行時ログから意図通りの挙動を証明できる証跡管理メカニズムを検討し、Security for AIの重要な柱として位置づけるべきです。</div></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>AIエージェントの普及は、従来のIAMの概念を拡張し、エージェント自身の認証、認可、活動監査を必要とすることを明確にしている。CDCは、エージェントの活動ログを収集し、その振る舞いが許容範囲内であるか、あるいは不正なツール呼び出しや権限濫用がないかを監視するための新しいポリシーと検知メカニズムを開発する必要がある。特に、AIエージェントに最小特権の原則をどう適用し、その証拠をどう管理するかが運用上の具体的な課題となる。</div></div></section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントの普及に伴い、その活動を安全に管理するためのIAMは必須となり、今後のAIシステムセキュリティの基盤となるため。</div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>AIエージェントの安全性確保における基盤となるIAMの確立は、中長期的なAIセキュリティ戦略において不可欠であり、実務的なガイドラインとして重要性が高い。</div></section>
 
   <section class="ap-section">
     <h3 class="ap-sec-title">タグ</h3>
     <div class="tags-box">
       <span class="tag-main" style="background:#185FA520;color:#185FA5;border-color:#185FA544">AI×セキュリティ</span>
-      <span class="tag-sub">LLMセキュリティ</span><span class="tag-sub">AIを使った防御</span>
+      <span class="tag-sub">AIを使った防御</span><span class="tag-sub">LLMセキュリティ</span>
     </div>
   </section>
 
-  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Identity/ITDR</span><span class='cdc-badge-ap'>MDR/MSSP設計</span></div></section>
+  <section class='ap-section'><h3 class='ap-sec-title'>CDC観点</h3><div class='cdc-box'><span class='cdc-rel-lbl'>CDC関連度：高</span><span class='cdc-badge-ap'>SOC運用変化</span><span class='cdc-badge-ap'>Identity/ITDR</span><span class='cdc-badge-ap'>サービス企画</span></div></section>
 
   <section class="ap-section"><h3 class="ap-sec-title">このテーマで書かれたコラム</h3><div class="rel-list"><a href="../columns/ai-vulnerability-management-automation.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-06-08</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</div></a><a href="../columns/ai-supply-chain-exposure.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-05-16</span><span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div><div class="rel-title">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div></a></div></section>
 
@@ -161,16 +161,16 @@ AI agents authenticate, invoke tools, and act across enterprise systems with del
     </div>
     <div class="actions">
       <a href="https://thehackernews.com/2026/09/iam-for-ai-agent.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0AAI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E5%90%91%E3%81%91IAM%E3%81%AE%E5%AE%9F%E8%B7%B5%E7%9A%84%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%0A%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23AI%E9%98%B2%E5%BE%A1&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F097b65f90159.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
+      <a href="https://x.com/intent/post?text=%E3%80%90AI%C3%97%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E3%80%91%0A%0AAI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E5%90%91%E3%81%91IAM%E3%81%AE%E5%AE%9F%E7%94%A8%E7%9A%84%E3%81%AA%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%97%E3%83%A9%E3%82%A4%E3%82%BA%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%0A%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23AI%E9%98%B2%E5%BE%A1%20%23LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Farticle%2F097b65f90159.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/article/097b65f90159.html').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
 
-  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Identity%2FITDR#archive" class="explore-chip" data-search-context="Identity/ITDR">Identity/ITDR</a><a href="../?context=MDR%2FMSSP%E8%A8%AD%E8%A8%88#archive" class="explore-chip" data-search-context="MDR/MSSP設計">MDR/MSSP設計</a><a href="../?tag=LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3#archive" class="explore-chip" data-search-tag="LLMセキュリティ">LLMセキュリティ</a><a href="../?tag=AI%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%98%B2%E5%BE%A1#archive" class="explore-chip" data-search-tag="AIを使った防御">AIを使った防御</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
+  <section class="ap-section"><h3 class="ap-sec-title">このテーマをもっと探す</h3><p class="explore-desc">この記事に近いテーマの記事を、記事検索タブで探せます。（関連記事は下の「関連記事」セクションで直接読めます）</p><div class="explore-chips"><a href="../?context=SOC%E9%81%8B%E7%94%A8%E5%A4%89%E5%8C%96#archive" class="explore-chip" data-search-context="SOC運用変化">SOC運用変化</a><a href="../?context=Identity%2FITDR#archive" class="explore-chip" data-search-context="Identity/ITDR">Identity/ITDR</a><a href="../?context=%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E4%BC%81%E7%94%BB#archive" class="explore-chip" data-search-context="サービス企画">サービス企画</a><a href="../?tag=AI%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%98%B2%E5%BE%A1#archive" class="explore-chip" data-search-tag="AIを使った防御">AIを使った防御</a><a href="../?tag=LLM%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3#archive" class="explore-chip" data-search-tag="LLMセキュリティ">LLMセキュリティ</a></div><a href="../#archive" class="explore-cta">記事検索で関連テーマを見る →</a></section>
 
   <section class="ap-section">
   <h3 class="ap-sec-title">関連記事：同じ「AI×セキュリティ」の最近の記事</h3>
-  <div class="rel-list"><a href="3618d6c1d166.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-09-26</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">The Hacker News</span></div><div class="rel-title">AIエージェントのゼロトラストと可視性の欠如がセキュリティ課題に</div></a><a href="f7b64e3472b4.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-09-26</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">Dark Reading</span></div><div class="rel-title">AIサンドボックス脱出、封じ込めよりフォレンジック対応能力が重要</div></a><a href="e14c4a011dbc.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-09-26</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">Dark Reading</span></div><div class="rel-title">Google GeminiもAI封じ込めを破る事例が発覚</div></a></div>
+  <div class="rel-list"><a href="92506a30955d.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-09-30</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">Simon Willison</span></div><div class="rel-title">Anthropic Frontier Red Teamの報告：LLMがバイナリ脆弱性を悪用し制御を奪う能力</div></a><a href="7eade48699a1.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-09-29</span><span class="imp" style="color:#E24B4A;border-color:#E24B4A55">重要度 高</span><span class="rel-src">SecurityWeek</span></div><div class="rel-title">Rig SecurityがAIエージェントのIDリスク対策で$12Mを調達しステルス解除</div></a><a href="442c32b28c31.html" class="rel-item"><div class="rel-meta"><span class="rel-date">2026-09-29</span><span class="imp" style="color:#BA7517;border-color:#BA751755">重要度 中</span><span class="rel-src">arXiv cs.CR</span></div><div class="rel-title">知識蒸留におけるデバイスレベルの追跡可能性を目的としたハードウェアベースのPUFフィンガープリンティング</div></a></div>
 </section>
 </article>
 
