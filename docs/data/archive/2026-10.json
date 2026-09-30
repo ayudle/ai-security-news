@@ -1,0 +1,403 @@
+{
+  "month": "2026-10",
+  "articles": [
+    {
+      "id": "40805946a11a",
+      "title": "GenomeOcean Anywhere: Private WebGPU Inference for Genome MoEs",
+      "summary": "arXiv:2609.35882v1 Announce Type: new \nAbstract: Genome foundation models are most useful where sequences are generated, yet the largest models need datacenter accelerators and a place to send private DNA. We ask whether a 15-billion-parameter genome mixture-of-experts (MoE) model can instead run on volunteers' web browsers, with the experts spread across many untrusted devices, without changing its predictions and without revealing the sequence to any single device. We build a system in which a",
+      "url": "https://arxiv.org/abs/2609.35882",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-30T13:00:00+09:00",
+      "title_ja": "ゲノムMoEモデル向けWebGPU推論のプライバシーと分散実行",
+      "summary_ja": "本研究は、150億パラメータのゲノムMoE（Mixture-of-Experts）モデルをWebブラウザ上で動作させるシステムを提案しています。これにより、機密性の高いDNA配列をデータセンターに送ることなく、複数の信頼できないデバイスにエキスパートモデルを分散配置し、予測精度を維持しながらプライバシーを保護します。このアプローチは、ゲノム解析のようなプライバシーが懸念される分野でのAI活用を促進します。",
+      "insight": "分散型AIモデルの導入は、データのプライバシー保護と処理能力の分散という利点をもたらす一方で、モデルの完全性維持や分散環境における不正挙動の検知に新たな課題を提起します。SOC/CDCは、これらの分散環境でのモデルの整合性、データフロー、および潜在的な悪用経路を監視するための新しい技術やプロセスを検討する必要があるでしょう。",
+      "importance": "中",
+      "importance_reason": "分散型・プライベートAIのセキュリティはAIシステムの普及に伴い重要性が増す領域であり、将来的な監視対象となり得るため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "モデル汚染"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "ゲノムモデル",
+        "WebGPU",
+        "MoE",
+        "分散学習",
+        "プライバシー保護"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "90b88ded5f2c",
+      "title": "Agentic Commerce Bench: Measuring Fraud Detection for Agents That Spend Money",
+      "summary": "arXiv:2609.35886v1 Announce Type: new \nAbstract: AI agents now hold spend authority and settle payments without per-action human confirmation. The resulting loss is often not a security failure: a counterparty with the correct domain, the correct settlement address and a genuinely delivered service can charge more than it should, and no check keyed on identity will see it. We present three artefacts for measuring and reducing that loss. First, a taxonomy of agentic commerce fraud that separates ",
+      "url": "https://arxiv.org/abs/2609.35886",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-09-30T13:00:00+09:00",
+      "title_ja": "AIエージェントによる金銭詐欺検出のベンチマーク",
+      "summary_ja": "AIエージェントが人間の確認なしに支出権限を持ち決済を行うことで生じる金銭的損失に着目し、その詐欺を測定・削減するためのフレームワークを提示します。本研究は、エージェント型商取引における詐欺の分類体系を提供し、既存のセキュリティチェックでは見過ごされがちな領域を特定しています。これにより、エージェントの自律的行動に起因する新たなリスクへの対策を促します。",
+      "insight": "AIエージェントの自律的な金銭取引は、従来の脅威モデルでは対応しきれない新たな詐欺の経路を開拓します。SOC/CDCは、エージェントの振る舞い異常検知、特に決済関連のログ分析を強化し、損害発生時の迅速な対応と追跡プロセスの確立が求められます。AIエージェントに特化した脅威インテリジェンスの構築も重要です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが直接的な金銭的損失を引き起こすリスクに焦点を当てており、ビジネスへの影響が大きく、迅速な対策が必要なため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "誤情報生成",
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "金銭詐欺",
+        "支出権限",
+        "決済",
+        "ベンチマーク"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "92506a30955d",
+      "title": "Quoting Anthropic Frontier Red Team",
+      "summary": "<blockquote cite=\"https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities\"><p>We evaluate several models on 100 tasks from the [internal Binary Exploitation benchmark] (selected at random), and find that GLM-5.3 develops full control flow hijacks in 4% of the trials; Claude Mythos Preview did so in 6%. Although GLM-5.3 performs below Claude Mythos Preview here, a meaningful threshold has clearly been crossed: earlier models, like Claude Opus 4.6 and GLM-5.2, do n",
+      "url": "https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-09-30T07:20:28+09:00",
+      "title_ja": "AnthropicがLLMの高度なサイバー攻撃能力を評価",
+      "summary_ja": "Anthropicのレッドチーム評価によると、GLM-5.3とClaude Mythos Previewといった最新のLLMが、ランダムに選ばれたバイナリExploitationタスクにおいて、フルコントロールフローハイジャックをそれぞれ4%と6%の確率で開発したと報告されています。これは、以前のモデル（Claude Opus 4.6やGLM-5.2）では見られなかった能力であり、LLMが高度な攻撃コードを生成する脅威が現実化していることを示唆します。",
+      "insight": "LLMがバイナリのエクスプロイトコードを自律的に生成する能力を持つことは、サイバー攻撃の敷居を劇的に下げ、未知の脆弱性を標的とする攻撃の迅速な開発を可能にします。SOC/CDCは、LLMが生成した可能性のある悪性コードの検出能力を強化し、脅威インテリジェンスにLLM生成攻撃のパターンを取り入れる必要があります。また、開発段階でのセキュリティテストにおけるLLM活用も検討すべきでしょう。",
+      "importance": "高",
+      "importance_reason": "LLM自体が高度な攻撃能力を持つという根本的な脅威であり、攻撃側の優位性を大きく高める可能性があるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "LLM",
+        "Exploit",
+        "コントロールフローハイジャック",
+        "レッドチーム",
+        "Anthropic"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI"
+      ],
+      "views": 0
+    },
+    {
+      "id": "4f42cd6621e5",
+      "title": "Attackers Abuse ChatGPT Custom GPTs to Deliver RAT via ClickFix Lures",
+      "summary": "Threat actors are abusing ChatGPT Custom GPTs to disguise them as legitimate product offerings and direct unsuspecting victims to malicious sites that employ ClickFix lures to deliver malware.\n\nHuntress, which observed the activity in late September 2026, said it marks the abuse of yet another feature in trusted artificial intelligence (AI) platforms. Prior campaigns have weaponized shared",
+      "url": "https://thehackernews.com/2026/09/attackers-abuse-chatgpt-custom-gpts-to.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-10-01T00:00:15+09:00",
+      "title_ja": "攻撃者がChatGPT Custom GPTsを悪用しRATマルウェアを配布",
+      "summary_ja": "脅威アクターがChatGPTのCustom GPTs機能を悪用し、正規の製品を装って被害者を悪意のあるサイトへ誘導し、ClickFixルアーを介してRAT（Remote Access Trojan）マルウェアを配布していることがHuntressによって観測されました。これは、信頼されたAIプラットフォームの新たな機能が悪用された事例であり、過去にも共有チャット機能の悪用が確認されています。",
+      "insight": "信頼されたAIプラットフォームの機能を悪用する攻撃は、ユーザーの警戒心を解き、効果的なフィッシング攻撃を可能にします。SOC/CDCは、AIプラットフォーム（特に連携機能を持つもの）における不審なカスタムエージェントの活動、誘導先のURL、およびC2通信の監視を強化する必要があります。ユーザー教育に加え、AIサービス提供者との連携による脅威インテリジェンス共有も不可欠です。",
+      "importance": "高",
+      "importance_reason": "広く利用されているAIプラットフォームが攻撃経路として悪用されており、ユーザーの被害に直結しやすいため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "マルウェア",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ChatGPT Custom GPTs",
+        "RAT",
+        "ClickFix",
+        "マルウェア配布",
+        "ソーシャルエンジニアリング"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "7573f3929dc1",
+      "title": "Unsloth Studio Flaw Turns Routine Model Inspection Into Code Execution",
+      "summary": "A patched Unsloth Studio vulnerability allows malicious AI models to execute arbitrary Python code during inspection, via the trust_remote_code setting.",
+      "url": "https://www.darkreading.com/application-security/unsloth-studio-flaw-model-inspection-code-execution",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-09-30T06:08:42+09:00",
+      "title_ja": "Unsloth Studioの脆弱性によりモデル検査がコード実行に",
+      "summary_ja": "Unsloth Studioにパッチが適用された脆弱性により、悪意のあるAIモデルが信頼されていないコード実行設定（trust_remote_code）を通じて、モデル検査中に任意のPythonコードを実行できることが判明しました。この脆弱性は、モデルの配布や利用における潜在的なサプライチェーンリスクを示唆しています。",
+      "insight": "AIモデルの検査やデプロイプロセスにおける脆弱性は、AIサプライチェーン攻撃の新たな経路を開きます。SOC/CDCは、AIモデルのライフサイクル全体（開発、デプロイ、運用）におけるセキュリティ評価を強化し、モデルが信頼できないコードを実行する設定や環境を厳しく管理する必要があります。AIモデルの挙動監視と異常検知は、開発・運用環境双方で重要です。",
+      "importance": "中",
+      "importance_reason": "AIモデルのサプライチェーンにおける新たな脆弱性のタイプを示しており、AI開発・運用におけるセキュリティ対策の必要性を浮き彫りにするため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト",
+        "設定ミス"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Unsloth Studio",
+        "AIモデル",
+        "コード実行",
+        "trust_remote_code",
+        "サプライチェーン攻撃"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "32cac39b7461",
+      "title": "Custom ChatGPTs push ClickFix attacks to deploy RAT malware",
+      "summary": "Custom variants of OpenAI's ChatGPT promoted in sponsored Google results are directing unsuspecting users to malicious sites that use ClickFix attacks to deliver malware. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/custom-chatgpts-push-clickfix-attacks-to-deploy-rat-malware/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-30T05:59:39+09:00",
+      "title_ja": "カスタムChatGPTが悪意あるサイトへ誘導しRATマルウェアを展開",
+      "summary_ja": "OpenAIのChatGPTのカスタムバリアントが、Googleのスポンサー結果で宣伝され、疑いを持たないユーザーを悪意のあるサイトに誘導し、ClickFix攻撃を使用してマルウェアを配信していることが報告されました。これは、ChatGPTのような信頼されたプラットフォームが悪意のある目的で利用されていることを示しています。",
+      "insight": "記事4と同様の攻撃手法であり、広く利用されるAIプラットフォームが悪用されるトレンドを裏付けています。SOC/CDCは、AIプラットフォーム上のコンテンツだけでなく、それが誘導する外部サイトの安全性、そしてドメインの信頼性評価を強化する必要があります。ユーザーへの注意喚起と、AIサービスの利用ガイドラインの見直しが重要です。",
+      "importance": "高",
+      "importance_reason": "主要なAIプラットフォームの機能が悪用され、広範なユーザーに影響を与える可能性があるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "マルウェア",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "カスタムChatGPT",
+        "ClickFix攻撃",
+        "RAT",
+        "Google広告",
+        "マルウェア"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "14a5dcc9b364",
+      "title": "Malicious Custom GPTs Turn ChatGPT Into RAT Delivery Lure",
+      "summary": "In yet another ClickFix-style campaign, threat actors abuse legitimate domains from OpenAI and Google to fool unsuspecting users.",
+      "url": "https://www.darkreading.com/cyberattacks-data-breaches/malicious-custom-gpts-chatgpt-rat-delivery-lure",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-10-01T06:25:47+09:00",
+      "title_ja": "悪意あるカスタムGPTsがChatGPTをRAT配信のルアーに",
+      "summary_ja": "脅威アクターがOpenAIとGoogleの正規ドメインを悪用し、疑いを持たないユーザーを騙して、ClickFixスタイルのキャンペーンでRATマルウェアを配信していると報じられています。これは、信頼されたブランドと技術を悪用する新たな手口の継続的な進化を示しています。",
+      "insight": "記事4, 6と同様の報告であり、信頼性の高いドメインやブランドを偽装する攻撃手口の巧妙化が際立っています。SOC/CDCは、AIサービスの利用状況における不審なURL遷移、API呼び出し、及び正規ドメインを装うフィッシングの監視を強化し、ユーザーがAIサービスを安全に利用するための具体的なガイダンスを提供する必要があります。ドメインの信頼性だけでなく、AIエージェントの挙動そのものへの監視が求められます。",
+      "importance": "高",
+      "importance_reason": "同一の攻撃が複数の情報源で報告されており、その影響の広さと深刻さを示唆しているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "マルウェア",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "カスタムGPTs",
+        "ChatGPT",
+        "RAT",
+        "ClickFix",
+        "正規ドメイン悪用"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "6893e432ed65",
+      "title": "Attackers Abuse MSP360 to Deploy ScreenConnect in Dual-RMM Phishing Attacks",
+      "summary": "Microsoft has warned of phishing campaigns distributing an installer for the MSP360 Remote Monitoring and Management (RMM) software under the guise of meeting invitations, PDF-themed lures, software update prompts, and other social-engineering content.\n\n\"Once executed, the legitimate MSP360 installer, distributed under a deceptive file name established remote management access on affected",
+      "url": "https://thehackernews.com/2026/09/attackers-abuse-msp360-to-deploy.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-10-01T01:32:59+09:00",
+      "title_ja": "攻撃者がMSP360を悪用しScreenConnectをデュアルRMMフィッシングで展開",
+      "summary_ja": "Microsoftは、MSP360 Remote Monitoring and Management (RMM) ソフトウェアのインストーラーが、会議招待やPDF、ソフトウェア更新を装ったフィッシングキャンペーンで配布されていると警告しています。実行されると正規のMSP360インストーラーが悪意のあるファイル名でリモート管理アクセスを確立し、脅威アクターがシステムを制御する可能性があります。",
+      "insight": "正当なRMMツールが悪用される事例は、サプライチェーン攻撃や正規ツール悪用のリスクを強調します。SOC/CDCは、RMMツールの不正なインストールや利用、異常な通信パターンを検知するための監視を強化し、エンドポイントセキュリティとID管理システムとの連携を密にする必要があります。従業員に対するRMMツールのリスクとフィッシング詐欺の見分け方に関する教育も重要です。",
+      "importance": "高",
+      "importance_reason": "広く利用される正規ツールが悪用され、組織システムへのリモートアクセスを許すため、深刻な被害につながる可能性が高いため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ソーシャルエンジニアリング",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "MSP360",
+        "RMM",
+        "ScreenConnect",
+        "フィッシング",
+        "リモート管理"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "88b120dd4e69",
+      "title": "AI's Third Wave: Coworkers Break the Security Model That Worked for Agents",
+      "summary": "Persistent AI coworkers may operate continuously with standing access, creating identity risks that existing security models were not designed to handle. Token Security explains why these agents need their own identities, owners, scoped permissions, and lifecycle controls. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/ais-third-wave-coworkers-break-the-security-model-that-worked-for-agents/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-09-30T23:01:11+09:00",
+      "title_ja": "AIの第三の波：AI同僚が既存のセキュリティモデルを破壊",
+      "summary_ja": "永続的に稼働し、常にアクセス権を持つAI同僚（エージェント）は、既存のセキュリティモデルでは対応できないアイデンティティリスクを生み出します。従来の「エージェント」と異なり、これらの「AI同僚」は独自のアイデンティティ、所有者、スコープされた権限、ライフサイクル制御を必要とすることが指摘されています。",
+      "insight": "AIエージェントの普及は、従来のユーザーベースの認証・認可モデルでは対処できない新たなアイデンティティと権限管理の課題を突きつけます。SOC/CDCは、AIエージェントの活動を個別に監視し、エージェント専用のID管理システム、ロールベースアクセス制御、異常挙動検知を実装する必要があります。AIエージェントのライフサイクル管理と監査ログの設計も不可欠です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの特性が既存のセキュリティモデルの根本を揺るがすものであり、新たなセキュリティアーキテクチャの設計が急務となるため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "プライバシー侵害",
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "アイデンティティ",
+        "権限管理",
+        "セキュリティモデル",
+        "ライフサイクル制御"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "SOC運用変化",
+        "Identity/ITDR",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "ce17c346541f",
+      "title": "Anthropic Flags AI Agent Liability Risks as OpenAI Faces Hacking Lawsuit",
+      "summary": "<p>Attacks by autonomous AI agents are moving out of the lab and into the courtroom, raising unsettled questions about who is liable for what agents do.</p>\n<p>The post <a href=\"https://www.securityweek.com/anthropic-flags-ai-agent-liability-risks-as-openai-faces-hacking-lawsuit/\">Anthropic Flags AI Agent Liability Risks as OpenAI Faces Hacking Lawsuit</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/anthropic-flags-ai-agent-liability-risks-as-openai-faces-hacking-lawsuit/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-09-30T20:19:00+09:00",
+      "title_ja": "AnthropicがAIエージェントの責任リスクを指摘、OpenAIはハッキング訴訟に直面",
+      "summary_ja": "自律的なAIエージェントによる攻撃が実験室レベルを超え、法廷での責任問題に発展しています。AnthropicはAIエージェントの潜在的な責任リスクについて警告し、OpenAIもハッキング訴訟に直面していることから、エージェントの行動に対する法的責任の所在が不明確であるという問題が浮上しています。",
+      "insight": "AIエージェントの自律性が高まるにつれて、その行動に起因するインシデント発生時の法的・倫理的責任の所在が複雑化します。SOC/CDCは、インシデント調査においてAIエージェントの行動履歴を詳細に追跡し、その行動が意図されたものか、あるいは予測不能なものだったかを判断する能力が求められます。また、CISOへの報告や法務部門との連携において、これらの責任問題を適切に説明する準備が必要です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの運用における法的・倫理的責任が問われ始めており、ビジネスリスクやガバナンスへの影響が大きいため。",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "責任問題",
+        "法的責任",
+        "ハッキング訴訟",
+        "ガバナンス"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画"
+      ],
+      "views": 0
+    }
+  ]
+}
