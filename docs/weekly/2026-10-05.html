@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>週次レポート 09/28〜10/05 | Cyber Defense Notes</title>
+<meta name="description" content="Cyber Defense Notes 週次レポート（09/28〜10/05）。73件の記事を分析したSOC/CDC設計実務者向けダイジェスト。">
+<meta property="og:title" content="Cyber Defense Notes 週次レポート 09/28〜10/05">
+<meta property="og:description" content="今週はAIエージェントの自律的な攻撃への悪用が現実化し、従来のSOC/CDCの監視対象とセキュリティモデルの根本的な再定義が求められています。AIエージェントやAIサービス自体が新たな脆弱性を持つ攻撃経路となり、情報窃取やクラウド環境の破壊">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/weekly/2026-10-05.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/weekly/2026-10-05.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700}
+.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+.wp{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.wp-head{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:24px}
+.wp-period{font-size:12px;color:var(--dim);margin-bottom:6px}
+.wp-title{font-size:22px;font-weight:700;color:#fff;line-height:1.4}
+.wp-meta{font-size:11px;color:var(--dim);margin-top:8px}
+.sec{margin-bottom:32px}
+.sec-title{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit;background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn:hover{border-color:var(--accent)}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+.wr-topic{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.wr-topic-title{font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px}
+.wr-topic-summary{font-size:13px;color:#98968e;line-height:1.7;margin-bottom:4px}
+.wr-toggle{display:inline-block;margin-top:10px;padding:5px 10px;background:none;border:1px solid var(--border);border-radius:6px;color:var(--accent);font-size:12px;cursor:pointer;font-family:inherit}
+.wr-toggle:hover{border-color:var(--accent)}
+.wr-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wr-refs{margin-top:8px}
+.wr-refs-open{margin-top:10px}
+.wr-ref{display:block;text-decoration:none;padding:5px 0;border-top:1px solid #2a2a28}
+.wr-ref-title{font-size:12px;color:#378ADD}
+.wr-ref-meta{font-size:10px;color:#8c8a82;margin-left:8px}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KV7Q7SQKZX');
+</script>
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">Cyber Defense Notes</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#weekly" class="back">← 週次レポート一覧に戻る</a>
+
+<nav style="padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
+  <a href="/ai-security-news/#today"   style="color:#378ADD;text-decoration:none">本日のニュース</a>
+  <a href="/ai-security-news/#trend"   style="color:#378ADD;text-decoration:none">トレンド分析</a>
+  <a href="/ai-security-news/#archive" style="color:#378ADD;text-decoration:none">記事検索</a>
+  <a href="/ai-security-news/#weekly"  style="color:#378ADD;text-decoration:none">週次レポート一覧</a>
+</nav>
+
+<div class="wp">
+  <div class="wp-head">
+    <div class="wp-period">週次レポート</div>
+    <h1 class="wp-title">週次ダイジェスト</h1>
+    <div class="wp-meta">09/28〜10/05（73件の記事を分析）</div>
+  </div>
+
+  <section class="sec">
+    <h3 class="sec-title">エグゼクティブサマリー</h3>
+    <div style="background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#e6e4dc">今週はAIエージェントの自律的な攻撃への悪用が現実化し、従来のSOC/CDCの監視対象とセキュリティモデルの根本的な再定義が求められています。AIエージェントやAIサービス自体が新たな脆弱性を持つ攻撃経路となり、情報窃取やクラウド環境の破壊に至る事例が複数報告されました。これに伴い、AIエージェントのアイデンティティ管理（IAM）、活動の可視化、そしてAIシステム全体のガバナンスへの対応が喫緊の課題として浮上しています。攻撃側のAI活用が先行している現状を踏まえ、防御側はAI for Securityの導入を加速し、変化する脅威に適応する防御アーキテクチャの構築が不可避です。</div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">今週の重要トピック TOP3</h3>
+    <div class="wr-topic"><div class="wr-topic-title">AIエージェントの攻撃現実化とIAM課題</div><div class="wr-topic-summary">AIエージェントが偵察、情報窃取、クラウドリソース破壊といった自律的な攻撃に利用され、組織侵害を引き起こしています。従来のユーザーとは異なるAIエージェントのアイデンティティ管理（IAM）と権限付与、活動監査の仕組みをSOC/CDCに組み込むことが急務であり、AIエージェントの「ゼロ可視性」を解消するための新しい監視体制が求められます。</div><button class="wr-toggle" aria-expanded="false" aria-controls="wr-refs-0">関連ニュース 18件を表示</button><div class="wr-refs" id="wr-refs-0" hidden style="max-height:280px;overflow-y:auto"><a href="../article/3618d6c1d166.html" class="wr-ref"><span class="wr-ref-title">→ AIエージェントのゼロトラストと可視性の欠如がセキュリティ課題に</span><span class="wr-ref-meta">The Hacker News / 2026-09-26</span></a><a href="../article/ee8b2d22cd0c.html" class="wr-ref"><span class="wr-ref-title">→ OpenAI、モデルが米国政府サイトと意図せず連携したことを開示</span><span class="wr-ref-meta">SecurityWeek / 2026-09-26</span></a><a href="../article/097b65f90159.html" class="wr-ref"><span class="wr-ref-title">→ AIエージェント向けIAMの実用的なエンタープライズフレームワーク</span><span class="wr-ref-meta">The Hacker News / 2026-09-29</span></a><a href="../article/a3fd0bb8be39.html" class="wr-ref"><span class="wr-ref-title">→ RatHat AndroidマルウェアのコンソールがGeminiを悪用し高価値な標的を特定</span><span class="wr-ref-meta">The Hacker News / 2026-09-29</span></a><a href="../article/c4101d43b63.html" class="wr-ref"><span class="wr-ref-title">[c4101d43]</span></a><a href="../article/1b3dac92ae80.html" class="wr-ref"><span class="wr-ref-title">→ Carbonatoボットネット、侵害DockerホストにAIエージェントを配置</span><span class="wr-ref-meta">Dark Reading / 2026-09-29</span></a><a href="../article/bc584af0c123.html" class="wr-ref"><span class="wr-ref-title">→ JadePufferエージェント型AI攻撃がAzureを標的に、クラウド資源を破壊</span><span class="wr-ref-meta">Bleeping Computer / 2026-09-29</span></a><a href="../article/566d9c07bf5e.html" class="wr-ref"><span class="wr-ref-title">→ JadePuffer AIアクターがAzureテナントを侵害し破壊的なクラウド攻撃</span><span class="wr-ref-meta">Dark Reading / 2026-09-29</span></a><a href="../article/7eade48699a1.html" class="wr-ref"><span class="wr-ref-title">→ Rig SecurityがAIエージェントのIDリスク対策で$12Mを調達しステルス解除</span><span class="wr-ref-meta">SecurityWeek / 2026-09-29</span></a><a href="../article/5a820bcf9ca6.html" class="wr-ref"><span class="wr-ref-title">→ サイバーセキュリティ非営利組織DIVDがAIエージェントによる自動化攻撃で侵害される</span><span class="wr-ref-meta">Bleeping Computer / 2026-09-30</span></a><a href="../article/90b88ded5f2c.html" class="wr-ref"><span class="wr-ref-title">→ AIエージェントによる金銭詐欺検出のベンチマーク</span><span class="wr-ref-meta">arXiv cs.CR / 2026-09-30</span></a><a href="../article/88b120dd4e69.html" class="wr-ref"><span class="wr-ref-title">→ AIの第三の波：AI同僚が既存のセキュリティモデルを破壊</span><span class="wr-ref-meta">Bleeping Computer / 2026-09-30</span></a><a href="../article/ce17c346541f.html" class="wr-ref"><span class="wr-ref-title">→ AnthropicがAIエージェントの責任リスクを指摘、OpenAIはハッキング訴訟に直面</span><span class="wr-ref-meta">SecurityWeek / 2026-09-30</span></a><a href="../article/c9689877f91c.html" class="wr-ref"><span class="wr-ref-title">→ 自律型エージェントの認可と監査証拠に関する研究「CATP」</span><span class="wr-ref-meta">arXiv cs.CR / 2026-10-01</span></a><a href="../article/eeb68d3a7410.html" class="wr-ref"><span class="wr-ref-title">→ 特権LLMエージェントのための職務分離とガバナンス実行アーキテクチャ</span><span class="wr-ref-meta">arXiv cs.CR / 2026-10-01</span></a><a href="../article/55278edd569d.html" class="wr-ref"><span class="wr-ref-title">→ Matthew Green氏が指摘するサンドボックスからのエージェント脱出と連携の脅威</span><span class="wr-ref-meta">Simon Willison / 2026-10-01</span></a><a href="../article/0c169a818fc4.html" class="wr-ref"><span class="wr-ref-title">→ 自律型AIエージェントが米加政府ウェブサイトへのハッキングを試行</span><span class="wr-ref-meta">Bleeping Computer / 2026-10-02</span></a><a href="../article/5f113e136b84.html" class="wr-ref"><span class="wr-ref-title">→ Google GeminiがmacOSファイル・アプリ・ウェブへのフルアクセスを獲得する可能性</span><span class="wr-ref-meta">Bleeping Computer / 2026-10-04</span></a></div></div><div class="wr-topic"><div class="wr-topic-title">AIサービス/システムの脆弱性と攻撃経路</div><div class="wr-topic-summary">カスタムChatGPTなどのAIサービスが悪意あるマルウェア配布の経路として悪用され、またAI GatewayやAIモデル自体にも深刻な脆弱性が発見されています。これらのAI関連コンポーネントが新たな攻撃対象となり、コード実行や機密データ窃取を許すため、SOC/CDCはAIサプライチェーン全体での脆弱性管理と監視を強化する必要があります。</div><button class="wr-toggle" aria-expanded="false" aria-controls="wr-refs-1">関連ニュース 8件を表示</button><div class="wr-refs" id="wr-refs-1" hidden><a href="../article/f79240ef1a66.html" class="wr-ref"><span class="wr-ref-title">→ AnthropicがClaude向けAIマーケットプレイスを展開、2000以上の連携を提供</span><span class="wr-ref-meta">Bleeping Computer / 2026-09-27</span></a><a href="../article/92506a30955d.html" class="wr-ref"><span class="wr-ref-title">→ AnthropicがLLMの高度なサイバー攻撃能力を評価</span><span class="wr-ref-meta">Simon Willison / 2026-09-30</span></a><a href="../article/7573f3929dc1.html" class="wr-ref"><span class="wr-ref-title">→ Unsloth Studioの脆弱性によりモデル検査がコード実行に</span><span class="wr-ref-meta">Dark Reading / 2026-09-30</span></a><a href="../article/32cac39b7461.html" class="wr-ref"><span class="wr-ref-title">→ カスタムChatGPTが悪意あるサイトへ誘導しRATマルウェアを展開</span><span class="wr-ref-meta">Bleeping Computer / 2026-09-30</span></a><a href="../article/4f42cd6621e5.html" class="wr-ref"><span class="wr-ref-title">→ 攻撃者がChatGPT Custom GPTsを悪用しRATマルウェアを配布</span><span class="wr-ref-meta">The Hacker News / 2026-10-01</span></a><a href="../article/14a5dcc9b364.html" class="wr-ref"><span class="wr-ref-title">→ 悪意あるカスタムGPTsがChatGPTをRAT配信のルアーに</span><span class="wr-ref-meta">Dark Reading / 2026-10-01</span></a><a href="../article/de33badfb798.html" class="wr-ref"><span class="wr-ref-title">→ ChatGPTのMacアプリの脆弱性、機密データ窃取の可能性</span><span class="wr-ref-meta">Wired Security / 2026-10-02</span></a><a href="../article/338fbf4bb8d6.html" class="wr-ref"><span class="wr-ref-title">→ GitLab AI Gatewayに深刻な脆弱性、自己ホスト型サーバーでコマンド実行の可能性</span><span class="wr-ref-meta">The Hacker News / 2026-10-03</span></a></div></div><div class="wr-topic"><div class="wr-topic-title">攻撃側のAI活用先行と防御側の課題</div><div class="wr-topic-summary">Microsoftなどの指摘が示すように、攻撃側はAIを利用して高度な脆弱性を発見し、標的を精密に選定する自律的な攻撃を展開することで防御側を先行しています。多くの企業でAI for Securityの導入が遅れており、このギャップを埋めるためには、AIリスク管理フレームワークの継続的な更新と組織全体のセキュリティ文化変革が不可欠です。</div><button class="wr-toggle" aria-expanded="false" aria-controls="wr-refs-2">関連ニュース 8件を表示</button><div class="wr-refs" id="wr-refs-2" hidden><a href="../article/a3fd0bb8be39.html" class="wr-ref"><span class="wr-ref-title">→ RatHat AndroidマルウェアのコンソールがGeminiを悪用し高価値な標的を特定</span><span class="wr-ref-meta">The Hacker News / 2026-09-29</span></a><a href="../article/92506a30955d.html" class="wr-ref"><span class="wr-ref-title">→ AnthropicがLLMの高度なサイバー攻撃能力を評価</span><span class="wr-ref-meta">Simon Willison / 2026-09-30</span></a><a href="../article/12d854ee0c6b.html" class="wr-ref"><span class="wr-ref-title">→ LLMのサイバー関連能力の予期せぬ急増に対するセキュリティ態勢構築の必要性</span><span class="wr-ref-meta">Simon Willison / 2026-09-29</span></a><a href="../article/6aebd76eb7c3.html" class="wr-ref"><span class="wr-ref-title">→ Microsoft「攻撃者は初期のAI競争で先行している」と指摘</span><span class="wr-ref-meta">Bleeping Computer / 2026-10-02</span></a><a href="../article/1a52571a114f.html" class="wr-ref"><span class="wr-ref-title">→ Google、サイバー防御者向けに「Gemini 4 Argon」を展開、ガードレールなし版も計画</span><span class="wr-ref-meta">The Hacker News / 2026-10-01</span></a><a href="../article/b60b677462d6.html" class="wr-ref"><span class="wr-ref-title">→ PwC調査：企業はAIと量子脅威への準備に苦慮</span><span class="wr-ref-meta">SecurityWeek / 2026-10-01</span></a><a href="../article/e9e44e34b93a.html" class="wr-ref"><span class="wr-ref-title">→ 2027年のAI説明責任時代に向けた組織の準備状況</span><span class="wr-ref-meta">Dark Reading / 2026-10-03</span></a><a href="../article/45602fa31c59.html" class="wr-ref"><span class="wr-ref-title">→ 中国系APT「TA419」が米AI政策専門家を標的としたクレデンシャルフィッシング</span><span class="wr-ref-meta">The Hacker News / 2026-10-04</span></a></div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">6階層別 今週のトレンド</h3>
+    <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#639922;padding-top:2px;flex-shrink:0">デバイス/エッジ</div><div style="font-size:13px;color:#98968e;line-height:1.65">マルウェアが正規ドライバーを悪用してセキュリティ監視を無効化する手口が継続しており、AIエージェントがOSレベルで広範なアクセス権限を持つことで、エンドポイントでの被害拡大リスクが高まっています。AIチャット監視アドブロッカーのような新たなプライバシー懸念も浮上しています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#378ADD;padding-top:2px;flex-shrink:0">ネットワーク</div><div style="font-size:13px;color:#98968e;line-height:1.65">LLMサービス利用時のトラフィック分析による情報漏洩リスクが指摘されており、従来のネットワーク監視では見過ごされがちなサイドチャネル攻撃への対応が求められています。正当なクラウドサービス（Outlook/OneDrive）をC2に悪用する巧妙な手口も継続しています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#1D9E75;padding-top:2px;flex-shrink:0">クラウド/サーバー</div><div style="font-size:13px;color:#98968e;line-height:1.65">AIエージェントが悪用され、Azureなどのクラウド環境で自律的に偵察・破壊活動を行う事例が複数報告されました。Carbonatoボットネットが侵害DockerホストにAIエージェントを配置するなど、クラウド環境がAIを悪用した攻撃の標的となっています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#BA7517;padding-top:2px;flex-shrink:0">アプリ/API</div><div style="font-size:13px;color:#98968e;line-height:1.65">AnthropicのAIマーケットプレイス拡大は新たな攻撃ベクトルを生み、カスタムChatGPTが悪意のあるマルウェア配布経路として悪用されています。GitLab AI GatewayのようなAIシステムと既存インフラを繋ぐコンポーネントにも深刻な脆弱性が発見されました。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#7F77DD;padding-top:2px;flex-shrink:0">データ/AI</div><div style="font-size:13px;color:#98968e;line-height:1.65">AIエージェントの「ゼロ可視性」と権限管理の欠如が深刻な課題となり、AIエージェント向けIAMフレームワークの必要性が高まっています。AIモデルの思考プロセス抽出攻撃、個人情報プロファイリングによるプライバシー侵害、そして「偶発的なサイバー攻撃」の可能性が指摘されています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2a2a28;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#98968e;padding-top:2px;flex-shrink:0">ガバナンス/規制</div><div style="font-size:13px;color:#98968e;line-height:1.65">AIの安全性と説明責任に関する国際的な枠組みが形成されつつあり、AIガバナンスは経営レベルの重要課題となっています。多くの企業がAI脅威への準備に苦慮しており、AIエージェントの責任リスクや法的・倫理的課題への対応が急務です。</div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">キーワード変動（先週比）</h3>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">AIエージェント</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#6a6860;border-radius:3px"></div></div><div style="font-size:10px;color:#6a6860;width:55px;text-align:right">-5件(23%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週17件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">ガバナンス</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+5件(+500%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週5件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Anthropic</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:80%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+4件(+200%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週6件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">AIモデル</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:80%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+4件(+200%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週6件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">情報漏洩</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:60%;height:100%;background:#6a6860;border-radius:3px"></div></div><div style="font-size:10px;color:#6a6860;width:55px;text-align:right">-3件(100%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週0件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">レッドチーム</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:60%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週3件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">RAT</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:60%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週3件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">フィッシング</div><div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden"><div style="width:60%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+150%)</div><div style="font-size:10px;color:#6a6860;width:40px;text-align:right">今週5件</div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">来週の注目ポイント</h3>
+    <div style="background:#0d1b2e;border-left:3px solid #378ADD55;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#c0beb6">来週もAIエージェントの自律化とそのセキュリティリスクが主要なテーマとなるでしょう。AIエージェント向けIAMや誤動作防止ソリューションといった防御技術の進化と導入事例、およびそれに伴うAIガバナンスや責任範囲に関する議論に注目が集まると予測されます。APTグループによるAI分野の専門家を狙った攻撃や、AIシステム固有の脆弱性を悪用する攻撃も継続・高度化する可能性が高く、防御側はAI for Securityの導入と脅威インテリジェンスの強化を加速させる必要性があります。</div>
+  </section>
+
+  <div class="actions">
+    <a href="https://x.com/intent/post?text=%E3%80%90Cyber%20Defense%20Notes%20%E9%80%B1%E6%AC%A1%E3%83%AC%E3%83%9D%E3%83%BC%E3%83%88%2009%2F28%E3%80%9C10%2F05%E3%80%91%0A%E4%BB%8A%E9%80%B1%E3%81%AFAI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E8%87%AA%E5%BE%8B%E7%9A%84%E3%81%AA%E6%94%BB%E6%92%83%E3%81%B8%E3%81%AE%E6%82%AA%E7%94%A8%E3%81%8C%E7%8F%BE%E5%AE%9F%E5%8C%96%E3%81%97%E3%80%81%E5%BE%93%E6%9D%A5%E3%81%AESOC%2FCDC%E3%81%AE%E7%9B%A3%E8%A6%96%E5%AF%BE%E8%B1%A1%E3%81%A8%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%A0%B9%E6%9C%AC%E7%9A%84%E3%81%AA%E5%86%8D%E5%AE%9A%E7%BE%A9%E3%81%8C%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%81%A6%E3%81%84%E3%81%BE%E3%81%99%E3%80%82AI%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%82%84AI%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E8%87%AA%E4%BD%93%E3%81%8C%E6%96%B0%E3%81%9F%E3%81%AA%E8%84%86%E5%BC%B1%E6%80%A7%E3%82%92%E6%8C%81%E3%81%A4%E6%94%BB%E6%92%83%E2%80%A6%0A%23AI%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%20%23SOC&url=https%3A%2F%2Fayudle.github.io%2Fai-security-news%2Fweekly%2F2026-10-05.html" target="_blank" rel="noopener noreferrer" class="btn">Xでシェア</a>
+    <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/weekly/2026-10-05.html').then(function(){alert('URLをコピーしました')})" class="btn">📋 URLをコピー</button>
+  </div>
+</div>
+
+<footer>
+  各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
+  日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
+</footer>
+<script>
+document.querySelectorAll('.wr-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var expanded=btn.getAttribute('aria-expanded')==='true';
+    var list=document.getElementById(btn.getAttribute('aria-controls'));
+    expanded=!expanded;
+    btn.setAttribute('aria-expanded',expanded?'true':'false');
+    list.hidden=!expanded;
+    btn.textContent=btn.textContent.replace(
+      expanded?'を表示':'を非表示',
+      expanded?'を非表示':'を表示'
+    );
+  });
+});
+</script>
+</body>
+</html>
