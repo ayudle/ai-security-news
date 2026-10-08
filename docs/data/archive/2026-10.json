@@ -11,6 +11,413 @@
       "source_name": "The Hacker News",
       "source_tier": "B",
       "published": "2026-10-07T20:57:05+09:00",
+      "title_ja": "CISOはサイバーリスクがワークフロー内部に移行したと認識",
+      "summary_ja": "2026年の調査結果によると、CISOの視点は、レジリエンス、AIガバナンス、人的リスク、取締役会の監視が、実際の業務が行われるシステム内部で収束していることを示しています。従来のサイバーセキュリティの物語が攻撃の増加という直線的なものだったのに対し、リスクがワークフロー内部に深く統合され、より複雑な対応が求められるようになっています。これは、CISOが単なる外部脅威対策から、組織全体の包括的なリスク管理へと焦点を移している現状を浮き彫りにしています。",
+      "insight": "CISOがワークフロー内部やAIガバナンスにリスクの焦点を移していることは、SOC/CDCが単なる外部脅威検知に留まらず、内部プロセスやAIシステムが生成するリスクまでを包括的に監視・管理する必要性を示唆している。CDCの役割は、AI導入による業務変革全体のリスク評価と、それに対応するレジリエンス構築支援へと拡大していく。SOC/CDC設計者は、経営層が求めるリスク管理の範囲と、それに伴う監視対象の拡大を理解し、サービス設計に組み込むべきか検討が求められる。",
+      "importance": "高",
+      "importance_reason": "CISOレベルの視点変化が報告されており、CDCのサービス設計と経営層への報告内容に直接影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "CISO視点",
+        "ワークフローセキュリティ",
+        "AIガバナンス",
+        "人的リスク",
+        "レジリエンス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "CISO報告",
+        "サービス企画",
+        "AI for Security",
+        "Security for AI",
+        "SOC運用変化"
+      ],
+      "views": 0
+    },
+    {
+      "id": "73f9e1636a3f",
+      "title": "Adversarial RL for Port-Scan Evasion: Attacker Feature Visibility in Edge-Deployed IDS",
+      "summary": "arXiv:2610.08864v1 Announce Type: new \nAbstract: Machine learning-based intrusion detection systems (IDS) are increasingly used in resource-constrained Internet of Things (IoT) environments, yet their robustness is often evaluated against static attacks rather than adversaries that adapt to detection feedback. This paper investigates adaptive port-scan evasion against ML-based IDS models deployed on a Raspberry Pi 3B+. We implement a live Zeek-based IDS pipeline with XGBoost, a multi-layer perce",
+      "url": "https://arxiv.org/abs/2610.08864",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-10-08T13:00:00+09:00",
+      "title_ja": "適応型強化学習によるポートスキャン回避攻撃とIDSの限界",
+      "summary_ja": "リソース制約のあるIoT環境で普及するMLベースのIDSに対し、攻撃者が検出フィードバックに適応する強化学習（RL）を用いてポートスキャンを回避する研究が報告されました。Raspberry Pi 3B+にデプロイされたZeekベースのIDSとXGBoostモデルが標的とされ、静的な攻撃評価では見落とされがちな、適応的攻撃への堅牢性が課題として指摘されています。この研究は、AIを使った防御システムの限界と、それを乗り越えるための新たな評価手法の必要性を示唆しています。",
+      "insight": "攻撃側がAI（強化学習）を用いて防御システム（IDS）の検出ロジックを回避しようとしている実証例であり、AI for Securityの有効性に警鐘を鳴らす。SOC/CDCは、特にIoTやエッジ環境に展開されるAIベースの検知システムが、敵対的攻撃に対してどれだけ堅牢であるかを評価する必要がある。また、これらのIDSから上がってくるアラートの信頼性を過信せず、AIの導入が検知の盲点を生み出す可能性を考慮した運用プロセスの見直しが求められる。",
+      "importance": "中",
+      "importance_reason": "AIを使った攻撃の具体的な実証であり、防御側のAIシステムの脆弱性を示唆するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "敵対的攻撃"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "強化学習",
+        "ポートスキャン回避",
+        "ML-IDS",
+        "IoTセキュリティ",
+        "敵対的攻撃"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "38418a2f299c",
+      "title": "CredLeakBench: Evaluating Credential Leakage and Recovery in LLM Agents",
+      "summary": "arXiv:2610.08871v1 Announce Type: new \nAbstract: Language model agents are increasingly deployed to automate everyday digital chores from managing emails and social media to handling banking and bills allowing users to step away from supervision. However, this capability also exposes sensitive information to phishing. Safe execution requires distinguishing malicious requests from genuine ones without simply refusing to act. Despite its practical importance, this problem remains underexplored and",
+      "url": "https://arxiv.org/abs/2610.08871",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-10-08T13:00:00+09:00",
+      "title_ja": "LLMエージェントにおける資格情報漏洩と回復の評価",
+      "summary_ja": "LLMエージェントがメール管理から銀行取引まで日常業務を自動化するにつれて、フィッシング攻撃による機密情報の漏洩リスクが高まっています。悪意ある要求と正当な要求を適切に区別し、単純に拒否するだけではない安全な実行メカニズムが求められます。しかし、LLMエージェントにおける資格情報漏洩とその回復という問題は、その実用的な重要性にもかかわらず、十分に探求されていない現状が指摘されています。",
+      "insight": "AIエージェントの普及は、機微な資格情報がAIシステムの「データ・インフラ層」「ツール・実行層」を通じて漏洩するリスクを増大させる。SOC/CDCは、AIエージェントに付与される権限とそれに紐づくIDの管理を厳格化し、これらのエージェントのログ（プロンプト、実行結果、APIコール等）を監視し、異常な資格情報利用や漏洩パターンを検知する能力を確立する必要がある。これは、Identity/ITDRの監視対象と範囲をAIエージェントにまで拡張する直接的な要請となる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの普及に伴う直接的なセキュリティリスクであり、Security for AIの重要な課題であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "LLMエージェント",
+        "資格情報漏洩",
+        "フィッシング",
+        "機密情報",
+        "自動化"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "efaa7ef2bc10",
+      "title": "GenAI and Agentic AI Exploit Roundup Q3 2026",
+      "summary": "<p>Coverage period: July 1, 2026 through September 30, 2026 Overview This roundup consolidates selected major AI-related security incidents and exploit disclosures reported during the coverage period. It aligns each entry to the OWASP Top 10 for LLM Applications 2026 and the OWASP Top 10 for Agentic Applications 2026, with published CVE references where available. It [&#8230;]</p>\n<p>The post <a href=\"https://genai.owasp.org/2026/10/08/genai-and-agentic-ai-exploit-roundup-q3-2026/\">GenAI and Age",
+      "url": "https://genai.owasp.org/2026/10/08/genai-and-agentic-ai-exploit-roundup-q3-2026/?utm_source=rss&utm_medium=rss&utm_campaign=genai-and-agentic-ai-exploit-roundup-q3-2026",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "OWASP GenAI",
+      "source_tier": "A",
+      "published": "2026-10-08T21:07:03+09:00",
+      "title_ja": "2026年Q3のGenAI・Agentic AIエクスプロイト動向",
+      "summary_ja": "2026年Q3（7月1日～9月30日）に報告された主要なAI関連セキュリティインシデントとエクスプロイト開示がまとめられました。この報告は、各事象をOWASP Top 10 for LLM Applications 2026およびOWASP Top 10 for Agentic Applications 2026に照らして分類し、利用可能なCVE情報も提供しています。これにより、GenAIおよびエージェントAIに特有の脆弱性と攻撃手法が体系的に整理され、実際の脅威が具体化されている現状が示されています。",
+      "insight": "AIシステム固有の脆弱性や攻撃手法が、OWASP Top 10として体系化され、具体的なエクスプロイト事例が多数報告されていることは、Security for AIが既に成熟した脅威領域であることを示す。SOC/CDCは、このOWASPリストを基準として、自社のAIシステムやサービスに対するセキュリティ評価を継続的に実施し、関連するリスク、検知すべきパターン、対応プレイブックを策定する必要がある。AIシステムへの攻撃が一般的な攻撃経路として定着しつつあるという認識を持ち、サービス企画やMDR/MSSP設計に反映させるべきである。",
+      "importance": "高",
+      "importance_reason": "AIセキュリティリスクが体系化され、具体的な攻撃事例として包括的に報告されており、対策の優先順位付けに役立つため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "GenAI",
+        "Agentic AI",
+        "エクスプロイト",
+        "OWASP Top 10",
+        "LLMセキュリティ"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "3c770f50c7c0",
+      "title": "ARTEX AI Pentesting Tool Used in Data Theft Attacks on South Korean Financial Firms",
+      "summary": "Cybersecurity researchers have disclosed details of a targeted campaign aimed at South Korean financial organizations that used an artificial intelligence (AI) pen testing tool named ARTEX to carry out the attacks.\n\nThe activity, per CrowdStrike Intelligence, was active from late September to early October 2026, and resulted in data exfiltration.\n\n\"In this activity, the threat actor leveraged",
+      "url": "https://thehackernews.com/2026/10/artex-ai-pentesting-tool-used-in-data.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-10-08T23:12:34+09:00",
+      "title_ja": "AIペンテストツール「ARTEX」による韓国金融機関へのデータ窃取攻撃",
+      "summary_ja": "韓国の金融機関を標的としたデータ窃盗キャンペーンで、AIを活用したペネトレーションテストツール「ARTEX」が悪用されたことが判明しました。CrowdStrike Intelligenceによると、この攻撃は2026年9月下旬から10月上旬にかけて行われ、データ漏洩を引き起こしました。これは、攻撃者がAIツールを悪用して偵察、エクスプロイト、データ窃取などの攻撃プロセスを自動化・効率化し、現実の脅威として具現化している事例です。",
+      "insight": "攻撃側がAIツールを実戦投入し、攻撃の自動化・効率化を進めている明確な事例。これは「AIを使った攻撃」が概念ではなく現実の脅威であることを裏付ける。SOC/CDCは、AIを活用した高度な攻撃手法を検知できるよう、既存の監視ルールや検知モデルを緊急に見直す必要がある。特にAIツールによる異常な偵察活動やデータ窃取のパターンを識別する知見が不可欠となり、防御側のAI for Securityの高度化が強く求められる。",
+      "importance": "高",
+      "importance_reason": "AIを使った攻撃が現実の脅威として金融機関を標的に発生しており、即時対策が求められるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "AIペンテストツール",
+        "データ窃盗",
+        "金融機関",
+        "ARTEX",
+        "韓国"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "AI for Security"
+      ],
+      "views": 0
+    },
+    {
+      "id": "60b3df4815c4",
+      "title": "OAuth grants pile up faster than you can review them. Here's how to keep up.",
+      "summary": "OAuth grants create data highways between SaaS apps, AI agents, and other tools. And, they are multiplying faster than any security team can review them. As the recent Klue breach showed, attackers are taking notice and exploiting forgotten OAuth grants to gain access to corporate data. This article covers why OAuth risks are so hard [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/oauth-grants-pile-up-faster-than-you-can-review-them-heres-how-to-keep-up/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-10-08T23:00:10+09:00",
+      "title_ja": "OAuthグラントの乱立とAIエージェントによるデータ流出リスク",
+      "summary_ja": "OAuthグラントはSaaSアプリ、AIエージェント、その他ツール間でデータ連携の経路を生成しますが、その数がセキュリティチームがレビューしきれないほど急速に増加しています。最近のKlue侵害事例が示すように、攻撃者は忘れられたOAuthグラントを悪用して企業データへのアクセスを獲得しており、このOAuthリスクへの対処の難しさが指摘されています。AIエージェントの普及が、この問題の深刻さを一層高めています。",
+      "insight": "AIエージェントの普及は、OAuthグラントの無秩序な増加を加速させ、これが「アイデンティティ・権限層」および「ツール・実行層」における新たな攻撃経路となり得る。SOC/CDCは、OAuthグラントのライフサイクル管理、不審なグラントの検知、利用状況の監視を緊急に強化する必要がある。特にAIエージェントに付与される権限は最小限に抑え、定期的なレビューと監査が不可欠であり、MDR/MSSPはIdentity Threat Detection and Response (ITDR)のサービス範囲にこれを含めるべきである。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの普及に伴う直接的なリスクであり、広く利用される認証メカニズムの悪用であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "OAuthグラント",
+        "AIエージェント",
+        "SaaSセキュリティ",
+        "データ侵害",
+        "権限管理"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "7ff45ce2fe90",
+      "title": "Rein Security Raises $25 Million to Guard AI Agents at Runtime",
+      "summary": "<p>The cybersecurity startup will invest in product innovation, agentic research, and employee base expansion.</p>\n<p>The post <a href=\"https://www.securityweek.com/rein-security-raises-25-million-to-guard-ai-agents-at-runtime/\">Rein Security Raises $25 Million to Guard AI Agents at Runtime</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/rein-security-raises-25-million-to-guard-ai-agents-at-runtime/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-10-08T20:11:28+09:00",
+      "title_ja": "Rein SecurityがAIエージェントのランタイム保護で2,500万ドル調達",
+      "summary_ja": "サイバーセキュリティスタートアップのRein Securityが、AIエージェントのランタイム（実行時）保護ソリューションの開発強化のため、2,500万ドルの資金調達を発表しました。同社は、製品イノベーション、エージェント研究、従業員基盤の拡大に投資する計画です。この動きは、AIエージェントが普及する中で、その実行環境を保護する専門的なセキュリティ技術への市場ニーズが高まっていることを示しています。",
+      "insight": "AIエージェントを保護する専門セキュリティ製品の市場が急速に立ち上がりつつあり、Security for AIの分野における技術革新と市場のニーズの高まりを反映している。SOC/CDCの設計者は、将来的にAIエージェントの実行時の挙動監視や異常検知、ポリシー適用など、専門的な防御策を既存のセキュリティアーキテクチャにどのように組み込むかを検討する必要がある。これは、MDR/MSSPが提供するサービスポートフォリオに、AIエージェント保護機能を追加する機会にも繋がる。",
+      "importance": "中",
+      "importance_reason": "AIエージェント保護市場の動向を示しており、Security for AI分野の製品選択やサービス企画に影響するため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "資金調達",
+        "スタートアップ",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "ランタイム保護",
+        "資金調達",
+        "Rein Security",
+        "Security for AI"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "954b61101732",
+      "title": "Evolution of Web3 in Cloud Supply Chain Attacks",
+      "summary": "<p>Unit 42 details how threat actors leverage Web3 infrastructure and open-source supply chain attacks to breach enterprise cloud environments</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/web3-cloud-supply-chain-attacks/\">Evolution of Web3 in Cloud Supply Chain Attacks</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/web3-cloud-supply-chain-attacks/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-10-08T07:00:16+09:00",
+      "title_ja": "Web3悪用によるクラウドサプライチェーン攻撃の進化",
+      "summary_ja": "Unit 42は、脅威アクターがWeb3インフラとオープンソースサプライチェーン攻撃を悪用して、企業クラウド環境に侵入する手口が進化していることを詳細に報告しています。これは、従来のサプライチェーン攻撃がWeb3技術の統合によって新たな複雑性を増し、クラウド環境におけるリスクが多様化している現状を示しています。攻撃者は新たな技術スタックを活用し、企業の防御を迂回しようとしています。",
+      "insight": "クラウド環境におけるサプライチェーン攻撃が、Web3技術の進化と結びつき、より複雑化していることを示している。SOC/CDCは、クラウド環境の監視だけでなく、オープンソースコンポーネントやWeb3関連技術を利用するサプライチェーンにおけるリスク評価を強化する必要がある。AIエージェントがオープンソースやWeb3サービスと連携するケースも考慮し、その複合的なリスクをExposure管理の観点から評価し、監視対象とすべきか検討が求められる。",
+      "importance": "中",
+      "importance_reason": "クラウドサプライチェーン攻撃の進化とWeb3技術の悪用という新たな脅威経路を示唆するため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Web3",
+        "クラウドセキュリティ",
+        "サプライチェーン攻撃",
+        "オープンソース",
+        "Unit 42"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "Exposure管理"
+      ],
+      "views": 0
+    },
+    {
+      "id": "cc1877988ca4",
+      "title": "'AgentCorruption' Puts AWS Environments At Risk With Single Prompt",
+      "summary": "A now-patched vulnerability in AWS Bedrock AgentCore could allow an attacker to use one AI chatbot to take over an organization's entire fleet.",
+      "url": "https://www.darkreading.com/cloud-security/agentcorruption-aws-environments-at-risk-single-prompt",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-10-09T05:39:44+09:00",
+      "title_ja": "AWS Bedrockの脆弱性「AgentCorruption」によるAIフリート乗っ取り",
+      "summary_ja": "AWS Bedrock AgentCoreの脆弱性「AgentCorruption」が修正され、これにより攻撃者は単一のAIチャットボットを悪用して組織全体のAIフリートを乗っ取ることが可能でした。この脆弱性は、AIサービスプロバイダのプラットフォームレベルでのリスクを示しており、単一の悪意あるプロンプトが大規模な影響を及ぼす可能性を浮き彫りにしています。クラウド環境におけるAIエージェントのセキュリティガバナンスの重要性が改めて強調されました。",
+      "insight": "AIサービスプロバイダが提供するプラットフォームレベルでの脆弱性（AIエージェントの「マルチエージェント層」や「モデル・推論層」）が、単一のプロンプトで大規模な影響を及ぼすことを明確に示す。SOC/CDCは、利用するクラウドAIサービスのベンダーが提供するセキュリティパッチ情報を常に追跡し、AIエージェント間の信頼境界や権限管理が適切に行われているかを厳しく確認する必要がある。これはSecurity for AIにおける最重要論点の一つであり、MDR/MSSPのサービス設計において、AIクラウドサービスの設定監査や脆弱性管理を強化するべきである。",
+      "importance": "高",
+      "importance_reason": "AIサービスプロバイダのプラットフォームレベルの脆弱性であり、単一プロンプトによる広範な影響は即時対応が必要であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "プロンプトインジェクション",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "AgentCorruption",
+        "AWS Bedrock",
+        "AgentCore",
+        "プロンプトインジェクション",
+        "AIチャットボット"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題",
+        "MDR/MSSP設計"
+      ],
+      "views": 0
+    },
+    {
+      "id": "e98d0e068b1c",
+      "title": "Low-cost Android phones ship with residential proxy malware",
+      "summary": "A malware campaign dubbed 'Midnight Mimosa' has been discovered on low-cost Android smartphones that ship with malicious software embedded in their firmware, allowing attackers to silently install apps, perform ad fraud, and turn devices into residential proxies. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/low-cost-android-phones-ship-with-residential-proxy-malware/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-10-09T04:20:33+09:00",
+      "title_ja": "低価格Androidスマートフォンに住宅プロキシマルウェアがプリインストール",
+      "summary_ja": "「Midnight Mimosa」と呼ばれるマルウェアキャンペーンが発見され、低価格Androidスマートフォンにファームウェアレベルで悪意あるソフトウェアが組み込まれて出荷されていたことが報告されました。このマルウェアは、アプリのサイレントインストール、広告詐欺、そしてデバイスを住宅プロキシとして悪用する機能を持っていました。これは、サプライチェーンの初期段階におけるデバイスセキュリティの脆弱性を示しています。",
+      "insight": "サプライチェーンの初期段階、特にデバイスの製造・出荷時にマルウェアが組み込まれる高度なサプライチェーン攻撃の事例。SOC/CDCは、企業が管理する、または従業員が利用するデバイスの調達プロセスにおけるセキュリティ評価を強化する必要がある。IoTやエッジデバイスの普及が進む中で、デバイス自体の信頼性が重要課題となり、AI for Securityによるデバイス異常検知だけでなく、Trusted Deviceの概念を拡張したExposure管理が求められる。",
+      "importance": "中",
+      "importance_reason": "サプライチェーン攻撃の巧妙化とデバイスレベルのマルウェアは、広範な影響を及ぼす可能性があるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Androidスマートフォン",
+        "ファームウェアマルウェア",
+        "Midnight Mimosa",
+        "住宅プロキシ",
+        "サプライチェーン攻撃"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "顧客課題",
+        "Exposure管理"
+      ],
+      "views": 0
+    },
+    {
+      "id": "b8477ac395d7",
+      "title": "The Sixth Voice of the CISO Data Shows Cyber Risk Has Moved Inside the Workflow",
+      "summary": "The 2026 findings are not just a year-over-year shift. They mark the latest point in a five-year arc where resilience, AI governance, human risk, and board scrutiny are converging inside the systems where work actually happens.\n\nFor years, the enterprise cybersecurity story has been told as a straight line of escalation: more attacks, more data loss, more pressure, and more urgency. That",
+      "url": "https://thehackernews.com/2026/10/the-sixth-voice-of-ciso-data-shows.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-10-07T20:57:05+09:00",
       "title_ja": "CISOの関心はワークフロー内部のサイバーリスクとAIガバナンスへ移行",
       "summary_ja": "2026年のCISO調査結果は、サイバーリスクが攻撃増加からレジリエンス、AIガバナンス、人間リスク、ボードからの監視へとシフトしていることを示す。特に、リスクが実際の業務が発生するシステム、すなわちワークフローの内部に深く入り込んでいる点が強調されている。これは5年間にわたる構造変化の最新段階と位置づけられる。",
       "insight": "CISOの関心がAIガバナンスとワークフロー内部のリスクに移行していることは、SOC/CDCが従来の境界防御だけでなく、組織全体の業務プロセスとAI活用におけるリスクを可視化・管理する役割が求められることを示唆する。CDCは、AIシステムの適切な利用ポリシー策定支援や、従業員のAI利用に伴う人間リスクの特定、およびその監視・対応能力をサービスに組み込むべきか。経営層への報告において、AI関連リスクへの対応状況をどのように説明すべきか。",
