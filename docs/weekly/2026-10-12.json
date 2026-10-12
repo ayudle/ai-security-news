@@ -1,0 +1,152 @@
+{
+  "executive_summary": "今週はAIエージェントが新たな攻撃対象として確立され、OSレベルの広範な権限やOAuthグラントの悪用、そして既存のID管理で見えない「シャドーAIエージェント」が深刻なリスクを提起しています。攻撃側はAIエージェントやAIツールを実戦投入し、クレデンシャル窃取やシステム侵害を高度化させており、防御側はAI関連のフィッシング対策と内部挙動監視を急ぐ必要があります。一方で、AI for Securityによる脆弱性発見やアラートトリアージの効率化も進んでいますが、AIシステムの信頼性と敵対的攻撃に対する堅牢性確保が前提となります。これらの動向は、SOC/CDCの監視対象をAIエージェントのログ、権限、振る舞いに拡張し、MSSP/MDRはAIシステム固有の脅威検知・対応をサービスに統合するよう、防御アーキテクチャの根本的な再設計を求めています。",
+  "top_topics": [
+    {
+      "title": "AIエージェントの攻撃対象化",
+      "summary": "AIエージェントがフィッシングの誘引物として悪用され、MFAコード窃取を含むクレデンシャル窃取の標的となっている他、AIエージェント自身がシステムを侵害する具体的な事例が複数報告されました。SOC/CDCは、AIサービスを装ったフィッシング対策を強化し、AIエージェントの不審な挙動やAPI連携の監視を緊急に確立する必要があります。",
+      "article_ids": [
+        "45602fa31c59",
+        "b5c111ad53dd",
+        "b5230d49f3e1",
+        "fe843e900a26",
+        "bff11d5fad8b",
+        "a7cbdd50bcec",
+        "c3fcc673098f",
+        "cc1877988ca4",
+        "9395f5a15e27",
+        "2eafd0cd7ead",
+        "8f95f5a15e27"
+      ]
+    },
+    {
+      "title": "AIエージェントの権限と可視性",
+      "summary": "AIエージェントがOSレベルで広範なアクセス権限を持つ可能性が示され、AppleがmacOSの制御を強化する動きが見られます。また、OAuthグラントの乱立や既存の認証基盤で見えない「シャドーAIエージェント」の存在が明らかになり、AIエージェントの権限管理とインベントリ管理が喫緊の課題であることをSOC/CDCは認識すべきです。",
+      "article_ids": [
+        "5f113e136b84",
+        "43caaedb1832",
+        "60b3df4815c4",
+        "575db4874cf1",
+        "38418a2f299c",
+        "0302a04637bc"
+      ]
+    },
+    {
+      "title": "AI for Securityの進化と課題",
+      "summary": "AIエージェントがWebアプリケーションの脆弱性を500件発見したり、SOCのアラートトリアージを改善したりする具体例が示され、防御側におけるAI活用が進展しています。SOC/CDCは、AIによる防御効率化の可能性を探りつつ、AIの誤情報生成リスクや敵対的攻撃に対するAIモデル自体の堅牢性評価をプロセスに組み込む必要があります。",
+      "article_ids": [
+        "23fbcf1de45e",
+        "fa21d2fcae85",
+        "4119ad7b9f17",
+        "bb39ac572b4b",
+        "7eb2de55ec6e",
+        "089597e941cc",
+        "73f9e1636a3f"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "AIエージェントによるOSレベルのアクセス権限取得が顕在化し、Appleが対応策を講じる一方、IoTデバイスの脆弱性悪用やモバイルマルウェアのプリインストールといった従来型デバイスリスクも継続しています。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "AIエージェント間の通信におけるAiTM攻撃や、強化学習によるIDS回避攻撃など、AIシステム固有の通信経路と防御回避が新たな課題となっています。AIエージェントのインターネットアクセスを遮断する事例も報告されました。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "SharePointやExchange Serverの脆弱性悪用が継続する中、露出したAIサーバーを狙ったクリプトマイニング攻撃や、AIサービスプラットフォームの脆弱性（AgentCorruption）による大規模影響のリスクが浮上しました。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "AIエージェントのAPI連携を悪用したシステム侵害や、OAuthグラントの乱立によるデータ流出リスク、既存の認証基盤から見えないシャドーAIエージェントが顕著な課題となっています。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "AIモデルの学習データ収集におけるプライバシー課題、意図隠蔽型プロンプトインジェクション、LLMによる脆弱性注入、AIエージェントのソーシャルエンジニアリングが主要なリスクとして多数報告されました。攻撃側もAIツールを実戦投入し、データ窃取攻撃を高度化しています。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "CISOの関心がAIガバナンスとワークフロー内部のリスクに移行しており、AI生成コンテンツの信頼性確保（透かし導入）やAI開発組織における安全性評価のガバナンス問題が議論されています。"
+    }
+  ],
+  "next_week_outlook": "来週もAIエージェントの広範な利用に伴う新たな攻撃手法や権限管理の課題が継続して議論されると予測されます。特に、AIエージェントが関与するインシデントにおけるフォレンジック調査と責任範囲の特定、およびそのためのログ収集・分析の標準化が重要なテーマとなるでしょう。MDR/MSSPは、AIエージェントの挙動監視と可視化を強化したサービス設計の検討を加速すべきです。",
+  "period": {
+    "start": "2026-10-05",
+    "end": "2026-10-12"
+  },
+  "total_articles": 72,
+  "keyword_changes": [
+    {
+      "keyword": "AIエージェント",
+      "this_week_count": 22,
+      "last_week_count": 13,
+      "change": 9,
+      "change_pct": 69
+    },
+    {
+      "keyword": "AIチャットボット",
+      "this_week_count": 5,
+      "last_week_count": 0,
+      "change": 5,
+      "change_pct": 500
+    },
+    {
+      "keyword": "ガバナンス",
+      "this_week_count": 0,
+      "last_week_count": 5,
+      "change": -5,
+      "change_pct": -100
+    },
+    {
+      "keyword": "MFAコード",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "AIモデル",
+      "this_week_count": 2,
+      "last_week_count": 6,
+      "change": -4,
+      "change_pct": -67
+    },
+    {
+      "keyword": "権限管理",
+      "this_week_count": 5,
+      "last_week_count": 1,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "クレデンシャル窃取",
+      "this_week_count": 4,
+      "last_week_count": 1,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "エクスプロイト",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "プロンプトインジェクション",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "脆弱性",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    }
+  ],
+  "generated_at": "2026-10-12T09:58:00.063330+09:00"
+}
