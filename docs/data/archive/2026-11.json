@@ -2,6 +2,213 @@
   "month": "2026-11",
   "articles": [
     {
+      "id": "390feb964204",
+      "title": "Chainalysis discloses data breach from \"offensive agentic techniques\"",
+      "summary": "Blockchain analytics firm Chainalysis disclosed a data breach after attackers used \"offensive agentic techniques\" to access internal systems and tools, exposing customer names, email addresses, user IDs, and organizational roles. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/chainalysis-discloses-data-breach-from-offensive-agentic-techniques/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-10-31T21:50:09+09:00",
+      "title_ja": "Chainalysis、攻撃的AIエージェント技術によるデータ侵害を公表",
+      "summary_ja": "ブロックチェーン分析企業Chainalysisが、攻撃者が「攻撃的エージェント技術」を用いて内部システムとツールにアクセスし、顧客の氏名、メールアドレス、ユーザーID、組織の役割などの情報が漏洩したデータ侵害を公表しました。この事例は、AIエージェントを悪用した新たな攻撃手法が現実のものとなったことを示しています。",
+      "insight": "AIエージェントの悪用は、従来の脅威モデルや防御策では検知・防御が困難な新たな攻撃ベクトルとなり得ます。SOC/CDCは、AIエージェントのログや挙動を監視対象に追加し、異常なアクセスやツール実行を検知するための新しいルールやプレイブックを早急に開発する必要があります。特に、人間とAIエージェントのID・権限管理の境界が曖昧になることで、特権昇格や横展開のリスクが増大するため、認証・認可基盤の再検討が求められます。",
+      "importance": "高",
+      "importance_reason": "AIエージェントが悪用された実際のデータ侵害事例であり、新たな攻撃トレンドとして防御側は早急な対応が求められるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Chainalysis",
+        "データ侵害",
+        "AIエージェント",
+        "攻撃的エージェント技術",
+        "顧客情報"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "Identity/ITDR",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0
+    },
+    {
+      "id": "8a2a7527d0f6",
+      "title": "How We Took Over ChatGPT Accounts",
+      "summary": "<p><strong><a href=\"https://www.parameter.ai/labs/we-found-a-gap-at-openai\">How We Took Over ChatGPT Accounts</a></strong></p>\nParameter Labs describe an exploit they found against ChatGPT's implementation of the artifacts pattern (OpenAI used to call this \"Canvas\" but it looks like the latest revision is called <a href=\"https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt\">HTML previews</a>), where interactive custom HTML apps are displayed in a sa",
+      "url": "https://simonwillison.net/2026/Oct/31/how-we-took-over-chatgpt-accounts/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "source_name": "Simon Willison",
+      "source_tier": "C",
+      "published": "2026-11-01T08:15:22+09:00",
+      "title_ja": "ChatGPTアカウント乗っ取りの手法が詳細に公開",
+      "summary_ja": "Parameter Labsは、ChatGPTの「artifactsパターン（現在のHTMLプレビュー機能）」の実装に存在する脆弱性を発見し、これを利用してChatGPTアカウントを乗っ取る手法を詳細に公開しました。この脆弱性は、インタラクティブなカスタムHTMLアプリの表示方法に関連しています。",
+      "insight": "LLMサービスが提供するインタラクティブな機能やAPI連携は、新たな攻撃ベクトルを生み出す可能性を常に内包しています。SOC/CDCは、外部SaaSやLLMサービスにおける脆弱性情報に常に注意を払い、自社が利用するAIサービスのセキュリティ設定や機能の実装状況を継続的に評価・検証する必要があります。特に、AIサービスが提供するカスタム機能やサンドボックス環境のセキュリティ検証が不十分な場合、意図しないコード実行や情報漏洩のリスクが高まります。",
+      "importance": "高",
+      "importance_reason": "著名なLLMサービスであるChatGPTの脆弱性が公開され、アカウント乗っ取りに繋がりうるため、AIサービス利用企業は早急な確認と対策が求められるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ChatGPT",
+        "アカウント乗っ取り",
+        "脆弱性",
+        "Parameter Labs",
+        "HTMLプレビュー"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "顧客課題",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "709c87e1e35a",
+      "title": "OpenAI says it's doubling Pro usage limits and bringing Work features to Chat",
+      "summary": "OpenAI has just confirmed that it's rolling out ChatGPT Work capabilities directly into regular Chat, while also combining usage allowances across ChatGPT and Codex. [...]",
+      "url": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-its-doubling-pro-usage-limits-and-bringing-work-features-to-chat/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-01T22:53:11+09:00",
+      "title_ja": "OpenAI、ChatGPT Pro利用制限を倍増しWork機能をChatに統合",
+      "summary_ja": "OpenAIが、ChatGPT Proの利用制限を倍増させるとともに、ChatGPT Workの機能を通常のChat機能に直接統合すると発表しました。これにより、ChatGPTとCodexの利用枠も統合され、企業ユーザーにとっての利便性が向上します。",
+      "insight": "AIツールのビジネス利用が加速し、汎用AIサービスの企業向け機能が強化されることで、組織内でのシャドーAI利用や機密データの不適切な共有リスクが高まります。SOC/CDCは、AIツールの利用状況を可視化し、適切な利用ポリシーの策定と順守を監視する仕組みを強化する必要があります。機能統合は利便性を高める一方で、設定ミスや権限の拡大によるデータ漏洩リスクも増加させるため、継続的なガバナンス強化が不可欠です。",
+      "importance": "中",
+      "importance_reason": "AIツールのビジネス利用拡大と機能統合は、組織内のAIガバナンスとデータセキュリティに影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "製品リリース",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "ChatGPT Pro",
+        "Work機能",
+        "利用制限",
+        "シャドーAI"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
+      "id": "eebe6c1e2379",
+      "title": "Northstar Security Exits Stealth With $7M to Expose Toxic Risk Combinations",
+      "summary": "<p>The startup maps how identities, assets and vulnerabilities connect, and uses AI agents to find and fix risky combinations of issues.</p>\n<p>The post <a href=\"https://www.securityweek.com/northstar-security-exits-stealth-with-7m-to-expose-toxic-risk-combinations/\">Northstar Security Exits Stealth With $7M to Expose Toxic Risk Combinations</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/northstar-security-exits-stealth-with-7m-to-expose-toxic-risk-combinations/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-01T20:15:00+09:00",
+      "title_ja": "Northstar Security、AIエージェントでリスクの組み合わせを特定するソリューションを発表、700万ドルを調達",
+      "summary_ja": "スタートアップのNorthstar Securityが、ID、資産、脆弱性の関連性をマッピングし、AIエージェントを活用して危険なリスクの組み合わせを特定・修正する新しいソリューションを発表し、700万ドルの資金調達を完了しました。",
+      "insight": "攻撃側がAIエージェントを悪用する中、防御側もAIエージェントを活用したセキュリティソリューションが台頭しています。SOC/CDCは、これらの新しいAIベースのソリューションが、既存のSIEM/SOAR/MDRとどのように連携し、多種多様なセキュリティ情報の統合分析や自動対応を強化できるかを検討する必要があります。特に、複雑なリスク要因の優先順位付けと自動是正は、CDCの高度化において不可欠な要素となり、サービス設計上の競争優位性にも直結します。",
+      "importance": "中",
+      "importance_reason": "AIエージェントを活用した防御技術の新たなトレンドを示しており、将来のSOC/CDCアーキテクチャに影響を与える可能性があるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "資金調達",
+        "製品リリース",
+        "AIを使った防御"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Northstar Security",
+        "AIエージェント",
+        "リスク管理",
+        "脆弱性管理",
+        "資金調達"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "MDR/MSSP設計",
+        "サービス企画",
+        "顧客課題",
+        "Exposure管理"
+      ],
+      "views": 0
+    },
+    {
+      "id": "2f9741a86a77",
+      "title": "NetamLoader Malware Targets Government Windows 10 Systems in Asia via .NET Injection",
+      "summary": "Cybersecurity researchers have disclosed details of what has been described as a \"highly sophisticated infection chain\" targeting government organizations in Asia.\n\nThe activity, detailed by Kaspersky this week, targeted a custom Windows 10 build used exclusively by government entities in Asia and involves the deployment of a previously undocumented .NET assembly-loading framework codenamed",
+      "url": "https://thehackernews.com/2026/11/netamloader-malware-targets-government.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-01T16:02:58+09:00",
+      "title_ja": "NetamLoaderマルウェア、アジアの政府機関向けWindows 10を.NETインジェクションで標的",
+      "summary_ja": "カスペルスキーが、アジアの政府機関を標的とした高度な感染チェーンを詳細に公表しました。この活動は、政府機関向けにカスタマイズされたWindows 10ビルドを狙い、これまで未確認の.NETアセンブリローディングフレームワーク「NetamLoader」を展開するものです。",
+      "insight": "国家支援型攻撃者による高度なマルウェア攻撃は引き続き発生しており、特定のカスタマイズされたシステムを標的とする傾向が見られます。SOC/CDCは、AI関連の脅威に加えて、このような従来の高度なマルウェア攻撃への対応能力を維持・強化する必要があります。特に、カスタムOSや特殊な環境の監視・検知は、従来のシグネチャベースでは困難であり、挙動ベースの監視やAIを活用した異常検知を組み合わせることで、検知精度を向上させるアプローチが求められます。",
+      "importance": "中",
+      "importance_reason": "政府機関を標的とした高度なマルウェア攻撃は、CDCが対処すべき重要な脅威であり、AI以外の従来の脅威への対応能力維持の重要性を示すため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "マルウェア",
+        "APT"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "NetamLoader",
+        "マルウェア",
+        "政府機関",
+        "Windows 10",
+        ".NETインジェクション"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "顧客課題",
+        "サービス企画"
+      ],
+      "views": 0
+    },
+    {
       "id": "065d6fd5d063",
       "title": "Chainalysis Confirms Intrusion Into Internal Tools and Exposure of Customer Identity Data",
       "summary": "American blockchain analysis firm Chainalysis said it was the target of a cybersecurity incident in which an external actor accessed non-sensitive customer data.\n\nHowever, the company noted that the breach did not result in unauthorized access to its investigation content, authentication credentials, or session tokens.\n\n\"This month, Chainalysis detected an external actor using offensive agentic",
