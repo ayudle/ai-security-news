@@ -128,14 +128,14 @@ a{color:inherit;text-decoration:none}
 .imp-detail[open] .imp-detail-toggle::before{content:"▼ 閉じる";font-size:11px}
 .imp-detail-toggle::-webkit-details-marker{display:none}
 .imp-detail-toggle::marker{display:none}
-.col-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:14px}
+.col-card{background:#fff;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:24px 0;margin:0}
 .col-card-meta{font-size:10px;color:var(--dim);margin-bottom:6px}
 .col-card-title{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:8px}
 .col-card-title a{color:var(--text)}
 .col-card-title a:hover{color:var(--accent)}
 .col-card-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:8px}
 .col-card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
-.col-tag{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#245d86}
+.col-tag{font-size:12px;padding:2px 7px;border-radius:2px;background:#f2f4f6;border:1px solid #d9dfe5;color:#35414d}
 .col-intro{font-size:12px;color:var(--dim);margin-bottom:16px;line-height:1.65}
 .col-read-link{display:inline-block;font-size:12px;color:var(--accent);padding:4px 0}
 .srch-desc{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:14px}
@@ -218,7 +218,7 @@ gtag('config', 'G-KV7Q7SQKZX');
 
 <div class="tab-bar">
   <a href="#today"   class="tab">本日のニュース</a>
-  <a href="#trend"   class="tab">トレンド分析</a>
+  <a href="#trend"   class="tab">攻撃・インシデント動向</a>
   <a href="#weekly"  class="tab">週次レポート</a>
   <a href="#columns" class="tab">コラム</a>
   <a href="#archive" class="tab">記事検索</a>
@@ -235,7 +235,7 @@ gtag('config', 'G-KV7Q7SQKZX');
     <div style="font-size:10px;font-weight:700;color:#245d86;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
     <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#475361"></div>
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px">
-      <a href="#trend" style="font-size:11px;color:#245d86;text-decoration:none">→ トレンド分析で詳しく見る</a>
+      <a href="#trend" style="font-size:11px;color:#245d86;text-decoration:none">→ 攻撃・インシデント動向で詳しく見る</a>
       <a href="weekly/2026-11-02.html" style="display:inline-block;font-size:11px;color:#245d86;text-decoration:none;margin-top:8px">&#x1F4CA; 先週のレポート（10/26〜11/02）を読む →</a>
       <a href="columns/ai-vulnerability-management-automation.html" style="display:inline-block;font-size:11px;color:#6add8a;text-decoration:none;margin-top:8px">&#x270D; 関連コラム：AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか →</a>
     </div>
@@ -497,74 +497,7 @@ gtag('config', 'G-KV7Q7SQKZX');
   </details>
 </div>
 
-<div class="pane" id="pane-trend">
-  <p class="plabel">トレンド分析</p>
-
-  <div class="stat-row">
-    <div class="stat"><div class="stat-n" id="s-total">—</div><div class="stat-l">累計記事数</div></div>
-    <div class="stat"><div class="stat-n" id="s-days">—</div><div class="stat-l">更新日数</div></div>
-    <div class="stat"><div class="stat-n" id="s-spike">—</div><div class="stat-l">急上昇トピック数</div></div>
-  </div>
-
-  <div class="dash-grid">
-
-    <div class="dc" style="grid-column:1/-1">
-      <div class="dc-title">急上昇トピック（過去7日）</div>
-      <div class="dc-sub">先週と比べて話題が急増しているキーワード</div>
-      <div class="spike-list" id="spike-list"></div>
-    </div>
-
-    <div class="dc" style="grid-column:1/-1">
-      <div class="dc-title">大項目を選んで中項目トレンドを見る</div>
-      <div class="sub-filter" id="main-filter"></div>
-      <div id="sub-bars"></div>
-    </div>
-
-    <div class="dc">
-      <div class="dc-title">大項目の分布（過去7日）</div>
-      <div id="main-bars-7"></div>
-    </div>
-
-    <div class="dc">
-      <div class="dc-title">重要度の内訳</div>
-      <div class="imp-note">
-        <strong style="color:var(--text)">重要度の判断基準</strong><br>
-        高: 広範囲に影響・即時対応が必要<br>
-        中: 特定分野に影響・注目トレンド<br>
-        低: 参考情報・長期動向<br>
-        <span style="font-size:10px">AIが記事内容から自動判定。各記事の「重要度」横の「?」にカーソルを合わせると理由が表示されます。</span>
-      </div>
-      <div id="imp-bars"></div>
-    </div>
-
-    <div class="dc" id="dc-layer" style="grid-column:1/-1">
-      <div class="dc-title">影響レイヤー分布（過去7日）</div>
-      <div class="dc-sub">各記事が影響するインフラ・ガバナンス層の内訳</div>
-      <div id="layer-bars"></div>
-    </div>
-
-    <div class="dc" id="dc-kw" style="grid-column:1/-1">
-      <div class="dc-title">キーワードクラウド（過去7日）</div>
-      <div class="dc-sub">頻出キーワードをフォントサイズで表現（大きいほど多出現）</div>
-      <div class="kw-cloud" id="kw-cloud"></div>
-    </div>
-
-    <div class="dc" id="dc-heatmap" style="grid-column:1/-1">
-      <div class="dc-title">6階層ヒートマップ（過去7日）</div>
-      <div class="dc-sub">日付×インフラ階層の記事件数</div>
-      <div class="hm-legend">
-        <span class="hm-lg-lbl">凡例</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:#f2f4f6"></span>0件</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.2)"></span>少</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.55)"></span>中</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.9)"></span>多</span>
-        <span class="hm-lg-item" style="margin-left:4px;font-size:10px;color:var(--dim)">※各層の固有色で表示</span>
-      </div>
-      <div id="layer-heatmap"></div>
-    </div>
-
-  </div>
-</div>
+<div class="pane" id="pane-trend"><h2 class="watch-title">攻撃・インシデント動向</h2><p class="watch-intro">収集範囲内の直近14日で確認できた情報です。市場全体の攻撃件数や流行を示すものではありません。事実と検討課題を分けて記載します。</p><section class="watch-section"><h3>現在確認されている攻撃・インシデント</h3><p class="watch-empty">根拠付きで分類できた記事はまだありません。新しい日次更新から情報を蓄積します。過去記事は未評価です。</p></section><section class="watch-section"><h3>攻撃手法 × 対象レイヤー</h3><p class="watch-empty">対象レイヤーを根拠付きで分類できる記事はまだありません。</p></section><section class="watch-section"><h3>今後警戒する攻撃</h3><p class="watch-note">以下は確認済み事実からの検討課題です。発生を予測・断定するものではありません。</p><p class="watch-empty">予測に使える悪用確認・PoC情報がまだありません。</p></section><section class="watch-section"><h3>診断サービスへの示唆</h3><p class="watch-empty">根拠付きの診断サービスへの示唆は蓄積中です。</p></section><section class="watch-section"><h3>LLM活用型ブラックボックス診断の検証候補</h3><p class="watch-empty">根拠付きの検証候補は蓄積中です。</p></section><section class="watch-section"><h3>情報収集の不足領域</h3><p class="watch-note">掲載がない領域でも、攻撃やリスクが存在しないことを意味しません。</p><ul class="watch-gaps"><li>ブラックボックス診断</li><li>Web診断</li><li>API診断</li><li>クラウド診断</li><li>ソースコード診断</li><li>SAST</li><li>SCA</li><li>シークレット検出</li><li>モバイル診断</li><li>AIエージェント評価</li><li>ペネトレーションテスト</li></ul></section></div>
 
 
 <div class="pane" id="pane-weekly">
@@ -601,12 +534,12 @@ gtag('config', 'G-KV7Q7SQKZX');
 <div class="pane" id="pane-columns">
   <p class="plabel">コラム</p>
   <p class="col-intro">ニュースの観察から生まれた考察を記録しています。</p>
-<div class="col-card"><div class="col-card-meta">2026-06-08</div><h2 class="col-card-title"><a href="columns/ai-vulnerability-management-automation.html">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</a></h2><p class="col-card-desc">AIが脆弱性を大量に発見する時代、防御側のボトルネックは「発見」から「発見後工程」へ移る。自動修復は人を減らすためではなく、人間の判断を重要資産に集中させるためにある。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">Exposure管理</span><span class="col-tag">AI for Security</span><span class="col-tag">脆弱性管理</span><span class="col-tag">運用設計</span></div><a href="columns/ai-vulnerability-management-automation.html" class="col-read-link">読む →</a></div>
-<div class="col-card"><div class="col-card-meta">2026-05-16</div><h2 class="col-card-title"><a href="columns/ai-supply-chain-exposure.html">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</a></h2><p class="col-card-desc">AIモデルは外部から調達する「部品」である。偽モデルリポジトリ事例とCISA/G7のSBOM for AIガイダンスを踏まえ、CDCが担うべきAIサプライチェーンのExposure管理を3層モデルで整理する。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">Security for AI</span><span class="col-tag">AIサプライチェーン</span><span class="col-tag">SBOM</span><span class="col-tag">モデルセキュリティ</span></div><a href="columns/ai-supply-chain-exposure.html" class="col-read-link">読む →</a></div>
-<div class="col-card"><div class="col-card-meta">2026-05-15</div><h2 class="col-card-title"><a href="columns/ai-soc-prerequisites.html">AI SOCの前に、SOCの現在地を見よ</a></h2><p class="col-card-desc">AI SOCが実運用で機能するかどうかは、AIの性能だけで決まらない。プロセス・体制・データという3軸からSOCの現在地を見極めることが、AI SOC導入の本当の出発点である。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">AI SOC</span><span class="col-tag">SOC</span><span class="col-tag">MSSP</span><span class="col-tag">AI for Security</span></div><a href="columns/ai-soc-prerequisites.html" class="col-read-link">読む →</a></div>
-<div class="col-card"><div class="col-card-meta">2026-05-13</div><h2 class="col-card-title"><a href="columns/ai-agent-activity-monitoring.html">AIエージェントは、誰が監視するのか</a></h2><p class="col-card-desc">AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが従来の監視対象だけでは足りなくなる理由と、AIエージェント時代に必要な監視機能を考える。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">AI Security</span><span class="col-tag">Identity</span><span class="col-tag">SOC</span><span class="col-tag">AIエージェント</span></div><a href="columns/ai-agent-activity-monitoring.html" class="col-read-link">読む →</a></div>
-<div class="col-card"><div class="col-card-meta">2026-05-10</div><h2 class="col-card-title"><a href="columns/ai-soc-stop-attack.html">AI SOCとは、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことである</a></h2><p class="col-card-desc">SOCはなぜ「攻撃を止める組織」から「アラートを捌く組織」へ変質したのか。AI SOCの本質を効率化ではなく監視カバレッジの回復と捉え直し、AIのBlind spotを監視する人間の役割とCDC的運用への接続を考える。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">AI Security</span><span class="col-tag">MSSP</span></div><a href="columns/ai-soc-stop-attack.html" class="col-read-link">読む →</a></div>
-<div class="col-card"><div class="col-card-meta">2026-05-04</div><h2 class="col-card-title"><a href="columns/ai-agent-soc-cdc.html">AIエージェント時代のMSSPは、「AIで効率化しました」では差別化できない</a></h2><p class="col-card-desc">AI SOCの価値は効率化だけではない。AIエージェントが社内の実行主体になる時代に、MSSP/CDCサービスが提供すべき設計力とは何かを考える。</p><div class="col-card-tags"><span class="col-tag">MSSP</span><span class="col-tag">CDC</span><span class="col-tag">AI Security</span><span class="col-tag">Identity</span><span class="col-tag">Exposure</span></div><a href="columns/ai-agent-soc-cdc.html" class="col-read-link">読む →</a></div>
+<article class="col-card"><div class="col-card-meta">2026-06-08</div><h2 class="col-card-title"><a href="columns/ai-vulnerability-management-automation.html">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</a></h2><p class="col-card-desc">AIが脆弱性を大量に発見する時代、防御側のボトルネックは「発見」から「発見後工程」へ移る。自動修復は人を減らすためではなく、人間の判断を重要資産に集中させるためにある。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">Exposure管理</span><span class="col-tag">AI for Security</span></div></article>
+<article class="col-card"><div class="col-card-meta">2026-05-16</div><h2 class="col-card-title"><a href="columns/ai-supply-chain-exposure.html">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</a></h2><p class="col-card-desc">AIモデルは外部から調達する「部品」である。偽モデルリポジトリ事例とCISA/G7のSBOM for AIガイダンスを踏まえ、CDCが担うべきAIサプライチェーンのExposure管理を3層モデルで整理する。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">Security for AI</span><span class="col-tag">AIサプライチェーン</span></div></article>
+<article class="col-card"><div class="col-card-meta">2026-05-15</div><h2 class="col-card-title"><a href="columns/ai-soc-prerequisites.html">AI SOCの前に、SOCの現在地を見よ</a></h2><p class="col-card-desc">AI SOCが実運用で機能するかどうかは、AIの性能だけで決まらない。プロセス・体制・データという3軸からSOCの現在地を見極めることが、AI SOC導入の本当の出発点である。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">AI SOC</span><span class="col-tag">SOC</span></div></article>
+<article class="col-card"><div class="col-card-meta">2026-05-13</div><h2 class="col-card-title"><a href="columns/ai-agent-activity-monitoring.html">AIエージェントは、誰が監視するのか</a></h2><p class="col-card-desc">AIエージェントを「使う」議論は増えている。しかし「監視する」議論はまだ追いついていない。SOC/CDCが従来の監視対象だけでは足りなくなる理由と、AIエージェント時代に必要な監視機能を考える。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">AI Security</span><span class="col-tag">Identity</span></div></article>
+<article class="col-card"><div class="col-card-meta">2026-05-10</div><h2 class="col-card-title"><a href="columns/ai-soc-stop-attack.html">AI SOCとは、SOCを「アラートを捌く組織」から「攻撃を止める組織」へ戻すことである</a></h2><p class="col-card-desc">SOCはなぜ「攻撃を止める組織」から「アラートを捌く組織」へ変質したのか。AI SOCの本質を効率化ではなく監視カバレッジの回復と捉え直し、AIのBlind spotを監視する人間の役割とCDC的運用への接続を考える。</p><div class="col-card-tags"><span class="col-tag">CDC</span><span class="col-tag">AI Security</span><span class="col-tag">MSSP</span></div></article>
+<article class="col-card"><div class="col-card-meta">2026-05-04</div><h2 class="col-card-title"><a href="columns/ai-agent-soc-cdc.html">AIエージェント時代のMSSPは、「AIで効率化しました」では差別化できない</a></h2><p class="col-card-desc">AI SOCの価値は効率化だけではない。AIエージェントが社内の実行主体になる時代に、MSSP/CDCサービスが提供すべき設計力とは何かを考える。</p><div class="col-card-tags"><span class="col-tag">MSSP</span><span class="col-tag">CDC</span><span class="col-tag">AI Security</span></div></article>
 </div>
 
 <div class="pane" id="pane-about">
@@ -811,6 +744,7 @@ function initDashboard() {
   if (ANA.today_implication) {
     renderImplication(ANA.today_implication, 'today-impl-text', 'today-impl-box', true);
   }
+  return;
 
   document.getElementById('s-total').textContent = ANA.total_articles;
   document.getElementById('s-days').textContent  = ANA.total_days;
