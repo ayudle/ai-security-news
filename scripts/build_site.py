@@ -231,9 +231,7 @@ def build_column_page(col, all_articles=None, all_columns=None):
 <meta property="og:description" content="{html_escape(desc)}">
 <meta property="og:url" content="{page_url}">
 <meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="{ogp_image}">
-<meta name="twitter:image" content="{ogp_image}">
 <link rel="canonical" href="{page_url}">
 <link rel="icon" type="image/png" href="../favicon.png">
 <script type="application/ld+json">{jsonld}</script>
@@ -309,7 +307,6 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
 <footer>
   本コラムは著者が執筆した考察であり、LLMによる自動生成ではありません。<br>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 </body>
@@ -661,6 +658,11 @@ def build_html(data, weekly_list=None, columns=None):
 
     today_html   = "\n".join(article_card(a) for a in articles) if articles \
                    else '<p class="empty">本日は該当記事がありませんでした。</p>'
+    vuln_count = sum(1 for a in articles if a.get("tag_main_id") == "vuln")
+    ops_count = sum(1 for a in articles if any(
+        c in {"SOC運用変化", "Identity/ITDR", "Exposure管理", "MDR/MSSP設計"}
+        for c in a.get("cdc_context", [])
+    ))
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -668,17 +670,13 @@ def build_html(data, weekly_list=None, columns=None):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Cyber Defense Notes | {today}</title>
-<meta name="description" content="AI、LLM、AIエージェントの普及で変わるSOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
+<meta name="description" content="脆弱性、脅威インテリジェンス、SOC/CDC、MDR/MSSP、Identity/ITDR、Exposure管理、AI×セキュリティの最新動向を実務者視点で整理する設計ノート。">
 <meta name="google-site-verification" content="m7S3bMP_P0V-BinV3MTpaO9qkk31af-RRKxsQ4_BoQg" />
 <meta property="og:title" content="Cyber Defense Notes">
 <meta property="og:description" content="AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cyber Defense Notes">
-<meta name="twitter:description" content="AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
-<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -698,25 +696,25 @@ def build_html(data, weekly_list=None, columns=None):
 </script>
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-:root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}}
-body{{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}}
+:root{{--bg:#101319;--card:#191e27;--card2:#222a36;--text:#f1f4f8;--muted:#c0c8d4;--dim:#98a4b3;--border:#303846;--accent:#66aaf2;--r:12px}}
+body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px}}
 a{{color:inherit;text-decoration:none}}
-.hdr{{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}}
+.hdr{{border-bottom:1px solid var(--border);padding:16px max(24px,calc((100vw - 980px)/2));display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#121720}}
 .hdr-home{{display:inline-flex;align-items:center;text-decoration:none;color:inherit}}
 .hdr-home:hover .ht{{color:var(--accent)}}
-.ht{{font-size:15px;font-weight:700;color:#fff;margin:0}}
-.hs{{font-size:11px;color:var(--dim)}}
+.ht{{font-size:18px;font-weight:750;color:#fff;margin:0;letter-spacing:-.01em}}
+.hs{{font-size:12px;color:var(--muted)}}
 .hu{{font-size:11px;color:var(--dim);margin-left:auto}}
-.tab-bar{{display:flex;border-bottom:1px solid var(--border);padding:0 24px;overflow-x:auto;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}}
+.tab-bar{{display:flex;border-bottom:1px solid var(--border);padding:0 max(24px,calc((100vw - 980px)/2));overflow-x:auto;background:#121720;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}}
 @media(min-width:768px){{.tab-bar{{-webkit-mask-image:none;mask-image:none}}}}
-.tab{{font-size:12px;padding:10px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s}}
+.tab{{font-size:13px;padding:12px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s}}
 .tab.on,.tab[aria-current="page"]{{color:var(--text);border-bottom-color:var(--accent);font-weight:600}}
 .tab:hover{{color:var(--text);border-bottom-color:var(--border)}}
 .tab:focus-visible{{outline:2px solid var(--accent);outline-offset:-2px}}
-.pane{{display:none;padding:16px 24px;max-width:860px;margin:0 auto}}
+.pane{{display:none;padding:24px;max-width:980px;margin:0 auto}}
 .pane.on{{display:block}}
-.plabel{{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}}
-.card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}}
+.plabel{{font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--muted);margin-bottom:14px}}
+.card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:14px;cursor:pointer;transition:border-color .15s,transform .15s}}
 .card:hover{{border-color:#3a3a38}}
 .cm{{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:8px}}
 .tier{{background:#0c2a4a;color:#85b7eb;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}}
@@ -727,10 +725,10 @@ a{{color:inherit;text-decoration:none}}
 .cdc-badges{{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}}
 .cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
 .cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}}
-.ct{{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}}
+.ct{{font-size:17px;font-weight:700;margin-bottom:8px;line-height:1.55;letter-spacing:.005em}}
 .ct a:hover{{color:var(--accent)}}
-.cs{{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:8px}}
-.insight{{background:#0d1e36;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:8px;font-size:11px;color:#85b7eb;line-height:1.55}}
+.cs{{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:10px}}
+.insight{{background:#12253d;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px;font-size:13px;color:#b9d9fb;line-height:1.75}}
 .ins-lbl{{display:block;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:2px;text-transform:uppercase}}
 .tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}}
 .tag-main{{font-size:10px;padding:2px 8px;border-radius:99px;border:1px solid;font-weight:600}}
@@ -859,8 +857,12 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 .about-layer-n{{font-size:11px;font-weight:700;color:var(--accent);margin-right:6px}}
 .about-layer-name{{font-weight:500;color:#e6e4dc}}
 .about-layer-desc{{font-size:12px;color:var(--dim);margin-top:2px}}
-.about-x-btn{{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:var(--card);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);font-size:13px;font-weight:500;transition:border-color .15s}}
-.about-x-btn:hover{{border-color:var(--accent)}}
+.focus-strip{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}}
+.focus-card{{display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;text-decoration:none}}
+.focus-card:hover{{border-color:var(--accent)}}
+.focus-card strong{{display:block;font-size:13px;color:var(--text);margin-bottom:2px}}
+.focus-card span{{font-size:11px;color:var(--dim);line-height:1.5}}
+@media(max-width:680px){{body{{font-size:14px}}.pane{{padding:18px 14px}}.hdr{{padding:14px}}.tab-bar{{padding:0 6px}}.card{{padding:15px}}.ct{{font-size:16px}}.focus-strip{{grid-template-columns:1fr}}}}
 </style>
 {ga_snippet()}
 </head>
@@ -883,6 +885,11 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 </div>
 
 <div class="pane" id="pane-today">
+  <div class="focus-strip" aria-label="注目領域">
+    <a class="focus-card" href="?tag=脆弱性#archive"><strong>脆弱性・CVE</strong><span>本日 {vuln_count}件 · 悪用状況、パッチ、露出管理</span></a>
+    <a class="focus-card" href="?context=SOC運用変化#archive"><strong>SOC / CDC運用</strong><span>本日 {ops_count}件 · 検知、調査、対応、運用設計</span></a>
+    <a class="focus-card" href="?context=Exposure管理#archive"><strong>Identity / Exposure</strong><span>ITDR、CTEM、攻撃面管理、MDR/MSSP</span></a>
+  </div>
   <div id="today-impl-box" style="display:none;background:#0d1b2e;border-left:3px solid #378ADD;border-radius:4px;padding:12px 16px;margin-bottom:16px">
     <div style="font-size:10px;font-weight:700;color:#378ADD;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
     <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#c0beb6"></div>
@@ -1080,16 +1087,6 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
       </div>
     </div>
 
-    <!-- SNS -->
-    <div class="about-section">
-      <div class="about-section-lbl">SNS</div>
-      <div class="about-text" style="margin-bottom:1rem">X（旧Twitter）で最新ニュースを毎日発信しています。</div>
-      <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" class="about-x-btn">
-        <span style="font-size:14px;font-weight:700">𝕏</span>
-        <span>@ayudle_aisec をフォロー</span>
-      </a>
-    </div>
-
   </div>
 </div>
 
@@ -1097,7 +1094,6 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
   <p style="margin-bottom:2px;font-size:11px;font-weight:600;color:var(--dim)">Cyber Defense Notes</p>
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 <script>
@@ -1843,59 +1839,8 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
             f'</section>'
         )
 
-    # シェアURL（URLエンコード対応 + 完成形テンプレ + 動的ハッシュタグ）
-    quote = _url_quote
+    # 構造化データで使用する公開URL
     site_url = f"https://ayudle.github.io/ai-security-news/article/{aid}.html"
-
-    # tag_subs から動的にハッシュタグを選定
-    HASHTAG_MAP = {
-        "プロンプトインジェクション": "プロンプトインジェクション",
-        "LLMセキュリティ": "LLMセキュリティ",
-        "モデル汚染": "モデル汚染",
-        "敵対的攻撃": "敵対的攻撃",
-        "AIを使った攻撃": "AI攻撃",
-        "AIを使った防御": "AI防御",
-        "ハルシネーション": "ハルシネーション",
-        "EU AI法": "EUAI法",
-        "コンプライアンス": "AIコンプライアンス",
-        "標準化": "AI標準化",
-        "安全性評価": "AI安全性",
-        "アライメント": "アライメント",
-        "プライバシー侵害": "プライバシー",
-        "サプライチェーン攻撃": "サプライチェーン",
-        "モデル逆転攻撃": "モデル逆転",
-        "バイアス・差別": "AIバイアス",
-        "誤情報生成": "AI誤情報",
-        "著作権": "AI著作権",
-    }
-    extra_tags = []
-    for s in subs:
-        if s in HASHTAG_MAP and HASHTAG_MAP[s] not in extra_tags:
-            extra_tags.append(HASHTAG_MAP[s])
-        if len(extra_tags) >= 2:
-            break
-
-    # 主軸ハッシュタグを記事タイプに応じて切り替え
-    PRIMARY_TAG_BY_MAIN = {
-        "ai_sec": ["AIセキュリティ"],
-        "ai_risk": ["AIリスク", "AIガバナンス"],
-        "vuln": ["脆弱性", "サイバーセキュリティ"],
-        "attack": ["サイバー攻撃", "サイバーセキュリティ"],
-        "incident": ["セキュリティインシデント", "サイバーセキュリティ"],
-        "policy": ["セキュリティ規制", "サイバーセキュリティ"],
-        "biz_tech": ["セキュリティ業界", "サイバーセキュリティ"],
-    }
-    primary_tags = PRIMARY_TAG_BY_MAIN.get(main_id, ["サイバーセキュリティ"])
-
-    # 重複を避けつつ最大3個に絞る
-    all_tags = []
-    for tag in primary_tags + extra_tags:
-        if tag not in all_tags:
-            all_tags.append(tag)
-        if len(all_tags) >= 3:
-            break
-
-    hashtags_str = " ".join([f"#{t}" for t in all_tags])
 
     jsonld_str = json.dumps({
         "@context": "https://schema.org",
@@ -1916,11 +1861,6 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
         },
     }, ensure_ascii=False, indent=2).replace('</', '<\\/')
 
-    share_text_raw = f"【AI×セキュリティニュース】\n\n{title_ja}\n\n{hashtags_str}"
-    share_text_encoded = quote(share_text_raw, safe='')
-    site_url_encoded = quote(site_url, safe='')
-    twitter_url = f"https://x.com/intent/post?text={share_text_encoded}&url={site_url_encoded}"
-
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -1932,11 +1872,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
 <meta property="og:description" content="{html_escape(summary_ja[:120])}">
 <meta property="og:url" content="{site_url}">
 <meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{html_escape(title_ja)}">
-<meta name="twitter:description" content="{html_escape(summary_ja[:120])}">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
-<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="{site_url}">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -2059,7 +1995,6 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     </div>
     <div class="actions">
       <a href="{_safe_url(url)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <a href="{twitter_url}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Xでシェア</a>
       <button onclick="navigator.clipboard.writeText('{site_url}').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
     </div>
   </section>
@@ -2072,7 +2007,6 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 <footer>
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 </body>
@@ -2102,10 +2036,6 @@ def build_archive_page(day_data, date):
 <meta property="og:url" content="{arc_url}">
 <meta property="og:type" content="website">
 <meta property="og:image" content="{ogp_image}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{html_escape(arc_title)}">
-<meta name="twitter:description" content="{html_escape(arc_desc)}">
-<meta name="twitter:image" content="{ogp_image}">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
@@ -2166,7 +2096,6 @@ a{{color:inherit;text-decoration:none}}
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 <script>
@@ -2224,8 +2153,6 @@ def load_weekly_list():
 
 def build_weekly_html(weekly_data, article_lookup=None):
     """週次レポートの standalone HTML ページを生成する"""
-    from urllib.parse import quote
-
     ps  = weekly_data.get("period", {}).get("start", "")
     pe  = weekly_data.get("period", {}).get("end", "")
     pss = ps[5:].replace("-", "/") if len(ps) >= 10 else ps
@@ -2238,9 +2165,6 @@ def build_weekly_html(weekly_data, article_lookup=None):
     next_week   = weekly_data.get("next_week_outlook", "")
 
     site_url = f"https://ayudle.github.io/ai-security-news/weekly/{pe}.html"
-    share_text = f"【Cyber Defense Notes 週次レポート {pss}〜{pes}】\n{exec_sum[:100]}…\n#AIセキュリティ #SOC"
-    twitter_url = f"https://x.com/intent/post?text={quote(share_text, safe='')}&url={quote(site_url, safe='')}"
-
     # 重要トピック HTML
     lookup = article_lookup or {}
     topics_html = ""
@@ -2355,9 +2279,7 @@ def build_weekly_html(weekly_data, article_lookup=None):
 <meta property="og:description" content="{html_escape(exec_sum[:120])}">
 <meta property="og:url" content="{site_url}">
 <meta property="og:type" content="article">
-<meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
-<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="{site_url}">
 <link rel="icon" type="image/png" href="../favicon.png">
 <style>
@@ -2442,7 +2364,6 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   </section>
 
   <div class="actions">
-    <a href="{twitter_url}" target="_blank" rel="noopener noreferrer" class="btn">Xでシェア</a>
     <button onclick="navigator.clipboard.writeText('{site_url}').then(function(){{alert('URLをコピーしました')}})" class="btn">📋 URLをコピー</button>
   </div>
 </div>
@@ -2451,7 +2372,6 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
   日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 <script>
 document.querySelectorAll('.wr-toggle').forEach(function(btn){{

@@ -20,6 +20,9 @@ SOURCES = [
     # ベンダー公式・脅威インテリジェンス（strict_filter なし：テーマが明確なため）
     {"name": "Google Security Blog",  "tier": "A", "url": "https://security.googleblog.com/feeds/posts/default",         "category": "ベンダー公式"},
     {"name": "Palo Alto Unit 42",     "tier": "A", "url": "https://unit42.paloaltonetworks.com/feed/",                   "category": "ベンダー脅威インテリジェンス"},
+    {"name": "CERT/CC Vulnerability Notes", "tier": "A", "url": "https://kb.cert.org/vuls/atomfeed/",                  "category": "脆弱性情報"},
+    {"name": "Google Project Zero",  "tier": "A", "url": "https://googleprojectzero.blogspot.com/feeds/posts/default", "category": "脆弱性研究"},
+    {"name": "JPCERT/CC",            "tier": "A", "url": "https://www.jpcert.or.jp/rss/jpcert.rdf",                  "category": "国内CERT"},
     # 専門セキュリティメディア（strict_filter なし）
     {"name": "Krebs on Security",     "tier": "B", "url": "https://krebsonsecurity.com/feed/",                           "category": "専門メディア"},
     {"name": "Dark Reading",          "tier": "B", "url": "https://www.darkreading.com/rss.xml",                         "category": "専門メディア"},
@@ -27,6 +30,9 @@ SOURCES = [
     {"name": "The Hacker News",       "tier": "B", "url": "https://feeds.feedburner.com/TheHackersNews",                 "category": "専門メディア"},
     {"name": "Bleeping Computer",     "tier": "B", "url": "https://www.bleepingcomputer.com/feed/",                      "category": "専門メディア"},
     {"name": "Embrace The Red",       "tier": "B", "url": "https://embracethered.com/blog/index.xml",                    "category": "AI×セキュリティ研究"},
+    {"name": "Cisco Talos",           "tier": "B", "url": "https://blog.talosintelligence.com/rss/",                      "category": "ベンダー脅威インテリジェンス"},
+    {"name": "Microsoft Security",    "tier": "B", "url": "https://www.microsoft.com/en-us/security/blog/feed/",          "category": "ベンダー脅威インテリジェンス"},
+    {"name": "CrowdStrike",           "tier": "B", "url": "https://www.crowdstrike.com/en-us/blog/feed/",                 "category": "ベンダー脅威インテリジェンス"},
     # Tech系・セキュリティ寄りだが範囲が広い（strict_filter なし：URLがsecurityフィード限定）
     {"name": "Wired Security",        "tier": "B", "url": "https://www.wired.com/feed/category/security/latest/rss",     "category": "Techメディア"},
     {"name": "Ars Technica",          "tier": "B", "url": "https://feeds.arstechnica.com/arstechnica/security",          "category": "Techメディア"},
@@ -114,6 +120,22 @@ SECURITY_KEYWORDS = [
     "supply chain", "apt", "nation-state", "espionage",
 ]
 
+# 「今の業務に直結するか」を収集順位に反映するフォーカス語。
+# 単なるAIニュースより、脆弱性対応とSOC/CDCの設計・運用情報を優先する。
+VULNERABILITY_KEYWORDS = [
+    "vulnerability", "vulnerabilities", "cve", "cvss", "zero-day", "0-day",
+    "exploit", "exploited", "patch", "security update", "advisory",
+    "remote code execution", "rce", "authentication bypass", "privilege escalation",
+    "known exploited vulnerabilities", "kev", "vulnerability management",
+]
+
+OPERATIONS_KEYWORDS = [
+    "soc", "security operations", "cdc", "mdr", "mssp", "managed detection",
+    "siem", "soar", "edr", "xdr", "ndr", "itdr", "identity threat",
+    "exposure management", "ctem", "attack surface", "threat hunting",
+    "incident response", "detection engineering", "purple team", "security architecture",
+]
+
 # CDC/SOC/サービス設計キーワード（pre-scoring用）
 CDC_KEYWORDS = [
     "soc", "cdc", "security operations",
@@ -139,7 +161,7 @@ VALID_CDC_CONTEXTS = {
 # フィルター用（まとめたもの）
 KEYWORDS = AI_KEYWORDS + SECURITY_KEYWORDS
 
-MAX_ARTICLES = 10
+MAX_ARTICLES = 15
 OUTPUT_PATH  = "docs/data/latest.json"
 JST          = timezone(timedelta(hours=9))
 
@@ -148,7 +170,8 @@ def fetch_rss(source):
     articles = []
     try:
         feed   = feedparser.parse(source["url"])
-        cutoff = datetime.now(JST) - timedelta(hours=36)
+        # 日本時間の日次実行で海外ソースの公開を取りこぼさないよう、60時間見る。
+        cutoff = datetime.now(JST) - timedelta(hours=60)
         for entry in feed.entries[:20]:
             pub = None
             for field in ["published","updated","created"]:
@@ -172,6 +195,8 @@ def fetch_rss(source):
             has_ai  = any(kw in combined for kw in AI_KEYWORDS)
             has_sec = any(kw in combined for kw in SECURITY_KEYWORDS)
             has_cdc = any(kw in combined for kw in CDC_KEYWORDS)
+            is_vulnerability = any(kw in combined for kw in VULNERABILITY_KEYWORDS)
+            is_operations = any(kw in combined for kw in OPERATIONS_KEYWORDS)
 
             # strict_filter=True のソースは AI + Security/CDC の両方が必要（ノイズ排除）
             requires_both = source.get("strict_filter", False)
@@ -195,6 +220,8 @@ def fetch_rss(source):
                 "url":           link,
                 "ai_score":      ai_score,
                 "cdc_pre_score": cdc_pre_score,
+                "vulnerability_focus": is_vulnerability,
+                "operations_focus": is_operations,
                 "source_name":   source["name"],
                 "source_tier":   source["tier"],
                 "published":     pub.astimezone(JST).isoformat(),
@@ -213,17 +240,22 @@ def _pub_timestamp(article):
 
 
 def deduplicate(articles):
-    """AI関連記事を優先、同一ソースから最大2件まで"""
+    """脆弱性対応とSOC/CDC実務に近い記事を優先、同一ソースから最大3件まで。"""
     from collections import Counter
     seen, unique = set(), []
     source_count = Counter()
-    MAX_PER_SOURCE = 2
+    MAX_PER_SOURCE = 3
 
     # ソート: スコア降順 → Tier（A→B→C）→ 公開日の新しい順
     sorted_articles = sorted(
         articles,
         key=lambda x: (
-            -(x.get("ai_score", 1) + x.get("cdc_pre_score", 0)),
+            -(
+                x.get("ai_score", 1)
+                + x.get("cdc_pre_score", 0) * 2
+                + int(x.get("vulnerability_focus", False)) * 2
+                + int(x.get("operations_focus", False)) * 2
+            ),
             {"A":0,"B":1,"C":2}.get(x.get("source_tier","B"), 9),
             -_pub_timestamp(x),
         )
