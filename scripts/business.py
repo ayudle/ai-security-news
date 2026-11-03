@@ -1,5 +1,6 @@
 """業務向け収集ルールと、根拠付き記事メタデータの契約。API呼び出しなし。"""
 import re
+from engineering import engineering_topics, engineering_score
 
 FOCUS = {
     "脆弱性管理": ["vulnerability", "vulnerabilities", "cve", "cvss", "epss", "kev", "exploit", "patch", "zero-day", "脆弱性", "修正", "緩和策", "再診断", "パッチ", "exposure management"],
@@ -56,8 +57,12 @@ def matches(text, word):
 def relevance(title, summary, source):
     text = (title + " " + summary).lower()
     topics = [name for name, words in FOCUS.items() if any(matches(text, w) for w in words)]
+    technique_topics = engineering_topics(title, summary)
+    if technique_topics:
+        topics.append("診断技術・評価")
     domestic = source.get("region") == "JP"
-    score = len(topics) * 3 + (2 if domestic and topics else 0) + (1 if source.get("tier") == "A" and topics else 0)
+    score = len(topics) * 3 + engineering_score(title, summary)
+    score += (2 if domestic and topics else 0) + (1 if source.get("tier") == "A" and topics else 0)
     return topics, score
 
 def metadata_schema():

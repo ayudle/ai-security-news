@@ -13,8 +13,13 @@
 - サービス設計: MDR/MSSP、エスカレーション、品質保証、経営報告
 - Identity / Exposure: ITDR、PAM、非人間ID、CTEM、ASM、攻撃面管理
 - AI×セキュリティ: AIの防御利用と、LLM・AIエージェントの防御
+- 診断技術・評価: AI診断ハーネス、ソースコード/動的診断の検知性能、正解データとベンチマーク、修正案の安全性と機能維持、再診断
 
-1日1回、最大15件を収集します。脆弱性管理ライフサイクル、ソースコード/ブラックボックス診断、AIエージェント、企業インシデント、政策・地政学の5領域を対象に、国内情報と一次情報を加点します。関連情報が少ない日は水増ししません。
+1日1回、最大15件を収集します。脆弱性管理ライフサイクル、ソースコード/ブラックボックス診断、診断技術・評価、AIエージェント、企業インシデント、政策・地政学を対象に、国内情報と一次情報を加点します。関連情報が少ない日は水増ししません。
+
+診断技術・評価は「対象となる診断やセキュリティ課題」と「ハーネス・評価・修正検証の方法」が併記された記事を加点します。単にAIやベンチマークに触れた記事は加点しません。arXiv cs.CRとcs.SEは7日間の更新を確認し、cs.SEからはこの領域に一致する論文だけを採用します。過去に掲載した同じURLは再掲載しません。研究論文は最大2,000文字のRSS抜粋をGeminiへ渡し、評価方法・数値・限界を要約できるようにします。
+
+この領域の例: [診断ハーネスの設計](https://thehackernews.com/2026/10/the-harness-is-hard-part-of-agentic.html)（ベンダー寄稿）、[MetaVulのハーネス最適化](https://arxiv.org/abs/2610.40721)、[RiskyPyの安全性・機能性評価](https://arxiv.org/abs/2610.40735)。サイトの「診断技術・評価」ページと記事検索の同名テーマから、該当する過去記事も探せます。
 
 追加情報（悪用状況、対象製品、対応緊急度、日本企業との関連、ライフサイクル、診断種別）はGeminiのJSON Schemaで形式を固定し、根拠のない情報は「不明」にします。短いRSS抜粋による評価なので、対応判断は元の公表資料で確認してください。過去記事は再生成課金せず「未評価」と表示します。
 
@@ -25,7 +30,7 @@
 - 公的機関・標準: CISA、NIST、JPCERT/CC、OWASP GenAI
 - 国内: JVN、IPA注意喚起、JPCERT/CC分析ブログ、Security NEXT
 - 診断・開発: PortSwigger Research、GitHub Security
-- 脆弱性研究: CERT/CC Vulnerability Notes、Google Project Zero、arXiv cs.CR
+- 脆弱性・診断研究: CERT/CC Vulnerability Notes、Google Project Zero、arXiv cs.CR / cs.SE
 - 脅威インテリジェンス: Palo Alto Unit 42、Cisco Talos、Microsoft Security、CrowdStrike、Google Security Blog
 - 専門メディア: Krebs on Security、Dark Reading、SecurityWeek、The Hacker News、Bleeping Computer
 

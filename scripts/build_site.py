@@ -9,6 +9,8 @@ from urllib.parse import quote as _url_quote
 from datetime import datetime, timezone, timedelta
 from collections import Counter, defaultdict
 from attack_watch import render as render_attack_watch
+from engineering_watch import render as render_engineering_watch
+from engineering import engineering_topics
 
 JST       = timezone(timedelta(hours=9))
 DATA_PATH = "docs/data/latest.json"
@@ -550,6 +552,7 @@ def build_html(data, weekly_list=None, columns=None):
                 "cdc_context":   _a.get("cdc_context", [])[:4],
                 "cdc_relevance": _a.get("cdc_relevance", 0),
                 "related_keywords": _a.get("related_keywords", [])[:6],
+                "engineering_topics": _a.get("engineering_topics") or engineering_topics(_a.get("title", ""), _a.get("summary", "")),
                 "source_name":   _a.get("source_name", ""),
             })
     search_json = json.dumps(search_articles, ensure_ascii=False).replace('</', '<\\/')
@@ -667,6 +670,7 @@ def build_html(data, weekly_list=None, columns=None):
     # 分析データ
     analytics   = build_analytics(history, taxonomy)
     watch_html = render_attack_watch(history, safe_article_id)
+    engineering_html = render_engineering_watch(history, safe_article_id)
     ana_json    = json.dumps(analytics, ensure_ascii=False).replace('</', '<\\/')
     tax_json    = json.dumps(taxonomy, ensure_ascii=False).replace('</', '<\\/')
 
@@ -892,6 +896,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <div class="tab-bar">
   <a href="#today"   class="tab">本日のニュース</a>
   <a href="#trend"   class="tab">攻撃・インシデント動向</a>
+  <a href="#engineering" class="tab">診断技術・評価</a>
   <a href="#weekly"  class="tab">週次レポート</a>
   <a href="#columns" class="tab">コラム</a>
   <a href="#archive" class="tab">記事検索</a>
@@ -901,7 +906,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <div class="pane" id="pane-today">
   <div class="focus-strip" aria-label="注目領域">
     <a class="focus-card" href="?tag=脆弱性#archive"><strong>脆弱性・CVE</strong><span>本日 {vuln_count}件 · 悪用状況、パッチ、露出管理</span></a>
-    <a class="focus-card" href="?q=診断#archive"><strong>診断サービス</strong><span>ソースコード、Web / API、ブラックボックス</span></a>
+    <a class="focus-card" href="#engineering"><strong>診断技術・評価</strong><span>ハーネス、検知性能、修正案の検証</span></a>
     <a class="focus-card" href="?tag=AI×セキュリティ#archive"><strong>AIエージェント</strong><span>MCP、権限、情報漏えい、監査</span></a>
   </div>
   <div id="today-impl-box" style="display:none;background:#f2f6fa;border-left:3px solid #245d86;border-radius:4px;padding:12px 16px;margin-bottom:16px">
@@ -919,11 +924,11 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 
 <div class="pane" id="pane-archive">
   <p class="plabel">記事検索</p>
-  <p class="srch-desc">過去記事をテーマ・文脈・カテゴリから探せます。AI×セキュリティ、SOC/CDC、Security for AI の学習・調査に活用できます。</p>
+  <p class="srch-desc">過去記事をテーマ・文脈・カテゴリから探せます。脆弱性、攻撃・インシデント、診断技術・評価の調査に活用できます。</p>
   <div id="srch-url-notice" class="srch-url-notice" style="display:none">適用中の条件：<span id="srch-url-label"></span></div>
   <div class="srch-input-wrap">
     <span class="srch-input-icon">🔍</span>
-    <input type="search" id="srch-input" class="srch-input" placeholder="キーワードを入力（例：プロンプトインジェクション、CVE、SOC）" autocomplete="off">
+    <input type="search" id="srch-input" class="srch-input" placeholder="キーワードを入力（例：診断ハーネス、CVE、修正評価）" autocomplete="off">
   </div>
   <div class="srch-section-lbl">テーマから探す</div>
   <div class="srch-themes" id="srch-themes"></div>
@@ -962,6 +967,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 </div>
 
 {watch_html}
+{engineering_html}
 
 
 {weekly_pane_html}
@@ -985,7 +991,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
       <div class="about-axes">
         <div class="about-axis">
           <div class="about-axis-label" style="color:#245d86">脆弱性管理・診断</div>
-          <div class="about-axis-desc">発見、評価、診断、修正、再診断、継続管理。SAST/SCA/DAST、Web・API・クラウド診断。</div>
+          <div class="about-axis-desc">発見、評価、診断、修正、再診断、継続管理。SAST/SCA/DAST、Web・API・クラウド診断に加え、ハーネス設計と診断・修正性能の評価を追います。</div>
         </div>
         <div class="about-axis">
           <div class="about-axis-label" style="color:#E24B4A">Security for AI</div>
@@ -1018,7 +1024,7 @@ const LAYER_COLORS = {{"デバイス/エッジ":"#639922","ネットワーク":"
 const SEARCH_DATA = {search_json};
 
 function showTab(id) {{
-  var valid = ['today','archive','trend','weekly','columns','about'];
+  var valid = ['today','archive','trend','engineering','weekly','columns','about'];
   if (id === 'popular' || valid.indexOf(id) < 0) id = 'today';
   document.querySelectorAll('.pane').forEach(function(p) {{ p.classList.remove('on'); }});
   document.querySelectorAll('.tab-bar .tab').forEach(function(t) {{
@@ -1286,6 +1292,7 @@ function toggleKw(id, btn) {{
 
 // ── 記事検索 ──────────────────────────────────────────────────
 const SRCH_THEMES = [
+  {{id:'engineering', label:'診断技術・評価', kws:[]}},
   {{id:'agent',  label:'AIエージェント',  kws:['aiエージェント','agentic','agent','自律','ツール実行','mcp']}},
   {{id:'llmsec', label:'LLMセキュリティ', kws:['llm','生成ai','プロンプトインジェクション','ジェイルブレイク','モデル汚染','データポイズニング']}},
   {{id:'s4ai',   label:'Security for AI', kws:['security for ai','aiシステム','rag','mcp','モデル','プロンプト','aiガバナンス','ai権限']}},
@@ -1487,6 +1494,7 @@ function runSearch() {{
       }}
     }}
     if (srchState.cat !== 'all' && a.tag_main_id !== srchState.cat) return false;
+    if (activeTheme && activeTheme.id === 'engineering' && !(a.engineering_topics || []).length) return false;
     if (srchState.cdc === '2' && (a.cdc_relevance || 0) < 2) return false;
     if (srchState.cdc === '3' && (a.cdc_relevance || 0) < 3) return false;
     return true;
@@ -1506,8 +1514,10 @@ function runSearch() {{
         if ((a.summary_ja || '').toLowerCase().indexOf(q) >= 0) score += 2;
         if ((a.insight || '').toLowerCase().indexOf(q) >= 0) score += 1;
         if ((a.source_name || '').toLowerCase().indexOf(q) >= 0) score += 1;
+        if ((a.engineering_topics || []).some(function(t) {{ return t.toLowerCase().indexOf(q) >= 0; }})) score += 4;
       }}
       if (activeTheme) {{
+        if (activeTheme.id === 'engineering') score += (a.engineering_topics || []).length * 3;
         var allText = [
           a.title_ja, a.summary_ja, a.insight, a.tag_main_label,
           (a.tag_subs || []).join(' '),
@@ -1579,6 +1589,9 @@ function renderSrchCard(a) {{
   var ctxTags = (a.cdc_context || []).slice(0, 2).map(function(c) {{
     return '<span class="cdc-badge">' + escapeHtml(c) + '</span>';
   }}).join('');
+  var engTags = (a.engineering_topics || []).slice(0, 2).map(function(t) {{
+    return '<span class="tag-sub">' + escapeHtml(t) + '</span>';
+  }}).join('');
   return '<a href="' + href + '" class="srch-card">' +
     '<div class="srch-card-meta">' +
       '<span class="dt">' + escapeHtml(a.date || '') + '</span>' +
@@ -1589,7 +1602,7 @@ function renderSrchCard(a) {{
     (smryEsc ? '<div class="srch-card-summary">' + smryEsc + '</div>' : '') +
     '<div class="srch-card-tags">' +
       (ml ? '<span class="tag-main" style="background:' + mc + '20;color:' + mc + ';border-color:' + mc + '44">' + ml + '</span>' : '') +
-      subTags + ctxTags +
+      (srchState.theme === 'engineering' ? engTags : subTags + ctxTags) +
     '</div>' +
   '</a>';
 }}
