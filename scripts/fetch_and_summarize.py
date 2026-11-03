@@ -282,7 +282,7 @@ def deduplicate(articles):
     return unique
 
 
-def response_schema():
+def response_schema(article_count):
     strings = ["title_ja", "summary_ja", "insight", "importance_reason"]
     props = {k: {"type": "string"} for k in strings}
     props.update({
@@ -308,7 +308,9 @@ def response_schema():
         return node
 
     return {"type": "object", "properties": {
-        "articles": {"type": "array", "items": {"type": "object", "properties": shape(props), "required": ["index"]}},
+        "articles": {"type": "array", "minItems": article_count, "maxItems": article_count,
+                     "items": {"type": "object", "properties": shape(props),
+                               "required": ["index", "title_ja", "summary_ja", "insight", "business", "attack"]}},
         "today_implication": {"type": "string"},
     }, "required": ["articles"]}
 
@@ -385,6 +387,7 @@ attackには必ず evidence_status, target_layers, attack_methods, weaknesses, c
 
 【記事一覧】
 {articles_text}
+必ず上記と同じ {len(articles)} 件を articles に返し、index は 1 から {len(articles)} まで各1回ずつ使ってください。記事を省略・統合しないでください。
 """
 
     prompt += "\n最終要件: today_implicationは旧7セクション指定を使わず、【本日の要点】【診断・脆弱性対応】【AIエージェント】【国内・インシデント・政策】【深掘りする問い】の5項目、全体400〜600字。根拠のない項目は直接言及なし。一般論で埋めない。businessはスキーマの列挙値を守り、evidenceに入力抜粋から根拠を書く。\n"
@@ -399,7 +402,7 @@ attackには必ず evidence_status, target_layers, attack_methods, weaknesses, c
                 response = client.models.generate_content(
                     model=model,
                     contents=prompt,
-                    config={"response_mime_type": "application/json", "response_json_schema": response_schema(),
+                    config={"response_mime_type": "application/json", "response_json_schema": response_schema(len(articles)),
                             "thinking_config": {"thinking_level": "low"}},
                 )
                 print(f"Gemini応答モデル: {model}")
