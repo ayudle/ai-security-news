@@ -15,6 +15,37 @@ ENUMS = {
     "exploitation": ["悪用確認あり", "PoC公開のみ", "悪用未確認と明記", "不明"],
     "urgency": ["緊急", "早期評価", "情報収集", "不明"],
 }
+ATTACK_LAYERS = ["外部公開資産", "認証・ID", "インフラ・ネットワーク", "クラウド・コンテナ", "Web・API", "ソースコード・ソフトウェア供給網", "データ・AI・AIエージェント"]
+EVIDENCE_STATUS = ["実被害確認", "悪用確認", "複数機関が観測", "PoCのみ", "研究報告のみ", "不明"]
+TESTABILITY = ["適性あり", "条件付き", "他の診断方式が必要", "判断材料不足"]
+
+def attack_schema():
+    strings = ["initial_access", "observed_impact", "japan_observation", "assessment_preconditions", "test_scenario", "human_validation", "service_implication", "source_evidence"]
+    props = {k: {"type": "string"} for k in strings}
+    props.update({
+        "evidence_status": {"type": "string", "enum": EVIDENCE_STATUS},
+        "target_layers": {"type": "array", "items": {"type": "string", "enum": ATTACK_LAYERS}, "maxItems": 2},
+        "attack_methods": {"type": "array", "items": {"type": "string"}, "maxItems": 3},
+        "weaknesses": {"type": "array", "items": {"type": "string"}, "maxItems": 3},
+        "cve_ids": {"type": "array", "items": {"type": "string"}, "maxItems": 4},
+        "blackbox_testability": {"type": "string", "enum": TESTABILITY},
+    })
+    return {"type": "object", "properties": props, "required": list(props)}
+
+def normalize_attack(raw):
+    raw = raw if isinstance(raw, dict) else {}
+    out = {k: str(raw.get(k, "不明"))[:300] if isinstance(raw.get(k), str) and raw.get(k, "").strip() else "不明" for k in ["initial_access", "observed_impact", "japan_observation", "assessment_preconditions", "test_scenario", "human_validation", "service_implication", "source_evidence"]}
+    out["evidence_status"] = raw.get("evidence_status") if raw.get("evidence_status") in EVIDENCE_STATUS else "不明"
+    out["blackbox_testability"] = raw.get("blackbox_testability") if raw.get("blackbox_testability") in TESTABILITY else "判断材料不足"
+    for key, limit in [("target_layers", 2), ("attack_methods", 3), ("weaknesses", 3), ("cve_ids", 4)]:
+        values = raw.get(key)
+        out[key] = [v[:100] for v in values if isinstance(v, str) and v.strip()][:limit] if isinstance(values, list) else []
+    out["target_layers"] = [v for v in out["target_layers"] if v in ATTACK_LAYERS]
+    out["cve_ids"] = [v for v in out["cve_ids"] if re.fullmatch(r"CVE-\d{4}-\d{4,}", v, re.I)]
+    if out["source_evidence"] == "不明":
+        out["evidence_status"] = "不明"
+        out["blackbox_testability"] = "判断材料不足"
+    return out
 
 def matches(text, word):
     # 短い英字語は部分一致させない（SCA / MCP等の誤検知防止）。

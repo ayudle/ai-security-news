@@ -8,6 +8,7 @@ from html import escape as html_escape
 from urllib.parse import quote as _url_quote
 from datetime import datetime, timezone, timedelta
 from collections import Counter, defaultdict
+from attack_watch import render as render_attack_watch
 
 JST       = timezone(timedelta(hours=9))
 DATA_PATH = "docs/data/latest.json"
@@ -264,7 +265,7 @@ nav.col-nav a{{color:var(--accent);text-decoration:none}}
 .col-head{{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}}
 .col-meta{{font-size:11px;color:var(--dim);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}}
 .col-tags-ap{{display:flex;flex-wrap:wrap;gap:4px}}
-.col-tag-ap{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#245d86}}
+.col-tag-ap{{font-size:12px;padding:2px 7px;border-radius:2px;background:#f2f4f6;border:1px solid #d9dfe5;color:#35414d}}
 h1.col-title{{font-size:24px;font-weight:700;color:#202830;line-height:1.4;margin-bottom:10px}}
 .col-desc{{font-size:14px;color:var(--dim);line-height:1.65;margin-top:8px}}
 .col-body{{font-size:15px;line-height:1.9;color:var(--text)}}
@@ -290,7 +291,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
 <nav class="col-nav">
   <a href="/ai-security-news/#today">本日のニュース</a>
-  <a href="/ai-security-news/#trend">トレンド分析</a>
+  <a href="/ai-security-news/#trend">攻撃・インシデント動向</a>
   <a href="/ai-security-news/#weekly">週次レポート</a>
   <a href="/ai-security-news/#columns">コラム一覧</a>
 </nav>
@@ -300,10 +301,10 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     <div class="col-meta">
       <span>{html_escape(date)}</span>
       {human_badge}
-      <div class="col-tags-ap">{tags_html}</div>
     </div>
     <h1 class="col-title">{html_escape(title)}</h1>
     <p class="col-desc">{html_escape(desc)}</p>
+    <div class="col-related-themes"><strong>関連テーマ</strong><div class="col-tags-ap">{tags_html}</div></div>
   </div>
 
   <div class="col-body">
@@ -639,15 +640,14 @@ def build_html(data, weekly_list=None, columns=None):
             cslug  = col.get('slug','')
             cdesc  = col.get('description','')
             ctags  = col.get('tags',[])
-            ctags_html = "".join(f'<span class="col-tag">{html_escape(t)}</span>' for t in ctags)
+            ctags_html = "".join(f'<span class="col-tag">{html_escape(t)}</span>' for t in ctags[:3])
             col_cards_html += (
-                f'<div class="col-card">'
+                f'<article class="col-card">'
                 f'<div class="col-card-meta">{html_escape(cdate)}</div>'
                 f'<h2 class="col-card-title"><a href="columns/{cslug}.html">{html_escape(ctitle)}</a></h2>'
                 f'<p class="col-card-desc">{html_escape(cdesc)}</p>'
                 f'<div class="col-card-tags">{ctags_html}</div>'
-                f'<a href="columns/{cslug}.html" class="col-read-link">読む →</a>'
-                f'</div>\n'
+                f'</article>\n'
             )
         columns_pane_html = (
             '<div class="pane" id="pane-columns">\n'
@@ -666,6 +666,7 @@ def build_html(data, weekly_list=None, columns=None):
 
     # 分析データ
     analytics   = build_analytics(history, taxonomy)
+    watch_html = render_attack_watch(history, safe_article_id)
     ana_json    = json.dumps(analytics, ensure_ascii=False).replace('</', '<\\/')
     tax_json    = json.dumps(taxonomy, ensure_ascii=False).replace('</', '<\\/')
 
@@ -807,14 +808,14 @@ a{{color:inherit;text-decoration:none}}
 .imp-detail[open] .imp-detail-toggle::before{{content:"▼ 閉じる";font-size:11px}}
 .imp-detail-toggle::-webkit-details-marker{{display:none}}
 .imp-detail-toggle::marker{{display:none}}
-.col-card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;margin-bottom:14px}}
+.col-card{{background:#fff;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:24px 0;margin:0}}
 .col-card-meta{{font-size:10px;color:var(--dim);margin-bottom:6px}}
 .col-card-title{{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:8px}}
 .col-card-title a{{color:var(--text)}}
 .col-card-title a:hover{{color:var(--accent)}}
 .col-card-desc{{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:8px}}
 .col-card-tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}}
-.col-tag{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#245d86}}
+.col-tag{{font-size:12px;padding:2px 7px;border-radius:2px;background:#f2f4f6;border:1px solid #d9dfe5;color:#35414d}}
 .col-intro{{font-size:12px;color:var(--dim);margin-bottom:16px;line-height:1.65}}
 .col-read-link{{display:inline-block;font-size:12px;color:var(--accent);padding:4px 0}}
 .srch-desc{{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:14px}}
@@ -890,7 +891,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 
 <div class="tab-bar">
   <a href="#today"   class="tab">本日のニュース</a>
-  <a href="#trend"   class="tab">トレンド分析</a>
+  <a href="#trend"   class="tab">攻撃・インシデント動向</a>
   <a href="#weekly"  class="tab">週次レポート</a>
   <a href="#columns" class="tab">コラム</a>
   <a href="#archive" class="tab">記事検索</a>
@@ -907,7 +908,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
     <div style="font-size:10px;font-weight:700;color:#245d86;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
     <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#475361"></div>
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px">
-      <a href="#trend" style="font-size:11px;color:#245d86;text-decoration:none">→ トレンド分析で詳しく見る</a>
+      <a href="#trend" style="font-size:11px;color:#245d86;text-decoration:none">→ 攻撃・インシデント動向で詳しく見る</a>
       {weekly_today_link}
       {related_column_link}
     </div>
@@ -960,74 +961,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
   </details>
 </div>
 
-<div class="pane" id="pane-trend">
-  <p class="plabel">トレンド分析</p>
-
-  <div class="stat-row">
-    <div class="stat"><div class="stat-n" id="s-total">—</div><div class="stat-l">累計記事数</div></div>
-    <div class="stat"><div class="stat-n" id="s-days">—</div><div class="stat-l">更新日数</div></div>
-    <div class="stat"><div class="stat-n" id="s-spike">—</div><div class="stat-l">急上昇トピック数</div></div>
-  </div>
-
-  <div class="dash-grid">
-
-    <div class="dc" style="grid-column:1/-1">
-      <div class="dc-title">急上昇トピック（過去7日）</div>
-      <div class="dc-sub">先週と比べて話題が急増しているキーワード</div>
-      <div class="spike-list" id="spike-list"></div>
-    </div>
-
-    <div class="dc" style="grid-column:1/-1">
-      <div class="dc-title">大項目を選んで中項目トレンドを見る</div>
-      <div class="sub-filter" id="main-filter"></div>
-      <div id="sub-bars"></div>
-    </div>
-
-    <div class="dc">
-      <div class="dc-title">大項目の分布（過去7日）</div>
-      <div id="main-bars-7"></div>
-    </div>
-
-    <div class="dc">
-      <div class="dc-title">重要度の内訳</div>
-      <div class="imp-note">
-        <strong style="color:var(--text)">重要度の判断基準</strong><br>
-        高: 広範囲に影響・即時対応が必要<br>
-        中: 特定分野に影響・注目トレンド<br>
-        低: 参考情報・長期動向<br>
-        <span style="font-size:10px">AIが記事内容から自動判定。各記事の「重要度」横の「?」にカーソルを合わせると理由が表示されます。</span>
-      </div>
-      <div id="imp-bars"></div>
-    </div>
-
-    <div class="dc" id="dc-layer" style="grid-column:1/-1">
-      <div class="dc-title">影響レイヤー分布（過去7日）</div>
-      <div class="dc-sub">各記事が影響するインフラ・ガバナンス層の内訳</div>
-      <div id="layer-bars"></div>
-    </div>
-
-    <div class="dc" id="dc-kw" style="grid-column:1/-1">
-      <div class="dc-title">キーワードクラウド（過去7日）</div>
-      <div class="dc-sub">頻出キーワードをフォントサイズで表現（大きいほど多出現）</div>
-      <div class="kw-cloud" id="kw-cloud"></div>
-    </div>
-
-    <div class="dc" id="dc-heatmap" style="grid-column:1/-1">
-      <div class="dc-title">6階層ヒートマップ（過去7日）</div>
-      <div class="dc-sub">日付×インフラ階層の記事件数</div>
-      <div class="hm-legend">
-        <span class="hm-lg-lbl">凡例</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:#f2f4f6"></span>0件</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.2)"></span>少</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.55)"></span>中</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.9)"></span>多</span>
-        <span class="hm-lg-item" style="margin-left:4px;font-size:10px;color:var(--dim)">※各層の固有色で表示</span>
-      </div>
-      <div id="layer-heatmap"></div>
-    </div>
-
-  </div>
-</div>
+{watch_html}
 
 
 {weekly_pane_html}
@@ -1236,6 +1170,7 @@ function initDashboard() {{
   if (ANA.today_implication) {{
     renderImplication(ANA.today_implication, 'today-impl-text', 'today-impl-box', true);
   }}
+  return;
 
   document.getElementById('s-total').textContent = ANA.total_articles;
   document.getElementById('s-days').textContent  = ANA.total_days;
@@ -1925,7 +1860,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 <a href="../#today" class="back">← ニュース一覧に戻る</a>
 <nav class="sub-nav">
   <a href="../#today">今日のニュース</a>
-  <a href="../#trend">トレンド分析</a>
+  <a href="../#trend">攻撃・インシデント動向</a>
   <a href="../#weekly">週次レポート</a>
   <a href="../#columns">コラム</a>
   <a href="../#archive">記事検索</a>
@@ -2307,7 +2242,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
 <nav style="padding:8px 24px 10px;border-bottom:1px solid #d9dfe5;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
   <a href="/ai-security-news/#today"   style="color:#245d86;text-decoration:none">本日のニュース</a>
-  <a href="/ai-security-news/#trend"   style="color:#245d86;text-decoration:none">トレンド分析</a>
+  <a href="/ai-security-news/#trend"   style="color:#245d86;text-decoration:none">攻撃・インシデント動向</a>
   <a href="/ai-security-news/#archive" style="color:#245d86;text-decoration:none">記事検索</a>
   <a href="/ai-security-news/#weekly"  style="color:#245d86;text-decoration:none">週次レポート一覧</a>
 </nav>
