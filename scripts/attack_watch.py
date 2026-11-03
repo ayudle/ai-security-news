@@ -4,8 +4,9 @@ from html import escape
 from collections import defaultdict
 from business import ATTACK_LAYERS, normalize_attack, normalize_metadata
 
-STATUSES = {"実被害確認", "悪用確認", "複数機関が観測", "PoCのみ", "研究報告のみ"}
-RANK = {"実被害確認": 5, "悪用確認": 4, "複数機関が観測": 3, "PoCのみ": 2, "研究報告のみ": 1}
+CONFIRMED = {"実被害確認", "悪用確認", "複数機関が観測"}
+STATUSES = CONFIRMED | {"PoCのみ"}
+RANK = {"実被害確認": 4, "悪用確認": 3, "複数機関が観測": 2, "PoCのみ": 1}
 SERVICES = ["ブラックボックス診断", "Web診断", "API診断", "クラウド診断", "ソースコード診断", "SAST", "SCA", "シークレット検出", "モバイル診断", "AIエージェント評価", "ペネトレーションテスト"]
 
 def val(value):
@@ -46,11 +47,12 @@ def render(history, safe_id):
                          "date": day.get("date", ""), "source": article.get("source_name", ""),
                          "attack": attack, "business": business})
     rows.sort(key=lambda r: (RANK[r["attack"]["evidence_status"]], r["business"]["urgency"] == "緊急", r["business"]["japan_relevance"] == "直接関連", r["date"]), reverse=True)
+    confirmed_rows = [r for r in rows if r["attack"]["evidence_status"] in CONFIRMED]
     out = ['<div class="pane" id="pane-trend"><h2 class="watch-title">攻撃・インシデント動向</h2>',
            '<p class="watch-intro">収集範囲内の直近14日で確認できた情報です。市場全体の攻撃件数や流行を示すものではありません。事実と検討課題を分けて記載します。</p>']
     out.append('<section class="watch-section"><h3>現在確認されている攻撃・インシデント</h3>')
-    if rows:
-        for r in rows[:12]:
+    if confirmed_rows:
+        for r in confirmed_rows[:12]:
             a, b = r["attack"], r["business"]
             out.append('<article class="watch-item">'
                        f'<p class="watch-meta">{val(r["date"])} · {val(r["source"])} · {val(a["evidence_status"])}</p>'
@@ -61,10 +63,10 @@ def render(history, safe_id):
                        f'<div><dt>影響・国内</dt><dd>{val(a["observed_impact"])} / {val(a["japan_observation"])}</dd></div></dl>'
                        f'<p class="watch-source">根拠: {val(a["source_evidence"])}</p></article>')
     else:
-        out.append('<p class="watch-empty">根拠付きで分類できた記事はまだありません。新しい日次更新から情報を蓄積します。過去記事は未評価です。</p>')
+        out.append('<p class="watch-empty">収集範囲内で攻撃・被害を確認できた記事はまだありません。過去記事は未評価です。</p>')
     out.append('</section><section class="watch-section"><h3>攻撃手法 × 対象レイヤー</h3>')
     by_layer = defaultdict(list)
-    for r in rows:
+    for r in confirmed_rows:
         for layer in r["attack"]["target_layers"]:
             by_layer[layer].append(r)
     for layer in ATTACK_LAYERS:
