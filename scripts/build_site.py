@@ -43,7 +43,22 @@ def _safe_url(url: str) -> str:
     u = (url or "").strip().replace("\n", "").replace("\r", "").replace("\t", "")
     if not u or u == "#":
         return "#"
-    return u if _SAFE_URL_SCHEME.match(u) else "#"
+    return html_escape(u, quote=True) if _SAFE_URL_SCHEME.match(u) else "#"
+
+def business_details(article, compact=False):
+    from business import normalize_metadata
+    meta = normalize_metadata(article.get("business"))
+    if compact:
+        return ('<div class="business-brief">' + ' · '.join(html_escape(v) for v in [
+            '日本との関連: ' + meta['japan_relevance'],
+            '悪用: ' + meta['exploitation'], '対応: ' + meta['urgency'],
+        ]) + '</div>') if article.get('business') else ''
+    fields = [("日本企業との関連", meta["japan_relevance"]), ("悪用状況", meta["exploitation"]),
+              ("対応緊急度", meta["urgency"]), ("対象製品・技術", '、'.join(meta["products"])),
+              ("ライフサイクル", '、'.join(meta["lifecycle"])), ("診断種別", '、'.join(meta["assessments"])),
+              ("根拠（収集時の抜粋）", meta["evidence"])]
+    note = '' if article.get('business') else '<p class="metadata-note">過去記事のため追加情報は未評価です。</p>'
+    return '<section class="ap-section"><h2 class="ap-sec-title">業務で確認する情報</h2>' + note + '<dl class="business-details">' + ''.join('<div><dt>' + html_escape(k) + '</dt><dd>' + html_escape(v) + '</dd></div>' for k, v in fields) + '</dl></section>'
 
 def safe_article_id(raw_id: str) -> str:
     """記事IDを検証し、安全なもののみ返す。不正な場合は空文字。"""
@@ -143,7 +158,7 @@ def build_column_page(col, all_articles=None, all_columns=None):
     tags_html = ''.join(
         f'<span class="col-tag-ap">{html_escape(t)}</span>' for t in tags
     )
-    human_badge = '<span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a;font-weight:600">✍ 著者執筆</span>'
+    human_badge = '<span class="human-badge">著者執筆</span>'
 
     # このコラムのCDC contextセットに一致する記事を最大5件抽出
     col_cdcs = col_cdc_set(tags)
@@ -165,17 +180,17 @@ def build_column_page(col, all_articles=None, all_columns=None):
                 a_src = a.get("source_name", "")
                 a_imp = a.get("importance", "中")
                 a_cdcs = [c for c in a.get("cdc_context", []) if c in col_cdcs]
-                badge_html = "".join(f'<span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896">{c}</span>' for c in a_cdcs[:2])
+                badge_html = "".join(f'<span style="font-size:9px;padding:1px 5px;border-radius:99px;background:#f2f6fa;border:1px solid #d9dfe5;color:#245d86">{c}</span>' for c in a_cdcs[:2])
                 items.append(
-                    f'<a href="../article/{a_id}.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px">'
-                    f'<div style="font-size:10px;color:#6a6860;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center">'
+                    f'<a href="../article/{a_id}.html" style="display:block;padding:10px 12px;background:#f6f7f8;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px">'
+                    f'<div style="font-size:10px;color:#566473;margin-bottom:4px;display:flex;flex-wrap:wrap;gap:6px;align-items:center">'
                     f'<span>{a_pub}</span><span>{html_escape(a_src)}</span>{badge_html}</div>'
-                    f'<div style="font-size:13px;color:#e6e4dc;line-height:1.5">{html_escape(a_title)}</div>'
+                    f'<div style="font-size:13px;color:#202830;line-height:1.5">{html_escape(a_title)}</div>'
                     f'</a>'
                 )
             related_news_html = (
                 '<div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)">'
-                '<div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#4db896;text-transform:uppercase;margin-bottom:14px">このテーマの最近のニュース</div>'
+                '<div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#245d86;text-transform:uppercase;margin-bottom:14px">このテーマの最近のニュース</div>'
                 + "".join(items) +
                 '</div>'
             )
@@ -191,15 +206,15 @@ def build_column_page(col, all_articles=None, all_columns=None):
                 c_desc  = html_escape(c.get('description', ''))
                 c_date  = html_escape(c.get('date', ''))
                 items_c.append(
-                    f'<a href="../columns/{c_slug}.html" style="display:block;padding:10px 12px;background:#1a1a18;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px">'
-                    f'<div style="font-size:10px;color:#6a6860;margin-bottom:4px">{c_date}</div>'
-                    f'<div style="font-size:13px;color:#e6e4dc;font-weight:600;line-height:1.4;margin-bottom:4px">{c_title}</div>'
+                    f'<a href="../columns/{c_slug}.html" style="display:block;padding:10px 12px;background:#f6f7f8;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px">'
+                    f'<div style="font-size:10px;color:#566473;margin-bottom:4px">{c_date}</div>'
+                    f'<div style="font-size:13px;color:#202830;font-weight:600;line-height:1.4;margin-bottom:4px">{c_title}</div>'
                     f'<div style="font-size:12px;color:#9ca3af;line-height:1.5">{c_desc}</div>'
                     f'</a>'
                 )
             related_cols_html = (
                 '<div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)">'
-                '<div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#6aabdd;text-transform:uppercase;margin-bottom:14px">関連する設計ノート</div>'
+                '<div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#245d86;text-transform:uppercase;margin-bottom:14px">関連する設計ノート</div>'
                 + "".join(items_c) +
                 '</div>'
             )
@@ -211,7 +226,7 @@ def build_column_page(col, all_articles=None, all_columns=None):
         "@type": "Article",
         "headline": title,
         "description": desc,
-        "author": {"@type": "Person", "name": "Ayudle"},
+        "author": {"@type": "Organization", "name": "Cyber Defense Notes"},
         "publisher": {"@type": "Organization", "name": "Cyber Defense Notes",
                       "url": "https://ayudle.github.io/ai-security-news/"},
         "datePublished": date,
@@ -236,29 +251,29 @@ def build_column_page(col, all_articles=None, all_columns=None):
 <link rel="icon" type="image/png" href="../favicon.png">
 <script type="application/ld+json">{jsonld}</script>
 <style>
-:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}}
+:root{{--bg:#ffffff;--text:#202830;--dim:#566473;--border:#d9dfe5;--accent:#245d86;--card:#f6f7f8}}
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}}
 header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}}
 .logo{{font-size:18px;font-weight:700}}
 .back{{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
 .back:hover{{text-decoration:underline}}
-nav.col-nav{{padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px}}
+nav.col-nav{{padding:8px 24px 10px;border-bottom:1px solid #d9dfe5;display:flex;flex-wrap:wrap;gap:16px;font-size:12px}}
 nav.col-nav a{{color:var(--accent);text-decoration:none}}
 .col-ap{{max-width:720px;margin:0 auto;padding:16px 24px 60px}}
 .col-head{{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}}
 .col-meta{{font-size:11px;color:var(--dim);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}}
 .col-tags-ap{{display:flex;flex-wrap:wrap;gap:4px}}
-.col-tag-ap{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}}
-h1.col-title{{font-size:24px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:10px}}
+.col-tag-ap{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#245d86}}
+h1.col-title{{font-size:24px;font-weight:700;color:#202830;line-height:1.4;margin-bottom:10px}}
 .col-desc{{font-size:14px;color:var(--dim);line-height:1.65;margin-top:8px}}
 .col-body{{font-size:15px;line-height:1.9;color:var(--text)}}
-.col-body h1,.col-body h2{{font-size:18px;font-weight:700;color:#fff;margin:2em 0 .6em;padding-bottom:6px;border-bottom:1px solid var(--border)}}
-.col-body h3{{font-size:15px;font-weight:700;color:#c0beb6;margin:1.6em 0 .5em}}
+.col-body h1,.col-body h2{{font-size:18px;font-weight:700;color:#202830;margin:2em 0 .6em;padding-bottom:6px;border-bottom:1px solid var(--border)}}
+.col-body h3{{font-size:15px;font-weight:700;color:#475361;margin:1.6em 0 .5em}}
 .col-body p{{margin-bottom:1.2em}}
 .col-body ul{{margin:0 0 1.2em 1.4em}}
 .col-body li{{margin-bottom:.4em}}
-.col-body strong{{color:#fff;font-weight:700}}
+.col-body strong{{color:#202830;font-weight:700}}
 .col-footer{{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px}}
 footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
 </style>
@@ -401,14 +416,12 @@ def article_card(a, rank=None):
     {imp_badge(a.get('importance','中'))}
   </div>
   <h2 class="ct"><a href="/ai-security-news/article/{aid_esc}.html" onclick="event.stopPropagation()">{html_escape(a.get('title_ja') or a.get('title',''))}</a></h2>
-  {insight_snippet}
-  {cdc_html}
+  <p class="article-summary">{html_escape((a.get('summary_ja') or '')[:200])}</p>
+  {business_details(a, compact=True)}
   <div class="tags">
     {tag_main_badge(main_id, main_label)}
     {subs_html}
   </div>
-  {layers_row}
-  {kw_section}
   <div class="cf">出典: <a href="{_safe_url(a.get('url','#'))}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">{html_escape(a.get('source_name',''))}</a>
   <em class="orig">"{html_escape(a.get('title',''))}"</em></div>
 </article>"""
@@ -550,7 +563,7 @@ def build_html(data, weekly_list=None, columns=None):
         wpe_s = wpe[5:].replace("-", "/") if len(wpe) >= 10 else wpe
         weekly_today_link = (
             f'<a href="weekly/{wpe}.html" '
-            f'style="display:inline-block;font-size:11px;color:#378ADD;'
+            f'style="display:inline-block;font-size:11px;color:#245d86;'
             f'text-decoration:none;margin-top:8px">'
             f'&#x1F4CA; 先週のレポート（{wps_s}〜{wpe_s}）を読む →</a>'
         )
@@ -586,13 +599,13 @@ def build_html(data, weekly_list=None, columns=None):
         w_summary = latest_w.get("executive_summary", "")
         w_summary_short = (w_summary[:200] + "…") if len(w_summary) > 200 else w_summary
         latest_card = (
-            f'<div style="background:#14243a;border-left:3px solid #378ADD;'
+            f'<div style="background:#f2f6fa;border-left:3px solid #245d86;'
             f'padding:14px 18px;border-radius:4px;margin-bottom:18px">'
-            f'<div style="font-size:11px;font-weight:700;color:#378ADD;'
+            f'<div style="font-size:11px;font-weight:700;color:#245d86;'
             f'letter-spacing:.05em;margin-bottom:6px">最新レポート（{wps_s}〜{wpe_s}）</div>'
-            f'<div style="font-size:13px;line-height:1.8;color:#e6e4dc;margin-bottom:10px">'
+            f'<div style="font-size:13px;line-height:1.8;color:#202830;margin-bottom:10px">'
             f'{html_escape(w_summary_short)}</div>'
-            f'<a href="weekly/{wpe}.html" style="font-size:12px;color:#378ADD">'
+            f'<a href="weekly/{wpe}.html" style="font-size:12px;color:#245d86">'
             f'全文を読む →</a></div>'
         )
         past_rows = ""
@@ -673,7 +686,7 @@ def build_html(data, weekly_list=None, columns=None):
 <meta name="description" content="脆弱性、脅威インテリジェンス、SOC/CDC、MDR/MSSP、Identity/ITDR、Exposure管理、AI×セキュリティの最新動向を実務者視点で整理する設計ノート。">
 <meta name="google-site-verification" content="m7S3bMP_P0V-BinV3MTpaO9qkk31af-RRKxsQ4_BoQg" />
 <meta property="og:title" content="Cyber Defense Notes">
-<meta property="og:description" content="AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
+<meta property="og:description" content="脆弱性診断・管理とAIエージェントの情報ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
@@ -686,7 +699,7 @@ def build_html(data, weekly_list=None, columns=None):
   "@type": "WebSite",
   "name": "Cyber Defense Notes",
   "url": "https://ayudle.github.io/ai-security-news/",
-  "description": "AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤",
+  "description": "脆弱性診断・管理とAIエージェントの情報ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤",
   "publisher": {{
     "@type": "Organization",
     "name": "Cyber Defense Notes",
@@ -696,16 +709,16 @@ def build_html(data, weekly_list=None, columns=None):
 </script>
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-:root{{--bg:#101319;--card:#191e27;--card2:#222a36;--text:#f1f4f8;--muted:#c0c8d4;--dim:#98a4b3;--border:#303846;--accent:#66aaf2;--r:12px}}
+:root{{--bg:#ffffff;--card:#f6f7f8;--card2:#eef1f4;--text:#202830;--muted:#475361;--dim:#566473;--border:#d9dfe5;--accent:#245d86;--r:12px}}
 body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px}}
 a{{color:inherit;text-decoration:none}}
-.hdr{{border-bottom:1px solid var(--border);padding:16px max(24px,calc((100vw - 980px)/2));display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#121720}}
+.hdr{{border-bottom:1px solid var(--border);padding:16px max(24px,calc((100vw - 980px)/2));display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#ffffff}}
 .hdr-home{{display:inline-flex;align-items:center;text-decoration:none;color:inherit}}
 .hdr-home:hover .ht{{color:var(--accent)}}
-.ht{{font-size:18px;font-weight:750;color:#fff;margin:0;letter-spacing:-.01em}}
+.ht{{font-size:18px;font-weight:750;color:#202830;margin:0;letter-spacing:-.01em}}
 .hs{{font-size:12px;color:var(--muted)}}
 .hu{{font-size:11px;color:var(--dim);margin-left:auto}}
-.tab-bar{{display:flex;border-bottom:1px solid var(--border);padding:0 max(24px,calc((100vw - 980px)/2));overflow-x:auto;background:#121720;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}}
+.tab-bar{{display:flex;border-bottom:1px solid var(--border);padding:0 max(24px,calc((100vw - 980px)/2));overflow-x:auto;background:#ffffff;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}}
 @media(min-width:768px){{.tab-bar{{-webkit-mask-image:none;mask-image:none}}}}
 .tab{{font-size:13px;padding:12px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s}}
 .tab.on,.tab[aria-current="page"]{{color:var(--text);border-bottom-color:var(--accent);font-weight:600}}
@@ -717,25 +730,25 @@ a{{color:inherit;text-decoration:none}}
 .card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:14px;cursor:pointer;transition:border-color .15s,transform .15s}}
 .card:hover{{border-color:#3a3a38}}
 .cm{{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:8px}}
-.tier{{background:#0c2a4a;color:#85b7eb;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}}
+.tier{{background:#eef1f4;color:#245d86;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}}
 .src,.dt{{font-size:10px;color:var(--dim)}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
 .rank{{font-size:13px;font-weight:700;color:var(--accent);min-width:22px}}
 .cdc-badges{{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}}
-.cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
-.cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}}
+.cdc-lbl{{font-size:9px;font-weight:700;color:#245d86;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
+.cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#f2f6fa;border:1px solid #d9dfe5;color:#245d86}}
 .ct{{font-size:17px;font-weight:700;margin-bottom:8px;line-height:1.55;letter-spacing:.005em}}
 .ct a:hover{{color:var(--accent)}}
 .cs{{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:10px}}
-.insight{{background:#12253d;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px;font-size:13px;color:#b9d9fb;line-height:1.75}}
+.insight{{background:#f2f6fa;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px;font-size:13px;color:#245d86;line-height:1.75}}
 .ins-lbl{{display:block;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:2px;text-transform:uppercase}}
 .tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}}
 .tag-main{{font-size:10px;padding:2px 8px;border-radius:99px;border:1px solid;font-weight:600}}
-.tag-sub{{font-size:10px;padding:2px 7px;border-radius:99px;background:#222220;border:1px solid #333330;color:var(--muted)}}
+.tag-sub{{font-size:10px;padding:2px 7px;border-radius:99px;background:#f2f4f6;border:1px solid #d9dfe5;color:var(--muted)}}
 .tags-meta{{margin-top:3px}}
-.tag-layer{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0d2233;border:1px solid #1a4060;color:#6aabdd}}
-.tag-kw{{font-size:9px;padding:1px 5px;border-radius:99px;background:#1e1e1c;border:1px solid #2e2e2c;color:#6a6860}}
+.tag-layer{{font-size:9px;padding:1px 6px;border-radius:99px;background:#eef1f4;border:1px solid #d9dfe5;color:#245d86}}
+.tag-kw{{font-size:9px;padding:1px 5px;border-radius:99px;background:#f2f4f6;border:1px solid #d9dfe5;color:#566473}}
 .cf{{font-size:10px;color:var(--dim)}}
 .cf a{{color:var(--accent)}}
 .orig{{font-style:italic;margin-left:4px}}
@@ -756,11 +769,11 @@ a{{color:inherit;text-decoration:none}}
 .bar-row{{display:flex;align-items:center;gap:6px;margin-bottom:7px;cursor:pointer}}
 .bar-row:hover .bl{{color:var(--text)}}
 .bl{{width:130px;font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;transition:color .1s}}
-.bt{{flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden}}
+.bt{{flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden}}
 .bf{{height:100%;border-radius:3px;transition:width .4s}}
 .bn{{width:18px;text-align:right;font-size:10px;color:var(--dim)}}
 .spike-list{{display:flex;flex-direction:column;gap:6px}}
-.spike-item{{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:#222220;border-radius:6px}}
+.spike-item{{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:#f2f4f6;border-radius:6px}}
 .spike-name{{font-size:12px;color:var(--text)}}
 .spike-badge{{font-size:10px;background:#E24B4A22;color:#E24B4A;border:1px solid #E24B4A44;padding:2px 7px;border-radius:99px}}
 .sub-filter{{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}}
@@ -770,7 +783,7 @@ a{{color:inherit;text-decoration:none}}
 .kw-cloud{{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:4px 0}}
 .kw-bubble{{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:default;text-align:center;padding:6px;line-height:1.25;word-break:break-word;overflow:hidden;transition:opacity .15s;flex-shrink:0}}
 .kw-bubble:hover{{opacity:.75}}
-.kw-bubble-word{{color:#fff;font-weight:600}}
+.kw-bubble-word{{color:#202830;font-weight:600}}
 .kw-bubble-cnt{{color:rgba(255,255,255,.6);font-size:8px;margin-top:1px}}
 .hm-legend{{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}}
 .hm-lg-lbl{{font-size:10px;color:var(--dim);font-weight:700;letter-spacing:.05em}}
@@ -789,8 +802,8 @@ a{{color:inherit;text-decoration:none}}
 .kw-btn[aria-expanded="true"]{{background:var(--card2)}}
 .hidden{{display:none}}
 .imp-detail{{margin-top:8px}}
-.imp-detail-toggle{{cursor:pointer;display:block;font-size:0;color:#378ADD;padding:4px 0;user-select:none;outline:none;list-style:none}}
-.imp-detail-toggle::before{{content:"▶ 全文を読む";font-size:11px;color:#378ADD}}
+.imp-detail-toggle{{cursor:pointer;display:block;font-size:0;color:#245d86;padding:4px 0;user-select:none;outline:none;list-style:none}}
+.imp-detail-toggle::before{{content:"▶ 全文を読む";font-size:11px;color:#245d86}}
 .imp-detail[open] .imp-detail-toggle::before{{content:"▼ 閉じる";font-size:11px}}
 .imp-detail-toggle::-webkit-details-marker{{display:none}}
 .imp-detail-toggle::marker{{display:none}}
@@ -801,7 +814,7 @@ a{{color:inherit;text-decoration:none}}
 .col-card-title a:hover{{color:var(--accent)}}
 .col-card-desc{{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:8px}}
 .col-card-tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}}
-.col-tag{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#6aabdd}}
+.col-tag{{font-size:10px;padding:2px 7px;border-radius:99px;background:#1a2a3a;border:1px solid #2a4060;color:#245d86}}
 .col-intro{{font-size:12px;color:var(--dim);margin-bottom:16px;line-height:1.65}}
 .col-read-link{{display:inline-block;font-size:12px;color:var(--accent);padding:4px 0}}
 .srch-desc{{font-size:12px;color:var(--dim);line-height:1.65;margin-bottom:14px}}
@@ -841,9 +854,9 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 .srch-empty{{font-size:12px;color:var(--dim);padding:20px 0;text-align:center}}
 .about-wrap{{max-width:720px;margin:0 auto;padding:1rem 0 3rem}}
 .about-hero{{margin-bottom:2.5rem}}
-.about-hero-name{{font-size:28px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-.01em}}
+.about-hero-name{{font-size:28px;font-weight:700;color:#202830;margin-bottom:4px;letter-spacing:-.01em}}
 .about-hero-role{{font-size:12px;color:var(--dim);margin-bottom:1.2rem;letter-spacing:.03em}}
-.about-hero-lead{{font-size:14px;color:#c0beb6;line-height:1.85;border-left:3px solid var(--accent);padding-left:14px}}
+.about-hero-lead{{font-size:14px;color:#475361;line-height:1.85;border-left:3px solid var(--accent);padding-left:14px}}
 .about-section{{margin-bottom:2.5rem}}
 .about-section-lbl{{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
 .about-axes{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}}
@@ -851,11 +864,11 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 .about-axis{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px}}
 .about-axis-label{{font-size:11px;font-weight:700;margin-bottom:6px}}
 .about-axis-desc{{font-size:11px;color:var(--dim);line-height:1.6}}
-.about-text{{font-size:14px;color:#98968e;line-height:1.85}}
+.about-text{{font-size:14px;color:#566473;line-height:1.85}}
 .about-layers{{display:flex;flex-direction:column;gap:6px;margin:1rem 0}}
-.about-layer{{background:#1a1a18;border-radius:10px;padding:10px 14px;font-size:13px}}
+.about-layer{{background:#f6f7f8;border-radius:10px;padding:10px 14px;font-size:13px}}
 .about-layer-n{{font-size:11px;font-weight:700;color:var(--accent);margin-right:6px}}
-.about-layer-name{{font-weight:500;color:#e6e4dc}}
+.about-layer-name{{font-weight:500;color:#202830}}
 .about-layer-desc{{font-size:12px;color:var(--dim);margin-top:2px}}
 .focus-strip{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}}
 .focus-card{{display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;text-decoration:none}}
@@ -871,7 +884,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
   <a href="./" class="hdr-home" aria-label="ホームに戻る">
     <h1 class="ht">Cyber Defense Notes</h1>
   </a>
-  <span class="hs">AI時代のサイバーディフェンス設計ノート</span>
+  <span class="hs">脆弱性診断・管理とAIエージェントの情報ノート</span>
   <span class="hu">更新: {updated} JST</span>
 </header>
 
@@ -887,14 +900,14 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <div class="pane" id="pane-today">
   <div class="focus-strip" aria-label="注目領域">
     <a class="focus-card" href="?tag=脆弱性#archive"><strong>脆弱性・CVE</strong><span>本日 {vuln_count}件 · 悪用状況、パッチ、露出管理</span></a>
-    <a class="focus-card" href="?context=SOC運用変化#archive"><strong>SOC / CDC運用</strong><span>本日 {ops_count}件 · 検知、調査、対応、運用設計</span></a>
-    <a class="focus-card" href="?context=Exposure管理#archive"><strong>Identity / Exposure</strong><span>ITDR、CTEM、攻撃面管理、MDR/MSSP</span></a>
+    <a class="focus-card" href="?q=診断#archive"><strong>診断サービス</strong><span>ソースコード、Web / API、ブラックボックス</span></a>
+    <a class="focus-card" href="?tag=AI×セキュリティ#archive"><strong>AIエージェント</strong><span>MCP、権限、情報漏えい、監査</span></a>
   </div>
-  <div id="today-impl-box" style="display:none;background:#0d1b2e;border-left:3px solid #378ADD;border-radius:4px;padding:12px 16px;margin-bottom:16px">
-    <div style="font-size:10px;font-weight:700;color:#378ADD;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
-    <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#c0beb6"></div>
+  <div id="today-impl-box" style="display:none;background:#f2f6fa;border-left:3px solid #245d86;border-radius:4px;padding:12px 16px;margin-bottom:16px">
+    <div style="font-size:10px;font-weight:700;color:#245d86;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
+    <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#475361"></div>
     <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:8px">
-      <a href="#trend" style="font-size:11px;color:#378ADD;text-decoration:none">→ トレンド分析で詳しく見る</a>
+      <a href="#trend" style="font-size:11px;color:#245d86;text-decoration:none">→ トレンド分析で詳しく見る</a>
       {weekly_today_link}
       {related_column_link}
     </div>
@@ -1004,7 +1017,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
       <div class="dc-sub">日付×インフラ階層の記事件数</div>
       <div class="hm-legend">
         <span class="hm-lg-lbl">凡例</span>
-        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:#1e1e1c"></span>0件</span>
+        <span class="hm-lg-item"><span class="hm-lg-cell" style="background:#f2f4f6"></span>0件</span>
         <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.2)"></span>少</span>
         <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.55)"></span>中</span>
         <span class="hm-lg-item"><span class="hm-lg-cell" style="background:rgba(55,138,221,.9)"></span>多</span>
@@ -1027,65 +1040,31 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 
     <!-- Hero -->
     <div class="about-hero">
-      <div class="about-hero-name">Ayudle</div>
-      <div class="about-hero-role">Cyber Defense Notes — 運営者</div>
-      <p class="about-hero-lead">SOC/CDCサービス設計に関わる実務者の視点で、AI×セキュリティの動向を読み解き、将来のセキュリティ運用アーキテクチャを考えるための設計ノートです。「何が起きたか」だけでなく、「SOC/MDR/MSSPの設計にどう影響するか」まで整理することを目指しています。</p>
+      <div class="about-hero-name">このサイトについて</div>
+
+      <p class="about-hero-lead">脆弱性診断・脆弱性管理・AIエージェントの安全性を中心に、日々の業務で読む情報を整理するノートです。企業インシデント、政策・地政学、市場の変化も追います。</p>
     </div>
 
     <!-- 3つの観点軸 -->
     <div class="about-section">
-      <div class="about-section-lbl">このサイトが追う3つの軸</div>
+      <div class="about-section-lbl">情報収集の重点</div>
       <div class="about-axes">
         <div class="about-axis">
-          <div class="about-axis-label" style="color:#378ADD">AI for Security</div>
-          <div class="about-axis-desc">AIによる脅威検知・調査・対応の自動化がSOC運用をどう変えるか。AI SOC・自律エージェント・LLMによるアナリスト支援。</div>
+          <div class="about-axis-label" style="color:#245d86">脆弱性管理・診断</div>
+          <div class="about-axis-desc">発見、評価、診断、修正、再診断、継続管理。SAST/SCA/DAST、Web・API・クラウド診断。</div>
         </div>
         <div class="about-axis">
           <div class="about-axis-label" style="color:#E24B4A">Security for AI</div>
           <div class="about-axis-desc">AIシステム・LLM・エージェントへの攻撃と防御。プロンプトインジェクション、モデル汚染、エージェントハイジャック。</div>
         </div>
         <div class="about-axis">
-          <div class="about-axis-label" style="color:#1D9E75">SOC/CDC 運用変化</div>
-          <div class="about-axis-desc">AIが浸透する中でのSOC・MDR・MSSPの設計変化。Identity/ITDR、Exposure管理、非人間IDの監視。</div>
+          <div class="about-axis-label" style="color:#1D9E75">インシデント・政策・市場</div>
+          <div class="about-axis-desc">企業被害、情報漏えい、国家支援型攻撃、経済安全保障、日本の制度・市場。</div>
         </div>
       </div>
     </div>
 
-    <!-- Profile -->
-    <div class="about-section">
-      <div class="about-section-lbl">Profile</div>
-      <div class="about-text">
-        <p style="margin-bottom:1rem">セキュリティエンジニアです。大手SIerのセキュリティ領域で、SOC高度化・SIEM/SOAR構築・MSSP/MDRサービス設計・AI SOCの検証・Agentic AIのリスク評価など、セキュリティ監視運用に関わる幅広い実務に携わってきました。</p>
-        <p>業界動向や研究・標準化の議論も追いながら、現場のSOC/CDCが「AIとどう共存するか」という問いを軸に情報を整理しています。このサイトはその思考整理の場でもあります。</p>
-      </div>
-    </div>
-
-    <!-- なぜこのサイトか -->
-    <div class="about-section">
-      <div class="about-section-lbl">なぜこのサイトを作ったか</div>
-      <div class="about-text">
-        <p style="margin-bottom:1rem">AI×セキュリティの情報は英語・断片的・速度が速い。日本語でSOC/CDCサービス設計に関わる実務者の視点から「今日の動向がSOCにとって何を意味するか」を毎日整理する場所が必要だと感じていました。</p>
-        <p style="margin-bottom:1rem">単なる翻訳ニュースではなく、SOC/CDCサービス設計に関わる実務者の視点から、「示唆」まで整理することを目指しています。Gemini APIとGitHub Actionsで完全自動化しつつ、コラムでは自分の考察を書き続けています。</p>
-        <p>長期的には、AIエージェント時代のSOC/CDCが何を監視し、どう設計されるべきかを考えるための知識基盤へ育てていきたいと考えています。</p>
-      </div>
-    </div>
-
-    <!-- 仮説: AIエージェントリスクの6層 -->
-    <div class="about-section">
-      <div class="about-section-lbl">私が持っている仮説</div>
-      <div class="about-text">
-        <p style="margin-bottom:1rem">AIエージェントのリスクは、以下の6つの層に分けて考えると整理しやすいと思っています。これらを統合的に監視するCDCが、近い将来必ず必要になると考えています。</p>
-        <div class="about-layers">
-          <div class="about-layer"><span class="about-layer-n">①</span><span class="about-layer-name">モデル・推論層</span><div class="about-layer-desc">プロンプトインジェクション、ハルシネーション、目的逸脱</div></div>
-          <div class="about-layer"><span class="about-layer-n">②</span><span class="about-layer-name">ツール・実行層</span><div class="about-layer-desc">権限過剰、ツール誤操作、エージェントハイジャック</div></div>
-          <div class="about-layer"><span class="about-layer-n">③</span><span class="about-layer-name">マルチエージェント層</span><div class="about-layer-desc">AI間の誤連携、カスケード障害、攻撃の自動化</div></div>
-          <div class="about-layer"><span class="about-layer-n">④</span><span class="about-layer-name">データ・インフラ層</span><div class="about-layer-desc">データ境界の崩壊、シャドーAI、サプライチェーン攻撃</div></div>
-          <div class="about-layer"><span class="about-layer-n">⑤</span><span class="about-layer-name">アイデンティティ・権限層</span><div class="about-layer-desc">非人間IDの管理、過剰自律性、Observability欠如</div></div>
-          <div class="about-layer"><span class="about-layer-n">⑥</span><span class="about-layer-name">組織・ガバナンス層</span><div class="about-layer-desc">責任所在の不明確さ、automation bias、法規制の未整備</div></div>
-        </div>
-        <p>従来のSOCは人間が操作するシステムを守る前提で設計されています。AIエージェントが主体として動く環境では、監視対象の性質が根本的に変わります。このサイトはその変化を追うための知識インフラです。</p>
-      </div>
-    </div>
+    <div class="about-section"><div class="about-section-lbl">情報の扱い</div><div class="about-text"><p>国内の公的情報・一次情報を優先し、海外の関連ニュースも日本語で整理します。最大15件とし、関連性の低い情報で件数を埋めません。過去記事とコラムは引き続き閲覧できます。</p><p>追加情報は収集した抜粋に基づく自動生成です。不明な項目は不明と表示します。対応判断では元の公表資料をご確認ください。</p></div></div>
 
   </div>
 </div>
@@ -1093,15 +1072,15 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p style="margin-bottom:2px;font-size:11px;font-weight:600;color:var(--dim)">Cyber Defense Notes</p>
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
 </footer>
 
 <script>
 const ANA = {ana_json};
 const TAX = {tax_json};
 const IMP_COLORS = {{"高":"#E24B4A","中":"#BA7517","低":"#639922"}};
-const MAIN_COLORS = {{"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#378ADD","ai_risk":"#7F77DD","policy":"#1D9E75","incident":"#D85A30","biz_tech":"#639922"}};
-const LAYER_COLORS = {{"デバイス/エッジ":"#639922","ネットワーク":"#378ADD","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#98968e"}};
+const MAIN_COLORS = {{"attack":"#E24B4A","vuln":"#BA7517","ai_sec":"#245d86","ai_risk":"#7F77DD","policy":"#1D9E75","incident":"#D85A30","biz_tech":"#639922"}};
+const LAYER_COLORS = {{"デバイス/エッジ":"#639922","ネットワーク":"#245d86","クラウド/サーバー":"#1D9E75","アプリ/API":"#BA7517","データ/AI":"#7F77DD","ガバナンス/規制":"#566473"}};
 const SEARCH_DATA = {search_json};
 
 function showTab(id) {{
@@ -1183,12 +1162,12 @@ function renderHeatmap(containerId, data) {{
   html += '<div class="hm-th"></div>';
   data.dates.forEach(d => {{ html += `<div class="hm-th">${{escapeHtml(d)}}</div>`; }});
   data.rows.forEach(row => {{
-    const color = LAYER_COLORS[row.layer] || '#378ADD';
+    const color = LAYER_COLORS[row.layer] || '#245d86';
     const [r,g,b] = hexToRgb(color);
     const layerEsc = escapeHtml(row.layer);
     html += `<div class="hm-lb" title="${{layerEsc}}">${{layerEsc}}</div>`;
     row.counts.forEach(cnt => {{
-      const bg  = cnt === 0 ? '#1e1e1c' : `rgba(${{r}},${{g}},${{b}},${{Math.max(0.18, cnt/max).toFixed(2)}})`;
+      const bg  = cnt === 0 ? '#f2f4f6' : `rgba(${{r}},${{g}},${{b}},${{Math.max(0.18, cnt/max).toFixed(2)}})`;
       const tip = cnt > 0 ? cnt + '件' : 'なし';
       html += `<div class="hm-cell" style="background:${{bg}}" title="${{tip}}"></div>`;
     }});
@@ -1240,7 +1219,7 @@ function renderImplication(text, textElId, boxElId, hd) {{
     s = escapeHtml(s);
     return s
       .replace(/【([^】]+)】\\n?/g,
-        '<span style="display:block;font-size:'+fs+';font-weight:700;color:#378ADD;letter-spacing:.04em;margin-top:'+mt+';margin-bottom:2px">【$1】</span>')
+        '<span style="display:block;font-size:'+fs+';font-weight:700;color:#245d86;letter-spacing:.04em;margin-top:'+mt+';margin-bottom:2px">【$1】</span>')
       .replace(/\\n/g, '<br>');
   }}
   var html = renderSec(summary);
@@ -1276,7 +1255,7 @@ function initDashboard() {{
 
   renderBars('main-bars-7',
     ANA.main_7.map(([k,v,l]) => [l,v]),
-    label => {{ const k = ANA.main_7.find(([_,__,l])=>l===label)?.[0]; return MAIN_COLORS[k]||'#378ADD'; }}
+    label => {{ const k = ANA.main_7.find(([_,__,l])=>l===label)?.[0]; return MAIN_COLORS[k]||'#245d86'; }}
   );
 
   // 重要度バー
@@ -1285,7 +1264,7 @@ function initDashboard() {{
 
   // 影響レイヤーバー
   if (ANA.layer_7 && ANA.layer_7.length) {{
-    renderBars('layer-bars', ANA.layer_7, label => LAYER_COLORS[label]||'#378ADD');
+    renderBars('layer-bars', ANA.layer_7, label => LAYER_COLORS[label]||'#245d86');
   }} else {{
     const dcLayer = document.getElementById('dc-layer');
     if (dcLayer) dcLayer.classList.add('hidden');
@@ -1319,7 +1298,7 @@ function initDashboard() {{
   filterEl.innerHTML = "";
   mainKeys.forEach(function(k,i) {{
     const label = TAX[k] ? TAX[k].label : k;
-    const color = MAIN_COLORS[k] || '#378ADD';
+    const color = MAIN_COLORS[k] || '#245d86';
     const btn = document.createElement("button");
     btn.className = "sf-btn" + (i===0 ? " on" : "");
     btn.dataset.key = k;
@@ -1328,7 +1307,7 @@ function initDashboard() {{
     btn.addEventListener("click", (function(key,c){{ return function(){{ selectMain(key,this,c); }}; }})(k,color));
     filterEl.appendChild(btn);
   }});
-  selectMain(mainKeys[0], filterEl.querySelector('.sf-btn.on'), MAIN_COLORS[mainKeys[0]]||'#378ADD');
+  selectMain(mainKeys[0], filterEl.querySelector('.sf-btn.on'), MAIN_COLORS[mainKeys[0]]||'#245d86');
 }}
 
 document.addEventListener('DOMContentLoaded', initDashboard);
@@ -1655,9 +1634,9 @@ function renderSrchCard(a) {{
   var smry  = a.summary_ja || '';
   var smryEsc = escapeHtml(smry.length > 120 ? smry.slice(0, 120) + '…' : smry);
   var cdcRel   = a.cdc_relevance || 0;
-  var cdcColor = cdcRel >= 3 ? '#E24B4A' : cdcRel >= 2 ? '#BA7517' : '#98968e';
+  var cdcColor = cdcRel >= 3 ? '#E24B4A' : cdcRel >= 2 ? '#BA7517' : '#566473';
   var cdcLabel = cdcRel >= 3 ? '高' : cdcRel >= 2 ? '中' : '低';
-  var mc = MAIN_COLORS[a.tag_main_id] || '#378ADD';
+  var mc = MAIN_COLORS[a.tag_main_id] || '#245d86';
   var ml = escapeHtml(a.tag_main_label || '');
   var subTags = (a.tag_subs || []).slice(0, 3).map(function(s) {{
     return '<span class="tag-sub">' + escapeHtml(s) + '</span>';
@@ -1748,7 +1727,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
             col_items.append(
                 f'<a href="../columns/{cslug}.html" class="rel-item">'
                 f'<div class="rel-meta"><span class="rel-date">{html_escape(cdate)}</span>'
-                f'<span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">✍ 著者執筆</span></div>'
+                f'<span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">著者執筆</span></div>'
                 f'<div class="rel-title">{html_escape(ctitle)}</div></a>'
             )
         matched_cols_html = (
@@ -1857,7 +1836,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
         },
         "author": {
             "@type": "Person",
-            "name": "Ayudle",
+            "name": "Cyber Defense Notes",
         },
     }, ensure_ascii=False, indent=2).replace('</', '<\\/')
 
@@ -1880,11 +1859,11 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
 {jsonld_str}
 </script>
 <style>
-:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18;--insight-bg:#14243a;--insight-border:#378ADD}}
+:root{{--bg:#ffffff;--text:#202830;--dim:#566473;--border:#d9dfe5;--accent:#245d86;--card:#f6f7f8;--insight-bg:#f2f6fa;--insight-border:#245d86}}
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}}
 header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}}
-.logo{{font-size:18px;font-weight:700;margin:0;color:#fff}}
+.logo{{font-size:18px;font-weight:700;margin:0;color:#202830}}
 .logo-link{{text-decoration:none;color:inherit}}
 .logo-link:hover .logo{{color:var(--accent)}}
 .meta-top{{font-size:11px;color:var(--dim)}}
@@ -1897,7 +1876,7 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .ap-meta{{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--dim);margin-bottom:12px}}
 .ap-tier{{display:inline-block;padding:2px 8px;border-radius:4px;background:var(--card);color:var(--accent);font-weight:600}}
 .ap-src{{color:var(--text)}}
-.ap-title{{font-size:26px;font-weight:700;color:#fff;margin:8px 0;line-height:1.4}}
+.ap-title{{font-size:26px;font-weight:700;color:#202830;margin:8px 0;line-height:1.4}}
 .ap-section{{margin-bottom:32px}}
 .ap-sec-title{{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
 .ap-body{{font-size:15px;line-height:1.85;color:var(--text)}}
@@ -1905,9 +1884,9 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .insight-lbl{{display:block;font-size:11px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:.05em}}
 .insight-body{{font-size:14px;line-height:1.75;color:var(--text)}}
 .imp-box{{padding:12px 16px;background:var(--card);border-radius:4px;margin-top:12px;font-size:13px;color:var(--dim)}}
-.cdc-box{{padding:12px 16px;background:#0a2820;border:1px solid #1a5040;border-radius:4px;margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}}
-.cdc-rel-lbl{{font-size:11px;font-weight:700;color:#4db896;margin-right:4px}}
-.cdc-badge-ap{{font-size:11px;padding:2px 8px;border-radius:4px;background:#0f3828;border:1px solid #1a5040;color:#4db896}}
+.cdc-box{{padding:12px 16px;background:#f2f6fa;border:1px solid #d9dfe5;border-radius:4px;margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}}
+.cdc-rel-lbl{{font-size:11px;font-weight:700;color:#245d86;margin-right:4px}}
+.cdc-badge-ap{{font-size:11px;padding:2px 8px;border-radius:4px;background:#eef1f4;border:1px solid #d9dfe5;color:#245d86}}
 .tags-box{{display:flex;flex-wrap:wrap;gap:6px}}
 .tag-main{{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;font-weight:600}}
 .tag-sub{{display:inline-block;padding:4px 10px;border-radius:4px;font-size:12px;background:var(--card);color:var(--text);border:1px solid var(--border)}}
@@ -1917,7 +1896,7 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .orig-en{{font-style:italic;color:var(--dim);margin-top:8px;font-size:12px;line-height:1.6}}
 .actions{{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}}
 .btn{{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit}}
-.btn-primary{{background:var(--accent);color:#fff}}
+.btn-primary{{background:var(--accent);color:#202830}}
 .btn-primary:hover{{opacity:.9}}
 .btn-secondary{{background:var(--card);color:var(--text);border:1px solid var(--border)}}
 .btn-secondary:hover{{border-color:var(--accent)}}
@@ -1968,7 +1947,9 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     <div class="ap-body">{html_escape(summary_ja)}</div>
   </section>
 
-  {"<section class='ap-section'><h3 class='ap-sec-title'>SOC/CDC観点での示唆</h3><div class='insight-box'><div class='insight-body'>" + html_escape(insight) + "</div></div></section>" if insight else ""}
+  {business_details(article)}
+
+  {"<section class='ap-section'><h3 class='ap-sec-title'>実務上の示唆</h3><div class='insight-box'><div class='insight-body'>" + html_escape(insight) + "</div></div></section>" if insight else ""}
 
   {"<section class='ap-section'><h3 class='ap-sec-title'>重要度判定の理由</h3><div class='imp-box'>" + html_escape(imp_reason) + "</div></section>" if imp_reason else ""}
 
@@ -1994,8 +1975,8 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
       <div class="orig-en">{html_escape(summary_en[:300])}</div>
     </div>
     <div class="actions">
-      <a href="{_safe_url(url)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">🔗 元記事を読む（外部サイト）</a>
-      <button onclick="navigator.clipboard.writeText('{site_url}').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">📋 URLをコピー</button>
+      <a href="{_safe_url(url)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">元記事を読む（外部サイト）</a>
+      <button onclick="navigator.clipboard.writeText('{site_url}').then(()=>alert('URLをコピーしました'))" class="btn btn-secondary">URLをコピー</button>
     </div>
   </section>
 
@@ -2006,7 +1987,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
 <footer>
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
 </footer>
 
 </body>
@@ -2040,11 +2021,11 @@ def build_archive_page(day_data, date):
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-:root{{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}}
+:root{{--bg:#0f0f0d;--card:#f6f7f8;--card2:#f2f4f6;--text:#202830;--muted:#566473;--dim:#566473;--border:#d9dfe5;--accent:#245d86;--r:10px}}
 body{{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}}
 a{{color:inherit;text-decoration:none}}
 .hdr{{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}}
-.ht{{font-size:15px;font-weight:700;color:#fff;margin:0}}
+.ht{{font-size:15px;font-weight:700;color:#202830;margin:0}}
 .back{{display:inline-block;padding:8px 16px;margin:12px 24px;color:var(--accent);text-decoration:none;font-size:13px}}
 .back:hover{{text-decoration:underline}}
 .content{{max-width:860px;margin:0 auto;padding:16px 24px}}
@@ -2052,7 +2033,7 @@ a{{color:inherit;text-decoration:none}}
 .card{{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}}
 .card:hover{{border-color:#3a3a38}}
 .cm{{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:8px}}
-.tier{{background:#0c2a4a;color:#85b7eb;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}}
+.tier{{background:#eef1f4;color:#245d86;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}}
 .src,.dt{{font-size:10px;color:var(--dim)}}
 .dt{{margin-left:auto}}
 .imp{{font-size:10px;padding:2px 6px;border-radius:99px;border:1px solid}}
@@ -2060,20 +2041,20 @@ a{{color:inherit;text-decoration:none}}
 .ct a:hover{{color:var(--accent)}}
 .tags{{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}}
 .tag-main{{font-size:10px;padding:2px 8px;border-radius:99px;border:1px solid;font-weight:600}}
-.tag-sub{{font-size:10px;padding:2px 7px;border-radius:99px;background:#222220;border:1px solid #333330;color:var(--muted)}}
+.tag-sub{{font-size:10px;padding:2px 7px;border-radius:99px;background:#f2f4f6;border:1px solid #d9dfe5;color:var(--muted)}}
 .tags-meta{{margin-top:3px}}
-.tag-layer{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0d2233;border:1px solid #1a4060;color:#6aabdd}}
-.tag-kw{{font-size:9px;padding:1px 5px;border-radius:99px;background:#1e1e1c;border:1px solid #2e2e2c;color:#6a6860}}
+.tag-layer{{font-size:9px;padding:1px 6px;border-radius:99px;background:#eef1f4;border:1px solid #d9dfe5;color:#245d86}}
+.tag-kw{{font-size:9px;padding:1px 5px;border-radius:99px;background:#f2f4f6;border:1px solid #d9dfe5;color:#566473}}
 .cf{{font-size:10px;color:var(--dim)}}
 .cf a{{color:var(--accent)}}
 .orig{{font-style:italic;margin-left:4px}}
 .empty{{font-size:12px;color:var(--dim);padding:1rem 0}}
-.insight{{background:#0d1e36;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:8px;font-size:11px;color:#85b7eb;line-height:1.55}}
+.insight{{background:#0d1e36;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:8px;font-size:11px;color:#245d86;line-height:1.55}}
 .ins-lbl{{display:block;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:2px;text-transform:uppercase}}
 .insight-snippet{{font-size:12px;color:#9ca3af;line-height:1.55;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
 .cdc-badges{{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}}
-.cdc-lbl{{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
-.cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}}
+.cdc-lbl{{font-size:9px;font-weight:700;color:#245d86;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}}
+.cdc-badge{{font-size:9px;padding:1px 6px;border-radius:99px;background:#f2f6fa;border:1px solid #d9dfe5;color:#245d86}}
 .kw-fold{{margin-top:2px}}
 .kw-btn{{font-size:11px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:4px 10px;cursor:pointer;margin-top:4px;font-family:inherit;transition:color .15s,border-color .15s;min-height:26px}}
 .kw-btn:hover{{color:var(--text);border-color:var(--muted)}}
@@ -2095,7 +2076,7 @@ a{{color:inherit;text-decoration:none}}
 
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
 </footer>
 
 <script>
@@ -2120,11 +2101,11 @@ function toggleKw(id, btn) {{
 
 LAYER_COLORS_WEEKLY = {
     "デバイス/エッジ":   "#639922",
-    "ネットワーク":       "#378ADD",
+    "ネットワーク":       "#245d86",
     "クラウド/サーバー": "#1D9E75",
     "アプリ/API":         "#BA7517",
     "データ/AI":          "#7F77DD",
-    "ガバナンス/規制":   "#98968e",
+    "ガバナンス/規制":   "#566473",
 }
 
 
@@ -2222,23 +2203,23 @@ def build_weekly_html(weekly_data, article_lookup=None):
             f'{refs_html}</div>'
         )
     if not topics_html:
-        topics_html = '<p style="font-size:12px;color:#6a6860">データなし</p>'
+        topics_html = '<p style="font-size:12px;color:#566473">データなし</p>'
 
     # 6階層トレンド HTML
     layers_html = ""
     for l in layer_trends:
         lname  = l.get("layer_name", "")
         ltext  = l.get("trend_text", "")
-        lcolor = LAYER_COLORS_WEEKLY.get(lname, "#378ADD")
+        lcolor = LAYER_COLORS_WEEKLY.get(lname, "#245d86")
         layers_html += (
             f'<div style="display:flex;gap:12px;padding:10px 0;'
-            f'border-bottom:1px solid #2a2a28;align-items:flex-start">'
+            f'border-bottom:1px solid #d9dfe5;align-items:flex-start">'
             f'<div style="min-width:90px;font-size:11px;font-weight:700;'
             f'color:{lcolor};padding-top:2px;flex-shrink:0">{html_escape(lname)}</div>'
-            f'<div style="font-size:13px;color:#98968e;line-height:1.65">{html_escape(ltext)}</div></div>'
+            f'<div style="font-size:13px;color:#566473;line-height:1.65">{html_escape(ltext)}</div></div>'
         )
     if not layers_html:
-        layers_html = '<p style="font-size:12px;color:#6a6860">データなし</p>'
+        layers_html = '<p style="font-size:12px;color:#566473">データなし</p>'
 
     # キーワード変動 HTML
     kw_html = ""
@@ -2252,21 +2233,21 @@ def build_weekly_html(weekly_data, article_lookup=None):
             change  = k.get("change", 0)
             bar_pct = round(abs(change) / max(max_abs, 1) * 100)
             pct_abs = abs(round(change / max(last_w, 1) * 100))
-            color   = "#E24B4A" if change > 0 else "#6a6860"
+            color   = "#E24B4A" if change > 0 else "#566473"
             sign    = "+" if change >= 0 else ""
             kw_html += (
                 f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">'
-                f'<div style="width:80px;font-size:11px;color:#e6e4dc;white-space:nowrap;'
+                f'<div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;'
                 f'overflow:hidden;text-overflow:ellipsis">{html_escape(kw)}</div>'
-                f'<div style="flex:1;height:5px;background:#2a2a28;border-radius:3px;overflow:hidden">'
+                f'<div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden">'
                 f'<div style="width:{bar_pct}%;height:100%;background:{color};border-radius:3px"></div></div>'
                 f'<div style="font-size:10px;color:{color};width:55px;text-align:right">'
                 f'{sign}{change}件({sign}{pct_abs}%)</div>'
-                f'<div style="font-size:10px;color:#6a6860;width:40px;text-align:right">'
+                f'<div style="font-size:10px;color:#566473;width:40px;text-align:right">'
                 f'今週{this_w}件</div></div>'
             )
     else:
-        kw_html = '<p style="font-size:12px;color:#6a6860">先週比データがまだありません</p>'
+        kw_html = '<p style="font-size:12px;color:#566473">先週比データがまだありません</p>'
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -2283,7 +2264,7 @@ def build_weekly_html(weekly_data, article_lookup=None):
 <link rel="canonical" href="{site_url}">
 <link rel="icon" type="image/png" href="../favicon.png">
 <style>
-:root{{--bg:#0f0f0e;--text:#e6e4dc;--dim:#6a6860;--border:#2a2a28;--accent:#378ADD;--card:#1a1a18}}
+:root{{--bg:#ffffff;--text:#202830;--dim:#566473;--border:#d9dfe5;--accent:#245d86;--card:#f6f7f8}}
 *{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}}
 header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}}
@@ -2293,7 +2274,7 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .wp{{max-width:720px;margin:0 auto;padding:16px 24px 60px}}
 .wp-head{{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:24px}}
 .wp-period{{font-size:12px;color:var(--dim);margin-bottom:6px}}
-.wp-title{{font-size:22px;font-weight:700;color:#fff;line-height:1.4}}
+.wp-title{{font-size:22px;font-weight:700;color:#202830;line-height:1.4}}
 .wp-meta{{font-size:11px;color:var(--dim);margin-top:8px}}
 .sec{{margin-bottom:32px}}
 .sec-title{{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}}
@@ -2302,16 +2283,16 @@ header{{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;jus
 .btn:hover{{border-color:var(--accent)}}
 footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}}
 .wr-topic{{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px}}
-.wr-topic-title{{font-size:14px;font-weight:600;color:#e6e4dc;margin-bottom:6px}}
-.wr-topic-summary{{font-size:13px;color:#98968e;line-height:1.7;margin-bottom:4px}}
+.wr-topic-title{{font-size:14px;font-weight:600;color:#202830;margin-bottom:6px}}
+.wr-topic-summary{{font-size:13px;color:#566473;line-height:1.7;margin-bottom:4px}}
 .wr-toggle{{display:inline-block;margin-top:10px;padding:5px 10px;background:none;border:1px solid var(--border);border-radius:6px;color:var(--accent);font-size:12px;cursor:pointer;font-family:inherit}}
 .wr-toggle:hover{{border-color:var(--accent)}}
 .wr-toggle:focus-visible{{outline:2px solid var(--accent);outline-offset:2px}}
 .wr-refs{{margin-top:8px}}
 .wr-refs-open{{margin-top:10px}}
-.wr-ref{{display:block;text-decoration:none;padding:5px 0;border-top:1px solid #2a2a28}}
-.wr-ref-title{{font-size:12px;color:#378ADD}}
-.wr-ref-meta{{font-size:10px;color:#8c8a82;margin-left:8px}}
+.wr-ref{{display:block;text-decoration:none;padding:5px 0;border-top:1px solid #d9dfe5}}
+.wr-ref-title{{font-size:12px;color:#245d86}}
+.wr-ref-meta{{font-size:10px;color:#566473;margin-left:8px}}
 </style>
 {ga_snippet()}
 </head>
@@ -2324,11 +2305,11 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
 <a href="/ai-security-news/#weekly" class="back">← 週次レポート一覧に戻る</a>
 
-<nav style="padding:8px 24px 10px;border-bottom:1px solid #2a2a28;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
-  <a href="/ai-security-news/#today"   style="color:#378ADD;text-decoration:none">本日のニュース</a>
-  <a href="/ai-security-news/#trend"   style="color:#378ADD;text-decoration:none">トレンド分析</a>
-  <a href="/ai-security-news/#archive" style="color:#378ADD;text-decoration:none">記事検索</a>
-  <a href="/ai-security-news/#weekly"  style="color:#378ADD;text-decoration:none">週次レポート一覧</a>
+<nav style="padding:8px 24px 10px;border-bottom:1px solid #d9dfe5;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
+  <a href="/ai-security-news/#today"   style="color:#245d86;text-decoration:none">本日のニュース</a>
+  <a href="/ai-security-news/#trend"   style="color:#245d86;text-decoration:none">トレンド分析</a>
+  <a href="/ai-security-news/#archive" style="color:#245d86;text-decoration:none">記事検索</a>
+  <a href="/ai-security-news/#weekly"  style="color:#245d86;text-decoration:none">週次レポート一覧</a>
 </nav>
 
 <div class="wp">
@@ -2340,7 +2321,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
   <section class="sec">
     <h3 class="sec-title">エグゼクティブサマリー</h3>
-    <div style="background:#14243a;border-left:3px solid #378ADD;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#e6e4dc">{html_escape(exec_sum)}</div>
+    <div style="background:#f2f6fa;border-left:3px solid #245d86;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#202830">{html_escape(exec_sum)}</div>
   </section>
 
   <section class="sec">
@@ -2360,18 +2341,18 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
   <section class="sec">
     <h3 class="sec-title">来週の注目ポイント</h3>
-    <div style="background:#0d1b2e;border-left:3px solid #378ADD55;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#c0beb6">{html_escape(next_week)}</div>
+    <div style="background:#f2f6fa;border-left:3px solid #245d8655;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#475361">{html_escape(next_week)}</div>
   </section>
 
   <div class="actions">
-    <button onclick="navigator.clipboard.writeText('{site_url}').then(function(){{alert('URLをコピーしました')}})" class="btn">📋 URLをコピー</button>
+    <button onclick="navigator.clipboard.writeText('{site_url}').then(function(){{alert('URLをコピーしました')}})" class="btn">URLをコピー</button>
   </div>
 </div>
 
 <footer>
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
   日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
+  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
 </footer>
 <script>
 document.querySelectorAll('.wr-toggle').forEach(function(btn){{
@@ -2555,6 +2536,18 @@ Sitemap: {site_url}/sitemap.xml
     with open('docs/robots.txt', 'w', encoding='utf-8') as f:
         f.write(robots_txt)
     print('robots.txt: generated')
+
+    # 保存済みの古いHTMLも共通テーマへ移行する。記事とURLは保持する。
+    for path in glob.glob('docs/**/*.html', recursive=True):
+        with open(path, encoding='utf-8') as f:
+            page = f.read()
+        href = 'assets/site.css' if path == 'docs/index.html' else '../assets/site.css'
+        link = f'<link rel="stylesheet" href="{href}">'
+        if link not in page:
+            page = page.replace('</head>', link + '\n</head>')
+        page = '\n'.join(line.rstrip() for line in page.split('\n'))
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(page)
 
 if __name__ == "__main__":
     main()
