@@ -394,7 +394,8 @@ def summarize_with_gemini(articles):
             response = client.models.generate_content(
                 model="gemini-2.5-flash",
                 contents=prompt,
-                config={"response_mime_type": "application/json", "response_json_schema": response_schema()},
+                config={"response_mime_type": "application/json", "response_json_schema": response_schema(),
+                        "thinking_config": {"thinking_budget": 0}},
             )
             break
         except Exception as e:
@@ -456,19 +457,7 @@ def summarize_with_gemini(articles):
         else:
             summaries = parsed  # リスト形式のフォールバック
     except Exception as e:
-        print(f"  [ERROR] Gemini API: {e}")
-        summaries = [{
-            "index": i+1,
-            "title_ja": a["title"],
-            "summary_ja": a["summary"][:200],
-            "insight": "",
-            "importance": "中",
-            "importance_reason": "",
-            "tag_main_id": "attack",
-            "tag_subs": [],
-            "affected_layers": [],
-            "related_keywords": [],
-        } for i, a in enumerate(articles)]
+        raise ValueError(f"GeminiのJSON応答を解析できませんでした。既存データを保持します: {e}") from e
 
     if not isinstance(summaries, list):
         raise ValueError("Gemini記事配列が不正です。既存データを保持します")
