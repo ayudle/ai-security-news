@@ -4,7 +4,7 @@ import os
 import tempfile
 from datetime import datetime
 
-from fetch_and_summarize import JST, OUTPUT_PATH, summarize_with_gemini
+from fetch_and_summarize import JST, OUTPUT_PATH, summarize_in_batches
 
 
 def main():
@@ -21,7 +21,7 @@ def main():
         print("本日の分析情報は追加済みです。APIを呼ばずに終了します")
         return
 
-    enriched, _ = summarize_with_gemini(articles)
+    enriched, _ = summarize_in_batches(articles)
     if len(enriched) != len(articles) or [a.get("id") for a in enriched] != [a.get("id") for a in articles]:
         raise ValueError("記事IDが一致しません。既存データを保持します")
     if not all(a.get("business", {}).get("evidence") is not None and

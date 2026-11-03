@@ -185,7 +185,7 @@ def main():
 
     print(f"Gemini APIで週次ダイジェスト生成中... ({period_start}〜{period_end}, {total_articles}件)")
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.8-flash",
         contents=prompt,
     )
     raw = response.text.strip()
