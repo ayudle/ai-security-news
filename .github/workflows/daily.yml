@@ -73,7 +73,7 @@ jobs:
           git add docs/
           git diff --cached --quiet && echo "変更なし" && exit 0
           git commit -m "Daily update: $(TZ=Asia/Tokyo date '+%Y-%m-%d')"
-          git push --force-with-lease
+          git push
 
       - name: Skip message
         if: steps.check_today.outputs.today_count != '0'

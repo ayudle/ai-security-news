@@ -9,6 +9,7 @@ from datetime import datetime, timezone, timedelta
 from dateutil import parser as dateparser
 from google import genai
 from business import ATTACK_LAYERS, relevance, metadata_schema, normalize_metadata, attack_schema, normalize_attack
+from engineering import engineering_topics
 
 GEMINI_MODEL = "gemini-3.8-flash"
 GEMINI_FALLBACK_MODEL = "gemini-3.5-flash-lite"
@@ -50,8 +51,9 @@ SOURCES = [
     {"name": "Simon Willison",        "tier": "C", "url": "https://simonwillison.net/atom/everything/",                  "category": "AI研究・開発者ブログ", "strict_filter": True},
     {"name": "MIT Tech Review",       "tier": "C", "url": "https://www.technologyreview.com/feed/",                      "category": "Techメディア",          "strict_filter": True},
     # 学術（strict_filter なし：cs.CR はセキュリティ専門）
-    {"name": "arXiv cs.CR",           "tier": "C", "url": "https://rss.arxiv.org/rss/cs.CR",                            "category": "学術・研究"},
-    # arXiv cs.AI は AI全般でノイズが多いため削除
+    {"name": "arXiv cs.CR",           "tier": "C", "url": "https://rss.arxiv.org/rss/cs.CR", "category": "学術・研究", "entry_limit": 100, "lookback_hours": 168, "summary_limit": 2000},
+    {"name": "arXiv cs.SE",           "tier": "C", "url": "https://rss.arxiv.org/rss/cs.SE", "category": "ソフトウェア工学研究", "entry_limit": 100, "lookback_hours": 168, "summary_limit": 2000, "engineering_only": True},
+    # cs.AI 全体はノイズが多いため追加しない。
 ]
 
 # ============================================================
@@ -180,9 +182,9 @@ def fetch_rss(source):
     articles = []
     try:
         feed   = feedparser.parse(source["url"])
-        # 日本時間の日次実行で海外ソースの公開を取りこぼさないよう、60時間見る。
-        cutoff = datetime.now(JST) - timedelta(hours=60)
-        for entry in feed.entries[:20]:
+        # 研究論文は週単位で届くため長めに見る。既出URLは選出時に除外する。
+        cutoff = datetime.now(JST) - timedelta(hours=source.get("lookback_hours", 60))
+        for entry in feed.entries[:source.get("entry_limit", 20)]:
             pub = None
             for field in ["published","updated","created"]:
                 raw = getattr(entry, field, None)
@@ -204,6 +206,9 @@ def fetch_rss(source):
             link    = getattr(entry, "link", "")
             combined = (title + " " + summary).lower()
             topics, business_score = relevance(title, summary, source)
+            technique_topics = engineering_topics(title, summary)
+            if source.get("engineering_only") and not technique_topics:
+                continue
             if not topics:
                 continue
             has_ai  = any(kw in combined for kw in AI_KEYWORDS)
@@ -228,13 +233,14 @@ def fetch_rss(source):
             articles.append({
                 "id":            hashlib.md5(link.encode()).hexdigest()[:12],
                 "title":         title,
-                "summary":       summary[:500],
+                "summary":       summary[:source.get("summary_limit", 500)],
                 "url":           link,
                 "ai_score":      ai_score,
                 "cdc_pre_score": cdc_pre_score,
                 "vulnerability_focus": is_vulnerability,
                 "operations_focus": is_operations,
                 "business_topics": topics,
+                "engineering_topics": technique_topics,
                 "business_score": business_score,
                 "source_region": source.get("region", "global"),
                 "source_name":   source["name"],
@@ -334,6 +340,7 @@ def summarize_with_gemini(articles):
     prompt = f"""あなたは脆弱性診断・脆弱性管理・AIエージェントセキュリティの実務者向け情報収集を支援します。
 主目的は個人の業務インプットです。日本市場・日本企業への関連を重視します。
 最優先の関心は脆弱性ライフサイクル全体、ソースコード診断/SAST/SCA/シークレット検出、ブラックボックス/DAST/Web/API/クラウド/モバイル診断、ペネトレーションテスト、AIエージェントの権限・MCP・監査・情報漏えい、企業インシデント、政策・地政学です。
+診断技術・評価の記事では、静的/動的診断の対象、AIエージェントのハーネス、評価データと正解、検出率・誤検知・再現性・コスト、修正案の機能維持・安全性・回帰試験を重視してください。研究に書かれた比較対象・数値・限界だけを要約し、書かれていない評価結果は「不明」としてください。ベンダー寄稿の製品説明を独立した実証結果として扱わないでください。
 下記の旧SOC視点は参考とし、示唆をSOCだけに限定せず診断・修正・再診断・サービス実務への意味を記述してください。
 各記事にbusinessオブジェクトを必ず出力してください。japan_relevance（直接関連/関連あり/不明）、exploitation（悪用確認あり/PoC公開のみ/悪用未確認と明記/不明）、urgency（緊急/早期評価/情報収集/不明）、products、lifecycle、assessments、evidenceを含めます。
 各記事にattackオブジェクトも出力してください。attack_schemaの各項目について、提供された記事抜粋に明記された事実だけを記録します。source_evidenceには判断根拠を短く記載し、根拠がなければ「不明」。実被害・悪用・PoC・研究を区別し、記事が攻撃やインシデントを扱わない場合はevidence_statusを「不明」とします。test_scenarioとservice_implicationは根拠に基づく検討課題として記述し、検出可能性を断定しません。認証や権限など検証前提が記事にない場合は「不明」とします。
@@ -548,6 +555,13 @@ def summarize_in_batches(articles, batch_size=3):
 
 def main():
     print(f"[{datetime.now(JST).strftime('%Y-%m-%d %H:%M')} JST] ニュース収集開始")
+    history = []
+    if os.path.exists(OUTPUT_PATH):
+        with open(OUTPUT_PATH, "r", encoding="utf-8") as file:
+            history = json.load(file).get("history", [])
+        if not isinstance(history, list):
+            raise ValueError("既存の記事履歴が不正です。上書きしません")
+    seen_ids = {article.get("id") for day in history for article in day.get("articles", [])}
 
     all_articles = []
     for source in SOURCES:
@@ -555,9 +569,9 @@ def main():
         print(f"  {source['name']}: {len(items)}件")
         all_articles.extend(items)
 
-    unique   = deduplicate(all_articles)
+    unique   = deduplicate([article for article in all_articles if article["id"] not in seen_ids])
     selected = unique[:MAX_ARTICLES]
-    print(f"重複除去後: {len(unique)}件 → 上位{len(selected)}件を選出")
+    print(f"過去掲載分を除いた候補: {len(unique)}件 → 上位{len(selected)}件を選出")
 
     if not selected:
         print("[WARN] 該当記事なし。スキップ。")
@@ -575,14 +589,6 @@ def main():
         print(f"ノイズ除去: {removed}件削除 → {len(enriched)}件")
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    history = []
-    if os.path.exists(OUTPUT_PATH):
-        try:
-            with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
-                history = json.load(f).get("history", [])
-        except Exception:
-            pass
-
     today_str = datetime.now(JST).strftime("%Y-%m-%d")
     # 手動で同日再実行しても、その日に既に保存した記事を失わない。
     previous_today = [a for h in history if h.get("date") == today_str for a in h.get("articles", [])]
