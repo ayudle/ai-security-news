@@ -2,6 +2,1263 @@
   "month": "2026-11",
   "articles": [
     {
+      "id": "f2a22785701c",
+      "title": "PentestEval: Benchmarking LLM-based Penetration Testing with Modular and Stage-Level Design",
+      "summary": "arXiv:2512.14233v2 Announce Type: replace \nAbstract: Penetration testing is essential for assessing and strengthening system security against real-world threats, yet traditional workflows remain highly manual, expertise-intensive, and difficult to scale. Although recent advances in Large Language Models (LLMs) offer promising opportunities for automation, existing applications rely on simplistic prompting without task decomposition or domain adaptation, resulting in unreliable black-box behavior and limited insight into model capabilities across penetration testing stages. To address this gap, we introduce PentestEval, the first comprehensive benchmark for evaluating LLMs across six decomposed penetration testing stages: Information Collection, Weakness Gathering and Filtering, Attack Decision-Making, Exploit Generation and Revision. PentestEval integrates expert-annotated ground truth with a fully automated evaluation pipeline across 346 tasks covering all stages in 12 realistic vulnerable scenarios. Our stage-level evaluation of 9 widely used LLMs reveals generally weak performance and distinct limitations across the stages of penetration-testing workflow. End-to-end pipelines reach only 31% success rate, and existing LLM-powered systems such as PentestGPT, PentestAgent, and VulnBot exhibit similar limitations, with the evaluated autonomous agents showing particularly low success rates under our benchmark settings. These findings highlight that reliable autonomous penetration testing requires stronger structured reasoning and fine-grained stage-level diagnosis. PentestEval provides the foundational benchmark needed for future research on fine-grained, stage-level evaluation, paving the way toward more reliable LLM-based automation.",
+      "url": "https://arxiv.org/abs/2512.14233",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断サービス",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 17,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-03T14:00:00+09:00",
+      "title_ja": "PentestEval：モジュールおよび段階的設計によるLLMベースのペネトレーションテストのベンチマーク",
+      "summary_ja": "ペンテスト自動化における既存のLLM適用の課題を解決するため、情報収集からエクスプロイト生成までの6段階を分解して評価する包括的ベンチマーク「PentestEval」が提案された。346のタスクを用いた9つのLLM評価の結果、エンドツーエンドの成功率は約31%にとどまり、既存の自律型エージェントも低い成功率を示した。この結果は、信頼性の高い自動ペネトレーションテストには、構造化された推論と段階的な詳細な診断が必要であることを示している。",
+      "insight": "AIエージェントによるペネトレーションテストの限界と段階的評価の重要性が示されており、自社でのAIツール導入時の期待値管理や評価フレームワークの構築に示唆を与えます。ブラックボックス診断におけるLLMの段階的挙動や成功率の低さを踏まえ、自動化ツールは補助的な位置づけとし、人間による検証を組み合わせる設計が求められます。ツールが生成する攻撃シナリオの信頼性をどのように担保するか、検証プロセスを見直す必要があります。",
+      "importance": "高",
+      "importance_reason": "LLMを用いたペネトレーションテストの現状の限界と段階的評価の必要性を定量的に示した重要な研究であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った攻撃",
+        "ペネトレーションテスト"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "PentestEval",
+        "LLM",
+        "ペネトレーションテスト",
+        "自動化",
+        "ベンチマーク"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "診断"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "PentestGPT",
+          "PentestAgent",
+          "VulnBot"
+        ],
+        "evidence": "PentestEval integrates expert-annotated ground truth with a fully automated evaluation pipeline across 346 tasks covering all stages in 12 realistic vulnerable scenarios."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "研究報告に基づくベンチマーク評価であり、実被害や特定の悪用は扱われていない。",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "2899039ea40e",
+      "title": "How Safe Are AI-Generated Patches? A Large-scale Study on Security Risks in LLM and Agentic Automated Program Repair on SWE-bench",
+      "summary": "arXiv:2507.02976v4 Announce Type: replace \nAbstract: Large language models (LLMs) and agentic frameworks are increasingly used for development tasks such as automated program repair (APR). Prior work has identified security risks in LLM-generated code, but most studies focus on synthetic, simplified, or isolated tasks. We present a large-scale security analysis of LLM-generated patches using 20,000+ GitHub issues from SWE-bench. We evaluate developer-written patches, two standalone LLMs (Llama 3.3 Instruct-70B and GPT-5.4 nano), and four agentic frameworks (OpenHands, AutoCodeRover, HoneyComb, and SWE-agent). We also analyze code, issue, and project-level factors associated with insecure patches. Under our evaluated SWE-bench setup, Llama 3.3 introduced 135 manually confirmed vulnerabilities across the train and test sets, compared with 12 in developer-written patches for the same issues. On the SWE-bench test set, GPT-5.4 nano introduced 3 vulnerabilities compared with 2 in developer patches. All four evaluated agentic frameworks also introduced vulnerabilities. OpenHands had the highest retained count, with 44 vulnerabilities across 11 issue instances. Vulnerabilities are associated with broader code modifications and with issues missing specific information. These results suggest that APR systems require proactive risk assessment methods that consider both generated code and issue context.",
+      "url": "https://arxiv.org/abs/2507.02976",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "AIエージェント",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "修正・再診断の評価",
+        "生成コードの安全性評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 16,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-03T14:00:00+09:00",
+      "title_ja": "AI生成パッチはどれほど安全か？SWE-benchにおけるLLMおよびエージェント型自動プログラム修復のセキュリティリスクに関する大規模調査",
+      "summary_ja": "自動プログラム修復（APR）におけるLLMおよびエージェント型フレームワークのセキュリティリスクを評価するため、SWE-benchの2万件以上のGitHub Issueを用いて大規模な分析が実施された。Llama 3.3やGPT-5.4 nano、および4つのエージェント型フレームワーク（OpenHands等）を評価した結果、開発者によるパッチと比較して、LLMやエージェント生成パッチに多くの脆弱性が含まれていることが確認された。不十分な情報を含むIssueや広範なコード修正が脆弱性の混入に関連していることが示されている。",
+      "insight": "AIを活用したコード修正や脆弱性パッチ生成において、セキュリティリスク（新たな脆弱性の混入）が実際に発生することが示されており、セキュアコーディングや修正案の安全性確認の重要性が裏付けられます。修正案の機能維持だけでなく安全性・回帰試験を検証するプロセスが不可欠であり、AIエージェントによる自動修正を適用する際には厳格なレビュー体制が求められます。自動生成されたパッチが安全性を損なっていないかをどのように効率的に検証すべきか、検証プロセスの自動化と人間の関与のバランスが問われます。",
+      "importance": "高",
+      "importance_reason": "AIによるコード修正・パッチ生成におけるセキュリティリスクを大規模に実証し、実務的な懸念点を明らかにしたため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "修正・緩和",
+        "SAST"
+      ],
+      "affected_layers": [
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "SWE-bench",
+        "自動プログラム修復",
+        "LLM",
+        "パッチ生成",
+        "脆弱性"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "OpenHands",
+          "AutoCodeRover",
+          "HoneyComb",
+          "SWE-agent",
+          "Llama 3.3 Instruct-70B",
+          "GPT-5.4 nano"
+        ],
+        "evidence": "Llama 3.3 introduced 135 manually confirmed vulnerabilities across the train and test sets, compared with 12 in developer-written patches for the same issues."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "手動確認を実施",
+        "service_implication": "不明",
+        "source_evidence": "研究における実験的評価であり、実世界のインシデントではなく生成コードの脆弱性混入を分析したもの。",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "04854bad56f0",
+      "title": "Price is Only the Symptom: Understanding and Analyzing Economic-State Manipulation Vulnerabilities in DeFi",
+      "summary": "arXiv:2611.00587v1 Announce Type: new \nAbstract: Economic-state manipulation has emerged as a significant security threat to decentralized finance (DeFi), causing substantial financial losses. Existing studies predominantly characterize these attacks as price manipulation, focusing on observable price distortions while overlooking underlying violations of economic-state integrity. We conduct a comprehensive empirical study of Economic-State Manipulation (ESM) vulnerabilities in DeFi. We first curate a diverse dataset comprising 276 real-world attacks and 91 Code4rena audit findings. Based on these cases, we develop a cause-oriented taxonomy comprising four primary categories and eleven subcategories. Our analysis reveals that ESM vulnerabilities extend beyond conventional price manipulation, frequently involving violations of protocol-internal accounting, AMM state consistency, and execution-time constraints. We further investigate the evaluation datasets of six existing studies and find that, although they cover 6-10 vulnerability subcategories, their distributions remain dominated by limited manipulation mechanisms. Furthermore, we systematically evaluate seven representative detection approaches on our dataset. Our results reveal limited coverage, with the best-performing approach identifying only 50.4% of real-world attacks. Through an analysis of false negatives and false positives, we identify fundamental limitations arising from reliance on predefined attack patterns, insufficient reasoning about economic-state semantics, and incomplete exploitability validation. These findings provide empirical insights for developing more generalizable ESM vulnerability detection techniques.",
+      "url": "https://arxiv.org/abs/2611.00587",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 12,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-03T14:00:00+09:00",
+      "title_ja": "価格は単なる症状に過ぎない：DeFiにおける経済状態操作脆弱性の理解と分析",
+      "summary_ja": "分散型金融（DeFi）における経済状態操作（ESM）脆弱性について、276件の実世界攻撃と91件の監査結果を基にした包括的な実証研究が実施された。従来の価格操作の枠組みを超え、プロトコル内部の会計処理違反やAMMの状態不整合などを含む4つの主要カテゴリと11のサブカテゴリからなる原因指向のタクソノミーが構築された。また、既存の7つの検出手法を評価した結果、最良の手法でも実世界の攻撃の50.4%しか検出できず、経済状態のセマンティクスに関する推論の不足や悪用可能性の検証の不食が限界として特定された。",
+      "insight": "複雑なビジネスロジックや経済的整合性を伴うシステム（Web3/DeFi等）の脆弱性診断において、従来のパターンマッチング型検出手法の限界が示されています。API診断やビジネスロジック診断において、静的なコードチェックや単純なDast手法だけでは検知できない脆弱性を捉えるため、状態遷移や経済的セマンティクスを考慮した評価アプローチの必要性が示唆されます。複雑なロジックを持つアプリケーションに対するブラックボックスおよびソースコード診断の精度をいかに向上させるか、検証設計の再検討が必要です。",
+      "importance": "中",
+      "importance_reason": "DeFiにおける経済状態操作の体系的な分析と既存検出手法の限界を明らかにすることで、高度なロジック脆弱性診断に深い示唆を与えるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "エクスプロイト",
+        "優先順位付け",
+        "研究・論文"
+      ],
+      "affected_layers": [],
+      "related_keywords": [
+        "DeFi",
+        "経済状態操作",
+        "ESM",
+        "脆弱性検出",
+        "スマートコントラクト"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "診断"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "We first curate a diverse dataset comprising 276 real-world attacks and 91 Code4rena audit findings."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "実世界での金融被害・攻撃の発生",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "276件の実世界攻撃データセットに基づく分析。",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [
+          "経済状態操作"
+        ],
+        "weaknesses": [
+          "プロトコル内部の会計処理違反",
+          "AMM状態不整合"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "9745688fc76a",
+      "title": "StateGate: A Behavioral-Fidelity Prompt Optimization Method for Long-Chain LLM Agents",
+      "summary": "arXiv:2611.01585v1 Announce Type: new \nAbstract: Currently, long-chain LLM agents commonly suffer from behavioral degradation in complex tasks, where prompts are written in full but steps are not executed in full. To address this issue, existing approaches face three major challenges. First, constraints are strongly bound to their textual carriers; once natural-language constraint sentences are removed, their binding force vanishes. Second, the execution process lacks independent verification, as the evidence for judgment is often supplied by the executing party itself, leading to the failure of self-referential validation. Third, existing remediation schemes are difficult to generalize, and hard-coded mechanisms cannot be transferred across tasks. In this paper, we propose StateGate, a novel prompt-optimization scheme that transforms semantic constraints into symbolic gates enforced by an external deterministic runtime. By decoupling the content of a constraint from its carrier of efficacy, StateGate achieves behavioral fidelity in long-chain tasks without losing the binding force of the prompt. Specifically, we first propose four independent compression strategies (deduplication, generalization, externalization, and text-to-gating) together with their corresponding decision chains, enabling principled prompt symbolization. Second, we design a three-component architecture consisting of a state file, a validator, and an orchestrator, which thoroughly separates judgment authority from execution authority. Third, we formally prove that the compliance of symbolic constraints is independent of context size. Finally, we validate the framework on a vulnerability-discovery task in the security domain; the results show that StateGate achieves 100% execution closure and accurate vulnerability detection.",
+      "url": "https://arxiv.org/abs/2611.01585",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断ハーネス",
+        "診断性能の評価"
+      ],
+      "business_score": 12,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-03T14:00:00+09:00",
+      "title_ja": "StateGate: 長期LLMエージェントの行動忠実度を最適化するプロンプト手法",
+      "summary_ja": "長鎖LLMエージェントが複雑なタスクでステップを完全に実行しない行動劣化問題に対し、意味的制約を外部の決定論的ランタイムによって強制されるシンボリックゲートに変換するプロンプト最適化手法「StateGate」を提案している。状態ファイル、バリデーター、オーケストレーターからなる3コンポーネントアーキテクチャにより、判断権限と実行権限を完全に分離する。セキュリティ分野の脆弱性発見タスクでの検証では、100%の実行完了率と正確な脆弱性検知を達成したことを示している。",
+      "insight": "AIエージェントによる自動脆弱性探索や複雑なセキュリティタスクにおいて、指示の脱落や自己参照検証の失敗を防ぐためのアーキテクチャ上の重要な示唆を与える。外部の決定論的ランタイムによる制約の強制は、エージェントの暴走や不完全な実行を防ぐためのAIエージェントセキュリティ設計において参考になる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの信頼性と実行確度を向上させる新しい制御手法を提案しており、エージェントセキュリティの実務に直結するため",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "ツール悪用",
+        "エージェント間通信"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "StateGate",
+        "LLM agent",
+        "prompt optimization",
+        "behavioral fidelity",
+        "vulnerability discovery"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "arXiv:2611.01585v1, We validate the framework on a vulnerability-discovery task in the security domain"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "研究論文における脆弱性発見タスクの評価であり、実際の攻撃やインシデントに関する記述ではない。",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "データ・AI・AIエージェント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "d21a7ab890dd",
+      "title": "Refusing the Impossible: A Taxonomy and Benchmark for Code Hallucination in Large Language Models",
+      "summary": "arXiv:2609.03267v2 Announce Type: replace \nAbstract: This paper investigates whether large language models (LLMs) for code generation can recognize a programming request that cannot be satisfied. Coding assistants are widely deployed, yet they are evaluated almost exclusively on solvable tasks where a test suite can score the output. A request may instead name a package that does not exist or ask for an algorithm that is mathematically impossible, and the appropriate response is to refuse. Models nevertheless respond with plausible code, and such fabrications are also a security concern because attackers can register the package names that models invent. We define code hallucination as ungrounded code generation, distinguish it from ordinary programming errors, and introduce a taxonomy of these failures together with a benchmark of 270 adversarial requests and 91 matched solvable controls across six languages and 24 subcategories. We evaluate 17 open-weight models with 6.7B to 671B parameters, collecting 6,137 responses. Models hallucinate on 54% of the adversarial requests and correctly refuse 31%. Larger models do better on algorithmic impossibilities and conflicting requirements, where hallucination falls from 84% for models at or below 7B parameters to 32% for those at or above 80B. For plausible but nonexistent dependencies and features, the rates are 88% and 61%, and even the largest model hallucinates on all 22 requests for nonexistent JavaScript and Rust packages. Two-thirds of hallucinations are confident fabrications without caveats, and some reasoning models fail to return an answer on solvable tasks. Scale teaches models to recognize what is impossible but not what does not exist, so grounding code generation in the real software ecosystem, for example by checking package names against registries, remains necessary regardless of model size.",
+      "url": "https://arxiv.org/abs/2609.03267",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "生成コードの安全性評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 9,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-03T14:00:00+09:00",
+      "title_ja": "不可能な要求の拒絶：大規模言語モデルにおけるコードハルシネーションの分類とベンチマーク",
+      "summary_ja": "コード生成における大規模言語モデル（LLM）が、不可能または存在しないプログラミング要求を認識して拒絶できるかを調査した研究。存在しないパッケージ名や数学的に不可能なアルゴリズムに対し、モデルはもっともらしいコードを生成してハルシネーションを起こす傾向があり、攻撃者がそのパッケージ名を登録するセキュリティ上の懸念が生じる。17のオープンウェイトモデルを評価した結果、モデルの規模が大きくなっても存在しない依存関係や機能を認識するとは限らず、リアルタイムのパッケージレジストリ等によるグラウンディングが必要であると結論付けている。",
+      "insight": "AIコーディングアシスタントやセキュアコーディング支援ツールにおいて、モデルが存在しないライブラリや脆弱な依存関係を捏造するリスク（依存関係タイポスクワッティング等の温床）を浮き彫りにしている。SCAやソースコード診断のプロセスにおいて、AI生成コード特有のハルシネーションに対する検証機構の導入が必要である。",
+      "importance": "高",
+      "importance_reason": "AIコーディング支援ツールにおけるコードハルシネーションとそれに伴うサプライチェーン攻撃のリスクを大規模なベンチマークで実証しているため",
+      "tag_main_id": "ai_risk",
+      "tag_main_label": "AIリスク",
+      "tag_subs": [
+        "ハルシネーション",
+        "安全性評価"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "code hallucination",
+        "LLM",
+        "code generation",
+        "dependency hallucination",
+        "benchmark"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Security for AI",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "arXiv:2609.03267v2, such fabrications are also a security concern because attackers can register the package names that models invent"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "LLMのコード生成におけるハルシネーションに関する学術的なベンチマーク評価であり、具体的な攻撃観測や実被害の報告ではない。",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網",
+          "データ・AI・AIエージェント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "50e0294882e0",
+      "title": "From Stories to Bugs: Story-Based Semantic Fuzzing of Interactive Systems",
+      "summary": "arXiv:2611.01173v1 Announce Type: new \nAbstract: Complex interactive systems hide business-logic failures along two complementary axes: deep state-dependent behaviors that require long valid prefixes and concurrency-sensitive failures that depend on the ordering of otherwise legal operations. We present story-based semantic fuzzing, a methodology that treats semantically constrained compositions of behavioral stories as primary search objects. Implemented through Behavioral Programming, semantic binding and state constraints preserve legal prefixes, while event eligibility, schedule selection, and replay expose failure-relevant interleavings. We evaluate the methodology on Magento and four stateful REST APIs. On Magento, overlap-aware ranking increased reproduction of a sporadic Shipping Fee race from 3.6% to 41.2%; a controlled ordering intervention reduced a second failure signature from 100/100 initial executions to 0/200 constrained executions. For the REST study, a versioned end-to-end pipeline took each frozen public OpenAPI contract as its sole benchmark-specific model-generation input and automatically generated the Basic and Complex stories, dependency structure, and interface bindings. Under a shared black-box task and sequence-local evaluation contract, Basic and Complex confirmed 0/11 and 11/11 semantic fault classes, while RESTler and EvoMaster confirmed 2/11 and 0/11. A paired binding ablation produced 250/250 valid dependent operations with binding and 0/250 without it, while supplementary prefix controls localized the difference to preservation of legal relational state. Together, the studies show that searching admissible semantic compositions provides a unified and effective representation for reaching deep states and exposing concurrency-sensitive business-logic failures.",
+      "url": "https://arxiv.org/abs/2611.01173",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価"
+      ],
+      "business_score": 8,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-03T14:00:00+09:00",
+      "title_ja": "ストーリーからバグへ：インタラクティブシステムのストーリーベース意味的ファジング",
+      "summary_ja": "複雑なインタラクティブシステムにおける状態依存型および並行性依存型のビジネスロジック障害を検出するため、振る舞いストーリーの構成を探索対象とする「ストーリーベース意味的ファジング」手法を提案している。Magentoおよび4つのステートフルREST APIを対象とした評価では、従来のファザーと比較して深い状態やビジネスロジックの不具合を効果的に検出できることを示している。制約付きのバインディングにより、有効な依存操作の生成率が大幅に向上した。",
+      "insight": "Web/API診断やブラックボックス診断において、単なるランダムな入力ファジングではなく、ビジネスロジックや状態遷移を考慮したストーリーベースのファジングが複雑な脆弱性の発見に有効であることを示している。API診断ツールやペネトレーションテストの高度化に向けた手法として参考になる。",
+      "importance": "中",
+      "importance_reason": "従来のファジングでは検出しにくい複雑なビジネスロジックや状態依存の脆弱性・不具合の検出手法を提案しているため",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "ブラックボックス診断",
+        "API診断",
+        "ペネトレーションテスト"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "semantic fuzzing",
+        "business-logic failures",
+        "REST APIs",
+        "Magento",
+        "behavioral programming"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ブラックボックス診断",
+          "API診断"
+        ],
+        "products": [
+          "Magento"
+        ],
+        "evidence": "arXiv:2611.01173v1, We evaluate the methodology on Magento and four stateful REST APIs"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "学術研究におけるファジング手法の評価であり、実際の攻撃やインシデントに関する記述ではない。",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "d97e093f46e9",
+      "title": "VU#124705: BaseChat – Audio Dating App, Android version 9.8.1, contains multiple vulnerabilities",
+      "summary": "<h3 id=\"overview\">Overview</h3>\n<p>Multiple vulnerabilities have been identified in the Android application, BaseChat – Audio Dating App, version 9.8.1, which ultimately compromise the privacy of users’ personal data and activity.</p>\n<h3 id=\"description\">Description</h3>\n<p>BaseChat is an online dating platform built in Flutter and targeted toward users over 18. It facilitates anonymous, voice-first interaction between users. Three distinct vulnerabilities have been identified within the shippe",
+      "url": "https://kb.cert.org/vuls/id/124705",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CERT/CC Vulnerability Notes",
+      "source_tier": "A",
+      "published": "2026-11-04T00:42:35.704372+09:00",
+      "title_ja": "BaseChat Androidアプリにおける複数脆弱性の存在",
+      "summary_ja": "Androidアプリ「BaseChat – Audio Dating App」バージョン9.8.1において、ユーザーの個人データやアクティビティのプライバシーを侵害する複数の脆弱性が特定されました。Flutterで構築されたこの音声中心のオンラインデートプラットフォームには、実装上の欠陥が存在します。CERT/CCにより脆弱性情報が公開されています。",
+      "insight": "モバイルアプリケーション診断において、フレームワーク固有の実装不備やデータ保護の検証重要性を示唆しています。類似の音声・チャット系アプリにおける権限管理やデータ保存方法の確認が必要です。",
+      "importance": "中",
+      "importance_reason": "特定モバイルアプリにおける複数のプライバシー侵害脆弱性が報告されたため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "ブラックボックス診断",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "BaseChat",
+        "CERT/CC",
+        "Android",
+        "Flutter"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "BaseChat"
+        ],
+        "evidence": "Multiple vulnerabilities have been identified in the Android application, BaseChat – Audio Dating App, version 9.8.1"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "プライバシーの侵害",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Multiple vulnerabilities have been identified in the Android application",
+        "evidence_status": "PoCのみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "86e56cff0d98",
+      "title": "Core TempのカーネルドライバにおけるIOCTLインタフェースに対するアクセス制御が不十分な脆弱性",
+      "summary": "ALCPUが提供するCore Tempのカーネルドライバには、IOCTLインタフェースに対するアクセス制御が不十分な脆弱性が存在します。",
+      "url": "https://jvn.jp/jp/JVN23328936/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-02T12:00:00+09:00",
+      "title_ja": "Core Tempのカーネルドライバにおけるアクセス制御不十分の脆弱性",
+      "summary_ja": "ALCPUが提供するCore Tempのカーネルドライバにおいて、IOCTLインタフェースに対するアクセス制御が不十分である脆弱性が存在します。JVNにより注意喚起がなされており、ローカル環境等からの影響が懸念されます。詳細な影響や対策については関連情報を確認する必要があります。",
+      "insight": "デバイスドライバやカーネルレベルのコンポーネントに対するアクセス制御不備は特権昇格につながるリスクがあり、ローカル特権管理の監査が重要です。",
+      "importance": "中",
+      "importance_reason": "国内の著名な脆弱性情報ポータル（JVN）に掲載されたカーネルドライバの脆弱性であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Core Temp",
+        "ALCPU",
+        "JVN",
+        "カーネルドライバ"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Core Temp"
+        ],
+        "evidence": "ALCPUが提供するCore Tempのカーネルドライバには、IOCTLインタフェースに対するアクセス制御が不十分な脆弱性が存在します。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "IOCTLインタフェースに対するアクセス制御が不十分な脆弱性が存在します",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "ee45d6bd495a",
+      "title": "更新：PHPの脆弱性対策について(CVE-2026-109618、CVE-2026-109619：PHP2shell)",
+      "summary": "",
+      "url": "https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "IPA 注意喚起",
+      "source_tier": "A",
+      "published": "2026-11-02T00:00:00+09:00",
+      "title_ja": "PHPの脆弱性対策について（CVE-2026-109618、CVE-2026-109619：PHP2shell）",
+      "summary_ja": "IPAよりPHPに関する脆弱性（CVE-2026-109618、CVE-2026-109619、通称：PHP2shell）についての注意喚起が公開されました。Webアプリケーションの基盤となるPHPにおける重要な脆弱性であり、迅速な確認と対応が求められます。詳細はIPAのセキュリティアラートを参照してください。",
+      "insight": "Web基盤言語の脆弱性は広範なシステムに影響を与えるため、SCAや資産管理ツールを通じた迅速なバージョン特定とパッチ適用プロセスが不可欠です。",
+      "importance": "高",
+      "importance_reason": "国内の主要な影響を持つPHPの脆弱性に関するIPAからの注意喚起であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "PHP",
+        "CVE-2026-109618",
+        "CVE-2026-109619",
+        "PHP2shell",
+        "IPA"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "不明",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "PHP"
+        ],
+        "evidence": "更新：PHPの脆弱性対策について(CVE-2026-109618、CVE-2026-109619：PHP2shell)"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "PHPの脆弱性対策について(CVE-2026-109618、CVE-2026-109619：PHP2shell)",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": [
+          "CVE-2026-109618",
+          "CVE-2026-109619"
+        ]
+      }
+    },
+    {
+      "id": "a1cbb68e027c",
+      "title": "Gartner Predicts SOCs Will Have 50% More Engineers Than Analysts by 2028",
+      "summary": "Gartner predicts that security operations centers will have 50% more engineers than analysts by 2028 as AI agents take over routine alert handling. Prophet Security examines how AI is reshaping SOC roles, from analyst responsibilities and detection engineering to threat hunting and exposure management. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/gartner-predicts-socs-will-have-50-percent-more-engineers-than-analysts-by-2028/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": false,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "AIエージェント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-04T00:00:10+09:00",
+      "title_ja": "ガートナー、2028年までにSOCのアナリスト対エンジニア比率でエンジニアが50%増加すると予測",
+      "summary_ja": "ガートナーは、AIエージェントが定型的なアラート処理を自動化することにより、2028年までにセキュリティ運用センター（SOC）のエンジニア数がアナリスト数を50%上回ると予測している。Prophet Security社は、AIがSOCの役割をどのように再定義しているか、アナリストの責任や検出エンジニアリングから脅威ハンティング、エクスポージャー管理に至るまで検証している。この記事は、自動化の進展に伴うセキュリティ人材のスキルシフトの必要性を示唆している。",
+      "insight": "AIエージェントの導入によって定型業務が自動化されることで、セキュリティ運用の主眼がアラート対応から検出エンジニアリングや脅威ハンティングへと移行する。自社のSOCやMSSPサービスにおいても、エンジニアリング能力の強化とAIの適切な組み込みが急務となる。AIエージェントの権限管理や監査可能性をどのように担保すべきかという点が重要な検討課題となる。",
+      "importance": "中",
+      "importance_reason": "AIエージェントの普及によるSOCの構造変化と人材シフトに関する重要な予測を示しているため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Gartner",
+        "Prophet Security",
+        "SOC",
+        "AI agents",
+        "detection engineering"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Prophet Security"
+        ],
+        "evidence": "Gartner predicts that security operations centers will have 50% more engineers than analysts by 2028 as AI agents take over routine alert handling."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "不明",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "404b7ec7cebe",
+      "title": "Frontline Education Data Breach Impacts Over 1.3 Million",
+      "summary": "<p>Hackers exploited a flaw in third-party software and stole the personal information of school district staff and students.</p>\n<p>The post <a href=\"https://www.securityweek.com/frontline-education-data-breach-impacts-over-1-3-million/\">Frontline Education Data Breach Impacts Over 1.3 Million</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/frontline-education-data-breach-impacts-over-1-3-million/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-03T23:32:38+09:00",
+      "title_ja": "Frontline Educationのデータ侵害、130万人以上に影響",
+      "summary_ja": "ハッカーがサードパーティ製ソフトウェアの脆弱性を悪用し、学校区のスタッフや生徒の個人情報を窃取した。このインシデントにより130万人を超える個人情報が影響を受けた。サプライチェーン経由の脆弱性が大規模なデータ侵害につながった事例である。",
+      "insight": "サードパーティ製ソフトウェアやSCA（ソフトウェア構成分析）の不備がサプライチェーン攻撃の起点となる典型例である。自社だけでなく外部ベンダーが保有する資産の脆弱性管理やエクスポージャー管理の重要性が再認識される。サードパーティ製品のパッチ適用状況や依存関係の把握をどのように継続的に行うかが課題となる。",
+      "importance": "高",
+      "importance_reason": "130万人を超える大規模な個人情報の流出が発生し、サプライチェーンリスクの大きさを物語っているため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "情報漏洩",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Frontline Education",
+        "Data Breach",
+        "SecurityWeek",
+        "third-party software"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "SCA",
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "Frontline Education third-party software"
+        ],
+        "evidence": "Hackers exploited a flaw in third-party software and stole the personal information of school district staff and students."
+      },
+      "attack": {
+        "initial_access": "サードパーティ製ソフトウェアの脆弱性",
+        "observed_impact": "学校区のスタッフや生徒の個人情報窃取（130万人以上）",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Hackers exploited a flaw in third-party software and stole the personal information of school district staff and students.",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [
+          "脆弱性悪用"
+        ],
+        "weaknesses": [
+          "サードパーティ製ソフトウェアの脆弱性"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "6746d4c33cb4",
+      "title": "Synology NAS Devices Targeted in Ransomware Attacks Exploiting Patched DSM Flaw",
+      "summary": "Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks.\n\nThe Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM.\n\n\"These attacks aim to encrypt data and extort ransom,\" it said in a statement",
+      "url": "https://thehackernews.com/2026/11/synology-nas-devices-targeted-in.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-03T16:43:07+09:00",
+      "title_ja": "Synology NASデバイスが標的に、修正済みDSMの脆弱性を悪用したランサムウェア攻撃",
+      "summary_ja": "Synology社は、ネットワーク接続ストレージ（NAS）デバイスのDiskStation Manager（DSM）ソフトウェアを標的としたランサムウェア攻撃を受け、顧客にアップデートを強く呼びかけている。同社によれば、脅威アクターは2024年12月にパッチが適用された脆弱性を悪用し、古いバージョンのDSMを実行しているデバイスを狙っているという。この攻撃の目的はデータの暗号化と身代金の要求である。",
+      "insight": "パッチ公開後の脆弱性が依然として放置されている環境を狙ったランサムウェア攻撃の典型的な事例である。脆弱性管理において、パッチ適用の遅れが直接的なインシデントにつながるリスクを示している。資産台帳の正確な把握と、迅速なパッチ適用プロセスの再診断・見直しが不可欠である。",
+      "importance": "高",
+      "importance_reason": "既知の脆弱性に対するパッチ未適用環境がランサムウェアの標的となっており、即時の注意喚起と対応が必要なため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ランサムウェア",
+        "パッチ未適用",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Synology",
+        "NAS",
+        "DiskStation Manager",
+        "DSM",
+        "Ransomware"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Synology NAS",
+          "DiskStation Manager (DSM)"
+        ],
+        "evidence": "Synology is urging customers to update the DiskStation Manager (DSM) software powering its Network Attached Storage (NAS) devices following ransomware attacks. The Taiwanese vendor said it observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM."
+      },
+      "attack": {
+        "initial_access": "古いバージョンのDSMにおけるパッチ未適用の脆弱性",
+        "observed_impact": "データの暗号化と身代金の要求",
+        "japan_observation": "不明",
+        "assessment_preconditions": "古いバージョンのDSMを実行していること",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "observed threat actors exploiting a vulnerability patched in December 2024 to target devices running outdated versions of DSM. These attacks aim to encrypt data and extort ransom",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [
+          "脆弱性悪用"
+        ],
+        "weaknesses": [
+          "パッチ未適用"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "775e9282ff68",
+      "title": "PapRAT Cyber-Espionage Campaign Leaves a 'Bitter' Taste in South Asia",
+      "summary": "Organizations in the region face growing cyberattacks from the known India-linked threat group, which leverages legitimate Windows functionality in three distinct attack chains.",
+      "url": "https://www.darkreading.com/cyberattacks-data-breaches/paprat-cyberespionage-campaign-bitter-south-asia",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント",
+        "政策・地政学"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-11-02T23:00:00+09:00",
+      "title_ja": "南アジアを狙うサイバー諜報キャンペーン「PapRAT」の確認",
+      "summary_ja": "南アジアの組織が、インドに関連する脅威グループによるサイバー攻撃の標的となっている。このキャンペーンでは「PapRAT」が利用され、正規のWindows機能を悪用した3つの異なる攻撃チェーンが確認されている。組織は、新たな手口に対する監視と対策の強化が求められている。",
+      "insight": "正規機能の悪用に対する検出精度の向上が求められる。EDR等のログ監視において、通常の管理操作と攻撃者の動的挙動をどのように区別するかが重要である。類似の標的型攻撃に対する自社環境の耐性をペネトレーションテストなどで検証すべきである。",
+      "importance": "中",
+      "importance_reason": "特定の脅威グループによる実被害や継続的なキャンペーンが報告されているため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "APT",
+        "マルウェア"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "PapRAT",
+        "Cyber-Espionage",
+        "South Asia",
+        "Windows functionality"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "Windows"
+        ],
+        "evidence": "Organizations in the region face growing cyberattacks from the known India-linked threat group, which leverages legitimate Windows functionality in three distinct attack chains."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "サイバー諜報活動による被害",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Organizations in the region face growing cyberattacks from the known India-linked threat group, which leverages legitimate Windows functionality in three distinct attack chains.",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [
+          "正規機能の悪用"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "d19a52d99aef",
+      "title": "「Barracuda ESG」に深刻な脆弱性 - 連鎖でroot取得のおそれ",
+      "summary": "Barracuda Networksは、同社6製品に脆弱性が判明したことを受け、修正パッチをリリースした。なかでもメールセキュリティ製品「Barracuda Email Security Gateway（ESG）」については、脆弱性を組み合わせることで大きな影響を受けるおそれがある。",
+      "url": "https://www.security-next.com/192322",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-04T08:50:44+09:00",
+      "title_ja": "Barracuda ESGなどに深刻な脆弱性、連鎖によるroot取得のおそれ",
+      "summary_ja": "Barracuda Networksは、同社6製品に脆弱性が判明したことを受け修正パッチをリリースした。特にメールセキュリティ製品「Barracuda ESG」では、複数脆弱性の組み合わせにより大きな影響を受ける可能性が指摘されている。管理者は速やかなパッチ適用と影響確認が必要である。",
+      "insight": "複数脆弱性の連鎖による深刻なリスクの典型例であり、SCAや構成管理の迅速化が求められる。修正パッチ適用後の再診断や、公開インスタンスに対する外部からのブラックボックス診断による露出確認が有効である。",
+      "importance": "高",
+      "importance_reason": "root取得につながる連鎖的脆弱性が含まれており、即座の対応が不可欠なため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Barracuda ESG",
+        "Barracuda Networks",
+        "root取得",
+        "脆弱性"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "Barracuda Email Security Gateway"
+        ],
+        "evidence": "Barracuda Networksは、同社6製品に脆弱性が判明したことを受け、修正パッチをリリースした。メールセキュリティ製品「Barracuda Email Security Gateway（ESG）」については、脆弱性を組み合わせることで大きな影響を受けるおそれがある。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "root取得のおそれ",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Barracuda Networksは、同社6製品に脆弱性が判明したことを受け、修正パッチをリリースした。メールセキュリティ製品「Barracuda Email Security Gateway（ESG）」については、脆弱性を組み合わせることで大きな影響を受けるおそれがある。",
+        "evidence_status": "PoCのみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "脆弱性の連鎖"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "30cefab06809",
+      "title": "「Chrome 157」で脆弱性213件を修正 - 「クリティカル」は7件",
+      "summary": "Googleは、ウェブブラウザ「Chrome」の最新版となる「Chrome 157」をリリースした。「クリティカル」とされる脆弱性も複数修正している。",
+      "url": "https://www.security-next.com/192316",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-04T07:51:41+09:00",
+      "title_ja": "Google「Chrome 157」リリース、クリティカル含む213件の脆弱性を修正",
+      "summary_ja": "Googleはウェブブラウザ「Chrome」の最新版「Chrome 157」をリリースした。本バージョンでは合計213件の脆弱性が修正されており、そのうち「クリティカル」とされるものが7件含まれている。ユーザーおよび管理者は速やかなブラウザの更新が求められる。",
+      "insight": "ブラウザ等のエンドポイント製品における継続的な多数の脆弱性修正に対し、資産管理ツールやSCAを活用した迅速なバージョン追従体制が不可欠である。自動更新の確実な適用と、未更新端末の検知メカニズムの維持が診断・運用双方の課題となる。",
+      "importance": "高",
+      "importance_reason": "広範に利用されるブラウザにおける多数の脆弱性修正およびクリティカル案件の含有のため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Chrome 157",
+        "Google",
+        "ブラウザ",
+        "クリティカル"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "Identity/ITDR"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Google Chrome"
+        ],
+        "evidence": "Googleは、ウェブブラウザ「Chrome」の最新版となる「Chrome 157」をリリースした。「クリティカル」とされる脆弱性も複数修正している。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "ブラウザ経由の脆弱性リスク",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Googleは、ウェブブラウザ「Chrome」の最新版となる「Chrome 157」をリリースした。「クリティカル」とされる脆弱性も複数修正している。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
       "id": "cae8eceeb5ba",
       "title": "Is Your SOC Ready for AI Agents? A Maturity Check Before You Deploy",
       "summary": "Forty percent of security teams now use AI every day, and another 56% are testing it. Only 4% have no plans to adopt it, according to Prophet Security's State of AI in Security Operations 2026 survey of more than 250 CISOs, SOC leaders and practitioners. For the teams still testing, the next decision is whether their own SOC is ready.\n\nAI SOC readiness has two parts: whether a SOC has the",
