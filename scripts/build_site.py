@@ -1006,7 +1006,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p style="margin-bottom:2px;font-size:11px;font-weight:600;color:var(--dim)">Cyber Defense Notes</p>
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
+  <p style="margin-top:4px">Powered by Gemini API + GitHub Actions</p>
 </footer>
 
 <script>
@@ -1922,7 +1922,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 
 <footer>
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
+  <p style="margin-top:4px">Powered by Gemini API + GitHub Actions</p>
 </footer>
 
 </body>
@@ -2011,7 +2011,7 @@ a{{color:inherit;text-decoration:none}}
 
 <footer style="text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px">
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
+  <p style="margin-top:4px">Powered by Gemini API + GitHub Actions</p>
 </footer>
 
 <script>
@@ -2287,7 +2287,7 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
 <footer>
   各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
   日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
-  <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions</p>
+  <p style="margin-top:4px">Powered by Gemini API + GitHub Actions</p>
 </footer>
 <script>
 document.querySelectorAll('.wr-toggle').forEach(function(btn){{
