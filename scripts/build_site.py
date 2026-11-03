@@ -825,15 +825,15 @@ a{{color:inherit;text-decoration:none}}
 .srch-input-icon{{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--dim);font-size:14px;pointer-events:none}}
 .srch-section-lbl{{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:7px}}
 .srch-themes{{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}}
-.srch-theme-btn{{font-size:11px;padding:5px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}}
+.srch-theme-btn{{font-size:12px;padding:5px 12px;border-radius:3px;border:1px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-family:inherit;white-space:nowrap}}
 .srch-theme-btn:hover{{border-color:var(--accent);color:var(--accent)}}
-.srch-theme-btn.on{{background:#0d1e36;border-color:var(--accent);color:var(--accent);font-weight:600}}
+.srch-theme-btn.on{{background:#245d86;border-color:#245d86;color:#fff;font-weight:600}}
 .srch-filters{{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}}
 .srch-filter-row{{display:flex;flex-wrap:wrap;align-items:center;gap:6px}}
 .srch-filter-lbl{{font-size:10px;font-weight:700;color:var(--dim);letter-spacing:.05em;min-width:60px;flex-shrink:0}}
-.srch-chip{{font-size:11px;padding:3px 10px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .15s;white-space:nowrap}}
+.srch-chip{{font-size:12px;padding:3px 10px;border-radius:3px;border:1px solid var(--border);background:#fff;color:var(--dim);cursor:pointer;font-family:inherit;white-space:nowrap}}
 .srch-chip:hover{{border-color:var(--muted);color:var(--text)}}
-.srch-chip.on{{background:#0d1e36;border-color:var(--accent);color:var(--accent)}}
+.srch-chip.on{{background:#245d86;border-color:#245d86;color:#fff;font-weight:600}}
 .srch-meta{{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}}
 .srch-count{{font-size:11px;color:var(--dim)}}
 .srch-clear-btn{{font-size:11px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .15s}}
@@ -920,7 +920,7 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 <div class="pane" id="pane-archive">
   <p class="plabel">記事検索</p>
   <p class="srch-desc">過去記事をテーマ・文脈・カテゴリから探せます。AI×セキュリティ、SOC/CDC、Security for AI の学習・調査に活用できます。</p>
-  <div id="srch-url-notice" style="display:none;font-size:11px;color:var(--accent);padding:5px 10px;background:#0d1e36;border-radius:6px;margin-bottom:10px">適用中の条件：<span id="srch-url-label"></span></div>
+  <div id="srch-url-notice" class="srch-url-notice" style="display:none">適用中の条件：<span id="srch-url-label"></span></div>
   <div class="srch-input-wrap">
     <span class="srch-input-icon">🔍</span>
     <input type="search" id="srch-input" class="srch-input" placeholder="キーワードを入力（例：プロンプトインジェクション、CVE、SOC）" autocomplete="off">
