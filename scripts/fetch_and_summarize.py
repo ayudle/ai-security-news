@@ -11,6 +11,7 @@ from google import genai
 from business import relevance, metadata_schema, normalize_metadata, attack_schema, normalize_attack
 
 GEMINI_MODEL = "gemini-3.8-flash"
+GEMINI_FALLBACK_MODEL = "gemini-3.5-flash-lite"
 
 # ============================================================
 # ソース定義
@@ -388,28 +389,32 @@ attackには必ず evidence_status, target_layers, attack_methods, weaknesses, c
 
     prompt += "\n最終要件: today_implicationは旧7セクション指定を使わず、【本日の要点】【診断・脆弱性対応】【AIエージェント】【国内・インシデント・政策】【深掘りする問い】の5項目、全体400〜600字。根拠のない項目は直接言及なし。一般論で埋めない。businessはスキーマの列挙値を守り、evidenceに入力抜粋から根拠を書く。\n"
 
-    # 503/429エラーに対する指数バックオフリトライ（最大5回）
+    # 混雑時は無料枠の別モデルへ切り替える。その他のエラーは即時停止する。
     import time
     response = None
     last_error = None
-    for attempt in range(5):
-        try:
-            response = client.models.generate_content(
-                model=GEMINI_MODEL,
-                contents=prompt,
-                config={"response_mime_type": "application/json", "response_json_schema": response_schema(),
-                        "thinking_config": {"thinking_level": "low"}},
-            )
+    for model in (GEMINI_MODEL, GEMINI_FALLBACK_MODEL):
+        for attempt in range(2):
+            try:
+                response = client.models.generate_content(
+                    model=model,
+                    contents=prompt,
+                    config={"response_mime_type": "application/json", "response_json_schema": response_schema(),
+                            "thinking_config": {"thinking_level": "low"}},
+                )
+                print(f"Gemini応答モデル: {model}")
+                break
+            except Exception as e:
+                last_error = e
+                err_str = str(e)
+                if any(code in err_str for code in ("503", "UNAVAILABLE", "429")):
+                    if attempt == 0:
+                        print(f"  {model} が混雑中。5秒後に再試行します")
+                        time.sleep(5)
+                else:
+                    raise
+        if response is not None:
             break
-        except Exception as e:
-            last_error = e
-            err_str = str(e)
-            if '503' in err_str or 'UNAVAILABLE' in err_str or '429' in err_str:
-                wait = (2 ** attempt) * 5  # 5s, 10s, 20s, 40s, 80s
-                print(f"  [RETRY {attempt+1}/5] {err_str[:80]}... wait {wait}s")
-                time.sleep(wait)
-            else:
-                raise
 
     if response is None:
         raise RuntimeError("Gemini APIが混雑しています。既存データを保持して次の実行で再試行します") from last_error
