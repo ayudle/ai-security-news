@@ -4,17 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Cyber Defense Notes | 2026-11-03</title>
-<meta name="description" content="AI、LLM、AIエージェントの普及で変わるSOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
+<meta name="description" content="脆弱性、脅威インテリジェンス、SOC/CDC、MDR/MSSP、Identity/ITDR、Exposure管理、AI×セキュリティの最新動向を実務者視点で整理する設計ノート。">
 <meta name="google-site-verification" content="m7S3bMP_P0V-BinV3MTpaO9qkk31af-RRKxsQ4_BoQg" />
 <meta property="og:title" content="Cyber Defense Notes">
 <meta property="og:description" content="AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
 <meta property="og:url" content="https://ayudle.github.io/ai-security-news/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cyber Defense Notes">
-<meta name="twitter:description" content="AI時代のサイバーディフェンス設計ノート — SOC/CDC、MDR/MSSP、Security for AI / AI for Securityの論点を整理するナレッジ基盤。">
-<meta name="twitter:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
 <link rel="canonical" href="https://ayudle.github.io/ai-security-news/">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -34,25 +30,25 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0f0f0d;--card:#1a1a18;--card2:#222220;--text:#e6e4dc;--muted:#98968e;--dim:#8c8a82;--border:#2a2a28;--accent:#378ADD;--r:10px}
-body{font-family:-apple-system,"Helvetica Neue",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px}
+:root{--bg:#101319;--card:#191e27;--card2:#222a36;--text:#f1f4f8;--muted:#c0c8d4;--dim:#98a4b3;--border:#303846;--accent:#66aaf2;--r:12px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:15px}
 a{color:inherit;text-decoration:none}
-.hdr{border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hdr{border-bottom:1px solid var(--border);padding:16px max(24px,calc((100vw - 980px)/2));display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#121720}
 .hdr-home{display:inline-flex;align-items:center;text-decoration:none;color:inherit}
 .hdr-home:hover .ht{color:var(--accent)}
-.ht{font-size:15px;font-weight:700;color:#fff;margin:0}
-.hs{font-size:11px;color:var(--dim)}
+.ht{font-size:18px;font-weight:750;color:#fff;margin:0;letter-spacing:-.01em}
+.hs{font-size:12px;color:var(--muted)}
 .hu{font-size:11px;color:var(--dim);margin-left:auto}
-.tab-bar{display:flex;border-bottom:1px solid var(--border);padding:0 24px;overflow-x:auto;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}
+.tab-bar{display:flex;border-bottom:1px solid var(--border);padding:0 max(24px,calc((100vw - 980px)/2));overflow-x:auto;background:#121720;-webkit-mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%);mask-image:linear-gradient(to right,black 0,black calc(100% - 32px),transparent 100%)}
 @media(min-width:768px){.tab-bar{-webkit-mask-image:none;mask-image:none}}
-.tab{font-size:12px;padding:10px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s}
+.tab{font-size:13px;padding:12px 16px;cursor:pointer;color:var(--dim);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:color .15s,border-color .15s}
 .tab.on,.tab[aria-current="page"]{color:var(--text);border-bottom-color:var(--accent);font-weight:600}
 .tab:hover{color:var(--text);border-bottom-color:var(--border)}
 .tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
-.pane{display:none;padding:16px 24px;max-width:860px;margin:0 auto}
+.pane{display:none;padding:24px;max-width:980px;margin:0 auto}
 .pane.on{display:block}
-.plabel{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:12px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}
+.plabel{font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--muted);margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:14px;cursor:pointer;transition:border-color .15s,transform .15s}
 .card:hover{border-color:#3a3a38}
 .cm{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:8px}
 .tier{background:#0c2a4a;color:#85b7eb;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}
@@ -63,10 +59,10 @@ a{color:inherit;text-decoration:none}
 .cdc-badges{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin:4px 0}
 .cdc-lbl{font-size:9px;font-weight:700;color:#4db896;letter-spacing:.06em;text-transform:uppercase;margin-right:2px}
 .cdc-badge{font-size:9px;padding:1px 6px;border-radius:99px;background:#0a2820;border:1px solid #1a5040;color:#4db896}
-.ct{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.45}
+.ct{font-size:17px;font-weight:700;margin-bottom:8px;line-height:1.55;letter-spacing:.005em}
 .ct a:hover{color:var(--accent)}
-.cs{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:8px}
-.insight{background:#0d1e36;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:7px 10px;margin-bottom:8px;font-size:11px;color:#85b7eb;line-height:1.55}
+.cs{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:10px}
+.insight{background:#12253d;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px;font-size:13px;color:#b9d9fb;line-height:1.75}
 .ins-lbl{display:block;font-size:9px;font-weight:700;color:var(--accent);letter-spacing:.06em;margin-bottom:2px;text-transform:uppercase}
 .tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
 .tag-main{font-size:10px;padding:2px 8px;border-radius:99px;border:1px solid;font-weight:600}
@@ -195,8 +191,12 @@ details[open] .srch-arc-summary::before{content:"▼"}
 .about-layer-n{font-size:11px;font-weight:700;color:var(--accent);margin-right:6px}
 .about-layer-name{font-weight:500;color:#e6e4dc}
 .about-layer-desc{font-size:12px;color:var(--dim);margin-top:2px}
-.about-x-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:var(--card);border:1px solid var(--border);border-radius:6px;text-decoration:none;color:var(--text);font-size:13px;font-weight:500;transition:border-color .15s}
-.about-x-btn:hover{border-color:var(--accent)}
+.focus-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.focus-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;text-decoration:none}
+.focus-card:hover{border-color:var(--accent)}
+.focus-card strong{display:block;font-size:13px;color:var(--text);margin-bottom:2px}
+.focus-card span{font-size:11px;color:var(--dim);line-height:1.5}
+@media(max-width:680px){body{font-size:14px}.pane{padding:18px 14px}.hdr{padding:14px}.tab-bar{padding:0 6px}.card{padding:15px}.ct{font-size:16px}.focus-strip{grid-template-columns:1fr}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
 <script>
@@ -225,6 +225,11 @@ gtag('config', 'G-KV7Q7SQKZX');
 </div>
 
 <div class="pane" id="pane-today">
+  <div class="focus-strip" aria-label="注目領域">
+    <a class="focus-card" href="?tag=脆弱性#archive"><strong>脆弱性・CVE</strong><span>本日 1件 · 悪用状況、パッチ、露出管理</span></a>
+    <a class="focus-card" href="?context=SOC運用変化#archive"><strong>SOC / CDC運用</strong><span>本日 8件 · 検知、調査、対応、運用設計</span></a>
+    <a class="focus-card" href="?context=Exposure管理#archive"><strong>Identity / Exposure</strong><span>ITDR、CTEM、攻撃面管理、MDR/MSSP</span></a>
+  </div>
   <div id="today-impl-box" style="display:none;background:#0d1b2e;border-left:3px solid #378ADD;border-radius:4px;padding:12px 16px;margin-bottom:16px">
     <div style="font-size:10px;font-weight:700;color:#378ADD;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">本日の示唆</div>
     <div id="today-impl-text" style="font-size:12px;line-height:1.8;color:#c0beb6"></div>
@@ -689,16 +694,6 @@ gtag('config', 'G-KV7Q7SQKZX');
       </div>
     </div>
 
-    <!-- SNS -->
-    <div class="about-section">
-      <div class="about-section-lbl">SNS</div>
-      <div class="about-text" style="margin-bottom:1rem">X（旧Twitter）で最新ニュースを毎日発信しています。</div>
-      <a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" class="about-x-btn">
-        <span style="font-size:14px;font-weight:700">𝕏</span>
-        <span>@ayudle_aisec をフォロー</span>
-      </a>
-    </div>
-
   </div>
 </div>
 
@@ -706,7 +701,6 @@ gtag('config', 'G-KV7Q7SQKZX');
   <p style="margin-bottom:2px;font-size:11px;font-weight:600;color:var(--dim)">Cyber Defense Notes</p>
   <p>各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。</p>
   <p style="margin-top:4px">Powered by Gemini 2.5 Flash + GitHub Actions（完全無料）</p>
-  <p style="margin-top:8px"><a href="https://x.com/ayudle_aisec" target="_blank" rel="noopener noreferrer" style="color:var(--dim);text-decoration:none;font-size:10px">X: @ayudle_aisec</a></p>
 </footer>
 
 <script>
