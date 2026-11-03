@@ -294,10 +294,20 @@ def response_schema():
         "business": metadata_schema(),
         "attack": attack_schema(),
     })
+    # Geminiの制約状態数には上限がある。列挙・配列長を同時に多数指定すると
+    # 400 INVALID_ARGUMENT になるため、形式だけをAPIへ渡して値は下流で検証する。
+    def shape(node):
+        if isinstance(node, list):
+            return [shape(value) for value in node]
+        if isinstance(node, dict):
+            return {key: shape(value) for key, value in node.items()
+                    if key not in {"enum", "maxItems", "minimum", "maximum", "required", "description"}}
+        return node
+
     return {"type": "object", "properties": {
-        "articles": {"type": "array", "items": {"type": "object", "properties": props, "required": list(props)}},
+        "articles": {"type": "array", "items": {"type": "object", "properties": shape(props), "required": ["index"]}},
         "today_implication": {"type": "string"},
-    }, "required": ["articles", "today_implication"]}
+    }, "required": ["articles"]}
 
 
 def summarize_with_gemini(articles):
