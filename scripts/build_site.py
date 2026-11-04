@@ -553,6 +553,10 @@ def build_html(data, weekly_list=None, columns=None):
                 "cdc_relevance": _a.get("cdc_relevance", 0),
                 "related_keywords": _a.get("related_keywords", [])[:6],
                 "engineering_topics": _a.get("engineering_topics") or engineering_topics(_a.get("title", ""), _a.get("summary", "")),
+                "business_topics": _a.get("business_topics", []),
+                "business": _a.get("business") if isinstance(_a.get("business"), dict) else None,
+                "attack_layers": (_a.get("attack") or {}).get("target_layers", []) if isinstance(_a.get("attack"), dict) else [],
+                "affected_layers": _a.get("affected_layers", []),
                 "source_name":   _a.get("source_name", ""),
             })
     search_json = json.dumps(search_articles, ensure_ascii=False).replace('</', '<\\/')
@@ -833,11 +837,18 @@ a{{color:inherit;text-decoration:none}}
 .srch-theme-btn:hover{{border-color:var(--accent);color:var(--accent)}}
 .srch-theme-btn.on{{background:#245d86;border-color:#245d86;color:#fff;font-weight:600}}
 .srch-filters{{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}}
+.srch-group{{margin:14px 0}}
+.srch-group-title{{font-size:11px;font-weight:700;color:var(--text);margin-bottom:8px}}
+.srch-group > div[id]{{display:flex;flex-wrap:wrap;gap:5px}}
+.srch-detail{{border-top:1px solid var(--border);padding-top:10px;margin:12px 0}}
+.srch-detail summary{{cursor:pointer;color:var(--accent);font-size:12px;font-weight:600}}
+.srch-detail .srch-filters{{margin-top:10px}}
 .srch-filter-row{{display:flex;flex-wrap:wrap;align-items:center;gap:6px}}
 .srch-filter-lbl{{font-size:10px;font-weight:700;color:var(--dim);letter-spacing:.05em;min-width:60px;flex-shrink:0}}
 .srch-chip{{font-size:12px;padding:3px 10px;border-radius:3px;border:1px solid var(--border);background:#fff;color:var(--dim);cursor:pointer;font-family:inherit;white-space:nowrap}}
 .srch-chip:hover{{border-color:var(--muted);color:var(--text)}}
 .srch-chip.on{{background:#245d86;border-color:#245d86;color:#fff;font-weight:600}}
+.srch-filter-row > div{{display:flex;flex-wrap:wrap;gap:5px;min-width:0}}
 .srch-meta{{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}}
 .srch-count{{font-size:11px;color:var(--dim)}}
 .srch-clear-btn{{font-size:11px;padding:4px 12px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;font-family:inherit;transition:all .15s}}
@@ -848,6 +859,8 @@ a{{color:inherit;text-decoration:none}}
 .srch-card-title{{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:5px}}
 .srch-card-summary{{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}}
 .srch-card-tags{{display:flex;flex-wrap:wrap;gap:4px}}
+.srch-card-facts{{font-size:11px;line-height:1.7;color:var(--muted);overflow-wrap:anywhere}}
+.srch-card-facts span+span::before{{content:" · ";color:var(--dim)}}
 .srch-more-btn{{font-size:12px;padding:7px 20px;border-radius:99px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s}}
 .srch-more-btn:hover{{border-color:var(--accent);color:var(--accent)}}
 .srch-arc-details{{margin-top:28px;border-top:1px solid var(--border);padding-top:16px}}
@@ -924,31 +937,34 @@ details[open] .srch-arc-summary::before{{content:"▼"}}
 
 <div class="pane" id="pane-archive">
   <p class="plabel">記事検索</p>
-  <p class="srch-desc">過去記事をテーマ・文脈・カテゴリから探せます。脆弱性、攻撃・インシデント、診断技術・評価の調査に活用できます。</p>
+  <p class="srch-desc">攻撃や脆弱性の動向と、必要な診断・防御能力を調べます。過去記事は未評価の項目があってもキーワードで検索できます。</p>
   <div id="srch-url-notice" class="srch-url-notice" style="display:none">適用中の条件：<span id="srch-url-label"></span></div>
   <div class="srch-input-wrap">
     <span class="srch-input-icon">🔍</span>
     <input type="search" id="srch-input" class="srch-input" placeholder="キーワードを入力（例：診断ハーネス、CVE、修正評価）" autocomplete="off">
   </div>
-  <div class="srch-section-lbl">テーマから探す</div>
+  <div class="srch-section-lbl">主テーマ</div>
   <div class="srch-themes" id="srch-themes"></div>
   <div class="srch-filters">
-    <div class="srch-filter-row">
-      <span class="srch-filter-lbl">文脈</span>
-      <div id="srch-ctx"></div>
+    <div class="srch-group"><div class="srch-group-title">診断対象・方式</div><div id="srch-assessment"></div></div>
+    <div class="srch-group"><div class="srch-group-title">実務シグナル</div>
+      <div class="srch-filter-row"><span class="srch-filter-lbl">日本関連</span><div id="srch-japan"></div></div>
+      <div class="srch-filter-row"><span class="srch-filter-lbl">悪用状況</span><div id="srch-exploit"></div></div>
+      <div class="srch-filter-row"><span class="srch-filter-lbl">緊急度</span><div id="srch-urgency"></div></div>
+      <div class="srch-filter-row"><span class="srch-filter-lbl">段階</span><div id="srch-lifecycle"></div></div>
     </div>
     <div class="srch-filter-row">
       <span class="srch-filter-lbl">カテゴリ</span>
       <div id="srch-cat"></div>
     </div>
     <div class="srch-filter-row">
-      <span class="srch-filter-lbl">CDC関連度</span>
-      <div id="srch-cdc"></div>
-    </div>
-    <div class="srch-filter-row">
       <span class="srch-filter-lbl">期間</span>
       <div id="srch-period"></div>
     </div>
+    <details class="srch-detail"><summary>運用・サービス設計（詳細）</summary>
+      <div class="srch-filters"><div class="srch-filter-row"><span class="srch-filter-lbl">文脈</span><div id="srch-ctx"></div></div>
+      <div class="srch-filter-row"><span class="srch-filter-lbl">CDC関連度</span><div id="srch-cdc"></div></div></div>
+    </details>
   </div>
   <div class="srch-meta">
     <span id="srch-count" class="srch-count"></span>
@@ -1292,16 +1308,26 @@ function toggleKw(id, btn) {{
 
 // ── 記事検索 ──────────────────────────────────────────────────
 const SRCH_THEMES = [
+  {{id:'attack', label:'攻撃・インシデント'}},
+  {{id:'vuln', label:'脆弱性管理'}},
   {{id:'engineering', label:'診断技術・評価', kws:[]}},
-  {{id:'agent',  label:'AIエージェント',  kws:['aiエージェント','agentic','agent','自律','ツール実行','mcp']}},
-  {{id:'llmsec', label:'LLMセキュリティ', kws:['llm','生成ai','プロンプトインジェクション','ジェイルブレイク','モデル汚染','データポイズニング']}},
-  {{id:'s4ai',   label:'Security for AI', kws:['security for ai','aiシステム','rag','mcp','モデル','プロンプト','aiガバナンス','ai権限']}},
-  {{id:'ai4s',   label:'AI for Security', kws:['ai for security','soc','siem','edr','mdr','脅威ハンティング','アラート','インシデント対応']}},
-  {{id:'soc',    label:'SOC/CDC',          kws:['soc','cdc','mdr','mssp','tier','エスカレーション','ciso報告','監査','復旧','サービス企画']}},
-  {{id:'itdr',   label:'Identity/ITDR',   kws:['identity','itdr','id管理','非人間型id','認証','認可','権限','iam','entra','okta','active directory']}},
-  {{id:'vuln',   label:'脆弱性管理',       kws:['脆弱性','cve','kev','エクスプロイト','パッチ','exposure','ctem','攻撃可能状態']}},
-  {{id:'gov',    label:'AIガバナンス',     kws:['aiガバナンス','aiリスク','規制','nist','eu ai法','コンプライアンス','監査']}},
+  {{id:'agent', label:'AIエージェント・LLMセキュリティ'}},
+  {{id:'policy', label:'政策・市場'}},
 ];
+const SRCH_ASSESS = [
+  {{id:'all',label:'すべて'}}, {{id:'code',label:'ソースコード・SAST・SCA',match:['ソースコード診断','SAST','SCA'],tags:['SAST','SCA','ソースコード診断']}},
+  {{id:'secret',label:'シークレット検出',match:['シークレット検出'],tags:['シークレット検出']}},
+  {{id:'web',label:'Web・API・DAST',match:['Web診断','API診断','DAST'],tags:['API診断','DAST','Web診断'],layers:['Web・API','アプリ/API']}},
+  {{id:'blackbox',label:'ブラックボックス診断',match:['ブラックボックス診断'],tags:['ブラックボックス診断']}},
+  {{id:'cloud',label:'クラウド・コンテナ',match:['クラウド診断'],tags:['クラウド診断'],layers:['クラウド・コンテナ','クラウド/サーバー']}},
+  {{id:'mobile',label:'モバイル診断',match:['モバイル診断'],tags:['モバイル診断']}},
+  {{id:'pentest',label:'ペネトレーションテスト',match:['ペネトレーションテスト'],tags:['ペネトレーションテスト']}},
+  {{id:'ai_eval',label:'AIエージェント評価',match:['AIエージェント評価'],tags:['AIエージェント評価']}},
+];
+const SRCH_JAPAN = [{{id:'all',label:'すべて'}},{{id:'直接関連',label:'直接関連'}},{{id:'関連あり',label:'関連あり'}}];
+const SRCH_EXPLOIT = [{{id:'all',label:'すべて'}},{{id:'悪用確認あり',label:'悪用確認あり'}},{{id:'PoC公開のみ',label:'PoC公開のみ'}},{{id:'悪用未確認と明記',label:'悪用未確認と明記'}},{{id:'不明',label:'不明'}}];
+const SRCH_URGENCY = [{{id:'all',label:'すべて'}},{{id:'緊急',label:'緊急'}},{{id:'早期評価',label:'早期評価'}},{{id:'情報収集',label:'情報収集'}}];
+const SRCH_LIFECYCLE = [{{id:'all',label:'すべて'}},{{id:'発見',label:'発見'}},{{id:'評価・優先順位付け',label:'評価・優先順位付け'}},{{id:'診断',label:'診断'}},{{id:'修正・緩和',label:'修正・緩和'}},{{id:'再診断',label:'再診断'}},{{id:'継続管理',label:'継続管理'}}];
 const SRCH_CTX = [
   {{id:'all',  label:'すべて',           match:null}},
   {{id:'s4ai', label:'Security for AI', match:['Security for AI']}},
@@ -1333,7 +1359,7 @@ const SRCH_PERIOD = [
   {{id:'90', label:'直近90日'}},
 ];
 
-var srchState = {{query:'',theme:null,ctx:'all',cat:'all',cdc:'all',period:'all'}};
+var srchState = {{query:'',theme:null,assessment:'all',japan:'all',exploit:'all',urgency:'all',lifecycle:'all',ctx:'all',cat:'all',cdc:'all',period:'all'}};
 var srchOffset = 0;
 var SRCH_PAGE = 30;
 var srchFiltered = [];
@@ -1392,6 +1418,8 @@ function applyUrlParams() {{
 
   var theme = params.get('theme');
   if (theme) {{
+    var legacyTheme = {{llmsec:'agent',s4ai:'agent',ai4s:'agent',soc:'attack',itdr:'vuln',gov:'policy'}};
+    theme = legacyTheme[theme] || theme;
     var themeFound = SRCH_THEMES.find(function(t) {{ return t.id === theme || t.label === theme; }});
     if (themeFound) {{
       srchState.theme = themeFound.id;
@@ -1458,6 +1486,11 @@ function initSearch() {{
     }});
   }}
   buildSrchChips('srch-ctx',    SRCH_CTX,    'ctx');
+  buildSrchChips('srch-assessment', SRCH_ASSESS, 'assessment');
+  buildSrchChips('srch-japan', SRCH_JAPAN, 'japan');
+  buildSrchChips('srch-exploit', SRCH_EXPLOIT, 'exploit');
+  buildSrchChips('srch-urgency', SRCH_URGENCY, 'urgency');
+  buildSrchChips('srch-lifecycle', SRCH_LIFECYCLE, 'lifecycle');
   buildSrchChips('srch-cat',    SRCH_CAT,    'cat');
   buildSrchChips('srch-cdc',    SRCH_CDC,    'cdc');
   buildSrchChips('srch-period', SRCH_PERIOD, 'period');
@@ -1494,7 +1527,29 @@ function runSearch() {{
       }}
     }}
     if (srchState.cat !== 'all' && a.tag_main_id !== srchState.cat) return false;
-    if (activeTheme && activeTheme.id === 'engineering' && !(a.engineering_topics || []).length) return false;
+    var topics = a.business_topics || [];
+    var subs = a.tag_subs || [];
+    if (activeTheme) {{
+      var themeMatch = activeTheme.id === 'attack' ? (['attack','incident'].indexOf(a.tag_main_id) >= 0 || topics.indexOf('企業インシデント') >= 0) :
+        activeTheme.id === 'vuln' ? (a.tag_main_id === 'vuln' || topics.indexOf('脆弱性管理') >= 0) :
+        activeTheme.id === 'engineering' ? (a.engineering_topics || []).length > 0 :
+        activeTheme.id === 'agent' ? (['ai_sec','ai_risk'].indexOf(a.tag_main_id) >= 0 || topics.indexOf('AIエージェント') >= 0 || subs.some(function(s) {{ return ['LLMセキュリティ','プロンプトインジェクション','ツール悪用','エージェント間通信'].indexOf(s) >= 0; }})) :
+        (['policy','biz_tech'].indexOf(a.tag_main_id) >= 0 || topics.indexOf('政策・地政学') >= 0);
+      if (!themeMatch) return false;
+    }}
+    var business = a.business || null;
+    if (srchState.assessment !== 'all') {{
+      var af = SRCH_ASSESS.find(function(f) {{ return f.id === srchState.assessment; }});
+      var assessments = business ? (business.assessments || []) : [];
+      var layers = (a.attack_layers || []).concat(a.affected_layers || []);
+      if (!af || !(af.match.some(function(v) {{ return assessments.indexOf(v) >= 0; }}) ||
+          af.tags.some(function(v) {{ return subs.indexOf(v) >= 0; }}) ||
+          (af.layers || []).some(function(v) {{ return layers.indexOf(v) >= 0; }}))) return false;
+    }}
+    if (srchState.japan !== 'all' && (!business || business.japan_relevance !== srchState.japan)) return false;
+    if (srchState.exploit !== 'all' && (!business || business.exploitation !== srchState.exploit)) return false;
+    if (srchState.urgency !== 'all' && (!business || business.urgency !== srchState.urgency)) return false;
+    if (srchState.lifecycle !== 'all' && (!business || (business.lifecycle || []).indexOf(srchState.lifecycle) < 0)) return false;
     if (srchState.cdc === '2' && (a.cdc_relevance || 0) < 2) return false;
     if (srchState.cdc === '3' && (a.cdc_relevance || 0) < 3) return false;
     return true;
@@ -1518,16 +1573,9 @@ function runSearch() {{
       }}
       if (activeTheme) {{
         if (activeTheme.id === 'engineering') score += (a.engineering_topics || []).length * 3;
-        var allText = [
-          a.title_ja, a.summary_ja, a.insight, a.tag_main_label,
-          (a.tag_subs || []).join(' '),
-          (a.cdc_context || []).join(' '),
-          (a.related_keywords || []).join(' ')
-        ].join(' ').toLowerCase();
-        var matches = activeTheme.kws.filter(function(kw) {{ return allText.indexOf(kw) >= 0; }}).length;
-        score += matches * 2;
+        score += 1;
       }}
-      score += (a.cdc_relevance || 0) * 0.1;
+      if (score > 0) score += (a.cdc_relevance || 0) * 0.1;
       return {{a: a, score: score}};
     }});
     results = scored
@@ -1578,38 +1626,43 @@ function renderSrchCard(a) {{
   var title = escapeHtml(a.title_ja || '(タイトルなし)');
   var smry  = a.summary_ja || '';
   var smryEsc = escapeHtml(smry.length > 120 ? smry.slice(0, 120) + '…' : smry);
-  var cdcRel   = a.cdc_relevance || 0;
-  var cdcColor = cdcRel >= 3 ? '#E24B4A' : cdcRel >= 2 ? '#BA7517' : '#566473';
-  var cdcLabel = cdcRel >= 3 ? '高' : cdcRel >= 2 ? '中' : '低';
-  var mc = MAIN_COLORS[a.tag_main_id] || '#245d86';
   var ml = escapeHtml(a.tag_main_label || '');
-  var subTags = (a.tag_subs || []).slice(0, 3).map(function(s) {{
-    return '<span class="tag-sub">' + escapeHtml(s) + '</span>';
-  }}).join('');
-  var ctxTags = (a.cdc_context || []).slice(0, 2).map(function(c) {{
-    return '<span class="cdc-badge">' + escapeHtml(c) + '</span>';
-  }}).join('');
   var engTags = (a.engineering_topics || []).slice(0, 2).map(function(t) {{
     return '<span class="tag-sub">' + escapeHtml(t) + '</span>';
   }}).join('');
+  var business = a.business || null;
+  var facts = [
+    '日本: ' + (business ? business.japan_relevance || '不明' : '未評価'),
+    '悪用: ' + (business ? business.exploitation || '不明' : '未評価'),
+    '対応: ' + (business ? business.urgency || '不明' : '未評価')
+  ];
+  var products = business && (business.products || []).filter(function(v) {{ return v && v !== '不明'; }});
+  var assessments = business && (business.assessments || []).filter(function(v) {{ return v && v !== '不明'; }});
+  if (products && products.length) facts.push('対象: ' + products.slice(0, 2).join('、'));
+  if (assessments && assessments.length) facts.push('診断: ' + assessments.slice(0, 2).join('、'));
+  else if ((a.attack_layers || []).length) facts.push('レイヤー: ' + a.attack_layers.slice(0, 2).join('、'));
+  else if ((a.affected_layers || []).length) facts.push('レイヤー: ' + a.affected_layers.slice(0, 2).join('、'));
   return '<a href="' + href + '" class="srch-card">' +
     '<div class="srch-card-meta">' +
       '<span class="dt">' + escapeHtml(a.date || '') + '</span>' +
       (a.source_name ? '<span class="src">' + escapeHtml(a.source_name) + '</span>' : '') +
-      '<span class="imp" style="color:' + cdcColor + ';border-color:' + cdcColor + '55">CDC: ' + cdcLabel + '</span>' +
+      (ml ? '<span class="src">' + ml + '</span>' : '') +
     '</div>' +
     '<div class="srch-card-title">' + title + '</div>' +
     (smryEsc ? '<div class="srch-card-summary">' + smryEsc + '</div>' : '') +
-    '<div class="srch-card-tags">' +
-      (ml ? '<span class="tag-main" style="background:' + mc + '20;color:' + mc + ';border-color:' + mc + '44">' + ml + '</span>' : '') +
-      (srchState.theme === 'engineering' ? engTags : subTags + ctxTags) +
-    '</div>' +
+    (engTags ? '<div class="srch-card-tags">' + engTags + '</div>' : '') +
+    '<div class="srch-card-facts">' + facts.map(function(f) {{ return '<span>' + escapeHtml(f) + '</span>'; }}).join('') + '</div>' +
   '</a>';
 }}
 
 function clearSearch() {{
   srchState.query  = '';
   srchState.theme  = null;
+  srchState.assessment = 'all';
+  srchState.japan = 'all';
+  srchState.exploit = 'all';
+  srchState.urgency = 'all';
+  srchState.lifecycle = 'all';
   srchState.ctx    = 'all';
   srchState.cat    = 'all';
   srchState.cdc    = 'all';
