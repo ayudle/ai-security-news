@@ -5,7 +5,7 @@ build_site.py v3
 
 import json, os, re, glob
 from html import escape as html_escape
-from urllib.parse import quote as _url_quote
+from urllib.parse import quote as _url_quote, urlsplit
 from datetime import datetime, timezone, timedelta
 from collections import Counter, defaultdict
 from attack_watch import render as render_attack_watch
@@ -96,11 +96,27 @@ def parse_frontmatter(text):
 
 
 def _md_inline(text):
-    """インライン要素（太字・イタリック）をHTML化する（エスケープ済みテキストに適用）"""
-    t = html_escape(text)
-    t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
-    t = re.sub(r'\*([^*]+?)\*', r'<em>\1</em>', t)
-    return t
+    """太字・イタリック・HTTP(S)リンクを安全なHTMLに変換する。"""
+    def plain(part):
+        escaped = html_escape(part)
+        escaped = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', escaped)
+        return re.sub(r'\*([^*]+?)\*', r'<em>\1</em>', escaped)
+
+    out = []
+    last = 0
+    for match in re.finditer(r'\[([^\]\n]+)\]\((https?://[^\s)]+)\)', text):
+        url = match.group(2)
+        try:
+            valid = bool(urlsplit(url).hostname)
+        except ValueError:
+            valid = False
+        if not valid:
+            continue
+        out.append(plain(text[last:match.start()]))
+        out.append(f'<a href="{html_escape(url, quote=True)}" rel="noopener noreferrer">{plain(match.group(1))}</a>')
+        last = match.end()
+    out.append(plain(text[last:]))
+    return ''.join(out)
 
 
 def md_to_html(text):
@@ -161,7 +177,6 @@ def build_column_page(col, all_articles=None, all_columns=None):
     tags_html = ''.join(
         f'<span class="col-tag-ap">{html_escape(t)}</span>' for t in tags
     )
-    human_badge = '<span class="human-badge">著者執筆</span>'
 
     # このコラムのCDC contextセットに一致する記事を最大5件抽出
     col_cdcs = col_cdc_set(tags)
@@ -302,7 +317,6 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
   <div class="col-head">
     <div class="col-meta">
       <span>{html_escape(date)}</span>
-      {human_badge}
     </div>
     <h1 class="col-title">{html_escape(title)}</h1>
     <p class="col-desc">{html_escape(desc)}</p>
@@ -322,10 +336,6 @@ footer{{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-to
     <a href="/ai-security-news/#today" style="font-size:13px;color:var(--accent);text-decoration:none">← 本日のニュースに戻る</a>
   </div>
 </article>
-
-<footer>
-  本コラムは著者が執筆した考察であり、LLMによる自動生成ではありません。<br>
-</footer>
 
 </body>
 </html>"""
@@ -1727,8 +1737,7 @@ def build_article_page(article, all_articles, taxonomy, columns=None):
             cdate = col.get("date", "")
             col_items.append(
                 f'<a href="../columns/{cslug}.html" class="rel-item">'
-                f'<div class="rel-meta"><span class="rel-date">{html_escape(cdate)}</span>'
-                f'<span style="font-size:10px;padding:1px 6px;border-radius:99px;background:#1a2e1a;border:1px solid #2a5a2a;color:#6add8a">著者執筆</span></div>'
+                f'<div class="rel-meta"><span class="rel-date">{html_escape(cdate)}</span></div>'
                 f'<div class="rel-title">{html_escape(ctitle)}</div></a>'
             )
         matched_cols_html = (
@@ -2470,7 +2479,7 @@ def main():
     sitemap_urls = [
         {'loc': f'{site_url}/', 'priority': '1.0', 'changefreq': 'daily'},
     ]
-    # コラム（著者執筆の独自コンテンツ・最優先）
+    # コラム（独自コンテンツ・最優先）
     for col in columns:
         cslug = col.get('slug','')
         cdate = col.get('date','')
@@ -2542,6 +2551,9 @@ Sitemap: {site_url}/sitemap.xml
     for path in glob.glob('docs/**/*.html', recursive=True):
         with open(path, encoding='utf-8') as f:
             page = f.read()
+        # 現行データに含まれない保存済み記事ページにも旧コラム表記を残さない。
+        if path.startswith('docs/article/'):
+            page = re.sub(r'<span style="[^"]*">(?:✍\s*)?著者執筆</span>', '', page)
         href = 'assets/site.css' if path == 'docs/index.html' else '../assets/site.css'
         link = f'<link rel="stylesheet" href="{href}">'
         if link not in page:
