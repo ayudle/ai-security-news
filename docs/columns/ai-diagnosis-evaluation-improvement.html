@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI脆弱性診断の競争力は、評価を回し続ける基盤にある | Cyber Defense Notes</title>
+<meta name="description" content="PentestEvalとMetaVulを手がかりに、診断結果の揺らぎを工程ごとに捉え、評価をハーネスの継続的な改善につなぐ基盤について考える。">
+<meta property="og:title" content="AI脆弱性診断の競争力は、評価を回し続ける基盤にある">
+<meta property="og:description" content="PentestEvalとMetaVulを手がかりに、診断結果の揺らぎを工程ごとに捉え、評価をハーネスの継続的な改善につなぐ基盤について考える。">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/columns/ai-diagnosis-evaluation-improvement.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/columns/ai-diagnosis-evaluation-improvement.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI脆弱性診断の競争力は、評価を回し続ける基盤にある", "description": "PentestEvalとMetaVulを手がかりに、診断結果の揺らぎを工程ごとに捉え、評価をハーネスの継続的な改善につなぐ基盤について考える。", "author": {"@type": "Organization", "name": "Cyber Defense Notes"}, "publisher": {"@type": "Organization", "name": "Cyber Defense Notes", "url": "https://ayudle.github.io/ai-security-news/"}, "datePublished": "2026-11-06", "dateModified": "2026-11-06", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://ayudle.github.io/ai-security-news/columns/ai-diagnosis-evaluation-improvement.html"}, "url": "https://ayudle.github.io/ai-security-news/columns/ai-diagnosis-evaluation-improvement.html", "image": "https://ayudle.github.io/ai-security-news/og-image.png"}</script>
+<style>
+:root{--bg:#ffffff;--text:#202830;--dim:#566473;--border:#d9dfe5;--accent:#245d86;--card:#f6f7f8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700}
+.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+nav.col-nav{padding:8px 24px 10px;border-bottom:1px solid #d9dfe5;display:flex;flex-wrap:wrap;gap:16px;font-size:12px}
+nav.col-nav a{color:var(--accent);text-decoration:none}
+.col-ap{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.col-head{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:28px}
+.col-meta{font-size:11px;color:var(--dim);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.col-tags-ap{display:flex;flex-wrap:wrap;gap:4px}
+.col-tag-ap{font-size:12px;padding:2px 7px;border-radius:2px;background:#f2f4f6;border:1px solid #d9dfe5;color:#35414d}
+h1.col-title{font-size:24px;font-weight:700;color:#202830;line-height:1.4;margin-bottom:10px}
+.col-desc{font-size:14px;color:var(--dim);line-height:1.65;margin-top:8px}
+.col-body{font-size:15px;line-height:1.9;color:var(--text)}
+.col-body h1,.col-body h2{font-size:18px;font-weight:700;color:#202830;margin:2em 0 .6em;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.col-body h3{font-size:15px;font-weight:700;color:#475361;margin:1.6em 0 .5em}
+.col-body p{margin-bottom:1.2em}
+.col-body ul{margin:0 0 1.2em 1.4em}
+.col-body li{margin-bottom:.4em}
+.col-body strong{color:#202830;font-weight:700}
+.col-footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:12px}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KV7Q7SQKZX');
+</script>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">Cyber Defense Notes</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#columns" class="back">← コラム一覧に戻る</a>
+
+<nav class="col-nav">
+  <a href="/ai-security-news/#today">本日のニュース</a>
+  <a href="/ai-security-news/#trend">攻撃・インシデント動向</a>
+  <a href="/ai-security-news/#weekly">週次レポート</a>
+  <a href="/ai-security-news/#columns">コラム一覧</a>
+</nav>
+
+<article class="col-ap">
+  <div class="col-head">
+    <div class="col-meta">
+      <span>2026-11-06</span>
+    </div>
+    <h1 class="col-title">AI脆弱性診断の競争力は、評価を回し続ける基盤にある</h1>
+    <p class="col-desc">PentestEvalとMetaVulを手がかりに、診断結果の揺らぎを工程ごとに捉え、評価をハーネスの継続的な改善につなぐ基盤について考える。</p>
+    <div class="col-related-themes"><strong>関連テーマ</strong><div class="col-tags-ap"><span class="col-tag-ap">診断技術・評価</span><span class="col-tag-ap">脆弱性診断</span><span class="col-tag-ap">AI for Security</span><span class="col-tag-ap">ハーネス</span><span class="col-tag-ap">評価基盤</span></div></div>
+  </div>
+
+  <div class="col-body">
+<h2>はじめに：一度発見できたことを、品質と呼べるか</h2>
+<p>AIを使った脆弱性診断を評価するとき、「脆弱性を発見できた」という結果をどう扱えばよいのでしょうか。</p>
+<p>同じ対象に対して診断を繰り返せば、毎回同じ情報を集め、同じ検査を選び、同じ結論に至るとは限りません。ある回では発見できても、別の回では見逃す可能性があります。一度の成功だけで診断品質を判断するのは難しいと思います。</p>
+<p>そこで知りたいのは、結果が変わった<strong>理由</strong>です。情報収集で対象を見落としたのか。対象は把握したが、必要な検査を選ばなかったのか。検査を実施したものの、その結果から脆弱性を判断できなかったのか。</p>
+<p>これらはすべて「見逃し」です。しかし、直すべき工程はそれぞれ違います。失敗を一つの数字にまとめてしまうと、ハーネスのどこを改善すべきかが見えなくなります。</p>
+<h2>診断工程の揺らぎをどう捉えるか</h2>
+<p>最初に注目したいのは、情報収集です。</p>
+<p>診断のたびに把握する画面、API、パラメータ、技術構成が変われば、その後に立てる仮説や選ぶ検査も変わります。初期の小さな差が後続の判断に伝わり、最終的な発見の有無を左右するかもしれません。</p>
+<p>同じ情報が得られても、検査の選択は揺れ得ます。なぜその攻撃方法を選び、別の方法を選ばなかったのか。優先順位を付けた結果なのか、対象の特性から不要と判断したのか、それとも検査の必要性に気づかなかったのか。</p>
+<p>「何を検査したか」に加えて、「何を検査しなかったか」とその理由が分かれば、未検査による見逃しと、検査後の判定による見逃しを分けられます。複数回の診断結果を比較して初めて、どの工程が不安定なのかを考えられるはずです。</p>
+<h2>PentestEvalが示す、工程別評価の意味</h2>
+<p>この問いを考える手がかりになるのが、<a href="https://arxiv.org/html/2512.14233v2" rel="noopener noreferrer">PentestEval</a>です。</p>
+<p>この研究は、ペネトレーションテストを情報収集、弱点の収集と選別、攻撃判断、攻撃手順の生成と修正という工程に分けます。最終的に攻撃が成功したかだけでなく、途中のどの判断や実行に課題があるかを測ろうとしています。</p>
+<p>特に興味深いのは、中間工程の出力を専門家が用意した正解に置き換える実験です。論文のパイプラインでは、弱点の収集、選別、攻撃判断に正解を与えていくと、最終的な成功率も上がりました。これは実運用でその性能を達成したという意味ではありません。<strong>どの工程の品質が後続の結果に影響するかを調べられる</strong>ことに意味があります。</p>
+<p>診断全体の成否だけを見ていると、失敗の理由は分かりません。中間成果物を評価できれば、改善すべき場所を絞り込めます。</p>
+<h2>MetaVulが示す、評価から改善へのつながり</h2>
+<p><a href="https://arxiv.org/pdf/2610.40721" rel="noopener noreferrer">MetaVul</a>は、評価結果を使って脆弱性検知のハーネスを改善する研究です。改善役のエージェントが過去の診断結果や正解を参照してハーネスを変更し、診断役が変更後のハーネスで再び評価を受けます。</p>
+<p>評価方法にも考えさせられます。脆弱な関数を「脆弱」と判定するだけでは足りません。修正済みの関数を「安全」と区別できて初めて、そのペアを正解とします。何でも脆弱だと答える方法では、高い評価を得られない設計です。</p>
+<p>ただし、ある指標が改善すれば診断品質のすべてが向上するわけではありません。論文では、誤検知の減少と引き換えに、見逃しが増える場合も示されています。評価指標の選び方は、どのようなハーネスを良いと判断するかに直結します。</p>
+<p>MetaVulの対象は、C/C++の関数単位のソースコード診断です。ブラックボックス型診断に同じ改善効果が出ると示した研究ではありません。それでも、評価結果を残し、ハーネスを変更し、別の対象で確かめるという改善の構造は参考になります。</p>
+<h2>評価のための環境を持てるか</h2>
+<p>見逃しを測るには、脆弱性が存在すると分かっている対象が要ります。診断サービスを継続的に改善するなら、まず脆弱性を埋め込んだ基準となる検証環境を持つことが、現実的な出発点だと思います。</p>
+<p>公開された演習環境も有用です。一方で、課題や解法がモデルの学習データに含まれている可能性は考慮しなければなりません。評価の信頼性を高めるには、内容を管理でき、診断過程も追跡できる環境が必要です。</p>
+<p>そこで同じ診断を複数回行い、収集した情報、選んだ検査、実行した内容、結論の根拠を比較する。見逃しや誤検知に加えて、各工程にかかった時間やコストも記録する。そうして初めて、ハーネスの変更によって何が良くなり、何が悪くなったのかを判断できます。</p>
+<p>最初からすべての技術や脆弱性を網羅することはできません。基準となる環境を作り、新しい脆弱性や診断対象に合わせて更新していく必要があります。</p>
+<h2>継続的な改善基盤が競争力になる</h2>
+<p>同じモデルを利用できても、同じ診断品質になるとは限りません。どの情報を集めるか、どの検査を選ぶか、結果をどう解釈するかは、ハーネスの設計に左右されます。そして、その設計を改善するには、良し悪しを判断できる評価基盤が要ります。</p>
+<p>評価対象を整え、複数回の実行を記録し、失敗した工程を特定する。改善案を試したら、既知の課題だけでなく別の対象でも確かめる。発見率だけでなく、見逃し、誤検知、品質の揺らぎ、時間、コストの変化を見る。</p>
+<p>これは簡単には作れません。評価環境の更新には手間がかかり、何を正解とするかにも判断が要ります。改善案をどこまで自動で採用するかも、品質や安全性を踏まえて設計すべき論点として残ります。</p>
+<p>攻撃側もAIを使って試行を速めていくとすれば、防御側は、品質・安全性・性能・コストを確かめながら改善を続ける必要があります。モデルやプロンプトを選ぶだけでなく、変化に合わせて診断方法を更新できることが重要になります。</p>
+<p>私が競争優位性になると考えているのは、特定のモデルを使うことではありません。<strong>診断がどこで失敗したかを説明でき、その結果を次のハーネス改善につなげられる基盤を持つこと</strong>です。</p>
+<h2>おわりに：診断を改善できる形で測る</h2>
+<p>AIによる脆弱性診断には、まだ難しい問題が多くあります。長い診断工程の結果が揺れるとき、その原因をどう切り分け、再現可能な形で評価するかも、その一つです。</p>
+<p>PentestEvalは、診断を工程ごとに測る視点を与えてくれます。MetaVulは、評価をハーネスの改善につなぐ方法を示しています。二つの研究の対象は異なりますが、どちらも「診断の品質をどう捉え、次の改善に変えるか」という問いにつながっています。</p>
+<p>発見できた件数だけでは、次に何を直すべきかは分かりません。何を見て、何を試し、どこで見逃したのか。その過程を評価し続けられる基盤を作り、育てられるかどうかが、これからのAI脆弱性診断サービスの質を分けると考えています。</p>
+  </div>
+
+
+
+  <div style="margin-top:40px;padding-top:20px;border-top:1px solid var(--border)"><div style="font-size:11px;font-weight:700;letter-spacing:.1em;color:#245d86;text-transform:uppercase;margin-bottom:14px">関連する設計ノート</div><a href="../columns/ai-vulnerability-management-automation.html" style="display:block;padding:10px 12px;background:#f6f7f8;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#566473;margin-bottom:4px">2026-06-08</div><div style="font-size:13px;color:#202830;font-weight:600;line-height:1.4;margin-bottom:4px">AIが脆弱性を見つけすぎる時代に、月次パッチ運用は耐えられるのか</div><div style="font-size:12px;color:#9ca3af;line-height:1.5">AIが脆弱性を大量に発見する時代、防御側のボトルネックは「発見」から「発見後工程」へ移る。自動修復は人を減らすためではなく、人間の判断を重要資産に集中させるためにある。</div></a><a href="../columns/ai-supply-chain-exposure.html" style="display:block;padding:10px 12px;background:#f6f7f8;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#566473;margin-bottom:4px">2026-05-16</div><div style="font-size:13px;color:#202830;font-weight:600;line-height:1.4;margin-bottom:4px">AIモデルは「部品」として持ち込まれる——CDCが担うべきAIサプライチェーンExposure管理</div><div style="font-size:12px;color:#9ca3af;line-height:1.5">AIモデルは外部から調達する「部品」である。偽モデルリポジトリ事例とCISA/G7のSBOM for AIガイダンスを踏まえ、CDCが担うべきAIサプライチェーンのExposure管理を3層モデルで整理する。</div></a><a href="../columns/ai-soc-prerequisites.html" style="display:block;padding:10px 12px;background:#f6f7f8;border-radius:6px;text-decoration:none;color:inherit;margin-bottom:6px"><div style="font-size:10px;color:#566473;margin-bottom:4px">2026-05-15</div><div style="font-size:13px;color:#202830;font-weight:600;line-height:1.4;margin-bottom:4px">AI SOCの前に、SOCの現在地を見よ</div><div style="font-size:12px;color:#9ca3af;line-height:1.5">AI SOCが実運用で機能するかどうかは、AIの性能だけで決まらない。プロセス・体制・データという3軸からSOCの現在地を見極めることが、AI SOC導入の本当の出発点である。</div></a></div>
+
+  <div class="col-footer">
+    <a href="/ai-security-news/#columns" style="font-size:13px;color:var(--accent);text-decoration:none">← コラム一覧に戻る</a>
+    <a href="/ai-security-news/#today" style="font-size:13px;color:var(--accent);text-decoration:none">← 本日のニュースに戻る</a>
+  </div>
+</article>
+
+</body>
+</html>
