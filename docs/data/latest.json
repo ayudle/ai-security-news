@@ -1,383 +1,46 @@
 {
-  "updated": "2026-11-07T08:57:43.167560+09:00",
-  "today": "2026-11-07",
+  "updated": "2026-11-08T07:49:50.171401+09:00",
+  "today": "2026-11-08",
   "articles": [
     {
-      "id": "98be06375ad2",
-      "title": "How Should Agents See Code? Rethinking Code Representations for Agentic Software Engineering",
-      "summary": "arXiv:2611.07286v1 Announce Type: new \nAbstract: LLM agents are increasingly used for repository-level software engineering tasks. However, most agents still access repositories through raw files, lexical search, and shell commands, treating code primarily as text. This paper investigates map-based code-representation workflows as a design variable in agentic software engineering, examining how different repository views change agents' retrieval behavior, task success, token use, and latency.\n  In this paper, we study five code-representation workflows: abstract syntax trees, call graphs, module dependencies, documentation-enriched search, and a hybrid workflow that combines them. Each workflow exposes a repository map that the agent can query during a task. We evaluate Claude Code with Haiku 4.5 against a raw-tool baseline on four repository-level tasks: fault localization with LinuxFLBench, repository-level code generation and repair with SWE-bench Pro, test generation with SWT-bench, and security patching with SecBench.\n  The results show that representation workflows are most useful as token-saving tools when localization is the bottleneck, while their success gains narrow when the decisive step is patch or test authoring. On LinuxFLBench, all five workflows improve recall@10 over the baseline (0.757-0.829 vs. 0.717) and reduce token usage by 25-39%. On SWE-bench Pro, resolution remains close to the baseline (44.3-50.6% vs. 49.0%) while token usage drops by 17-26%. On SecBench, Callgraph has the highest patch-resolution rate in this sample (34.3% vs. 28.9%) and uses fewer tokens, but all workflows increase latency. On SWT-bench, Hybrid and Docs have the highest reproducing-test rates in this sample (47.8% and 47.2% vs. 44.7%), but all workflows use more tokens and take longer. Overall, map-based workflows change both what the agent inspects and how much it spends, but their benefits are task-dependent rather than universal.",
-      "url": "https://arxiv.org/abs/2611.07286",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": true,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理",
-        "AIエージェント",
-        "診断技術・評価"
-      ],
-      "engineering_topics": [
-        "生成コードの安全性評価"
-      ],
-      "business_score": 14,
-      "source_region": "global",
-      "source_name": "arXiv cs.SE",
-      "source_tier": "C",
-      "published": "2026-11-06T14:00:00+09:00",
-      "title_ja": "AIエージェントのコード表現手法の再考：リポジトリ探索と修正への影響",
-      "summary_ja": "LLMエージェントによるソフトウェア工学タスクにおいて、コードを単なるテキストではなくASTやコールグラフなど地図型のコード表現で扱うワークフローの有効性を検証した論文です。Claude Code（Haiku 4.5）を用いて4つのベンチマークで評価し、局所化タスクではトークン消費を25〜39%削減しつつ再現率を改善することを示しました。一方でセキュリティ修正（SecBench）ではコールグラフによる解決率向上（34.3% vs 28.9%）が確認されたものの、全体として遅延が増大するなど効果はタスクに依存します。",
-      "insight": "AIエージェントによる脆弱性修正やコード診断において、生のコードテキストではなくコールグラフ等の構造的コンテキストを与えることでトークン効率や修正精度が向上する可能性が示されています。一方で推論レイテンシの増加というトレードオフが存在するため、リアルタイムな修正パイプラインへの組み込みには処理時間と精度のバランス検証が求められます。エージェントを用いた自動トリアージやパッチ生成基盤を構築する際、どの構造化マップを選択すべきかを設計時に評価する必要があります。",
-      "importance": "中",
-      "importance_reason": "AIエージェントを用いたコード修正・パッチ生成の性能とトークンコストに直結する設計比較を提供しているため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "LLMセキュリティ",
-        "研究・論文"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "Claude Code",
-        "SecBench",
-        "コード表現",
-        "コールグラフ",
-        "AST"
-      ],
-      "cdc_relevance": 1,
-      "cdc_context": [
-        "AI for Security",
-        "サービス企画"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "不明",
-        "exploitation": "悪用未確認と明記",
-        "urgency": "情報収集",
-        "lifecycle": [
-          "修正・緩和"
-        ],
-        "assessments": [
-          "ソースコード診断"
-        ],
-        "products": [
-          "Claude Code",
-          "Haiku 4.5"
-        ],
-        "evidence": "Claude Code with Haiku 4.5 against a raw-tool baseline on four repository-level tasks: security patching with SecBench"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "不明",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "不明",
-        "human_validation": "不明",
-        "service_implication": "リポジトリ構造のマップ化によるトークン削減とセキュリティ修正精度の変化を評価した研究であり、実攻撃の検知や攻撃成立性評価への影響は不明。",
-        "source_evidence": "arXiv研究論文によるベンチマーク評価（LinuxFLBench, SWE-bench Pro, SWT-bench, SecBench）",
-        "evidence_status": "研究報告のみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "ソースコード・ソフトウェア供給網"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "710920c346ea",
-      "title": "AI Slop and Hallucinations in Vulnerability Assessment: A Survey on Reasoning Failures and Trustworthy Mitigation",
-      "summary": "arXiv:2608.25667v2 Announce Type: replace \nAbstract: The integration of Large Language Models (LLMs) into cybersecurity has transformed vulnerability assessment, but it has also produced a trustworthiness crisis driven by the unchecked proliferation of \"AI slop.\" These artifacts, hallucinated vulnerabilities, plausible but incorrect patches, and semantically repackaged bug reports, impose a cognitive burden on human triage pipelines that mirrors a denial-of-service attack. This paper surveys the empirical evidence, identifies a unifying mechanism, and traces a path toward trustworthy triage. We formalize a taxonomy of AI slop grounded in a structured literature review and dissect its root cause: the gap between the causal deductive reasoning of security experts and the autoregressive probabilistic generation of current LLMs. We operationalize this gap through a measurable proxy, the Deductive Coverage Score, and show that chain-of-thought prompting and tool-using agents narrow but do not close it. We review mitigation strategies and argue that passive detection and watermarking target provenance rather than correctness, facing fundamental entropy constraints. We instead advocate for active neuro-symbolic verification, mapping each pipeline component to prior systems with documented limits on security inputs. Finally, we specify two evaluation instruments, CVE-Bench and Slop-Score, including dataset construction, metric formulas, and anti-gaming provisions. By shifting evaluation from linguistic fluency to mathematical verifiability, this survey provides a roadmap for securing emerging AI-driven triage systems.",
-      "url": "https://arxiv.org/abs/2608.25667",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": true,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理",
-        "診断技術・評価"
-      ],
-      "engineering_topics": [
-        "診断性能の評価",
-        "評価基盤・データセット"
-      ],
-      "business_score": 12,
-      "source_region": "global",
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-11-06T14:00:00+09:00",
-      "title_ja": "脆弱性評価におけるAIスロップとハルシネーション：推論失敗の分類と検証手法",
-      "summary_ja": "脆弱性評価へのLLM導入に伴い、ハルシネーションによる虚偽の脆弱性報告や誤った修正パッチ等の「AIスロップ」がトリアージ担当者の認知的負担を増大させている実態をサーベイした論文です。専門家の演繹的推論とLLMの確率的生成の乖離が根本原因であり、思考の連鎖（CoT）やエージェント利用でもこの差は解消されないと指摘しています。著者らは言語的流暢さではなく数学的検証可能性を重視し、ニューロシンボリック検証や新たな評価指標（CVE-Bench、Slop-Score）の導入を提唱しています。",
-      "insight": "AIを用いた脆弱性トリアージや診断自動化ツールの導入において、誤検知やもっともらしい誤報告（AIスロップ）がセキュリティアナリストの確認コストを増大させるリスクが実証的に整理されています。受動的な検知や透かしでは不十分であり、決定論的な検証（ニューロシンボリック手法等）を組み合わせるアーキテクチャ設計が示唆されます。診断サービスや脆弱性管理業務にLLMを組み込む際、AI出力を鵜呑みにせず検証レイヤーをどう構築するかが運用の成否を分けます。",
-      "importance": "高",
-      "importance_reason": "AIを活用した脆弱性トリアージの信頼性低下と運用過負荷という実務上の重大課題を構造的に分析しているため。",
-      "tag_main_id": "ai_risk",
-      "tag_main_label": "AIリスク",
-      "tag_subs": [
-        "ハルシネーション",
-        "安全性評価",
-        "優先順位付け"
-      ],
-      "affected_layers": [
-        "データ/AI",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "AIスロップ",
-        "ハルシネーション",
-        "CVE-Bench",
-        "ニューロシンボリック検証",
-        "脆弱性トリアージ"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "SOC運用変化",
-        "AI for Security",
-        "Security for AI"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "不明",
-        "exploitation": "悪用未確認と明記",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "ソースコード診断",
-          "DAST"
-        ],
-        "products": [
-          "LLM"
-        ],
-        "evidence": "survey on reasoning failures, hallucinated vulnerabilities, plausible but incorrect patches, cognitive burden on human triage pipelines"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "人間によるトリアージ業務に対する認知負荷の増大（DoS的な影響）",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "不明",
-        "human_validation": "生成された脆弱性や修正案に対する人間の専門家によるトリアージおよび演繹的検証の必要性を言及",
-        "service_implication": "AIが生成する偽陽性脆弱性や誤ったパッチの混入を防ぐため、受動的検出ではなく能動的な検証ゲートウェイの実装が必要となる可能性。",
-        "source_evidence": "arXiv論文によるサーベイおよびフレームワーク提唱",
-        "evidence_status": "研究報告のみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "データ・AI・AIエージェント"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "ec21b3bb7041",
-      "title": "NVIDIAのAIエージェント開発支援ツールに深刻な脆弱性",
-      "summary": "NVIDIAが提供するAIエージェント開発支援ツール「NeMo Agent Toolkit」に複数の脆弱性が明らかとなった。深刻な脆弱性も含まれており、同社は修正版を公開している。",
-      "url": "https://www.security-next.com/192469",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": false,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理",
-        "AIエージェント"
-      ],
-      "engineering_topics": [],
-      "business_score": 8,
-      "source_region": "JP",
-      "source_name": "Security NEXT",
-      "source_tier": "B",
-      "published": "2026-11-06T14:08:05+09:00",
-      "title_ja": "NVIDIAのAIエージェント開発支援ツール「NeMo Agent Toolkit」に複数の深刻な脆弱性",
-      "summary_ja": "NVIDIAが提供するAIエージェント開発支援ツール「NeMo Agent Toolkit」において複数の脆弱性が公表されました。これらの中には深刻な脆弱性も含まれており、同社から修正版がすでに提供されています。開発者は迅速なアップデート適用と影響評価が推奨される状況です。",
-      "insight": "AIエージェント構築基盤そのものの脆弱性は、エージェントが持つシステム権限やツール実行権限が悪用されるリスクに直結します。NeMoのようなツールキットを利用したエージェントシステムを運用している場合、依存コンポーネントのバージョン管理と更新適用の優先度が問われます。脆弱性診断の実務においても、AIエージェント基盤ソフトウェア自体のExposure把握が今後の重要な検査対象となります。",
-      "importance": "高",
-      "importance_reason": "広く利用されるAIエージェント開発フレームワークにおける深刻な脆弱性の報告であるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "CVE",
-        "修正・緩和",
-        "ツール悪用"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "NVIDIA",
-        "NeMo Agent Toolkit",
-        "AIエージェント",
-        "修正パッチ"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "Security for AI"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "悪用未確認と明記",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "修正・緩和"
-        ],
-        "assessments": [
-          "ソースコード診断",
-          "API診断"
-        ],
-        "products": [
-          "NeMo Agent Toolkit"
-        ],
-        "evidence": "NVIDIAが提供するAIエージェント開発支援ツール「NeMo Agent Toolkit」に複数の脆弱性が明らかとなった。同社は修正版を公開している。"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "不明",
-        "japan_observation": "国内セキュリティメディア（Security NEXT）で報じられているが国内被害は不明",
-        "assessment_preconditions": "NeMo Agent Toolkitの未修正バージョンの利用",
-        "test_scenario": "NeMo Agent Toolkit利用環境におけるバージョン確認および該当コンポーネントの脆弱性検査シナリオの検討。",
-        "human_validation": "提供元ベンダー（NVIDIA）による修正版公開および深刻度評価の確認",
-        "service_implication": "AIエージェント開発基盤の脆弱性として、サプライチェーン・依存関係の点検対象に追加することを検討。",
-        "source_evidence": "Security NEXT記事によるNVIDIA修正版公開の報道",
-        "evidence_status": "不明",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "データ・AI・AIエージェント",
-          "ソースコード・ソフトウェア供給網"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "53fcbd9fb475",
-      "title": "Refactoring React Component Hierarchies to Eliminate Prop Drilling",
-      "summary": "arXiv:2610.01376v2 Announce Type: replace \nAbstract: In React front-end development, Prop Drilling is the practice of propagating data through component properties across multiple levels of the component hierarchy. Despite being discouraged by React documentation and characterized as a code smell by recent research, little is known about its prevalence, complexity, and potential for automated refactoring. In this work, we propose a static analysis method for identifying Prop Drilling instances in a React codebase and eliminating them using two automated refactoring strategies based on Context API and Component Composition. The proposed method is implemented as a Node\\.js command line tool, ReactRefactor, and empirically evaluated on a benchmark dataset of open-source React applications. The main findings of the empirical evaluation indicate (a) the frequent occurrence of prop drillings across benchmark projects, irrespective of project size; (b) their generally low to moderate complexity in terms of data propagation depth, contrasted with the more prevalent complexity arising from the simultaneous forwarding of multiple properties along the same path; and, (c) the potential for automated elimination of a substantial share (76.3%) of prop drillings, primarily through refactoring to the Context API.",
-      "url": "https://arxiv.org/abs/2610.01376",
+      "id": "ebb1e804eafb",
+      "title": "「Apache OFBiz」にRCE脆弱性 - 修正版がリリース",
+      "summary": "Apacheの業務アプリケーション「Apache OFBiz」に深刻な脆弱性が明らかとなった。開発チームは修正版を提供している。",
+      "url": "https://www.security-next.com/192441",
       "ai_score": 1,
       "cdc_pre_score": 0,
       "vulnerability_focus": true,
-      "operations_focus": false,
-      "business_topics": [
-        "診断技術・評価"
-      ],
-      "engineering_topics": [
-        "診断性能の評価"
-      ],
-      "business_score": 8,
-      "source_region": "global",
-      "source_name": "arXiv cs.SE",
-      "source_tier": "C",
-      "published": "2026-11-06T14:00:00+09:00",
-      "title_ja": "Reactコンポーネント階層のリファクタリングによるProp Drillingの解消",
-      "summary_ja": "React開発においてコンポーネント階層を越えてデータをバケツリレーするProp Drillingはコードスメルとされていますが、その実態や自動リファクタリングの可能性は十分に解明されていませんでした。本研究では、静的解析によりProp Drillingを検出し、Context APIやコンポーネント合成を用いて自動解消する手法およびCLIツール「ReactRefactor」を提案しています。オープンソースのReactプロジェクトを用いた評価の結果、プロジェクト規模に関わらず頻繁に発生していることや、対象の76.3%を主にContext APIへ自動リファクタリング可能であることが示されました。",
-      "insight": "フロントエンドの保守性改善技術ですが、ソースコード静的解析（SAST）や自動修正の観点では、コード品質向上による意図しないデータ漏えいや状態管理バグの低減に応用できる余地があります。ただしセキュリティ脆弱性の解消を主眼とした研究ではないため、修正後の機能リグレッション検証や状態管理のアクセス制御に関する安全性の検証体制をいかに組み込むかが問われます。",
-      "importance": "低",
-      "importance_reason": "ソフトウェア工学およびフロントエンドの静的解析・自動修正技術に関する研究であり、直接的なセキュリティ侵害や脆弱性対応ではないため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
-      "tag_subs": [
-        "研究・論文"
-      ],
-      "affected_layers": [
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "React",
-        "Prop Drilling",
-        "静的解析",
-        "リファクタリング",
-        "ReactRefactor"
-      ],
-      "cdc_relevance": 0,
-      "cdc_context": [
-        "サービス企画"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "不明",
-        "exploitation": "悪用未確認と明記",
-        "urgency": "情報収集",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "ソースコード診断"
-        ],
-        "products": [
-          "React",
-          "Node.js",
-          "ReactRefactor"
-        ],
-        "evidence": "In React front-end development, Prop Drilling is the practice of propagating data through component properties... proposed a static analysis method implemented as ReactRefactor."
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "不明",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "不明",
-        "human_validation": "不明",
-        "service_implication": "不明",
-        "source_evidence": "不明",
-        "evidence_status": "不明",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "ソースコード・ソフトウェア供給網"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "2b9df2ea734f",
-      "title": "Weekly Report: Jenkinsに複数の脆弱性",
-      "summary": "Jenkinsに複数の脆弱性",
-      "url": "https://www.jpcert.or.jp/wr/2026/wr261105.html#4",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": false,
       "operations_focus": false,
       "business_topics": [
         "脆弱性管理"
       ],
       "engineering_topics": [],
-      "business_score": 6,
+      "business_score": 5,
       "source_region": "JP",
-      "source_name": "JPCERT/CC",
-      "source_tier": "A",
-      "published": "2026-11-05T09:52:00+09:00",
-      "title_ja": "JPCERT/CC Weekly Report：Jenkinsにおける複数の脆弱性",
-      "summary_ja": "JPCERT/CCのWeekly Reportにおいて、CI/CDツールであるJenkinsに複数の脆弱性が存在することが公表されました。抜粋内では具体的なCVE番号や詳細な影響範囲は明記されていませんが、Jenkins本体やプラグインにおけるセキュリティ上の不備が示唆されています。CI/CDパイプラインは特権的なアクセス権を持つことが多く、悪用された場合にはソフトウェア供給網やインフラ全体に深刻な影響を及ぼす可能性があります。",
-      "insight": "CI/CDサーバーの脆弱性はサプライチェーン攻撃の起点となり得るため、迅速なバージョン確認とアップデートの適用が求められます。脆弱性診断の実務においては、外部公開されているJenkinsだけでなく内部ネットワークや踏み台経由でのアクセス制御、プラグインを含むExposure管理の網羅性が重要となります。また、CI/CD環境におけるパイプラインの特権分離やシークレット管理が適切に行われているかを再評価する契機とすべきです。",
-      "importance": "中",
-      "importance_reason": "CI/CDの中核を担うJenkinsの脆弱性はビルドパイプラインやソースコードの侵害につながるリスクがあるため。",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-06T09:52:42+09:00",
+      "title_ja": "「Apache OFBiz」に深刻なRCE脆弱性、修正版が公開",
+      "summary_ja": "オープンソースの業務アプリケーション「Apache OFBiz」において、深刻なリモートコード実行（RCE）の脆弱性が報告された。開発チームはこの問題に対処するため、最新の修正版をリリースした。本脆弱性の悪用によるシステム侵害リスクを防ぐため、管理者は迅速な更新が求められる。",
+      "insight": "OFBizはERPやEC基盤として外部公開されるケースがあり、RCE脆弱性は初期侵入の標的になりやすい。脆弱性診断では公開APIや管理画面のエンドポイント特定が焦点となるが、抜粋では具体的な悪用条件やPoCの有無は不明である。SOCとしては外部からの不審なコマンド実行や異常トラフィックを検知できるログ体制が機能しているかを点検する契機となる。",
+      "importance": "高",
+      "importance_reason": "業務基盤に用いられるソフトウェアにおける深刻なRCE脆弱性であり、侵害時の影響が大きいため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
-        "パッチ未適用",
-        "優先順位付け",
-        "Exposure管理"
+        "修正・緩和",
+        "エクスプロイト",
+        "パッチ未適用"
       ],
       "affected_layers": [
-        "クラウド/サーバー",
-        "アプリ/API"
+        "アプリ/API",
+        "クラウド/サーバー"
       ],
       "related_keywords": [
-        "Jenkins",
-        "CI/CD",
-        "JPCERT/CC",
-        "Weekly Report",
-        "サプライチェーンセキュリティ"
+        "Apache OFBiz",
+        "RCE",
+        "リモートコード実行",
+        "セキュリティアップデート"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
@@ -393,106 +56,22 @@
           "修正・緩和"
         ],
         "assessments": [
-          "ペネトレーションテスト",
-          "API診断"
-        ],
-        "products": [
-          "Jenkins"
-        ],
-        "evidence": "Jenkinsに複数の脆弱性（JPCERT/CC Weekly Report）"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "不明",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "不明",
-        "human_validation": "不明",
-        "service_implication": "不明",
-        "source_evidence": "不明",
-        "evidence_status": "不明",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "外部公開資産",
-          "インフラ・ネットワーク"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "64ee9e927ed6",
-      "title": "Weekly Report: WordPressに複数の脆弱性",
-      "summary": "WordPressに複数の脆弱性",
-      "url": "https://www.jpcert.or.jp/wr/2026/wr261105.html#5",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": false,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理"
-      ],
-      "engineering_topics": [],
-      "business_score": 6,
-      "source_region": "JP",
-      "source_name": "JPCERT/CC",
-      "source_tier": "A",
-      "published": "2026-11-05T09:52:00+09:00",
-      "title_ja": "JPCERT/CC Weekly Report：WordPressにおける複数の脆弱性",
-      "summary_ja": "JPCERT/CCのWeekly Reportにおいて、CMSプラットフォームであるWordPressに関する複数の脆弱性が報告されました。抜粋内に対象バージョンやCVEの詳細情報は記載されていませんが、コアまたはプラグイン/テーマにおける問題の可能性があります。WordPressは世界中および日本国内で極めて広く導入されているため、悪用可能な状態が放置された場合はWebサイト改ざんや不正アクセスの被害につながる恐れがあります。",
-      "insight": "WordPress環境に対する攻撃は自動スキャンやボットネットによる無差別探索が活発に行われる傾向があるため、DASTや外部資産管理（EASM）によるバージョン検知と自動更新・パッチ適用の迅速化が重要です。診断実務においては、コアだけでなくサードパーティ製プラグインの脆弱性検出と、管理画面へのアクセス制限などの緩和策の確認が焦点となります。自社管理下にあるWebサイト群の棚卸しと再診断体制の確立が求められます。",
-      "importance": "中",
-      "importance_reason": "国内でも普及率が非常に高いCMSであり、脆弱性の影響を受ける対象資産が広範に及ぶ可能性があるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "パッチ未適用",
-        "Exposure管理",
-        "DAST"
-      ],
-      "affected_layers": [
-        "クラウド/サーバー",
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "WordPress",
-        "CMS",
-        "JPCERT/CC",
-        "Weekly Report",
-        "Web脆弱性"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "MDR/MSSP設計"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "不明",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "修正・緩和"
-        ],
-        "assessments": [
-          "ブラックボックス診断",
           "DAST"
         ],
         "products": [
-          "WordPress"
+          "Apache OFBiz"
         ],
-        "evidence": "WordPressに複数の脆弱性（JPCERT/CC Weekly Report）"
+        "evidence": "記事抜粋に「Apache OFBizに深刻な脆弱性」「RCE脆弱性」「修正版を提供」と明記。"
       },
       "attack": {
         "initial_access": "不明",
         "observed_impact": "不明",
         "japan_observation": "不明",
         "assessment_preconditions": "不明",
-        "test_scenario": "不明",
+        "test_scenario": "対象インスタンスに対してRCEを引き起こすリクエストの受け入れ可否を検証するシナリオが想定されるが、入力に詳細条件の記載はなく不明。",
         "human_validation": "不明",
-        "service_implication": "不明",
-        "source_evidence": "不明",
+        "service_implication": "外部公開されているOFBiz環境の有無をASM等で特定し、修正パッチの適用状況を評価する検討が挙げられる。",
+        "source_evidence": "抜粋に「RCE脆弱性」「修正版を提供」とのみ記載。",
         "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
@@ -505,10 +84,10 @@
       }
     },
     {
-      "id": "069f89370e8a",
-      "title": "Weekly Report: 複数のAdobe製品に脆弱性",
-      "summary": "複数のAdobe製品に脆弱性",
-      "url": "https://www.jpcert.or.jp/wr/2026/wr261105.html#6",
+      "id": "bc11a9d1e445",
+      "title": "WatchGuardの多要素認証製品に脆弱性 - 「クリティカル」も",
+      "summary": "WatchGuardの多要素認証ソリューション「WatchGuard AuthPoint」で利用する一部コンポーネントに複数の脆弱性が明らかとなった。同社は修正版を提供している。",
+      "url": "https://www.security-next.com/192434",
       "ai_score": 1,
       "cdc_pre_score": 0,
       "vulnerability_focus": false,
@@ -517,32 +96,112 @@
         "脆弱性管理"
       ],
       "engineering_topics": [],
-      "business_score": 6,
+      "business_score": 5,
       "source_region": "JP",
-      "source_name": "JPCERT/CC",
-      "source_tier": "A",
-      "published": "2026-11-05T09:52:00+09:00",
-      "title_ja": "複数のAdobe製品における脆弱性に関する注意喚起",
-      "summary_ja": "JPCERT/CCが発行した週刊レポートにおいて、複数のAdobe製品に存在する脆弱性について情報が提供された。具体的な影響を受ける製品群や深刻度に関する詳細なアップデートの確認が促されている。パッチ適用などの対応を怠った場合、システムへの侵害リスクにつながる可能性がある。",
-      "insight": "デスクトップ環境や業務端末で広く用いられる製品群の脆弱性管理において、パッチ適用と資産のExposure把握が継続的課題となる。脆弱性診断の実務では、クライアント環境の管理台帳との突合およびバージョン監査が前提となる。組織の資産管理プロセスにおいて、サードパーティ製クライアントアプリの更新漏れをいかに自動検知・是正できるかが問われる。",
-      "importance": "中",
-      "importance_reason": "企業環境で広く使用される製品群のセキュリティアップデートであり、端末管理におけるパッチ適用の優先度判断が求められるため。",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-06T09:17:19+09:00",
+      "title_ja": "WatchGuardの多要素認証「AuthPoint」コンポーネントにクリティカル脆弱性",
+      "summary_ja": "WatchGuardの多要素認証（MFA）製品「WatchGuard AuthPoint」の一部コンポーネントに複数の脆弱性が発見された。中には重要度が「クリティカル」とされる深刻な欠陥が含まれている。ベンダーはすでに修正版をリリースしており、利用者に更新を促している。",
+      "insight": "MFAコンポーネントの脆弱性は認証基盤全体のバイパスや権限昇格に直結する懸念がある。認証連携やエージェントの更新漏れがないか、アイデンティティ管理運用の観点で点検が必要となる。認証ログの監視設計において、MFAバイパスや異常認証試行を検知できる構造になっているかを評価する問いが生じる。",
+      "importance": "高",
+      "importance_reason": "境界防御やゼロトラストの中核となる多要素認証製品にクリティカルな脆弱性が確認されたため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
-        "CVE",
+        "認証バイパス",
         "修正・緩和",
-        "優先順位付け"
+        "パッチ未適用"
       ],
       "affected_layers": [
-        "デバイス/エッジ",
+        "ネットワーク",
         "アプリ/API"
       ],
       "related_keywords": [
-        "Adobe",
-        "JPCERT/CC",
-        "Weekly Report",
-        "脆弱性"
+        "WatchGuard",
+        "AuthPoint",
+        "多要素認証",
+        "MFA",
+        "クリティカル"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Identity/ITDR",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "WatchGuard AuthPoint"
+        ],
+        "evidence": "記事抜粋に「WatchGuard AuthPointで利用する一部コンポーネントに複数の脆弱性」「クリティカルも」「修正版を提供」と明記。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "AuthPointコンポーネントにおける認証処理や通信の検証が想定されるが、入力に詳細な技術要件の記載はなく不明。",
+        "human_validation": "不明",
+        "service_implication": "認証基盤関連のコンポーネントバージョン管理およびペネトレーションテスト時の対象範囲策定に関する検討が挙げられる。",
+        "source_evidence": "抜粋に「AuthPointで利用する一部コンポーネントに複数の脆弱性」「クリティカルも」と記載。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "認証・ID",
+          "外部公開資産"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "3370ddd86575",
+      "title": "「Firefox」のレイアウト処理に脆弱性 - 「同159.0.1」で修正",
+      "summary": "Mozilla Foundationは現地時間2026年11月3日、ウェブブラウザのセキュリティアップデートとなる「Firefox 159.0.1」を公開した。",
+      "url": "https://www.security-next.com/192437",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-06T09:11:14+09:00",
+      "title_ja": "Mozilla、「Firefox 159.0.1」を公開 - レイアウト処理の脆弱性を修正",
+      "summary_ja": "Mozilla Foundationは、Webブラウザのセキュリティアップデート「Firefox 159.0.1」をリリースした。本バージョンでは、ブラウザのレイアウト処理に関する脆弱性が修正されている。悪用による意図しない動作やクラッシュ、任意のコード実行リスクを避けるため更新が推奨される。",
+      "insight": "クライアント側ブラウザのレンダリング・レイアウトエンジンの脆弱性は、悪意あるWebサイト閲覧を通じたクライアント侵害の契機となる可能性がある。端末管理（MDM/EDR）による自動更新の徹底と、サンドボックス機構による影響局所化が防御の基本となる。エンドポイント監視において不審なブラウザ子プロセスの起動を捉えられる設計かが確認論点となる。",
+      "importance": "中",
+      "importance_reason": "広く利用されているクライアントブラウザの描画処理に関するセキュリティ修正であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "修正・緩和",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Mozilla",
+        "Firefox",
+        "レイアウト処理",
+        "セキュリティアップデート"
       ],
       "cdc_relevance": 1,
       "cdc_context": [
@@ -551,9 +210,9 @@
       ],
       "views": 0,
       "business": {
-        "japan_relevance": "直接関連",
+        "japan_relevance": "関連あり",
         "exploitation": "不明",
-        "urgency": "早期評価",
+        "urgency": "情報収集",
         "lifecycle": [
           "修正・緩和"
         ],
@@ -561,19 +220,19 @@
           "不明"
         ],
         "products": [
-          "Adobe製品"
+          "Mozilla Firefox"
         ],
-        "evidence": "抜粋に「複数のAdobe製品に脆弱性」と記載。"
+        "evidence": "記事抜粋に「Firefox 159.0.1を公開」「レイアウト処理に脆弱性」と明記。"
       },
       "attack": {
         "initial_access": "不明",
         "observed_impact": "不明",
-        "japan_observation": "JPCERT/CCが注意喚起を掲載しているが国内での被害・悪用の有無は抜粋に記載なし",
+        "japan_observation": "不明",
         "assessment_preconditions": "不明",
-        "test_scenario": "不明",
+        "test_scenario": "悪意あるレイアウト処理を含むコンテンツのレンダリング挙動検証が考えられるが、抜粋に脆弱性の詳細条件はなく不明。",
         "human_validation": "不明",
-        "service_implication": "クライアント端末のインベントリおよびバージョン管理状況の監査が検討課題となる",
-        "source_evidence": "抜粋に「複数のAdobe製品に脆弱性」とのみ記載され悪用や詳細は不明",
+        "service_implication": "端末脆弱性管理（ブラウザバージョン管理）ポリシーの点検やEDRによる検知方針の確認検討が挙げられる。",
+        "source_evidence": "抜粋に「Firefoxのレイアウト処理に脆弱性」「同159.0.1で修正」と記載。",
         "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
@@ -585,52 +244,474 @@
       }
     },
     {
-      "id": "0839893eaae1",
-      "title": "5 Active Cyber Threats That Put US Enterprises at Risk in October 2026",
-      "summary": "October 2026 brought another wave of cyber threats targeting US businesses, with attackers exploiting trusted platforms, legitimate authentication processes, and everyday business workflows. For enterprises, these campaigns raise the stakes beyond individual security incidents, increasing the risk of financial losses, data breaches, and costly operational disruption.\n\nBelow, we examine five",
-      "url": "https://thehackernews.com/2026/11/5-active-cyber-threats-that-put-us.html",
+      "id": "7b5b7d14b461",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "<p>CISA has added one new vulnerability to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-19868\" target=\"_blank\">CVE-2026-19868</a> SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for malicious cyber ac",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/06/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 4,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-06T21:00:00+09:00",
+      "title_ja": "CISAがSonicOSのKEVカタログ追加を発表、悪用を確認",
+      "summary_ja": "米CISAはSonicWall SonicOSの脆弱性（CVE-2026-19868）をKnown Exploited Vulnerabilities（KEV）カタログに追加しました。この脆弱性はSSL-VPNにおける単一要素認証の利用に関する問題に起因しています。攻撃者による悪用が頻繁に確認される攻撃ベクターとされています。",
+      "insight": "SonicOSにおけるSSL-VPN境界の弱点は初期アクセスの温床となりやすく、診断業務では単一要素認証設定の検出やExposure評価が急務となります。運用面では、対象機器のパッチ適用と多要素認証への移行が完了しているかの再診断計画を立てる必要があります。SOC設計者としては、SSL-VPN経由の不審なログイン試行をどのように検知ルールに組み込むかを検討する問いが求められます。",
+      "importance": "高",
+      "importance_reason": "CISA KEVへの登録により、実際に悪用が確認された境界機器の脆弱性であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "KEV",
+        "CVE",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "CISA",
+        "KEV",
+        "SonicWall",
+        "SonicOS",
+        "SSL-VPN"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "SonicWall SonicOS"
+        ],
+        "evidence": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog, based on evidence of active exploitation: CVE-2026-19868 SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability"
+      },
+      "attack": {
+        "initial_access": "SonicWall SonicOS SSL-VPNの単一要素認証の悪用",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "外部公開されたSonicWall SonicOS SSL-VPNエンドポイントへのアクセス",
+        "test_scenario": "外部境界診断において対象機器のバージョンと単一要素認証の利用有無を確認する",
+        "human_validation": "管理コンソール設定および多要素認証強制の有無の手動確認",
+        "service_implication": "外部公開資産のExposure管理およびペネトレーションテスト時の初期侵入経路の評価項目として反映",
+        "source_evidence": "CISA added CVE-2026-19868 SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability based on evidence of active exploitation.",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "インフラ・ネットワーク"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "Use of Single-factor Authentication"
+        ],
+        "cve_ids": [
+          "CVE-2026-19868"
+        ]
+      }
+    },
+    {
+      "id": "ecc66029181b",
+      "title": "US Government Partners Urge Hardening Industrial Refrigeration and Cold Chain Monitoring Systems",
+      "summary": "<h2><strong>Overview</strong></h2>\n<p>The Cybersecurity and Infrastructure Security Agency (CISA), Federal Bureau of Investigation (FBI), Health and Human Services (HHS), U.S. Department of Agriculture (USDA), and the Department of Transportation (DoT)—hereafter referred to as “the authoring organizations”—are aware of malicious cyber activity targeting industrial refrigeration and cold chain monitoring systems globally. Organizations in the <a href=\"https://www.cisa.gov/topics/critical-infrastr",
+      "url": "https://www.cisa.gov/resources-tools/resources/us-government-partners-urge-hardening-industrial-refrigeration-and-cold-chain-monitoring-systems",
       "ai_score": 1,
       "cdc_pre_score": 0,
       "vulnerability_focus": true,
       "operations_focus": false,
       "business_topics": [
-        "脆弱性管理",
-        "企業インシデント"
+        "脆弱性管理"
       ],
       "engineering_topics": [],
-      "business_score": 6,
+      "business_score": 4,
       "source_region": "global",
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-11-05T19:06:19+09:00",
-      "title_ja": "米企業を標的とする信頼プラットフォームや認証プロセスを悪用したサイバー脅威",
-      "summary_ja": "米国の企業を標的として、信頼されたプラットフォームや正当な認証プロセス、日常の業務ワークフローを悪用する攻撃活動が観測された。攻撃者は個別のインシデントにとどまらず、多大な金銭的損害やデータ侵害、業務停止を引き起こすリスクを高めている。記事ではこれら脅威の傾向が提示されている。",
-      "insight": "信頼された正規の業務基盤や認証フローを悪用する手口に対しては、従来のシグネチャベース検知だけでなく、認証・IDレイヤーにおける異常な権限利用の監視やペネトレーションテストでのフロー検証が重要となる。診断実務においては、正規アカウントの侵害を想定した内部横断やワークフローバイパスのシナリオ評価が必要となる。SOC・ID管理において、正規セッションの不正利用をどのように検知境界へ組み込むかが課題となる。",
-      "importance": "高",
-      "importance_reason": "正規の認証や業務プロセスを悪用する手口は検知が難しく、データ侵害や金銭被害へ直結するリスクが高いため。",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-05T21:00:00+09:00",
+      "title_ja": "米政府機関、産業用冷凍機およびコールドチェーン監視システムの強化を勧告",
+      "summary_ja": "CISA、FBI、HHS、USDA、DOTなどの米政府機関が、産業用冷凍・コールドチェーン監視システムを標的とした悪意あるサイバー活動を警告しました。これらのシステムは重要インフラ分野において広範に利用されています。関係機関は運用の安全を確保するためのシステム堅牢化を呼びかけています。",
+      "insight": "コールドチェーン監視などのOT/IoT境界機器は、IT/OT境界診断やペネトレーションテストにおける侵入対象として浮上しています。遠隔監視インターフェースの外部露出や設定不備を洗い出し、セグメンテーションが維持されているかの検証が不可欠です。監視側としては、通常想定されない外部からの遠隔接続要求をどのように早期特定するかが課題となります。",
+      "importance": "中",
+      "importance_reason": "重要インフラに直結するOT・コールドチェーン機器がグローバルに標的とされているため。",
       "tag_main_id": "attack",
       "tag_main_label": "攻撃・脅威",
       "tag_subs": [
-        "クレデンシャル窃取",
-        "APT",
-        "ソーシャルエンジニアリング"
+        "マルウェア",
+        "サプライチェーン攻撃"
       ],
       "affected_layers": [
-        "ネットワーク",
-        "クラウド/サーバー",
-        "ガバナンス/規制"
+        "デバイス/エッジ",
+        "ネットワーク"
       ],
       "related_keywords": [
-        "認証プロセス悪用",
-        "ワークフロー悪用",
-        "データ侵害",
-        "米国企業"
+        "CISA",
+        "FBI",
+        "コールドチェーン",
+        "産業用冷凍機",
+        "OTセキュリティ"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
-        "Identity/ITDR",
         "SOC運用変化",
-        "MDR/MSSP設計"
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "Industrial refrigeration and cold chain monitoring systems"
+        ],
+        "evidence": "aware of malicious cyber activity targeting industrial refrigeration and cold chain monitoring systems globally."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "産業用冷凍・コールドチェーン監視インターフェースのネットワーク疎通",
+        "test_scenario": "外部および内部ネットワークからの監視システムの露出状況調査および認証バイパス・設定不備の確認",
+        "human_validation": "機器の管理画面露出およびセグメンテーション状況の構成確認",
+        "service_implication": "OT/IoT資産の外部露出診断およびサプライチェーン監視項目の見直し",
+        "source_evidence": "The authoring organizations are aware of malicious cyber activity targeting industrial refrigeration and cold chain monitoring systems globally.",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "0fdcc08f6305",
+      "title": "Hackers pull off $133 million French bank heist via service provider",
+      "summary": "French cooperative bank Crédit Mutuel Arkéa was targeted in a cyberattack that enabled fraudulent transactions of up to $133 million, forcing it to respond by suspending certain systems.v [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-08T00:25:35+09:00",
+      "title_ja": "仏銀行Crédit Mutuel Arkéa、サービス提供者経由で1.33億ドルの不正送金被害",
+      "summary_ja": "フランスの協同組合銀行Crédit Mutuel Arkéaがサイバー攻撃の標的となりました。攻撃者はサービスプロバイダーを経由して侵入し、最大1億3300万ドルの不正送金を実行しました。銀行側は対応として一部のシステムを一時停止する措置を講じました。",
+      "insight": "外部サービスプロバイダーを経由したサプライチェーン侵入が金融被害に直結した重大事例です。診断実務では、サードパーティ連携APIや共有権限のセキュリティ検証をスコープに含める必要性が示唆されます。SOC設計においては、信頼された委託先経由で実行される異常トランザクションを検知できる相互監査機能の構築が論点となります。",
+      "importance": "高",
+      "importance_reason": "サードパーティ経由で巨額の金銭的被害（1.33億ドル）が発生したサプライチェーン侵害事例であるため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "金融被害",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Crédit Mutuel Arkéa",
+        "不正送金",
+        "サービスプロバイダー",
+        "サプライチェーン侵害",
+        "金融機関"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "API診断",
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "French cooperative bank Crédit Mutuel Arkéa was targeted in a cyberattack that enabled fraudulent transactions of up to $133 million via service provider"
+      },
+      "attack": {
+        "initial_access": "サービスプロバイダー経由のアクセス",
+        "observed_impact": "最大1億3300万ドルの不正送金、システムの一部停止",
+        "japan_observation": "不明",
+        "assessment_preconditions": "委託先・サービスプロバイダーと同行システム間の接続チャネル",
+        "test_scenario": "サプライチェーン連携インターフェースや権限委任環境を起点としたラテラルムーブメントおよび送金APIの悪用検証",
+        "human_validation": "サービスプロバイダー向けクレデンシャル管理および取引承認ワークフローの統制検証",
+        "service_implication": "サプライチェーンリスク評価およびサードパーティ接続環境に対するペネトレーションテストの拡充",
+        "source_evidence": "targeted in a cyberattack that enabled fraudulent transactions of up to $133 million via service provider, forcing it to respond by suspending certain systems",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "0a53cb4de44f",
+      "title": "CTM360 Exposes Fake Gift Card Scams Exploiting Trusted Brands",
+      "summary": "Scammers are impersonating major brands and celebrities to lure consumers into fake gift card giveaways that collect personal information and trigger unwanted subscriptions. CTM360 reveals how these campaigns use deceptive verification steps and affiliate networks to generate revenue without delivering the promised rewards. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/ctm360-exposes-fake-gift-card-scams-exploiting-trusted-brands/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-07T23:10:19+09:00",
+      "title_ja": "著名ブランドを悪用した偽ギフトカード詐欺の巧妙な手口が判明",
+      "summary_ja": "CTM360の調査により、著名ブランドや著名人を騙り偽のギフトカード配布で消費者を誘い込む詐欺手口が明らかになりました。攻撃者は個人情報を収集し、意図しない有料サブスクリプションへ登録させます。さらに欺瞞的な検証手順やアフィリエイトネットワークを利用し、報酬を提供することなく不正な収益を上げています。",
+      "insight": "ブランド模倣フィッシングやアフィリエイト悪用は、組織のブランド棄損や従業員のクレデンシャル詐取につながるリスクがあります。外部公開資産のモニタリングやドメインテイクダウンの仕組みを評価・整備することが求められます。自社ブランドが同様の手口で悪用されていないか、定期的な脅威インテリジェンス調査の体制が問われます。",
+      "importance": "中",
+      "importance_reason": "直接の脆弱性ではないものの、ブランド侵害やソーシャルエンジニアリングによる情報搾取のリスクを示す事例であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "フィッシング",
+        "ソーシャルエンジニアリング"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "CTM360",
+        "ギフトカード詐欺",
+        "ブランド偽装",
+        "フィッシング",
+        "アフィリエイト詐欺"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "Scammers are impersonating major brands and celebrities to lure consumers into fake gift card giveaways that collect personal information"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "個人情報の窃取、意図しないサブスクリプション契約による被害",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "ブランド類似ドメインや不正キャンペーンの外部公開資産・ブランド保護監視の検討",
+        "human_validation": "不明",
+        "service_implication": "脅威インテリジェンスやブランド悪用検知サービスの導入検討",
+        "source_evidence": "Scammers are impersonating major brands and celebrities to lure consumers into fake gift card giveaways",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産"
+        ],
+        "attack_methods": [
+          "ソーシャルエンジニアリング",
+          "フィッシング"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "4814287048b0",
+      "title": "SonicWall Patches Exploited SonicOS Vulnerability That Weakens VPN Logins",
+      "summary": "<p>CVE-2026-19868 can let attackers holding credentials for a different login method get past SAML checks, including SAML-enforced MFA.</p>\n<p>The post <a href=\"https://www.securityweek.com/sonicwall-patches-exploited-sonicos-bug-that-weakens-vpn-logins/\">SonicWall Patches Exploited SonicOS Vulnerability That Weakens VPN Logins</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/sonicwall-patches-exploited-sonicos-bug-that-weakens-vpn-logins/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-07T19:16:23+09:00",
+      "title_ja": "SonicWall、VPNのSAML・MFA認証を回避するSonicOS脆弱性にパッチ適用",
+      "summary_ja": "SonicWallは、悪用が確認されているSonicOSの脆弱性CVE-2026-19868に対するパッチを公開しました。本脆弱性は、攻撃者が別のログイン手法のクレデンシャルを所持している場合、SAML検証およびSAML強制によるMFAチェックを回避することを可能にします。これにより不正なVPNアクセスを許す危険性があります。",
+      "insight": "VPN装置におけるSAML連携やMFAバイパスは境界防御の根幹を揺るがす重大な欠陥です。ブラックボックス診断や認証バイパスのペネトレーションテストにおいて、複数認証方式が混在する環境での認可・認証遷移の厳格な検証が重要となります。運用側はパッチ適用状況の確認と、認証ログにおける不審なログイン遷移の早期検知体制を問う必要があります。",
+      "importance": "高",
+      "importance_reason": "VPN機器における認証およびMFAバイパスの脆弱性であり、実際に悪用が確認されているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "認証バイパス",
+        "CVE",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "SonicWall",
+        "SonicOS",
+        "CVE-2026-19868",
+        "SAML",
+        "MFAバイパス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "再診断"
+        ],
+        "assessments": [
+          "ペネトレーションテスト",
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "SonicWall SonicOS"
+        ],
+        "evidence": "SonicWall Patches Exploited SonicOS Vulnerability That Weakens VPN Logins"
+      },
+      "attack": {
+        "initial_access": "別ログイン方式の有効な認証情報の所持",
+        "observed_impact": "SAMLおよびSAML強制MFAのバイパスによる不正VPNログイン",
+        "japan_observation": "不明",
+        "assessment_preconditions": "異なるログイン方式の認証情報を所持していること",
+        "test_scenario": "異なる認証プロバイダやログイン手法を組み合わせた際のSAML検証バイパス可否のテストシナリオ",
+        "human_validation": "不明",
+        "service_implication": "ペネトレーションテストや認証API診断での複合認証バイパス確認プロトコルの策定",
+        "source_evidence": "CVE-2026-19868 can let attackers holding credentials for a different login method get past SAML checks, including SAML-enforced MFA.",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "認証・ID",
+          "外部公開資産"
+        ],
+        "attack_methods": [
+          "クレデンシャル悪用",
+          "認証バイパス"
+        ],
+        "weaknesses": [
+          "認証検証不備"
+        ],
+        "cve_ids": [
+          "CVE-2026-19868"
+        ]
+      }
+    },
+    {
+      "id": "56411338196d",
+      "title": "ARTEX abuse expands as cybercriminals target financial sector",
+      "summary": "<p>In October 2026, the financially motivated threat actor Storm-3358 began targeting organizations in the financial sector using the agentic AI offensive framework ARTEX.</p>\n<p>The post <a href=\"https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector/\">ARTEX abuse expands as cybercriminals target financial sector</a> appeared first on <a href=\"https://www.microsoft.com/en-us/security/blog\">Microsoft Security Blog</a>.</p>",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector/",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Microsoft Security",
+      "source_tier": "B",
+      "published": "2026-11-07T11:44:34+09:00",
+      "title_ja": "攻撃グループStorm-3358、自律型AIフレームワーク「ARTEX」で金融機関を標的に",
+      "summary_ja": "マイクロソフトの報告によると、金銭的動機を持つ脅威アクター「Storm-3358」が、自律型AI（Agentic AI）攻撃フレームワーク「ARTEX」を用いた金融セクターへの攻撃を開始しました。ARTEXの悪用が拡大しており、高度な攻撃手法が展開されています。AIエージェントを活用した自動化攻撃が実戦投入されている実態が示されました。",
+      "insight": "攻撃側が自律型AIエージェントフレームワーク（ARTEX）を採用し、自律的な標的探索や攻撃チェーンを実行している兆候です。防御側もツール悪用や認可境界の逸脱を前提としたAIセキュリティ監査と、機械的な攻撃速度に対応できるSOCの自動化が不可欠です。自社の防御システムは自律型AIによる高速かつ適応型の攻撃を想定した検証・訓練ができているかを問う必要があります。",
+      "importance": "高",
+      "importance_reason": "攻撃者が自律型AIエージェントフレームワークを実攻撃で悪用し金融セクターを標的にしている重大動向であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ツール悪用"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Storm-3358",
+        "ARTEX",
+        "Agentic AI",
+        "金融セクター",
+        "Microsoft"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "AI for Security",
+        "Security for AI"
       ],
       "views": 0,
       "business": {
@@ -644,77 +725,250 @@
           "ペネトレーションテスト"
         ],
         "products": [
-          "不明"
+          "ARTEX"
         ],
-        "evidence": "抜粋に「targeting US businesses, with attackers exploiting trusted platforms, legitimate authentication processes, and everyday business workflows」と記載。"
+        "evidence": "In October 2026, the financially motivated threat actor Storm-3358 began targeting organizations in the financial sector using the agentic AI offensive framework ARTEX."
       },
       "attack": {
-        "initial_access": "信頼されたプラットフォーム、正規認証プロセス、日常の業務ワークフローの悪用",
-        "observed_impact": "金銭的損失、データ侵害、業務中断のリスク増大",
-        "japan_observation": "米国企業に対する脅威として言及されており日本国内での観測は記載なし",
-        "assessment_preconditions": "正規認証情報や業務プラットフォームへのアクセス権限",
-        "test_scenario": "正規の認証フローや信頼された業務ワークフローを偽装・悪用した権限濫用シナリオの検証",
+        "initial_access": "不明",
+        "observed_impact": "金融機関に対する標的型サイバー攻撃",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "自律型攻撃エージェントを模した自動化ペネトレーションテストや検知シナリオの検討",
         "human_validation": "不明",
-        "service_implication": "ペネトレーションテストにおけるアイデンティティ悪用および業務ロジック検証の強化",
-        "source_evidence": "抜粋に「attackers exploiting trusted platforms, legitimate authentication processes, and everyday business workflows」と記載",
-        "evidence_status": "悪用確認",
+        "service_implication": "AIエージェントによる攻撃を前提としたRed Teaming検証のサービス化検討",
+        "source_evidence": "the financially motivated threat actor Storm-3358 began targeting organizations in the financial sector using the agentic AI offensive framework ARTEX.",
+        "evidence_status": "実被害確認",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
-          "認証・ID",
-          "外部公開資産"
+          "データ・AI・AIエージェント",
+          "インフラ・ネットワーク"
         ],
         "attack_methods": [
-          "クレデンシャル窃取"
+          "自律型AIによる標的型攻撃"
         ],
         "weaknesses": [],
         "cve_ids": []
       }
     },
     {
-      "id": "1d683513b245",
-      "title": "The Promise of Strategic Agentic Scambaiting",
-      "summary": "arXiv:2611.08170v1 Announce Type: new \nAbstract: Scammers have increasingly adopted AI-driven capabilities, evolving from automated message generation to fully agentic conversational systems that scale operations and maximize the exploitation of fraudulent resources before detection and takedown. In parallel, agentic scambaiting has emerged as a defensive approach in which autonomous agents impersonate potential victims and engage scammers in sustained interactions to extract actionable threat intelligence, such as mule bank accounts and cryptocurrency wallet addresses, that can be reported to disrupt fraudulent infrastructures. Together, these developments transform online fraud into an adversarial socio-technical ecosystem in which autonomous scamming and scambaiting agents engage in deceptive interactions while competing over the discovery, preservation, and exploitation of one another's resources. A fundamental and largely unexplored question is how defensive scambaiting can remain effective in an agent-to-agent environment, and under what conditions either side gains a strategic advantage. In this paper, we present a formal model of agent-to-agent fraud interactions that captures the strategic decision spaces available to both attackers and defenders. Using this framework, we analyze the dynamics of engagement, resource consumption, belief adaptation, and disruption outcomes. We find that scammer profitability turns negative once baiting-agent prevalence exceeds certain thresholds, and that when both sides improve at the same pace, defender investment in mimicry quality outpaces equivalent gains in scammer detection capability, so the arms race favors the defender under our baseline parameters. Our model and findings provide insights into the stability, scalability, and long-term effectiveness of autonomous defensive agents in an evolving AI-mediated fraud landscape.",
-      "url": "https://arxiv.org/abs/2611.08170",
-      "ai_score": 3,
-      "cdc_pre_score": 1,
+      "id": "c7eefdbf3488",
+      "title": "SonicWall warns of new SSL-VPN MFA bypass flaw exploited in attacks",
+      "summary": "SonicWall has released security updates to fix seven vulnerabilities in SonicOS firewalls, including an SSL-VPN authentication bypass flaw exploited in attacks. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-new-ssl-vpn-mfa-bypass-flaw-exploited-in-attacks/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
       "vulnerability_focus": true,
-      "operations_focus": true,
+      "operations_focus": false,
       "business_topics": [
-        "脆弱性管理",
-        "AIエージェント"
+        "脆弱性管理"
       ],
       "engineering_topics": [],
-      "business_score": 6,
+      "business_score": 3,
       "source_region": "global",
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-11-06T14:00:00+09:00",
-      "title_ja": "自律型エージェントを用いたおとり対抗策（Agentic Scambaiting）の有効性モデル",
-      "summary_ja": "詐欺攻撃者が自律的な対話型AIエージェントを導入して詐欺活動を大規模化させる中、防御側が被害者になりすましてミュール口座等の脅威情報を収集する「agentic scambaiting」が注目されている。本研究では、攻撃側と防御側の双方がエージェントを用いる敵対的エコシステムにおける戦略的数理モデルを構築した。分析の結果、おとりエージェントの普及率が閾値を超えると攻撃者の採算が悪化し、双方が同ペースで進化する場合でも模倣精度の向上が防御側に有利に働くことが示された。",
-      "insight": "AIエージェント同士が欺瞞と検出を繰り返す環境では、エージェントの振る舞いモデルや情報抽出プロセスの設計が防御能力を左右する。セキュリティ評価の視点では、LLMエージェントに対するプロンプトインジェクションや偽装検出耐性、エージェント間対話の安全性検証が新たな診断対象になり得る。防御用AIエージェントの運用において、どのようなガバナンスと評価基準で欺瞞活動の品質と安全性を担保するかが問われる。",
-      "importance": "中",
-      "importance_reason": "AIエージェント同士の攻防という次世代のサイバー防衛モデルを数理的に分析し、防御側優位の条件を提示した研究であるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-07T09:00:55+09:00",
+      "title_ja": "SonicWall、悪用が確認されたSSL-VPNのMFAバイパス脆弱性に対処",
+      "summary_ja": "SonicWallはSonicOSファイアウォールに存在する7件の脆弱性を修正するセキュリティ更新プログラムを公開した。このうちSSL-VPN機能における認証バイパスの脆弱性は、実際の攻撃での悪用が確認されている。該当製品を運用する組織に対し、パッチ適用などの対応が求められている。",
+      "insight": "SSL-VPNなどの境界防御デバイスにおける認証バイパスは即座に内部侵入を許すリスクがある。外部公開インターフェース診断におけるMFA設定やバイパス可能性の検証プロセスを見直すとともに、パッチ適用後の再診断手順を確立すべきか検討が求められる。",
+      "importance": "高",
+      "importance_reason": "SonicOSにおけるSSL-VPN認証バイパスの脆弱性が実際に攻撃で悪用されているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
       "tag_subs": [
-        "LLMセキュリティ",
-        "AIを使った防御",
-        "AIを使った攻撃"
+        "認証バイパス",
+        "エクスプロイト",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "SonicWall",
+        "SonicOS",
+        "SSL-VPN",
+        "MFA bypass"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ペネトレーションテスト",
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "SonicWall SonicOS"
+        ],
+        "evidence": "SonicWall has released security updates to fix seven vulnerabilities in SonicOS firewalls, including an SSL-VPN authentication bypass flaw exploited in attacks."
+      },
+      "attack": {
+        "initial_access": "SSL-VPNの認証バイパス",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "外部公開SSL-VPNエンドポイントに対するMFAバイパス検証",
+        "human_validation": "不明",
+        "service_implication": "境界型VPN機器の診断項目に当該バイパス検証を追加することを検討",
+        "source_evidence": "including an SSL-VPN authentication bypass flaw exploited in attacks",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "インフラ・ネットワーク"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "認証バイパス"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "31e8a45d274d",
+      "title": "Hackers Target OpenSSH SSHole Flaw Within Hours of Disclosure, Gain Root on Honeypot",
+      "summary": "Threat actors are attempting to exploit a recently disclosed security flaw impacting OpenSSH that can enable sign-ins to accounts that have no password set, according to Previdian.\n\nThe vulnerability, tracked as CVE-2026-123158 (CVSS score: 8.1) and codenamed SSHole (or *sshole), impacts Linux systems that run OpenSSH on the musl C library with Pluggable Authentication Modules (PAM) disabled,",
+      "url": "https://thehackernews.com/2026/11/hackers-exploited-openssh-sshole-flaw.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-07T00:21:49+09:00",
+      "title_ja": "公開後数時間でOpenSSHの「SSHole」脆弱性を狙う攻撃、ハニーポットでRoot権限奪取を観測",
+      "summary_ja": "パスワードが設定されていないアカウントへのサインインを許すOpenSSHの脆弱性「SSHole（CVE-2026-123158、CVSS 8.1）」が公開された。Previdianの報告によると、公開から数時間以内に脅威アクターによる悪用試行がハニーポットで観測され、root権限が掌握された。本欠陥はmusl Cライブラリ環境かつPAMが無効化されたLinuxシステム上のOpenSSHに影響する。",
+      "insight": "軽量コンテナや組み込み環境で多用されるmusl C環境特有の構成に依存した脆弱性であり、資産インベントリにおけるCライブラリやPAM設定の可視化が重要となる。動的ペネトレーションテストや構成診断において、非標準Linux環境の設定不備を特定・検証する仕組みの確立が問われる。",
+      "importance": "高",
+      "importance_reason": "公開から数時間でハニーポットへの悪用試行とroot権限奪取が観測されたため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト",
+        "設定ミス"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "OpenSSH",
+        "SSHole",
+        "CVE-2026-123158",
+        "musl C",
+        "PAM"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ペネトレーションテスト",
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "OpenSSH",
+          "musl C library",
+          "Linux"
+        ],
+        "evidence": "Threat actors are attempting to exploit a recently disclosed security flaw impacting OpenSSH... Gain Root on Honeypot... tracked as CVE-2026-123158 (CVSS score: 8.1)"
+      },
+      "attack": {
+        "initial_access": "SSH経由のパスワード未設定アカウントへのサインイン",
+        "observed_impact": "ハニーポット上でのRoot権限奪取",
+        "japan_observation": "不明",
+        "assessment_preconditions": "OpenSSHがmusl Cライブラリ上で動作し、PAMが無効化されていること",
+        "test_scenario": "musl CおよびPAM無効環境下での空パスワードアカウントへのSSHログイン可否検証",
+        "human_validation": "不明",
+        "service_implication": "インフラ診断においてSSH設定およびリンク先ライブラリ・PAM構成を評価対象に含める検討",
+        "source_evidence": "Threat actors are attempting to exploit a recently disclosed security flaw impacting OpenSSH that can enable sign-ins to accounts that have no password set... Gain Root on Honeypot",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "インフラ・ネットワーク",
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "認証設定不備"
+        ],
+        "cve_ids": [
+          "CVE-2026-123158"
+        ]
+      }
+    },
+    {
+      "id": "1a20a287bd65",
+      "title": "OpenAI Launches GPT-6 Cyber After AI Helps Find 81 Firefox Flaws, 948 Linux Exploits",
+      "summary": "OpenAI on Thursday unveiled GPT‑6 Cyber, which it described as a major step forward in security research that brings together stronger cybersecurity capabilities with a step-change improvement in model alignment.\n\nThe new model is \"more capable at finding and fixing vulnerabilities, and far more reliable staying within the boundaries researchers set,\" OpenAI said. It has classified the model as",
+      "url": "https://thehackernews.com/2026/11/openai-launches-gpt-6-cyber-after-ai.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-06T23:58:32+09:00",
+      "title_ja": "OpenAI、セキュリティ特化モデル「GPT-6 Cyber」を発表",
+      "summary_ja": "OpenAIはサイバーセキュリティ機能とモデルアライメントを強化した新モデル「GPT-6 Cyber」を発表した。発表によると、同モデルの支援によりFirefoxの脆弱性81件やLinuxのエクスプロイト948件の特定に寄与したとされる。OpenAIは、本モデルが脆弱性の発見と修正において高い能力を発揮し、研究者が設定した境界内にとどまる信頼性を備えていると説明している。",
+      "insight": "AIモデル自身が大規模な脆弱性検出およびエクスプロイト発見に活用されるフェーズに入りつつあることが示唆される。ただしベンダーによる発表数値であり、第三者による再現性評価や誤検知率、修正案の安全性・回帰試験プロセスの検証が実務への組み込みにおいて重要な検討事項となる。",
+      "importance": "中",
+      "importance_reason": "AIを用いた脆弱性検出・修正の自動化に関するベンダーの新展開を示すため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "製品リリース"
       ],
       "affected_layers": [
         "データ/AI",
         "アプリ/API"
       ],
       "related_keywords": [
-        "Agentic Scambaiting",
-        "Autonomous Agents",
-        "Threat Intelligence",
-        "arXiv:2611.08170"
+        "OpenAI",
+        "GPT-6 Cyber",
+        "Firefox",
+        "Linux",
+        "アライメント"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
         "AI for Security",
-        "Security for AI",
         "サービス企画"
       ],
       "views": 0,
@@ -726,55 +980,228 @@
           "不明"
         ],
         "assessments": [
-          "不明"
+          "ソースコード診断"
         ],
         "products": [
-          "不明"
+          "GPT-6 Cyber",
+          "Firefox",
+          "Linux"
         ],
-        "evidence": "arXiv論文（arXiv:2611.08170）による自律型エージェント間の詐欺対抗モデルの研究報告。"
+        "evidence": "OpenAI on Thursday unveiled GPT‑6 Cyber... AI Helps Find 81 Firefox Flaws, 948 Linux Exploits"
       },
       "attack": {
         "initial_access": "不明",
         "observed_impact": "不明",
         "japan_observation": "不明",
         "assessment_preconditions": "不明",
-        "test_scenario": "自律型対話エージェントに対する偽装見破りや情報抽出耐性の評価シナリオ",
+        "test_scenario": "不明",
         "human_validation": "不明",
-        "service_implication": "AIエージェントの対話セキュリティや脅威インテリジェンス収集エージェントの検証手法開発が検討課題となる",
-        "source_evidence": "抜粋は論文概要（arXiv:2611.08170）であり攻撃インシデントの報告ではない",
-        "evidence_status": "研究報告のみ",
+        "service_implication": "脆弱性診断やコードレビュー支援へのAIエージェント統合の可能性検証",
+        "source_evidence": "不明",
+        "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "データ・AI・AIエージェント"
-        ],
+        "target_layers": [],
         "attack_methods": [],
         "weaknesses": [],
         "cve_ids": []
       }
     },
     {
-      "id": "7ce8ad10f12d",
-      "title": "IBMの音声処理製品に深刻な脆弱性 - 任意コード実行のおそれ",
-      "summary": "IBMの音声サービス関連製品「IBM Watson Speech Services Cartridge」に深刻な脆弱性が明らかとなった。修正パッチを提供している。",
-      "url": "https://www.security-next.com/192451",
+      "id": "72bbe291846c",
+      "title": "In Other News: Trezor Implant, LLMJacking Bills Hit $1M, SAP Flaws Weaponized Within Days",
+      "summary": "<p>Noteworthy stories that might have slipped under the radar: Synology warns about NAS ransomware attacks, Flowise ‘hello’ attacks, Chainalysis breach impact expands.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-trezor-implant-llmjacking-bills-hit-1m-sap-flaws-weaponized-within-days/\">In Other News: Trezor Implant, LLMJacking Bills Hit $1M, SAP Flaws Weaponized Within Days</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/in-other-news-trezor-implant-llmjacking-bills-hit-1m-sap-flaws-weaponized-within-days/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-06T23:40:09+09:00",
+      "title_ja": "Trezor製ハードウェアの改ざんやSAP脆弱性の迅速な悪用が報じられる",
+      "summary_ja": "SecurityWeekのニュースまとめにおいて、Trezorのハードウェア改ざん、LLMJackingによる高額請求、およびSAPの脆弱性が数日以内に悪用された事例が報じられました。また、Synology製NASを狙ったランサムウェア攻撃に対する警告やFlowiseへの攻撃、Chainalysis関連の侵害影響の拡大も言及されています。複数のセキュリティ脅威が同時に進行している状況を示しています。",
+      "insight": "ハードウェア改ざんやエンタープライズソフトウェアの脆弱性が短期間で悪用される事例から、脆弱性管理とパッチ適用の迅速性が改めて重要視されます。診断実務においては、公開後数日での悪用を想定した優先順位付けと、迅速な再診断プロセスの確立が求められます。",
+      "importance": "高",
+      "importance_reason": "複数の深刻な脆弱性悪用やハードウェア脅威が短期間で発生しており、迅速なリスク評価が求められるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ランサムウェア",
+        "エクスプロイト",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Trezor",
+        "SAP",
+        "LLMJacking",
+        "Synology",
+        "Flowise"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Trezor",
+          "SAP",
+          "Synology NAS",
+          "Flowise"
+        ],
+        "evidence": "SAP flaws weaponized within days, Synology warns about NAS ransomware attacks"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "ランサムウェア感染やLLMJackingによる高額請求、ハードウェア改ざん",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "迅速なパッチ適用プロセスの検証が必要",
+        "source_evidence": "SAP flaws weaponized within days and Synology warns about NAS ransomware attacks",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [
+          "ランサムウェア",
+          "脆弱性の悪用"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "7256c4637d07",
+      "title": "DigiCert Data Breach Impacts Business Customer Information",
+      "summary": "<p>Hackers created an account on an internal system and accessed names, email addresses, phone numbers, and business addresses.</p>\n<p>The post <a href=\"https://www.securityweek.com/digicert-data-breach-impacts-business-customer-information/\">DigiCert Data Breach Impacts Business Customer Information</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/digicert-data-breach-impacts-business-customer-information/",
       "ai_score": 1,
       "cdc_pre_score": 0,
       "vulnerability_focus": false,
       "operations_focus": false,
       "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-06T23:00:07+09:00",
+      "title_ja": "DigiCertのデータ侵害、ビジネス顧客情報に影響",
+      "summary_ja": "DigiCertの内部システムにハッカーがアカウントを作成し、名前、メールアドレス、電話番号、ビジネス住所にアクセスしたことが報じられました。ビジネス顧客情報が侵害されたインシデントであり、組織の内部システムへのアクセス管理の重要性を示しています。影響範囲の特定と対応が進められています。",
+      "insight": "内部システムへの不正アクセスによる情報漏えい事案であり、認証・認可の不備やアイデンティティ管理の脆弱性が背景に推測されます。ID管理や権限設定の監査、クラウド・内部システムの監視強化が診断およびセキュリティ運用の重要な課題となります。",
+      "importance": "高",
+      "importance_reason": "著名な認証・セキュリティ関連企業におけるデータ侵害であり、顧客情報への影響が大きいため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "情報漏洩",
+        "設定ミス"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "DigiCert",
+        "データ侵害",
+        "顧客情報"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Identity/ITDR",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "DigiCert internal systems"
+        ],
+        "evidence": "Hackers created an account on an internal system and accessed names, email addresses, phone numbers, and business addresses."
+      },
+      "attack": {
+        "initial_access": "内部システムへの不正なアカウント作成",
+        "observed_impact": "ビジネス顧客の氏名、メールアドレス、電話番号、住所へのアクセス",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "内部システムにおけるアイデンティティ管理とアクセス監視の見直しが必要",
+        "source_evidence": "Hackers created an account on an internal system and accessed names, email addresses, phone numbers, and business addresses.",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "認証・ID",
+          "クラウド・コンテナ"
+        ],
+        "attack_methods": [
+          "不正アカウント作成"
+        ],
+        "weaknesses": [
+          "アクセス制御の不備"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "d775a103c590",
+      "title": "Microsoft Paint RCE Fix Now Available, but Windows Update Won't Deliver It",
+      "summary": "A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates.\n\nThe fixed build, 11.2609.401.0, was the newest Paint build in all ten countries The Hacker News checked today.\n\nThe flaw is an out-of-bounds read that could let an attacker run code over a network. Microsoft rates",
+      "url": "https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
         "脆弱性管理"
       ],
       "engineering_topics": [],
-      "business_score": 5,
-      "source_region": "JP",
-      "source_name": "Security NEXT",
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "The Hacker News",
       "source_tier": "B",
-      "published": "2026-11-06T11:02:00+09:00",
-      "title_ja": "IBM Watson Speech Services Cartridgeに任意コード実行の深刻な脆弱性",
-      "summary_ja": "IBMの音声サービス関連製品「IBM Watson Speech Services Cartridge」に深刻な脆弱性が確認された。攻撃者によって任意のコードが実行されるおそれがある。IBMは修正パッチを提供しており、迅速な適用が呼びかけられている。",
-      "insight": "AI音声処理コンポーネントにおけるRCE脆弱性は、基盤インフラやデータへの侵入経路となるリスクを孕む。利用環境の特定とパッチ適用優先度の判断、さらに外部公開API経由での悪用可能性の再診断が求められる。運用者はAI関連ソフトウェアコンポーネントのSCAおよびExposure管理体制が機能しているか確認する必要がある。",
-      "importance": "高",
-      "importance_reason": "AI関連音声基盤製品における任意コード実行の深刻な脆弱性でありパッチ適用が求められるため。",
+      "published": "2026-11-06T21:06:43+09:00",
+      "title_ja": "Microsoft PaintのRCE脆弱性（CVE-2026-83844）修正が公開されるもWindows Update経由では配信されず",
+      "summary_ja": "Windows Paintのリモートコード実行（RCE）脆弱性であるCVE-2026-83844の修正プログラムが提供開始されました。ただし、この修正は通常のWindows UpdateではなくMicrosoft Store経由でのみ配信されます。範囲外読み取りの欠陥であり、ネットワーク経由でコードを実行されるおそれがあります。",
+      "insight": "OSの標準コンポーネントであっても通常のWindows Update経路外で配信されるパッチが存在する点は、脆弱性管理における盲点となり得ます。SCAやソフトウェア資産管理において、ストアアプリなどの更新パスを把握し評価する仕組みが求められます。",
+      "importance": "中",
+      "importance_reason": "広く利用される標準アプリのRCE脆弱性でありながら特殊な配信経路をとるため、適用漏れのリスクが高いため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
@@ -783,480 +1210,1332 @@
         "修正・緩和"
       ],
       "affected_layers": [
-        "アプリ/API",
-        "クラウド/サーバー",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "IBM Watson",
-        "音声処理",
-        "任意コード実行",
-        "パッチ管理",
-        "Cartridge"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "SOC運用変化"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "不明",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "修正・緩和",
-          "再診断"
-        ],
-        "assessments": [
-          "API診断",
-          "ブラックボックス診断"
-        ],
-        "products": [
-          "IBM Watson Speech Services Cartridge"
-        ],
-        "evidence": "「IBM Watson Speech Services Cartridge」に深刻な脆弱性が明らかとなった。修正パッチを提供している。"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "任意コード実行のおそれ",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "製品に対する外部入力検証およびコード実行可否の検証シナリオが検討課題となる",
-        "human_validation": "不明",
-        "service_implication": "音声APIコンポーネントを診断対象とする際の入力検証パターンの拡充が検討課題となる",
-        "source_evidence": "「IBM Watson Speech Services Cartridge」に深刻な脆弱性、任意コード実行のおそれ",
-        "evidence_status": "不明",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "Web・API",
-          "データ・AI・AIエージェント"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "f937360f4f74",
-      "title": "「ドコモオンラインショップ」と「My docomo」で個人情報が流出",
-      "summary": "NTTドコモは、ドコモオンラインショップとMy docomoが不正アクセスを受け、顧客の個人情報が流出したことを明らかにした。両サービスはメンテナンス中となっている。",
-      "url": "https://www.security-next.com/192453",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": false,
-      "operations_focus": false,
-      "business_topics": [
-        "企業インシデント"
-      ],
-      "engineering_topics": [],
-      "business_score": 5,
-      "source_region": "JP",
-      "source_name": "Security NEXT",
-      "source_tier": "B",
-      "published": "2026-11-06T10:46:20+09:00",
-      "title_ja": "ドコモオンラインショップとMy docomoで不正アクセスによる個人情報流出が発生",
-      "summary_ja": "NTTドコモは「ドコモオンラインショップ」および「My docomo」が不正アクセスを受けたと発表した。この事象により顧客の個人情報が外部へ流出したことが判明している。被害拡大防止等のため、現在両サービスはメンテナンス中となっている。",
-      "insight": "国内大手キャリアの重要顧客ポータルに対する不正アクセスによる実被害事例である。認証・認可基盤やWeb/API経由でのアクセス制御、クレデンシャルスタッフィング対策等の検証課題が浮き彫りとなっている。再開に向けた再診断や侵入経路の特定において、ブラックボックス診断やログ監査の網羅性が問われる。",
-      "importance": "高",
-      "importance_reason": "国内インフラ企業の主要Webサービスにおける不正アクセスおよび実被害（個人情報流出）であるため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
-      "tag_subs": [
-        "個人情報流出",
-        "データ侵害",
-        "サービス停止"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "クラウド/サーバー",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "NTTドコモ",
-        "My docomo",
-        "不正アクセス",
-        "個人情報流出",
-        "Webサービス"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Identity/ITDR",
-        "CISO報告",
-        "顧客課題"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "直接関連",
-        "exploitation": "悪用確認あり",
-        "urgency": "緊急",
-        "lifecycle": [
-          "再診断",
-          "修正・緩和"
-        ],
-        "assessments": [
-          "ブラックボックス診断"
-        ],
-        "products": [
-          "ドコモオンラインショップ",
-          "My docomo"
-        ],
-        "evidence": "NTTドコモは、ドコモオンラインショップとMy docomoが不正アクセスを受け、顧客の個人情報が流出したことを明らかにした。"
-      },
-      "attack": {
-        "initial_access": "不正アクセス（詳細手法は不明）",
-        "observed_impact": "個人情報の流出、サービスメンテナンス（停止）",
-        "japan_observation": "国内サービス（NTTドコモ）で観測",
-        "assessment_preconditions": "不明",
-        "test_scenario": "外部認証インターフェースおよび認可バイパス、アカウント侵害を想定した検証が検討課題となる",
-        "human_validation": "不明",
-        "service_implication": "顧客向けWebポータルに対する認証・認可診断項目の精緻化と継続的監視が検討課題となる",
-        "source_evidence": "ドコモオンラインショップとMy docomoが不正アクセスを受け、顧客の個人情報が流出した",
-        "evidence_status": "実被害確認",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "外部公開資産",
-          "Web・API"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "28205d0c584e",
-      "title": "Turning Up the Heat: Inside the Attacks on Europe’s Refrigeration System",
-      "summary": "<p>Unit 42 examines recent cyberattacks targeting European refrigeration systems and outlines defense and mitigation strategies.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/europes-refrigeration-systems-attacks/\">Turning Up the Heat: Inside the Attacks on Europe’s Refrigeration System</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
-      "url": "https://unit42.paloaltonetworks.com/europes-refrigeration-systems-attacks/",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": false,
-      "operations_focus": false,
-      "business_topics": [
-        "企業インシデント"
-      ],
-      "engineering_topics": [],
-      "business_score": 4,
-      "source_region": "global",
-      "source_name": "Palo Alto Unit 42",
-      "source_tier": "A",
-      "published": "2026-11-07T06:15:09+09:00",
-      "title_ja": "欧州の冷却・冷凍システムを標的としたサイバー攻撃の分析",
-      "summary_ja": "Palo Alto NetworksのUnit 42は、欧州の冷却・冷凍システムを標的とした最近のサイバー攻撃を調査した。記事では攻撃の詳細な分析とともに、防御および緩和策の戦略を提示している。重要インフラや産業用制御機器を巡るサイバー脅威の実態が示されている。",
-      "insight": "物理設備を制御するOT/産業系ネットワークへの脅威は、業務停止や物理的損害に直結する。外部公開資産から内部設備制御レイヤーへのラテラルムーブメントを防止する多層防御の再点検が求められる。ペネトレーションテストやExposure管理において、OT連携インターフェースを対象に含める検討が必要である。",
-      "importance": "中",
-      "importance_reason": "欧州の重要設備（冷却システム）を標的とした攻撃の調査報告であり、重要インフラ防御の参考となるため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "APT",
-        "マルウェア"
-      ],
-      "affected_layers": [
         "デバイス/エッジ",
-        "ネットワーク",
-        "クラウド/サーバー"
+        "アプリ/API"
       ],
       "related_keywords": [
-        "Unit 42",
-        "冷却システム",
-        "欧州",
-        "OTセキュリティ",
-        "標的型攻撃"
+        "Microsoft Paint",
+        "CVE-2026-83844",
+        "Microsoft Store",
+        "リモートコード実行"
       ],
       "cdc_relevance": 1,
       "cdc_context": [
-        "SOC運用変化",
-        "MDR/MSSP設計"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "不明",
-        "exploitation": "悪用確認あり",
-        "urgency": "情報収集",
-        "lifecycle": [
-          "修正・緩和"
-        ],
-        "assessments": [
-          "ペネトレーションテスト"
-        ],
-        "products": [
-          "Refrigeration System"
-        ],
-        "evidence": "Unit 42 examines recent cyberattacks targeting European refrigeration systems and outlines defense and mitigation strategies."
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "冷却システムへの攻撃（詳細被害は記事抜粋に記載なし）",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "産業設備・制御系境界における侵入経路の特定と侵入テストが検討課題となる",
-        "human_validation": "不明",
-        "service_implication": "OT/設備連携システムの診断スコープ設定や緩和策評価への反映が検討課題となる",
-        "source_evidence": "recent cyberattacks targeting European refrigeration systems",
-        "evidence_status": "悪用確認",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "デバイス・エンドポイント",
-          "インフラ・ネットワーク"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "86cd7cb41c9e",
-      "title": "OpenAI's new GPT-6 Cyber AI finds 81 Firefox flaws, 948 Linux bugs",
-      "summary": "OpenAI has revealed GPT-6 Cyber, a new artificial intelligence model that has discovered 81 previously unknown high-severity Firefox vulnerabilities and developed working exploits for 948 distinct Linux kernel flaws. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/openais-new-gpt-6-cyber-ai-finds-81-firefox-flaws-948-linux-bugs/",
-      "ai_score": 3,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": true,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理"
-      ],
-      "engineering_topics": [],
-      "business_score": 3,
-      "source_region": "global",
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-11-07T05:24:19+09:00",
-      "title_ja": "OpenAIの新AI「GPT-6 Cyber」がFirefoxの未知の脆弱性81件とLinuxバグ948件を発見",
-      "summary_ja": "OpenAIはサイバーセキュリティ向けAIモデル「GPT-6 Cyber」を発表した。同モデルはFirefoxにおいて81件の未知の高深刻度脆弱性を検出し、Linuxカーネルの948件の異なる不具合に対して機能するエクスプロイトを開発したとされる。AIを活用した脆弱性発見およびエクスプロイト自動生成の技術的進展を示す内容となっている。",
-      "insight": "AIを活用した静的・動的解析や脆弱性発見の自動化が急速に進展しており、防御側の診断プロセスだけでなく攻撃側のエクスプロイト作成コストの大幅な低下が推測される。診断実務においては、AIによる大量の脆弱性検出に対する検証・トリアージ能力の確立が求められる。組織は今後AIが発見・生成する攻撃コードのスピードに対抗できる脆弱性管理体制をどのように構築すべきかが問われる。",
-      "importance": "高",
-      "importance_reason": "AIによる未知脆弱性の大量発見およびエクスプロイト自動生成の実効性を示す動向であり、診断と修正プロセス全体に大きな影響を与えるため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "AIを使った防御",
-        "AIを使った攻撃",
-        "エクスプロイト"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "クラウド/サーバー",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "GPT-6 Cyber",
-        "OpenAI",
-        "Firefox",
-        "Linuxカーネル",
-        "脆弱性発見"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "AI for Security",
-        "Security for AI"
+        "Exposure管理"
       ],
       "views": 0,
       "business": {
         "japan_relevance": "関連あり",
-        "exploitation": "PoC公開のみ",
+        "exploitation": "悪用未確認と明記",
         "urgency": "早期評価",
         "lifecycle": [
           "不明"
         ],
         "assessments": [
-          "ソースコード診断"
+          "不明"
         ],
         "products": [
-          "Firefox",
-          "Linux Kernel"
+          "Microsoft Paint"
         ],
-        "evidence": "GPT-6 CyberがFirefoxの未知の脆弱性81件を発見し、Linuxカーネルの948件のバグに対するエクスプロイトを開発したとの発表"
+        "evidence": "A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates."
       },
       "attack": {
-        "initial_access": "不明",
-        "observed_impact": "Firefoxの未知脆弱性発見およびLinuxカーネル欠陥に対する実動エクスプロイトの開発",
+        "initial_access": "ネットワーク経由",
+        "observed_impact": "リモートコード実行の可能性",
         "japan_observation": "不明",
         "assessment_preconditions": "不明",
-        "test_scenario": "AIモデルを用いた未知の脆弱性スキャンおよび検証コードの自動生成シミュレーション",
-        "human_validation": "AIが検出した大量の欠陥およびエクスプロイトの有効性を専門家が検証・確認するプロセスの必要性",
-        "service_implication": "AI支援型脆弱性診断ツールの導入検討と、生成された指摘事項に対するトリアージ業務の効率化",
-        "source_evidence": "GPT-6 Cyber has discovered 81 previously unknown high-severity Firefox vulnerabilities and developed working exploits for 948 distinct Linux kernel flaws.",
-        "evidence_status": "研究報告のみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "ソースコード・ソフトウェア供給網",
-          "デバイス・エンドポイント"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "f075b6f2472a",
-      "title": "QNAP says hackers breaching NAS devices in Plex2Shell attacks",
-      "summary": "QNAP urges users to update Plex Media Server to the latest version available in the QNAP App Center, as hackers are exploiting the Plex2Shell vulnerability chain. [...]",
-      "url": "https://www.bleepingcomputer.com/news/security/qnap-says-hackers-breaching-nas-devices-in-plex2shell-attacks/",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": true,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理"
-      ],
-      "engineering_topics": [],
-      "business_score": 3,
-      "source_region": "global",
-      "source_name": "Bleeping Computer",
-      "source_tier": "B",
-      "published": "2026-11-07T02:04:23+09:00",
-      "title_ja": "QNAP、Plex2Shell攻撃によるNASデバイス侵害について注意喚起",
-      "summary_ja": "QNAPは、攻撃者が「Plex2Shell」と呼ばれる脆弱性チェーンを悪用してNASデバイスを侵害していると警告した。同社はQNAP App Centerを通じてPlex Media Serverを最新バージョンへ更新するよう強く促している。攻撃チェーンによりNAS環境への不正侵入および制御奪取のリスクが生じている。",
-      "insight": "外部公開されがちなNAS環境上のサードパーティアプリケーションが侵入経路として狙われており、ホストOSと統合されたアプリの脆弱性管理が極めて重要である。ブラックボックス診断やペネトレーションテストにおいては、連携アプリを経由したシェル取得シナリオの想定が不可欠となる。管理者はNASアプライアンス上の追加サービスの棚卸しと更新フローを担保できているかが論点となる。",
-      "importance": "高",
-      "importance_reason": "稼働中のアプライアンスに対する能動的な悪用が確認されており、即時アップデートが必要なため。",
-      "tag_main_id": "attack",
-      "tag_main_label": "攻撃・脅威",
-      "tag_subs": [
-        "エクスプロイト",
-        "パッチ未適用"
-      ],
-      "affected_layers": [
-        "デバイス/エッジ",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "QNAP",
-        "NAS",
-        "Plex Media Server",
-        "Plex2Shell",
-        "リモートコード実行"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "SOC運用変化",
-        "Exposure管理",
-        "MDR/MSSP設計"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "悪用確認あり",
-        "urgency": "緊急",
-        "lifecycle": [
-          "修正・緩和"
-        ],
-        "assessments": [
-          "ペネトレーションテスト"
-        ],
-        "products": [
-          "QNAP NAS",
-          "Plex Media Server"
-        ],
-        "evidence": "QNAP says hackers breaching NAS devices in Plex2Shell attacks"
-      },
-      "attack": {
-        "initial_access": "Plex Media Serverの脆弱性チェーン悪用",
-        "observed_impact": "NASデバイスへの不正侵入",
-        "japan_observation": "不明",
-        "assessment_preconditions": "QNAP NAS上でPlex Media Serverが稼働していること",
-        "test_scenario": "Plex2Shell攻撃チェーンの再現検証によるシェル権限取得可能性の確認",
-        "human_validation": "アプライアンスのApp Centerにおけるパッチ適用状況と侵入痕跡の確認",
-        "service_implication": "アプライアンス製品内部で動作するサードパーティ製アプリに対する資産・バージョン管理の徹底",
-        "source_evidence": "hackers are exploiting the Plex2Shell vulnerability chain",
-        "evidence_status": "悪用確認",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "Microsoft Store経由のアップデート適用の徹底と資産管理の確認が必要",
+        "source_evidence": "A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates.",
+        "evidence_status": "PoCのみ",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
           "デバイス・エンドポイント",
-          "外部公開資産"
+          "ソースコード・ソフトウェア供給網"
         ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "fbf802f0e992",
-      "title": "Installing the Fix for an Exploited WordPress Flaw Can Expose Some Sites One Last Time",
-      "summary": "Some WordPress sites can still be attacked while they install the fix for an actively exploited flaw, according to Umut Bayram, the Picus Security researcher who found it.\n\nThe update that installs the fix still unpacks its files using the site's old, unpatched code, so an attacker who strikes at the right moment can run code on the server. The researcher advises blocking web access to the",
-      "url": "https://thehackernews.com/2026/11/installing-fix-for-exploited-wordpress.html",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": true,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理"
-      ],
-      "engineering_topics": [],
-      "business_score": 3,
-      "source_region": "global",
-      "source_name": "The Hacker News",
-      "source_tier": "B",
-      "published": "2026-11-07T01:08:38+09:00",
-      "title_ja": "WordPress脆弱性の修正適用プロセス中に攻撃へ晒されるリスクが判明",
-      "summary_ja": "悪用が確認されているWordPressの脆弱性において、修正パッチの適用処理中にサイトが攻撃を受ける可能性があることがPicus Securityのリサーチャーにより指摘された。更新処理がファイルの展開を未パッチの古いコードを使って実行するため、更新のタイミングを狙った攻撃によりサーバー上でコード実行される恐れがある。研究者は更新作業中にサイトへのWebアクセスを遮断することを推奨している。",
-      "insight": "修正の適用そのものが攻撃機会を生むというパッチ適用プロセス自体の脆弱性であり、一般的なホットフィックスの運用手順に再考を迫る事例である。再診断やペネトレーションテストの観点でも、単に適用後のバージョンを検証するだけでなく、更新処理時の安全性の考慮が求められる。運用設計者は安全な更新のためのメンテナンス切り戻しやアクセス制限フローを定式化できているかが問われる。",
-      "importance": "中",
-      "importance_reason": "修正作業中に悪用されるという特異なタイムオブチェック/タイムオブユース的課題であり、パッチ適用手順の再設計が必要となるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "修正・緩和",
-        "パッチ未適用"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "クラウド/サーバー"
-      ],
-      "related_keywords": [
-        "WordPress",
-        "Picus Security",
-        "パッチ適用",
-        "コード実行",
-        "レースコンディション"
-      ],
-      "cdc_relevance": 1,
-      "cdc_context": [
-        "Exposure管理",
-        "SOC運用変化"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "悪用確認あり",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "修正・緩和",
-          "再診断"
+        "attack_methods": [
+          "リモートコード実行"
         ],
-        "assessments": [
-          "ソースコード診断"
+        "weaknesses": [
+          "境界外読み取り"
         ],
-        "products": [
-          "WordPress"
-        ],
-        "evidence": "Some WordPress sites can still be attacked while they install the fix for an actively exploited flaw"
-      },
-      "attack": {
-        "initial_access": "Web経由でのパッチ適用中インスタンスへのアクセス",
-        "observed_impact": "サーバー上での任意コード実行の可能性",
-        "japan_observation": "不明",
-        "assessment_preconditions": "WordPressサイトでパッチ未適用の脆弱な状態で更新プロセスが実行中であること",
-        "test_scenario": "パッチファイル展開処理中の古いコード実行タイミングを狙ったリクエスト送信検証",
-        "human_validation": "Webサーバーのアクセス遮断措置および更新ログの突合検証",
-        "service_implication": "脆弱性修正作業時における一時的なアクセス制限プロセスの標準化とアドバイザリ提供",
-        "source_evidence": "The update that installs the fix still unpacks its files using the site's old, unpatched code, so an attacker who strikes at the right moment can run code on the server.",
-        "evidence_status": "研究報告のみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "Web・API",
-          "外部公開資産"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
+        "cve_ids": [
+          "CVE-2026-83844"
+        ]
       }
     }
   ],
   "history": [
+    {
+      "date": "2026-11-08",
+      "articles": [
+        {
+          "id": "ebb1e804eafb",
+          "title": "「Apache OFBiz」にRCE脆弱性 - 修正版がリリース",
+          "summary": "Apacheの業務アプリケーション「Apache OFBiz」に深刻な脆弱性が明らかとなった。開発チームは修正版を提供している。",
+          "url": "https://www.security-next.com/192441",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 5,
+          "source_region": "JP",
+          "source_name": "Security NEXT",
+          "source_tier": "B",
+          "published": "2026-11-06T09:52:42+09:00",
+          "title_ja": "「Apache OFBiz」に深刻なRCE脆弱性、修正版が公開",
+          "summary_ja": "オープンソースの業務アプリケーション「Apache OFBiz」において、深刻なリモートコード実行（RCE）の脆弱性が報告された。開発チームはこの問題に対処するため、最新の修正版をリリースした。本脆弱性の悪用によるシステム侵害リスクを防ぐため、管理者は迅速な更新が求められる。",
+          "insight": "OFBizはERPやEC基盤として外部公開されるケースがあり、RCE脆弱性は初期侵入の標的になりやすい。脆弱性診断では公開APIや管理画面のエンドポイント特定が焦点となるが、抜粋では具体的な悪用条件やPoCの有無は不明である。SOCとしては外部からの不審なコマンド実行や異常トラフィックを検知できるログ体制が機能しているかを点検する契機となる。",
+          "importance": "高",
+          "importance_reason": "業務基盤に用いられるソフトウェアにおける深刻なRCE脆弱性であり、侵害時の影響が大きいため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "修正・緩和",
+            "エクスプロイト",
+            "パッチ未適用"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "Apache OFBiz",
+            "RCE",
+            "リモートコード実行",
+            "セキュリティアップデート"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "修正・緩和"
+            ],
+            "assessments": [
+              "DAST"
+            ],
+            "products": [
+              "Apache OFBiz"
+            ],
+            "evidence": "記事抜粋に「Apache OFBizに深刻な脆弱性」「RCE脆弱性」「修正版を提供」と明記。"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "対象インスタンスに対してRCEを引き起こすリクエストの受け入れ可否を検証するシナリオが想定されるが、入力に詳細条件の記載はなく不明。",
+            "human_validation": "不明",
+            "service_implication": "外部公開されているOFBiz環境の有無をASM等で特定し、修正パッチの適用状況を評価する検討が挙げられる。",
+            "source_evidence": "抜粋に「RCE脆弱性」「修正版を提供」とのみ記載。",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "外部公開資産",
+              "Web・API"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "bc11a9d1e445",
+          "title": "WatchGuardの多要素認証製品に脆弱性 - 「クリティカル」も",
+          "summary": "WatchGuardの多要素認証ソリューション「WatchGuard AuthPoint」で利用する一部コンポーネントに複数の脆弱性が明らかとなった。同社は修正版を提供している。",
+          "url": "https://www.security-next.com/192434",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 5,
+          "source_region": "JP",
+          "source_name": "Security NEXT",
+          "source_tier": "B",
+          "published": "2026-11-06T09:17:19+09:00",
+          "title_ja": "WatchGuardの多要素認証「AuthPoint」コンポーネントにクリティカル脆弱性",
+          "summary_ja": "WatchGuardの多要素認証（MFA）製品「WatchGuard AuthPoint」の一部コンポーネントに複数の脆弱性が発見された。中には重要度が「クリティカル」とされる深刻な欠陥が含まれている。ベンダーはすでに修正版をリリースしており、利用者に更新を促している。",
+          "insight": "MFAコンポーネントの脆弱性は認証基盤全体のバイパスや権限昇格に直結する懸念がある。認証連携やエージェントの更新漏れがないか、アイデンティティ管理運用の観点で点検が必要となる。認証ログの監視設計において、MFAバイパスや異常認証試行を検知できる構造になっているかを評価する問いが生じる。",
+          "importance": "高",
+          "importance_reason": "境界防御やゼロトラストの中核となる多要素認証製品にクリティカルな脆弱性が確認されたため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "認証バイパス",
+            "修正・緩和",
+            "パッチ未適用"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "WatchGuard",
+            "AuthPoint",
+            "多要素認証",
+            "MFA",
+            "クリティカル"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Identity/ITDR",
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "修正・緩和"
+            ],
+            "assessments": [
+              "ペネトレーションテスト"
+            ],
+            "products": [
+              "WatchGuard AuthPoint"
+            ],
+            "evidence": "記事抜粋に「WatchGuard AuthPointで利用する一部コンポーネントに複数の脆弱性」「クリティカルも」「修正版を提供」と明記。"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "AuthPointコンポーネントにおける認証処理や通信の検証が想定されるが、入力に詳細な技術要件の記載はなく不明。",
+            "human_validation": "不明",
+            "service_implication": "認証基盤関連のコンポーネントバージョン管理およびペネトレーションテスト時の対象範囲策定に関する検討が挙げられる。",
+            "source_evidence": "抜粋に「AuthPointで利用する一部コンポーネントに複数の脆弱性」「クリティカルも」と記載。",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "認証・ID",
+              "外部公開資産"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "3370ddd86575",
+          "title": "「Firefox」のレイアウト処理に脆弱性 - 「同159.0.1」で修正",
+          "summary": "Mozilla Foundationは現地時間2026年11月3日、ウェブブラウザのセキュリティアップデートとなる「Firefox 159.0.1」を公開した。",
+          "url": "https://www.security-next.com/192437",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 5,
+          "source_region": "JP",
+          "source_name": "Security NEXT",
+          "source_tier": "B",
+          "published": "2026-11-06T09:11:14+09:00",
+          "title_ja": "Mozilla、「Firefox 159.0.1」を公開 - レイアウト処理の脆弱性を修正",
+          "summary_ja": "Mozilla Foundationは、Webブラウザのセキュリティアップデート「Firefox 159.0.1」をリリースした。本バージョンでは、ブラウザのレイアウト処理に関する脆弱性が修正されている。悪用による意図しない動作やクラッシュ、任意のコード実行リスクを避けるため更新が推奨される。",
+          "insight": "クライアント側ブラウザのレンダリング・レイアウトエンジンの脆弱性は、悪意あるWebサイト閲覧を通じたクライアント侵害の契機となる可能性がある。端末管理（MDM/EDR）による自動更新の徹底と、サンドボックス機構による影響局所化が防御の基本となる。エンドポイント監視において不審なブラウザ子プロセスの起動を捉えられる設計かが確認論点となる。",
+          "importance": "中",
+          "importance_reason": "広く利用されているクライアントブラウザの描画処理に関するセキュリティ修正であるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "修正・緩和",
+            "パッチ未適用"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "Mozilla",
+            "Firefox",
+            "レイアウト処理",
+            "セキュリティアップデート"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "修正・緩和"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "Mozilla Firefox"
+            ],
+            "evidence": "記事抜粋に「Firefox 159.0.1を公開」「レイアウト処理に脆弱性」と明記。"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "悪意あるレイアウト処理を含むコンテンツのレンダリング挙動検証が考えられるが、抜粋に脆弱性の詳細条件はなく不明。",
+            "human_validation": "不明",
+            "service_implication": "端末脆弱性管理（ブラウザバージョン管理）ポリシーの点検やEDRによる検知方針の確認検討が挙げられる。",
+            "source_evidence": "抜粋に「Firefoxのレイアウト処理に脆弱性」「同159.0.1で修正」と記載。",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "7b5b7d14b461",
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "summary": "<p>CISA has added one new vulnerability to its&nbsp;<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul type=\"disc\">\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-19868\" target=\"_blank\">CVE-2026-19868</a> SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for malicious cyber ac",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/11/06/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 4,
+          "source_region": "global",
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-11-06T21:00:00+09:00",
+          "title_ja": "CISAがSonicOSのKEVカタログ追加を発表、悪用を確認",
+          "summary_ja": "米CISAはSonicWall SonicOSの脆弱性（CVE-2026-19868）をKnown Exploited Vulnerabilities（KEV）カタログに追加しました。この脆弱性はSSL-VPNにおける単一要素認証の利用に関する問題に起因しています。攻撃者による悪用が頻繁に確認される攻撃ベクターとされています。",
+          "insight": "SonicOSにおけるSSL-VPN境界の弱点は初期アクセスの温床となりやすく、診断業務では単一要素認証設定の検出やExposure評価が急務となります。運用面では、対象機器のパッチ適用と多要素認証への移行が完了しているかの再診断計画を立てる必要があります。SOC設計者としては、SSL-VPN経由の不審なログイン試行をどのように検知ルールに組み込むかを検討する問いが求められます。",
+          "importance": "高",
+          "importance_reason": "CISA KEVへの登録により、実際に悪用が確認された境界機器の脆弱性であるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "KEV",
+            "CVE",
+            "エクスプロイト"
+          ],
+          "affected_layers": [
+            "ネットワーク"
+          ],
+          "related_keywords": [
+            "CISA",
+            "KEV",
+            "SonicWall",
+            "SonicOS",
+            "SSL-VPN"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理",
+            "MDR/MSSP設計"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "緊急",
+            "lifecycle": [
+              "修正・緩和",
+              "再診断"
+            ],
+            "assessments": [
+              "ブラックボックス診断"
+            ],
+            "products": [
+              "SonicWall SonicOS"
+            ],
+            "evidence": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog, based on evidence of active exploitation: CVE-2026-19868 SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability"
+          },
+          "attack": {
+            "initial_access": "SonicWall SonicOS SSL-VPNの単一要素認証の悪用",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "外部公開されたSonicWall SonicOS SSL-VPNエンドポイントへのアクセス",
+            "test_scenario": "外部境界診断において対象機器のバージョンと単一要素認証の利用有無を確認する",
+            "human_validation": "管理コンソール設定および多要素認証強制の有無の手動確認",
+            "service_implication": "外部公開資産のExposure管理およびペネトレーションテスト時の初期侵入経路の評価項目として反映",
+            "source_evidence": "CISA added CVE-2026-19868 SonicWall SonicOS SSLVPN Use of Single-factor Authentication Vulnerability based on evidence of active exploitation.",
+            "evidence_status": "悪用確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "外部公開資産",
+              "インフラ・ネットワーク"
+            ],
+            "attack_methods": [],
+            "weaknesses": [
+              "Use of Single-factor Authentication"
+            ],
+            "cve_ids": [
+              "CVE-2026-19868"
+            ]
+          }
+        },
+        {
+          "id": "ecc66029181b",
+          "title": "US Government Partners Urge Hardening Industrial Refrigeration and Cold Chain Monitoring Systems",
+          "summary": "<h2><strong>Overview</strong></h2>\n<p>The Cybersecurity and Infrastructure Security Agency (CISA), Federal Bureau of Investigation (FBI), Health and Human Services (HHS), U.S. Department of Agriculture (USDA), and the Department of Transportation (DoT)—hereafter referred to as “the authoring organizations”—are aware of malicious cyber activity targeting industrial refrigeration and cold chain monitoring systems globally. Organizations in the <a href=\"https://www.cisa.gov/topics/critical-infrastr",
+          "url": "https://www.cisa.gov/resources-tools/resources/us-government-partners-urge-hardening-industrial-refrigeration-and-cold-chain-monitoring-systems",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 4,
+          "source_region": "global",
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-11-05T21:00:00+09:00",
+          "title_ja": "米政府機関、産業用冷凍機およびコールドチェーン監視システムの強化を勧告",
+          "summary_ja": "CISA、FBI、HHS、USDA、DOTなどの米政府機関が、産業用冷凍・コールドチェーン監視システムを標的とした悪意あるサイバー活動を警告しました。これらのシステムは重要インフラ分野において広範に利用されています。関係機関は運用の安全を確保するためのシステム堅牢化を呼びかけています。",
+          "insight": "コールドチェーン監視などのOT/IoT境界機器は、IT/OT境界診断やペネトレーションテストにおける侵入対象として浮上しています。遠隔監視インターフェースの外部露出や設定不備を洗い出し、セグメンテーションが維持されているかの検証が不可欠です。監視側としては、通常想定されない外部からの遠隔接続要求をどのように早期特定するかが課題となります。",
+          "importance": "中",
+          "importance_reason": "重要インフラに直結するOT・コールドチェーン機器がグローバルに標的とされているため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "マルウェア",
+            "サプライチェーン攻撃"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ネットワーク"
+          ],
+          "related_keywords": [
+            "CISA",
+            "FBI",
+            "コールドチェーン",
+            "産業用冷凍機",
+            "OTセキュリティ"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "修正・緩和"
+            ],
+            "assessments": [
+              "ペネトレーションテスト"
+            ],
+            "products": [
+              "Industrial refrigeration and cold chain monitoring systems"
+            ],
+            "evidence": "aware of malicious cyber activity targeting industrial refrigeration and cold chain monitoring systems globally."
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "産業用冷凍・コールドチェーン監視インターフェースのネットワーク疎通",
+            "test_scenario": "外部および内部ネットワークからの監視システムの露出状況調査および認証バイパス・設定不備の確認",
+            "human_validation": "機器の管理画面露出およびセグメンテーション状況の構成確認",
+            "service_implication": "OT/IoT資産の外部露出診断およびサプライチェーン監視項目の見直し",
+            "source_evidence": "The authoring organizations are aware of malicious cyber activity targeting industrial refrigeration and cold chain monitoring systems globally.",
+            "evidence_status": "悪用確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "外部公開資産",
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "0fdcc08f6305",
+          "title": "Hackers pull off $133 million French bank heist via service provider",
+          "summary": "French cooperative bank Crédit Mutuel Arkéa was targeted in a cyberattack that enabled fraudulent transactions of up to $133 million, forcing it to respond by suspending certain systems.v [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "企業インシデント"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-11-08T00:25:35+09:00",
+          "title_ja": "仏銀行Crédit Mutuel Arkéa、サービス提供者経由で1.33億ドルの不正送金被害",
+          "summary_ja": "フランスの協同組合銀行Crédit Mutuel Arkéaがサイバー攻撃の標的となりました。攻撃者はサービスプロバイダーを経由して侵入し、最大1億3300万ドルの不正送金を実行しました。銀行側は対応として一部のシステムを一時停止する措置を講じました。",
+          "insight": "外部サービスプロバイダーを経由したサプライチェーン侵入が金融被害に直結した重大事例です。診断実務では、サードパーティ連携APIや共有権限のセキュリティ検証をスコープに含める必要性が示唆されます。SOC設計においては、信頼された委託先経由で実行される異常トランザクションを検知できる相互監査機能の構築が論点となります。",
+          "importance": "高",
+          "importance_reason": "サードパーティ経由で巨額の金銭的被害（1.33億ドル）が発生したサプライチェーン侵害事例であるため。",
+          "tag_main_id": "incident",
+          "tag_main_label": "インシデント",
+          "tag_subs": [
+            "金融被害",
+            "サプライチェーン攻撃"
+          ],
+          "affected_layers": [
+            "クラウド/サーバー",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Crédit Mutuel Arkéa",
+            "不正送金",
+            "サービスプロバイダー",
+            "サプライチェーン侵害",
+            "金融機関"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "MDR/MSSP設計",
+            "CISO報告"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "API診断",
+              "ペネトレーションテスト"
+            ],
+            "products": [
+              "不明"
+            ],
+            "evidence": "French cooperative bank Crédit Mutuel Arkéa was targeted in a cyberattack that enabled fraudulent transactions of up to $133 million via service provider"
+          },
+          "attack": {
+            "initial_access": "サービスプロバイダー経由のアクセス",
+            "observed_impact": "最大1億3300万ドルの不正送金、システムの一部停止",
+            "japan_observation": "不明",
+            "assessment_preconditions": "委託先・サービスプロバイダーと同行システム間の接続チャネル",
+            "test_scenario": "サプライチェーン連携インターフェースや権限委任環境を起点としたラテラルムーブメントおよび送金APIの悪用検証",
+            "human_validation": "サービスプロバイダー向けクレデンシャル管理および取引承認ワークフローの統制検証",
+            "service_implication": "サプライチェーンリスク評価およびサードパーティ接続環境に対するペネトレーションテストの拡充",
+            "source_evidence": "targeted in a cyberattack that enabled fraudulent transactions of up to $133 million via service provider, forcing it to respond by suspending certain systems",
+            "evidence_status": "実被害確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "Web・API",
+              "ソースコード・ソフトウェア供給網"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "0a53cb4de44f",
+          "title": "CTM360 Exposes Fake Gift Card Scams Exploiting Trusted Brands",
+          "summary": "Scammers are impersonating major brands and celebrities to lure consumers into fake gift card giveaways that collect personal information and trigger unwanted subscriptions. CTM360 reveals how these campaigns use deceptive verification steps and affiliate networks to generate revenue without delivering the promised rewards. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/ctm360-exposes-fake-gift-card-scams-exploiting-trusted-brands/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-11-07T23:10:19+09:00",
+          "title_ja": "著名ブランドを悪用した偽ギフトカード詐欺の巧妙な手口が判明",
+          "summary_ja": "CTM360の調査により、著名ブランドや著名人を騙り偽のギフトカード配布で消費者を誘い込む詐欺手口が明らかになりました。攻撃者は個人情報を収集し、意図しない有料サブスクリプションへ登録させます。さらに欺瞞的な検証手順やアフィリエイトネットワークを利用し、報酬を提供することなく不正な収益を上げています。",
+          "insight": "ブランド模倣フィッシングやアフィリエイト悪用は、組織のブランド棄損や従業員のクレデンシャル詐取につながるリスクがあります。外部公開資産のモニタリングやドメインテイクダウンの仕組みを評価・整備することが求められます。自社ブランドが同様の手口で悪用されていないか、定期的な脅威インテリジェンス調査の体制が問われます。",
+          "importance": "中",
+          "importance_reason": "直接の脆弱性ではないものの、ブランド侵害やソーシャルエンジニアリングによる情報搾取のリスクを示す事例であるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "フィッシング",
+            "ソーシャルエンジニアリング"
+          ],
+          "affected_layers": [
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "CTM360",
+            "ギフトカード詐欺",
+            "ブランド偽装",
+            "フィッシング",
+            "アフィリエイト詐欺"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Exposure管理",
+            "顧客課題"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "不明",
+            "exploitation": "悪用確認あり",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "不明"
+            ],
+            "evidence": "Scammers are impersonating major brands and celebrities to lure consumers into fake gift card giveaways that collect personal information"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "個人情報の窃取、意図しないサブスクリプション契約による被害",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "ブランド類似ドメインや不正キャンペーンの外部公開資産・ブランド保護監視の検討",
+            "human_validation": "不明",
+            "service_implication": "脅威インテリジェンスやブランド悪用検知サービスの導入検討",
+            "source_evidence": "Scammers are impersonating major brands and celebrities to lure consumers into fake gift card giveaways",
+            "evidence_status": "実被害確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "外部公開資産"
+            ],
+            "attack_methods": [
+              "ソーシャルエンジニアリング",
+              "フィッシング"
+            ],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "4814287048b0",
+          "title": "SonicWall Patches Exploited SonicOS Vulnerability That Weakens VPN Logins",
+          "summary": "<p>CVE-2026-19868 can let attackers holding credentials for a different login method get past SAML checks, including SAML-enforced MFA.</p>\n<p>The post <a href=\"https://www.securityweek.com/sonicwall-patches-exploited-sonicos-bug-that-weakens-vpn-logins/\">SonicWall Patches Exploited SonicOS Vulnerability That Weakens VPN Logins</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/sonicwall-patches-exploited-sonicos-bug-that-weakens-vpn-logins/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-11-07T19:16:23+09:00",
+          "title_ja": "SonicWall、VPNのSAML・MFA認証を回避するSonicOS脆弱性にパッチ適用",
+          "summary_ja": "SonicWallは、悪用が確認されているSonicOSの脆弱性CVE-2026-19868に対するパッチを公開しました。本脆弱性は、攻撃者が別のログイン手法のクレデンシャルを所持している場合、SAML検証およびSAML強制によるMFAチェックを回避することを可能にします。これにより不正なVPNアクセスを許す危険性があります。",
+          "insight": "VPN装置におけるSAML連携やMFAバイパスは境界防御の根幹を揺るがす重大な欠陥です。ブラックボックス診断や認証バイパスのペネトレーションテストにおいて、複数認証方式が混在する環境での認可・認証遷移の厳格な検証が重要となります。運用側はパッチ適用状況の確認と、認証ログにおける不審なログイン遷移の早期検知体制を問う必要があります。",
+          "importance": "高",
+          "importance_reason": "VPN機器における認証およびMFAバイパスの脆弱性であり、実際に悪用が確認されているため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "認証バイパス",
+            "CVE",
+            "パッチ未適用"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "SonicWall",
+            "SonicOS",
+            "CVE-2026-19868",
+            "SAML",
+            "MFAバイパス"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Identity/ITDR",
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "緊急",
+            "lifecycle": [
+              "再診断"
+            ],
+            "assessments": [
+              "ペネトレーションテスト",
+              "ブラックボックス診断"
+            ],
+            "products": [
+              "SonicWall SonicOS"
+            ],
+            "evidence": "SonicWall Patches Exploited SonicOS Vulnerability That Weakens VPN Logins"
+          },
+          "attack": {
+            "initial_access": "別ログイン方式の有効な認証情報の所持",
+            "observed_impact": "SAMLおよびSAML強制MFAのバイパスによる不正VPNログイン",
+            "japan_observation": "不明",
+            "assessment_preconditions": "異なるログイン方式の認証情報を所持していること",
+            "test_scenario": "異なる認証プロバイダやログイン手法を組み合わせた際のSAML検証バイパス可否のテストシナリオ",
+            "human_validation": "不明",
+            "service_implication": "ペネトレーションテストや認証API診断での複合認証バイパス確認プロトコルの策定",
+            "source_evidence": "CVE-2026-19868 can let attackers holding credentials for a different login method get past SAML checks, including SAML-enforced MFA.",
+            "evidence_status": "悪用確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "認証・ID",
+              "外部公開資産"
+            ],
+            "attack_methods": [
+              "クレデンシャル悪用",
+              "認証バイパス"
+            ],
+            "weaknesses": [
+              "認証検証不備"
+            ],
+            "cve_ids": [
+              "CVE-2026-19868"
+            ]
+          }
+        },
+        {
+          "id": "56411338196d",
+          "title": "ARTEX abuse expands as cybercriminals target financial sector",
+          "summary": "<p>In October 2026, the financially motivated threat actor Storm-3358 began targeting organizations in the financial sector using the agentic AI offensive framework ARTEX.</p>\n<p>The post <a href=\"https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector/\">ARTEX abuse expands as cybercriminals target financial sector</a> appeared first on <a href=\"https://www.microsoft.com/en-us/security/blog\">Microsoft Security Blog</a>.</p>",
+          "url": "https://www.microsoft.com/en-us/security/blog/2026/11/06/artex-abuse-expands-as-cybercriminals-target-financial-sector/",
+          "ai_score": 2,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "AIエージェント"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "Microsoft Security",
+          "source_tier": "B",
+          "published": "2026-11-07T11:44:34+09:00",
+          "title_ja": "攻撃グループStorm-3358、自律型AIフレームワーク「ARTEX」で金融機関を標的に",
+          "summary_ja": "マイクロソフトの報告によると、金銭的動機を持つ脅威アクター「Storm-3358」が、自律型AI（Agentic AI）攻撃フレームワーク「ARTEX」を用いた金融セクターへの攻撃を開始しました。ARTEXの悪用が拡大しており、高度な攻撃手法が展開されています。AIエージェントを活用した自動化攻撃が実戦投入されている実態が示されました。",
+          "insight": "攻撃側が自律型AIエージェントフレームワーク（ARTEX）を採用し、自律的な標的探索や攻撃チェーンを実行している兆候です。防御側もツール悪用や認可境界の逸脱を前提としたAIセキュリティ監査と、機械的な攻撃速度に対応できるSOCの自動化が不可欠です。自社の防御システムは自律型AIによる高速かつ適応型の攻撃を想定した検証・訓練ができているかを問う必要があります。",
+          "importance": "高",
+          "importance_reason": "攻撃者が自律型AIエージェントフレームワークを実攻撃で悪用し金融セクターを標的にしている重大動向であるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "AIを使った攻撃",
+            "ツール悪用"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "Storm-3358",
+            "ARTEX",
+            "Agentic AI",
+            "金融セクター",
+            "Microsoft"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "AI for Security",
+            "Security for AI"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "ペネトレーションテスト"
+            ],
+            "products": [
+              "ARTEX"
+            ],
+            "evidence": "In October 2026, the financially motivated threat actor Storm-3358 began targeting organizations in the financial sector using the agentic AI offensive framework ARTEX."
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "金融機関に対する標的型サイバー攻撃",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "自律型攻撃エージェントを模した自動化ペネトレーションテストや検知シナリオの検討",
+            "human_validation": "不明",
+            "service_implication": "AIエージェントによる攻撃を前提としたRed Teaming検証のサービス化検討",
+            "source_evidence": "the financially motivated threat actor Storm-3358 began targeting organizations in the financial sector using the agentic AI offensive framework ARTEX.",
+            "evidence_status": "実被害確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "データ・AI・AIエージェント",
+              "インフラ・ネットワーク"
+            ],
+            "attack_methods": [
+              "自律型AIによる標的型攻撃"
+            ],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "c7eefdbf3488",
+          "title": "SonicWall warns of new SSL-VPN MFA bypass flaw exploited in attacks",
+          "summary": "SonicWall has released security updates to fix seven vulnerabilities in SonicOS firewalls, including an SSL-VPN authentication bypass flaw exploited in attacks. [...]",
+          "url": "https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-new-ssl-vpn-mfa-bypass-flaw-exploited-in-attacks/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "Bleeping Computer",
+          "source_tier": "B",
+          "published": "2026-11-07T09:00:55+09:00",
+          "title_ja": "SonicWall、悪用が確認されたSSL-VPNのMFAバイパス脆弱性に対処",
+          "summary_ja": "SonicWallはSonicOSファイアウォールに存在する7件の脆弱性を修正するセキュリティ更新プログラムを公開した。このうちSSL-VPN機能における認証バイパスの脆弱性は、実際の攻撃での悪用が確認されている。該当製品を運用する組織に対し、パッチ適用などの対応が求められている。",
+          "insight": "SSL-VPNなどの境界防御デバイスにおける認証バイパスは即座に内部侵入を許すリスクがある。外部公開インターフェース診断におけるMFA設定やバイパス可能性の検証プロセスを見直すとともに、パッチ適用後の再診断手順を確立すべきか検討が求められる。",
+          "importance": "高",
+          "importance_reason": "SonicOSにおけるSSL-VPN認証バイパスの脆弱性が実際に攻撃で悪用されているため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "認証バイパス",
+            "エクスプロイト",
+            "修正・緩和"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "SonicWall",
+            "SonicOS",
+            "SSL-VPN",
+            "MFA bypass"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理",
+            "MDR/MSSP設計"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "緊急",
+            "lifecycle": [
+              "修正・緩和",
+              "再診断"
+            ],
+            "assessments": [
+              "ペネトレーションテスト",
+              "ブラックボックス診断"
+            ],
+            "products": [
+              "SonicWall SonicOS"
+            ],
+            "evidence": "SonicWall has released security updates to fix seven vulnerabilities in SonicOS firewalls, including an SSL-VPN authentication bypass flaw exploited in attacks."
+          },
+          "attack": {
+            "initial_access": "SSL-VPNの認証バイパス",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "外部公開SSL-VPNエンドポイントに対するMFAバイパス検証",
+            "human_validation": "不明",
+            "service_implication": "境界型VPN機器の診断項目に当該バイパス検証を追加することを検討",
+            "source_evidence": "including an SSL-VPN authentication bypass flaw exploited in attacks",
+            "evidence_status": "悪用確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "外部公開資産",
+              "インフラ・ネットワーク"
+            ],
+            "attack_methods": [],
+            "weaknesses": [
+              "認証バイパス"
+            ],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "31e8a45d274d",
+          "title": "Hackers Target OpenSSH SSHole Flaw Within Hours of Disclosure, Gain Root on Honeypot",
+          "summary": "Threat actors are attempting to exploit a recently disclosed security flaw impacting OpenSSH that can enable sign-ins to accounts that have no password set, according to Previdian.\n\nThe vulnerability, tracked as CVE-2026-123158 (CVSS score: 8.1) and codenamed SSHole (or *sshole), impacts Linux systems that run OpenSSH on the musl C library with Pluggable Authentication Modules (PAM) disabled,",
+          "url": "https://thehackernews.com/2026/11/hackers-exploited-openssh-sshole-flaw.html",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-11-07T00:21:49+09:00",
+          "title_ja": "公開後数時間でOpenSSHの「SSHole」脆弱性を狙う攻撃、ハニーポットでRoot権限奪取を観測",
+          "summary_ja": "パスワードが設定されていないアカウントへのサインインを許すOpenSSHの脆弱性「SSHole（CVE-2026-123158、CVSS 8.1）」が公開された。Previdianの報告によると、公開から数時間以内に脅威アクターによる悪用試行がハニーポットで観測され、root権限が掌握された。本欠陥はmusl Cライブラリ環境かつPAMが無効化されたLinuxシステム上のOpenSSHに影響する。",
+          "insight": "軽量コンテナや組み込み環境で多用されるmusl C環境特有の構成に依存した脆弱性であり、資産インベントリにおけるCライブラリやPAM設定の可視化が重要となる。動的ペネトレーションテストや構成診断において、非標準Linux環境の設定不備を特定・検証する仕組みの確立が問われる。",
+          "importance": "高",
+          "importance_reason": "公開から数時間でハニーポットへの悪用試行とroot権限奪取が観測されたため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "エクスプロイト",
+            "設定ミス"
+          ],
+          "affected_layers": [
+            "クラウド/サーバー",
+            "ネットワーク"
+          ],
+          "related_keywords": [
+            "OpenSSH",
+            "SSHole",
+            "CVE-2026-123158",
+            "musl C",
+            "PAM"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "緊急",
+            "lifecycle": [
+              "修正・緩和"
+            ],
+            "assessments": [
+              "ペネトレーションテスト",
+              "ブラックボックス診断"
+            ],
+            "products": [
+              "OpenSSH",
+              "musl C library",
+              "Linux"
+            ],
+            "evidence": "Threat actors are attempting to exploit a recently disclosed security flaw impacting OpenSSH... Gain Root on Honeypot... tracked as CVE-2026-123158 (CVSS score: 8.1)"
+          },
+          "attack": {
+            "initial_access": "SSH経由のパスワード未設定アカウントへのサインイン",
+            "observed_impact": "ハニーポット上でのRoot権限奪取",
+            "japan_observation": "不明",
+            "assessment_preconditions": "OpenSSHがmusl Cライブラリ上で動作し、PAMが無効化されていること",
+            "test_scenario": "musl CおよびPAM無効環境下での空パスワードアカウントへのSSHログイン可否検証",
+            "human_validation": "不明",
+            "service_implication": "インフラ診断においてSSH設定およびリンク先ライブラリ・PAM構成を評価対象に含める検討",
+            "source_evidence": "Threat actors are attempting to exploit a recently disclosed security flaw impacting OpenSSH that can enable sign-ins to accounts that have no password set... Gain Root on Honeypot",
+            "evidence_status": "悪用確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "インフラ・ネットワーク",
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [],
+            "weaknesses": [
+              "認証設定不備"
+            ],
+            "cve_ids": [
+              "CVE-2026-123158"
+            ]
+          }
+        },
+        {
+          "id": "1a20a287bd65",
+          "title": "OpenAI Launches GPT-6 Cyber After AI Helps Find 81 Firefox Flaws, 948 Linux Exploits",
+          "summary": "OpenAI on Thursday unveiled GPT‑6 Cyber, which it described as a major step forward in security research that brings together stronger cybersecurity capabilities with a step-change improvement in model alignment.\n\nThe new model is \"more capable at finding and fixing vulnerabilities, and far more reliable staying within the boundaries researchers set,\" OpenAI said. It has classified the model as",
+          "url": "https://thehackernews.com/2026/11/openai-launches-gpt-6-cyber-after-ai.html",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-11-06T23:58:32+09:00",
+          "title_ja": "OpenAI、セキュリティ特化モデル「GPT-6 Cyber」を発表",
+          "summary_ja": "OpenAIはサイバーセキュリティ機能とモデルアライメントを強化した新モデル「GPT-6 Cyber」を発表した。発表によると、同モデルの支援によりFirefoxの脆弱性81件やLinuxのエクスプロイト948件の特定に寄与したとされる。OpenAIは、本モデルが脆弱性の発見と修正において高い能力を発揮し、研究者が設定した境界内にとどまる信頼性を備えていると説明している。",
+          "insight": "AIモデル自身が大規模な脆弱性検出およびエクスプロイト発見に活用されるフェーズに入りつつあることが示唆される。ただしベンダーによる発表数値であり、第三者による再現性評価や誤検知率、修正案の安全性・回帰試験プロセスの検証が実務への組み込みにおいて重要な検討事項となる。",
+          "importance": "中",
+          "importance_reason": "AIを用いた脆弱性検出・修正の自動化に関するベンダーの新展開を示すため。",
+          "tag_main_id": "biz_tech",
+          "tag_main_label": "ビジネス・技術動向",
+          "tag_subs": [
+            "研究・論文",
+            "製品リリース"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "OpenAI",
+            "GPT-6 Cyber",
+            "Firefox",
+            "Linux",
+            "アライメント"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "サービス企画"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "不明",
+            "exploitation": "不明",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "ソースコード診断"
+            ],
+            "products": [
+              "GPT-6 Cyber",
+              "Firefox",
+              "Linux"
+            ],
+            "evidence": "OpenAI on Thursday unveiled GPT‑6 Cyber... AI Helps Find 81 Firefox Flaws, 948 Linux Exploits"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "脆弱性診断やコードレビュー支援へのAIエージェント統合の可能性検証",
+            "source_evidence": "不明",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "72bbe291846c",
+          "title": "In Other News: Trezor Implant, LLMJacking Bills Hit $1M, SAP Flaws Weaponized Within Days",
+          "summary": "<p>Noteworthy stories that might have slipped under the radar: Synology warns about NAS ransomware attacks, Flowise ‘hello’ attacks, Chainalysis breach impact expands.</p>\n<p>The post <a href=\"https://www.securityweek.com/in-other-news-trezor-implant-llmjacking-bills-hit-1m-sap-flaws-weaponized-within-days/\">In Other News: Trezor Implant, LLMJacking Bills Hit $1M, SAP Flaws Weaponized Within Days</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/in-other-news-trezor-implant-llmjacking-bills-hit-1m-sap-flaws-weaponized-within-days/",
+          "ai_score": 3,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "企業インシデント"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-11-06T23:40:09+09:00",
+          "title_ja": "Trezor製ハードウェアの改ざんやSAP脆弱性の迅速な悪用が報じられる",
+          "summary_ja": "SecurityWeekのニュースまとめにおいて、Trezorのハードウェア改ざん、LLMJackingによる高額請求、およびSAPの脆弱性が数日以内に悪用された事例が報じられました。また、Synology製NASを狙ったランサムウェア攻撃に対する警告やFlowiseへの攻撃、Chainalysis関連の侵害影響の拡大も言及されています。複数のセキュリティ脅威が同時に進行している状況を示しています。",
+          "insight": "ハードウェア改ざんやエンタープライズソフトウェアの脆弱性が短期間で悪用される事例から、脆弱性管理とパッチ適用の迅速性が改めて重要視されます。診断実務においては、公開後数日での悪用を想定した優先順位付けと、迅速な再診断プロセスの確立が求められます。",
+          "importance": "高",
+          "importance_reason": "複数の深刻な脆弱性悪用やハードウェア脅威が短期間で発生しており、迅速なリスク評価が求められるため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "ランサムウェア",
+            "エクスプロイト",
+            "LLMセキュリティ"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "Trezor",
+            "SAP",
+            "LLMJacking",
+            "Synology",
+            "Flowise"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "SOC運用変化",
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "Trezor",
+              "SAP",
+              "Synology NAS",
+              "Flowise"
+            ],
+            "evidence": "SAP flaws weaponized within days, Synology warns about NAS ransomware attacks"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "ランサムウェア感染やLLMJackingによる高額請求、ハードウェア改ざん",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "迅速なパッチ適用プロセスの検証が必要",
+            "source_evidence": "SAP flaws weaponized within days and Synology warns about NAS ransomware attacks",
+            "evidence_status": "悪用確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "外部公開資産",
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [
+              "ランサムウェア",
+              "脆弱性の悪用"
+            ],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "7256c4637d07",
+          "title": "DigiCert Data Breach Impacts Business Customer Information",
+          "summary": "<p>Hackers created an account on an internal system and accessed names, email addresses, phone numbers, and business addresses.</p>\n<p>The post <a href=\"https://www.securityweek.com/digicert-data-breach-impacts-business-customer-information/\">DigiCert Data Breach Impacts Business Customer Information</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+          "url": "https://www.securityweek.com/digicert-data-breach-impacts-business-customer-information/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "企業インシデント"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "SecurityWeek",
+          "source_tier": "B",
+          "published": "2026-11-06T23:00:07+09:00",
+          "title_ja": "DigiCertのデータ侵害、ビジネス顧客情報に影響",
+          "summary_ja": "DigiCertの内部システムにハッカーがアカウントを作成し、名前、メールアドレス、電話番号、ビジネス住所にアクセスしたことが報じられました。ビジネス顧客情報が侵害されたインシデントであり、組織の内部システムへのアクセス管理の重要性を示しています。影響範囲の特定と対応が進められています。",
+          "insight": "内部システムへの不正アクセスによる情報漏えい事案であり、認証・認可の不備やアイデンティティ管理の脆弱性が背景に推測されます。ID管理や権限設定の監査、クラウド・内部システムの監視強化が診断およびセキュリティ運用の重要な課題となります。",
+          "importance": "高",
+          "importance_reason": "著名な認証・セキュリティ関連企業におけるデータ侵害であり、顧客情報への影響が大きいため。",
+          "tag_main_id": "incident",
+          "tag_main_label": "インシデント",
+          "tag_subs": [
+            "データ侵害",
+            "情報漏洩",
+            "設定ミス"
+          ],
+          "affected_layers": [
+            "クラウド/サーバー",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "DigiCert",
+            "データ侵害",
+            "顧客情報"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Identity/ITDR",
+            "CISO報告"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "ペネトレーションテスト"
+            ],
+            "products": [
+              "DigiCert internal systems"
+            ],
+            "evidence": "Hackers created an account on an internal system and accessed names, email addresses, phone numbers, and business addresses."
+          },
+          "attack": {
+            "initial_access": "内部システムへの不正なアカウント作成",
+            "observed_impact": "ビジネス顧客の氏名、メールアドレス、電話番号、住所へのアクセス",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "内部システムにおけるアイデンティティ管理とアクセス監視の見直しが必要",
+            "source_evidence": "Hackers created an account on an internal system and accessed names, email addresses, phone numbers, and business addresses.",
+            "evidence_status": "実被害確認",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "認証・ID",
+              "クラウド・コンテナ"
+            ],
+            "attack_methods": [
+              "不正アカウント作成"
+            ],
+            "weaknesses": [
+              "アクセス制御の不備"
+            ],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "d775a103c590",
+          "title": "Microsoft Paint RCE Fix Now Available, but Windows Update Won't Deliver It",
+          "summary": "A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates.\n\nThe fixed build, 11.2609.401.0, was the newest Paint build in all ten countries The Hacker News checked today.\n\nThe flaw is an out-of-bounds read that could let an attacker run code over a network. Microsoft rates",
+          "url": "https://thehackernews.com/2026/11/microsoft-paint-rce-fix-now-available.html",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 3,
+          "source_region": "global",
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-11-06T21:06:43+09:00",
+          "title_ja": "Microsoft PaintのRCE脆弱性（CVE-2026-83844）修正が公開されるもWindows Update経由では配信されず",
+          "summary_ja": "Windows Paintのリモートコード実行（RCE）脆弱性であるCVE-2026-83844の修正プログラムが提供開始されました。ただし、この修正は通常のWindows UpdateではなくMicrosoft Store経由でのみ配信されます。範囲外読み取りの欠陥であり、ネットワーク経由でコードを実行されるおそれがあります。",
+          "insight": "OSの標準コンポーネントであっても通常のWindows Update経路外で配信されるパッチが存在する点は、脆弱性管理における盲点となり得ます。SCAやソフトウェア資産管理において、ストアアプリなどの更新パスを把握し評価する仕組みが求められます。",
+          "importance": "中",
+          "importance_reason": "広く利用される標準アプリのRCE脆弱性でありながら特殊な配信経路をとるため、適用漏れのリスクが高いため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "パッチ未適用",
+            "修正・緩和"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Microsoft Paint",
+            "CVE-2026-83844",
+            "Microsoft Store",
+            "リモートコード実行"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用未確認と明記",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "Microsoft Paint"
+            ],
+            "evidence": "A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates."
+          },
+          "attack": {
+            "initial_access": "ネットワーク経由",
+            "observed_impact": "リモートコード実行の可能性",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "Microsoft Store経由のアップデート適用の徹底と資産管理の確認が必要",
+            "source_evidence": "A fix for CVE-2026-83844, a remote code execution flaw in Windows Paint, is now in the Microsoft Store. Paint gets this fix only through a Store update, not through Windows updates.",
+            "evidence_status": "PoCのみ",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "デバイス・エンドポイント",
+              "ソースコード・ソフトウェア供給網"
+            ],
+            "attack_methods": [
+              "リモートコード実行"
+            ],
+            "weaknesses": [
+              "境界外読み取り"
+            ],
+            "cve_ids": [
+              "CVE-2026-83844"
+            ]
+          }
+        }
+      ],
+      "today_implication": "【本日の要点】\n・「Apache OFBiz」に深刻なRCE脆弱性、修正版が公開: OFBizはERPやEC基盤として外部公開されるケースがあり、RCE脆弱性は初期侵入の標的になりやすい。脆弱性診断では公開APIや管理画面のエンドポイント特定が焦点となるが、抜粋では具体的な悪用条件やPoCの有無は不明である。SOCとしては外部からの不審なコマンド実行や異常トラフィックを検知できるログ体制が機能しているかを点検する契機となる。\n・WatchGuardの多要素認証「AuthPoint」コンポーネントにクリティカル脆弱性: MFAコンポーネントの脆弱性は認証基盤全体のバイパスや権限昇格に直結する懸念がある。認証連携やエージェントの更新漏れがないか、アイデンティティ管理運用の観点で点検が必要となる。認証ログの監視設計において、MFAバイパスや異常認証試行を検知できる構造になっているかを評価する問いが生じる。\n・Mozilla、「Firefox 159.0.1」を公開 - レイアウト処理の脆弱性を修正: クライアント側ブラウザのレンダリング・レイアウトエンジンの脆弱性は、悪意あるWebサイト閲覧を通じたクライアント侵害の契機となる可能性がある。端末管理（MDM/EDR）による自動更新の徹底と、サンドボックス機構による影響局所化が防御の基本となる。エンドポイント監視において不審なブラウザ子プロセスの起動を捉えられる設計かが確認論点となる。"
+    },
     {
       "date": "2026-11-07",
       "articles": [
