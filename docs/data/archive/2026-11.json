@@ -2,6 +2,1304 @@
   "month": "2026-11",
   "articles": [
     {
+      "id": "6229cb791357",
+      "title": "MobileProbe: Adaptive Security Evaluation of Mobile Agents via Trajectory-Aware Injection",
+      "summary": "arXiv:2611.16693v1 Announce Type: new \nAbstract: Mobile GUI agents read the screen of a phone and operate apps on a user's behalf to complete multi-step tasks such as online shopping or messaging. Because the agent acts on whatever the screen shows, an attacker can embed malicious instructions into ordinary UI content and redirect its actions. We refer to this threat as environmental injection attack (EIA). Existing benchmarks measure this risk by pinning hand-crafted payloads to a fixed step of a fixed task. This approach faces two limitations. First, each payload is bound to one task in one app and does not transfer without manual redesign. Second, agents given the same task may follow different routes, so an agent that never reaches the injected page is recorded as safe without being tested. This insufficient test coverage can cause fixed-point benchmarks to underestimate the security risk of deployed mobile agents.\n  In this work, we propose MobileProbe, a trajectory-aware red-teaming framework that evaluates mobile agents adaptively. MobileProbe discovers attacker-controllable content surfaces through automated pentesting, localizes vulnerable decision points along the agent's trajectory, and iteratively refines context-aware payloads through a surrogate-filtered evolutionary loop. We construct a benchmark of 83 long-horizon attack instances spanning 12 mobile applications. Each is annotated with a Confidentiality, Integrity, or Availability (CIA) attack goal to cover the principal categories of security threats facing mobile agents. On three representative agent architectures, MobileProbe attains higher attack success rates than human-written, zero-shot LLM, and prior automated red-teaming baselines adapted to the mobile domain. MobileProbe can serve as a pre-deployment auditing tool to systematically uncover vulnerabilities and inform security hardening of mobile agents.",
+      "url": "https://arxiv.org/abs/2611.16693",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断サービス",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 15,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-13T14:00:00+09:00",
+      "title_ja": "MobileProbe：軌跡認識型インジェクションを用いたモバイルエージェントの適応型セキュリティ評価",
+      "summary_ja": "モバイルGUIエージェントは画面を読み取りタスクを実行するが、攻撃者がUIに悪意ある指示を埋め込む環境インジェクション攻撃（EIA）の危険性がある。既存の固定型ベンチマークは経路の変化や未到達ページを考慮できない限界がある。本研究では、自動ペネトレーションと進化型ループにより文脈に応じたペイロードを生成・評価するフレームワーク「MobileProbe」を提案する。12アプリの83インスタンスを用いた評価で、従来の手法や人間による手法より高い攻撃成功率を達成した。",
+      "insight": "モバイルエージェントの実装において、環境インジェクション攻撃に対する適応型レッドチーミングの重要性を示している。単一のステップや固定のタスクにとらわれない、エージェントの動的な軌跡を考慮した評価手法の導入が必要である。開発・デプロイ前の事前監査ツールとして活用し、セキュリティハードニングに役立てるべきである。",
+      "importance": "高",
+      "importance_reason": "モバイルAIエージェントに対する新たな攻撃手法と体系的な評価フレームワークを提示しているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った攻撃",
+        "ツール悪用"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "MobileProbe",
+        "モバイルエージェント",
+        "環境インジェクション攻撃",
+        "レッドチーミング"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "PoC公開のみ",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "AIエージェント評価",
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "MobileProbe"
+        ],
+        "evidence": "arXiv:2611.16693 proposes MobileProbe, a trajectory-aware red-teaming framework that evaluates mobile agents adaptively."
+      },
+      "attack": {
+        "initial_access": "環境インジェクション攻撃（UIコンテンツへの埋め込み）",
+        "observed_impact": "機密性、完全性、可用性に対する脅威（攻撃成功率の向上を確認）",
+        "japan_observation": "不明",
+        "assessment_preconditions": "12のモバイルアプリケーション、3つの代表的なエージェントアーキテクチャ",
+        "test_scenario": "自動ペネトレーションによる攻撃コンテンツサーフェスの発見とコンテキスト認識ペイロードの適用",
+        "human_validation": "不明",
+        "service_implication": "事前デプロイメントの監査ツールとして脆弱性の系統的な発見とハードニングに寄与する可能性がある",
+        "source_evidence": "arXiv:2611.16693 constructs a benchmark of 83 long-horizon attack instances spanning 12 mobile applications.",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "データ・AI・AIエージェント",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "プロンプトインジェクション",
+          "環境インジェクション"
+        ],
+        "weaknesses": [
+          "AIエージェントの入力信頼境界の欠如"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "1358deb48fa4",
+      "title": "GHA-SmellFix: Taking Action with Agentic LLMs for Detecting and Refactoring GitHub Actions Workflow Smells",
+      "summary": "arXiv:2611.14963v1 Announce Type: new \nAbstract: Continuous integration and continuous delivery workflows are key artifacts in software projects. In GitHub Actions, they encode build, test, release, deployment, and security automation in YAML. These workflows contain configuration smells affecting security, reliability, maintainability, or operational stability. Existing approaches are mostly rule-based, with rules hard to create and evolve, and typically report findings without fixes. Agentic LLM pipelines can combine contextual detection, transformation selection, and patch generation. Specialized agents can gate refactoring on positive detection verdicts, potentially avoiding unnecessary changes, but it is unclear whether decomposition improves effectiveness or mainly changes overhead. We present GHA-SmellFix, an agentic LLM pipeline for detecting and refactoring GitHub Actions workflow smells. We compare two designs: Joint, where one agent detects and refactors, and Decomposed, where separate agents detect and then refactor. We operationalize 19 smells from an existing catalog with explicit detection criteria, refactoring expectations, exclusion rules, and safety checks, and curate a ground truth of 1,710 (workflow, smell) pairs. We evaluate the designs with four LLMs (GPT-5.4-nano, Gemini 3.5 Flash, Claude Haiku 4.5, and DeepSeek V4 Flash) on 570 sampled pairs. Results show that decomposition does not universally improve patch quality; its main benefit is controlling when patch generation is attempted. It helps models prone to missing smells and can reduce overhead by gating patches. Once a smell is correctly detected, clean refactoring is generally effective, making detection the main end-to-end bottleneck. However, false positives can trigger unnecessary edits to execution-relevant constructs. Practical CI/CD agents thus need reliable abstention and construct-aware validation alongside patch generation.",
+      "url": "https://arxiv.org/abs/2611.14963",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "AIエージェント",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "修正・再診断の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 15,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-13T14:00:00+09:00",
+      "title_ja": "GHA-SmellFix：GitHub Actionsワークフローの臭い検出とリファクタリングのためのエージェント型LLM",
+      "summary_ja": "GitHub ActionsのYAMLファイルにはセキュリティや信頼性、保守性に影響する設定上の「臭い（Smell）」が含まれる。従来のルールベース手法はルール作成や進化が困難であり修正を伴わないことが多い。本研究では、エージェント型LLMパイプライン「GHA-SmellFix」を提案し、単一エージェント（Joint）と分解型エージェント（Decomposed）の2つのデザインを比較した。検証の結果、分解型はパッチ生成の試行制御に有効であるが、検出が依然としてエンドツーエンドのボトルネックであることが示された。",
+      "insight": "CI/CDパイプラインにおける静的設定の不備や脆弱性・設定ミスに対するエージェント型修復の有効性と限界を示している。誤検知が実行に影響を与えるリスクがあるため、単なるパッチ生成だけでなく信頼性の高い除外判定や構造認識検証を組み合わせる必要がある。リファクタリング支援ツールを導入する際の設計指針として参考になる。",
+      "importance": "中",
+      "importance_reason": "CI/CDワークフローのセキュリティ・保守性の向上においてエージェント型LLM活用の実態と課題を明らかにしているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "AIを使った防御",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "GHA-SmellFix",
+        "GitHub Actions",
+        "LLMエージェント",
+        "リファクタリング"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "Security for AI"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ソースコード診断"
+        ],
+        "products": [
+          "GHA-SmellFix",
+          "GitHub Actions"
+        ],
+        "evidence": "arXiv:2611.14963 presents GHA-SmellFix, an agentic LLM pipeline for detecting and refactoring GitHub Actions workflow smells."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "ワークフローの設定上の不備（セキュリティ、信頼性、保守性への影響）",
+        "japan_observation": "不明",
+        "assessment_preconditions": "1,710のペアからサンプリングされた570ペア、4つのLLMを使用",
+        "test_scenario": "19種類のスメールに対する検出とリファクタリングの評価",
+        "human_validation": "不明",
+        "service_implication": "誤検知による不要なコード編集を防ぐための構造認識検証が必要である",
+        "source_evidence": "arXiv:2611.14963 evaluates the designs with four LLMs on 570 sampled pairs.",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "設定ミス"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "090f83c668ef",
+      "title": "Preserve the Vulnerability, Break the Alert: Testing the Robustness of CodeQL Taint Tracking with Natural Rewrites",
+      "summary": "arXiv:2611.17123v1 Announce Type: new \nAbstract: Static application security testing (SAST) tools such as CodeQL serve as security gates in continuous integration and code review, and a gate is also read in reverse. When a previously reported alert disappears after a change, developers and the tools around them often take the vulnerability to be gone. That inference holds only if the analyzer is robust to changes that keep the vulnerability. We test this robustness for CodeQL's JavaScript taint tracking with natural, vulnerability-preserving rewrites. A large language model, given only the alert CodeQL exposes and no knowledge of its implementation, rewrites one function along a reported flow as a plausible maintenance change, and we verify by manual audit and controlled experiments that the flaw survives and the alert does not. On 172 flows that CodeQL detects in real npm vulnerabilities, three rewrites per flow silence 26.2% of them, at about USD 0.51 per silenced flow. The same generator, asked only to refactor the same functions with no knowledge of the alert, silences none of them. Every silencing rewrite traces to one of seven gaps at the library-modeling boundary, and 64 of the 70 rewrites cross a gap inside an API CodeQL already models. The largest is the WHATWG URL constructor, which propagates taint to a URL's query components but not to its pathname. The boundary is not specific to CodeQL. 74% of the silencing rewrites also silence an independently built taint analyzer, and 53% escape three analyzers combined. A disappearing alert after an ordinary-looking change is therefore weak evidence that a vulnerability has been fixed, the gaps point SAST developers to narrow and concrete repair targets, and robustness to natural rewrites belongs alongside detection rate in how taint analyzers are evaluated.",
+      "url": "https://arxiv.org/abs/2611.17123",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断サービス",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価"
+      ],
+      "business_score": 14,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-13T14:00:00+09:00",
+      "title_ja": "脆弱性を維持したままアラートを沈黙させる：自然な書き換えによるCodeQL汚染追跡の堅牢性検証",
+      "summary_ja": "静的アプリケーションセキュリティテスト（SAST）において、修正後にアラートが消えることは脆弱性が解消されたことを意味するとみなされがちである。本研究では、CodeQLのJavaScript汚染追跡に対し、脆弱性を維持したまま自然な保守的書き換えを行う手法を検証した。LLMを用いて関数を書き換えたところ、検出された現実のnpm脆弱性のうち26.2%のアラートが沈黙した。このアラートの消失は脆弱性の修正を意味しないため、検出率だけでなく書き換えに対する堅牢性も評価指標に含めるべきである。",
+      "insight": "SASTツールによる再診断や修正確認において、アラートの消失だけで脆弱性が解消されたと過信できないリスクを浮き彫りにしている。ライブラリのモデリング境界におけるギャップが原因であり、セキュリティ担当者はツールのアラート有無だけでなく、データフローやライブラリ境界の仕様を考慮した手動レビューや再診断のプロセスを設計する必要がある。",
+      "importance": "高",
+      "importance_reason": "SASTツールの検出の限界と、修正確認・再診断業務における重大な落とし穴を実証的に示しているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "SAST",
+        "ソースコード診断",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "CodeQL",
+        "汚染追跡",
+        "SAST",
+        "静的解析"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ソースコード診断"
+        ],
+        "products": [
+          "CodeQL"
+        ],
+        "evidence": "arXiv:2611.17123 tests robustness for CodeQL's JavaScript taint tracking with natural, vulnerability-preserving rewrites."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "脆弱性が残存したままSASTアラートが消失する",
+        "japan_observation": "不明",
+        "assessment_preconditions": "172 flows detected in real npm vulnerabilities",
+        "test_scenario": "LLMによるコードの保守的書き換えによるCodeQLのアラート変化の検証",
+        "human_validation": "手動監査を実施",
+        "service_implication": "アラートの消失を根拠に脆弱性が修復されたと早計に判断せず、ライブラリモデルの境界を意識した再診断が必要である",
+        "source_evidence": "arXiv:2611.17123 silences 26.2% of flows on 172 flows that CodeQL detects in real npm vulnerabilities.",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "ライブラリ・モデリング境界のギャップ"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "6dfe6df45bcf",
+      "title": "Beyond the Diff - VulSpot: A Vulnerability Dataset Where No Vulnerability Goes Unlocalized",
+      "summary": "arXiv:2611.15737v1 Announce Type: new \nAbstract: A vulnerability detector is only as trustworthy as the benchmark that scores it, and today's real-world datasets tend to flatter detectors. They are often built once and never refreshed, so they quickly miss new vulnerabilities, their labels are either noisy or heavily filtered, and their random splits let models train on near-copies of test code and on future vulnerabilities. Above all, when a fix only adds code, such as a missing NULL check, they do not point at where the vulnerability was, preventing detectors from learning to localize some of the most common C/C++ weaknesses. We present VulSpot, a living benchmark for detecting, classifying, and localizing vulnerabilities, with over 500k functions in 21 languages from 24k registered CVEs, including over 15k vulnerable C/C++ functions. By linking the code added by a patch to the existing statement it protects, VulSpot locates the vulnerability in 99.3\\% of the functions that previous diff-based datasets used to leave without a location. Rather than discarding uncertain labels, it tells users how reliable each one is, and it comes with leak-free splits, complementary code context, and hierarchical CWE labels. An automated pipeline refreshes VulSpot every month, so that each release brings vulnerabilities no model has seen yet.",
+      "url": "https://arxiv.org/abs/2611.15737",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 12,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-13T14:00:00+09:00",
+      "title_ja": "脆弱性の局所特定を可能にする継続更新型ベンチマーク「VulSpot」",
+      "summary_ja": "既存の脆弱性検出ベンチマークは更新頻度やパッチ差分情報の不足により、特にコード追加のみの修正で脆弱性箇所の特定が困難という課題を抱えている。本論文では21言語・2.4万件のCVEから50万以上の関数を収録し、パッチで追加されたコードを既存文と紐付けることで99.3%の関数で脆弱性箇所を特定するデータセット「VulSpot」を提案した。月次で自動更新されるパイプラインを備え、データ漏洩のない分割や階層的CWEラベルを提供することで、AIを用いた検出モデルの局所特定学習を向上させる。",
+      "insight": "従来のSASTツールやLLMを用いた自動脆弱性検出では、単なる有無の判定にとどまり正確な修正箇所の提示に課題があったが、本データセットは特定精度の向上に資する。診断サービスにおける自動スキャン結果のノイズ削減や、開発者への正確な行レベルの修正指示策定に影響を与える可能性がある。運用者は、学習データのリークや陳腐化を回避した評価ベンチマークが自組織のSAST/AIツールの選定基準として妥当かを検討する必要がある。",
+      "importance": "中",
+      "importance_reason": "SASTやAIエージェントによる脆弱性局所特定（ローカリゼーション）の精度評価基準を改善し、脆弱性管理・修正プロセスの自動化に寄与するため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "SAST",
+        "ソースコード診断",
+        "CVE"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "VulSpot",
+        "SAST",
+        "CVE",
+        "弱点局所特定",
+        "CWE"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理",
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "SAST",
+          "ソースコード診断"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "21言語・2.4万件のCVEから50万関数を収集した脆弱性検出・分類・局所特定のベンチマーク研究"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "SAST診断ツールやAIレビュー機能の弱点特定精度のベンチマークとして評価プロセスに組み込む検討課題がある",
+        "source_evidence": "arXiv:2611.15737の研究概要（脆弱性データセットVulSpotの提案）",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "欠落したNULLチェックなどのC/C++の弱点"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "f7a1c6dcfadf",
+      "title": "Pre-QED: Environment Specifications for Agentic Verification",
+      "summary": "arXiv:2611.15207v1 Announce Type: new \nAbstract: LLM agents are making formal verification practical at scale. Recently, many attempts have raised this as an enticing possibility. However, formal verification at scale is only meaningful if deep formal specifications capturing functionality are available for checking. Unfortunately, recent works seek to bypass this issue by using shallow specifications devised for purposes other than verification. OSS-Verify from Anthropic and Theorem, for example, reuses the fuzz harnesses of open-source libraries as specifications and has an agent prove that each harness never crashes. However, a fuzz harness follows a single sequence of API calls under a single calling context, so the resulting proof covers one usage scenario rather than the library.\n  We argue that the bottleneck of agentic verification has shifted from how to prove to what to prove. Before zooming into verification at scale, we need deep environment specifications to prove, which is why we call our effort Pre-QED. We propose verification harnesses, executable harnesses that model all legal usages of an API, so that a proof about the harness is a proof about every well-behaved client. To construct them, we use an agentic workflow that extracts the API's usage contract from code / documentation, and uses Linear-time Temporal Logic (LTL) to rule out illegal call orders. We identify the challenges in proving verification harnesses and release our harnesses open-source as challenges for the community. The overarching vision is that verifying an open-source library should become as routine as fuzzing it, with a guarantee that covers every well-behaved client rather than a single scenario like a fuzzing harness.",
+      "url": "https://arxiv.org/abs/2611.15207",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断ハーネス"
+      ],
+      "business_score": 11,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-13T14:00:00+09:00",
+      "title_ja": "Pre-QED：LLMエージェントによる形式手法検証のための環境仕様ハーネス生成",
+      "summary_ja": "LLMエージェントを用いた大規模な形式検証の実用化が進む一方、従来の研究はファズハーネスの単一シナリオを流用するなど浅い仕様にとどまっている課題がある。著者らは検証対象のAPI利用規則全体をモデル化する「検証ハーネス（Verification Harnesses）」を構築するPre-QEDアプローチを提案した。エージェントがコードや仕様書からAPIの利用契約を抽出し、線形時相論理（LTL）を用いて不正な呼び出し順序を排除したハーネスを作成・公開している。",
+      "insight": "AIエージェントによる自動検証が単一の実行経路の確認から網羅的な形式保証へと進展する方向性を示している。ライブラリやAPIを対象とした脆弱性検証・セキュリティ証明において、ブラックボックス診断やファジングの限界を補完する基盤技術となり得る。検証ハーネス生成の自動化プロセス自体が誤った仕様契約を学習・抽出しないか、人間の監査プロセスをどう組み込むかが設計上の論点となる。",
+      "importance": "中",
+      "importance_reason": "AIエージェントを活用した形式検証の網羅性を高め、ソフトウェア供給網やAPIのセキュリティ保証に直結する基盤技術であるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "形式検証",
+        "LLMエージェント",
+        "Pre-QED",
+        "LTL",
+        "ファズハーネス"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Security for AI",
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ソースコード診断",
+          "API診断"
+        ],
+        "products": [
+          "OSS-Verify"
+        ],
+        "evidence": "LLMエージェントを用いた形式仕様検証用ハーネス構築に関する論文"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "APIのソースコードおよびドキュメントが利用可能であること",
+        "test_scenario": "API利用規約とLTL制約に基づいて生成された検証ハーネスを用い、エージェントがクラッシュや仕様違反を証明・検証する",
+        "human_validation": "不明",
+        "service_implication": "形式仕様を用いた網羅的API検証をペネトレーションテストやソースコード診断の事前・事後自動検証に適用可能かどうかの検討",
+        "source_evidence": "arXiv:2611.15207の研究概要（Agentic Verification用環境仕様Pre-QED）",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "不正なAPI呼び出しシーケンス",
+          "仕様違反によるクラッシュ"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "ad75a781bde5",
+      "title": "The Import Tax: A Longitudinal Measurement of Startup Cost in the Python Ecosystem",
+      "summary": "arXiv:2609.02753v3 Announce Type: replace \nAbstract: Python programs pay for their imports at every process start, a cost that is invisible in steady-state benchmarks but dominant for command-line tools, test workers, and serverless cold starts. Python 3.15 adds explicit lazy imports (PEP 810) on largely anecdotal evidence. We measure the import cost of the 500 most-downloaded PyPI packages, every quarterly release since mid-2021, under six CPython versions (3.9-3.14) on two platforms (Apple M5/macOS and Intel Xeon/Linux), 66,816 cells in all, with targeted experiments that isolate individual effects. Values are for macOS (Linux in parentheses). Import cost is heavily skewed (median 12.3 ms, 99th percentile 400 ms). Among packages that import in more than 2 ms, namespace distributions excluded, the median package spends 68% of its import time in the standard library (68% on Linux with the interpreter on local storage, 79% on network storage). Precompiling bytecode removes almost all of the cold-start penalty on Linux and 92% of it for the median package on macOS, but only a third of the summed macOS penalty: packages with native libraries pay a security assessment of each library that the system has not seen before, again in every fresh environment. A package's own import code grows by a median 4.0% (5.0%) per year; installing each release with the dependencies of its time changes its trend by a median of only 0.15 (0.35) percentage points (CPython 3.9). CPython 3.14 runs package code faster than 3.9 but imports more and slower standard-library modules, a net 1.16x (1.07x) slowdown. Submodules that dependents import beyond the top level add nothing for the median package and at most 11.7 (49.5) ms for nine packages in ten. On CPython 3.15, global lazy mode cuts the imports that dependents perform to 0.41x (0.39x) of their cost, and 38 of 461 packages fail under it, many only on first use of a name. Harness, code, and dataset are public.",
+      "url": "https://arxiv.org/abs/2609.02753",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断ハーネス",
+        "診断性能の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 10,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-13T14:00:00+09:00",
+      "title_ja": "Pythonエコシステムにおけるインポート負荷とセキュリティ評価オーバーヘッドの計測",
+      "summary_ja": "Pythonの起動時に発生するインポート処理のコストは、サーバーレス環境のコールドスタートやCLI実行時に大きな影響を与えている。PyPIの上位500パッケージを対象に複数CPythonバージョンおよびOSで長期計測を実施した結果、標準ライブラリの読み込みが時間の大半を占めることが判明した。またmacOSでは新規環境でネイティブライブラリのセキュリティ評価が実行されることで追加の遅延が生じることや、Python 3.15の遅延インポート導入による動作停止リスク（461パッケージ中38件で失敗）が定量的に示された。",
+      "insight": "サーバーレス環境やコンテナ型マイクロサービスのコールドスタート対策において、Pythonのインポート遅延およびOSによるネイティブライブラリの動的セキュリティチェックのオーバーヘッドが無視できない要因であることが示されている。Python 3.15の遅延インポート（PEP 810）導入時には実行時エラーの発生リスクがあるため、回帰試験の強化が求められる。クラウド/サーバーレス環境のセキュリティ検査やCI/CDパイプライン実行速度の最適化において、インポート時の挙動と安全性のトレードオフをどう管理するかが問われる。",
+      "importance": "低",
+      "importance_reason": "Pythonベースのクラウド・サーバーレス環境における起動パフォーマンスと、OSレイヤーのセキュリティ検証オーバーヘッドの実態を明らかにしたため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "市場トレンド"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Python",
+        "PyPI",
+        "PEP 810",
+        "コールドスタート",
+        "遅延インポート"
+      ],
+      "cdc_relevance": 0,
+      "cdc_context": [
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Python",
+          "CPython"
+        ],
+        "evidence": "PyPI上位500パッケージのインポートコストとmacOSセキュリティ評価等の計測論文"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "サーバーレス環境や自動診断スキャナーにおける実行時遅延およびライブラリ検証エラーの発生影響評価",
+        "source_evidence": "arXiv:2609.02753の研究概要（Pythonインポートコストの長期計測）",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "インフラ・ネットワーク",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "名前解決初回利用時の失敗（遅延インポート時）"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "1e25d9d019ac",
+      "title": "ARTEX and beyond: AI-enabled penetration testing platforms",
+      "summary": "AI-enabled penetration testing and red team frameworks can automate and chain reconnaissance, vulnerability testing, and follow-on actions, lowering the skill threshold for attackers and accelerating intrusions when the tools are misused.",
+      "url": "https://blog.talosintelligence.com/artex-and-beyond/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断サービス",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 9,
+      "source_region": "global",
+      "source_name": "Cisco Talos",
+      "source_tier": "B",
+      "published": "2026-11-14T05:57:13+09:00",
+      "title_ja": "ARTEXとその先：AI駆動型ペネトレーションテストプラットフォーム",
+      "summary_ja": "Cisco Talosによる記事で、AI駆動型のペネトレーションテストおよびレッドチームフレームワークが偵察や脆弱性テスト、後続の行動を自動化し連鎖させることが解説されている。これにより攻撃者のスキル要件が低下し、ツールが誤用された場合に侵入が加速する恐れがある。AIを活用した攻撃の自動化リスクについて警鐘を鳴らす内容となっている。",
+      "insight": "ペネトレーションテストの自動化は診断業務の効率化に寄与する一方、攻撃者側による悪用のハードルを下げる両刃の剣である。自社の公開資産やWeb・API層において、AIエージェントによる自動スキャンや連鎖的な攻撃への耐性をいかに評価すべきか、継続的な検証が求められる。組織としての防衛力向上のために、動的な攻撃シミュレーションの導入を検討すべきである。",
+      "importance": "中",
+      "importance_reason": "AIを活用したペネトレーションテストの自動化と悪用リスクが明示されており、今後のセキュリティ対策のトレンドに直結するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ペネトレーションテスト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ARTEX",
+        "Cisco Talos",
+        "AI-enabled penetration testing",
+        "red team frameworks"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "ARTEX"
+        ],
+        "evidence": "AI-enabled penetration testing and red team frameworks can automate and chain reconnaissance, vulnerability testing, and follow-on actions"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "AI-enabled penetration testing and red team frameworks can automate and chain reconnaissance, vulnerability testing, and follow-on actions",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "データ・AI・AIエージェント",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "自動化ペネトレーション",
+          "偵察の連鎖"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "8a666c222f15",
+      "title": "OpenAI Unveils Daybreak Red Team, Defense Factory Security Tools",
+      "summary": "<p>Daybreak Red Team pentests web applications with AI agents, while Defense Factory investigates security findings and prepares patches.</p>\n<p>The post <a href=\"https://www.securityweek.com/openai-unveils-daybreak-red-team-defense-factory-security-tools/\">OpenAI Unveils Daybreak Red Team, Defense Factory Security Tools</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/openai-unveils-daybreak-red-team-defense-factory-security-tools/",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断サービス",
+        "AIエージェント"
+      ],
+      "engineering_topics": [],
+      "business_score": 9,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-13T18:21:01+09:00",
+      "title_ja": "OpenAI、Daybreak Red TeamおよびDefense Factoryセキュリティツールを発表",
+      "summary_ja": "OpenAIが発表したDaybreak Red TeamはAIエージェントを用いてWebアプリケーションのペネトレーションテストを実施し、Defense Factoryはセキュリティの検出結果を調査してパッチの準備を行う。これらのツールはAIを活用した攻撃のシミュレーションと防御側の修正支援を自動化することを目的としている。セキュリティ運用の高度化に向けた新しいアプローチを示している。",
+      "insight": "AIエージェントを活用した脆弱性診断や修正パッチ作成の自動化は、今後のセキュリティサービスの実務において大きな変革をもたらす可能性が高い。自社の脆弱性管理プロセスにAIエージェントを組み込む際の有効性と限界を評価し、人間による検証プロセスとの組み合わせを検討する示唆が得られる。",
+      "importance": "高",
+      "importance_reason": "AIエージェントによるペネトレーションテストとパッチ準備の自動化ツールという、業界に影響を与える製品リリースであるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った防御",
+        "AIを使った攻撃",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "OpenAI",
+        "Daybreak Red Team",
+        "Defense Factory",
+        "SecurityWeek"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Daybreak Red Team",
+          "Defense Factory"
+        ],
+        "evidence": "Daybreak Red Team pentests web applications with AI agents, while Defense Factory investigates security findings and prepares patches."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Daybreak Red Team pentests web applications with AI agents, while Defense Factory investigates security findings and prepares patches.",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "データ・AI・AIエージェント"
+        ],
+        "attack_methods": [
+          "AI駆動型ペネトレーションテスト"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "7ac2dc580bc9",
+      "title": "VU#685399: PromZard context key code injection leads to remote code execution",
+      "summary": "<h3 id=\"overview\">Overview</h3>\n<p>The npm library <code>promzard</code>, versions 4.0.0 and earlier, is vulnerable to remote code execution due to direct string interpolation of context object keys, which allows unsanitized JavaScript code injection. </p>\n<h3 id=\"description\">Description</h3>\n<p><code>promzard</code> is a <code>Node.js</code> library designed to automate configuration workflows by evaluating template modules and generating data objects via interactive prompting. The library all",
+      "url": "https://kb.cert.org/vuls/id/685399",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断サービス"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CERT/CC Vulnerability Notes",
+      "source_tier": "A",
+      "published": "2026-11-13T00:09:39.357404+09:00",
+      "title_ja": "VU#685399：promzardのコンテキストキーコードインジェクションによるリモートコード実行",
+      "summary_ja": "CERT/CCによると、Node.jsライブラリであるpromzardのバージョン4.0.0およびそれ以前において、コンテキストオブジェクトキーの直接的な文字列補間により、サニタイズされていないJavaScriptコードインジェクションが発生し、リモートコード実行の脆弱性が存在する。このライブラリはインタラクティブなプロンプトを通じて設定ワークフローを自動化するために設計されている。",
+      "insight": "SCA（ソフトウェア構成分析）ツールや依存関係管理において、入力値のサニタイズ不備に起因するコードインジェクションリスクを検知することの重要性を示している。特に開発支援や設定自動化のためのライブラリにおける脆弱性はサプライチェーン全体に影響を与えるため、バージョン管理と迅速なパッチ適用のプロセスが不可欠である。",
+      "importance": "高",
+      "importance_reason": "Node.jsエコシステムで広く使われるライブラリのRCE脆弱性であり、サプライチェーン攻撃のリスク評価において重要であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "SCA",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "promzard",
+        "VU#685399",
+        "Node.js",
+        "リモートコード実行",
+        "CERT/CC"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "緊急",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "promzard"
+        ],
+        "evidence": "The npm library promzard, versions 4.0.0 and earlier, is vulnerable to remote code execution due to direct string interpolation of context object keys"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "リモートコード実行",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "The npm library promzard, versions 4.0.0 and earlier, is vulnerable to remote code execution due to direct string interpolation of context object keys, which allows unsanitized JavaScript code injection.",
+        "evidence_status": "PoCのみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "コードインジェクション"
+        ],
+        "weaknesses": [
+          "不適切な入力サニタイズ"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "5e08f11eb7ef",
+      "title": "Siemens Desigo, Gridscale",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-316-02.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out-of-bounds write that could allow a remote attacker to cause memory corruption and potentiall",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-02",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-12T21:00:00+09:00",
+      "title_ja": "Siemens DesigoおよびGridscaleにおけるNode.js Brotli起因の脆弱性対応",
+      "summary_ja": "CISAはSiemensのDesigoおよびGridscale製品に関するセキュリティアドバイザリを公開しました。本件はNode.jsに同梱されるBrotliデコーダに存在する重大な境界外書き込みの脆弱性（Node2Shell、CVE-2026-111497）に起因しています。遠隔の攻撃者によるメモリ破壊などを引き起こす可能性があり、産業機器向けソフトウェアにもサプライチェーン経由で波及しています。",
+      "insight": "本件はオープンソースのランタイムコンポーネントの脆弱性がOT・産業用制御システムに組み込まれた事例です。ブラックボックス診断では対象製品の深部に組み込まれたライブラリの特定が困難な場合があるため、SCAツールを用いたソフトウェア部品表（SBOM）の管理と依存関係の定期監査が欠かせません。運用環境においては、パッチ適用が困難なOT機器に対してどのようなネットワーク分離やWAFなどの緩和策が有効かを評価する必要があります。",
+      "importance": "高",
+      "importance_reason": "Node.js同梱ライブラリの深刻な脆弱性が産業用機器ソフトウェアに波及しているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "SCA",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Siemens",
+        "Node2Shell",
+        "Brotli",
+        "CVE-2026-111497",
+        "ICS"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "SCA"
+        ],
+        "products": [
+          "Siemens Desigo",
+          "Siemens Gridscale",
+          "Node.js"
+        ],
+        "evidence": "CISAアドバイザリにおいてNode.jsのBrotliデコーダ脆弱性（CVE-2026-111497）がSiemens製品に影響すると記載。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "メモリ破壊および潜在的な影響",
+        "japan_observation": "不明",
+        "assessment_preconditions": "ネットワーク経由で不正な圧縮データを送信可能な環境",
+        "test_scenario": "Brotliデコーダ処理をトリガーする異常な入力データを送信し、異常終了やクラッシュが発生するか検証する",
+        "human_validation": "メモリ破壊の発生有無およびクラッシュログの解析",
+        "service_implication": "組み込みNode.jsランタイムのバージョン調査および依存関係診断の実施",
+        "source_evidence": "Brotli decoder bundled with Node.js... out-of-bounds write that could allow a remote attacker to cause memory corruption",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "境界外書き込み"
+        ],
+        "cve_ids": [
+          "CVE-2026-111497"
+        ]
+      }
+    },
+    {
+      "id": "6ef8a5a8cc4d",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-316-05.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Palo Alto Networks has published </strong><a href=\"https://security.paloaltonetworks.com/cve-2026-109618\"><strong>information</strong></a><strong> on vulnerabilities in PAN-OS related to PHP2Shell vulnerabilities. This advisory lists the related Siemens Industrial products affected by these vulnerabilities. Customers are advised to ",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-05",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-12T21:00:00+09:00",
+      "title_ja": "Siemens RUGGEDCOM APE1808におけるPAN-OSのPHP2Shell関連脆弱性",
+      "summary_ja": "CISAはSiemens RUGGEDCOM APE1808に影響する脆弱性アドバイザリを公開しました。Palo Alto NetworksのPAN-OSにおけるPHP2Shell関連脆弱性（CVE-2026-109618）に起因し、関連するSiemens製品への影響が告知されています。対象製品の利用顧客に対してベンダーからの対策情報の確認と適用が推奨されています。",
+      "insight": "アプライアンス製品内部で稼働するサードパーティ製OS（PAN-OS）の脆弱性に起因しており、サプライチェーン管理およびサードパーティリスク評価の重要性を示しています。診断実務においては、ホスト全体だけでなく内部で稼働するモジュールのバージョン情報や管理インターフェースの露出状況を確認する必要があります。顧客側でファームウェア更新が即座に適用できない場合を想定し、管理画面へのアクセス制御をどう維持するかが論点となります。",
+      "importance": "高",
+      "importance_reason": "産業用モジュール製品におけるサードパーティOSコンポーネントの重大な脆弱性のため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Siemens",
+        "RUGGEDCOM APE1808",
+        "Palo Alto Networks",
+        "PAN-OS",
+        "CVE-2026-109618"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "Siemens RUGGEDCOM APE1808",
+          "PAN-OS"
+        ],
+        "evidence": "PAN-OS related to PHP2Shell vulnerabilities affecting Siemens Industrial products."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "PAN-OS管理インターフェースまたは関連サービスへの到達可能性",
+        "test_scenario": "公開されたPAN-OS脆弱性検証手法に基づく到達性および入力処理の確認",
+        "human_validation": "ファームウェアおよびPAN-OSバージョンの突合確認",
+        "service_implication": "OTネットワーク境界機器のサードパーティモジュールに対する脆弱性スキャンの見直し",
+        "source_evidence": "vulnerabilities in PAN-OS related to PHP2Shell vulnerabilities. This advisory lists the related Siemens Industrial products affected",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント",
+          "インフラ・ネットワーク"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": [
+          "CVE-2026-109618"
+        ]
+      }
+    },
+    {
+      "id": "771f70e03d73",
+      "title": "Siemens RUGGEDCOM APE1808",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-316-04.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Palo Alto Networks has published </strong><a href=\"https://security.paloaltonetworks.com/CVE-2026-111497\"><strong>information </strong></a><strong>on a vulnerability in PAN-OS related to the Node2Shell vulnerability. This advisory lists the related Siemens Industrial products affected by this vulnerability. Customers are advised to ",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-316-04",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-12T21:00:00+09:00",
+      "title_ja": "Siemens RUGGEDCOM APE1808におけるPAN-OSのNode2Shell脆弱性の波及",
+      "summary_ja": "CISAはSiemens RUGGEDCOM APE1808におけるPAN-OS起因の脆弱性情報を公表しました。本アドバイザリはPalo Alto Networksが公開したNode2Shell脆弱性（CVE-2026-111497）の情報に基づくものです。産業機器内に搭載されたサードパーティ製OSモジュールが本脆弱性の影響を受けることが確認されています。",
+      "insight": "Node.jsの脆弱性がPAN-OSを経由してさらにSiemensのハードウェアモジュールに波及している複層的なサプライチェーン事例です。単一のコンポーネント脆弱性が多層的に異なる製品へ影響を及ぼすため、SCAや資産台帳での追跡が非常に複雑化します。診断業務ではアプライアンス内部の隠れた依存関係を特定する手法と、バージョン非開示環境でのリスク推定プロセスの確立が求められます。",
+      "importance": "高",
+      "importance_reason": "PAN-OSを内包する産業機器へのNode2Shell脆弱性の多層的な波及が確認されたため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "サプライチェーン攻撃",
+        "SCA"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Siemens",
+        "RUGGEDCOM APE1808",
+        "PAN-OS",
+        "Node2Shell",
+        "CVE-2026-111497"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "SCA"
+        ],
+        "products": [
+          "Siemens RUGGEDCOM APE1808",
+          "PAN-OS"
+        ],
+        "evidence": "Palo Alto Networks has published information on a vulnerability in PAN-OS related to the Node2Shell vulnerability affecting Siemens products."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "当該コンポーネントが処理する通信経路へのアクセス",
+        "test_scenario": "PAN-OS上の該当モジュールに対して特定の圧縮パケットを送信し挙動を監視する",
+        "human_validation": "内部コンポーネントのバージョン確認およびパッチ適用状態の精査",
+        "service_implication": "多層サプライチェーンにおけるソフトウェア依存関係の可視化と診断レポートへの反映",
+        "source_evidence": "vulnerability in PAN-OS related to the Node2Shell vulnerability. This advisory lists the related Siemens Industrial products affected",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": [
+          "CVE-2026-111497"
+        ]
+      }
+    },
+    {
+      "id": "a7fd3c0079c7",
+      "title": "JetBrains製YouTrackにおけるクロスサイトスクリプティングの脆弱性",
+      "summary": "JetBrains s.r.o.が提供するYouTrackには、クロスサイトスクリプティングの脆弱性が存在します。",
+      "url": "https://jvn.jp/jp/JVN76799957/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-13T12:00:00+09:00",
+      "title_ja": "JetBrains製YouTrackにおけるクロスサイトスクリプティングの脆弱性",
+      "summary_ja": "JetBrains s.r.o.が提供するプロジェクト管理ツールYouTrackに脆弱性が確認されました。当該製品にはクロスサイトスクリプティング（XSS）の不具合が存在します。悪用された場合、ユーザーのブラウザ上で不正なスクリプトが実行されるなどの影響を受ける可能性があります。",
+      "insight": "Web・API診断においてプロジェクト管理ツール特有の入力フィールドやMarkdown処理に対するサニタイズ検証が重要となります。修正対応では製品アップデートの適用と、再診断による入力値エスケープの確認が求められます。SOCや管理部門においては、自組織内のYouTrackインスタンスの公開範囲とアクセス制限ポリシーが適切に機能しているかを点検する論点が生じます。",
+      "importance": "中",
+      "importance_reason": "開発・業務管理ツールとして広く利用されるYouTrackに影響するXSS脆弱性であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和",
+        "ブラックボックス診断"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "JetBrains",
+        "YouTrack",
+        "XSS",
+        "JVN"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "JetBrains YouTrack"
+        ],
+        "evidence": "JetBrains s.r.o.が提供するYouTrackには、クロスサイトスクリプティングの脆弱性が存在します。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "YouTrackの各種入力フォームおよびチケット管理画面におけるスクリプト混入時のエスケープ処理の検証が考えられる。",
+        "human_validation": "入力値がコンテキストに応じた適切なエンコード処理を受けているかの手動確認。",
+        "service_implication": "Web診断サービスにおいて対象製品のバージョン調査およびXSS検出パターンの網羅性確認が課題となる。",
+        "source_evidence": "JetBrains s.r.o.が提供するYouTrackには、クロスサイトスクリプティングの脆弱性が存在します。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "クロスサイトスクリプティング"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "45f4340a3fab",
+      "title": "TightVNCおよびUltraVNCのWindows Viewerにおけるヒープベースのバッファオーバーフローの脆弱性",
+      "summary": "CERT/CCから本件に関するアドバイザリが公表されました。",
+      "url": "https://jvn.jp/vu/JVNVU92656681/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-13T11:00:30+09:00",
+      "title_ja": "TightVNCおよびUltraVNCのWindows Viewerにおけるヒープオーバーフローの脆弱性",
+      "summary_ja": "CERT/CCよりTightVNCおよびUltraVNCのWindows Viewerに関するアドバイザリが公開されました。両ビューワーにはヒープベースのバッファオーバーフローの脆弱性が存在します。悪用された場合、不正な通信やデータ処理によってビューワープロセスが異常終了したり任意のコードが実行されたりするリスクが推測されます。",
+      "insight": "端末上で利用されるリモート管理ツールのクライアント側バイナリに起因する脆弱性です。パッチ適用状況の端末インベントリ管理およびSCA/脆弱性管理ツールでの検知が重要となります。管理者は、運用端末におけるVNCビューワーの導入実態と、不正な接続先へのアウトバウンド通信制限が徹底されているかを確認する必要があります。",
+      "importance": "中",
+      "importance_reason": "リモート管理用途で利用されるクライアントツールにおいて、メモリ破損を伴う深刻な影響が生じる可能性があるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和",
+        "優先順位付け"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "TightVNC",
+        "UltraVNC",
+        "CERT/CC",
+        "ヒープオーバーフロー"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "TightVNC Windows Viewer",
+          "UltraVNC Windows Viewer"
+        ],
+        "evidence": "TightVNCおよびUltraVNCのWindows Viewerにおけるヒープベースのバッファオーバーフローの脆弱性に関してCERT/CCからアドバイザリが公表"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "悪意あるVNCサーバーからの応答データを受信した際のViewerのメモリ処理耐性の検証が考えられる。",
+        "human_validation": "クライアント側バイナリに対するリバースエンジニアリングやクラッシュダンプ解析。",
+        "service_implication": "エンドポイント診断やペネトレーションテスト時における内部利用ツールのバージョン棚卸し確認。",
+        "source_evidence": "CERT/CCから本件に関するアドバイザリが公表されました。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "ヒープベースのバッファオーバーフロー"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "0c2d9c34cfe0",
+      "title": "ImageMagickを利用したアプリケーションにおける任意ファイル読み書きの脆弱性",
+      "summary": "CERT/CCから本件に関するアドバイザリが公表されました。",
+      "url": "https://jvn.jp/vu/JVNVU95718857/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-13T11:00:20+09:00",
+      "title_ja": "ImageMagickを利用したアプリケーションにおける任意ファイル読み書きの脆弱性",
+      "summary_ja": "画像処理ライブラリImageMagickを利用するアプリケーションに関する脆弱性情報がCERT/CCより公表されました。当該環境において、細工された入力等を介して任意のファイル読み書きが発生する脆弱性が存在します。これにより機密情報の窃取やシステム設定の上書きなど、深刻な侵害につながる可能性があります。",
+      "insight": "画像アップロード処理を伴うWebアプリケーションやAPIにおける入力検証と、バックエンドで稼働するライブラリの適切な権限分離が論点となります。SCAツールによる依存関係の検知に加え、DASTやWeb診断での不正画像ファイルアップロード試験の設計が必要です。設計者は、画像処理プロセスがOSの機密ファイルへアクセスできないサンドボックス構造になっているかを点検する必要があります。",
+      "importance": "高",
+      "importance_reason": "サーバーサイドで広範に利用される画像処理ライブラリに起因し、任意ファイル読み書きという高い影響度を持つため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "SCA",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "ImageMagick",
+        "任意ファイル読み書き",
+        "CERT/CC",
+        "画像処理"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "SCA"
+        ],
+        "products": [
+          "ImageMagick"
+        ],
+        "evidence": "ImageMagickを利用したアプリケーションにおける任意ファイル読み書きの脆弱性に関してCERT/CCからアドバイザリが公表"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "任意ファイル読み書き",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "細工した画像形式ファイルを入力として与え、サーバーローカルファイルの読み出しや書き換えが可能かを確認する検証が考えられる。",
+        "human_validation": "ファイル処理ロジックのソースコード解析およびレスポンス内容の精査。",
+        "service_implication": "Web診断におけるファイルアップロード検証項目の更新とSCAによる間接依存性の迅速な把握。",
+        "source_evidence": "ImageMagickを利用したアプリケーションにおける任意ファイル読み書きの脆弱性",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "任意ファイル読み書き"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
       "id": "e02865ea4b65",
       "title": "BypassGym: A Benchmark for Evaluating AI Agents' Endpoint Defense Evasion Capabilities",
       "summary": "arXiv:2611.13684v1 Announce Type: new \nAbstract: Artificial intelligence agents increasingly automate cybersecurity tasks, including offensive operations. Frequent attacks across the web make endpoint detection and response (EDR) a critical defense, but whether AI agents can evade it remains unclear. Benchmarks evaluate the offensive capabilities of large language model (LLM) agents in areas such as penetration testing and vulnerability discovery. One important capability that these benchmarks do not address is defense evasion, specifically whether an agent can develop a program that executes a payload without being blocked or terminated by a deployed EDR. We introduce BypassGym, to our knowledge the first benchmark to systematically evaluate this capability on real endpoints. Given command-and-control (C2) shellcode, an agent must generate and compile a loader that executes the payload without being blocked or terminated. A supplementary evasion knowledge skill provides domain knowledge and supports comparisons with and without this input. BypassGym is built on Proxmox VE(PVE), so the evaluation environment runs real Windows systems and EDR products inside virtual machines and returns structured detection feedback to the agent. We evaluate 5 lightweight model backends against 6 EDR products and 3 payloads, and find that even these simple models generate successful submissions, with DeepSeek-V4.1 Flash reaching 17/18 successful runs and Bitdefender allowing only 5 of 15 runs to pass. These results provide a systematic measurement of current AI agents' endpoint defense evasion capabilities and identify areas for defenders to investigate.",
