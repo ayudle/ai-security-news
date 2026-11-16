@@ -1,0 +1,140 @@
+{
+  "executive_summary": "今週はARTEXやAntiFoxなどペネトレーションテスト向け自律型AI基盤が攻撃者に悪用され、クラウドシークレット窃取等に直結した事例が相次ぎ、攻撃プロセスの自動化が現実の運用リスクとして顕在化しました。また研究面でも、バイナリパッチ差分からのエクスプロイト自動生成（CyberBinGym）やEDR回避ローダー生成（BypassGym）が実証され、脆弱性公開から悪用までの防御猶予（ウィンドウ）が急速に圧縮されています。一方、推論型エージェントに対する思考注入攻撃やツール実行権限の逸脱など、AIエージェント自体の統制不備も浮き彫りとなりました。SOCやMDR実務においては、定期診断や人手によるトリアージを前提とした監視設計を見直し、AIによる侵害速度に対抗し得る動的な露出制限やアイデンティティ失効の仕組みを組み込む必要があります。",
+  "top_topics": [
+    {
+      "title": "AIペンテスト基盤の悪用拡大",
+      "summary": "FBIが警告したARTEXやAntiFoxの悪用事例に見られる通り、自律型AIエージェントを用いたWeb・API探索とクラウドクレデンシャル窃取が実攻撃として展開されています。攻撃試行の高速化と自動化により、従来の巡回型スキャンや手動トリアージの遅延が重大な侵害につながるリスクが高まっています。MDRやSOC運用においては、エージェント特有の高速なAPI呼び出しや推論パターンの振る舞い検知、および侵害兆候時の認証情報即時失効プロセスの確立が求められます。",
+      "article_ids": [
+        "345716007b65",
+        "1e5084b70448",
+        "f1718a16d22e",
+        "7230f925fc30"
+      ]
+    },
+    {
+      "title": "自動化によるパッチ猶予の消失",
+      "summary": "CyberBinGymやBypassGymにより、AIエージェントがパッチ差分からPoCを導出し、動的にEDRを回避する検知回避パターンを試行錯誤する能力が示されました。この傾向が進むと、パッチリリースから悪用開始までのタイムラグが極小化し、従来の脆弱性管理サイクルが破綻する懸念があります。防御側はKEV等の悪用脅威インテリジェンスと資産インベントリを即時突合し、露出資産の隔離やWAF緩和策を機械的に自動適用する運用体制への移行が必要です。",
+      "article_ids": [
+        "1a048aa20fc8",
+        "e02865ea4b65",
+        "048acc11ff70",
+        "86b0e3c8ebde"
+      ]
+    },
+    {
+      "title": "自律AIの認可境界と停止制御",
+      "summary": "Claude Dispatchのローカル実行悪用や思考ログを偽装するThought Injection、さらにエージェント暴走時の停止制御の欠落など、Security for AIの課題が具体化しています。プロンプト遮断のみに頼る従来の防御は限界を迎えており、ツール呼び出しや状態変更を伴うワークフロー全体の動的検証が不可欠です。本番環境にエージェントを組み込む際は、最小権限の徹底に加え、異常行動時にセッショントークンを即座に剥奪するキルスイッチ設計が問われます。",
+      "article_ids": [
+        "7dd8ccbd5a17",
+        "b990324e6aa4",
+        "dea5a8ecb640",
+        "ac47fa857f29"
+      ]
+    }
+  ],
+  "layer_trends": [
+    {
+      "layer_name": "デバイス/エッジ",
+      "trend_text": "D-LinkスイッチのゼロデイやIoTロボティクス機器のRCEが公表され、管理インターフェースの露出抑制とネットワークセグメンテーションの重要性が再確認されています。"
+    },
+    {
+      "layer_name": "ネットワーク",
+      "trend_text": "OpenSSHの認証バイパス（SSHole）やFortiOSの重大脆弱性が報告され、軽量コンテナ環境を含む基盤ライブラリと境界機器の露出資産管理が急務となっています。"
+    },
+    {
+      "layer_name": "クラウド/サーバー",
+      "trend_text": "PostgreSQLの長年の認証済みRCE修正やAI悪用によるクラウドシークレット窃取が発生しており、サービスアカウントの権限分離とランタイム監査の強化が焦点です。"
+    },
+    {
+      "layer_name": "アプリ/API",
+      "trend_text": "ImageMagick等の既知ライブラリ起因のRCEに加え、コーディングエージェントがコードベース内の脆弱パターンを学習・再生産するサプライチェーンリスクが実証されました。"
+    },
+    {
+      "layer_name": "データ/AI",
+      "trend_text": "推論プロセスの改ざん（Thought Injection）やModelShield等のランタイム防御提案、ComfyUI拡張のパストラバーサルなど、AI実行環境自体を狙う攻撃面が具体化しています。"
+    },
+    {
+      "layer_name": "ガバナンス/規制",
+      "trend_text": "Google Project Zeroの開示ポリシー改訂やTSMCの委託先経由漏洩を受け、AI時代の脆弱性トリアージ速度の再定義とサードパーティ設定監査の実効性が求められています。"
+    }
+  ],
+  "next_week_outlook": "AIペンテスト基盤の悪用注意喚起を受け、境界ネットワーク機器や認証不備APIを標的とした機械的探索の急増が警戒されます。SOC/MDRでは、従来のシグネチャ検知に加え、短時間での多角的な探索試行や特権シークレットへのアクセス相関ルールを緊急点検する必要があります。また、パッチ公開直後のエクスプロイト自動生成脅威を前提とし、資産露出度判定と緊急緩和策を連動させる運用フローのシミュレーションが推奨されます。",
+  "period": {
+    "start": "2026-11-09",
+    "end": "2026-11-16"
+  },
+  "total_articles": 88,
+  "keyword_changes": [
+    {
+      "keyword": "LLM",
+      "this_week_count": 1,
+      "last_week_count": 9,
+      "change": -8,
+      "change_pct": -89
+    },
+    {
+      "keyword": "CERT/CC",
+      "this_week_count": 8,
+      "last_week_count": 1,
+      "change": 7,
+      "change_pct": 700
+    },
+    {
+      "keyword": "アップデート",
+      "this_week_count": 4,
+      "last_week_count": 0,
+      "change": 4,
+      "change_pct": 400
+    },
+    {
+      "keyword": "Weekly Report",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "個人情報流出",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "OpenAI",
+      "this_week_count": 2,
+      "last_week_count": 5,
+      "change": -3,
+      "change_pct": -60
+    },
+    {
+      "keyword": "Siemens",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    },
+    {
+      "keyword": "脆弱性検出",
+      "this_week_count": 1,
+      "last_week_count": 4,
+      "change": -3,
+      "change_pct": -75
+    },
+    {
+      "keyword": "任意コード実行",
+      "this_week_count": 0,
+      "last_week_count": 3,
+      "change": -3,
+      "change_pct": -100
+    },
+    {
+      "keyword": "ゼロデイ",
+      "this_week_count": 3,
+      "last_week_count": 0,
+      "change": 3,
+      "change_pct": 300
+    }
+  ],
+  "generated_at": "2026-11-16T10:33:59.324682+09:00"
+}

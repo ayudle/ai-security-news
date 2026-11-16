@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>週次レポート 11/09〜11/16 | Cyber Defense Notes</title>
+<meta name="description" content="Cyber Defense Notes 週次レポート（11/09〜11/16）。88件の記事を分析したSOC/CDC設計実務者向けダイジェスト。">
+<meta property="og:title" content="Cyber Defense Notes 週次レポート 11/09〜11/16">
+<meta property="og:description" content="今週はARTEXやAntiFoxなどペネトレーションテスト向け自律型AI基盤が攻撃者に悪用され、クラウドシークレット窃取等に直結した事例が相次ぎ、攻撃プロセスの自動化が現実の運用リスクとして顕在化しました。また研究面でも、バイナリパッチ差分">
+<meta property="og:url" content="https://ayudle.github.io/ai-security-news/weekly/2026-11-16.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://ayudle.github.io/ai-security-news/og-image.png">
+<link rel="canonical" href="https://ayudle.github.io/ai-security-news/weekly/2026-11-16.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<style>
+:root{--bg:#ffffff;--text:#202830;--dim:#566473;--border:#d9dfe5;--accent:#245d86;--card:#f6f7f8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+header{border-bottom:1px solid var(--border);padding:16px 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.logo{font-size:18px;font-weight:700}
+.back{display:inline-block;padding:8px 16px;margin:16px 24px;color:var(--accent);text-decoration:none;font-size:13px}
+.back:hover{text-decoration:underline}
+.wp{max-width:720px;margin:0 auto;padding:16px 24px 60px}
+.wp-head{border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:24px}
+.wp-period{font-size:12px;color:var(--dim);margin-bottom:6px}
+.wp-title{font-size:22px;font-weight:700;color:#202830;line-height:1.4}
+.wp-meta{font-size:11px;color:var(--dim);margin-top:8px}
+.sec{margin-bottom:32px}
+.sec-title{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.btn{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:inherit;background:var(--card);color:var(--text);border:1px solid var(--border)}
+.btn:hover{border-color:var(--accent)}
+footer{text-align:center;font-size:10px;color:var(--dim);padding:20px;border-top:1px solid var(--border);margin-top:16px}
+.wr-topic{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.wr-topic-title{font-size:14px;font-weight:600;color:#202830;margin-bottom:6px}
+.wr-topic-summary{font-size:13px;color:#566473;line-height:1.7;margin-bottom:4px}
+.wr-toggle{display:inline-block;margin-top:10px;padding:5px 10px;background:none;border:1px solid var(--border);border-radius:6px;color:var(--accent);font-size:12px;cursor:pointer;font-family:inherit}
+.wr-toggle:hover{border-color:var(--accent)}
+.wr-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wr-refs{margin-top:8px}
+.wr-refs-open{margin-top:10px}
+.wr-ref{display:block;text-decoration:none;padding:5px 0;border-top:1px solid #d9dfe5}
+.wr-ref-title{font-size:12px;color:#245d86}
+.wr-ref-meta{font-size:10px;color:#566473;margin-left:8px}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KV7Q7SQKZX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-KV7Q7SQKZX');
+</script>
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header>
+  <a href="/ai-security-news/" style="text-decoration:none;color:inherit">
+    <div class="logo">Cyber Defense Notes</div>
+  </a>
+</header>
+
+<a href="/ai-security-news/#weekly" class="back">← 週次レポート一覧に戻る</a>
+
+<nav style="padding:8px 24px 10px;border-bottom:1px solid #d9dfe5;display:flex;flex-wrap:wrap;gap:16px;font-size:12px">
+  <a href="/ai-security-news/#today"   style="color:#245d86;text-decoration:none">本日のニュース</a>
+  <a href="/ai-security-news/#trend"   style="color:#245d86;text-decoration:none">攻撃・インシデント動向</a>
+  <a href="/ai-security-news/#archive" style="color:#245d86;text-decoration:none">記事検索</a>
+  <a href="/ai-security-news/#weekly"  style="color:#245d86;text-decoration:none">週次レポート一覧</a>
+</nav>
+
+<div class="wp">
+  <div class="wp-head">
+    <div class="wp-period">週次レポート</div>
+    <h1 class="wp-title">週次ダイジェスト</h1>
+    <div class="wp-meta">11/09〜11/16（88件の記事を分析）</div>
+  </div>
+
+  <section class="sec">
+    <h3 class="sec-title">エグゼクティブサマリー</h3>
+    <div style="background:#f2f6fa;border-left:3px solid #245d86;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#202830">今週はARTEXやAntiFoxなどペネトレーションテスト向け自律型AI基盤が攻撃者に悪用され、クラウドシークレット窃取等に直結した事例が相次ぎ、攻撃プロセスの自動化が現実の運用リスクとして顕在化しました。また研究面でも、バイナリパッチ差分からのエクスプロイト自動生成（CyberBinGym）やEDR回避ローダー生成（BypassGym）が実証され、脆弱性公開から悪用までの防御猶予（ウィンドウ）が急速に圧縮されています。一方、推論型エージェントに対する思考注入攻撃やツール実行権限の逸脱など、AIエージェント自体の統制不備も浮き彫りとなりました。SOCやMDR実務においては、定期診断や人手によるトリアージを前提とした監視設計を見直し、AIによる侵害速度に対抗し得る動的な露出制限やアイデンティティ失効の仕組みを組み込む必要があります。</div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">今週の重要トピック TOP3</h3>
+    <div class="wr-topic"><div class="wr-topic-title">AIペンテスト基盤の悪用拡大</div><div class="wr-topic-summary">FBIが警告したARTEXやAntiFoxの悪用事例に見られる通り、自律型AIエージェントを用いたWeb・API探索とクラウドクレデンシャル窃取が実攻撃として展開されています。攻撃試行の高速化と自動化により、従来の巡回型スキャンや手動トリアージの遅延が重大な侵害につながるリスクが高まっています。MDRやSOC運用においては、エージェント特有の高速なAPI呼び出しや推論パターンの振る舞い検知、および侵害兆候時の認証情報即時失効プロセスの確立が求められます。</div><button class="wr-toggle" aria-expanded="false" aria-controls="wr-refs-0">関連ニュース 4件を表示</button><div class="wr-refs" id="wr-refs-0" hidden><a href="../article/345716007b65.html" class="wr-ref"><span class="wr-ref-title">→ FBI、AIペネトレーションテストツール「ARTEX」を悪用したサイバー攻撃に警告</span><span class="wr-ref-meta">Bleeping Computer / 2026-11-16</span></a><a href="../article/1e5084b70448.html" class="wr-ref"><span class="wr-ref-title">→ 自律型ペンテスト基盤「AntiFox」が悪用されAWS本番シークレットが窃取</span><span class="wr-ref-meta">The Hacker News / 2026-11-12</span></a><a href="../article/f1718a16d22e.html" class="wr-ref"><span class="wr-ref-title">→ 攻撃者がAntiFox AIエージェントを悪用したAWSクレデンシャル窃取攻撃を展開</span><span class="wr-ref-meta">Bleeping Computer / 2026-11-12</span></a><a href="../article/7230f925fc30.html" class="wr-ref"><span class="wr-ref-title">→ 台湾拠点の攻撃者がBOSSAIエージェントを悪用し台北市の緊急指令記録等を窃取</span><span class="wr-ref-meta">The Hacker News / 2026-11-09</span></a></div></div><div class="wr-topic"><div class="wr-topic-title">自動化によるパッチ猶予の消失</div><div class="wr-topic-summary">CyberBinGymやBypassGymにより、AIエージェントがパッチ差分からPoCを導出し、動的にEDRを回避する検知回避パターンを試行錯誤する能力が示されました。この傾向が進むと、パッチリリースから悪用開始までのタイムラグが極小化し、従来の脆弱性管理サイクルが破綻する懸念があります。防御側はKEV等の悪用脅威インテリジェンスと資産インベントリを即時突合し、露出資産の隔離やWAF緩和策を機械的に自動適用する運用体制への移行が必要です。</div><button class="wr-toggle" aria-expanded="false" aria-controls="wr-refs-1">関連ニュース 4件を表示</button><div class="wr-refs" id="wr-refs-1" hidden><a href="../article/1a048aa20fc8.html" class="wr-ref"><span class="wr-ref-title">→ CyberBinGym: AIエージェントはバイナリパッチから実エクスプロイトを生成可能か</span><span class="wr-ref-meta">arXiv cs.CR / 2026-11-10</span></a><a href="../article/e02865ea4b65.html" class="wr-ref"><span class="wr-ref-title">→ BypassGym: AIエージェントのエンドポイント検知回避能力を評価するベンチマーク</span><span class="wr-ref-meta">arXiv cs.CR / 2026-11-11</span></a><a href="../article/048acc11ff70.html" class="wr-ref"><span class="wr-ref-title">→ ポリシーと開示：2026年版（Google Project Zero）</span><span class="wr-ref-meta">Google Project Zero / 2026-11-13</span></a><a href="../article/86b0e3c8ebde.html" class="wr-ref"><span class="wr-ref-title">→ CISA、既知の悪用が確認された脆弱性2件をKEVカタログに追加</span><span class="wr-ref-meta">CISA / 2026-11-13</span></a></div></div><div class="wr-topic"><div class="wr-topic-title">自律AIの認可境界と停止制御</div><div class="wr-topic-summary">Claude Dispatchのローカル実行悪用や思考ログを偽装するThought Injection、さらにエージェント暴走時の停止制御の欠落など、Security for AIの課題が具体化しています。プロンプト遮断のみに頼る従来の防御は限界を迎えており、ツール呼び出しや状態変更を伴うワークフロー全体の動的検証が不可欠です。本番環境にエージェントを組み込む際は、最小権限の徹底に加え、異常行動時にセッショントークンを即座に剥奪するキルスイッチ設計が問われます。</div><button class="wr-toggle" aria-expanded="false" aria-controls="wr-refs-2">関連ニュース 4件を表示</button><div class="wr-refs" id="wr-refs-2" hidden><a href="../article/7dd8ccbd5a17.html" class="wr-ref"><span class="wr-ref-title">→ 悪意あるブラウザ拡張機能がClaude Dispatchを悪用して端末上でコードを実行するリスク</span><span class="wr-ref-meta">The Hacker News / 2026-11-06</span></a><a href="../article/b990324e6aa4.html" class="wr-ref"><span class="wr-ref-title">→ 推論型エージェントに対する思考注入攻撃「Thought Injection」の評価研究</span><span class="wr-ref-meta">arXiv cs.CR / 2026-11-09</span></a><a href="../article/dea5a8ecb640.html" class="wr-ref"><span class="wr-ref-title">→ AIエージェントの暴走・不正操作への停止制御とアイデンティティ管理の課題</span><span class="wr-ref-meta">The Hacker News / 2026-11-13</span></a><a href="../article/ac47fa857f29.html" class="wr-ref"><span class="wr-ref-title">→ 本番相当のAIエージェントに対する自動レッドチーム評価ベンチマーク「GreyZone」の提案</span><span class="wr-ref-meta">arXiv cs.SE / 2026-11-09</span></a></div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">6階層別 今週のトレンド</h3>
+    <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #d9dfe5;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#639922;padding-top:2px;flex-shrink:0">デバイス/エッジ</div><div style="font-size:13px;color:#566473;line-height:1.65">D-LinkスイッチのゼロデイやIoTロボティクス機器のRCEが公表され、管理インターフェースの露出抑制とネットワークセグメンテーションの重要性が再確認されています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #d9dfe5;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#245d86;padding-top:2px;flex-shrink:0">ネットワーク</div><div style="font-size:13px;color:#566473;line-height:1.65">OpenSSHの認証バイパス（SSHole）やFortiOSの重大脆弱性が報告され、軽量コンテナ環境を含む基盤ライブラリと境界機器の露出資産管理が急務となっています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #d9dfe5;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#1D9E75;padding-top:2px;flex-shrink:0">クラウド/サーバー</div><div style="font-size:13px;color:#566473;line-height:1.65">PostgreSQLの長年の認証済みRCE修正やAI悪用によるクラウドシークレット窃取が発生しており、サービスアカウントの権限分離とランタイム監査の強化が焦点です。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #d9dfe5;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#BA7517;padding-top:2px;flex-shrink:0">アプリ/API</div><div style="font-size:13px;color:#566473;line-height:1.65">ImageMagick等の既知ライブラリ起因のRCEに加え、コーディングエージェントがコードベース内の脆弱パターンを学習・再生産するサプライチェーンリスクが実証されました。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #d9dfe5;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#7F77DD;padding-top:2px;flex-shrink:0">データ/AI</div><div style="font-size:13px;color:#566473;line-height:1.65">推論プロセスの改ざん（Thought Injection）やModelShield等のランタイム防御提案、ComfyUI拡張のパストラバーサルなど、AI実行環境自体を狙う攻撃面が具体化しています。</div></div><div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #d9dfe5;align-items:flex-start"><div style="min-width:90px;font-size:11px;font-weight:700;color:#566473;padding-top:2px;flex-shrink:0">ガバナンス/規制</div><div style="font-size:13px;color:#566473;line-height:1.65">Google Project Zeroの開示ポリシー改訂やTSMCの委託先経由漏洩を受け、AI時代の脆弱性トリアージ速度の再定義とサードパーティ設定監査の実効性が求められています。</div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">キーワード変動（先週比）</h3>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">LLM</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#566473;border-radius:3px"></div></div><div style="font-size:10px;color:#566473;width:55px;text-align:right">-8件(89%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週1件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">CERT/CC</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:88%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+7件(+700%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週8件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">アップデート</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:50%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+4件(+400%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週4件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Weekly Report</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#566473;border-radius:3px"></div></div><div style="font-size:10px;color:#566473;width:55px;text-align:right">-3件(100%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週0件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">個人情報流出</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#566473;border-radius:3px"></div></div><div style="font-size:10px;color:#566473;width:55px;text-align:right">-3件(100%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週0件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">OpenAI</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#566473;border-radius:3px"></div></div><div style="font-size:10px;color:#566473;width:55px;text-align:right">-3件(60%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週2件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Siemens</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#E24B4A;border-radius:3px"></div></div><div style="font-size:10px;color:#E24B4A;width:55px;text-align:right">+3件(+300%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週3件</div></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:80px;font-size:11px;color:#202830;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">脆弱性検出</div><div style="flex:1;height:5px;background:#d9dfe5;border-radius:3px;overflow:hidden"><div style="width:38%;height:100%;background:#566473;border-radius:3px"></div></div><div style="font-size:10px;color:#566473;width:55px;text-align:right">-3件(75%)</div><div style="font-size:10px;color:#566473;width:40px;text-align:right">今週1件</div></div>
+  </section>
+
+  <section class="sec">
+    <h3 class="sec-title">来週の注目ポイント</h3>
+    <div style="background:#f2f6fa;border-left:3px solid #245d8655;padding:14px 18px;border-radius:4px;font-size:14px;line-height:1.85;color:#475361">AIペンテスト基盤の悪用注意喚起を受け、境界ネットワーク機器や認証不備APIを標的とした機械的探索の急増が警戒されます。SOC/MDRでは、従来のシグネチャ検知に加え、短時間での多角的な探索試行や特権シークレットへのアクセス相関ルールを緊急点検する必要があります。また、パッチ公開直後のエクスプロイト自動生成脅威を前提とし、資産露出度判定と緊急緩和策を連動させる運用フローのシミュレーションが推奨されます。</div>
+  </section>
+
+  <div class="actions">
+    <button onclick="navigator.clipboard.writeText('https://ayudle.github.io/ai-security-news/weekly/2026-11-16.html').then(function(){alert('URLをコピーしました')})" class="btn">URLをコピー</button>
+  </div>
+</div>
+
+<footer>
+  各記事の著作権は原著者・掲載メディアに帰属します。本サイトは要約・リンクのみ掲載しています。<br>
+  日本語要約・タグ・示唆はLLMにより自動生成されており、誤りや不正確な情報を含む可能性があります。重要な判断には必ず元記事をご確認ください。<br>
+  <p style="margin-top:4px">Powered by Gemini API + GitHub Actions</p>
+</footer>
+<script>
+document.querySelectorAll('.wr-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var expanded=btn.getAttribute('aria-expanded')==='true';
+    var list=document.getElementById(btn.getAttribute('aria-controls'));
+    expanded=!expanded;
+    btn.setAttribute('aria-expanded',expanded?'true':'false');
+    list.hidden=!expanded;
+    btn.textContent=btn.textContent.replace(
+      expanded?'を表示':'を非表示',
+      expanded?'を非表示':'を表示'
+    );
+  });
+});
+</script>
+</body>
+</html>
