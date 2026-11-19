@@ -1,109 +1,16 @@
 {
-  "updated": "2026-11-18T11:53:38.436669+09:00",
-  "today": "2026-11-18",
+  "updated": "2026-11-19T10:16:53.882559+09:00",
+  "today": "2026-11-19",
   "articles": [
     {
-      "id": "383a6d369c82",
-      "title": "Experience: ENTRAP - An IaC Enterprise Cyber Range for Reproducible Security Assessment and Dataset Generation",
-      "summary": "arXiv:2611.20594v1 Announce Type: new \nAbstract: An enterprise breach causes most of its damage after the perimeter is crossed. Once an attacker gains a foothold, they can move laterally to other hosts, take over the trusted services of the network, and encrypt the backups needed for recovery. Defenders, on the other hand, need to study this post-compromise stage, but they cannot rehearse it on a production enterprise network. Building such an enterprise network manually is time-consuming, and resetting it to its clean state between runs is still harder. As a result, security experiments are difficult to perform, compare and reproduce. We develop Enterprise Network Testbed for Reproducible Attack and Defense Practices (ENTRAP), an Infrastructure-as-Code (IaC) cyber range that defines a fully segmented enterprise as version-controlled automation. ENTRAP uses Ansible, KVM/Libvirt, and Cloud-init to provision the environment and reset it to a clean state whenever necessary. The enterprise network includes several entities such as a gateway, an internal Demilitarized Zone (DMZ), DNS, DHCP, a backup server, a web server, and clients. On this network, a user can learn to assemble the entities, launch attacks, and write rules or defensive measures that harden its security. We launch three attacks: a Ransomware-as-a-Service (RaaS)-backed ransomware campaign, a Layer-2 DHCP starvation and rogue DHCP attack, and perimeter web exploitation. Each attack runs from a clean state, and ENTRAP acts as a reproducible generator of labeled attack datasets. Using the collected dataset, we train a Random Forest classifier for ransomware detection and present its evaluation results. We publicly release the codebase, collected logs, and datasets to facilitate further research.",
-      "url": "https://arxiv.org/abs/2611.20594",
+      "id": "ef8d44482a5d",
+      "title": "AI Pentesting Checklist for Web Apps: 15 Questions to Ask Before Choosing a Vendor",
+      "summary": "TL;DR\n\n\n  Attackers move first. On average, exploitation now starts before a patch exists (Mandiant M-Trends 2026). In 1H 2026, 23% of vulnerabilities VulnCheck added to its exploited list were hit on or before disclosure day.\n  AI pentesting vendors aren't interchangeable. Most look convincing in a demo. The gaps show up in your logged-in flows, your coverage, and your production safety.\n  Make",
+      "url": "https://thehackernews.com/2026/11/ai-pentesting-checklist-for-web-apps-15.html",
       "ai_score": 1,
-      "cdc_pre_score": 1,
+      "cdc_pre_score": 0,
       "vulnerability_focus": true,
       "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理",
-        "企業インシデント",
-        "診断技術・評価"
-      ],
-      "engineering_topics": [
-        "診断性能の評価",
-        "評価基盤・データセット"
-      ],
-      "business_score": 17,
-      "source_region": "global",
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-11-17T14:00:00+09:00",
-      "title_ja": "ENTRAP：再現可能なセキュリティ評価とデータセット生成のためのIaCエンタープライズサイバーレンジ",
-      "summary_ja": "境界防御突破後のラテラルムーブメントやバックアップ暗号化といったポストコンプロマイズ段階の研究や実験は手動構築の困難さから検証が難しい課題があった。これに対し、AnsibleやKVM等を用いて完全なセグメント化された企業ネットワークをバージョン管理された自動化として定義するIaCサイバーレンジ「ENTRAP」が開発された。RaaS型ランサムウェア、DHCP飢餓・不正DHCP攻撃、境界Web探索の3つの攻撃を実行し、収集されたデータセットを用いたランサムウェア検出の評価結果が示されている。本研究のコードベースやログ、データセットは公開されている。",
-      "insight": "ポストコンプロマイズ段階の自動検証環境構築において、IaCによる再現性確保はペネトレーションテストやシミュレーションの効率化に資する。実環境に近いペネトレーションテストシナリオの自動リセットやデータセット生成は、防御側の検知ロジック検証や機械学習モデルの訓練において有効な基盤となる。自社の類似ネットワーク環境における攻撃パス検証や、検知ツールの実効性評価への応用が期待される。",
-      "importance": "中",
-      "importance_reason": "再現可能なサイバーレンジの構築とデータセット公開により、防御手法の検証やペネトレーションテスト手法の発展に寄与するため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "ペネトレーションテスト",
-        "研究・論文"
-      ],
-      "affected_layers": [
-        "ネットワーク",
-        "クラウド/サーバー",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "ENTRAP",
-        "サイバーレンジ",
-        "IaC",
-        "Ansible",
-        "ランサムウェア"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "MDR/MSSP設計",
-        "AI for Security"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "不明",
-        "exploitation": "PoC公開のみ",
-        "urgency": "情報収集",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "不明"
-        ],
-        "products": [
-          "Ansible",
-          "KVM/Libvirt",
-          "Cloud-init"
-        ],
-        "evidence": "We develop Enterprise Network Testbed for Reproducible Attack and Defense Practices (ENTRAP), an Infrastructure-as-Code (IaC) cyber range..."
-      },
-      "attack": {
-        "initial_access": "境界Web探索",
-        "observed_impact": "ラテラルムーブメント、サービス乗っ取り、バックアップの暗号化",
-        "japan_observation": "不明",
-        "assessment_preconditions": "ENTRAP環境の構築",
-        "test_scenario": "RaaS型ランサムウェア、DHCP飢餓・不正DHCP攻撃、境界Web探索の実行",
-        "human_validation": "不明",
-        "service_implication": "ポストコンプロマイズ段階の攻撃に対する防御策や検知ルールの有効性検証に利用可能",
-        "source_evidence": "We launch three attacks: a Ransomware-as-a-Service (RaaS)-backed ransomware campaign, a Layer-2 DHCP starvation and rogue DHCP attack, and perimeter web exploitation.",
-        "evidence_status": "研究報告のみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "外部公開資産",
-          "インフラ・ネットワーク"
-        ],
-        "attack_methods": [
-          "ランサムウェア",
-          "DHCP飢餓・不正DHCP",
-          "境界Web探索"
-        ],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "b22615eae200",
-      "title": "Use of Peer Code Review to Identify Potential Security Vulnerabilities in Open Source Software: A Systematic Literature Review",
-      "summary": "arXiv:2611.18568v1 Announce Type: new \nAbstract: Context: Security vulnerabilities in OSS can have severe consequences. OSS project participants widely use peer code review to improve quality and prevent security flaws. However, despite mandatory reviews, OSS projects still contain vulnerabilities, highlighting the need to evaluate code review effectiveness for security. Objectives: This SLR synthesizes evidence on vulnerability types identified or missed, security practices, tool support, reviewer challenges, and factors that improve detection. Method: Searches of five digital libraries yielded 1,067 studies, of which 20 were included. Vulnerabilities were categorized using the Common Weakness Enumeration (CWE) framework. Results: Peer code reviews effectively detect localized, well-known vulnerabilities (e.g., buffer overruns, race conditions, crashes, XSS) but often miss subtle, complex, context-dependent issues (e.g., input validation weaknesses, access control weaknesses, resource lifecycle weaknesses). Effective security practices are associated with reviewer expertise, code familiarity, frequent small changes, and organizational support. Security analysis tools, especially Static Application Security Testing (SAST) tools, reduce reviewer effort and improve detection but cannot replace human judgment. Reviewers continue to face limitations in security knowledge, experience, time, and understanding of complex systems. Effectiveness improves through security training, domain expertise, contextual familiarity, formalized review processes, and supportive review environments. Conclusion: Peer code review contributes to OSS security but is insufficient on its own. Improving effectiveness requires structured review processes and checklists, security training, organizational incentives, and lightweight automated tool support to help reviewers detect subtle vulnerabilities while reinforcing secure development practices.",
-      "url": "https://arxiv.org/abs/2611.18568",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "vulnerability_focus": true,
-      "operations_focus": true,
       "business_topics": [
         "脆弱性管理",
         "診断サービス",
@@ -114,14 +21,98 @@
       ],
       "business_score": 14,
       "source_region": "global",
-      "source_name": "arXiv cs.SE",
-      "source_tier": "C",
-      "published": "2026-11-17T14:00:00+09:00",
-      "title_ja": "オープンソースソフトウェアにおけるピアコードレビューのセキュリティ脆弱性特定効果に関する体系的文献レビュー",
-      "summary_ja": "OSSプロジェクトにおけるピアコードレビューは品質向上や脆弱性防止に広く利用されているが、義務付けられているにもかかわらず脆弱性が残存している現状がある。本研究では5つのデジタルライブラリから1,067件の研究を抽出し、20件を対象にレビューの効果や限界、改善要因を分析した。結果として、ピアコードレビューはバッファオーバーランやXSSなどの局所的で既知の脆弱性検出に有効である一方、入力値検証やアクセス制御などの文脈依存の複雑な問題を見落としがちであることが示された。効果を高めるにはレビューアの専門知識、構造化されたプロセス、チェックリスト、およびSAST等の軽量な自動ツールの補助が必要であると結論付けている。",
-      "insight": "コードレビュー単体では複雑な脆弱性の検出に限界があり、SASTツールやセキュリティトレーニング、構造化されたプロセスの組み合わせが不可欠である。静的解析ツール導入やレビュープロセスの改善において、人間が見落としやすい文脈依存の脆弱性を補完する仕組みを設計する際の重要な知見となる。セキュアコーディング支援や開発者教育の投資対効果を評価する根拠としても活用できる。",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-18T21:15:00+09:00",
+      "title_ja": "Webアプリ向けAIペネトレーションテスト選定のための15のチェックリスト",
+      "summary_ja": "Mandiant M-Trends 2026のデータに基づき、脆弱性の多くがパッチ公開前や同日に悪用される現状を解説し、AIペネトレーションテストベンダーを選定する際の注意点をまとめています。多くのベンダーはデモでは優れて見えるものの、実際のログインフローやカバー範囲、本番環境での安全性にギャップが生じると指摘しています。セキュリティ担当者がベンダー評価時に確認すべき15の視点を提供しています。",
+      "insight": "AIを活用したペネトレーションテストや自動診断ツールの導入において、デモの性能だけでなく認証後の複雑なフローや実運用の安全性を検証することが重要です。診断サービスやツールを選定する際は、単なる網羅性だけでなく、自社のアプリケーション構造に対する適合性や誤検知・安全性への配慮を評価基準に組み込むべきです。SOCおよび診断部門では、自動化ツールの限界と人間の検証範囲をどのように切り分けるかが問われます。",
       "importance": "中",
-      "importance_reason": "OSSおよび一般的なソフトウェア開発におけるコードレビューの限界と、ツール補助による改善策を体系的に示しているため。",
+      "importance_reason": "AIペネトレーションテストツールの評価軸を提示しており、企業のツール選定や診断サービス利用に直結する重要な情報であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "ペネトレーションテスト",
+        "ブラックボックス診断",
+        "優先順位付け"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AI Pentesting",
+        "Mandiant M-Trends 2026",
+        "Web Apps",
+        "Vendor Selection"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "Mandiant M-Trends 2026: On average, exploitation now starts before a patch exists"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Mandiant M-Trends 2026 statistics on exploitation timing",
+        "evidence_status": "複数機関が観測",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "fda37550d40b",
+      "title": "On Improving the Adoption, Usability, and Retention of Static Application Security Testing (SAST) Tools",
+      "summary": "arXiv:2611.21621v1 Announce Type: cross \nAbstract: As the Internet connects more of the world, software vulnerabilities create growing security risks. Because software developers are responsible for building and maintaining secure applications, they rely on tools and techniques that help identify vulnerabilities early in development. Static Application Security Testing (SAST) tools analyze source code to identify potential security weaknesses before software is deployed. Although SAST can help developers address vulnerabilities proactively, these tools also present usability and adoption challenges. This thesis examines those challenges and explores ways to improve the adoption, usability, and continued use of SAST. First, a literature review of 89 research works related to SAST implementation and continued usage identifies recurring developer concerns, including false positives and other usability barriers that can reduce trust in SAST results. Second, the thesis presents a process for automating the execution of SAST tools and formatting their output so that findings are more meaningful and actionable to developers. A real-world use case evaluates an implementation of this process and gathers developer feedback. Participants reported satisfaction with several aspects of the process and indicated that it increased their willingness to use the SAST tool.",
+      "url": "https://arxiv.org/abs/2611.21621",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断サービス",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価"
+      ],
+      "business_score": 14,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-18T14:00:00+09:00",
+      "title_ja": "静的アプリケーションセキュリティテスト（SAST）ツールの導入・有用性・継続利用の改善に関する研究",
+      "summary_ja": "ソフトウェアの脆弱性を早期に発見するためSASTツールが活用されていますが、誤検知や使い勝手の悪さが開発者の信頼低下や導入の障壁となっています。本論文では89件の関連研究の文献レビューを実施し、開発者の懸念事項を特定しました。さらに、SASTツールの実行自動化と出力フォーマットの改善プロセスを提案し、実際のユースケースを通じて開発者のツール利用意欲が向上することを確認しています。",
+      "insight": "SASTの導入や運用において、誤検知の多さや出力の分かりにくさが開発者のモチベーションや定着率を大きく左右します。静的診断ツールを導入・運用する際は、単にツールを導入するだけでなく、開発者が理解しやすい形式への出力整形や自動化プロセスの組込が不可欠です。診断ベンダーやセキュリティ担当者は、開発チームと協調したフィードバックループの構築を検討すべきです。",
+      "importance": "中",
+      "importance_reason": "SASTの導入障壁と実用的な改善プロセスを示しており、セキュア開発体制の構築に直結する知見であるため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
@@ -134,11 +125,10 @@
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "ピアコードレビュー",
-        "OSS",
         "SAST",
-        "CWE",
-        "脆弱性検出"
+        "Software Vulnerabilities",
+        "Usability",
+        "False Positives"
       ],
       "cdc_relevance": 1,
       "cdc_context": [
@@ -146,50 +136,135 @@
       ],
       "views": 0,
       "business": {
-        "japan_relevance": "不明",
-        "exploitation": "不明",
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
         "urgency": "情報収集",
         "lifecycle": [
-          "修正・緩和"
-        ],
-        "assessments": [
           "不明"
         ],
-        "products": [
-          "SASTツール"
+        "assessments": [
+          "SAST"
         ],
-        "evidence": "Searches of five digital libraries yielded 1,067 studies, of which 20 were included."
+        "products": [
+          "不明"
+        ],
+        "evidence": "arXiv:2611.21621v1: A literature review of 89 research works related to SAST implementation and continued usage identifies recurring developer concerns"
       },
       "attack": {
         "initial_access": "不明",
-        "observed_impact": "バッファオーバーラン、競合状態、クラッシュ、XSS等の脆弱性の混入",
+        "observed_impact": "不明",
         "japan_observation": "不明",
         "assessment_preconditions": "不明",
         "test_scenario": "不明",
-        "human_validation": "レビュアーの専門知識、コード習熟度、組織的支援に依存",
-        "service_implication": "コードレビュープロセスとSASTツールの併用による脆弱性見落としの削減",
-        "source_evidence": "Peer code reviews effectively detect localized, well-known vulnerabilities... but often miss subtle, complex, context-dependent issues...",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "arXiv research on SAST usability and false positives",
         "evidence_status": "研究報告のみ",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
           "ソースコード・ソフトウェア供給網"
         ],
         "attack_methods": [],
-        "weaknesses": [
-          "バッファオーバーラン",
-          "競合状態",
-          "XSS"
-        ],
+        "weaknesses": [],
         "cve_ids": []
       }
     },
     {
-      "id": "43e53add35f8",
-      "title": "TaintRadar: Semantic-Aware Taint-Style Vulnerability Detection via Augmented Code Property Graphs",
-      "summary": "arXiv:2607.16456v2 Announce Type: replace \nAbstract: Despite significant advances, static vulnerability analysis suffers from three critical limitations: coarse sanitization modeling (treating validation as a binary barrier), database blindness (breaking taint tracking across persistence layers), and shallow object-oriented analysis (missing field-level and interprocedural data flows). These flaws stem from a common root cause: Code Property Graph (CPG)-based taint analyses lack a compositional semantic layer to jointly model sanitization, persistence, and object aliasing. Consequently, existing tools generate excessive false positives or miss critical attack paths entirely. To address these limitations, we present TaintRadar, an approach that systematically augments CPGs with three independent semantic analysis layers. First, vulnerability-typed sanitization computes node-level safety guarantees using transfer functions and context-sensitive parameter binding. Second, persistence-aware propagation integrates database schema constraints and query safety analysis to track multi-script attack paths traversing shared database states. Finally, object-aware reaching definitions combine calling and bounded variable alias contexts to precisely model object-field mutations across method boundaries. We evaluate TaintRadar on synthetic benchmarks and real-world systems. On the SARD benchmark, TaintRadar reduces false positives while maintaining 83 percent overall accuracy. Across 19 real-world PHP applications, it rediscovered most known CVEs and uncovered 30 confirmed zero-day vulnerabilities: 27 SQL injection and 3 stored XSS vulnerabilities. These vulnerabilities have been assigned CVE identifiers. Our results show that semantic-aware graph augmentation improves the precision, coverage, and practical utility of static taint analysis.",
-      "url": "https://arxiv.org/abs/2607.16456",
-      "ai_score": 1,
+      "id": "b688010c347f",
+      "title": "Threat Landscape of Vibe Coding and the Road to Secure Autonomy",
+      "summary": "arXiv:2611.21822v1 Announce Type: new \nAbstract: Vibe coding is reshaping software development, enabling faster implementation and allowing individuals with limited programming experience to describe requirements in natural language while AI agents write, test, and deploy the code. As these agents evolve into autonomous systems that execute commands, manage dependencies, access cloud resources, and interact with other agents, their security risks extend beyond incorrect code to actions with direct consequences for software systems. Although research on these risks is expanding, it remains fragmented across areas including prompt injection, insecure code generation, supply-chain attacks, and human factors, with limited consensus on terminology, threat assumptions, and evaluation. This paper consolidates emerging research through the lens of the vibe coding workflow. We establish a reference architecture, characterise six levels of agent autonomy, and develop a threat model centred on five trust boundaries spanning developers, AI models, tools, cloud infrastructure, and the wider software ecosystem. Building on this foundation, we propose a taxonomy of twenty-one threats across nine classes. For each threat, we review the available evidence, assess proposed defences, and identify limitations. Our analysis highlights that risks increase with agents' operational authority, while most defences rely on model judgement and address isolated threats. Finally, we identify eleven research challenges, including enforceable limits on agent authority and shared benchmarks and methodologies for assessing vibe coding security.",
+      "url": "https://arxiv.org/abs/2611.21822",
+      "ai_score": 2,
       "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "生成コードの安全性評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 12,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-18T14:00:00+09:00",
+      "title_ja": "バイブコーディングの脅威ランドスケープと安全な自律性へのロードマップ",
+      "summary_ja": "自然言語による指示でAIエージェントがコード記述・テスト・デプロイを行う「バイブコーディング」がソフトウェア開発を変化させています。エージェントが自律的にコマンド実行やクラウド資源へのアクセスを行うようになるにつれて、セキュリティリスクは不適切なコード生成にとどまらず、システムに対する直接的な行動へと拡大しています。本論文では、ワークフローを中心とした参照アーキテクチャの確立、6段階のエージェント自律性の定義、5つの信頼境界に基づく脅威モデルを構築し、21の脅威に対する防御策と限界を整理しています。",
+      "insight": "AIエージェントの自律性が高まるにつれて、従来のコードの脆弱性だけでなく、エージェントの権限濫用やツール経由でのシステム破壊といった新たなリスクへの対策が必要です。自社でAIコーディング支援や自律型エージェントを導入する際には、エージェントに与える権限の制限や、モデルの判断だけに依存しない多層的な防御アーキテクチャの設計が求められます。ガバナンスとセキュリティの境界をどのように定義すべきか、早期の検討が不可欠です。",
+      "importance": "高",
+      "importance_reason": "AIエージェントの自律化に伴うセキュリティリスクと脅威モデルを包括的に分析しており、次世代のAIセキュリティ戦略に大きな示唆を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "権限・認可",
+        "ツール悪用"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Vibe Coding",
+        "AI Agents",
+        "Threat Model",
+        "Autonomy",
+        "Prompt Injection"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "arXiv:2611.21822v1: Vibe coding is reshaping software development... enabling AI agents write, test, and deploy the code."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "arXiv research on vibe coding threat landscape and agent autonomy risks",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "データ・AI・AIエージェント"
+        ],
+        "attack_methods": [
+          "プロンプトインジェクション",
+          "ツール悪用"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "7b268b31610a",
+      "title": "Adaptive Budget Allocation for Smart-Contract Fuzzing: Why Online Feedback Fails to Improve Vulnerability Triage",
+      "summary": "arXiv:2611.22430v1 Announce Type: new \nAbstract: Smart-contract fuzzing campaigns share a finite budget and vary widely in the execution cost of a first correct-class vulnerability report. Using trace replay on 143 annotated and 350 bug-injected contracts, we test whether online feedback improves triage. At a mean budget of 100 executions per contract, uniform allocation reaches 72% and 70% of the respective clairvoyant optima. All eight online policies trail uniform on aggregate triage, as do the seven repeated on the bug-injected corpus. Five online signals yield ranking AUCs of 0.32-0.51 for imminent reports. Synthetic-oracle experiments show that sufficiently accurate detection-cost estimates recover more of the gap than detectability rankings. This motivates an offline probability-curve allocator that predicts first-report probabilities across budgets and allocates by predicted gain per execution. In a frozen evaluation on four fresh seeds per corpus, detection-budget AUC improves over uniform by 5.38% and 4.81% on the two source corpora and by 1.99-6.54% on three additional public benchmark subsets.",
+      "url": "https://arxiv.org/abs/2611.22430",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
       "vulnerability_focus": true,
       "operations_focus": false,
       "business_topics": [
@@ -202,107 +277,16 @@
       ],
       "business_score": 12,
       "source_region": "global",
-      "source_name": "arXiv cs.CR",
-      "source_tier": "C",
-      "published": "2026-11-17T14:00:00+09:00",
-      "title_ja": "TaintRadar：拡張コードプロパティグラフを用いた意味論認識型汚染追跡脆弱性検出",
-      "summary_ja": "既存の静的脆弱性解析は、粗いサニタイズモデリング、データベースの盲点、浅いオブジェクト指向分析という3つの制限を抱えており、過剰な誤検知や攻撃パスの見落としを引き起こしている。これに対処するため、コードプロパティグラフ（CPG）にサニタイズ、永続化、オブジェクトエイリアシングの3つの意味論的解析レイヤーを統合した「TaintRadar」が提案された。SARDベンチマークにおける評価では83%の全体精度を維持しつつ誤検知を削減し、19の実世界PHPアプリケーションにおいて既存の既知CVEの再発見に加え、30件の確認されたゼロデイ脆弱性を発見しCVEが付与された。意味論的グラフ拡張が静的汚染解析の精度と実用性を向上させることが示されている。",
-      "insight": "静的解析ツールの精度向上において、データベースの永続化層やオブジェクト間のデータフロー、サニタイズ処理の意味論的モデル化は誤検知削減と検出網羅性の両立に極めて有効である。ソースコード診断ツールの選定や評価において、単なるパターンマッチングを超えたデータフロー追跡能力を持つツールの導入が、脆弱性診断の効率化に直結することを示唆している。",
-      "importance": "高",
-      "importance_reason": "静的解析の主要な弱点を克服する新しいアプローチにより、実世界のゼロデイ脆弱性を多数発見しているため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "SAST",
-        "ソースコード診断",
-        "ゼロデイ"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "TaintRadar",
-        "CPG",
-        "静的解析",
-        "SQLインジェクション",
-        "XSS"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "AI for Security"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "不明",
-        "exploitation": "悪用確認あり",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "不明"
-        ],
-        "products": [
-          "PHPアプリケーション"
-        ],
-        "evidence": "Across 19 real-world PHP applications, it rediscovered most known CVEs and uncovered 30 confirmed zero-day vulnerabilities: 27 SQL injection and 3 stored XSS vulnerabilities."
-      },
-      "attack": {
-        "initial_access": "Webアプリケーション経由の入力",
-        "observed_impact": "SQLインジェクションおよび格納型XSSによる脆弱性の存在",
-        "japan_observation": "不明",
-        "assessment_preconditions": "ソースコードへのアクセスとTaintRadarによる解析実行",
-        "test_scenario": "SARDベンチマークおよび19の実世界PHPアプリケーションに対する静的解析",
-        "human_validation": "30件のゼロデイ脆弱性の確認とCVE割り当て",
-        "service_implication": "静的解析における意味論的アプローチ導入による、誤検知削減と隠れた脆弱性の早期発見",
-        "source_evidence": "Across 19 real-world PHP applications, it rediscovered most known CVEs and uncovered 30 confirmed zero-day vulnerabilities: 27 SQL injection and 3 stored XSS vulnerabilities.",
-        "evidence_status": "悪用確認",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "ソースコード・ソフトウェア供給網",
-          "Web・API"
-        ],
-        "attack_methods": [
-          "SQLインジェクション",
-          "格納型XSS"
-        ],
-        "weaknesses": [
-          "インジェクション",
-          "不適切なサニタイズ"
-        ],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "eab516d4b1c4",
-      "title": "Revisiting Re-executability: Coverage-Guided Symbolic Feedback to Improve Decompilation",
-      "summary": "arXiv:2611.18892v1 Announce Type: new \nAbstract: When source code is unavailable, decompilation provides a source-level representation of a binary. However, code recovered by conventional or LLM-assisted decompilation may not preserve the original behavior of the binary. Recent approaches evaluate re-executability using fixed test suites, but passing these suites does not ensure behavioral preservation. We present SymDec, an LLM-assisted decompiled-code repair system that uses the original binary as a behavioral reference. SymDec uses coverage-guided symbolic execution to explore the I/O-level behavior of the original and recompiled binaries, and symbolic comparison to identify inputs that expose behavioral differences. These inputs are replayed on both binaries to confirm the differences, which are returned as structured feedback to guide subsequent LLM revisions. We evaluate SymDec on 120 functions from ExeBench and DecompileBench, compiled for x86-64 and ARM64 at optimization levels O0-O3, yielding 960 binary decompilation tasks. More than half of the tasks yield candidates that pass the supplied test suite and complete symbolic comparison without detected behavioral differences. Among candidates that pass all supplied tests, symbolic comparison exposes replay-confirmed behavioral differences in 4.5% of cases, showing that test-suite re-executability can miss behavioral discrepancies. Under the same input-generation budget, symbolic execution achieves higher mean line and branch coverage than black-box fuzzing. Symbolic feedback also improves the conventional metric, increasing the mean single-step test-pass rate from 90.1% to 93.3%. These results show that symbolic comparison provides stronger evidence of behavioral consistency than test-suite re-executability alone and supplies effective feedback for repairing decompiled code.",
-      "url": "https://arxiv.org/abs/2611.18892",
-      "ai_score": 2,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": true,
-      "operations_focus": false,
-      "business_topics": [
-        "診断サービス",
-        "診断技術・評価"
-      ],
-      "engineering_topics": [
-        "診断性能の評価"
-      ],
-      "business_score": 11,
-      "source_region": "global",
       "source_name": "arXiv cs.SE",
       "source_tier": "C",
-      "published": "2026-11-17T14:00:00+09:00",
-      "title_ja": "バイナリ逆コンパイルの正確性を高めるLLM支援のシンボリックフィードバックシステム「SymDec」",
-      "summary_ja": "ソースコードが利用できない場合にバイナリからコードを復元する逆コンパイルにおいて、従来のテストスイートだけでは元の挙動の維持を保証できない課題がある。SymDecは元のバイナリを挙動の参照元とし、カバレッジ誘導型シンボリック実行とシンボリック比較を用いて挙動の差異を検出する。検出された差異を構造化フィードバックとしてLLMの修正にフィードバックすることで、テストスイート通過後も残る4.5%の挙動不一致を検出し、コード修復の品質を向上させることが示された。",
-      "insight": "バイナリ解析やリバースエンジニアリングにおけるコード復元やLLMを活用したコード修復の信頼性評価に有用な知見である。脆弱性診断やセキュリティ研究において、自動生成されたコードや修正案の検証において単なるテスト通過だけでなくシンボリック実行等の厳密な挙動比較を取り入れるアプローチの有効性を示唆している。",
+      "published": "2026-11-18T14:00:00+09:00",
+      "title_ja": "スマートコントラクトファジングにおける適応型予算配分の評価",
+      "summary_ja": "スマートコントラクトのファジングキャンペーンにおける限られた実行予算の効率的配分について、143の注釈付きコントラクトと350のバグ注入コントラクトを用いてオンラインフィードバックの有効性を検証した。その結果、一律配分（ユニフォームアロケーション）が既存のオンラインポリシーの多くを上回る成果を示した。これを受け、予算全体での初回レポート確率を予測して効率的な利得を得るオフライン確率曲線の配分手法が提案され、複数のベンチマークで改善が確認された。",
+      "insight": "脆弱性診断やファジングツールにおいて、動的なフィードバックに基づく最適化よりも予測モデルに基づく静的・オフライン的な配分手法が効果を発揮する場合があることを示している。診断コストと検出精度のトレードオフを検討する際の実装上の示唆となる。自社の自動診断ツールのリソース配分設計において、オンラインでの適応制御の限界と事前予測モデルの有効性を再検証すべきである。",
       "importance": "中",
-      "importance_reason": "LLM支援のコード復元・修復における品質評価と自動化の先進的な研究であり、ソフトウェア解析技術の発展に寄与するため。",
-      "tag_main_id": "biz_tech",
-      "tag_main_label": "ビジネス・技術動向",
+      "importance_reason": "ファジングや自動脆弱性検出におけるリソース効率化の新しいアプローチを提示しているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
       "tag_subs": [
         "研究・論文",
         "ソースコード診断"
@@ -312,20 +296,19 @@
         "データ/AI"
       ],
       "related_keywords": [
-        "SymDec",
-        "逆コンパイル",
-        "LLM",
-        "シンボリック実行",
-        "ExeBench"
+        "スマートコントラクト",
+        "ファジング",
+        "脆弱性トリアージ",
+        "予算配分"
       ],
       "cdc_relevance": 1,
       "cdc_context": [
-        "AI for Security"
+        "サービス企画"
       ],
       "views": 0,
       "business": {
         "japan_relevance": "不明",
-        "exploitation": "不明",
+        "exploitation": "悪用未確認と明記",
         "urgency": "情報収集",
         "lifecycle": [
           "不明"
@@ -334,11 +317,9 @@
           "不明"
         ],
         "products": [
-          "SymDec",
-          "ExeBench",
-          "DecompileBench"
+          "Smart-contract fuzzing tools"
         ],
-        "evidence": "We present SymDec, an LLM-assisted decompiled-code repair system that uses the original binary as a behavioral reference."
+        "evidence": "Using trace replay on 143 annotated and 350 bug-injected contracts, we test whether online feedback improves triage."
       },
       "attack": {
         "initial_access": "不明",
@@ -348,26 +329,28 @@
         "test_scenario": "不明",
         "human_validation": "不明",
         "service_implication": "不明",
-        "source_evidence": "研究論文に関する内容であり攻撃やインシデントを扱っていないため",
-        "evidence_status": "不明",
+        "source_evidence": "Smart-contract fuzzing campaigns evaluation on annotated and bug-injected contracts.",
+        "evidence_status": "研究報告のみ",
         "blackbox_testability": "判断材料不足",
-        "target_layers": [],
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
         "attack_methods": [],
         "weaknesses": [],
         "cve_ids": []
       }
     },
     {
-      "id": "a6ac1d49aec5",
-      "title": "Using machine learning approaches to classify false-positives generated by static analysis tools - An empirical study using small datasets",
-      "summary": "arXiv:2611.19079v1 Announce Type: new \nAbstract: Static Code Analysis (SCA) tools are vital for software development to reduce the cost and time required for manual code reviews. It was established in our previous study that the best tools reported in the software engineering community return high false-positive and false-negative rates when used for code analysis. Several approaches have been taken in existing studies to identify false-positive alarms generated by SCA tools, in helping to enhance the utility of these tools. However, existing studies reveal several limitations, chiefly among which is the tendency to focus on a limited number of alarm types or failing to evaluate a large breadth of Machine-Learning (ML) techniques comprehensively. This study has addressed this opportunity. We identified the best Code Representation Learning (CRL) techniques and ML algorithms for identifying false-positives, where results show that performance outcomes vary based on the characteristics of the training datasets and the goal of the model building. Given the evidence established in this study, we recommend further investigations targeting specific configurations of advanced CRLs and ML Algorithms, including simple ML models.",
-      "url": "https://arxiv.org/abs/2611.19079",
-      "ai_score": 2,
+      "id": "4707ed01a553",
+      "title": "X-LocVul: An Evidence-Propagation Audit of Cascaded C/C++ Vulnerability Detection, Localization, and Explanation",
+      "summary": "arXiv:2611.21626v1 Announce Type: new \nAbstract: Developer-facing vulnerability analysis should link a function-level warning to a source location and a supported explanation. Cascaded systems can propagate weak evidence despite plausible components. We present X-LocVul, a measurement-first audit of a modular C/C++ detector-localizer-explainer pipeline combining UniXCoder, CodeT5, and Qwen2.5-Coder. We test whether evidence passed across stages is useful, merely source-resident, or misleading.\n  Under duplication and temporal-leakage controls, UniXCoder has higher point estimates than CodeBERT, but true-CWE supervision is statistically indistinguishable from a shuffled-CWE control on PR-AUC, MCC, and vulnerable-class F1. Raw generated statements fail exact source matching in 90.83% of cases. Fuzzy projection reaches 83.79% Top-1 accuracy and exceeds semantic projection by 1.59 percentage points, although its advantage over raw ranking is not established. In a randomized, condition-label-masked two-rater evaluation of 50 paired cases, a predicted line improves evidence support, whereas a predicted CWE improves no endpoint. Oracle evidence improves evidence support (Holm-adjusted p=0.00453) and CWE consistency (p=3.49 x 10^-7), but not root-cause quality after correction (p=0.250); unsupported claims remain common. A chronological stress test retains ranking signal (ROC-AUC 0.782; PR-AUC 0.110), while the transferred threshold yields zero recall and F1.\n  The contribution is not a state-of-the-art claim, but an auditable account of evidence construction, transfer, and consumption. It separates source residency from localization correctness, auxiliary labels from semantic supervision, and predicted evidence from useful evidence. Public E4 scores regenerate all 15 tests; missing manifests, final prompts, and profiler logs bound stronger reproducibility claims.",
+      "url": "https://arxiv.org/abs/2611.21626",
+      "ai_score": 1,
       "cdc_pre_score": 0,
-      "vulnerability_focus": false,
+      "vulnerability_focus": true,
       "operations_focus": false,
       "business_topics": [
-        "診断サービス",
+        "脆弱性管理",
         "診断技術・評価"
       ],
       "engineering_topics": [
@@ -377,38 +360,40 @@
       "source_region": "global",
       "source_name": "arXiv cs.SE",
       "source_tier": "C",
-      "published": "2026-11-17T14:00:00+09:00",
-      "title_ja": "静的コード解析ツールの誤検知分類に向けた機械学習アプローチの小規模データセットによる実証研究",
-      "summary_ja": "静的コード解析（SCA）ツールは開発コストや時間を削減するために不可欠であるが、従来の研究では高い誤検知・見逃し率が報告されている。本研究では、誤検知アラートを特定するための最適なコード表現学習（CRL）技術と機械学習アルゴリズムを特定した。その結果、パフォーマンスの成果はトレーニングデータセットの特性やモデル構築の目的に応じて異なることが示され、特定の設定に基づいたさらなる調査が推奨されている。",
-      "insight": "静的コード解析（SAST）やSCAの運用において、ツールが発報する大量の誤検知を効率的に削減・トリアージするための機械学習活用の可能性と限界を示す研究である。脆弱性管理における優先順位付けやノイズ低減の仕組みを構築する際、学習データの特性が結果に与える影響を考慮する必要性を示唆している。",
+      "published": "2026-11-18T14:00:00+09:00",
+      "title_ja": "C/C++脆弱性検出・ローカライズ・説明生成パイプラインの監査",
+      "summary_ja": "モジュール型のC/C++脆弱性検出・ローカライズ・説明生成パイプライン（UniXCoder、CodeT5、Qwen2.5-Coderを組み合わせた構成）における証拠の伝播と品質を測定ベースで監査した。重複や時間的漏洩の制御下で評価を行った結果、CWEの教師あり学習はシャッフルされたCWEコントロールと統計的に区別がつかないことや、生成された文が正確なソースマッチに失敗するケースが多いことが示された。一方で、予測された行は証拠のサポートを改善するが、CWEの予測はエンドポイントを改善しないなどの知見が得られた。",
+      "insight": "AIを活用した脆弱性検出やコード解析ツールにおいて、出力される説明や分類ラベルの妥当性を厳しく検証する必要性を示している。単にAIモデルが出力したCWEや解説をうのみにせず、実際のソースコード上の位置情報や証拠の品質を評価に組み込むべきである。自動修正やSASTツールの評価において、誤った証拠の伝播を防ぐための検証プロセスの設計が重要となる。",
       "importance": "中",
-      "importance_reason": "静的解析ツールの精度向上や誤検知削減という実務上の大きな課題に対して、機械学習活用の実態と限界を提示しているため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
+      "importance_reason": "LLMやAIを用いた脆弱性検出パイプラインの限界と証拠品質の評価手法を提示しているため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
       "tag_subs": [
-        "SAST",
-        "優先順位付け",
-        "研究・論文"
+        "LLMセキュリティ",
+        "研究・論文",
+        "SAST"
       ],
       "affected_layers": [
         "アプリ/API",
+        "データ/AI",
         "ガバナンス/規制"
       ],
       "related_keywords": [
-        "Static Code Analysis",
-        "機械学習",
-        "誤検知",
-        "コード表現学習"
+        "C/C++",
+        "脆弱性検出",
+        "LLM",
+        "UniXCoder",
+        "CodeT5"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
-        "Exposure管理",
-        "AI for Security"
+        "AI for Security",
+        "サービス企画"
       ],
       "views": 0,
       "business": {
         "japan_relevance": "不明",
-        "exploitation": "不明",
+        "exploitation": "悪用未確認と明記",
         "urgency": "情報収集",
         "lifecycle": [
           "不明"
@@ -417,9 +402,11 @@
           "不明"
         ],
         "products": [
-          "Static Code Analysis tools"
+          "UniXCoder",
+          "CodeT5",
+          "Qwen2.5-Coder"
         ],
-        "evidence": "Static Code Analysis (SCA) tools are vital for software development to reduce the cost and time required for manual code reviews."
+        "evidence": "We present X-LocVul, a measurement-first audit of a modular C/C++ detector-localizer-explainer pipeline combining UniXCoder, CodeT5, and Qwen2.5-Coder."
       },
       "attack": {
         "initial_access": "不明",
@@ -429,110 +416,22 @@
         "test_scenario": "不明",
         "human_validation": "不明",
         "service_implication": "不明",
-        "source_evidence": "静的解析ツールの誤検知分類に関する研究であり攻撃やインシデントを扱っていないため",
-        "evidence_status": "不明",
+        "source_evidence": "Measurement-first audit of a modular C/C++ vulnerability detection pipeline.",
+        "evidence_status": "研究報告のみ",
         "blackbox_testability": "判断材料不足",
-        "target_layers": [],
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
         "attack_methods": [],
         "weaknesses": [],
         "cve_ids": []
       }
     },
     {
-      "id": "5c805db83db6",
-      "title": "Siemens Mendix Studio Pro",
-      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-05.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Mendix Studio Pro contains multiple vulnerabilities in the MCP Server, that could allow an attacker with network access to interact with the server remotely or trick a user's browser into sending unauthorized requests, potentially leading to unauthorized data access, tool execution, or system compromise. Siemens has released new ver",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-05",
-      "ai_score": 3,
-      "cdc_pre_score": 1,
-      "vulnerability_focus": true,
-      "operations_focus": true,
-      "business_topics": [
-        "脆弱性管理",
-        "AIエージェント",
-        "企業インシデント"
-      ],
-      "engineering_topics": [],
-      "business_score": 10,
-      "source_region": "global",
-      "source_name": "CISA",
-      "source_tier": "A",
-      "published": "2026-11-17T21:00:00+09:00",
-      "title_ja": "Siemens Mendix Studio ProのMCPサーバーにおける複数脆弱性",
-      "summary_ja": "Siemens Mendix Studio ProのMCPサーバーに複数の脆弱性が含まれていることがCISAよりアドバイザリとして公開された。ネットワークアクセスを持つ攻撃者がサーバーとリモートで対話したり、ユーザーのブラウザをだまして不正なリクエストを送信させたりすることが可能となる。これにより、不正なデータアクセス、ツール実行、システム侵害につながるおそれがあり、Siemensから新しいバージョンがリリースされている。",
-      "insight": "AIエージェント等の連携に利用されるMCP（Model Context Protocol）やそれに類似したサーバーコンポーネントにおけるセキュリティリスクの実例である。ツール実行やデータアクセス権限を持つサーバー群に対するネットワークからのアクセス制御や入力検証、適切な認可管理の重要性を示唆している。",
-      "importance": "高",
-      "importance_reason": "MCPサーバー関連の脆弱性であり、AIエージェントやツール実行機能を持つインフラストラクチャのセキュリティリスクに直結するため。",
-      "tag_main_id": "ai_sec",
-      "tag_main_label": "AI×セキュリティ",
-      "tag_subs": [
-        "MCP",
-        "権限・認可",
-        "ツール悪用"
-      ],
-      "affected_layers": [
-        "アプリ/API",
-        "データ/AI"
-      ],
-      "related_keywords": [
-        "Siemens Mendix Studio Pro",
-        "MCP Server",
-        "CISA",
-        "脆弱性"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "SOC運用変化",
-        "Identity/ITDR",
-        "顧客課題"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "不明",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "不明"
-        ],
-        "products": [
-          "Siemens Mendix Studio Pro"
-        ],
-        "evidence": "Mendix Studio Pro contains multiple vulnerabilities in the MCP Server, that could allow an attacker with network access to interact with the server remotely or trick a user's browser into sending unauthorized requests"
-      },
-      "attack": {
-        "initial_access": "ネットワークアクセス",
-        "observed_impact": "不正なデータアクセス、ツール実行、システム侵害",
-        "japan_observation": "不明",
-        "assessment_preconditions": "ネットワークアクセスを持つこと、ユーザーのブラウザを介したリクエスト送信など",
-        "test_scenario": "ネットワーク経由でMCPサーバーへ直接アクセスまたはブラウザ経由の不正リクエスト送信によるツール実行・データアクセスの検証",
-        "human_validation": "不明",
-        "service_implication": "MCPサーバーを利用する環境において認証・認可バイパスや不正なツール実行によるシステム全体の侵害リスクへの備えが必要",
-        "source_evidence": "CISA ICS Advisory (icsa-26-321-05)によりMCPサーバーの複数脆弱性と不正リクエスト・ツール実行の可能性が指摘されているため",
-        "evidence_status": "不明",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "Web・API",
-          "データ・AI・AIエージェント"
-        ],
-        "attack_methods": [
-          "リモートインタラクション",
-          "不正リクエスト送信"
-        ],
-        "weaknesses": [
-          "認可不備",
-          "入力検証不備"
-        ],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "b8964f32d1dc",
-      "title": "Siemens ROS#",
-      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-06.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>ROS# before version 2.3.1 contains a code injection vulnerability that could allow an attacker that is able to pass a crafted message definition file to the user to inject arbitrary code into the generated program. Siemens has released a new version for ROS# and recommends to update to the latest version.</strong></p>\n<p>The followi",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-06",
+      "id": "c0bd42928150",
+      "title": "Siemens .NET Client Library for SIMATIC S7 Webserver API",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-02.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>.NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files outside the intended download directory. Siemens has released a new version for .NET Client Library for SIMATIC S7 Webserver API and recommends to update to the late",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-02",
       "ai_score": 1,
       "cdc_pre_score": 1,
       "vulnerability_focus": true,
@@ -547,27 +446,199 @@
       "source_name": "CISA",
       "source_tier": "A",
       "published": "2026-11-17T21:00:00+09:00",
-      "title_ja": "Siemens ROS#のコードインジェクション脆弱性",
-      "summary_ja": "CISAはSiemensのROS#におけるコードインジェクション脆弱性（ICSA-26-321-06）についてアドバイザリを公開した。バージョン2.3.1未満において、細工されたメッセージ定義ファイルを渡すことで、生成されたプログラムに任意のコードがインジェクションされる可能性がある。Siemensは最新バージョンへのアップデートを推奨している。",
-      "insight": "サプライチェーンやオープンソースツール周辺のコード生成におけるインジェクションリスクを示唆している。自動生成コードを利用するシステムや開発パイプラインにおいて、入力値の検証やサニタイズが適切に行われているか評価することが重要である。",
-      "importance": "中",
-      "importance_reason": "OT環境および開発ツールにおけるコードインジェクションの脆弱性であり、サプライチェーンを通じて影響が拡大する可能性があるため。",
+      "title_ja": "Siemens製SIMATIC S7 Webserver API向け.NETクライアントライブラリの複数脆弱性",
+      "summary_ja": "Siemens製のSIMATIC S7 Webserver API向け.NETクライアントライブラリにおいて、機微情報の取得や意図したダウンロードディレクトリ外への任意のファイル書き込みを許容する複数の脆弱性が確認された。これを受け、CISAはアドバイザリを公開し、Siemens社は新しいバージョンをリリースしてアップデートを推奨している。",
+      "insight": "OT・産業用制御システムのネットワークやAPI周辺において、クライアントライブラリの脆弱性がサプライチェーン経由で影響を与える事例である。自社環境で類似のOT向けライブラリやSiemens製品を利用している場合、インベントリの把握と速やかなパッチ適用が求められる。再診断や脆弱性管理においてサードパーティ製ライブラリの追跡の重要性を示している。",
+      "importance": "高",
+      "importance_reason": "産業用制御システムのクライアントライブラリにおける脆弱性と公式修正の提供が報告されているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "アプリ/API",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Siemens",
+        "SIMATIC S7",
+        "CISA",
+        "OTセキュリティ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "SIMATIC S7 Webserver API .NET Client Library"
+        ],
+        "evidence": ".NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "機微情報の取得または任意のファイル書き込み",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "CISA ICS advisory for Siemens .NET Client Library for SIMATIC S7 Webserver API.",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "bff3f62c75a9",
+      "title": "Siemens Industrial Software Products",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-04.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out-of-bounds write that could allow a remote attacker to cause memory corruption and potentiall",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-04",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-17T21:00:00+09:00",
+      "title_ja": "Siemens産業用ソフトウェアにおけるNode.js Brotliデコーダーの脆弱性",
+      "summary_ja": "CISAはSiemens産業用ソフトウェア製品に関するセキュリティアドバイザリを公開しました。Node.jsに含まれるBrotliデコーダーに起因する重大な境界外書き込みの脆弱性（Node2Shell、CVE-2026-111497）への対応を含んでいます。遠隔の攻撃者によるメモリ破損や潜在的なコード実行のリスクが示されています。",
+      "insight": "産業用ソフトウェアに組み込まれたオープンソースコンポーネント（Node.js）の脆弱性がシステム全体に波及する典型例です。SCAツールやSBOMを活用したサードパーティライブラリの依存関係把握が修正適用の前提となります。産業環境において組込ランタイムのアップデートがプラットフォームの稼働に与える回帰影響を検証できるかが論点となります。",
+      "importance": "高",
+      "importance_reason": "産業用ソフトウェアに組み込まれたNode.jsの境界外書き込みにより遠隔コード実行の恐れがあるため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
         "CVE",
         "サプライチェーン攻撃",
-        "パッチ未適用"
+        "修正・緩和"
       ],
       "affected_layers": [
         "アプリ/API",
-        "ネットワーク"
+        "クラウド/サーバー"
       ],
       "related_keywords": [
         "Siemens",
-        "ROS#",
-        "CISA",
-        "コードインジェクション"
+        "Node.js",
+        "Brotli",
+        "CVE-2026-111497",
+        "CISA"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "SCA",
+          "ソースコード診断"
+        ],
+        "products": [
+          "Siemens Industrial Software Products",
+          "Node.js"
+        ],
+        "evidence": "抜粋に「Node.js project released security updates addressing a critical vulnerability... tracked as CVE-2026-111497」と記載。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "メモリ破損および潜在的なコード実行",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "Brotliデコード処理をトリガーする不正な入力データを対象コンポーネントに送信して動作を検証する。",
+        "human_validation": "メモリ破損状態やプロセスクラッシュの有無をデバッガ等で確認する。",
+        "service_implication": "組み込みライブラリ起因の脆弱性に対するSCA診断およびバイナリ検証サービスの重要性が高まる。",
+        "source_evidence": "抜粋に「out-of-bounds write that could allow a remote attacker to cause memory corruption and potentiall」と記載。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "境界外書き込み"
+        ],
+        "cve_ids": [
+          "CVE-2026-111497"
+        ]
+      }
+    },
+    {
+      "id": "672a22d88057",
+      "title": "Siemens Simcenter Femap",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-10.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Simcenter Femap is affected by an out of bounds read vulnerability that could be triggered when the application reads files in X_T format. This could allow an attacker to crash the application or execute arbitrary code. Siemens has released a new version for Simcenter Femap and recommends to update to the latest version.</strong></p",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-10",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-17T21:00:00+09:00",
+      "title_ja": "Siemens Simcenter Femapにおける境界外読み取りの脆弱性",
+      "summary_ja": "Siemens Simcenter Femapに境界外読み取りの脆弱性が存在することが報告されました。悪意を持って細工されたX_T形式のファイルを読み込むことで問題が発生します。攻撃者によってアプリケーションのクラッシュや任意のコード実行が引き起こされる恐れがあり、Siemensは最新版へのアップデートを推奨しています。",
+      "insight": "特定ファイル形式のパース処理における脆弱性であり、設計エンジニアリング業務などで外部ファイルを読み込ませる標的型攻撃への警戒が求められます。クライアントソフトウェアの診断ではファイルパーサーのファジングや入力検証の確認が重要です。実務上はパッチ適用に加え、出所不明なファイルを開かない運用ルールの徹底が緩和策となります。",
+      "importance": "中",
+      "importance_reason": "ファイルの読み込みによりアプリケーションの強制終了や任意コード実行の恐れがあるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Siemens",
+        "Simcenter Femap",
+        "境界外読み取り",
+        "X_T形式",
+        "CISA"
       ],
       "cdc_relevance": 1,
       "cdc_context": [
@@ -576,214 +647,50 @@
       "views": 0,
       "business": {
         "japan_relevance": "関連あり",
-        "exploitation": "悪用未確認と明記",
+        "exploitation": "不明",
         "urgency": "早期評価",
         "lifecycle": [
-          "不明"
+          "修正・緩和"
         ],
         "assessments": [
-          "不明"
+          "ペネトレーションテスト",
+          "ブラックボックス診断"
         ],
         "products": [
-          "ROS#"
+          "Simcenter Femap"
         ],
-        "evidence": "ROS# before version 2.3.1 contains a code injection vulnerability"
+        "evidence": "抜粋に「Simcenter Femap is affected by an out of bounds read vulnerability... allow an attacker to crash the application or execute arbitrary code」と記載。"
       },
       "attack": {
-        "initial_access": "細工されたメッセージ定義ファイルの通過",
-        "observed_impact": "任意のコードが生成されたプログラムにインジェクションされる",
+        "initial_access": "悪意を持って細工されたX_T形式ファイルの読み込み",
+        "observed_impact": "アプリケーションのクラッシュまたは任意コード実行",
         "japan_observation": "不明",
-        "assessment_preconditions": "攻撃者が細工されたメッセージ定義ファイルをユーザーに渡すことができること",
-        "test_scenario": "メッセージ定義ファイル入力部に対する不正インジェクションテスト",
-        "human_validation": "不明",
-        "service_implication": "プログラムの不正実行リスク",
-        "source_evidence": "allows an attacker that is able to pass a crafted message definition file to the user to inject arbitrary code",
-        "evidence_status": "PoCのみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "ソースコード・ソフトウェア供給網"
-        ],
-        "attack_methods": [
-          "コードインジェクション"
-        ],
-        "weaknesses": [
-          "入力検証不備"
-        ],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "4104613fb8d3",
-      "title": "Dorsett Controls InfoScan",
-      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-01.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of these vulnerabilities could allow an attacker to retrieve sensitive system information, access application data without authorization, recover stored credentials, or intercept and manipulate network communications.</strong></p>\n<p>The following versions of Dorsett Controls InfoScan are affected:</p>\n<ul>\n<",
-      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-01",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "vulnerability_focus": true,
-      "operations_focus": true,
-      "business_topics": [
-        "脆弱性管理",
-        "企業インシデント"
-      ],
-      "engineering_topics": [],
-      "business_score": 7,
-      "source_region": "global",
-      "source_name": "CISA",
-      "source_tier": "A",
-      "published": "2026-11-17T21:00:00+09:00",
-      "title_ja": "Dorsett Controls InfoScanの複数脆弱性",
-      "summary_ja": "CISAはDorsett Controls InfoScanの脆弱性に関するアドバイザリ（ICSA-26-321-01）を公開した。脆弱性の悪用により、機微なシステム情報の取得、認証なしでのアプリケーションデータへのアクセス、保存された認証情報の回復、ネットワーク通信の傍受・改ざんが可能になる恐れがある。影響を受けるバージョンが存在する。",
-      "insight": "重要インフラや制御システムに関連するコンポーネントにおける認証不備や情報露呈リスクを示している。ペネトレーションテストやDASTにおいて、認証バイパスや機微情報露出の観点から類似システムの耐性を検証する必要がある。",
-      "importance": "高",
-      "importance_reason": "制御システムにおける重要情報の漏洩や認証バイパスに直結するため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "認証バイパス",
-        "設定ミス"
-      ],
-      "affected_layers": [
-        "ネットワーク",
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "Dorsett Controls",
-        "InfoScan",
-        "CISA",
-        "ICS"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "SOC運用変化"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "悪用未確認と明記",
-        "urgency": "緊急",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "不明"
-        ],
-        "products": [
-          "Dorsett Controls InfoScan"
-        ],
-        "evidence": "Successful exploitation of these vulnerabilities could allow an attacker to retrieve sensitive system information"
-      },
-      "attack": {
-        "initial_access": "ネットワーク通信経由",
-        "observed_impact": "機微なシステム情報の取得、認証なしでのデータアクセス、認証情報の回復、通信の傍受・改ざん",
-        "japan_observation": "不明",
-        "assessment_preconditions": "対象システムへのネットワーク到達性があること",
-        "test_scenario": "アプリケーションデータへの不正アクセスおよび通信傍受のシミュレーション",
-        "human_validation": "不明",
-        "service_implication": "情報漏洩および制御系データの不正操作リスク",
-        "source_evidence": "Successful exploitation of these vulnerabilities could allow an attacker to retrieve sensitive system information",
-        "evidence_status": "PoCのみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "外部公開資産",
-          "認証・ID"
-        ],
-        "attack_methods": [
-          "情報窃取",
-          "通信傍受"
-        ],
-        "weaknesses": [
-          "認証不備",
-          "情報漏洩"
-        ],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "dd46be184418",
-      "title": "インシデント調査報告書受領時のチェックリスト",
-      "summary": "昨今、ランサムウェア攻撃や情報漏えいに関するインシデントの増加に伴い、インシデン...",
-      "url": "https://blogs.jpcert.or.jp/ja/2026/11/ir_report_checklist.html",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": false,
-      "operations_focus": false,
-      "business_topics": [
-        "企業インシデント"
-      ],
-      "engineering_topics": [],
-      "business_score": 6,
-      "source_region": "JP",
-      "source_name": "JPCERT/CC 分析",
-      "source_tier": "A",
-      "published": "2026-11-18T11:00:00+09:00",
-      "title_ja": "インシデント調査報告書受領時のチェックリスト",
-      "summary_ja": "JPCERT/CCはランサムウェア攻撃や情報漏えいインシデントの増加を受け、インシデント調査報告書を受領した際に確認すべきポイントをまとめたチェックリストを公開した。報告書の内容を適切に評価し、再発防止やセキュリティ対策の改善につなげるための指針を提供している。組織におけるインシデント事後対応の品質向上を目的としている。",
-      "insight": "インシデント発生後の調査報告書レビューにおいて、単なる原因究明にとどまらず、診断プロセスや検知体制の不備をどう見直すかが重要である。セキュリティ実務者・CISO報告の場で活用できる具体的な評価軸として参考になる。",
-      "importance": "中",
-      "importance_reason": "インシデント調査の質を高め、組織の再発防止策を実効性あるものにするための重要情報であるため。",
-      "tag_main_id": "incident",
-      "tag_main_label": "インシデント",
-      "tag_subs": [
-        "データ侵害",
-        "情報漏洩"
-      ],
-      "affected_layers": [
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "JPCERT/CC",
-        "インシデント調査報告書",
-        "ランサムウェア",
-        "チェックリスト"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "CISO報告",
-        "SOC運用変化"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "直接関連",
-        "exploitation": "不明",
-        "urgency": "情報収集",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "不明"
-        ],
-        "products": [
-          "不明"
-        ],
-        "evidence": "インシデント調査報告書受領時のチェックリストを公開"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "ランサムウェア攻撃や情報漏えいインシデントの発生",
-        "japan_observation": "JPCERT/CCによる国内向け注意喚起・情報提供",
-        "assessment_preconditions": "不明",
-        "test_scenario": "不明",
-        "human_validation": "不明",
-        "service_implication": "インシデント対応プロセスの見直し",
-        "source_evidence": "インシデント調査報告書受領時のチェックリスト",
+        "assessment_preconditions": "ユーザーが不正なX_T形式ファイルを対象アプリケーションで開くこと。",
+        "test_scenario": "細工されたX_T形式ファイルをSimcenter Femapにインポートし、異常終了やメモリ破壊挙動が発生するか検証する。",
+        "human_validation": "クラッシュログおよびレジスタ状態の解析により任意コード実行可能性を検証する。",
+        "service_implication": "ファイルパーサー検証やクライアントアプリ診断におけるテストケース拡充が検討される。",
+        "source_evidence": "抜粋に「triggered when the application reads files in X_T format. This could allow an attacker to crash the application or execute arbitrary code」と記載。",
         "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
-        "target_layers": [],
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
         "attack_methods": [],
-        "weaknesses": [],
+        "weaknesses": [
+          "境界外読み取り"
+        ],
         "cve_ids": []
       }
     },
     {
-      "id": "0f65fa50ef39",
-      "title": "OpenJDKにおけるヒープベースのバッファオーバーフローの脆弱性",
-      "summary": "OpenJDKにはヒープベースのバッファオーバーフローの脆弱性（CVE-2026-114938）が存在します。<br />\n<br />\n本脆弱性の発見者は本件を「Java4Shell」と呼称し、Base64デコード処理を高速化するための最適化処理に原因があると指摘しています。",
-      "url": "https://jvn.jp/vu/JVNVU99608534/",
+      "id": "0ca95e86d7b0",
+      "title": "Androidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」における複数の脆弱性",
+      "summary": "宮内庁が提供するAndroidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」には、複数の脆弱性が存在します。",
+      "url": "https://jvn.jp/jp/JVN19906678/",
       "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": true,
-      "operations_focus": false,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": false,
+      "operations_focus": true,
       "business_topics": [
         "脆弱性管理"
       ],
@@ -792,118 +699,109 @@
       "source_region": "JP",
       "source_name": "JVN",
       "source_tier": "A",
-      "published": "2026-11-18T10:30:00+09:00",
-      "title_ja": "OpenJDKにおけるヒープベースのバッファオーバーフローの脆弱性",
-      "summary_ja": "OpenJDKにヒープベースのバッファオーバーフローの脆弱性（CVE-2026-114938）が存在することが公表されました。発見者は本件をJava4Shellと呼称し、Base64デコード処理の高速化を目的とした最適化処理に起因すると指摘しています。Java環境を利用する多くのシステムに対して影響を与える可能性があります。",
-      "insight": "Java環境のコア部分における脆弱性であり、サプライチェーン全体への影響が大きい。静的解析やSCAツールを用いて影響を受けるOpenJDKのバージョンを迅速に特定し、パッチ適用を急ぐ必要がある。Java4Shellという呼称の妥当性や実際の悪用コードの有無について継続的な情報収集が求められる。",
-      "importance": "高",
-      "importance_reason": "OpenJDKのコア機能に起因する脆弱性であり、広範囲なJavaアプリケーションに影響を及ぼすため。",
+      "published": "2026-11-18T12:00:00+09:00",
+      "title_ja": "宮内庁公式Androidアプリにおける複数の脆弱性",
+      "summary_ja": "宮内庁が提供するAndroidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」に複数の脆弱性が報告されました。JVNにより注意喚起が行われています。詳細は個別公表情報に依存しますが、アプリ利用環境におけるセキュリティ影響が懸念されます。",
+      "insight": "公的機関が提供する一般向けモバイルアプリにおける脆弱性事案であり、組織の社会的信用に直結します。モバイルアプリ診断においては静的解析（SAST）と動的解析（DAST）を組み合わせ、コンポーネント公開設定やローカルデータ保存の安全性を評価することが重要です。再診断プロセスによる修正確認が不可欠となります。",
+      "importance": "中",
+      "importance_reason": "国内公的機関が公式に配信するモバイルアプリに複数の脆弱性が確認されたため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "宮内庁",
+        "Androidアプリ",
+        "JVN",
+        "宮内庁参観音声ガイド"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ブラックボックス診断",
+          "ソースコード診断"
+        ],
+        "products": [
+          "宮内庁参観音声ガイド- 宮内庁公式アプリ"
+        ],
+        "evidence": "抜粋に「宮内庁が提供するAndroidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」には、複数の脆弱性が存在します」と記載。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "国内公的機関アプリの脆弱性がJVNで報告されたが、悪用の事実は不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "AndroidアプリのManifest設定、Intentフィルタ、ローカル暗号化ストレージの検証シナリオを実施する。",
+        "human_validation": "実機またはエミュレータ上で該当コンポーネントへの不正アクセス挙動を確認する。",
+        "service_implication": "モバイルアプリ脆弱性診断および修正後再診断サービスの需要を確認する。",
+        "source_evidence": "抜粋に「複数の脆弱性が存在します」と記載、詳細悪用の記述はなし。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "720188f4c558",
+      "title": "Weekly Report: 複数のApple製品に脆弱性",
+      "summary": "複数のApple製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#4",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JPCERT/CC",
+      "source_tier": "A",
+      "published": "2026-11-18T09:15:00+09:00",
+      "title_ja": "Weekly Report: 複数のApple製品に脆弱性",
+      "summary_ja": "JPCERT/CCより複数のApple製品における脆弱性が公開された。詳細な影響範囲や対策については各提供元の情報確認が推奨される。国内の利用者に対してもアップデートの適用が求められる。",
+      "insight": "Apple製品における脆弱性の定期的な確認と迅速なパッチ適用プロセスの見直しが重要である。自社で利用している端末やサーバー製品群のバージョン管理状況を再点検すべきである。SOC運用においては関連するアップデート情報の迅速な把握が必要となる。",
+      "importance": "中",
+      "importance_reason": "広範囲な端末やOSに影響を与える可能性のある製品脆弱性であるため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
         "CVE",
-        "パッチ未適用",
-        "サプライチェーン攻撃"
+        "パッチ未適用"
       ],
       "affected_layers": [
-        "アプリ/API",
-        "クラウド/サーバー",
-        "ガバナンス/規制"
-      ],
-      "related_keywords": [
-        "OpenJDK",
-        "CVE-2026-114938",
-        "Java4Shell",
-        "Base64デコード"
-      ],
-      "cdc_relevance": 3,
-      "cdc_context": [
-        "Exposure管理",
-        "CISO報告",
-        "サービス企画"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "PoC公開のみ",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "SCA"
-        ],
-        "products": [
-          "OpenJDK"
-        ],
-        "evidence": "OpenJDKにはヒープベースのバッファオーバーフローの脆弱性（CVE-2026-114938）が存在します。"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "不明",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "不明",
-        "human_validation": "不明",
-        "service_implication": "不明",
-        "source_evidence": "OpenJDKにおけるヒープベースのバッファオーバーフローの脆弱性（CVE-2026-114938）",
-        "evidence_status": "PoCのみ",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "ソースコード・ソフトウェア供給網"
-        ],
-        "attack_methods": [],
-        "weaknesses": [
-          "バッファオーバーフロー"
-        ],
-        "cve_ids": [
-          "CVE-2026-114938"
-        ]
-      }
-    },
-    {
-      "id": "c46b4e920c90",
-      "title": "Weekly Report: N-able N-centralに複数の脆弱性",
-      "summary": "N-able N-centralに複数の脆弱性",
-      "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#1",
-      "ai_score": 1,
-      "cdc_pre_score": 1,
-      "vulnerability_focus": false,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理"
-      ],
-      "engineering_topics": [],
-      "business_score": 6,
-      "source_region": "JP",
-      "source_name": "JPCERT/CC",
-      "source_tier": "A",
-      "published": "2026-11-18T09:15:00+09:00",
-      "title_ja": "Weekly Report: N-able N-centralに複数の脆弱性",
-      "summary_ja": "JPCERT/CCよりWeekly Reportが公開され、N-able N-centralに複数の脆弱性が存在することが報じられました。該当製品を利用している環境においては、適切なアップデートや回避策の適用が求められます。詳細な影響範囲や対策については公式情報を参照する必要があります。",
-      "insight": "リモート管理・監視ツール（RMM）の脆弱性はサプライチェーン経由の侵入経路となり得るため、早期のバージョン確認とアップデートが必要である。資産管理台帳に基づき、該当製品の露出状況を即座に把握することが重要となる。",
-      "importance": "中",
-      "importance_reason": "管理ツールにおける複数の脆弱性はインシデント時の影響範囲が広いため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "パッチ未適用",
-        "サプライチェーン攻撃"
-      ],
-      "affected_layers": [
-        "ネットワーク",
-        "クラウド/サーバー",
+        "デバイス/エッジ",
         "アプリ/API"
       ],
       "related_keywords": [
-        "N-able N-central",
+        "Apple",
         "JPCERT/CC",
         "脆弱性"
       ],
-      "cdc_relevance": 2,
+      "cdc_relevance": 1,
       "cdc_context": [
-        "Exposure管理",
-        "SOC運用変化"
+        "Exposure管理"
       ],
       "views": 0,
       "business": {
@@ -917,9 +815,9 @@
           "不明"
         ],
         "products": [
-          "N-able N-central"
+          "Apple製品"
         ],
-        "evidence": "N-able N-centralに複数の脆弱性"
+        "evidence": "複数のApple製品に脆弱性"
       },
       "attack": {
         "initial_access": "不明",
@@ -929,11 +827,11 @@
         "test_scenario": "不明",
         "human_validation": "不明",
         "service_implication": "不明",
-        "source_evidence": "N-able N-centralに複数の脆弱性",
+        "source_evidence": "複数のApple製品に脆弱性",
         "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
-          "外部公開資産"
+          "デバイス・エンドポイント"
         ],
         "attack_methods": [],
         "weaknesses": [],
@@ -941,10 +839,10 @@
       }
     },
     {
-      "id": "b6c58bf59b20",
-      "title": "Weekly Report: ImageMagickを利用したアプリケーションに任意のファイルの読み書きなどにつながる脆弱性",
-      "summary": "ImageMagickを利用したアプリケーションに任意のファイルの読み書きなどにつながる脆弱性",
-      "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#2",
+      "id": "b3cb60ee6bce",
+      "title": "Weekly Report: PostgreSQLに複数の脆弱性",
+      "summary": "PostgreSQLに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#5",
       "ai_score": 1,
       "cdc_pre_score": 0,
       "vulnerability_focus": false,
@@ -958,89 +856,11 @@
       "source_name": "JPCERT/CC",
       "source_tier": "A",
       "published": "2026-11-18T09:15:00+09:00",
-      "title_ja": "Weekly Report: ImageMagickを利用したアプリケーションに任意のファイルの読み書きなどにつながる脆弱性",
-      "summary_ja": "JPCERT/CCのWeekly Reportにおいて、ImageMagickを利用するアプリケーションに任意のファイルの読み書きなどにつながる脆弱性が存在することが報じられました。画像処理ライブラリを組み込んでいるシステムでは、意図しないファイルアクセス等のリスクが生じる可能性があります。",
-      "insight": "画像処理ライブラリは多様なアプリケーションの内部で使われており、依存関係の把握が困難な場合がある。SCAやソースコード診断を活用してライブラリの利用箇所を特定し、速やかにアップデートを行うべきである。",
+      "title_ja": "Weekly Report: PostgreSQLに複数の脆弱性",
+      "summary_ja": "JPCERT/CCからPostgreSQLにおける複数の脆弱性が報告された。データベース管理システムとしての重要性から、影響を受けるシステムの確認が必要である。早期のアップデート適用によるリスク軽減が求められる。",
+      "insight": "データベース製品の脆弱性は情報漏えいやデータ改ざん等の重大な影響に繋がりやすい。バージョン管理とSCA等による依存関係の把握を徹底すべきである。テスト環境での検証を経て安全にパッチを適用する体制が求められる。",
       "importance": "中",
-      "importance_reason": "広く利用される画像処理ライブラリの脆弱性であり、任意のファイル操作につながるため。",
-      "tag_main_id": "vuln",
-      "tag_main_label": "脆弱性",
-      "tag_subs": [
-        "パッチ未適用",
-        "サプライチェーン攻撃",
-        "SCA"
-      ],
-      "affected_layers": [
-        "アプリ/API"
-      ],
-      "related_keywords": [
-        "ImageMagick",
-        "任意のファイル読み書き",
-        "JPCERT/CC"
-      ],
-      "cdc_relevance": 2,
-      "cdc_context": [
-        "Exposure管理",
-        "サービス企画"
-      ],
-      "views": 0,
-      "business": {
-        "japan_relevance": "関連あり",
-        "exploitation": "不明",
-        "urgency": "早期評価",
-        "lifecycle": [
-          "不明"
-        ],
-        "assessments": [
-          "不明"
-        ],
-        "products": [
-          "ImageMagick"
-        ],
-        "evidence": "ImageMagickを利用したアプリケーションに任意のファイルの読み書きなどにつながる脆弱性"
-      },
-      "attack": {
-        "initial_access": "不明",
-        "observed_impact": "不明",
-        "japan_observation": "不明",
-        "assessment_preconditions": "不明",
-        "test_scenario": "不明",
-        "human_validation": "不明",
-        "service_implication": "不明",
-        "source_evidence": "ImageMagickを利用したアプリケーションに任意のファイルの読み書きなどにつながる脆弱性",
-        "evidence_status": "不明",
-        "blackbox_testability": "判断材料不足",
-        "target_layers": [
-          "ソースコード・ソフトウェア供給網"
-        ],
-        "attack_methods": [],
-        "weaknesses": [],
-        "cve_ids": []
-      }
-    },
-    {
-      "id": "a9401700829a",
-      "title": "Weekly Report: Synology DiskStation Managerに複数の脆弱性",
-      "summary": "Synology DiskStation Managerに複数の脆弱性",
-      "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#3",
-      "ai_score": 1,
-      "cdc_pre_score": 0,
-      "vulnerability_focus": false,
-      "operations_focus": false,
-      "business_topics": [
-        "脆弱性管理"
-      ],
-      "engineering_topics": [],
-      "business_score": 6,
-      "source_region": "JP",
-      "source_name": "JPCERT/CC",
-      "source_tier": "A",
-      "published": "2026-11-18T09:15:00+09:00",
-      "title_ja": "Synology DiskStation Managerに複数の脆弱性",
-      "summary_ja": "JPCERT/CCのWeekly Reportにおいて、Synology DiskStation Manager（DSM）に複数の脆弱性が存在することが公表された。NAS製品に対するセキュリティ上のリスクが含まれており、適切なアップデート対応が求められる。管理者向けに早急な確認と対策の実施が必要とされる。",
-      "insight": "NAS製品の脆弱性は社内バックアップやデータ保管領域に対する深刻なリスクとなります。組織内の対象機器の把握とバージョン確認、迅速なファームウェア適用のプロセスの確立が必要です。",
-      "importance": "高",
-      "importance_reason": "国内でも広く利用されるNAS製品の脆弱性情報であり、迅速な影響確認と対応が求められるため。",
+      "importance_reason": "基幹システム等で広く使われるPostgreSQLの脆弱性であるため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
@@ -1049,18 +869,16 @@
       ],
       "affected_layers": [
         "クラウド/サーバー",
-        "ネットワーク"
+        "データ/AI"
       ],
       "related_keywords": [
-        "Synology",
-        "DiskStation Manager",
-        "JPCERT",
-        "NAS"
+        "PostgreSQL",
+        "JPCERT/CC",
+        "データベース"
       ],
-      "cdc_relevance": 2,
+      "cdc_relevance": 1,
       "cdc_context": [
-        "Exposure管理",
-        "顧客課題"
+        "Exposure管理"
       ],
       "views": 0,
       "business": {
@@ -1074,9 +892,9 @@
           "不明"
         ],
         "products": [
-          "Synology DiskStation Manager"
+          "PostgreSQL"
         ],
-        "evidence": "Weekly Report: Synology DiskStation Managerに複数の脆弱性"
+        "evidence": "PostgreSQLに複数の脆弱性"
       },
       "attack": {
         "initial_access": "不明",
@@ -1086,7 +904,7 @@
         "test_scenario": "不明",
         "human_validation": "不明",
         "service_implication": "不明",
-        "source_evidence": "JPCERT/CC Weekly Reportに掲載",
+        "source_evidence": "PostgreSQLに複数の脆弱性",
         "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
@@ -1098,13 +916,13 @@
       }
     },
     {
-      "id": "f562fb9a42ea",
-      "title": "OpenSSLにおける脆弱性に対するアップデート（2026年11月17日）",
-      "summary": "OpenSSL ProjectからOpenSSL Security Advisory [17th November 2026]が公開されました。",
-      "url": "https://jvn.jp/vu/JVNVU96847970/",
+      "id": "af833bc90eda",
+      "title": "Weekly Report: Apache HTTP Server 2.4に複数の脆弱性",
+      "summary": "Apache HTTP Server 2.4に複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#6",
       "ai_score": 1,
       "cdc_pre_score": 0,
-      "vulnerability_focus": true,
+      "vulnerability_focus": false,
       "operations_focus": false,
       "business_topics": [
         "脆弱性管理"
@@ -1112,31 +930,31 @@
       "engineering_topics": [],
       "business_score": 6,
       "source_region": "JP",
-      "source_name": "JVN",
+      "source_name": "JPCERT/CC",
       "source_tier": "A",
-      "published": "2026-11-18T09:00:15+09:00",
-      "title_ja": "OpenSSLにおける脆弱性に対するアップデート（2026年11月17日）",
-      "summary_ja": "OpenSSL Projectからセキュリティアドバイザリが公開され、OpenSSLにおける脆弱性に対するアップデート情報が提供された。JVNより注意喚起がなされており、多くのシステムやアプリケーションに影響を与える可能性がある。各開発・運用者は速やかに情報の確認と適用を行う必要がある。",
-      "insight": "基盤ライブラリであるOpenSSLの脆弱性は、多くのシステムに間接的な影響を及ぼします。SCAや資産台帳を活用し、影響を受ける依存関係の特定と迅速な再ビルド・再デプロイの仕組みが問われます。",
+      "published": "2026-11-18T09:15:00+09:00",
+      "title_ja": "Weekly Report: Apache HTTP Server 2.4に複数の脆弱性",
+      "summary_ja": "JPCERT/CCよりApache HTTP Server 2.4における複数の脆弱性が公表された。Webサーバーとして広く採用されているため影響範囲が広がる可能性がある。管理者は速やかに最新情報を確認し対応する必要がある。",
+      "insight": "Web公開サーバーの基盤となるミドルウェアの脆弱性であり、迅速な影響評価とバージョンアップが必要である。ブラックボックス診断やDASTによる稼働環境のバージョン確認を定期実施すべきである。修正適用の際のサービス停止リスクを考慮した運用が求められる。",
       "importance": "高",
-      "importance_reason": "暗号化基盤として極めて広範に利用されるOpenSSLの脆弱性であり、影響範囲が大きいため。",
+      "importance_reason": "広く利用されているWebサーバーの脆弱性であり影響が大きいため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
         "CVE",
-        "SCA",
-        "修正・緩和"
+        "パッチ未適用"
       ],
       "affected_layers": [
-        "アプリ/API",
-        "ネットワーク"
+        "ネットワーク",
+        "クラウド/サーバー",
+        "アプリ/API"
       ],
       "related_keywords": [
-        "OpenSSL",
-        "JVN",
-        "セキュリティアドバイザリ"
+        "Apache HTTP Server",
+        "JPCERT/CC",
+        "Webサーバー"
       ],
-      "cdc_relevance": 3,
+      "cdc_relevance": 2,
       "cdc_context": [
         "Exposure管理",
         "SOC運用変化"
@@ -1150,12 +968,12 @@
           "不明"
         ],
         "assessments": [
-          "不明"
+          "DAST"
         ],
         "products": [
-          "OpenSSL"
+          "Apache HTTP Server 2.4"
         ],
-        "evidence": "OpenSSL ProjectからOpenSSL Security Advisoryが公開"
+        "evidence": "Apache HTTP Server 2.4に複数の脆弱性"
       },
       "attack": {
         "initial_access": "不明",
@@ -1165,11 +983,11 @@
         "test_scenario": "不明",
         "human_validation": "不明",
         "service_implication": "不明",
-        "source_evidence": "JVN通知に基づく",
+        "source_evidence": "Apache HTTP Server 2.4に複数の脆弱性",
         "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
-          "ソースコード・ソフトウェア供給網"
+          "Web・API"
         ],
         "attack_methods": [],
         "weaknesses": [],
@@ -1177,10 +995,10 @@
       }
     },
     {
-      "id": "5e7bc312788e",
-      "title": "プリザンターにおける複数の脆弱性",
-      "summary": "株式会社インプリムが提供するプリザンターには、複数の脆弱性が存在します。",
-      "url": "https://jvn.jp/jp/JVN02242982/",
+      "id": "3630a63272aa",
+      "title": "Oracle Java の脆弱性対策について(2026年11月)",
+      "summary": "",
+      "url": "https://www.ipa.go.jp/security/security-alert/2026/1118-jre.html",
       "ai_score": 1,
       "cdc_pre_score": 0,
       "vulnerability_focus": false,
@@ -1191,34 +1009,33 @@
       "engineering_topics": [],
       "business_score": 6,
       "source_region": "JP",
-      "source_name": "JVN",
+      "source_name": "IPA 注意喚起",
       "source_tier": "A",
-      "published": "2026-11-17T15:00:00+09:00",
-      "title_ja": "プリザンターにおける複数の脆弱性",
-      "summary_ja": "株式会社インプリムが提供するローコードプラットフォーム「プリザンター」に複数の脆弱性が存在することがJVNより公表された。業務アプリケーションとして利用されることが多いため、組織内での導入状況の確認が不可欠である。ベンダーから提供される情報に基づき、アップデートや回避策の適用が求められる。",
-      "insight": "業務システムとして利用されるローコードツール・Webアプリの脆弱性は、内部データの不正閲覧や操作につながります。DASTやソースコード診断による事前のリスク検知、および迅速なバージョンアップ体制が重要です。",
-      "importance": "中",
-      "importance_reason": "国内企業で広く利用される業務アプリケーションの脆弱性であり、実環境での影響を確認すべき重要案件であるため。",
+      "published": "2026-11-18T00:00:00+09:00",
+      "title_ja": "Oracle Java の脆弱性対策について(2026年11月)",
+      "summary_ja": "IPAはOracle Javaに関する脆弱性注意喚起を発表しました。対象製品におけるセキュリティアップデートの適用が推奨されています。管理者は迅速なバージョン確認とパッチ適用を行う必要があります。",
+      "insight": "Java環境の脆弱性管理において、サードパーティ製ライブラリやランタイムの把握と迅速なアップデートが重要です。自社環境におけるバージョン台帳の正確性とパッチ適用の自動化を検討すべきです。",
+      "importance": "高",
+      "importance_reason": "広範囲に影響を与えるJavaの脆弱性に関する注意喚起であるため。",
       "tag_main_id": "vuln",
       "tag_main_label": "脆弱性",
       "tag_subs": [
-        "CVE",
-        "修正・緩和"
+        "パッチ未適用",
+        "CVE"
       ],
       "affected_layers": [
         "アプリ/API",
-        "データ/AI"
+        "クラウド/サーバー"
       ],
       "related_keywords": [
-        "プリザンター",
-        "インプリム",
-        "JVN",
-        "ローコード"
+        "Oracle Java",
+        "IPA",
+        "脆弱性対策"
       ],
       "cdc_relevance": 2,
       "cdc_context": [
         "Exposure管理",
-        "顧客課題"
+        "MDR/MSSP設計"
       ],
       "views": 0,
       "business": {
@@ -1232,9 +1049,88 @@
           "不明"
         ],
         "products": [
-          "プリザンター"
+          "Oracle Java"
         ],
-        "evidence": "株式会社インプリムが提供するプリザンターには、複数の脆弱性が存在します。"
+        "evidence": "IPA 注意喚起"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "IPA 注意喚起に基づく",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "5dbdb12ce4fc",
+      "title": "エレコム製無線LANルータにおけるOSコマンドインジェクションの脆弱性",
+      "summary": "エレコム株式会社が提供する無線LANルータには、OSコマンドインジェクションの脆弱性が存在します。",
+      "url": "https://jvn.jp/vu/JVNVU92504317/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-17T14:30:00+09:00",
+      "title_ja": "エレコム製無線LANルータにおけるOSコマンドインジェクションの脆弱性",
+      "summary_ja": "エレコム株式会社が提供する無線LANルータにOSコマンドインジェクションの脆弱性が存在することがJVNにより公表されました。影響を受ける製品の利用者は、ファームウェアのアップデートなどの対策が求められます。ネットワーク機器の脆弱性は内部ネットワークへの侵入経路となるリスクがあります。",
+      "insight": "ルータ等のネットワーク機器におけるOSコマンドインジェクションは、初期侵入の足がかりとして悪用されやすいため注意が必要です。ブラックボックス診断やハードウェア・ファームウェアの資産管理において、管理画面の露出や脆弱性を継続的にスキャンする仕組みが求められます。",
+      "importance": "高",
+      "importance_reason": "国内で広く利用されるルータ製品の重大な脆弱性のため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "エレコム",
+        "無線LANルータ",
+        "OSコマンドインジェクション",
+        "JVN"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "不明",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "エレコム製無線LANルータ"
+        ],
+        "evidence": "JVNからの情報"
       },
       "attack": {
         "initial_access": "不明",
@@ -1248,15 +1144,1340 @@
         "evidence_status": "不明",
         "blackbox_testability": "判断材料不足",
         "target_layers": [
-          "Web・API"
+          "デバイス・エンドポイント"
         ],
-        "attack_methods": [],
+        "attack_methods": [
+          "OSコマンドインジェクション"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "0c597ec3c532",
+      "title": "AttackIQ Research Reveals How Iranian Cyber Groups Hand Off Network Access to Enable Destructive Attacks",
+      "summary": "Analysis of 20 Iranian state-sponsored threat groups details how espionage, ransomware, and hacktivism intersect in state-backed cyber campaigns.",
+      "url": "https://www.darkreading.com/threat-intelligence/attackiq-research-reveals-iranian-cyber-groups",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント",
+        "政策・地政学"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-11-19T05:38:42+09:00",
+      "title_ja": "イランのサイバーグループによるネットワークアクセスの引き渡しと破壊的攻撃に関する調査",
+      "summary_ja": "AttackIQ Researchは、イランの国家支援型とみられる20の脅威グループの分析結果を発表しました。スパイ活動、ランサムウェア、ハクティビズムがどのように交差して国家支援のキャンペーンが行われているかが詳細に解説されています。攻撃グループ間の連携やアクセス権の引き渡し実態が明らかにされました。",
+      "insight": "国家支援型攻撃グループの手法やインシデントの連鎖を理解することは、ペネトレーションテストや脅威インテリジェンスの観点から重要です。自社の防御体制が高度なAPTグループの初期侵入や横展開に対応できるか、攻撃シナリオベースでの検証が求められます。",
+      "importance": "中",
+      "importance_reason": "国家支援型グループの動向と攻撃手法の変遷を示す重要な調査報告のため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "APT",
+        "ランサムウェア"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AttackIQ",
+        "イラン",
+        "国家支援型攻撃",
+        "ランサムウェア"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "Dark Reading記事に基づく"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "破壊的攻撃",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Dark Readingによる調査報告",
+        "evidence_status": "複数機関が観測",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "インフラ・ネットワーク"
+        ],
+        "attack_methods": [
+          "ネットワークアクセスの引き渡し",
+          "ランサムウェア"
+        ],
         "weaknesses": [],
         "cve_ids": []
       }
     }
   ],
   "history": [
+    {
+      "date": "2026-11-19",
+      "articles": [
+        {
+          "id": "ef8d44482a5d",
+          "title": "AI Pentesting Checklist for Web Apps: 15 Questions to Ask Before Choosing a Vendor",
+          "summary": "TL;DR\n\n\n  Attackers move first. On average, exploitation now starts before a patch exists (Mandiant M-Trends 2026). In 1H 2026, 23% of vulnerabilities VulnCheck added to its exploited list were hit on or before disclosure day.\n  AI pentesting vendors aren't interchangeable. Most look convincing in a demo. The gaps show up in your logged-in flows, your coverage, and your production safety.\n  Make",
+          "url": "https://thehackernews.com/2026/11/ai-pentesting-checklist-for-web-apps-15.html",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理",
+            "診断サービス",
+            "診断技術・評価"
+          ],
+          "engineering_topics": [
+            "診断性能の評価"
+          ],
+          "business_score": 14,
+          "source_region": "global",
+          "source_name": "The Hacker News",
+          "source_tier": "B",
+          "published": "2026-11-18T21:15:00+09:00",
+          "title_ja": "Webアプリ向けAIペネトレーションテスト選定のための15のチェックリスト",
+          "summary_ja": "Mandiant M-Trends 2026のデータに基づき、脆弱性の多くがパッチ公開前や同日に悪用される現状を解説し、AIペネトレーションテストベンダーを選定する際の注意点をまとめています。多くのベンダーはデモでは優れて見えるものの、実際のログインフローやカバー範囲、本番環境での安全性にギャップが生じると指摘しています。セキュリティ担当者がベンダー評価時に確認すべき15の視点を提供しています。",
+          "insight": "AIを活用したペネトレーションテストや自動診断ツールの導入において、デモの性能だけでなく認証後の複雑なフローや実運用の安全性を検証することが重要です。診断サービスやツールを選定する際は、単なる網羅性だけでなく、自社のアプリケーション構造に対する適合性や誤検知・安全性への配慮を評価基準に組み込むべきです。SOCおよび診断部門では、自動化ツールの限界と人間の検証範囲をどのように切り分けるかが問われます。",
+          "importance": "中",
+          "importance_reason": "AIペネトレーションテストツールの評価軸を提示しており、企業のツール選定や診断サービス利用に直結する重要な情報であるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "ペネトレーションテスト",
+            "ブラックボックス診断",
+            "優先順位付け"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "AI Pentesting",
+            "Mandiant M-Trends 2026",
+            "Web Apps",
+            "Vendor Selection"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "サービス企画",
+            "顧客課題"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "ペネトレーションテスト"
+            ],
+            "products": [
+              "不明"
+            ],
+            "evidence": "Mandiant M-Trends 2026: On average, exploitation now starts before a patch exists"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "Mandiant M-Trends 2026 statistics on exploitation timing",
+            "evidence_status": "複数機関が観測",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "Web・API"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "fda37550d40b",
+          "title": "On Improving the Adoption, Usability, and Retention of Static Application Security Testing (SAST) Tools",
+          "summary": "arXiv:2611.21621v1 Announce Type: cross \nAbstract: As the Internet connects more of the world, software vulnerabilities create growing security risks. Because software developers are responsible for building and maintaining secure applications, they rely on tools and techniques that help identify vulnerabilities early in development. Static Application Security Testing (SAST) tools analyze source code to identify potential security weaknesses before software is deployed. Although SAST can help developers address vulnerabilities proactively, these tools also present usability and adoption challenges. This thesis examines those challenges and explores ways to improve the adoption, usability, and continued use of SAST. First, a literature review of 89 research works related to SAST implementation and continued usage identifies recurring developer concerns, including false positives and other usability barriers that can reduce trust in SAST results. Second, the thesis presents a process for automating the execution of SAST tools and formatting their output so that findings are more meaningful and actionable to developers. A real-world use case evaluates an implementation of this process and gathers developer feedback. Participants reported satisfaction with several aspects of the process and indicated that it increased their willingness to use the SAST tool.",
+          "url": "https://arxiv.org/abs/2611.21621",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理",
+            "診断サービス",
+            "診断技術・評価"
+          ],
+          "engineering_topics": [
+            "診断性能の評価"
+          ],
+          "business_score": 14,
+          "source_region": "global",
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-11-18T14:00:00+09:00",
+          "title_ja": "静的アプリケーションセキュリティテスト（SAST）ツールの導入・有用性・継続利用の改善に関する研究",
+          "summary_ja": "ソフトウェアの脆弱性を早期に発見するためSASTツールが活用されていますが、誤検知や使い勝手の悪さが開発者の信頼低下や導入の障壁となっています。本論文では89件の関連研究の文献レビューを実施し、開発者の懸念事項を特定しました。さらに、SASTツールの実行自動化と出力フォーマットの改善プロセスを提案し、実際のユースケースを通じて開発者のツール利用意欲が向上することを確認しています。",
+          "insight": "SASTの導入や運用において、誤検知の多さや出力の分かりにくさが開発者のモチベーションや定着率を大きく左右します。静的診断ツールを導入・運用する際は、単にツールを導入するだけでなく、開発者が理解しやすい形式への出力整形や自動化プロセスの組込が不可欠です。診断ベンダーやセキュリティ担当者は、開発チームと協調したフィードバックループの構築を検討すべきです。",
+          "importance": "中",
+          "importance_reason": "SASTの導入障壁と実用的な改善プロセスを示しており、セキュア開発体制の構築に直結する知見であるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "SAST",
+            "ソースコード診断",
+            "修正・緩和"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "SAST",
+            "Software Vulnerabilities",
+            "Usability",
+            "False Positives"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "サービス企画"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用未確認と明記",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "SAST"
+            ],
+            "products": [
+              "不明"
+            ],
+            "evidence": "arXiv:2611.21621v1: A literature review of 89 research works related to SAST implementation and continued usage identifies recurring developer concerns"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "arXiv research on SAST usability and false positives",
+            "evidence_status": "研究報告のみ",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "ソースコード・ソフトウェア供給網"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "b688010c347f",
+          "title": "Threat Landscape of Vibe Coding and the Road to Secure Autonomy",
+          "summary": "arXiv:2611.21822v1 Announce Type: new \nAbstract: Vibe coding is reshaping software development, enabling faster implementation and allowing individuals with limited programming experience to describe requirements in natural language while AI agents write, test, and deploy the code. As these agents evolve into autonomous systems that execute commands, manage dependencies, access cloud resources, and interact with other agents, their security risks extend beyond incorrect code to actions with direct consequences for software systems. Although research on these risks is expanding, it remains fragmented across areas including prompt injection, insecure code generation, supply-chain attacks, and human factors, with limited consensus on terminology, threat assumptions, and evaluation. This paper consolidates emerging research through the lens of the vibe coding workflow. We establish a reference architecture, characterise six levels of agent autonomy, and develop a threat model centred on five trust boundaries spanning developers, AI models, tools, cloud infrastructure, and the wider software ecosystem. Building on this foundation, we propose a taxonomy of twenty-one threats across nine classes. For each threat, we review the available evidence, assess proposed defences, and identify limitations. Our analysis highlights that risks increase with agents' operational authority, while most defences rely on model judgement and address isolated threats. Finally, we identify eleven research challenges, including enforceable limits on agent authority and shared benchmarks and methodologies for assessing vibe coding security.",
+          "url": "https://arxiv.org/abs/2611.21822",
+          "ai_score": 2,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "AIエージェント",
+            "診断技術・評価"
+          ],
+          "engineering_topics": [
+            "生成コードの安全性評価",
+            "評価基盤・データセット"
+          ],
+          "business_score": 12,
+          "source_region": "global",
+          "source_name": "arXiv cs.CR",
+          "source_tier": "C",
+          "published": "2026-11-18T14:00:00+09:00",
+          "title_ja": "バイブコーディングの脅威ランドスケープと安全な自律性へのロードマップ",
+          "summary_ja": "自然言語による指示でAIエージェントがコード記述・テスト・デプロイを行う「バイブコーディング」がソフトウェア開発を変化させています。エージェントが自律的にコマンド実行やクラウド資源へのアクセスを行うようになるにつれて、セキュリティリスクは不適切なコード生成にとどまらず、システムに対する直接的な行動へと拡大しています。本論文では、ワークフローを中心とした参照アーキテクチャの確立、6段階のエージェント自律性の定義、5つの信頼境界に基づく脅威モデルを構築し、21の脅威に対する防御策と限界を整理しています。",
+          "insight": "AIエージェントの自律性が高まるにつれて、従来のコードの脆弱性だけでなく、エージェントの権限濫用やツール経由でのシステム破壊といった新たなリスクへの対策が必要です。自社でAIコーディング支援や自律型エージェントを導入する際には、エージェントに与える権限の制限や、モデルの判断だけに依存しない多層的な防御アーキテクチャの設計が求められます。ガバナンスとセキュリティの境界をどのように定義すべきか、早期の検討が不可欠です。",
+          "importance": "高",
+          "importance_reason": "AIエージェントの自律化に伴うセキュリティリスクと脅威モデルを包括的に分析しており、次世代のAIセキュリティ戦略に大きな示唆を与えるため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "LLMセキュリティ",
+            "権限・認可",
+            "ツール悪用"
+          ],
+          "affected_layers": [
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "Vibe Coding",
+            "AI Agents",
+            "Threat Model",
+            "Autonomy",
+            "Prompt Injection"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "AI for Security",
+            "Security for AI",
+            "CISO報告"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用未確認と明記",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "不明"
+            ],
+            "evidence": "arXiv:2611.21822v1: Vibe coding is reshaping software development... enabling AI agents write, test, and deploy the code."
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "arXiv research on vibe coding threat landscape and agent autonomy risks",
+            "evidence_status": "研究報告のみ",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "データ・AI・AIエージェント"
+            ],
+            "attack_methods": [
+              "プロンプトインジェクション",
+              "ツール悪用"
+            ],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "7b268b31610a",
+          "title": "Adaptive Budget Allocation for Smart-Contract Fuzzing: Why Online Feedback Fails to Improve Vulnerability Triage",
+          "summary": "arXiv:2611.22430v1 Announce Type: new \nAbstract: Smart-contract fuzzing campaigns share a finite budget and vary widely in the execution cost of a first correct-class vulnerability report. Using trace replay on 143 annotated and 350 bug-injected contracts, we test whether online feedback improves triage. At a mean budget of 100 executions per contract, uniform allocation reaches 72% and 70% of the respective clairvoyant optima. All eight online policies trail uniform on aggregate triage, as do the seven repeated on the bug-injected corpus. Five online signals yield ranking AUCs of 0.32-0.51 for imminent reports. Synthetic-oracle experiments show that sufficiently accurate detection-cost estimates recover more of the gap than detectability rankings. This motivates an offline probability-curve allocator that predicts first-report probabilities across budgets and allocates by predicted gain per execution. In a frozen evaluation on four fresh seeds per corpus, detection-budget AUC improves over uniform by 5.38% and 4.81% on the two source corpora and by 1.99-6.54% on three additional public benchmark subsets.",
+          "url": "https://arxiv.org/abs/2611.22430",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理",
+            "診断技術・評価"
+          ],
+          "engineering_topics": [
+            "診断性能の評価",
+            "評価基盤・データセット"
+          ],
+          "business_score": 12,
+          "source_region": "global",
+          "source_name": "arXiv cs.SE",
+          "source_tier": "C",
+          "published": "2026-11-18T14:00:00+09:00",
+          "title_ja": "スマートコントラクトファジングにおける適応型予算配分の評価",
+          "summary_ja": "スマートコントラクトのファジングキャンペーンにおける限られた実行予算の効率的配分について、143の注釈付きコントラクトと350のバグ注入コントラクトを用いてオンラインフィードバックの有効性を検証した。その結果、一律配分（ユニフォームアロケーション）が既存のオンラインポリシーの多くを上回る成果を示した。これを受け、予算全体での初回レポート確率を予測して効率的な利得を得るオフライン確率曲線の配分手法が提案され、複数のベンチマークで改善が確認された。",
+          "insight": "脆弱性診断やファジングツールにおいて、動的なフィードバックに基づく最適化よりも予測モデルに基づく静的・オフライン的な配分手法が効果を発揮する場合があることを示している。診断コストと検出精度のトレードオフを検討する際の実装上の示唆となる。自社の自動診断ツールのリソース配分設計において、オンラインでの適応制御の限界と事前予測モデルの有効性を再検証すべきである。",
+          "importance": "中",
+          "importance_reason": "ファジングや自動脆弱性検出におけるリソース効率化の新しいアプローチを提示しているため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "研究・論文",
+            "ソースコード診断"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "スマートコントラクト",
+            "ファジング",
+            "脆弱性トリアージ",
+            "予算配分"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "サービス企画"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "不明",
+            "exploitation": "悪用未確認と明記",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "Smart-contract fuzzing tools"
+            ],
+            "evidence": "Using trace replay on 143 annotated and 350 bug-injected contracts, we test whether online feedback improves triage."
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "Smart-contract fuzzing campaigns evaluation on annotated and bug-injected contracts.",
+            "evidence_status": "研究報告のみ",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "ソースコード・ソフトウェア供給網"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "4707ed01a553",
+          "title": "X-LocVul: An Evidence-Propagation Audit of Cascaded C/C++ Vulnerability Detection, Localization, and Explanation",
+          "summary": "arXiv:2611.21626v1 Announce Type: new \nAbstract: Developer-facing vulnerability analysis should link a function-level warning to a source location and a supported explanation. Cascaded systems can propagate weak evidence despite plausible components. We present X-LocVul, a measurement-first audit of a modular C/C++ detector-localizer-explainer pipeline combining UniXCoder, CodeT5, and Qwen2.5-Coder. We test whether evidence passed across stages is useful, merely source-resident, or misleading.\n  Under duplication and temporal-leakage controls, UniXCoder has higher point estimates than CodeBERT, but true-CWE supervision is statistically indistinguishable from a shuffled-CWE control on PR-AUC, MCC, and vulnerable-class F1. Raw generated statements fail exact source matching in 90.83% of cases. Fuzzy projection reaches 83.79% Top-1 accuracy and exceeds semantic projection by 1.59 percentage points, although its advantage over raw ranking is not established. In a randomized, condition-label-masked two-rater evaluation of 50 paired cases, a predicted line improves evidence support, whereas a predicted CWE improves no endpoint. Oracle evidence improves evidence support (Holm-adjusted p=0.00453) and CWE consistency (p=3.49 x 10^-7), but not root-cause quality after correction (p=0.250); unsupported claims remain common. A chronological stress test retains ranking signal (ROC-AUC 0.782; PR-AUC 0.110), while the transferred threshold yields zero recall and F1.\n  The contribution is not a state-of-the-art claim, but an auditable account of evidence construction, transfer, and consumption. It separates source residency from localization correctness, auxiliary labels from semantic supervision, and predicted evidence from useful evidence. Public E4 scores regenerate all 15 tests; missing manifests, final prompts, and profiler logs bound stronger reproducibility claims.",
+          "url": "https://arxiv.org/abs/2611.21626",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": true,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理",
+            "診断技術・評価"
+          ],
+          "engineering_topics": [
+            "診断性能の評価"
+          ],
+          "business_score": 11,
+          "source_region": "global",
+          "source_name": "arXiv cs.SE",
+          "source_tier": "C",
+          "published": "2026-11-18T14:00:00+09:00",
+          "title_ja": "C/C++脆弱性検出・ローカライズ・説明生成パイプラインの監査",
+          "summary_ja": "モジュール型のC/C++脆弱性検出・ローカライズ・説明生成パイプライン（UniXCoder、CodeT5、Qwen2.5-Coderを組み合わせた構成）における証拠の伝播と品質を測定ベースで監査した。重複や時間的漏洩の制御下で評価を行った結果、CWEの教師あり学習はシャッフルされたCWEコントロールと統計的に区別がつかないことや、生成された文が正確なソースマッチに失敗するケースが多いことが示された。一方で、予測された行は証拠のサポートを改善するが、CWEの予測はエンドポイントを改善しないなどの知見が得られた。",
+          "insight": "AIを活用した脆弱性検出やコード解析ツールにおいて、出力される説明や分類ラベルの妥当性を厳しく検証する必要性を示している。単にAIモデルが出力したCWEや解説をうのみにせず、実際のソースコード上の位置情報や証拠の品質を評価に組み込むべきである。自動修正やSASTツールの評価において、誤った証拠の伝播を防ぐための検証プロセスの設計が重要となる。",
+          "importance": "中",
+          "importance_reason": "LLMやAIを用いた脆弱性検出パイプラインの限界と証拠品質の評価手法を提示しているため。",
+          "tag_main_id": "ai_sec",
+          "tag_main_label": "AI×セキュリティ",
+          "tag_subs": [
+            "LLMセキュリティ",
+            "研究・論文",
+            "SAST"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "データ/AI",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "C/C++",
+            "脆弱性検出",
+            "LLM",
+            "UniXCoder",
+            "CodeT5"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "AI for Security",
+            "サービス企画"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "不明",
+            "exploitation": "悪用未確認と明記",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "UniXCoder",
+              "CodeT5",
+              "Qwen2.5-Coder"
+            ],
+            "evidence": "We present X-LocVul, a measurement-first audit of a modular C/C++ detector-localizer-explainer pipeline combining UniXCoder, CodeT5, and Qwen2.5-Coder."
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "Measurement-first audit of a modular C/C++ vulnerability detection pipeline.",
+            "evidence_status": "研究報告のみ",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "ソースコード・ソフトウェア供給網"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "c0bd42928150",
+          "title": "Siemens .NET Client Library for SIMATIC S7 Webserver API",
+          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-02.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>.NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files outside the intended download directory. Siemens has released a new version for .NET Client Library for SIMATIC S7 Webserver API and recommends to update to the late",
+          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-02",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "vulnerability_focus": true,
+          "operations_focus": true,
+          "business_topics": [
+            "脆弱性管理",
+            "企業インシデント"
+          ],
+          "engineering_topics": [],
+          "business_score": 7,
+          "source_region": "global",
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-11-17T21:00:00+09:00",
+          "title_ja": "Siemens製SIMATIC S7 Webserver API向け.NETクライアントライブラリの複数脆弱性",
+          "summary_ja": "Siemens製のSIMATIC S7 Webserver API向け.NETクライアントライブラリにおいて、機微情報の取得や意図したダウンロードディレクトリ外への任意のファイル書き込みを許容する複数の脆弱性が確認された。これを受け、CISAはアドバイザリを公開し、Siemens社は新しいバージョンをリリースしてアップデートを推奨している。",
+          "insight": "OT・産業用制御システムのネットワークやAPI周辺において、クライアントライブラリの脆弱性がサプライチェーン経由で影響を与える事例である。自社環境で類似のOT向けライブラリやSiemens製品を利用している場合、インベントリの把握と速やかなパッチ適用が求められる。再診断や脆弱性管理においてサードパーティ製ライブラリの追跡の重要性を示している。",
+          "importance": "高",
+          "importance_reason": "産業用制御システムのクライアントライブラリにおける脆弱性と公式修正の提供が報告されているため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "パッチ未適用",
+            "サプライチェーン攻撃"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "アプリ/API",
+            "デバイス/エッジ"
+          ],
+          "related_keywords": [
+            "Siemens",
+            "SIMATIC S7",
+            "CISA",
+            "OTセキュリティ"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "顧客課題"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "SIMATIC S7 Webserver API .NET Client Library"
+            ],
+            "evidence": ".NET Client Library for SIMATIC S7 Webserver API contains multiple vulnerabilities that could allow an attacker to obtain sensitive information or write arbitrary files"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "機微情報の取得または任意のファイル書き込み",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "CISA ICS advisory for Siemens .NET Client Library for SIMATIC S7 Webserver API.",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "外部公開資産",
+              "Web・API"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "bff3f62c75a9",
+          "title": "Siemens Industrial Software Products",
+          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-04.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>On October 21, 2026, the Node.js project released security updates addressing a critical vulnerability in the Brotli decoder bundled with Node.js, commonly referred to as \"Node2Shell\" (tracked as CVE-2026-111497). The vulnerability is an out-of-bounds write that could allow a remote attacker to cause memory corruption and potentiall",
+          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-04",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "vulnerability_focus": true,
+          "operations_focus": true,
+          "business_topics": [
+            "脆弱性管理",
+            "企業インシデント"
+          ],
+          "engineering_topics": [],
+          "business_score": 7,
+          "source_region": "global",
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-11-17T21:00:00+09:00",
+          "title_ja": "Siemens産業用ソフトウェアにおけるNode.js Brotliデコーダーの脆弱性",
+          "summary_ja": "CISAはSiemens産業用ソフトウェア製品に関するセキュリティアドバイザリを公開しました。Node.jsに含まれるBrotliデコーダーに起因する重大な境界外書き込みの脆弱性（Node2Shell、CVE-2026-111497）への対応を含んでいます。遠隔の攻撃者によるメモリ破損や潜在的なコード実行のリスクが示されています。",
+          "insight": "産業用ソフトウェアに組み込まれたオープンソースコンポーネント（Node.js）の脆弱性がシステム全体に波及する典型例です。SCAツールやSBOMを活用したサードパーティライブラリの依存関係把握が修正適用の前提となります。産業環境において組込ランタイムのアップデートがプラットフォームの稼働に与える回帰影響を検証できるかが論点となります。",
+          "importance": "高",
+          "importance_reason": "産業用ソフトウェアに組み込まれたNode.jsの境界外書き込みにより遠隔コード実行の恐れがあるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "サプライチェーン攻撃",
+            "修正・緩和"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "Siemens",
+            "Node.js",
+            "Brotli",
+            "CVE-2026-111497",
+            "CISA"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "修正・緩和"
+            ],
+            "assessments": [
+              "SCA",
+              "ソースコード診断"
+            ],
+            "products": [
+              "Siemens Industrial Software Products",
+              "Node.js"
+            ],
+            "evidence": "抜粋に「Node.js project released security updates addressing a critical vulnerability... tracked as CVE-2026-111497」と記載。"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "メモリ破損および潜在的なコード実行",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "Brotliデコード処理をトリガーする不正な入力データを対象コンポーネントに送信して動作を検証する。",
+            "human_validation": "メモリ破損状態やプロセスクラッシュの有無をデバッガ等で確認する。",
+            "service_implication": "組み込みライブラリ起因の脆弱性に対するSCA診断およびバイナリ検証サービスの重要性が高まる。",
+            "source_evidence": "抜粋に「out-of-bounds write that could allow a remote attacker to cause memory corruption and potentiall」と記載。",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "Web・API",
+              "ソースコード・ソフトウェア供給網"
+            ],
+            "attack_methods": [],
+            "weaknesses": [
+              "境界外書き込み"
+            ],
+            "cve_ids": [
+              "CVE-2026-111497"
+            ]
+          }
+        },
+        {
+          "id": "672a22d88057",
+          "title": "Siemens Simcenter Femap",
+          "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-321-10.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Simcenter Femap is affected by an out of bounds read vulnerability that could be triggered when the application reads files in X_T format. This could allow an attacker to crash the application or execute arbitrary code. Siemens has released a new version for Simcenter Femap and recommends to update to the latest version.</strong></p",
+          "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-321-10",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "vulnerability_focus": true,
+          "operations_focus": true,
+          "business_topics": [
+            "脆弱性管理",
+            "企業インシデント"
+          ],
+          "engineering_topics": [],
+          "business_score": 7,
+          "source_region": "global",
+          "source_name": "CISA",
+          "source_tier": "A",
+          "published": "2026-11-17T21:00:00+09:00",
+          "title_ja": "Siemens Simcenter Femapにおける境界外読み取りの脆弱性",
+          "summary_ja": "Siemens Simcenter Femapに境界外読み取りの脆弱性が存在することが報告されました。悪意を持って細工されたX_T形式のファイルを読み込むことで問題が発生します。攻撃者によってアプリケーションのクラッシュや任意のコード実行が引き起こされる恐れがあり、Siemensは最新版へのアップデートを推奨しています。",
+          "insight": "特定ファイル形式のパース処理における脆弱性であり、設計エンジニアリング業務などで外部ファイルを読み込ませる標的型攻撃への警戒が求められます。クライアントソフトウェアの診断ではファイルパーサーのファジングや入力検証の確認が重要です。実務上はパッチ適用に加え、出所不明なファイルを開かない運用ルールの徹底が緩和策となります。",
+          "importance": "中",
+          "importance_reason": "ファイルの読み込みによりアプリケーションの強制終了や任意コード実行の恐れがあるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "修正・緩和"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Siemens",
+            "Simcenter Femap",
+            "境界外読み取り",
+            "X_T形式",
+            "CISA"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "修正・緩和"
+            ],
+            "assessments": [
+              "ペネトレーションテスト",
+              "ブラックボックス診断"
+            ],
+            "products": [
+              "Simcenter Femap"
+            ],
+            "evidence": "抜粋に「Simcenter Femap is affected by an out of bounds read vulnerability... allow an attacker to crash the application or execute arbitrary code」と記載。"
+          },
+          "attack": {
+            "initial_access": "悪意を持って細工されたX_T形式ファイルの読み込み",
+            "observed_impact": "アプリケーションのクラッシュまたは任意コード実行",
+            "japan_observation": "不明",
+            "assessment_preconditions": "ユーザーが不正なX_T形式ファイルを対象アプリケーションで開くこと。",
+            "test_scenario": "細工されたX_T形式ファイルをSimcenter Femapにインポートし、異常終了やメモリ破壊挙動が発生するか検証する。",
+            "human_validation": "クラッシュログおよびレジスタ状態の解析により任意コード実行可能性を検証する。",
+            "service_implication": "ファイルパーサー検証やクライアントアプリ診断におけるテストケース拡充が検討される。",
+            "source_evidence": "抜粋に「triggered when the application reads files in X_T format. This could allow an attacker to crash the application or execute arbitrary code」と記載。",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [],
+            "weaknesses": [
+              "境界外読み取り"
+            ],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "0ca95e86d7b0",
+          "title": "Androidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」における複数の脆弱性",
+          "summary": "宮内庁が提供するAndroidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」には、複数の脆弱性が存在します。",
+          "url": "https://jvn.jp/jp/JVN19906678/",
+          "ai_score": 1,
+          "cdc_pre_score": 1,
+          "vulnerability_focus": false,
+          "operations_focus": true,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 6,
+          "source_region": "JP",
+          "source_name": "JVN",
+          "source_tier": "A",
+          "published": "2026-11-18T12:00:00+09:00",
+          "title_ja": "宮内庁公式Androidアプリにおける複数の脆弱性",
+          "summary_ja": "宮内庁が提供するAndroidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」に複数の脆弱性が報告されました。JVNにより注意喚起が行われています。詳細は個別公表情報に依存しますが、アプリ利用環境におけるセキュリティ影響が懸念されます。",
+          "insight": "公的機関が提供する一般向けモバイルアプリにおける脆弱性事案であり、組織の社会的信用に直結します。モバイルアプリ診断においては静的解析（SAST）と動的解析（DAST）を組み合わせ、コンポーネント公開設定やローカルデータ保存の安全性を評価することが重要です。再診断プロセスによる修正確認が不可欠となります。",
+          "importance": "中",
+          "importance_reason": "国内公的機関が公式に配信するモバイルアプリに複数の脆弱性が確認されたため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "修正・緩和"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "宮内庁",
+            "Androidアプリ",
+            "JVN",
+            "宮内庁参観音声ガイド"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "直接関連",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "修正・緩和",
+              "再診断"
+            ],
+            "assessments": [
+              "ブラックボックス診断",
+              "ソースコード診断"
+            ],
+            "products": [
+              "宮内庁参観音声ガイド- 宮内庁公式アプリ"
+            ],
+            "evidence": "抜粋に「宮内庁が提供するAndroidアプリ「宮内庁参観音声ガイド- 宮内庁公式アプリ」には、複数の脆弱性が存在します」と記載。"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "国内公的機関アプリの脆弱性がJVNで報告されたが、悪用の事実は不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "AndroidアプリのManifest設定、Intentフィルタ、ローカル暗号化ストレージの検証シナリオを実施する。",
+            "human_validation": "実機またはエミュレータ上で該当コンポーネントへの不正アクセス挙動を確認する。",
+            "service_implication": "モバイルアプリ脆弱性診断および修正後再診断サービスの需要を確認する。",
+            "source_evidence": "抜粋に「複数の脆弱性が存在します」と記載、詳細悪用の記述はなし。",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "720188f4c558",
+          "title": "Weekly Report: 複数のApple製品に脆弱性",
+          "summary": "複数のApple製品に脆弱性",
+          "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#4",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 6,
+          "source_region": "JP",
+          "source_name": "JPCERT/CC",
+          "source_tier": "A",
+          "published": "2026-11-18T09:15:00+09:00",
+          "title_ja": "Weekly Report: 複数のApple製品に脆弱性",
+          "summary_ja": "JPCERT/CCより複数のApple製品における脆弱性が公開された。詳細な影響範囲や対策については各提供元の情報確認が推奨される。国内の利用者に対してもアップデートの適用が求められる。",
+          "insight": "Apple製品における脆弱性の定期的な確認と迅速なパッチ適用プロセスの見直しが重要である。自社で利用している端末やサーバー製品群のバージョン管理状況を再点検すべきである。SOC運用においては関連するアップデート情報の迅速な把握が必要となる。",
+          "importance": "中",
+          "importance_reason": "広範囲な端末やOSに影響を与える可能性のある製品脆弱性であるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "パッチ未適用"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Apple",
+            "JPCERT/CC",
+            "脆弱性"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "Apple製品"
+            ],
+            "evidence": "複数のApple製品に脆弱性"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "複数のApple製品に脆弱性",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "b3cb60ee6bce",
+          "title": "Weekly Report: PostgreSQLに複数の脆弱性",
+          "summary": "PostgreSQLに複数の脆弱性",
+          "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#5",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 6,
+          "source_region": "JP",
+          "source_name": "JPCERT/CC",
+          "source_tier": "A",
+          "published": "2026-11-18T09:15:00+09:00",
+          "title_ja": "Weekly Report: PostgreSQLに複数の脆弱性",
+          "summary_ja": "JPCERT/CCからPostgreSQLにおける複数の脆弱性が報告された。データベース管理システムとしての重要性から、影響を受けるシステムの確認が必要である。早期のアップデート適用によるリスク軽減が求められる。",
+          "insight": "データベース製品の脆弱性は情報漏えいやデータ改ざん等の重大な影響に繋がりやすい。バージョン管理とSCA等による依存関係の把握を徹底すべきである。テスト環境での検証を経て安全にパッチを適用する体制が求められる。",
+          "importance": "中",
+          "importance_reason": "基幹システム等で広く使われるPostgreSQLの脆弱性であるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "パッチ未適用"
+          ],
+          "affected_layers": [
+            "クラウド/サーバー",
+            "データ/AI"
+          ],
+          "related_keywords": [
+            "PostgreSQL",
+            "JPCERT/CC",
+            "データベース"
+          ],
+          "cdc_relevance": 1,
+          "cdc_context": [
+            "Exposure管理"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "PostgreSQL"
+            ],
+            "evidence": "PostgreSQLに複数の脆弱性"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "PostgreSQLに複数の脆弱性",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "インフラ・ネットワーク"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "af833bc90eda",
+          "title": "Weekly Report: Apache HTTP Server 2.4に複数の脆弱性",
+          "summary": "Apache HTTP Server 2.4に複数の脆弱性",
+          "url": "https://www.jpcert.or.jp/wr/2026/wr261118.html#6",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 6,
+          "source_region": "JP",
+          "source_name": "JPCERT/CC",
+          "source_tier": "A",
+          "published": "2026-11-18T09:15:00+09:00",
+          "title_ja": "Weekly Report: Apache HTTP Server 2.4に複数の脆弱性",
+          "summary_ja": "JPCERT/CCよりApache HTTP Server 2.4における複数の脆弱性が公表された。Webサーバーとして広く採用されているため影響範囲が広がる可能性がある。管理者は速やかに最新情報を確認し対応する必要がある。",
+          "insight": "Web公開サーバーの基盤となるミドルウェアの脆弱性であり、迅速な影響評価とバージョンアップが必要である。ブラックボックス診断やDASTによる稼働環境のバージョン確認を定期実施すべきである。修正適用の際のサービス停止リスクを考慮した運用が求められる。",
+          "importance": "高",
+          "importance_reason": "広く利用されているWebサーバーの脆弱性であり影響が大きいため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "パッチ未適用"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "クラウド/サーバー",
+            "アプリ/API"
+          ],
+          "related_keywords": [
+            "Apache HTTP Server",
+            "JPCERT/CC",
+            "Webサーバー"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "SOC運用変化"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "直接関連",
+            "exploitation": "不明",
+            "urgency": "緊急",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "DAST"
+            ],
+            "products": [
+              "Apache HTTP Server 2.4"
+            ],
+            "evidence": "Apache HTTP Server 2.4に複数の脆弱性"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "Apache HTTP Server 2.4に複数の脆弱性",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "Web・API"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "3630a63272aa",
+          "title": "Oracle Java の脆弱性対策について(2026年11月)",
+          "summary": "",
+          "url": "https://www.ipa.go.jp/security/security-alert/2026/1118-jre.html",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 6,
+          "source_region": "JP",
+          "source_name": "IPA 注意喚起",
+          "source_tier": "A",
+          "published": "2026-11-18T00:00:00+09:00",
+          "title_ja": "Oracle Java の脆弱性対策について(2026年11月)",
+          "summary_ja": "IPAはOracle Javaに関する脆弱性注意喚起を発表しました。対象製品におけるセキュリティアップデートの適用が推奨されています。管理者は迅速なバージョン確認とパッチ適用を行う必要があります。",
+          "insight": "Java環境の脆弱性管理において、サードパーティ製ライブラリやランタイムの把握と迅速なアップデートが重要です。自社環境におけるバージョン台帳の正確性とパッチ適用の自動化を検討すべきです。",
+          "importance": "高",
+          "importance_reason": "広範囲に影響を与えるJavaの脆弱性に関する注意喚起であるため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "パッチ未適用",
+            "CVE"
+          ],
+          "affected_layers": [
+            "アプリ/API",
+            "クラウド/サーバー"
+          ],
+          "related_keywords": [
+            "Oracle Java",
+            "IPA",
+            "脆弱性対策"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "MDR/MSSP設計"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "直接関連",
+            "exploitation": "不明",
+            "urgency": "早期評価",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "Oracle Java"
+            ],
+            "evidence": "IPA 注意喚起"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "IPA 注意喚起に基づく",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "ソースコード・ソフトウェア供給網"
+            ],
+            "attack_methods": [],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "5dbdb12ce4fc",
+          "title": "エレコム製無線LANルータにおけるOSコマンドインジェクションの脆弱性",
+          "summary": "エレコム株式会社が提供する無線LANルータには、OSコマンドインジェクションの脆弱性が存在します。",
+          "url": "https://jvn.jp/vu/JVNVU92504317/",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "脆弱性管理"
+          ],
+          "engineering_topics": [],
+          "business_score": 6,
+          "source_region": "JP",
+          "source_name": "JVN",
+          "source_tier": "A",
+          "published": "2026-11-17T14:30:00+09:00",
+          "title_ja": "エレコム製無線LANルータにおけるOSコマンドインジェクションの脆弱性",
+          "summary_ja": "エレコム株式会社が提供する無線LANルータにOSコマンドインジェクションの脆弱性が存在することがJVNにより公表されました。影響を受ける製品の利用者は、ファームウェアのアップデートなどの対策が求められます。ネットワーク機器の脆弱性は内部ネットワークへの侵入経路となるリスクがあります。",
+          "insight": "ルータ等のネットワーク機器におけるOSコマンドインジェクションは、初期侵入の足がかりとして悪用されやすいため注意が必要です。ブラックボックス診断やハードウェア・ファームウェアの資産管理において、管理画面の露出や脆弱性を継続的にスキャンする仕組みが求められます。",
+          "importance": "高",
+          "importance_reason": "国内で広く利用されるルータ製品の重大な脆弱性のため。",
+          "tag_main_id": "vuln",
+          "tag_main_label": "脆弱性",
+          "tag_subs": [
+            "CVE",
+            "修正・緩和"
+          ],
+          "affected_layers": [
+            "デバイス/エッジ",
+            "ネットワーク"
+          ],
+          "related_keywords": [
+            "エレコム",
+            "無線LANルータ",
+            "OSコマンドインジェクション",
+            "JVN"
+          ],
+          "cdc_relevance": 2,
+          "cdc_context": [
+            "Exposure管理",
+            "顧客課題"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "直接関連",
+            "exploitation": "不明",
+            "urgency": "緊急",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "エレコム製無線LANルータ"
+            ],
+            "evidence": "JVNからの情報"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "不明",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "JVN情報に基づく",
+            "evidence_status": "不明",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "デバイス・エンドポイント"
+            ],
+            "attack_methods": [
+              "OSコマンドインジェクション"
+            ],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        },
+        {
+          "id": "0c597ec3c532",
+          "title": "AttackIQ Research Reveals How Iranian Cyber Groups Hand Off Network Access to Enable Destructive Attacks",
+          "summary": "Analysis of 20 Iranian state-sponsored threat groups details how espionage, ransomware, and hacktivism intersect in state-backed cyber campaigns.",
+          "url": "https://www.darkreading.com/threat-intelligence/attackiq-research-reveals-iranian-cyber-groups",
+          "ai_score": 1,
+          "cdc_pre_score": 0,
+          "vulnerability_focus": false,
+          "operations_focus": false,
+          "business_topics": [
+            "企業インシデント",
+            "政策・地政学"
+          ],
+          "engineering_topics": [],
+          "business_score": 6,
+          "source_region": "global",
+          "source_name": "Dark Reading",
+          "source_tier": "B",
+          "published": "2026-11-19T05:38:42+09:00",
+          "title_ja": "イランのサイバーグループによるネットワークアクセスの引き渡しと破壊的攻撃に関する調査",
+          "summary_ja": "AttackIQ Researchは、イランの国家支援型とみられる20の脅威グループの分析結果を発表しました。スパイ活動、ランサムウェア、ハクティビズムがどのように交差して国家支援のキャンペーンが行われているかが詳細に解説されています。攻撃グループ間の連携やアクセス権の引き渡し実態が明らかにされました。",
+          "insight": "国家支援型攻撃グループの手法やインシデントの連鎖を理解することは、ペネトレーションテストや脅威インテリジェンスの観点から重要です。自社の防御体制が高度なAPTグループの初期侵入や横展開に対応できるか、攻撃シナリオベースでの検証が求められます。",
+          "importance": "中",
+          "importance_reason": "国家支援型グループの動向と攻撃手法の変遷を示す重要な調査報告のため。",
+          "tag_main_id": "attack",
+          "tag_main_label": "攻撃・脅威",
+          "tag_subs": [
+            "APT",
+            "ランサムウェア"
+          ],
+          "affected_layers": [
+            "ネットワーク",
+            "ガバナンス/規制"
+          ],
+          "related_keywords": [
+            "AttackIQ",
+            "イラン",
+            "国家支援型攻撃",
+            "ランサムウェア"
+          ],
+          "cdc_relevance": 3,
+          "cdc_context": [
+            "SOC運用変化",
+            "MDR/MSSP設計"
+          ],
+          "views": 0,
+          "business": {
+            "japan_relevance": "関連あり",
+            "exploitation": "悪用確認あり",
+            "urgency": "情報収集",
+            "lifecycle": [
+              "不明"
+            ],
+            "assessments": [
+              "不明"
+            ],
+            "products": [
+              "不明"
+            ],
+            "evidence": "Dark Reading記事に基づく"
+          },
+          "attack": {
+            "initial_access": "不明",
+            "observed_impact": "破壊的攻撃",
+            "japan_observation": "不明",
+            "assessment_preconditions": "不明",
+            "test_scenario": "不明",
+            "human_validation": "不明",
+            "service_implication": "不明",
+            "source_evidence": "Dark Readingによる調査報告",
+            "evidence_status": "複数機関が観測",
+            "blackbox_testability": "判断材料不足",
+            "target_layers": [
+              "インフラ・ネットワーク"
+            ],
+            "attack_methods": [
+              "ネットワークアクセスの引き渡し",
+              "ランサムウェア"
+            ],
+            "weaknesses": [],
+            "cve_ids": []
+          }
+        }
+      ],
+      "today_implication": "【本日の要点】\n・Webアプリ向けAIペネトレーションテスト選定のための15のチェックリスト: AIを活用したペネトレーションテストや自動診断ツールの導入において、デモの性能だけでなく認証後の複雑なフローや実運用の安全性を検証することが重要です。診断サービスやツールを選定する際は、単なる網羅性だけでなく、自社のアプリケーション構造に対する適合性や誤検知・安全性への配慮を評価基準に組み込むべきです。SOCおよび診断部門では、自動化ツールの限界と人間の検証範囲をどのように切り分けるかが問われます。\n・静的アプリケーションセキュリティテスト（SAST）ツールの導入・有用性・継続利用の改善に関する研究: SASTの導入や運用において、誤検知の多さや出力の分かりにくさが開発者のモチベーションや定着率を大きく左右します。静的診断ツールを導入・運用する際は、単にツールを導入するだけでなく、開発者が理解しやすい形式への出力整形や自動化プロセスの組込が不可欠です。診断ベンダーやセキュリティ担当者は、開発チームと協調したフィードバックループの構築を検討すべきです。\n・バイブコーディングの脅威ランドスケープと安全な自律性へのロードマップ: AIエージェントの自律性が高まるにつれて、従来のコードの脆弱性だけでなく、エージェントの権限濫用やツール経由でのシステム破壊といった新たなリスクへの対策が必要です。自社でAIコーディング支援や自律型エージェントを導入する際には、エージェントに与える権限の制限や、モデルの判断だけに依存しない多層的な防御アーキテクチャの設計が求められます。ガバナンスとセキュリティの境界をどのように定義すべきか、早期の検討が不可欠です。"
+    },
     {
       "date": "2026-11-18",
       "articles": [
