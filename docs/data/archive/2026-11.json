@@ -2,6 +2,1274 @@
   "month": "2026-11",
   "articles": [
     {
+      "id": "3ac5106debba",
+      "title": "Microsoft Entra Connect Health flaw exploited to steal tenant data",
+      "summary": "Microsoft is warning organizations that it suffered a data breach after attackers exploited a vulnerability in its Entra Connect Health service to gain unauthorized access to administrator email addresses and tenant configuration information. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/microsoft-entra-connect-health-flaw-exploited-to-steal-tenant-data/",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-22T03:01:58+09:00",
+      "title_ja": "Microsoft Entra Connect Healthの脆弱性が悪用されテナントデータが窃取される",
+      "summary_ja": "Microsoftは、攻撃者がEntra Connect Healthサービスの脆弱性を悪用しデータ侵害が発生したことを組織に警告しました。攻撃者は管理者メールアドレスやテナント構成情報への不正アクセスを獲得しました。サービス側の脆弱性により顧客テナントの構成データが影響を受けています。",
+      "insight": "ID連携サービスの基盤側脆弱性による情報漏洩は、利用者側の設定だけでは防ぎきれないサプライチェーン・クラウドサービス自体のセキュリティリスクを示しています。テナント管理情報や管理者連絡先が漏洩した場合、標的型フィッシングや二次攻撃への備えが急務となります。クラウドサービス事業者側の露出と自社ID基盤のログ監査のあり方を再点検すべきです。",
+      "importance": "高",
+      "importance_reason": "クラウドID管理サービスの脆弱性悪用により管理者情報やテナント設定が窃取された実被害であるため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "情報漏洩"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Microsoft",
+        "Entra Connect Health",
+        "データ侵害",
+        "テナント情報",
+        "管理者メールアドレス"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Microsoft Entra Connect Health"
+        ],
+        "evidence": "attackers exploited a vulnerability in its Entra Connect Health service to gain unauthorized access to administrator email addresses and tenant configuration information."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "管理者メールアドレスおよびテナント構成情報への不正アクセス",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "Entra Connect Healthサービスに対する認証・認可バイパスや情報露出の検証シナリオが考えられるが詳細は不明",
+        "human_validation": "不明",
+        "service_implication": "ID連携サービス自体の脆弱性管理およびID不正アクセスの検知体制強化の必要性",
+        "source_evidence": "attackers exploited a vulnerability in its Entra Connect Health service to gain unauthorized access to administrator email addresses and tenant configuration information.",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "認証・ID",
+          "クラウド・コンテナ"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "f63f02c3138c",
+      "title": "Amazon: China-Linked Hackers’ AI Agents Exploited Medical Software Zero-Day",
+      "summary": "<p>A threat actor used autonomous Cairn AI agents to discover and exploit a critical MONAI Label vulnerability.</p>\n<p>The post <a href=\"https://www.securityweek.com/amazon-china-linked-hackers-ai-agents-exploited-medical-software-zero-day/\">Amazon: China-Linked Hackers&#8217; AI Agents Exploited Medical Software Zero-Day</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/amazon-china-linked-hackers-ai-agents-exploited-medical-software-zero-day/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "AIエージェント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-21T21:08:50+09:00",
+      "title_ja": "中国関連の攻撃者がAIエージェントを用いて医療ソフトウェアのゼロデイを悪用",
+      "summary_ja": "脅威アクターが自律型AIエージェント「Cairn」を使用して医療ソフトウェアMONAI Labelの重大な脆弱性を発見・悪用したとAmazonが報告しました。自律的エージェントが未知の脆弱性検出から悪用までを一貫して実行した事例とされています。攻撃手法における自律型AIの兵器化・実用化の進展を示す事案です。",
+      "insight": "AIエージェントを用いた脆弱性探索と自動エクスプロイトが現実の脅威として観測された事例です。従来の静的・動的診断ツールだけでなく、高度な自動推論を伴うエクスプロイト生成に対抗するため、診断側・防御側でもAI駆動の検証手法の導入が求められます。オープンソース医療ソフトウェアなど特定ドメインのソフトウェア管理への注意が必要です。",
+      "importance": "高",
+      "importance_reason": "自律型AIエージェントが悪意あるゼロデイ検出・悪用に実戦投入された事例であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "ゼロデイ",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Amazon",
+        "Cairn",
+        "AIエージェント",
+        "MONAI Label",
+        "ゼロデイ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "Security for AI",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ソースコード診断",
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "MONAI Label"
+        ],
+        "evidence": "A threat actor used autonomous Cairn AI agents to discover and exploit a critical MONAI Label vulnerability."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "自律型AIエージェントによるオープンソースソフトウェアの未知の脆弱性スキャンおよび悪用検証シナリオが考えられるが詳細は不明",
+        "human_validation": "不明",
+        "service_implication": "AIエージェントによる攻撃スピードに対抗する自動検知・パッチ適用の迅速化",
+        "source_evidence": "A threat actor used autonomous Cairn AI agents to discover and exploit a critical MONAI Label vulnerability.",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "afa609acf7c3",
+      "title": "Attackers' AI Agents Found a Zero-Day in Medical-Imaging Software and Gained Root Access",
+      "summary": "Suspected China-linked hackers used autonomous AI agents to find a previously unknown flaw in MONAI Label, an open-source medical imaging server, and gain root access to a university server, Amazon Threat Intelligence said this week.\n\nThe flaw allows an attacker with no account to write files outside the server's storage folder, and it affects MONAI Label 0.8.5 and earlier in the default setup,",
+      "url": "https://thehackernews.com/2026/11/attackers-ai-agents-found-zero-day-in.html",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "AIエージェント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-21T20:03:17+09:00",
+      "title_ja": "AIエージェントが医療画像サーバーのゼロデイを発見しルート権限を奪取",
+      "summary_ja": "中国関連とみられる攻撃者が自律型AIエージェントを使用し、オープンソース医療画像サーバーMONAI Labelの未知の脆弱性を発見して大学サーバーのルート権限を取得しました。Amazon Threat Intelligenceによると、アカウントを持たない攻撃者が外部からサーバーの保存フォルダ外にファイルを書き込める脆弱性です。この脆弱性はデフォルト設定のバージョン0.8.5以前に影響します。",
+      "insight": "アカウント不要で任意のパストラバーサルやファイル書き込みが成立し、結果としてルート奪取に至る脆弱性がAIにより自律探索されました。ソースコード診断（SAST）やブラックボックス診断（DAST）において、ファイル操作APIの境界チェックと入力検証が不十分な箇所を再点検する必要があります。研究機関や医療分野におけるオープンソースサーバーの露出管理と特権分離の設計が問われます。",
+      "importance": "高",
+      "importance_reason": "未認証ファイル書き込みによるroot権限奪取という高深刻度ゼロデイがAIエージェントにより発見・実悪用されたため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "ゼロデイ",
+        "エクスプロイト",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "MONAI Label",
+        "Amazon Threat Intelligence",
+        "ルート権限",
+        "ファイル書き込み",
+        "ゼロデイ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ソースコード診断",
+          "DAST"
+        ],
+        "products": [
+          "MONAI Label 0.8.5 and earlier"
+        ],
+        "evidence": "used autonomous AI agents to find a previously unknown flaw in MONAI Label, an open-source medical imaging server, and gain root access to a university server... allows an attacker with no account to write files outside the server's storage folder"
+      },
+      "attack": {
+        "initial_access": "アカウント不要の外部ファイル書き込み（任意のファイル書き込み）",
+        "observed_impact": "大学サーバーにおけるroot権限の奪取",
+        "japan_observation": "不明",
+        "assessment_preconditions": "MONAI Label 0.8.5以前のデフォルト設定、認証不要",
+        "test_scenario": "認証なしでサーバーのストレージフォルダ外に対するファイル書き込みリクエストを送信し、権限昇格が可能か確認する動的・静的検証シナリオ",
+        "human_validation": "不明",
+        "service_implication": "外部公開APIに対するファイル書き込み境界チェックの診断項目拡充とエージェント型探索対策",
+        "source_evidence": "The flaw allows an attacker with no account to write files outside the server's storage folder, and it affects MONAI Label 0.8.5 and earlier in the default setup, ... gain root access to a university server",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "外部公開資産"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "ファイル書き込み制御不備"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "612e47d069e2",
+      "title": "Hackers Exploit Critical VMware, Cisco, and Apache Flaws as Espionage Attacks Emerge",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added four flaws impacting Apache Roller, Cisco Expressway, SAP NetWeaver, and Broadcom VMware vCenter to its Known Exploited Vulnerabilities (KEV), citing evidence of active exploitation.\n\nThe vulnerabilities are listed below -\n\n\n  CVE-2026-129448 (CVSS score: 9.8) - A deserialization of untrusted data vulnerability in",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-critical-vmware-cisco.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "政策・地政学"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-21T17:49:13+09:00",
+      "title_ja": "米CISA、VMwareやCiscoなどの脆弱4件をKEVに追加し悪用を確認",
+      "summary_ja": "米CISAは金曜日、Apache Roller、Cisco Expressway、SAP NetWeaver、Broadcom VMware vCenterに影響を与える4つの脆弱性をKnown Exploited Vulnerabilities（KEV）に追加した。これらは活発な悪用の証拠が確認されている。対象にはデシリアライゼーションの脆弱性などが含まれている。",
+      "insight": "主要製品のゼロデイや既知の脆弱性がスパイ活動に悪用される事例が続いており、資産管理と迅速なパッチ適用の重要性が示されている。自社環境における対象製品の有無をすばやく特定し、優先順位付けを行う仕組みが求められる。網羅的なExposure管理と迅速な再診断の連携が課題となる。",
+      "importance": "高",
+      "importance_reason": "主要インフラ製品における深刻な脆弱性の悪用が確認されており、即時の影響評価と対応が必要なため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "KEV",
+        "CVE",
+        "優先順位付け"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "CISA",
+        "VMware vCenter",
+        "Cisco Expressway",
+        "Apache Roller",
+        "SAP NetWeaver"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "VMware vCenter",
+          "Cisco Expressway",
+          "SAP NetWeaver",
+          "Apache Roller"
+        ],
+        "evidence": "CISA added four flaws impacting Apache Roller, Cisco Expressway, SAP NetWeaver, and Broadcom VMware vCenter to its Known Exploited Vulnerabilities (KEV), citing evidence of active exploitation."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "CISA added four flaws to KEV citing evidence of active exploitation.",
+        "evidence_status": "複数機関が観測",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "クラウド・コンテナ"
+        ],
+        "attack_methods": [
+          "悪用"
+        ],
+        "weaknesses": [
+          "脆弱性"
+        ],
+        "cve_ids": [
+          "CVE-2026-129448"
+        ]
+      }
+    },
+    {
+      "id": "6da37418d65c",
+      "title": "クラウド環境や業務ツールに不正アクセス、個人情報流出 - Gunosy",
+      "summary": "無料ニュースアプリ「グノシー」などを運営するGunosyは、不正アクセスを受け、関係者の個人情報が流出したことを明らかにした。",
+      "url": "https://www.security-next.com/193094",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-20T20:21:03+09:00",
+      "title_ja": "Gunosy、クラウド環境や業務ツールへの不正アクセスで個人情報流出が発生",
+      "summary_ja": "無料ニュースアプリ「グノシー」を運営するGunosyは、不正アクセスを受けたことを明らかにした。このインシデントにより、関係者の個人情報が流出したことが確認されている。詳細な調査や影響範囲の確認が進められている。",
+      "insight": "クラウド環境や業務ツールに対する不正アクセスはサプライチェーンや外部公開資産全体のセキュリティ管理に大きな教訓を残す。認証・ID層の強化や権限管理の監査、ツールの適切な監視体制が不可欠である。インシデント発生時の迅速な影響評価と再発防止策の徹底が問われる。",
+      "importance": "高",
+      "importance_reason": "国内企業における実際の情報流出インシデントであり、クラウド環境のセキュリティ対策の見直しが強く求められるため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "Gunosy",
+        "グノシー",
+        "不正アクセス",
+        "個人情報流出"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "グノシー関連システム",
+          "クラウド環境・業務ツール"
+        ],
+        "evidence": "無料ニュースアプリ「グノシー」などを運営するGunosyは、不正アクセスを受け、関係者の個人情報が流出したことを明らかにした。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "個人情報の流出",
+        "japan_observation": "国内企業での被害確認",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "不正アクセスを受け、関係者の個人情報が流出したことを明らかにした。",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "クラウド・コンテナ",
+          "認証・ID"
+        ],
+        "attack_methods": [
+          "不正アクセス"
+        ],
+        "weaknesses": [
+          "設定ミス"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "7d4a94dcb15d",
+      "title": "「Splunk SOAR」に複数のRCE脆弱性 - アップデートを提供",
+      "summary": "Cisco Systems傘下のSplunkが提供するセキュリティ運用の自動化基盤「Splunk SOAR」に深刻な脆弱性が明らかとなった。アップデートが提供されている。",
+      "url": "https://www.security-next.com/193173",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-20T14:31:17+09:00",
+      "title_ja": "Cisco、Splunk SOARの複数RCE脆弱性に対するアップデートを提供",
+      "summary_ja": "Cisco Systems傘下のSplunkが提供するセキュリティ運用の自動化基盤「Splunk SOAR」に深刻なリモートコード実行（RCE）の脆弱性が複数明らかになった。これを受けてベンダーから修正のためのアップデートが提供されている。利用者は速やかな適用が求められる。",
+      "insight": "セキュリティ運用の自動化基盤自体に脆弱性が存在する場合、SOCの中核機能が攻撃者に乗っ取られるリスクが生じる。SOARやSIEMなどの特権的な運用基盤に対するアクセス制御と、迅速なパッチ適用プロセスの確立が極めて重要である。自社の自動化基盤のバージョン管理と脆弱性スキャンを再確認すべきである。",
+      "importance": "高",
+      "importance_reason": "セキュリティ運用の根幹であるSOAR製品に深刻なRCE脆弱性が発見されており、迅速な対応が必要なため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Splunk SOAR",
+        "Cisco",
+        "RCE",
+        "脆弱性"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Splunk SOAR"
+        ],
+        "evidence": "Cisco Systems傘下のSplunkが提供するセキュリティ運用の自動化基盤「Splunk SOAR」に深刻な脆弱性が明らかとなった。アップデートが提供されている。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Splunk SOARに複数のRCE脆弱性が明らかとなりアップデートが提供された。",
+        "evidence_status": "PoCのみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産"
+        ],
+        "attack_methods": [
+          "リモートコード実行"
+        ],
+        "weaknesses": [
+          "RCE"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "614b0d64234c",
+      "title": "リフォーム管理システムに不正アクセス - ヤマダデンキ",
+      "summary": "ヤマダデンキは、リフォーム管理システムが第三者によって侵害されたことを明らかにした。顧客の個人情報が流出した可能性があるという。",
+      "url": "https://www.security-next.com/192867",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-20T13:23:33+09:00",
+      "title_ja": "ヤマダデンキのリフォーム管理システムに不正アクセス、顧客個人情報流出の恐れ",
+      "summary_ja": "ヤマダデンキはリフォーム管理システムが第三者による不正アクセスを受けたと公表した。本インシデントに伴い、顧客の個人情報が外部へ流出した可能性があるとしている。侵入経路や影響範囲の詳細な調査状況は抜粋からは不明である。",
+      "insight": "外部公開または社内管理システムにおける侵害事案であり、Webアプリケーション診断やAPI診断、認証認可の不備検証が予防的観点で重要となる。侵害原因の特定後に再診断やExposure管理の枠組みで設定ミスや脆弱性を洗い出す必要があるか確認が求められる。運用側では不正アクセス検知に向けたアクセスログの監視設計が機能していたかを点検する視点が必要となる。",
+      "importance": "高",
+      "importance_reason": "国内大手企業における管理システム侵害と個人情報流出懸念の直接的事案であるため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "個人情報流出",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "ヤマダデンキ",
+        "リフォーム管理システム",
+        "不正アクセス",
+        "個人情報流出"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "顧客課題",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "リフォーム管理システム"
+        ],
+        "evidence": "ヤマダデンキは、リフォーム管理システムが第三者によって侵害されたことを明らかにした。顧客の個人情報が流出した可能性があるという。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "顧客の個人情報が流出した可能性",
+        "japan_observation": "実被害確認",
+        "assessment_preconditions": "不明",
+        "test_scenario": "リフォーム管理システムの認証認可実装、外部公開インターフェースにおける入力値検証や権限昇格可能性の評価。",
+        "human_validation": "不明",
+        "service_implication": "管理系システムに対するブラックボックス診断および設定監査を提供し、不正侵入リスクを事前特定する検討課題がある。",
+        "source_evidence": "リフォーム管理システムが第三者によって侵害された、個人情報が流出した可能性がある",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "1f06a863f5fb",
+      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "summary": "<div class=\"OutlineElement Ltr SCXW266414493 BCX8\">\n<p>CISA has added four new vulnerabilities to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\"><u>Known Exploited Vulnerabilities (KEV) Catalog</u></a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a class=\"Hyperlink SCXW11102993 BCX8\" href=\"https://www.cve.org/CVERecord?id=CVE-2025-42884\" rel=\"noreferrer noopener\" target=\"_blank\"><u>CVE-2025-42884</u></a> SAP NetWeaver Improper Neutralization of Special Ele",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 4,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-20T21:00:00+09:00",
+      "title_ja": "米CISAがSAP NetWeaver脆弱性など4件を悪用確認済みカタログに追加",
+      "summary_ja": "米CISAは実際に悪用が確認された証拠に基づき、KEVカタログに新たに4件の脆弱性を追加した。リストにはSAP NetWeaverにおける特殊要素の不適切な無害化（CVE-2025-42884）が含まれている。組織に対してこれら既知の悪用対象脆弱性の迅速なパッチ適用を促している。",
+      "insight": "悪用が確認されたKEVカタログ登録脆弱性は、優先順位付けにおいて最優先で修正・緩和すべき対象となる。SASTやSCA、DASTで検出された脆弱性について、KEVやEPSSの脅威インテリジェンスと連携させたExposure管理の運用体制が求められる。組織が利用するSAP等の基盤製品において自社資産の露出状況を即時に把握できる棚卸し体制があるかが問われる。",
+      "importance": "高",
+      "importance_reason": "実悪用が確認された脆弱性として米CISAが公式カタログへ追加指定したため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "KEV",
+        "CVE",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "CISA",
+        "KEV",
+        "CVE-2025-42884",
+        "SAP NetWeaver"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "SAP NetWeaver"
+        ],
+        "evidence": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog, based on evidence of active exploitation. CVE-2025-42884 SAP NetWeaver"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "SAP NetWeaverの公開エンドポイントに対する入力値無害化不備の悪用可否検証シナリオの策定。",
+        "human_validation": "不明",
+        "service_implication": "KEV登録脆弱性を即時検知・報告し、優先パッチ適用支援やブラックボックス診断での検出項目へ即時反映する検討課題がある。",
+        "source_evidence": "based on evidence of active exploitation, CVE-2025-42884 SAP NetWeaver Improper Neutralization",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "外部公開資産"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "特殊要素の不適切な無害化"
+        ],
+        "cve_ids": [
+          "CVE-2025-42884"
+        ]
+      }
+    },
+    {
+      "id": "aea9da50e144",
+      "title": "The Outages Are Just Getting Started",
+      "summary": "AI is forcing companies to patch their systems faster as attackers race to exploit newly discovered vulnerabilities. Welcome to internet outage hell.",
+      "url": "https://www.wired.com/story/brace-yourself-for-years-of-outage-chaos/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Wired Security",
+      "source_tier": "B",
+      "published": "2026-11-21T22:00:00+09:00",
+      "title_ja": "脆弱性悪用競争の激化と迅速なパッチ適用がもたらすシステム障害リスク",
+      "summary_ja": "攻撃者が新たに発見された脆弱性を迅速に悪用しようとする中、AIの介在が企業側のパッチ適用サイクルの加速を迫っている。十分な検証を経ない急速なパッチ適用や変更管理のひずみにより、インターネット規模の大規模障害が発生する懸念が生じている。防御側は迅速性とサービス安定性の両立という課題に直面している。",
+      "insight": "AI活用によるエクスプロイト開発の高速化に伴い、パッチ未適用の脆弱性ウィンドウを縮小する必要がある一方で、回帰試験の省略が事業停止リスクを招く構造が示されている。脆弱性診断や動的検証において、修正パッチの適用後における機能維持と安全性の再診断をいかに自動化・迅速化するかが重要となる。可用性とセキュリティのトレードオフをどう管理するかが評価される。",
+      "importance": "中",
+      "importance_reason": "AIによる攻撃加速とパッチ適用サイクルの短縮が引き起こす可用性・運用リスクを論じているため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "市場トレンド",
+        "パッチ未適用",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "パッチ適用",
+        "システム障害",
+        "エクスプロイト競争",
+        "AI悪用"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "AI is forcing companies to patch their systems faster as attackers race to exploit newly discovered vulnerabilities. Welcome to internet outage hell."
+      },
+      "attack": {
+        "initial_access": "新規発見された脆弱性の悪用",
+        "observed_impact": "システム障害・停止",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "迅速なパッチ適用後に想定される機能停止や設定不整合を検知するための回帰自動テストおよび露出診断シナリオ。",
+        "human_validation": "不明",
+        "service_implication": "パッチ適用の迅速化に伴う副作用を低減するため、修正後の即時再診断および影響確認テストのサービス化を検討する課題がある。",
+        "source_evidence": "attackers race to exploit newly discovered vulnerabilities, internet outage hell",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "インフラ・ネットワーク",
+          "外部公開資産"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "febc644792c7",
+      "title": "GnuPG Warns Critical GPGME Flaw Could Expose App Data via Malicious OpenPGP Keys",
+      "summary": "A malicious OpenPGP key with an unusually long user ID can trigger a critical memory bug in GPGME, the standard library that programs use to work with GnuPG.\n\nThe GnuPG project warned yesterday that the flaw could be used to steal data from affected applications and has released fixed versions.\n\nThe bug, tracked as CVE-2026-129975, affects all software that uses GPGME before version 2.3.0,",
+      "url": "https://thehackernews.com/2026/11/gnupg-warns-critical-gpgme-flaw-could.html",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-21T20:05:53+09:00",
+      "title_ja": "GnuPG、GPGMEの重大なメモリバグ（CVE-2026-129975）について警告",
+      "summary_ja": "GnuPGプロジェクトは、GPGMEライブラリに悪意あるOpenPGPキーを処理する際にアプリケーションデータが暴露される重大な脆弱性が存在すると警告した。バージョン2.3.0未満のGPGMEを使用するすべてのソフトウェアが影響を受ける。すでに修正版がリリースされており、開発元はアップデートを促している。",
+      "insight": "SCAやライブラリ依存関係の管理において、暗号化ライブラリの脆弱性追従の重要性を示している。自社製アプリケーションや内部ツールで利用しているGPGMEのバージョンを即座に特定し、パッチ適用を行う必要がある。サプライチェーン経由での混入リスクに対する依存関係スキャンの精度向上が問われる。",
+      "importance": "高",
+      "importance_reason": "暗号化処理の中核を担うライブラリの脆弱性であり、広範囲なアプリケーションへの影響が懸念されるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "GnuPG",
+        "GPGME",
+        "CVE-2026-129975",
+        "OpenPGP"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "GPGME"
+        ],
+        "evidence": "CVE-2026-129975 affects all software that uses GPGME before version 2.3.0"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "A malicious OpenPGP key with an unusually long user ID can trigger a critical memory bug",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "メモリバグ"
+        ],
+        "cve_ids": [
+          "CVE-2026-129975"
+        ]
+      }
+    },
+    {
+      "id": "5e6da20d451a",
+      "title": "CTO of ‘RansomwareHelp’ Indicted for Wire Fraud",
+      "summary": "The chief technology officer and co-founder of ransomwarehelp.com, a six year old Florida business that claimed to use \"advanced cryptographic tools\" to restore data locked by ransomware, has been charged with wire fraud after an FBI sting operation found the company was simply paying the attackers for a decryption key and charging victims a markup for work that was never performed.",
+      "url": "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Krebs on Security",
+      "source_tier": "B",
+      "published": "2026-11-21T09:36:39+09:00",
+      "title_ja": "ランサムウェア支援業者のCTOが通信詐欺の罪で起訴",
+      "summary_ja": "身代金交渉や復元を謳っていた「RansomwareHelp」のCTO兼共同創業者が、FBIのおとり捜査により通信詐欺の罪で起訴された。同社は高度な暗号解読技術を称ボしつつ、実際には攻撃者に身代金を支払い、法外なマージンを上乗せして被害者に請求していただけであった。実作業は一切行われていなかったことが判明している。",
+      "insight": "インシデントレスポンスや身代金交渉を標榜するサードパーティサービスの信頼性評価における教訓となる。セキュリティベンダーやIR業者の選定においては、技術的実態や透明性の検証が不可欠である。不正な仲介業者に依存しないインシデント対応体制の確立が求められる。",
+      "importance": "中",
+      "importance_reason": "セキュリティサービスの信頼性に関わる詐欺事件であり、インシデント対応のサプライチェーンリスクを示すため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "ランサムウェア",
+        "情報漏洩"
+      ],
+      "affected_layers": [
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "RansomwareHelp",
+        "FBI",
+        "ランサムウェア",
+        "通信詐欺"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "顧客課題",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "RansomwareHelp"
+        ],
+        "evidence": "The chief technology officer and co-founder of ransomwarehelp.com... has been charged with wire fraud"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "charged with wire fraud after an FBI sting operation found the company was simply paying the attackers",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "2cd7e41e0463",
+      "title": "China's 'Armory Castle' Lays Siege to VMware vCenter Zero-Day",
+      "summary": "During the last wave of major VMware vCenter security updates, a China-nexus threat group likely already had its next zero-day up its sleeve.",
+      "url": "https://www.darkreading.com/cyberattacks-data-breaches/china-armory-castle-vmware-vcenter-zero-day",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Dark Reading",
+      "source_tier": "B",
+      "published": "2026-11-21T06:03:27+09:00",
+      "title_ja": "中国系脅威グループ「Armory Castle」、VMware vCenterのゼロデイを標的化",
+      "summary_ja": "VMware vCenterのセキュリティアップデートの波に乗じて、中国系とみられる脅威グループ「Armory Castle」が新たなゼロデイ脆弱性を準備していたことが報じられた。パッチ適用の裏で高度な攻撃者が未公開の脆弱性を保持し、継続的に悪用を試みている実態が浮き彫りとなっている。組織的な標的型攻撃に対する警戒が求められる。",
+      "insight": "ゼロデイ脆弱性を前提とした多層防御およびEDR/NDRによる異常検知の重要性を示している。パッチ適用は必須であるが、それだけでは防ぎきれない高度な初期侵入に対するペネトレーションテストやレッドチーム演習の実施が有効である。自社の仮想化基盤におけるログ監視体制を再点検すべきである。",
+      "importance": "高",
+      "importance_reason": "国家支援型グループによるゼロデイ攻撃の動向であり、インフラストラクチャに対する重大な脅威となるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "APT",
+        "ゼロデイ",
+        "国家支援型攻撃"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Armory Castle",
+        "VMware vCenter",
+        "ゼロデイ",
+        "中国"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "MDR/MSSP設計"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "VMware vCenter"
+        ],
+        "evidence": "a China-nexus threat group likely already had its next zero-day up its sleeve"
+      },
+      "attack": {
+        "initial_access": "ゼロデイ脆弱性",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "a China-nexus threat group likely already had its next zero-day up its sleeve against VMware vCenter",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "インフラ・ネットワーク",
+          "クラウド・コンテナ"
+        ],
+        "attack_methods": [
+          "ゼロデイ攻撃"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "247a71d62489",
+      "title": "Bell Canada says 'agentic' hacker stole enterprise customer data",
+      "summary": "Bell Canada has confirmed that an \"agentic\" threat actor breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-21T03:51:43+09:00",
+      "title_ja": "Bell Canada、エージェンティックな攻撃者による企業顧客データ侵害を報告",
+      "summary_ja": "カナダの通信大手Bell Canadaは、自律型（agentic）の脅威アクターによってシステムが侵害されたことを確認しました。侵害は通信回線の発注やプロビジョニングに使用されるシステムに及び、企業顧客のデータが窃取されました。攻撃の自律性やAIエージェントの関与の程度について注目を集めています。",
+      "insight": "通信インフラや回線プロビジョニング等の基幹システムを狙った標的型攻撃であり、攻撃チェーンの自動化・エージェント化が進展している可能性が示唆されます。ペネトレーションテストやレッドチーム演習において、自律型ツールによる高速な偵察・権限昇格を想定した多層防御の検証が求められます。SOC/CDCは、通常のAPI呼び出しやプロビジョニング操作に紛れた自律型エージェントの異常行動をどのレイヤーで検知できるかを検証課題とすべきです。",
+      "importance": "高",
+      "importance_reason": "大手通信事業者における自律型アクターによる実被害インシデントであり、インフラ防御への影響が大きいため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "情報漏洩"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Bell Canada",
+        "agentic hacker",
+        "企業データ窃取",
+        "回線プロビジョニング"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "telecommunications circuits ordering/provisioning system"
+        ],
+        "evidence": "Bell Canada has confirmed that an 'agentic' threat actor breached its systems on November 17, 2026, and stole enterprise customer data"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "企業顧客データの窃取、通信回線発注・プロビジョニングシステムへの侵入",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "通信プロビジョニング系システムに対する自律的エクスプロイトおよびデータ収集シナリオの検討",
+        "human_validation": "不明",
+        "service_implication": "自律型エージェントを用いた高速な偵察および不正アクセスを検知・防御できる評価サービスの検討",
+        "source_evidence": "breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "bbf2c3f2ae6a",
+      "title": "Hackers use autonomous AI tool Cairn to find zero-day, take over server",
+      "summary": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-21T02:30:00+09:00",
+      "title_ja": "攻撃者が自律型AIツール「Cairn」を悪用してゼロデイを発見しサーバーを掌握",
+      "summary_ja": "脅威アクターがオープンソースの自律型AIペネトレーションテストフレームワーク「Cairn」を悪用しました。同ツールを用いて医療画像処理アプリケーション内の未知の脆弱性（ゼロデイ）が発見されました。その結果、サーバーの完全な乗っ取りが行われたと報じられています。",
+      "insight": "AI診断ツールの進展により、攻撃者側もゼロデイ発見やエクスプロイト作成の自動化・高速化を実用化しつつある実態が浮き彫りになりました。防御側としても、従来のシグネチャ依存型DAST/SASTだけでなく、AIを活用した自律的脆弱性探索や高速なトリアージ態勢を構築することが急務です。SOC/CDCは、自律ツールによる大量かつインテリジェントなプロービング攻撃を早期に識別し遮断できる設計を検討する必要があります。",
+      "importance": "高",
+      "importance_reason": "オープンソース自律型AIツールの悪用による実ゼロデイ発見とサーバー掌握という新たな脅威実例であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "ゼロデイ",
+        "エクスプロイト",
+        "AIを使った攻撃"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Cairn",
+        "自律型AI",
+        "ゼロデイ",
+        "医療画像アプリケーション",
+        "サーバー掌握"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "Security for AI",
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ペネトレーションテスト",
+          "DAST",
+          "API診断"
+        ],
+        "products": [
+          "medical imaging application",
+          "Cairn"
+        ],
+        "evidence": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application."
+      },
+      "attack": {
+        "initial_access": "医療画像アプリケーションの未知の脆弱性悪用",
+        "observed_impact": "サーバーの掌握（テイクオーバー）",
+        "japan_observation": "不明",
+        "assessment_preconditions": "医療画像処理アプリケーションへのネットワーク到達性（詳細な認証要件は不明）",
+        "test_scenario": "自律型ペネトレーションテストAIツールを用いたゼロデイ探索および自動侵入テストのシミュレーション",
+        "human_validation": "不明",
+        "service_implication": "攻撃者目線でのAI探索フレームワークを用いた動的診断および迅速なパッチ適応プロセスの整備",
+        "source_evidence": "used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application [and] take over server",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "39e48eb52289",
+      "title": "WhatsApp Fixes Flaw Uncovered While Disrupting Scam Campaign",
+      "summary": "<p>Tracked as CVE-2026-23871, the vulnerability was found by WhatsApp’s security team, and it may have been used to make scam messages more credible.</p>\n<p>The post <a href=\"https://www.securityweek.com/whatsapp-fixes-flaw-uncovered-while-disrupting-scam-campaign/\">WhatsApp Fixes Flaw Uncovered While Disrupting Scam Campaign</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/whatsapp-fixes-flaw-uncovered-while-disrupting-scam-campaign/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-21T01:01:02+09:00",
+      "title_ja": "WhatsApp、詐欺キャンペーン阻止の過程で発見された脆弱性を修正",
+      "summary_ja": "WhatsAppのセキュリティチームが、進行中の詐欺キャンペーンを阻止する調査の過程で脆弱性CVE-2026-23871を発見・修正しました。この脆弱性は、攻撃者が送信する詐欺メッセージの信頼性を高めるために悪用されていた可能性があるとされています。迅速なパッチ適用により、詐欺グループによるソーシャルエンジニアリング被害の拡大防止が図られました。",
+      "insight": "プラットフォーム側の脆弱性が直接の侵入だけでなく、フィッシングや詐欺メッセージの信憑性偽装（スプーフィング等）に悪用される典型例です。アプリケーション診断やAPI診断においては、システム侵害だけでなく、メッセージ表示や認証UIの整合性を崩す欠陥がないかも厳密に検証する必要があります。CDC/SOC設計者は、通信内容の信頼性偽装を狙う攻撃兆候の検知やユーザー保護の枠組みを再確認する契機とすべきです。",
+      "importance": "中",
+      "importance_reason": "大規模利用メッセージングアプリにおける実悪用の疑いがあるCVE脆弱性の修正であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和",
+        "フィッシング"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "WhatsApp",
+        "CVE-2026-23871",
+        "詐欺キャンペーン",
+        "メッセージ偽装"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和",
+          "再診断"
+        ],
+        "assessments": [
+          "ソースコード診断",
+          "API診断"
+        ],
+        "products": [
+          "WhatsApp"
+        ],
+        "evidence": "Tracked as CVE-2026-23871, the vulnerability was found by WhatsApp’s security team, and it may have been used to make scam messages more credible."
+      },
+      "attack": {
+        "initial_access": "詐欺メッセージの送信・受信",
+        "observed_impact": "詐欺メッセージの信頼性向上（ソーシャルエンジニアリングの成功率向上）",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "メッセージ送受信における表示偽装や属性改変に関するブラックボックス/API検証シナリオ",
+        "human_validation": "不明",
+        "service_implication": "メッセージング関連APIにおける表示整合性やなりすましリスクを評価する診断項目の確立",
+        "source_evidence": "Tracked as CVE-2026-23871, the vulnerability was found by WhatsApp’s security team, and it may have been used to make scam messages more credible.",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": [
+          "CVE-2026-23871"
+        ]
+      }
+    },
+    {
       "id": "f7728af8263c",
       "title": "ALIoTh: Orchestrating Multi-Agent LLMs for Autonomous IoT Penetration Testing",
       "summary": "arXiv:2611.25809v1 Announce Type: new \nAbstract: Penetration testing in Internet of Things (IoT) environments, especially those composed of various different devices, e.g., smart plugs, smart cameras, and smart doors, presents great challenges across the phases of information gathering, attack surface enumeration, privilege escalation, and lateral movement. This paper introduces ALIoTh, a multi-agent, workflow-driven penetration testing framework that integrates Large Language Models agents within a Self-Retrieval-Augmented Generation (Self-RAG) architecture to autonomously identify and exploit vulnerabilities in IoT and Industrial-IoT (IIoT) environments. By leveraging state-of-the-art language models and orchestrating specialized agents via the LangGraph framework, ALIoTh dynamically plans and executes a full-spectrum offensive pipeline. This includes network, devices, and service enumeration, vulnerability assessment, payload generation, reverse shell deployment, and privilege escalation on each device. The Self-RAG mechanism equips expert agents with contextual access to IoT security knowledge, e.g., related documentation, tool manuals, and known attack techniques, enhancing their reasoning capabilities in scenarios involving multiple device exploitation and group policy manipulation.",
