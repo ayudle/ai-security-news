@@ -2,6 +2,1266 @@
   "month": "2026-11",
   "articles": [
     {
+      "id": "3bef9d9771fc",
+      "title": "Right Verdict, Right Reason? An Execution-Grounded Study of Whether LLM Vulnerability Detectors Understand Vulnerabilities",
+      "summary": "arXiv:2611.28584v1 Announce Type: cross \nAbstract: Large language models (LLMs) are increasingly used to detect vulnerabilities, and their benchmark scores are often read as evidence that they understand the vulnerabilities they report. We test this reading against program execution. For 515 C and C++ functions from BigVul and PrimeVul whose vulnerability we reproduce with a proof of concept, we identify the line at which the fault occurs and the statements on which the faulting run depended. These facts ground a ladder of five tests, from telling a vulnerable function from its fixed version, through locating the fault and reacting to its removal, to judging execution-confirmed edits and predicting the outcome of a concrete run. Each test is paired with a baseline that needs no understanding, such as a rule that picks lines with risky calls, and we repeat the study on 195 vulnerabilities published after the training cutoffs of the models. Four findings emerge. First, telling a vulnerable function from its fixed version is hard. The open-weight models separate no more pairs than chance, although five of them show a weak sensitivity to the fix, and the commercial models still label many screened fixed versions vulnerable. Second, the commercial models locate the fault beyond a keyword rule, while removing that evidence changes the verdicts of the strongest model only on the newer vulnerabilities. Third, given the program input, the commercial models predict whether a run faults better than a rule that looks for added checks, and the prediction follows the input. Fourth, on the newer vulnerabilities this advantage disappears and the lead of the strongest model narrows, while localization persists. We release the framework, the per-function evidence, and an execution-confirmed counterfactual benchmark.",
+      "url": "https://arxiv.org/abs/2611.28584",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 12,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-24T14:00:00+09:00",
+      "title_ja": "LLMの脆弱性検出能力における実行根拠に基づく検証研究",
+      "summary_ja": "大規模言語モデル（LLM）が報告する脆弱性の理解度をプログラム実行ベースで検証した研究。515件のC/C++関数を用いて5段階のテストを実施した結果、商用モデルは脆弱性の位置特定や実行予測でルールベースを上回る一方、固定バージョンの判別や新規脆弱性への対応には限界があることが示された。本研究では評価用フレームワークとカウンターファクトリーベンチマークが公開されている。",
+      "insight": "LLMによる脆弱性検出結果の妥当性を評価する際、静的な検出数だけでなく実行根拠に基づいた検証が必要であることを示唆している。実務の脆弱性診断やSASTツールへのAI適用において、誤検知や文脈理解の限界を前提としたレビュー体制の構築が重要となる。",
+      "importance": "中",
+      "importance_reason": "LLMによる脆弱性検出の実効性と限界を実証的に示した重要な研究であるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "研究・論文",
+        "SAST"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "LLM",
+        "脆弱性検出",
+        "BigVul",
+        "PrimeVul",
+        "C/C++"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "arXiv:2611.28584v1"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "研究論文に基づく検証であり攻撃やインシデントではない",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "ed5eff06906e",
+      "title": "How Far Can LLMs Go in Generating Android Lint Checks from Natural Language?",
+      "summary": "arXiv:2611.28159v1 Announce Type: new \nAbstract: Static analysis tools such as Android Lint, PMD, and CodeQL let developers add custom checks for project-specific rules. However, authoring a check is a demanding programming task: a rule can be stated in a few sentences, yet turning it into a working, tested check requires detailed knowledge of the analysis framework and its issue-detection logic. Recent work generates such checks with large language models (LLMs), but each system needs more than the natural language description a developer always has: a bug-fix patch, a CVE record, or a developer-written test suite to repair against. No prior work measures whether an LLM can turn a description into a working check, or what external knowledge it needs to do so. We introduce LintBench, a human-validated benchmark of 113 real-world Android Lint checks, each paired with a natural language description and its original test suite as a held-out oracle. We evaluate four LLMs, including proprietary and open-weight models. We compare prompting strategies, then evaluate execution-guided repair with and without retrieved API knowledge. Prompting alone reaches 30%-65% (pass@5) across models. Execution-guided repair and retrieval reach 57%-85% test-passing rates within five calls. Our results show that execution feedback raises the pass rate, while retrieved framework knowledge raises the compile rate, which reaches up to 99%. The framework knowledge helps the low-performing models the most, providing the knowledge they need to fix compilation errors. Of the generated checks that compile but fail their tests, 87% have false negatives, missing an issue the generated check should report. Based on our findings, getting the issue-detection logic right remains an open challenge. We release LintBench and the evaluation harness to support future work on generating Android Lint checks.",
+      "url": "https://arxiv.org/abs/2611.28159",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断ハーネス",
+        "診断性能の評価"
+      ],
+      "business_score": 12,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-24T14:00:00+09:00",
+      "title_ja": "自然言語からのAndroid Lintチェック生成におけるLLMの評価",
+      "summary_ja": "自然言語の記述からAndroid Lintのカスタムチェックを生成するタスクにおいて、LLMの性能と外部知識・実行フィードバックの影響を検証した研究。113件の実世界でのLintチェックをまとめたLintBenchを用いた評価の結果、プロンプトのみでは30%-65%の正解率だが、実行ガイド付き修復とAPI知識の検索により57%-85%まで向上することが示された。コンパイル成功率は最大99%に達する一方、検出ロジックの正確性には依然として課題が残る。",
+      "insight": "開発支援ツールやカスタム静的解析ルールの自動生成において、LLM単体のプロンプトだけでなく実行フィードバックやフレームワーク知識の補完が有効であることを示している。セキュリティ診断におけるカスタムルール作成の効率化や自動化を進める際のリファレンスとなる。",
+      "importance": "中",
+      "importance_reason": "カスタム静的解析ルールの自動生成におけるLLMの限界と改善アプローチを明らかにしているため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "SAST",
+        "製品リリース"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "Android Lint",
+        "LintBench",
+        "LLM",
+        "静的解析"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "arXiv:2611.28159v1"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "研究論文に基づく静的解析ツールの生成評価であり攻撃やインシデントではない",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "bcea64cc8ad7",
+      "title": "MARGIN: Margin-Aware Regularized Geometry for Imbalanced Vulnerability Detection",
+      "summary": "arXiv:2605.10240v4 Announce Type: replace \nAbstract: Software vulnerability detection is critical for ensuring software security and reliability. Despite recent advances in deep learning, real-world vulnerability datasets suffer from two severe challenges: frequency imbalance and difficulty imbalance. We reinterpret these challenges from an embedding geometry perspective, observing that such imbalances induce geometric distortions in hyperspherical representation space. To address this issue, we propose MARGIN, a metric-based framework that learns discriminative vulnerability representations through adaptive margin metric learning and hyperspherical prototype modeling. MARGIN dynamically adjusts geometric regularization according to the distribution structure estimated by the von Mises-Fisher concentration, aligning the probability mass of embedding distributions with their corresponding Voronoi cells, thereby reducing geometric distortion and yielding more stable decision boundaries. Extensive experiments on public vulnerability datasets show that MARGIN consistently outperforms strong baselines, achieving notable improvements in classification and detection, especially on challenging, imbalanced datasets. Further analysis demonstrates that MARGIN produces more structured embedding geometries, improving robustness, interpretability, and generalization.",
+      "url": "https://arxiv.org/abs/2605.10240",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価",
+        "評価基盤・データセット"
+      ],
+      "business_score": 12,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-24T14:00:00+09:00",
+      "title_ja": "不均衡な脆弱性検出に向けたマージン考慮型正則化幾何学フレームワークMARGIN",
+      "summary_ja": "実世界の脆弱性データセットが抱える頻度と難易度の不均衡問題に対し、埋め込み幾何学の観点からアプローチするフレームワーク「MARGIN」を提案した研究。適応型マージンメトリック学習と超球面プロトタイプモデリングにより幾何学的歪みを軽減し、安定した決定境界を学習することで分類性能と検出精度を向上させる。公開データセットを用いた実験により、従来の手法を上回る堅牢性と解釈性、汎用性が示された。",
+      "insight": "ディープラーニングを用いた脆弱性検出モデルにおいて、データ不均衡に起因する幾何学的歪みの解消が検出精度向上に直結することを示唆している。ソースコード診断やAIを活用した脆弱性検知エンジンの精度改善において参考となる手法である。",
+      "importance": "中",
+      "importance_reason": "脆弱性検出モデルにおけるデータ不均衡問題に対する新しい解決策を提示しているため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "SAST",
+        "優先順位付け"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "MARGIN",
+        "脆弱性検出",
+        "深層学習",
+        "データ不均衡"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "arXiv:2605.10240v4"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "研究論文に基づく脆弱性検出モデルの改善手法であり攻撃やインシデントではない",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "cc98e3ba7a23",
+      "title": "Zero-Trust Formal Methods: AI Agents Build Verified Checkers for Untrusted Solvers",
+      "summary": "arXiv:2611.28704v1 Announce Type: cross \nAbstract: AI coding agents now generate code faster than humans can review it. Security analyses rely on solver answers such as \"unsatisfiable\" (for example, no attack path exists) or \"optimal.\" Unlike satisfying models, they cannot be checked by looking at them. Formal verification moves trust from code to specifications, but verifiers still place large SAT, SMT, and answer-set solvers, and the translation into solver queries, in their trusted computing base, and these have had soundness bugs. Unlike agent-based pipelines that trust their verifier and solver, our farm trusts no component by default: neither the AI agents, which might make mistakes or game their objectives, nor the solvers. A solver answer counts only if a verified checker accepts its certificate. Every theory, proof, and line of code is generated by AI. For each component, agents first create an Isabelle/HOL theory with a specification, a soundness proof, and a reference checker made by code generation, then a fast Rust implementation, verified with Verus against a specification that mirrors the Isabelle definitions line by line. Specifications are frozen after independent review and cannot be changed by the implementing agents. A trust manifest lists what is still trusted. We built trust chains for SAT (verified LRAT checking); SMT, with certificates from an extended z3 and verified bit-blasting for bit-vectors and floating point; answer-set programming, with native certificates from clingo, including weight rules and optimality; and, closing the loop, Verus's final verification-condition step, by translation validation. All 3,726 SMT queries from 20 crates are certified and validated, and 15,662 answer-set proofs are accepted by both the Isabelle and the Verus checker. We found soundness defects in three proof checkers, including drat-trim, and in five solvers, including clasp and z3, which report wrong unsatisfiability.",
+      "url": "https://arxiv.org/abs/2611.28704",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "生成コードの安全性評価"
+      ],
+      "business_score": 11,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-24T14:00:00+09:00",
+      "title_ja": "ゼロトラスト形式検証：AIエージェントによる検証済みチェッカーの構築",
+      "summary_ja": "AIコーディングエージェントを用いて、SATやSMT、アンスリント・セットソルバーの出力を検証する仕組みを構築した研究。AI自身がIsabelle/HOL理論やRust実装による検証済みチェッカーを作成し、ソルバーのバグや不整合を検知する。既存のソルバーやチェッカーで複数の不具合を発見した。",
+      "insight": "AIエージェントを活用した形式検証や自動テスト生成において、ツール自体の健全性をどう担保するかという重要な課題に対して、相互検証アプローチの有効性を示している。セキュリティ診断ツールやSASTの信頼性評価において、ツール出力を鵜呑みにしないアーキテクチャ設計の参考となる。チェッカー自体のバグを防ぐ仕組みは、将来の高度な脆弱性診断自動化において不可欠である。",
+      "importance": "中",
+      "importance_reason": "AIを活用した形式検証とソルバーの信頼性向上に関する先駆的な研究であり、自動化ツールの信頼性担保に大きな影響を与えるため。",
+      "tag_main_id": "biz_tech",
+      "tag_main_label": "ビジネス・技術動向",
+      "tag_subs": [
+        "研究・論文",
+        "LLMセキュリティ"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "形式検証",
+        "AIエージェント",
+        "SMTソルバー",
+        "Isabelle/HOL",
+        "Verus"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "z3",
+          "clingo"
+        ],
+        "evidence": "arXiv:2611.28704v1"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "研究報告のみ",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "9b49386b292c",
+      "title": "Agentic Root Cause Reasoning and Localization of Unsoundness in Static Call Graph Analysis",
+      "summary": "arXiv:2611.29745v1 Announce Type: new \nAbstract: Static call graph tools cannot soundly model every dynamic language feature, yet rarely reveal when, where, or why their results are unsound. We present CGRizz, an agentic framework that diagnoses unsoundness for developers and warns users about it. During training, CGRizz compares static and dynamic call graphs to identify boundary edges: calls observed at runtime but missing from the static graph. For each edge, an LLM agent proposes a root cause, including the unmodeled program pattern and responsible tool location. CGRizz validates each proposal using three independent forms of evidence: runtime instrumentation detecting the pattern, a test case reproducing the missing edge, and a warning inserted at the implicated tool location. Validated reports help developers diagnose limitations, while the warnings form an instrumented build that flags potential unsoundness in new programs without dynamic analysis. We evaluate CGRizz on three benchmark suites using WALA, OPAL, and Soot. Of 1,459 boundary edges, CGRizz reasons about 10.3% directly, all confirmed by manual audit, and resolves another 84.1% by grouping edges with validated root causes. Tool maintainers confirmed several limitations, some of which have been fixed. The warnings flag 74%-92% of unsoundness in held-out programs. Guided by CGRizz reports, a coding agent refactored programs to remove 64% of targeted root-cause patterns while preserving functionality.",
+      "url": "https://arxiv.org/abs/2611.29745",
+      "ai_score": 2,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント",
+        "診断技術・評価"
+      ],
+      "engineering_topics": [
+        "診断性能の評価"
+      ],
+      "business_score": 11,
+      "source_region": "global",
+      "source_name": "arXiv cs.SE",
+      "source_tier": "C",
+      "published": "2026-11-24T14:00:00+09:00",
+      "title_ja": "静的コールグラフ解析における不健全性のエージェント型原因究明と局所化",
+      "summary_ja": "静的コールグラフ解析ツールが動的言語機能を健全にモデル化できない問題を診断するエージェント型フレームワーク「CGRizz」を提案している。CGRizzは静的解析と動的解析を比較して境界エッジを特定し、LLMエージェントが根拠に基づいて未モデル化パターンやツールの修正箇所を診断する。ベンチマーク評価により、ツールの限界特定やコードのリファクタリングに有効であることが示された。",
+      "insight": "SASTや静的解析ツールの誤検知・検出漏れの根本原因を自動診断するアプローチとして極めて実用的である。脆弱性診断の精度向上やツール開発において、動的解析結果との比較によるギャップ分析をAIで自動化する手法は、診断ツールの信頼性評価プロセスに直結する。実務ではSASTの限界を把握し補完する仕組みとして応用可能である。",
+      "importance": "中",
+      "importance_reason": "静的解析ツールの不健全性をAIエージェントで診断・局所化する手法を提案しており、SASTの精度向上や信頼性評価に直接貢献するため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "SAST",
+        "ソースコード診断",
+        "研究・論文"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "静的コールグラフ",
+        "CGRizz",
+        "動的言語機能",
+        "LLMエージェント"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用未確認と明記",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "WALA",
+          "OPAL",
+          "Soot"
+        ],
+        "evidence": "arXiv:2611.29745v1"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "研究報告のみ",
+        "evidence_status": "研究報告のみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "e6d38141b7d8",
+      "title": "Carried-Over and Agent-Native Threats in the Supply Chain of LLM Agent Skills",
+      "summary": "arXiv:2611.30932v1 Announce Type: new \nAbstract: Agent skills are reusable packages that extend a large language model (LLM) agent with scripts, third-party dependencies, and natural-language instructions. An agent builds a skill's arguments from user requests and untrusted external content, so a flaw left by a benign author can escalate a prompt injection to code execution. Existing studies target malicious skills or a single attack vector, and none tests whether an agent can reach such flaws. We present the first registry-scale empirical study of the supply chain attack surface arising from unintentional vulnerabilities in agent skills, over all 48,682 skills in ClawHub. The study covers two carried-over risks, dependencies and first-party code, and two agent-native ones, install instructions and credentials printed to stdout. We screen all skills by static analysis, manually review all 3,428 cases flagged by the four main detectors, and test reachability by running sampled flagged skills in a sandbox and with a live LLM agent under indirect prompt injection. First, dependency risk carries over in a different form: 49.6% of the skills with resolvable dependencies depend on a version with a known CVE, and unlike npm packages, which mostly become vulnerable after release, 78.3% of them are born vulnerable, already exposed at publication. Second, few of these CVEs are reachable: agent input reaches the vulnerable function in only 3.0% of the affected skills, whereas 21 of 22 sampled first-party flaws are exploited end to end in the sandbox. Third, a live agent executes the injected payload in 48.5% of the sampled flagged skills, but almost always in its own shell before the skill runs, and the payload reaches a flaw in the skill itself in only 5.0%. Hence, registries should prioritize first-party flaws over dependency alerts, and agent runtimes should not pass skill arguments through a shell.",
+      "url": "https://arxiv.org/abs/2611.30932",
+      "ai_score": 3,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "AIエージェント",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 9,
+      "source_region": "global",
+      "source_name": "arXiv cs.CR",
+      "source_tier": "C",
+      "published": "2026-11-24T14:00:00+09:00",
+      "title_ja": "LLMエージェントスキル供給網における持越し型およびエージェント固有の脅威",
+      "summary_ja": "LLMエージェントのスキルパッケージ（ClawHub上の48,682件）を対象とした最大規模のサプライチェーン攻撃サーフェイスの実証研究。依存関係の脆弱性の多くは公開時から存在している一方で、エージェント入力が脆弱性へ到達する割合は低いことを示した。一方、第一者コードの欠陥や、エージェントランタイムがスキル引数をシェルに渡す挙動に起因するリスクが実証された。",
+      "insight": "AIエージェントのツール実行層やスキル管理におけるサプライチェーンリスクを評価する上で重要な知見を提供している。依存関係のCVEだけでなく、第一者コードの不備やシェル経由の引数処理がプロンプトインジェクション起因のコード実行につながる点を踏まえ、エージェントランタイムの権限分離や入力検証の設計を見直す必要がある。MCPやツール連携の安全性を評価する際のチェックポイントとなる。",
+      "importance": "高",
+      "importance_reason": "LLMエージェントのスキル供給網における脆弱性と攻撃経路を大規模に実証しており、AIエージェントセキュリティの実務に直接的な示唆を与えるため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "LLMセキュリティ",
+        "ツール悪用",
+        "権限・認可"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "LLMエージェント",
+        "スキル供給網",
+        "プロンプトインジェクション",
+        "ClawHub",
+        "サプライチェーン攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Security for AI",
+        "サービス企画",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "PoC公開のみ",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "ClawHub"
+        ],
+        "evidence": "arXiv:2611.30932v1"
+      },
+      "attack": {
+        "initial_access": "プロンプトインジェクション経由のツール実行",
+        "observed_impact": "エージェント環境でのペイロード実行確認",
+        "japan_observation": "不明",
+        "assessment_preconditions": "サンドボックスおよびライブLLMエージェント環境でのテスト",
+        "test_scenario": "間接的プロンプトインジェクションを用いたスキル引数からのコード実行検証",
+        "human_validation": "手動監査実施",
+        "service_implication": "スキル引数をシェルに渡す実装の危険性と第一者コードの脆弱性対策の必要性",
+        "source_evidence": "サンドボックス環境とライブLLMエージェントによる検証結果",
+        "evidence_status": "PoCのみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "データ・AI・AIエージェント",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [
+          "プロンプトインジェクション",
+          "サプライチェーン攻撃"
+        ],
+        "weaknesses": [
+          "入力検証不備",
+          "権限管理不備"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "90394506c889",
+      "title": "仮想化管理ツール「Xen Orchestra」に脆弱性 - 順次修正対応",
+      "summary": "仮想化環境の管理ツール「Xen Orchestra（XO）」に深刻な脆弱性が明らかとなった。認証を回避されるおそれがあり、すでにサイバー攻撃に悪用されている。アップデートが提供されている。",
+      "url": "https://www.security-next.com/193248",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 8,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-24T20:40:19+09:00",
+      "title_ja": "仮想化管理ツール「Xen Orchestra」に認証回避の脆弱性、すでに悪用確認",
+      "summary_ja": "仮想化環境の管理ツール「Xen Orchestra（XO）」において、深刻な認証回避の脆弱性が明らかになった。すでにサイバー攻撃への悪用が確認されている。開発元よりアップデートが提供されており、速やかな適用が求められる。",
+      "insight": "仮想化基盤の管理ツールは侵害時の影響が非常に大きいため、公開資産のインベントリ管理と迅速なパッチ適用プロセスの再点検が不可欠である。ブラックボックス診断や脆弱性管理において、管理インターフェースの露出確認と認証不備のテストを優先すべきである。",
+      "importance": "高",
+      "importance_reason": "認証回避かつすでに悪用が確認されている深刻な脆弱性であり、即時の対応が必要なため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "認証バイパス"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Xen Orchestra",
+        "認証回避",
+        "仮想化管理ツール",
+        "アップデート"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Xen Orchestra"
+        ],
+        "evidence": "仮想化環境の管理ツール「Xen Orchestra（XO）」に深刻な脆弱性が明らかとなった。認証を回避されるおそれがあり、すでにサイバー攻撃に悪用されている。"
+      },
+      "attack": {
+        "initial_access": "認証バイパスを通じた不正アクセス",
+        "observed_impact": "認証回避のおそれ、悪用確認",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "仮想化基盤全体の不正操作リスク",
+        "source_evidence": "認証を回避されるおそれがあり、すでにサイバー攻撃に悪用されている。",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "クラウド・コンテナ",
+          "認証・ID"
+        ],
+        "attack_methods": [
+          "認証バイパス"
+        ],
+        "weaknesses": [
+          "認証不備"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "ac0cf8d0605e",
+      "title": "Recent Trends and Tactics of Agentic AI Attacks",
+      "summary": "<p>We tracked campaigns where attackers deployed autonomous AI agents to automate multi-platform intrusions, using standard tools while leaving distinct operational traces.</p>\n<p>The post <a href=\"https://unit42.paloaltonetworks.com/autonomous-ai-agent-threat-campaigns/\">Recent Trends and Tactics of Agentic AI Attacks</a> appeared first on <a href=\"https://unit42.paloaltonetworks.com\">Unit 42</a>.</p>",
+      "url": "https://unit42.paloaltonetworks.com/autonomous-ai-agent-threat-campaigns/",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "Palo Alto Unit 42",
+      "source_tier": "A",
+      "published": "2026-11-25T00:00:19+09:00",
+      "title_ja": "Palo Alto Unit 42：自律型AIエージェントを用いた攻撃キャンペーンの動向",
+      "summary_ja": "攻撃者がマルチプラットフォームへの侵入を自動化するために自律型AIエージェントを配備しているキャンペーンが追跡されている。標準的なツールを使用しつつ、独自の運用上の痕跡を残している点が特徴である。Palo Alto Unit 42がその手口と動向を報告している。",
+      "insight": "AIエージェントが悪用されるフェーズにおいて、ツール実行層やマルチエージェント層での権限管理・異常検知が極めて重要となる。セキュリティ診断においても、AIエージェントが利用するツール群の権限過剰やプロンプトインジェクション起因のツール悪用シナリオを検証に組み込む必要がある。",
+      "importance": "高",
+      "importance_reason": "AIエージェントを悪用した攻撃キャンペーンという新しい脅威動向を示しており、将来の防御戦略に直結するため。",
+      "tag_main_id": "ai_sec",
+      "tag_main_label": "AI×セキュリティ",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "LLMセキュリティ",
+        "ツール悪用"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "Agentic AI",
+        "Unit 42",
+        "Palo Alto Networks",
+        "自動化攻撃"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "AI for Security",
+        "Security for AI"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "We tracked campaigns where attackers deployed autonomous AI agents to automate multi-platform intrusions, using standard tools while leaving distinct operational traces."
+      },
+      "attack": {
+        "initial_access": "自律型AIエージェントによるマルチプラットフォーム侵入自動化",
+        "observed_impact": "複数プラットフォームへの侵入と運用上の痕跡",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "自動化されたエージェントによる継続的な不正活動のリスク",
+        "source_evidence": "attackers deployed autonomous AI agents to automate multi-platform intrusions",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "データ・AI・AIエージェント"
+        ],
+        "attack_methods": [
+          "エージェント自動化攻撃"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "2ae8da387dfb",
+      "title": "Danfoss AK-SM 8xxA Series",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-328-03.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of this vulnerability could allow an attacker to execute arbitrary code with webserver privileges.</strong></p>\n<p>The following versions of Danfoss AK-SM 8xxA Series are affected:</p>\n<ul>\n<li>AK-SM8xxA &lt;=5.4.0 (CVE-2026-129713)</li>\n</ul>\n<div class=\"csaf-table\">\n<table class=\"tablesaw tablesaw-stack\">\n<",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-03",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-24T21:00:00+09:00",
+      "title_ja": "Danfoss AK-SM 8xxAシリーズに任意のコード実行の脆弱性（CVE-2026-129713）",
+      "summary_ja": "CISAはDanfoss製AK-SM 8xxAシリーズにおける脆弱性情報を公開した。対象バージョンにおいて、攻撃者が脆弱性の悪用に成功した場合、ウェブサーバの権限で任意のコードを実行されるおそれがある。対象製品の利用者は注意が必要である。",
+      "insight": "OT環境やエッジデバイスにおけるWebインターフェースの脆弱性は、基幹制御システムへの足がかりとなるため厳重な管理が求められる。ペネトレーションテストやファジング等の診断において、組み込み機器の権限昇格やコード実行リスクの評価手法を確立する必要がある。",
+      "importance": "中",
+      "importance_reason": "任意のコード実行につながる深刻な脆弱性であり、OT/IoT機器におけるサプライチェーンリスクとして重要度が高いため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "Danfoss",
+        "AK-SM 8xxA",
+        "CISA",
+        "CVE-2026-129713",
+        "任意コード実行"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "PoC公開のみ",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Danfoss AK-SM 8xxA Series"
+        ],
+        "evidence": "Successful exploitation of this vulnerability could allow an attacker to execute arbitrary code with webserver privileges. AK-SM8xxA <=5.4.0 (CVE-2026-129713)"
+      },
+      "attack": {
+        "initial_access": "脆弱性を介したウェブサーバ権限の取得",
+        "observed_impact": "ウェブサーバ権限での任意のコード実行のおそれ",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "デバイスの制御乗っ取りや不正操作",
+        "source_evidence": "Successful exploitation of this vulnerability could allow an attacker to execute arbitrary code with webserver privileges.",
+        "evidence_status": "PoCのみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "コード実行"
+        ],
+        "weaknesses": [],
+        "cve_ids": [
+          "CVE-2026-129713"
+        ]
+      }
+    },
+    {
+      "id": "30b0b5bae548",
+      "title": "Schneider Electric EcoStruxure Power Build Rapsody software",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-328-02.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Schneider Electric is aware of a vulnerability in its EcoStruxure™ Power Build Rapsody product. The EcoStruxure™ Power Build Rapsody is used to enter or import the single line diagram, to get the extensive bill of material of your switchboard, including all devices, connection items, and mounting components. Failure to apply the rem",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-02",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-24T21:00:00+09:00",
+      "title_ja": "Schneider Electric EcoStruxure Power Build Rapsodyソフトウェアの脆弱性",
+      "summary_ja": "Schneider ElectricのEcoStruxure Power Build Rapsody製品に脆弱性が存在することが判明しました。この製品は、単線図の入力やインポート、スイッチボードの部品表作成に使用されます。CISAからセキュリティアドバイザリが公開されています。",
+      "insight": "OT・制御システム分野のソフトウェアにおける脆弱性であり、サプライチェーンや製造現場のエンジニアリングワークステーションへの影響を評価する必要があります。同様のツール群に対する資産管理とバージョン追跡が重要です。",
+      "importance": "中",
+      "importance_reason": "CISAアドバイザリで公開されたOT製品の脆弱性であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "Schneider Electric",
+        "EcoStruxure Power Build Rapsody",
+        "CISA",
+        "ICS Advisory"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "EcoStruxure Power Build Rapsody"
+        ],
+        "evidence": "Schneider Electric is aware of a vulnerability in its EcoStruxure Power Build Rapsody product."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Schneider Electric is aware of a vulnerability in its EcoStruxure Power Build Rapsody product.",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "61bf4db62d42",
+      "title": "AutomationDirect C-More EA9 Programming Software",
+      "summary": "<p><a href=\"https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2026/icsa-26-328-01.json\"><strong>View CSAF</strong></a></p>\n<h2>Summary</h2>\n<p><strong>Successful exploitation of this vulnerability could allow attackers to corrupt application memory and cause instability or a crash, potentially leading to arbitrary code execution, if a user is convinced to open a malicious file.</strong></p>\n<p>The following versions of AutomationDirect C-More EA9 Programming Software are affected:",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-328-01",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": true,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 7,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-24T21:00:00+09:00",
+      "title_ja": "AutomationDirect C-More EA9プログラミングソフトウェアのメモリ破損脆弱性",
+      "summary_ja": "AutomationDirect C-More EA9プログラミングソフトウェアに脆弱性が存在します。悪用された場合、攻撃者がアプリケーションメモリを破損させて不安定化やクラッシュを引き起こし、悪意あるファイルを開かせることができれば任意のコード実行につながる可能性があります。CISAがアドバイザリを公開しています。",
+      "insight": "エンジニアリングソフトウェアを標的とした任意のコード実行リスクを示しており、クライアント側（ローカル）でのファイル処理における脆弱性対策の重要性を示唆しています。マルウェア混入ファイルや不正なプロジェクトファイルの検知・検証が必要です。",
+      "importance": "中",
+      "importance_reason": "任意のコード実行につながる可能性があるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "デバイス/エッジ"
+      ],
+      "related_keywords": [
+        "AutomationDirect",
+        "C-More EA9",
+        "CISA",
+        "任意コード実行"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "AutomationDirect C-More EA9 Programming Software"
+        ],
+        "evidence": "Successful exploitation of this vulnerability could allow attackers to corrupt application memory and cause instability or a crash, potentially leading to arbitrary code execution"
+      },
+      "attack": {
+        "initial_access": "悪意あるファイルのオープン",
+        "observed_impact": "アプリケーションメモリの破損、クラッシュ、任意のコード実行の可能性",
+        "japan_observation": "不明",
+        "assessment_preconditions": "ユーザーが不正なファイルを開くこと",
+        "test_scenario": "不正なプロジェクトファイルをユーザーに開かせてコード実行を検証する",
+        "human_validation": "必要",
+        "service_implication": "エンジニアリング端末での不正ファイル実行防止策の検討",
+        "source_evidence": "Successful exploitation of this vulnerability could allow attackers to corrupt application memory and cause instability or a crash, potentially leading to arbitrary code execution, if a user is convinced to open a malicious file.",
+        "evidence_status": "PoCのみ",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント"
+        ],
+        "attack_methods": [
+          "ファイルインジェクション"
+        ],
+        "weaknesses": [
+          "メモリ破損"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "fdb3e759d5f7",
+      "title": "源内Webにおけるサーバサイドリクエストフォージェリの脆弱性",
+      "summary": "デジタル庁が提供する源内Webには、サーバサイドリクエストフォージェリの脆弱性が存在します。",
+      "url": "https://jvn.jp/jp/JVN78929433/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-25T12:00:00+09:00",
+      "title_ja": "源内Webにおけるサーバサイドリクエストフォージェリの脆弱性",
+      "summary_ja": "デジタル庁が提供する源内Webにおいて、サーバサイドリクエストフォージェリ（SSRF）の脆弱性が存在することがJVNにより公表されました。詳細な影響や対策については関連情報を確認する必要があります。",
+      "insight": "国内の政府・公共関連システムや提供サービスにおけるWeb脆弱性の事例であり、APIやWebアプリケーション診断におけるSSRFの検出および外部通信制御の徹底が求められます。同様の機能を持つ内製・調達システムの再点検が必要です。",
+      "importance": "高",
+      "importance_reason": "国内の公的WebサービスにおけるSSRF脆弱性のため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "設定ミス"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "源内Web",
+        "デジタル庁",
+        "JVN",
+        "SSRF"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "DAST"
+        ],
+        "products": [
+          "源内Web"
+        ],
+        "evidence": "デジタル庁が提供する源内Webには、サーバサイドリクエストフォージェリの脆弱性が存在します。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "JVNによる注意喚起",
+        "assessment_preconditions": "不明",
+        "test_scenario": "Webアプリケーション診断におけるSSRF検証",
+        "human_validation": "不明",
+        "service_implication": "外部リクエスト送信機能を持つエンドポイントのアクセス制御見直し",
+        "source_evidence": "デジタル庁が提供する源内Webには、サーバサイドリクエストフォージェリの脆弱性が存在します。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [
+          "SSRF"
+        ],
+        "weaknesses": [
+          "サーバサイドリクエストフォージェリ"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "55f0348f3d46",
+      "title": "OpenSSLにおける脆弱性に対するアップデート（2026年11月24日）",
+      "summary": "OpenSSL ProjectからOpenSSL Security Advisory [24th November 2026]が公開されました。",
+      "url": "https://jvn.jp/vu/JVNVU95723901/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-25T09:00:15+09:00",
+      "title_ja": "OpenSSLにおける脆弱性に対するアップデート（2026年11月24日）",
+      "summary_ja": "OpenSSL ProjectからOpenSSL Security Advisoryが公開され、アップデートが促されています。暗号ライブラリにおけるセキュリティ上の問題に対処するためのものです。詳細はJVN等のアドバイザリを参照し、速やかな適用が推奨されます。",
+      "insight": "OpenSSLの脆弱性は多くのシステムやアプリの基盤に影響を与えるため、SCAやソフトウェア供給網における正確なバージョン把握と迅速なパッチ適用が極めて重要です。自社製品や利用サービスにおける依存関係の可視化が十分になされているか確認が必要です。",
+      "importance": "高",
+      "importance_reason": "暗号ライブラリの脆弱性は広範なシステムに影響を与えるため早期の把握と対応が必要。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "OpenSSL",
+        "JVN",
+        "セキュリティアドバイザリ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "SCA"
+        ],
+        "products": [
+          "OpenSSL"
+        ],
+        "evidence": "OpenSSL ProjectからOpenSSL Security Advisory [24th November 2026]が公開されました。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "OpenSSL Security Advisoryが公開された旨のみ記載。",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "9134bb1d7728",
+      "title": "Hackers Exploit N-able MailAssure Flaw While AI Agents Exploit MONAI Label Zero-Day",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added two flaws impacting N-able MailAssure and MONAI Label to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.\n\nThe critical vulnerabilities are listed below -\n\n\n  CVE-2026-134624 (CVSS score: 9.3) - A server-side request forgery (SSRF) vulnerability in N-able MailAssure's LDAP",
+      "url": "https://thehackernews.com/2026/11/hackers-exploit-n-able-mailassure-flaw.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "AIエージェント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-24T15:02:45+09:00",
+      "title_ja": "N-able MailAssureとMONAI Labelの脆弱性がCISA KEVに追加、活発な悪用を確認",
+      "summary_ja": "米国CISAは、N-able MailAssureおよびMONAI Labelに影響を与える2つの脆弱性をKnown Exploited Vulnerabilitiesカタログに追加しました。N-able MailAssureのLDAPにおけるサーバーサイドリクエストフォージェリ（SSRF）などが含まれており、活発な悪用の証拠が確認されています。AIエージェントに関連するMONAI Labelのゼロデイ脆弱性も対象となっています。",
+      "insight": "AIエージェント関連コンポーネント（MONAI Label等）におけるゼロデイ脆弱性の悪用が確認されており、AIシステム固有のツール・実行層やデータ・インフラ層に対する攻撃リスクが現実化しています。AIエージェントを活用するシステムのペネトレーションテストや権限管理の再点検が求められます。",
+      "importance": "高",
+      "importance_reason": "CISA KEVへの追加と実悪用の確認があり、AIエージェント関連の脆弱性も含まれるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "KEV",
+        "ゼロデイ",
+        "エクスプロイト"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "N-able MailAssure",
+        "MONAI Label",
+        "CISA",
+        "KEV",
+        "SSRF"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "MDR/MSSP設計",
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト",
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "N-able MailAssure",
+          "MONAI Label"
+        ],
+        "evidence": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday added two flaws impacting N-able MailAssure and MONAI Label to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation."
+      },
+      "attack": {
+        "initial_access": "ネットワーク経由",
+        "observed_impact": "活発な悪用",
+        "japan_observation": "不明",
+        "assessment_preconditions": "該当製品が外部公開またはアクセス可能な状態",
+        "test_scenario": "SSRFやゼロデイ脆弱性を利用した不正アクセスの検証",
+        "human_validation": "必要",
+        "service_implication": "サービス乗っ取りや内部リソースへの不正アクセスのリスク",
+        "source_evidence": "CISA KEV catalogへの追加、active exploitationの記載、CVE-2026-134624 (SSRF)。",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API",
+          "データ・AI・AIエージェント"
+        ],
+        "attack_methods": [
+          "SSRF"
+        ],
+        "weaknesses": [
+          "サーバーサイドリクエストフォージェリ"
+        ],
+        "cve_ids": [
+          "CVE-2026-134624"
+        ]
+      }
+    },
+    {
+      "id": "bbe6ce12065e",
+      "title": "「Drupal」脆弱性、サイト乗っ取りのおそれ - すでに悪用も",
+      "summary": "コンテンツ管理システム「Drupal」に深刻な脆弱性が明らかとなった。認証を必要とすることなくウェブサイトを乗っ取ることができ、すでに悪用の報告もある。",
+      "url": "https://www.security-next.com/193298",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-25T11:27:13+09:00",
+      "title_ja": "「Drupal」に認証不要でサイト乗っ取りのおそれがある深刻な脆弱性、すでに悪用も",
+      "summary_ja": "コンテンツ管理システム「Drupal」に深刻な脆弱性が発見されました。認証を必要とせずにウェブサイトを乗っ取ることが可能であり、すでに悪用の報告がなされています。管理者は速やかなアップデートや緩和策の適用が必要です。",
+      "insight": "CMSの認証バイパスやリモートコード実行系の脆弱性は、Web・API層におけるDASTや脆弱性スキャンで迅速に検知体制を整える必要があります。修正案適用時の機能維持を確認しつつ、迅速なパッチ適用プロセスが機能しているか検証することが重要です。",
+      "importance": "高",
+      "importance_reason": "認証不要でサイト乗っ取りが可能であり、すでに悪用が報告されているため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "認証バイパス",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Drupal",
+        "脆弱性",
+        "サイト乗っ取り"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "Exposure管理",
+        "MDR/MSSP設計",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "DAST",
+          "ブラックボックス診断"
+        ],
+        "products": [
+          "Drupal"
+        ],
+        "evidence": "コンテンツ管理システム「Drupal」に深刻な脆弱性が明らかとなった。認証を必要とすることなくウェブサイトを乗っ取ることができ、すでに悪用の報告もある。"
+      },
+      "attack": {
+        "initial_access": "Web経由",
+        "observed_impact": "ウェブサイトの乗っ取り",
+        "japan_observation": "不明",
+        "assessment_preconditions": "Drupalが稼働し外部からのリクエストを受け付ける状態",
+        "test_scenario": "認証バイパス脆弱性を用いた管理権限奪取の検証",
+        "human_validation": "必要",
+        "service_implication": "ウェブサイトの完全な制御権喪失および情報漏えいリスク",
+        "source_evidence": "認証を必要とすることなくウェブサイトを乗っ取ることができ、すでに悪用の報告もある。",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [
+          "認証バイパス"
+        ],
+        "weaknesses": [
+          "不適切なアクセス制御"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
       "id": "6f4e02202d83",
       "title": "AI Agents Zip From Flaw Discovery to Root Access in 11 Minutes",
       "summary": "A China-nexus actor used the Cairn penetration testing tool in attacks against East Asian universities, exploiting a zero-day in a medical imaging app.",
