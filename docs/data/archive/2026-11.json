@@ -2,6 +2,1247 @@
   "month": "2026-11",
   "articles": [
     {
+      "id": "5c340135133a",
+      "title": "EspoCRMにおけるクロスサイトスクリプティングの脆弱性",
+      "summary": "EspoCRMには、クロスサイトスクリプティングの脆弱性が存在します。",
+      "url": "https://jvn.jp/jp/JVN36592422/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-27T12:00:15+09:00",
+      "title_ja": "EspoCRMにおけるクロスサイトスクリプティングの脆弱性",
+      "summary_ja": "オープンソースCRMソフトウェアのEspoCRMにおいて、クロスサイトスクリプティング（XSS）の脆弱性が報告されました。影響を受ける環境では、悪意あるスクリプトがブラウザ上で実行される懸念があります。詳細はJVN公表情報を参照し、アップデートの適用等の対応が必要です。",
+      "insight": "Webアプリケーション診断やソースコード診断において頻出するXSSですが、CRMなど機密性の高い顧客データを扱うプラットフォームでの発現はセッションハイジャック等のリスクを高めます。修正確認の再診断では、入力値サニタイズだけでなくコンテキストに応じた出力エスケープが徹底されているかの検証が求められます。自社で同製品を利用している場合は露出状況とアクセス制限を即時評価すべきかどうかが論点となります。",
+      "importance": "中",
+      "importance_reason": "CRM製品における一般的なXSS脆弱性の報告であり、影響範囲は利用環境に依存するため中程度と判断されます。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "EspoCRM",
+        "クロスサイトスクリプティング",
+        "XSS",
+        "JVN"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "DAST"
+        ],
+        "products": [
+          "EspoCRM"
+        ],
+        "evidence": "JVNにてEspoCRMにおけるクロスサイトスクリプティングの脆弱性が報告された。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "クロスサイトスクリプティングの脆弱性が存在するとのみ記載",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "クロスサイトスクリプティング"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "281acc02a387",
+      "title": "スマートフォンアプリ「マイナアプリ（旧マイナポータルアプリ）」における入力リストによる制限が不十分なことに起因する複数の脆弱性",
+      "summary": "デジタル庁が提供するスマートフォンアプリ「マイナアプリ（旧マイナポータルアプリ）」には、入力リストによる制限が不十分なことに起因する複数の脆弱性が存在します。",
+      "url": "https://jvn.jp/jp/JVN19729125/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JVN",
+      "source_tier": "A",
+      "published": "2026-11-27T12:00:00+09:00",
+      "title_ja": "マイナアプリにおける入力リスト制限不十分の脆弱性",
+      "summary_ja": "デジタル庁が提供するスマートフォンアプリ「マイナアプリ（旧マイナポータルアプリ）」において、入力リストによる制限が不十分なことに起因する複数の脆弱性が確認されました。許可されていない入力や想定外のパラメータ処理に起因する動作異常のリスクがあります。JVNによる報告に基づき、アプリの改修と配信が行われています。",
+      "insight": "モバイルアプリにおける入力検証やIntent/スキームのハンドリング処理の不備は、動的診断やコード診断で重点的にチェックすべき対象です。公的認証やID連携に直結するアプリであるため、修正後の再診断ではホワイトリスト検証が完全であるかの回帰試験が不可欠です。クライアント側の入力検証に依存せずサーバー側でも多層防御が行われているか確認する視点が重要になります。",
+      "importance": "高",
+      "importance_reason": "国内の国民的インフラとなっている行政アプリの脆弱性であり、社会的影響および関心が高いため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "修正・緩和",
+        "ペネトレーションテスト"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "デジタル庁",
+        "マイナアプリ",
+        "マイナポータル",
+        "入力リスト制限不十分",
+        "JVN"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "モバイル診断",
+          "SAST"
+        ],
+        "products": [
+          "マイナアプリ（旧マイナポータルアプリ）"
+        ],
+        "evidence": "デジタル庁が提供するスマートフォンアプリ「マイナアプリ」に入力リストによる制限不十分の複数脆弱性が存在するとJVNで公表。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "国内向けアプリでの報告",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "入力リストによる制限が不十分なことに起因する複数の脆弱性が存在するとのみ記載",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント",
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [
+          "入力リストによる制限不十分"
+        ],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "a00098725fae",
+      "title": "Weekly Report: Drupal coreに複数の脆弱性",
+      "summary": "Drupal coreに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr261126.html#7",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JPCERT/CC",
+      "source_tier": "A",
+      "published": "2026-11-26T09:24:00+09:00",
+      "title_ja": "Drupal coreにおける複数の脆弱性（Weekly Report）",
+      "summary_ja": "JPCERT/CCのWeekly Reportにおいて、CMSプラットフォームであるDrupal coreに複数の脆弱性が存在することが公表されました。CMSのコアコンポーネントにおける欠陥は、不正アクセスや改ざんなど広範なセキュリティリスクを引き起こす可能性があります。利用組織には影響範囲の調査と公式アップデートの適用が推奨されます。",
+      "insight": "Web・外部公開資産として広く運用されるDrupalのコア脆弱性は、攻撃者による自動スキャンの標的となりやすい傾向があります。脆弱性管理実務としては、資産台帳上のDrupalバージョンを突合し、パッチ適用計画を立てることが基本対応となります。ペネトレーションテストや外部診断では、パッチ適用漏れのCMSが容易に初期侵入経路になり得る点に留意が必要です。",
+      "importance": "高",
+      "importance_reason": "グローバルで広く普及しているオープンソースCMSのコア部分の脆弱性であり、悪用時の影響が広範囲に及ぶため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "CVE",
+        "パッチ未適用",
+        "修正・緩和"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Drupal",
+        "Drupal core",
+        "JPCERT/CC",
+        "Weekly Report",
+        "CMS"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "DAST"
+        ],
+        "products": [
+          "Drupal core"
+        ],
+        "evidence": "JPCERT/CC Weekly ReportにてDrupal coreに複数の脆弱性が報告された。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "Drupal coreに複数の脆弱性とのみ記載",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "ce21e8c6356b",
+      "title": "Weekly Report: 複数のSplunk製品に脆弱性",
+      "summary": "複数のSplunk製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr261126.html#8",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JPCERT/CC",
+      "source_tier": "A",
+      "published": "2026-11-26T09:24:00+09:00",
+      "title_ja": "複数のSplunk製品における脆弱性に関する注意喚起",
+      "summary_ja": "JPCERT/CCが発行した週刊レポートにて、複数のSplunk製品に脆弱性が存在することが公表された。詳細なCVE番号や影響度などの情報は抜粋に含まれていないが、Splunk製品群を対象としたセキュリティ修正に関連する報告である。該当製品を利用する環境では、影響範囲の把握とパッチ適用の確認が求められる。",
+      "insight": "ログ分析やSIEM基盤として広く用いられる製品群の脆弱性であるため、修正やバージョン管理の徹底が前提となる。診断実務においては、対象サーバの外部露出状況や管理コンソールのアクセス制御を検証項目として整理することが有用である。運用側としては、管理系コンポーネント自体のセキュリティ状態をどのように可観測に保つかが問われる。",
+      "importance": "中",
+      "importance_reason": "企業インフラやSOC基盤として普及している製品の脆弱性情報であり、影響把握が必要となるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "修正・緩和",
+        "Exposure管理"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "JPCERT/CC",
+        "Splunk",
+        "脆弱性"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "SOC運用変化"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Splunk製品"
+        ],
+        "evidence": "JPCERT/CCによる週刊レポートで「複数のSplunk製品に脆弱性」と報告。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "抜粋には「複数のSplunk製品に脆弱性」という記載のみで技術的詳細は不明",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "クラウド・コンテナ",
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "a43f329c2564",
+      "title": "Weekly Report: 複数のASUS製品に脆弱性",
+      "summary": "複数のASUS製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr261126.html#9",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "JP",
+      "source_name": "JPCERT/CC",
+      "source_tier": "A",
+      "published": "2026-11-26T09:24:00+09:00",
+      "title_ja": "複数のASUS製品における脆弱性に関する注意喚起",
+      "summary_ja": "JPCERT/CCの週刊レポートにおいて、複数のASUS製品に脆弱性が存在することが報告された。抜粋には対象となる具体的なモデル名や脆弱性の分類などの詳細は記載されていない。ネットワーク機器やクライアント端末など該当製品のファームウェア更新状況の確認が必要とされる。",
+      "insight": "ルータやPC端末などのエッジ・エンドポイント機器における脆弱性は、境界防御の突破口や拠点侵入の起点になり得る。ブラックボックス診断やペネトレーションテストにおいては、エッジ機器の管理画面露出や既知の認証バイパスの有無を点検することが標準的なアプローチとなる。拠点機器の資産棚卸しと更新ガバナンスが機能しているかを定期的に確認することが求められる。",
+      "importance": "中",
+      "importance_reason": "ネットワーク機器やハードウェア端末における脆弱性であり、境界セキュリティに影響を与える可能性があるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "修正・緩和",
+        "Exposure管理"
+      ],
+      "affected_layers": [
+        "デバイス/エッジ",
+        "ネットワーク"
+      ],
+      "related_keywords": [
+        "JPCERT/CC",
+        "ASUS",
+        "ファームウェア"
+      ],
+      "cdc_relevance": 1,
+      "cdc_context": [
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "不明",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "ASUS製品"
+        ],
+        "evidence": "JPCERT/CCの週刊レポートで「複数のASUS製品に脆弱性」と報告。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "抜粋には「複数のASUS製品に脆弱性」とのみ記載され詳細なし",
+        "evidence_status": "不明",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "デバイス・エンドポイント",
+          "外部公開資産"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "d64780eb0377",
+      "title": "Suspected Vietnam-Linked Hackers Target Southeast Asia in South China Sea Espionage Campaign",
+      "summary": "A Vietnam-sponsored hacking group has been attributed to attacks targeting Southeast Asian military, government, and legislative organizations with an aim to gather intelligence on South China Sea defense and military agreements.\n\nThe previously undocumented incursion set, detailed by SOCRadar, has been codenamed WeaveLotus. The activity is assessed to have comprised five intrusions in Thailand",
+      "url": "https://thehackernews.com/2026/11/suspected-vietnam-linked-hackers-target.html",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": false,
+      "operations_focus": true,
+      "business_topics": [
+        "企業インシデント",
+        "政策・地政学"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-28T01:36:11+09:00",
+      "title_ja": "ベトナム関連の脅威アクター「WeaveLotus」による東南アジア標的のスパイ活動",
+      "summary_ja": "ベトナム政府支援と疑われる脅威グループが、南シナ海の防衛および軍事協定に関する情報収集を目的として東南アジアの軍事、政府、立法機関を標的とした攻撃を実施している。SOCRadarによって「WeaveLotus」と名付けられたこの未記録だった活動では、タイで5件の侵入が確認されている。国家主導による機密情報窃取を目的としたサイバースパイ活動の一環とみられる。",
+      "insight": "地政学的対立を背景とした標的型攻撃であり、サプライチェーンや関連組織を経由した侵入リスクが想定される。侵入経路や標的インフラの特定は記事抜粋からは不明であるが、ペネトレーションテストや脅威インテリジェンス評価においては、APTグループのTTPsを模したシナリオ検証の必要性が示唆される。自組織の関連拠点や提携先が地政学的リスクの高い地域に存在する場合の境界監視体制が論点となる。",
+      "importance": "高",
+      "importance_reason": "国家支援型攻撃者による政府・軍事機関への実被害侵入が確認された事例であり、地政学的リスク管理上重要であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "APT",
+        "国家支援型攻撃"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "WeaveLotus",
+        "SOCRadar",
+        "南シナ海",
+        "サイバースパイ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "MDR/MSSP設計",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "不明",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "タイにおいて5件の侵入（five intrusions in Thailand）が確認されたと明記。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "南シナ海の防衛・軍事協定に関する情報収集（intelligence gathering）およびタイでの5件の侵入",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "SOCRadarの分析に基づき、タイでの5件の侵入と南シナ海関連情報の収集目的が明記",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "インフラ・ネットワーク"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "50437c929709",
+      "title": "Hex Package Manager Warns of Potential Data Breach",
+      "summary": "<p>A vulnerability in hex.pm allowed hackers to run commands on web servers. No evidence of data modification was found, but database reads are not logged.</p>\n<p>The post <a href=\"https://www.securityweek.com/hex-package-manager-warns-of-potential-data-breach/\">Hex Package Manager Warns of Potential Data Breach</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/hex-package-manager-warns-of-potential-data-breach/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-27T16:44:49+09:00",
+      "title_ja": "HexパッケージマネージャでRCE脆弱性、データ侵害の可能性を警告",
+      "summary_ja": "パッケージマネージャhex.pmにおいて、攻撃者がWebサーバー上でコマンドを実行できる脆弱性が存在したことが警告されました。データの改ざん痕跡は確認されていませんが、データベースの読み取りログが記録されていないため情報漏洩の懸念が残されています。サプライチェーンの中核を担うリポジトリ基盤のセキュリティリスクを示す事例です。",
+      "insight": "ログ監査機能の欠如がインシデントの影響範囲特定を困難にする典型例です。Webアプリケーション診断やペネトレーションテストにおいては、RCEの検出だけでなく、読み取り操作に対する監査ログの記録状態や最小権限の設計を検証項目に含める検討が求められます。パッケージ配布基盤の完全性監視とシークレット管理の再点検が必要です。",
+      "importance": "高",
+      "importance_reason": "開発エコシステムのサプライチェーンを支えるパッケージマネージャにおける重大なRCE脆弱性であり、波及リスクが高いため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "エクスプロイト",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "hex.pm",
+        "パッケージマネージャ",
+        "RCE",
+        "データ侵害",
+        "監査ログ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "MDR/MSSP設計",
+        "サービス企画"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ソースコード診断"
+        ],
+        "products": [
+          "hex.pm"
+        ],
+        "evidence": "hex.pmの脆弱性によりWebサーバー上でコマンド実行が可能だった旨が記載されている。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "Webサーバー上でのコマンド実行、データ漏洩の可能性（改ざんは未確認、読み取りログ未記録）",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "Webインターフェース経由での不正なコマンド注入の可否および関連する読み取りアクセスの監査ログ記録体制の検証",
+        "human_validation": "不明",
+        "service_implication": "パッケージリポジトリの診断時、RCE耐性に加えてデータベース読み取りのログ出力設計を評価対象とする検討が必要",
+        "source_evidence": "A vulnerability in hex.pm allowed hackers to run commands on web servers.",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "Web・API"
+        ],
+        "attack_methods": [],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "27eddf1a9053",
+      "title": "SAP Confirms Cyberattack, Source Code Reportedly Compromised",
+      "summary": "<p>SAP has detected suspicious activity on GitHub, where hackers reportedly used stolen employee tokens to copy and alter source code.</p>\n<p>The post <a href=\"https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/\">SAP Confirms Cyberattack, Source Code Reportedly Compromised  </a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "url": "https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "診断サービス",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "SecurityWeek",
+      "source_tier": "B",
+      "published": "2026-11-27T16:36:14+09:00",
+      "title_ja": "SAPがサイバー攻撃を確認、GitHub経由でソースコード改ざんの疑い",
+      "summary_ja": "SAPはGitHub上で不審なアクティビティを検知し、サイバー攻撃を受けたことを確認しました。流出した従業員のトークンを悪用して攻撃者がソースコードを複製および改ざんしたと報じられています。エンタープライズ基盤ソフトウェアのサプライチェーンセキュリティに対する重大な脅威となります。",
+      "insight": "開発者認証情報（パーソナルトークン等）の管理不備が、直接的なソースコードの侵害につながるリスクが浮き彫りになりました。SASTやSCAのみならず、シークレット検出およびリポジトリに対する細粒度なアクセス権限・署名検証の実装が不可欠です。診断実務においては、開発パイプラインのトークン運用とコード改ざん検知体制の点検が重要論点となります。",
+      "importance": "高",
+      "importance_reason": "世界的に利用される基幹ソフトウェアベンダーのソースコードが侵害・改ざんされた疑いがあり、広範囲な影響が懸念されるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "サプライチェーン攻撃",
+        "クレデンシャル窃取",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "SAP",
+        "GitHub",
+        "従業員トークン",
+        "ソースコード漏洩",
+        "コード改ざん"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Identity/ITDR",
+        "Exposure管理",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "修正・緩和"
+        ],
+        "assessments": [
+          "ソースコード診断",
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "SAP",
+          "GitHub"
+        ],
+        "evidence": "盗まれた従業員トークンを用いてGitHub上のソースコードが複製・改ざんされたと報じられている。"
+      },
+      "attack": {
+        "initial_access": "盗まれた従業員トークンの悪用",
+        "observed_impact": "ソースコードの複製および改ざん",
+        "japan_observation": "不明",
+        "assessment_preconditions": "有効な従業員GitHubトークンの所持",
+        "test_scenario": "GitHubトークンの権限スコープ検証およびコードコミット・改ざん検知機構のテスト",
+        "human_validation": "不明",
+        "service_implication": "シークレット検出やSaaS/Gitリポジトリへの権限監査サービスにおける検証スコープ拡充の検討",
+        "source_evidence": "hackers reportedly used stolen employee tokens to copy and alter source code.",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "認証・ID",
+          "ソースコード・ソフトウェア供給網"
+        ],
+        "attack_methods": [
+          "クレデンシャル窃取"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "0a6f3c178aec",
+      "title": "Switzerland Confirms AI-Assisted Cyberattacks Breached Critical Infrastructure Operators",
+      "summary": "Attackers using AI agents have broken into computer systems at Swiss organizations in four of five confirmed attacks, the first such cases in the country, the country's cybersecurity agency said yesterday.\n\nThree of the attacks targeted critical infrastructure operators, and two of those succeeded, with no major disruptions reported. The victims have not been named, and it is not known who is",
+      "url": "https://thehackernews.com/2026/11/switzerland-confirms-ai-assisted.html",
+      "ai_score": 3,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "AIエージェント",
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 6,
+      "source_region": "global",
+      "source_name": "The Hacker News",
+      "source_tier": "B",
+      "published": "2026-11-27T15:04:20+09:00",
+      "title_ja": "スイス当局、AIエージェントを用いた重要インフラ侵害攻撃を確認",
+      "summary_ja": "スイスのサイバーセキュリティ機関は、攻撃者がAIエージェントを用いて国内組織のコンピュータシステムに侵入した事例を確認したと発表しました。確認された5件の攻撃のうち4件で侵入が発生し、そのうち3件は重要インフラを標的として2件で侵入が成功しました。重大な業務停止は報告されていないものの、国内初のAIアシスト型侵害として注目されています。",
+      "insight": "AIエージェントが悪意ある侵入自動化に実戦投入されたことを示す極めて重要な観測事例です。従来のペネトレーションテスト手法や自動スキャンに留まらず、AIによる複合的かつ適応的な攻撃シーケンスに対抗できる防御アーキテクチャの検証が急務となります。攻撃の各段階でどのAIツールがどのように使われたか、詳細情報の公開を注視する必要があります。",
+      "importance": "高",
+      "importance_reason": "AIエージェントを用いた重要インフラへの実攻撃・侵害成功が国家機関によって公式に確認された初動事例であるため。",
+      "tag_main_id": "attack",
+      "tag_main_label": "攻撃・脅威",
+      "tag_subs": [
+        "AIを使った攻撃",
+        "APT"
+      ],
+      "affected_layers": [
+        "ネットワーク",
+        "クラウド/サーバー",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "AIエージェント",
+        "重要インフラ",
+        "スイスサイバーセキュリティ機関",
+        "国家支援型攻撃",
+        "侵入"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "MDR/MSSP設計",
+        "AI for Security"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "不明"
+        ],
+        "evidence": "スイス当局がAIエージェントを用いた組織や重要インフラへの侵入成功を確認したと報告。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "組織および重要インフラ事業者のシステム侵入（重大な停止は未報告）",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "AI駆動型侵入手法を想定したレッドチーム検証および検知ロジックの評価",
+        "human_validation": "不明",
+        "service_implication": "AIエージェントによる適応的な攻撃を想定した診断シナリオの策定とSOC連携監視の要件化",
+        "source_evidence": "Attackers using AI agents have broken into computer systems at Swiss organizations",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "インフラ・ネットワーク"
+        ],
+        "attack_methods": [
+          "AIを使った攻撃"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "6a61e27bf7e9",
+      "title": "化粧品通販サイトに不正アクセス - 個人情報流出の可能性",
+      "summary": "化粧品の通信販売サイト「ヴェレダ公式オンラインショップ」が不正アクセスを受け、個人情報が流出した可能性があることがわかった。",
+      "url": "https://www.security-next.com/193310",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-27T23:05:36+09:00",
+      "title_ja": "化粧品通販サイトに不正アクセス - 個人情報流出の可能性",
+      "summary_ja": "ヴェレダ公式オンラインショップが不正アクセスを受け、顧客の個人情報が流出した可能性があることが判明した。ECサイトを狙ったサイバー攻撃の一環として発生したとみられる。運営会社は詳細な調査と対応を進めている。",
+      "insight": "ECサイトにおける不正アクセスや情報流出リスクに対する継続的な監視と脆弱性対策の重要性を示している。Webアプリケーションやプラットフォームのセキュリティ見直しが求められる。診断サービスにおいては、類似のECプラットフォームに対するペネトレーションテストや設定確認が有効である。",
+      "importance": "高",
+      "importance_reason": "国内の著名な公式オンラインショップにおける個人情報流出の可能性が示されており、実被害への懸念が高いため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "データ侵害"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "クラウド/サーバー",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "ヴェレダ",
+        "不正アクセス",
+        "個人情報流出",
+        "ECサイト"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "顧客課題",
+        "Exposure管理"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "ペネトレーションテスト"
+        ],
+        "products": [
+          "ECサイト"
+        ],
+        "evidence": "ヴェレダ公式オンラインショップが不正アクセスを受け、個人情報が流出した可能性があることがわかった。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "個人情報流出の可能性",
+        "japan_observation": "国内で発生",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "ECサイトの信頼性低下およびサービス停止の可能性",
+        "source_evidence": "不正アクセスを受け、個人情報が流出した可能性がある",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "Web・API"
+        ],
+        "attack_methods": [
+          "不正アクセス"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "87f137ae9343",
+      "title": "契約者向けマイページに不正アクセス、個人情報が流出 - 東京海上ダイレクト",
+      "summary": "東京海上ダイレクト損害保険は、契約者向けマイページが不正アクセスを受け、顧客の個人情報が流出したことを明らかにした。",
+      "url": "https://www.security-next.com/193168",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-27T22:56:19+09:00",
+      "title_ja": "契約者向けマイページに不正アクセス、個人情報が流出 - 東京海上ダイレクト",
+      "summary_ja": "東京海上ダイレクト損害保険は、契約者向けマイページが不正アクセスを受け、顧客の個人情報が流出したことを発表した。認証情報やシステム上の脆弱性を突いた攻撃の可能性が懸念される。同社は影響範囲の特定と対策を実施している。",
+      "insight": "顧客のマイページや認証機能を標的とした不正アクセスは、金融・保険業界において重大な信用失墜につながる。認証認可機構の強化やセッション管理の徹底、定期的な脆弱性診断が必要とされる。再発防止に向けたログ監視の高度化が急務である。",
+      "importance": "高",
+      "importance_reason": "保険会社の契約者向けマイページという重要性の高い認証領域での情報流出であり、影響が大きいため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "データ侵害",
+        "金融被害"
+      ],
+      "affected_layers": [
+        "アプリ/API",
+        "データ/AI"
+      ],
+      "related_keywords": [
+        "東京海上ダイレクト",
+        "不正アクセス",
+        "個人情報流出",
+        "マイページ"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "契約者向けマイページ"
+        ],
+        "evidence": "契約者向けマイページが不正アクセスを受け、顧客の個人情報が流出したことを明らかにした。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "顧客の個人情報流出",
+        "japan_observation": "国内で発生",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "マイページサービスの利用停止や顧客への影響",
+        "source_evidence": "契約者向けマイページが不正アクセスを受け、個人情報が流出した",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "認証・ID",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "不正アクセス"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "7ddbbf9810d7",
+      "title": "政府調達情報システムのサーバから個人情報流出か - 文科省",
+      "summary": "文部科学省は、政府調達情報システムを構成するサーバが侵害され、関係者の個人情報が外部に流出した可能性があることを明らかにした。",
+      "url": "https://www.security-next.com/193439",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 5,
+      "source_region": "JP",
+      "source_name": "Security NEXT",
+      "source_tier": "B",
+      "published": "2026-11-27T21:12:40+09:00",
+      "title_ja": "政府調達情報システムのサーバから個人情報流出か - 文科省",
+      "summary_ja": "文部科学省は、政府調達情報システムを構成するサーバが侵害され、関係者の個人情報が外部に流出した可能性があることを明らかにした。公共機関のインフラやサプライチェーンを狙ったサイバー攻撃として注目される。詳細な調査が進行中である。",
+      "insight": "政府関連システムや重要インフラに対する攻撃は国家安全保障や行政サービスに直結する深刻なリスクである。インフラ・ネットワーク層からアプリケーション層に至るまでの多層防御と、厳格なアクセス制御・監視が求められる。ペネトレーションテストや設定診断の定期実施が不可欠である。",
+      "importance": "高",
+      "importance_reason": "政府調達情報システムという公共性の高いインフラでの情報流出の可能性があり、影響範囲が広いため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "サプライチェーン攻撃"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "ネットワーク",
+        "ガバナンス/規制"
+      ],
+      "related_keywords": [
+        "文部科学省",
+        "政府調達情報システム",
+        "サーバ侵害",
+        "個人情報流出"
+      ],
+      "cdc_relevance": 3,
+      "cdc_context": [
+        "SOC運用変化",
+        "Exposure管理",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "直接関連",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "政府調達情報システム"
+        ],
+        "evidence": "政府調達情報システムを構成するサーバが侵害され、関係者の個人情報が外部に流出した可能性があることを明らかにした。"
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "関係者の個人情報流出の可能性",
+        "japan_observation": "国内で発生",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "政府調達システムの信頼性低下と情報漏洩の影響",
+        "source_evidence": "政府調達情報システムのサーバが侵害され、関係者の個人情報が外部に流出した可能性がある",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "インフラ・ネットワーク",
+          "外部公開資産"
+        ],
+        "attack_methods": [
+          "サーバ侵害"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "2e740046eff4",
+      "title": "CISA Adds Three Known Exploited Vulnerabilities to Catalog",
+      "summary": "<div class=\"OutlineElement Ltr SCXW1462417 BCX8\">\n<p>CISA has added three new vulnerabilities to its <a class=\"Hyperlink SCXW1462417 BCX8\" href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\" rel=\"noreferrer noopener\"><u>Known Exploited Vulnerabilities (KEV) Catalog</u></a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-120705\">CVE-2026-120705</a> OSGeo GeoServer XML Injection Vulnerability</li>\n</ul>\n<div class=\"ListCont",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/11/27/cisa-adds-three-known-exploited-vulnerabilities-catalog",
+      "ai_score": 1,
+      "cdc_pre_score": 1,
+      "vulnerability_focus": true,
+      "operations_focus": false,
+      "business_topics": [
+        "脆弱性管理"
+      ],
+      "engineering_topics": [],
+      "business_score": 4,
+      "source_region": "global",
+      "source_name": "CISA",
+      "source_tier": "A",
+      "published": "2026-11-27T21:00:00+09:00",
+      "title_ja": "CISA、既知の悪用が確認された3件の脆弱性をカタログに追加",
+      "summary_ja": "CISAは積極的な悪用の証拠に基づき、既知の悪用された脆弱性（KEV）カタログに新たに3件の脆弱性を追加した。その中にはOSGeo GeoServerのXMLインジェクション脆弱性（CVE-2026-120705）が含まれている。組織は迅速な影響評価とパッチ適用を行うことが推奨される。",
+      "insight": "公開サーバーや外部公開資産に対する悪用が確認されており、自社資産におけるCVEの早期検出と優先順位付けプロセスの見直しが必要である。脆弱性管理においてKEVカタログの更新情報をいかに迅速に検知・適用できるかが問われる。",
+      "importance": "高",
+      "importance_reason": "CISAによる悪用確認済みの脆弱性追加であり、迅速なリスク評価と対応が必要であるため。",
+      "tag_main_id": "vuln",
+      "tag_main_label": "脆弱性",
+      "tag_subs": [
+        "KEV",
+        "CVE",
+        "パッチ未適用"
+      ],
+      "affected_layers": [
+        "クラウド/サーバー",
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "CISA",
+        "KEV",
+        "CVE-2026-120705",
+        "GeoServer"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Exposure管理",
+        "CISO報告"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "緊急",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "OSGeo GeoServer"
+        ],
+        "evidence": "CISA has added three new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog, based on evidence of active exploitation."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不明",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "CISA adds three known exploited vulnerabilities to catalog including CVE-2026-120705",
+        "evidence_status": "悪用確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "外部公開資産",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "XMLインジェクション"
+        ],
+        "weaknesses": [
+          "CVE-2026-120705"
+        ],
+        "cve_ids": [
+          "CVE-2026-120705"
+        ]
+      }
+    },
+    {
+      "id": "7d1dde138b52",
+      "title": "pCloud confirms password manager hack after suspicious login alerts",
+      "summary": "The pCloud Pass password manager suffered a cyberattack, with users reporting that unknown devices had connected to their accounts even with two-factor authentication (2FA) enabled. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/pcloud-confirms-password-manager-hack-after-suspicious-login-alerts/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-28T04:26:04+09:00",
+      "title_ja": "pCloud、不審なログイン警告を受けパスワードマネージャーへのハッキングを認める",
+      "summary_ja": "パスワードマネージャーのpCloud Passがサイバー攻撃を受け、二要素認証（2FA）が有効な状態であっても未知のデバイスがアカウントに接続したとユーザーが報告した。これを受け同社はセキュリティインシデントの発生を認めた。認証迂回やセッション管理に関するリスクが浮き彫りとなっている。",
+      "insight": "2FAをバイパスするような不正アクセスの可能性があり、認証・ID管理層のセキュリティ設計やセッション管理の堅牢性検証が重要である。パスワードマネージャー等の機密情報を扱う製品では、想定外のアクセスに対する検知と監査の仕組みが問われる。",
+      "importance": "高",
+      "importance_reason": "パスワードマネージャーという機密性の高いサービスでのインシデントであり、影響が大きいため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "情報漏洩",
+        "クレデンシャル窃取"
+      ],
+      "affected_layers": [
+        "アプリ/API"
+      ],
+      "related_keywords": [
+        "pCloud",
+        "パスワードマネージャー",
+        "2FA",
+        "サイバー攻撃"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "Identity/ITDR",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "早期評価",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "pCloud Pass"
+        ],
+        "evidence": "The pCloud Pass password manager suffered a cyberattack, with users reporting that unknown devices had connected to their accounts even with two-factor authentication (2FA) enabled."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "不正アカウント接続",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "pCloud confirms password manager hack after suspicious login alerts with 2FA enabled",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "認証・ID",
+          "Web・API"
+        ],
+        "attack_methods": [
+          "不正ログイン"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
+      "id": "c45d6dda9f12",
+      "title": "New Boston Scientific data breach exposes personal, medical info",
+      "summary": "Medical technology company Boston Scientific is sending data breach notices to individuals affected by a cyberattack on the firm. [...]",
+      "url": "https://www.bleepingcomputer.com/news/security/new-boston-scientific-data-breach-exposes-personal-medical-info/",
+      "ai_score": 1,
+      "cdc_pre_score": 0,
+      "vulnerability_focus": false,
+      "operations_focus": false,
+      "business_topics": [
+        "企業インシデント"
+      ],
+      "engineering_topics": [],
+      "business_score": 3,
+      "source_region": "global",
+      "source_name": "Bleeping Computer",
+      "source_tier": "B",
+      "published": "2026-11-28T03:57:42+09:00",
+      "title_ja": "ボストン・サイエンティフィック、データ侵害により個人・医療情報を流出",
+      "summary_ja": "医療技術企業であるボストン・サイエンティフィックが、サイバー攻撃を受けたことに伴い、影響を受けた個人に対してデータ侵害の通知を送付している。個人情報や医療情報が露出したことが確認されている。サプライチェーンや医療分野における情報管理のリスクを示している。",
+      "insight": "医療・機密情報を扱う企業におけるデータ侵害のインパクトは大きく、サプライチェーン経由のリスクやデータ保護体制の評価が不可欠である。インシデント発生時の迅速な通知と影響範囲の特定手法について確認が求められる。",
+      "importance": "高",
+      "importance_reason": "医療情報の漏洩を伴う大規模なデータ侵害であり、業界全体への影響が大きいため。",
+      "tag_main_id": "incident",
+      "tag_main_label": "インシデント",
+      "tag_subs": [
+        "データ侵害",
+        "情報漏洩"
+      ],
+      "affected_layers": [
+        "データ/AI",
+        "クラウド/サーバー"
+      ],
+      "related_keywords": [
+        "Boston Scientific",
+        "データ侵害",
+        "医療情報",
+        "サイバー攻撃"
+      ],
+      "cdc_relevance": 2,
+      "cdc_context": [
+        "CISO報告",
+        "顧客課題"
+      ],
+      "views": 0,
+      "business": {
+        "japan_relevance": "関連あり",
+        "exploitation": "悪用確認あり",
+        "urgency": "情報収集",
+        "lifecycle": [
+          "不明"
+        ],
+        "assessments": [
+          "不明"
+        ],
+        "products": [
+          "Boston Scientific services"
+        ],
+        "evidence": "Medical technology company Boston Scientific is sending data breach notices to individuals affected by a cyberattack on the firm."
+      },
+      "attack": {
+        "initial_access": "不明",
+        "observed_impact": "個人・医療情報の露出",
+        "japan_observation": "不明",
+        "assessment_preconditions": "不明",
+        "test_scenario": "不明",
+        "human_validation": "不明",
+        "service_implication": "不明",
+        "source_evidence": "New Boston Scientific data breach exposes personal, medical info following cyberattack",
+        "evidence_status": "実被害確認",
+        "blackbox_testability": "判断材料不足",
+        "target_layers": [
+          "データ・AI・AIエージェント",
+          "インフラ・ネットワーク"
+        ],
+        "attack_methods": [
+          "サイバー攻撃"
+        ],
+        "weaknesses": [],
+        "cve_ids": []
+      }
+    },
+    {
       "id": "fabcae08e496",
       "title": "Evaluating More with Less: Black-Box Test Selection for AI Agents",
       "summary": "arXiv:2611.34617v1 Announce Type: new \nAbstract: Agentic software systems are increasingly used in development, where changes to the model, prompt, scaffold, tools, or execution environment require repeated testing. Test case selection (TCS) can reduce testing costs while providing estimates of agent performance or exposing failures early. Although TCS has been studied for deep neural networks and LLM code models, prior work does not directly address agentic systems and often requires model information unavailable for proprietary agents. We present the first empirical study of black-box TCS for agentic software systems. We treat each benchmark task as a test case and adapt black-box regression-testing techniques using selection criteria based on task descriptions, metadata, code fragments, and embeddings. We also propose strategies that estimate task difficulty using heuristic features or independent LLM-as-judge assessments. Our strategies select tasks without executing the target agent or using past results. We evaluate fourteen selection strategies, including random sampling, plus a historical-data baseline, across ten AI agent benchmarks with 12 to 101 agents per benchmark. We assess Success Rate estimation and early failure detection. No single strategy dominates both objectives. Adapted black-box regression-testing strategies are most effective for Success Rate estimation, with Category Partition obtaining the lowest median error on five benchmarks at the 20% task budget. LLM-as-judge selection is more effective for early failure detection. For GPT 5.2 Codex on SWE-bench Verified, Category Partition selects 100 instead of 500 tasks, reducing execution cost from \\$225 to \\$47, with a Success Rate estimation error of 0.8 percentage points. At the same budget, LLM-as-judge selection detects nearly twice as many failures as random sampling: 53.0% of selected tasks reveal failures, compared with 27.4% for random sampling.",
